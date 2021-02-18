@@ -1,0 +1,9 @@
+//!DataStructureReferenceTest34Constructor5 translationUnit, no constructor impl
+//@A.cpp
+#include "X.h"
+X x;
+//@X.h
+class X {
+};
+//@X.cpp
+#include "X.h"

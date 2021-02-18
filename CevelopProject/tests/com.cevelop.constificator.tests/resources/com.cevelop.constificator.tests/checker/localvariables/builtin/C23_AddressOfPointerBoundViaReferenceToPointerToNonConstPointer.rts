@@ -1,0 +1,19 @@
+//!AddressOfNonConstPtrToConstBindReferenceToConstPtrToNonConstPtrToConst
+//@.config
+//@main.cpp
+int main()
+  {
+  char const * ptr{};
+  char const * * const & ref{&ptr};
+  (*ref)++;
+  }
+
+//!AddressOfNonConstPtrToConstBindReferenceToConstPtrToConstPtrToConst
+//@.config
+markerLines=3
+//@main.cpp
+int main()
+  {
+  char const * ptr{};
+  char const * const * const & ref{&ptr};
+  }

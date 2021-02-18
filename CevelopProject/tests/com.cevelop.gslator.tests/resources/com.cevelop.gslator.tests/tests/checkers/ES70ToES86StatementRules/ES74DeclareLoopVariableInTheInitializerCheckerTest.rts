@@ -1,0 +1,33 @@
+//!InitializerBeforeForLoopFixPossible
+//@.config
+markerLines=3
+//@main.h
+void function()  {
+	int j;
+	for(j= 0; j<0; j++) {
+	}
+}
+//!InitializerBeforeForLoopFixNotPossible
+//@.config
+markerLines=4
+//@main.h
+void function()  {
+	int j;
+	j++;
+	for(j= 0; j<0; j++) {
+	}
+}
+//!InitializerAtForLoop
+//@main.h
+void function()  {
+	for(int j= 0; j<0; j++) {
+	}
+}
+//!CheckIgnoreAttribute
+//@main.h
+void function()  {
+	int j;
+	[[gsl::suppress("Res-for-init")]]
+	for(j = 0; j<0; j++) {
+	}
+}

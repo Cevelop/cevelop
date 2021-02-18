@@ -1,0 +1,16 @@
+//!CompleteDefaultArgumentsAndEmptyTemplateIdWithoutArgumentsTest
+//@MyFileName.cpp
+template<typename T=double, typename F=int>
+void inner() {
+}
+
+void inner() {}
+
+template<typename T, typename F>
+void outer(T first, F second) {
+    inner<>(); //<double,int>    
+}
+
+int main() {
+    outer(42, true); //<int,bool>
+}

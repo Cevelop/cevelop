@@ -1,0 +1,18 @@
+//!RemoveUnused25NameCorrelationComplex
+//@A.cpp
+#include "A.h"
+#include "B.h"
+void a() {
+	C c;
+}
+//@A.h
+#include "C.h"
+//@B.h
+#include "C.h"
+//@C.h
+#ifndef C_H
+#define C_H
+class C { };
+#endif //C_H
+//@D.h
+//empty

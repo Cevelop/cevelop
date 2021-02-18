@@ -1,0 +1,13 @@
+//!DestructorRefTest4ParameterDecl
+//@A.cpp
+#include "X.h"
+void foo(X x) {
+}
+//@X.h
+class X {
+public:
+  ~X();
+};
+//@X.cpp
+#include "X.h"
+X::~X() { }

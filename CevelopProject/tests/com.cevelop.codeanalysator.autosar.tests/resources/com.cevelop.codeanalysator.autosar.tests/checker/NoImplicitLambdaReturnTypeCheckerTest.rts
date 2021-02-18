@@ -1,0 +1,123 @@
+//! Explicitly specified lambda return type
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+#include <cstdint>
+void Fn() noexcept
+{
+	auto lambda = []() -> std::uint8_t {
+		std::uint8_t ret = 0U;
+		return ret;
+	};
+}
+
+
+//! Implicit lambda return type
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=4
+//@main.h
+#include <cstdint>
+void Fn() noexcept
+{
+	auto lambda = []() {
+		std::uint8_t ret = 0U;
+		return ret;
+	};
+}
+
+//! Suppressed implicit lambda return type
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+#include <cstdint>
+void Fn() noexcept
+{
+    [[autosar::suppress("A5-1-6")]]
+	auto lambda = []() {
+		std::uint8_t ret = 0U;
+		return ret;
+	};
+}
+
+//! Implicit lambda return type with void return type
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+#include <cstdint>
+void Fn() noexcept
+{
+	auto lambda = []() {};
+}
+
+//! Implicit lambda return type without parameter list
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=4
+//@main.h
+#include <cstdint>
+void Fn() noexcept
+{
+	auto lambda = [] {
+		std::uint8_t ret = 0U;
+		return ret;
+	};
+}
+
+//! Implicit lambda return type with void return type without parameter list
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+#include <cstdint>
+void Fn() noexcept
+{
+	auto lambda = [] {};
+}
+
+
+//! Decltype auto lambda return type which evaluates to std::uint8_t
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines = 4
+//@main.h
+#include <cstdint>
+void Fn() noexcept
+{
+	auto lambda = []() -> decltype(auto) {
+		std::uint8_t ret = 0U;
+		return ret;
+	};
+}
+
+//! Decltype auto lambda return type which evaluates to void
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+#include <cstdint>
+void Fn() noexcept
+{
+	auto lambda = []() -> decltype(auto) {};
+}
+
+//! Decltype std::uint8_t lambda return type
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+#include <cstdint>
+void Fn() noexcept
+{
+	auto lambda = []() -> decltype(std::uint8_t)) {
+		std::uint8_t ret = 0U;
+		return ret;
+	};
+}
+
+//! Decltype void lambda return type
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+#include <cstdint>
+void Fn() noexcept
+{
+	auto lambda = []() -> decltype(void())) {};
+}

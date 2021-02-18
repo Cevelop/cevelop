@@ -1,0 +1,16 @@
+//!ResolvesToExactlyMatchingNonTemplateWithoutTemplateIdTest
+//@MyFileName.cpp
+void inner(bool b) {}
+
+template<typename T, typename F=int>
+void inner(F first) {
+}
+
+template<typename T>
+void outer(T first) {
+    inner(first); // resolves to inner(bool b)    
+}
+
+int main() {
+    outer(true); //<bool>
+}

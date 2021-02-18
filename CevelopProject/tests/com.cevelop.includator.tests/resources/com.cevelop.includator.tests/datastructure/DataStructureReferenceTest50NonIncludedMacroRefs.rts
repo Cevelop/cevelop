@@ -1,0 +1,25 @@
+//!DataStructureReferenceTest50NonIncludedMacroRefs object like
+//@main.cpp
+int main() {
+	int i = XY;
+}
+//@macro.h
+#define XY 1
+//!DataStructureReferenceTest50NonIncludedMacroRefs object like in ifdef
+//@.config
+//@main.cpp
+int main() {
+	int i = 1;
+#ifdef XY
+	i = 2;
+#endif	
+}
+//@macro.h
+#define XY 1
+//!DataStructureReferenceTest50NonIncludedMacroRefs function like macro
+//@main.cpp
+int main() {
+	int i = XY(1);
+}
+//@macro.h
+#define XY(a) (a)

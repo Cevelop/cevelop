@@ -1,0 +1,8 @@
+//!Problem Binding in C Simple Declaration
+//% C
+//@main.c
+int i[] = {k};
+
+int main(void) {
+	return 0;
+}

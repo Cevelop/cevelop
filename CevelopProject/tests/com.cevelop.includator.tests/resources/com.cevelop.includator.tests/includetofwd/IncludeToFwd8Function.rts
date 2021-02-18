@@ -1,0 +1,9 @@
+//!IncludeToFwd8Function
+//@main.cpp
+#include "A.h"
+int main() {
+	aaa();
+	return 0;
+}
+//@A.h
+void aaa() { }

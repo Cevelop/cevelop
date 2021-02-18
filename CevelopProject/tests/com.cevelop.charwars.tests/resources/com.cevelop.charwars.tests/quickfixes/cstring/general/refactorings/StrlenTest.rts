@@ -1,0 +1,127 @@
+//!StrlenReplacement1
+//@main.cpp
+int main() {
+	const char *str = "Hello World";
+	std::cout << strlen(str) << std::endl;
+}
+//=
+
+#include <string>
+int main() {
+	std::string str = "Hello World";
+	std::cout << str.size() << std::endl;
+}
+
+
+//!StrlenReplacement2
+//@main.cpp
+int main() {
+	const char *str = "Hello World";
+	str++;
+	std::cout << strlen(str) << std::endl;
+}
+//=
+
+#include <string>
+int main() {
+	std::string str = "Hello World";
+	std::string::size_type str_pos = 0;
+	str_pos++;
+	std::cout << (str.size() - str_pos) << std::endl;
+}
+
+
+//!StrlenReplacement3
+//@main.cpp
+int main() {
+	const char *str = "Hello World";
+	std::cout << strlen(str+6) << std::endl;
+}
+//=
+
+#include <string>
+int main() {
+	std::string str = "Hello World";
+	std::cout << (str.size() - 6) << std::endl;
+}
+
+
+//!WcslenReplacement1
+//@main.cpp
+int main() {
+	wchar_t wstr[] = L"Hello World";
+	std::cout << wcslen(wstr) << std::endl;
+}
+//=
+#include <string>
+int main() {
+	std::wstring wstr = L"Hello World";
+	std::cout << wstr.size() << std::endl;
+}
+
+
+//!WcslenReplacement2
+//@main.cpp
+int main() {
+	const wchar_t *wstr = L"Hello World";
+	wstr++;
+	std::cout << wcslen(wstr) << std::endl;
+}
+//=
+#include <string>
+int main() {
+	std::wstring wstr = L"Hello World";
+	std::wstring::size_type wstr_pos = 0;
+	wstr_pos++;
+	std::cout << (wstr.size() - wstr_pos) << std::endl;
+}
+
+
+//!WcslenReplacement3
+//@main.cpp
+int main() {
+	const wchar_t *wstr = L"Hello World";
+	std::cout << wcslen(wstr+6) << std::endl;
+}
+//=
+
+#include <string>
+int main() {
+	std::wstring wstr = L"Hello World";
+	std::cout << (wstr.size() - 6) << std::endl;
+}
+
+
+//!LengthCalculationReplacement1
+//@main.cpp
+int main() {
+	char str[] = "Hello, world";
+	int len1 = sizeof(str) / sizeof(*str) - 1;
+	int len2 = sizeof(str) / sizeof(char) - 1;
+}
+//=
+
+#include <string>
+int main() {
+	std::string str = "Hello, world";
+	int len1 = str.size();
+	int len2 = str.size();
+}
+
+
+//!LengthCalculationReplacement2
+//@main.cpp
+int main() {
+	char str[] = "Hello, world";
+	int len1 = sizeof str / sizeof *str - 1;
+	int len2 = sizeof str / sizeof(char) - 1;
+}
+//=
+
+#include <string>
+int main() {
+	std::string str = "Hello, world";
+	int len1 = str.size();
+	int len2 = str.size();
+}
+

@@ -1,0 +1,75 @@
+//!Mixed 1
+//@MyFileName.cpp
+template <typename T, typename S>
+struct Tuple {
+};
+
+template <typename T>
+auto makeTuple(T t) {
+	return Tuple<T,T> { };
+}
+
+auto foo3(double i) {
+	return makeTuple((int)i);
+}
+
+auto foo2(double i) {
+	return makeTuple((int)i);
+}
+
+auto foo1(double d) {
+	return d > 4.3 ? foo2(d) : foo3(d);
+}
+
+auto foo(double d) {
+	return foo1(d);
+}
+
+int main() {
+	auto tuple = foo(10.5);
+}
+
+
+//!Mixed 2
+//@MyFileName.cpp
+template <typename T, typename S>
+struct Tuple {
+};
+
+template <>
+struct Tuple<double,double> {
+	Tuple<int,int> operator/(const Tuple<double,double>& rhs) {
+		return Tuple<int,int> { };
+	}
+};
+
+template <typename T>
+Tuple<T,T> operator++(const Tuple<T,T>& rhs) {
+	return Tuple<T,T> { };
+}
+
+template <typename T>
+auto makeTuple(T t) {
+	return Tuple<T,T> { };
+}
+
+auto foo3() {
+	return makeTuple(1.5);
+}
+
+auto foo2() {
+	return makeTuple(4.2);
+}
+
+auto foo1() {
+	auto tuple = foo2() / foo3();
+	return ++tuple;
+}
+
+auto foo() {
+	return foo1();
+}
+
+int main() {
+	auto tuple = foo();
+}

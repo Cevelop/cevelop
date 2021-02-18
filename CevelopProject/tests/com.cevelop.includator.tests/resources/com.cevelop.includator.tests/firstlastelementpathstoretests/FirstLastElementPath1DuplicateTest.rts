@@ -1,0 +1,15 @@
+//!FistLastElementPath1DuplicateTest
+//@A.cpp
+#include "A.h"
+#include "B.h"
+int main() { 
+  A a;
+  A a2;
+  return 0;
+}
+//@A.h
+class A { };
+//@B.h
+#include "A.h"
+
+ 

@@ -1,0 +1,201 @@
+//!EqualsInitializerStatementInCtorBody
+//@B.h
+struct B {
+	B(int a) {
+		this->a = a;
+	}
+
+private:
+	int a;
+	std::string s { "test" };
+};
+//=
+struct B {
+	B(int a) noexcept
+	:a {	a}
+	{
+	}
+
+private:
+	int a;
+	std::string s { "test" };
+};
+//!MultipleEqualsInitializerStatementInCtorBody
+//@B.h
+struct B {
+	B(int a, double b, std::string c){
+		this->a = a;
+		this->b = b;
+		this->c = c;
+	}
+
+private:
+	int a {};
+	double b;
+	std::string c { "test" };
+};
+//=
+struct B {
+	B(int a, double b, std::string c) noexcept
+	:b {	b}
+	{
+		this->a = a;
+		this->c = c;
+	}
+
+private:
+	int a {};
+	double b;
+	std::string c { "test" };
+};
+//!EqualsInitializerStatementInCtorBodyInline
+//@B.h
+struct B {
+	inline B(int a);
+
+private:
+	int a;
+	std::string s { "test" };
+};
+
+inline B::B(int a) {
+	this->a = a;
+}
+//=
+struct B {
+	inline B(int a);
+
+private:
+	int a;
+	std::string s { "test" };
+};
+
+inline B::B(int a)
+:a {	a}
+{
+}
+//!EqualsInitializerStatementInCtorBodyCPP
+//@B.h
+struct B {
+	B(int a);
+
+private:
+	int a;
+	std::string s { "test" };
+};
+//=
+struct B {
+	B(int a);
+
+private:
+	int a;
+	std::string s { "test" };
+};
+//@B.cpp
+#include "B.h"
+B::B(int a) {
+	this->a = a;
+}
+//=
+#include "B.h"
+B::B(int a) noexcept
+:a {	a}
+{
+}
+//!SetAttributeEqualsInitializerStatementInCtorBody
+//@.config
+setIgnoreAttribute=true
+//@B.h
+struct B {
+	B(int a) {
+		this->a = a;
+	}
+
+private:
+	int a;
+	std::string s { "test" };
+};
+//=
+struct B {
+	B(int a) {
+	[[gsl::suppress("Rc-initialize")]] {
+			this->a = a;
+		}
+	}
+
+private:
+	int a;
+	std::string s { "test" };
+};
+//!EqualsInitializerStatementInCtorBodyWithSideEffect
+//@B.h
+struct B {
+	B(int a, std::string s) {
+		this->a = a;
+		std::cout << "42";
+		this->s = "42";		
+	}
+
+private:
+	int a;
+	std::string s { "test" };
+};
+//=
+struct B {
+	B(int a, std::string s)
+	:a {	a}
+	{
+		std::cout << "42";
+		this->s = "42";
+	}
+
+private:
+	int a;
+	std::string s { "test" };
+};
+//!EqualsInitializerStatementInCtorBodyMultipleDeclarations
+//@B.h
+struct B {
+	B(int a) {
+		this->b = a;
+	}
+
+private:
+	int a, b;
+	std::string s { "test" };
+};
+//=
+struct B {
+	B(int a) noexcept
+	:b {	a}
+	{
+	}
+
+private:
+	int a, b;
+	std::string s { "test" };
+};
+//!TemplateClassEqualsInitializerStatementInCtorBody
+//@C.h
+template<typename T>
+class C {
+	std::vector<T> v;
+	std::string name {};
+public:
+	C(std::vector<T> v, std::string name) {
+		this->v = v;
+		this->name = name;
+	}
+};
+//=
+template<typename T>
+class C {
+	std::vector<T> v;
+	std::string name {};
+public:
+	C(std::vector<T> v, std::string name)
+	:v {	v}
+	{
+		this->name = name;
+	}
+};

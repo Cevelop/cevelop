@@ -1,0 +1,33 @@
+/*
+ * @file   <initializer_list>
+ * @brief  Dummy implementation of std::initializer_list
+ * @author Felix Morgner
+ */
+
+#ifndef ILTIS_INITIALIZER_LIST
+#define ILTIS_INITIALIZER_LIST
+
+namespace std {
+
+template<typename ValueType>
+class initializer_list {
+public:
+    using value_type = ValueType;
+    using reference = ValueType &;
+    using const_reference = ValueType const &;
+    using size_type = unsigned long long; // TODO (fmorgner): change to std::size_t
+    using iterator = ValueType const *;
+    using const_iterator = ValueType const *;
+
+    constexpr initializer_list() noexcept;
+
+    constexpr size_type size() const noexcept;
+
+    constexpr ValueType const * begin() const noexcept;
+
+    constexpr ValueType const * end() const noexcept;
+};
+
+}
+
+#endif

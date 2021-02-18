@@ -1,0 +1,11 @@
+//!RemoveUnused16DuplicateInclude
+//@A.cpp
+#include "B.h"
+#include "B.h"
+
+int main() {
+	B b;
+}
+//@B.h
+class B { };
+ 

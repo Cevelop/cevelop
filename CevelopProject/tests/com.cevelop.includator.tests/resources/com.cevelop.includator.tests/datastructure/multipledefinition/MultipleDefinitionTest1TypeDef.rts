@@ -1,0 +1,9 @@
+//!MultipleDefinitionTest1TypeDef
+//@main.cpp
+int main() {
+  size_t t;
+}
+//@a.h
+typedef long unsigned int size_t;
+//@b.h
+typedef long unsigned int size_t;

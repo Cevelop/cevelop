@@ -1,0 +1,85 @@
+//!PointerParameterOneFile
+//@main.cpp
+class Hello {
+public:
+	inline void sayHello() {
+		std::cout << "Hello" << std::endl;
+	}
+};
+
+void func(Hello *h) {
+	h->sayHello();
+}
+
+int main() {
+	Hello *h = new Hello();
+	func(h);
+	return 0;
+}
+//=
+class Hello {
+public:
+	inline void sayHello() {
+		std::cout << "Hello" << std::endl;
+	}
+};
+
+void func(Hello& h) {
+	h.sayHello();
+}
+
+int main() {
+	Hello *h = new Hello();
+	func(*h);
+	return 0;
+}
+
+//!PointerParameter
+//@main.cpp
+#include <string.h>
+
+class User {
+	std::string n;
+public:
+	std::string name() {
+		return n;
+	}
+};
+
+User u{};
+
+User* getUserPtr() {
+	return &u;
+}
+
+std::string getUserName(User* user) {
+	return user->name();
+}
+
+int main() {
+	getUserName(getUserPtr());
+}
+//=
+#include <string.h>
+
+class User {
+	std::string n;
+public:
+	std::string name() {
+		return n;
+	}
+};
+
+User u{};
+
+User* getUserPtr() {
+	return &u;
+}
+
+std::string getUserName(User& user) {
+	return user.name();
+}
+
+int main() {
+	getUserName(*getUserPtr());
+}

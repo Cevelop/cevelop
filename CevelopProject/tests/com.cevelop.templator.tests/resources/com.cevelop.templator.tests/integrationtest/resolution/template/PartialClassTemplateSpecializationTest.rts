@@ -1,0 +1,12 @@
+//!ExplicitSpecializationSelection
+//@MyFileName.cpp
+template <typename T, typename F>
+struct Stack {
+};
+
+template<typename T>
+struct Stack<T, int> {};
+
+int main() {
+	Stack<double, int> stack{};
+}

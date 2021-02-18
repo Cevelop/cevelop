@@ -1,0 +1,10 @@
+//!Reference to template member
+//@main.cpp
+template<typename T>
+inline void destroy(T * target){
+	target->foo();
+}
+
+int main(){
+  return 0;
+}

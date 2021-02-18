@@ -1,0 +1,7 @@
+//!IndexAdaptionTest3IncludePathSubdirUnavailable
+//@A.cpp
+int main() {
+  QWER qwer;
+  Sub sub;
+  return 0;
+}

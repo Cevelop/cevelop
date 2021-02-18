@@ -1,0 +1,213 @@
+//!Add override keyword to virtual method
+//@main.cpp
+class A {
+public:
+	virtual void F() {
+	}
+};
+class B: public A {
+public:
+	void F/*$*/() /*$*/{
+	}
+};
+//=
+class A {
+public:
+	virtual void F() {
+	}
+};
+class B: public A {
+public:
+	void F() override {
+	}
+};
+
+//!Replace final with override
+//@main.cpp
+class A {
+public:
+	virtual void F() {
+	}
+};
+class B: public A {
+public:
+	void F/*$*/() final /*$*/{
+	}
+};
+//=
+class A {
+public:
+	virtual void F() {
+	}
+};
+class B: public A {
+public:
+	void F() override {
+	}
+};
+
+//!Add override keyword and remove virtual
+//@main.cpp
+class A {
+public:
+	virtual void F() {
+	}
+};
+class B: public A {
+public:
+	virtual void F/*$*/() /*$*/{
+	}
+};
+//=
+class A {
+public:
+	virtual void F() {
+	}
+};
+class B: public A {
+public:
+	void F() override {
+	}
+};
+
+//!Replace final with override and remove virtual
+//@main.cpp
+class A {
+public:
+	virtual void F() {
+	}
+};
+class B: public A {
+public:
+	virtual void F/*$*/() final /*$*/{
+	}
+};
+//=
+class A {
+public:
+	virtual void F() {
+	}
+};
+class B: public A {
+public:
+	void F() override {
+	}
+};
+
+//!Replace final with override and remove virtual, keep noexcept
+//@main.cpp
+class A {
+public:
+	virtual void F() {
+	}
+};
+class B: public A {
+public:
+	virtual void F /*$*/() noexcept final /*$*/{
+	}
+};
+//=
+class A {
+public:
+	virtual void F() {
+	}
+};
+class B: public A {
+public:
+	void F() noexcept override {
+	}
+};
+
+//!Not appliccable for non virtual function
+//@main.cpp
+class A {
+public:
+	void F/*$*/()/*$*/ {
+	}
+};
+//=
+class A {
+public:
+	void F() {
+	}
+};
+
+//! Remove override specifier in non virtual method
+//@main.cpp
+class A {
+public:
+	void F /*$*/() override/*$*/{
+	}
+};
+//=
+class A {
+public:
+	void F() {
+	}
+};
+
+//! Remove final specifier in non virtual method
+//@main.cpp
+class A {
+public:
+	void F /*$*/() final /*$*/{
+	}
+};
+//=
+class A {
+public:
+	void F() {
+	}
+};
+
+//! Remove override specifier but not virtual keyword in non-overriding virtual keyword
+//@main.cpp
+class A {
+public:
+	virtual void F /*$*/() override/*$*/{
+	}
+};
+//=
+class A {
+public:
+	virtual void F() {
+	}
+};
+
+//! Remove final specifier but not virtual keyword in non-overriding virtual keyword
+//@main.cpp
+class A {
+public:
+	virtual void F /*$*/() final/*$*/{
+	}
+};
+//=
+class A {
+public:
+	virtual void F() {
+	}
+};
+
+//! Not appliccable for valid virtual function
+//@main.cpp
+class A {
+public:
+	virtual void F() {
+	}
+};
+class B: public A {
+public:
+	void F /*$*/() override /*$*/{
+	}
+};
+//=
+class A {
+public:
+	virtual void F() {
+	}
+};
+class B: public A {
+public:
+	void F() override {
+	}
+};

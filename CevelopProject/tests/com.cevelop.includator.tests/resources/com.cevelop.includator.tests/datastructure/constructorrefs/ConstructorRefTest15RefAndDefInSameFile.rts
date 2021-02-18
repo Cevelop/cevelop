@@ -1,0 +1,17 @@
+//!ConstructorRefTest15RefAndDefInSameFile
+//@A.cpp
+#include "Y.h"
+
+class X {
+public:
+  X();
+  Y y;
+};
+
+int main() {
+  X x;
+}
+
+X::X() { }
+//@Y.h
+class Y { };

@@ -1,0 +1,16 @@
+//!IncludePathTest6CircularIncludes
+//@A.cpp
+#include "A.h"
+#include "D.h"
+
+int main(int argc, char** argv) {
+	D d;
+}
+//@A.h
+#include "B.h"
+//@B.h
+#include "C.h"
+//@C.h
+#include "A.h"
+//@D.h
+class D { };

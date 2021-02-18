@@ -1,0 +1,49 @@
+//!AddressOfNonConstValueParameterOfNonClassTypeAssignedToConstPtrToNonConst
+//@.config
+//@main.cpp
+void f(int n)
+  {
+  int * const ncptrnc = &n;
+  }
+
+//!AddressOfNonConstValueParameterOfNonClassTypeAssignedToConstPtrToConst
+//@.config
+markerLines=1
+//@main.cpp
+void f(int n)
+  {
+  int const * const ncptrnc = &n;
+  }
+
+//!AddressOfConstValueParameterOfNonClassTypeAssignedToConstPtrToConst
+//@.config
+//@main.cpp
+void f(int const n)
+  {
+  int const * const ncptrnc = &n;
+  }
+
+//!AddressOfNonConstValueParameterOfNonClassTypeUsedToInitializeConstPtrToNonConst
+//@.config
+//@main.cpp
+void f(int n)
+  {
+  int * const ncptrnc{&n};
+  }
+
+//!AddressOfNonConstValueParameterOfNonClassTypeUsedToInitializeConstPtrToConst
+//@.config
+markerLines=1
+//@main.cpp
+void f(int n)
+  {
+  int const * const ncptrnc{&n};
+  }
+
+//!AddressOfConstValueParameterOfNonClassTypeUsedToInitializeConstPtrToConst
+//@.config
+//@main.cpp
+void f(int const n)
+  {
+  int const * const ncptrnc{&n};
+  }

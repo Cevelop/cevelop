@@ -1,0 +1,22 @@
+//!EUDIR_MissingLineBreakBeforeLastReplace
+//@A1.cpp
+namespace A {
+	void f1(){}
+	void f2(){}
+}
+
+int main() {
+	A::/*$*/f1/*$*/();
+	A::f2();
+}
+//=
+namespace A {
+	void f1(){}
+	void f2(){}
+}
+
+int main() {
+	using namespace A;
+	f1();
+	f2();
+}

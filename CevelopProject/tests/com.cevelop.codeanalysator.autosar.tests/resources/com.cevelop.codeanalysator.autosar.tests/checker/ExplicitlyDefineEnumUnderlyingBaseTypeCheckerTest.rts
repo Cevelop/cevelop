@@ -1,0 +1,62 @@
+//! Scoped enum class with implicitly defined base type
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=2
+//@main.h
+#include <cstdint>
+enum class E
+{
+	E10,
+	E11,
+	E12
+};
+
+//! Scoped enum class with explicitly defined base type
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+#include <cstdint>
+enum class E : std::uint8_t
+{
+	E10,
+	E11,
+	E12
+};
+
+//! Enum with implementation defined base type
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=2
+//@main.h
+#include <cstdint>
+enum E
+{
+	E10,
+	E11,
+	E12
+};
+
+//! Enum with explicitly defined base type
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+#include <cstdint>
+enum E : std::uint8_t
+{
+	E10,
+	E11,
+	E12
+};
+
+//! Supressed scoped enum class with implicitly defined base type
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+#include <cstdint>
+[[autosar::suppress("A7-2-2")]]
+enum class E
+{
+	E10,
+	E11,
+	E12
+};

@@ -1,0 +1,17 @@
+//!Inlining a type alias into a macro call shall replace the occurrence of the alias with its definition (GH#83)
+//@GH83.cpp
+#define MACRO(A, B) A B{}
+
+using alias = int;
+
+int main() {
+	MACRO(/*$*/alias/*$*/, variable);
+}
+//=
+#define MACRO(A, B) A B{}
+
+using alias = int;
+
+int main() {
+	MACRO(int, variable);
+}

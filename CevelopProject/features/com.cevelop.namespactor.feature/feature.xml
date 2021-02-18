@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.cevelop.namespactor.feature"
+      label="Namespactor"
+      version="1.14.0.qualifier"
+      provider-name="IFS Institute for Software">
+
+   <description url="https://www.cevelop.com/features">
+      Namespactor is a namespace refactoring tool that simplifies and
+speeds up working with names, using directives and using declarations.
+   </description>
+
+   <copyright>
+      Copyright (c) 2012 Institute for Software, HSR Hochschule für
+Technik Rapperswil
+The Software and Documentation are copyrighted by HSR and are
+protected by
+international copyright laws. The product contains copyrighted
+software of HSR.
+All rights reserved. You agree not to remove any trademarks or
+copyright notices
+from the Software or Documentation.
+Contributors:
+Ueli Kunz &lt;kunz@ideadapt.net&gt;, Jules Weder &lt;julesweder@gmail.com&gt;
+- initial API and implementation
+   </copyright>
+
+   <license url="https://www.cevelop.com/license">
+      Cevelop License Agreement
+
+This is a legal agreement between you, the end user, and Hochschule für Technik
+Rapperswil HSR, hereinafter referred to as &quot;HSR&quot;. Namespactor (the &quot;Software&quot;) is
+owned by HSR and is protected by copyright law. Upon acceptance of the terms of
+this License Agreement, your rights and obligations with respect to use of the
+Software are as follows.
+
+COPYRIGHT.
+
+The Software and Documentation are copyrighted by HSR and are protected by
+international copyright laws. The product contains copyrighted software of HSR.
+All rights reserved. You agree not to remove any trademarks or copyright notices
+from the Software or Documentation.
+
+OTHER RESTRICTIONS.
+
+You may not disclose, publish, translate, rent, lease, transfer, export or
+otherwise make the Software available in any form, to any person or entity,
+except as expressly licensed herein. You may not reverse engineer, decompile
+or disassemble the Software.
+
+You cannot use HSR or related names, logos or trademarks to market your
+software without express written permission.
+
+IN NO EVENT SHALL HSR BE LIABLE FOR ANY LOSS OF PROFIT OR ANY OTHER
+DAMAGE, INCLUDING BUT NOT LIMITED TO SPECIAL, INCIDENTAL, CONSEQUENTIAL OR
+OTHER DAMAGES. THE SOFTWARE IS PROVIDED &quot;AS IS&quot; WITHOUT WARRANTY OF ANY KIND.
+HSR SPECIFICALLY DISCLAIMS ALL OTHER WARRANTIES, EXPRESS OR IMPLIED,
+INCLUDING WITHOUT LIMITATION THE IMPLIED WARRANTIES OF MERCHANTABILITY OR
+FITNESS FOR A PARTICULAR USE.
+
+HSR DOES NOT WARRANT THAT THE SOFTWARE WILL MEET YOUR REQUIREMENTS
+OR THAT THE OPERATION OF THE SOFTWARE WILL BE UNINTERRUPTED OR ERROR-FREE.
+
+GOVERNING LAW.
+
+This Agreement shall be governed by Swiss law, without regard to conflict of
+laws principles. This Agreement may only be modified by a written document
+signed by the party or parties to be bound. Except as may be specified in such a
+written agreement, this is the entire agreement between you and HSR and all
+other terms are rejected. You agree not to use, ship, or export the Software in
+violation of any applicable law.
+
+In the event of any legal disputes in conjunction with this license and
+contracts based on it, the courts of Rapperswil/SG shall be the sole competent
+courts.
+
+ENTIRE AGREEMENT.
+
+You agree that this Agreement expresses the entire understanding between you and
+HSR, and supersedes all other communications, oral or written, relating to the
+Software.
+
+COPYRIGHT 2017 Hochschule für Technik Rapperswil
+
+MANUFACTURER:
+HSR Hochschule für Technik Rapperswil
+Oberseestrasse 10
+Postfach 1475
+8640 Rapperswil
+Switzerland
+   </license>
+
+   <url>
+      <update label="Cevelop Internal Update Site" url="https://www.cevelop.com/internal/latest"/>
+   </url>
+
+   <requires>
+      <import plugin="org.eclipse.ui"/>
+      <import plugin="org.eclipse.ui.ide" version="3.7.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.cdt.ui" version="5.3.2" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.cdt.core" version="5.3.1" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="org.eclipse.core.resources" version="3.7.100" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ltk.core.refactoring" version="3.5.201" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ltk.ui.refactoring" version="3.6.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.jface.text" version="3.7.2" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui.editors" version="3.7.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.text" version="3.5.101" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui" version="3.7.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.core.runtime" version="3.7.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.cdt.codan.core" version="2.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.cdt.codan.ui.cxx" version="2.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.cdt.codan.checkers.ui" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.cdt.codan.core.cxx" version="1.0.0" match="greaterOrEqual"/>
+   </requires>
+
+   <plugin
+         id="com.cevelop.namespactor"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.cevelop.namespactor.checkers"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>

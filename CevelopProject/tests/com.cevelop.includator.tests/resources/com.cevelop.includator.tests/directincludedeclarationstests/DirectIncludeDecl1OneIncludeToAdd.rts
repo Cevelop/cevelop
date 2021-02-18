@@ -1,0 +1,14 @@
+//!DirectIncludeDecl1OneIncludeToAdd
+//@A.cpp
+#include "B.h"
+int main() {
+	B b;
+	C c;
+}
+//@B.h
+#include "C.h"
+
+class B { };
+//@C.h
+class C { };
+

@@ -1,0 +1,17 @@
+//!DataStructureReferenceTest42 Refernces In Namespace Alias
+//@main.cpp
+#include "namespace.h"
+
+int main() {
+	using NS::Inner::foo;
+	foo();
+	return 0;
+}
+
+//@namespace.h
+namespace NS {
+namespace Inner {
+void foo() {
+}
+}
+}

@@ -1,0 +1,9 @@
+//!Auto 02 Auto for External Expression
+//@main.cpp
+#include "S.hpp"
+int main() {
+	auto otherS = s;
+}
+//@S.hpp
+struct S{};
+S s{};

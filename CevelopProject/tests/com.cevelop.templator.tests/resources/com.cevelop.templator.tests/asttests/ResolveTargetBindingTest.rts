@@ -1,0 +1,11 @@
+//!ResolveTargetBindingTest
+//@MyFileName.cpp
+
+void foo() {}
+
+int main() {
+      foo();
+}
+//=
+
+int main() {}

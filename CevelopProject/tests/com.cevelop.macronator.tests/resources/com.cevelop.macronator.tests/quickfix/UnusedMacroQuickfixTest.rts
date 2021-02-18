@@ -1,0 +1,12 @@
+//!ShouldRemoveUnusedFunctionStyleMacro
+//@main.cpp
+#define UNUSED_OBJECTSTYLE_MACRO X
+
+//=
+
+//!ShouldRemoveUnusedObjectStyleMacro
+//@main.cpp
+#define FUNCTIONSTYLE_MACRO(X) (X) * (X)
+
+//=
+

@@ -1,0 +1,46 @@
+//!NonConstDeclClassTypePassToFunctionTakingNonConstPtrNonConst
+//@.config
+//@main.cpp
+#include "cls.h"
+
+int main()
+  {
+  cls o{42};
+  func_nonconst_ptr_nonconst(&o);
+  }
+
+//!NonConstDeclClassTypePassToFunctionTakingConstPtrNonConst
+//@.config
+//@main.cpp
+#include "cls.h"
+
+int main()
+  {
+  cls o{42};
+  func_const_ptr_nonconst(&o);
+  }
+
+//!NonConstDeclClassTypePassToFunctionTakingNonConstPtrConst
+//@.config
+markerLines=5
+//@main.cpp
+#include "cls.h"
+
+int main()
+  {
+  cls o{42};
+  func_nonconst_ptr_const(&o);
+  }
+
+//!NonConstDeclClassTypePassToFunctionTakingConstPtrConst
+//@.config
+markerLines=5
+//@main.cpp
+#include "cls.h"
+
+int main()
+  {
+  cls o{42};
+  func_const_ptr_const(&o);
+  }
+

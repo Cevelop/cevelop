@@ -1,0 +1,18 @@
+//!DataStructureReferenceTest31ParentClassMethod
+//@A.cpp
+#include "B.h"
+
+int main() {
+  B b;
+  b.foo();
+  return 0;
+}
+//@A.h
+class A {
+public:
+  void foo() { }
+};
+//@B.h
+#include "A.h"
+class B : public A {
+};

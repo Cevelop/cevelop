@@ -1,0 +1,6 @@
+//!IncludeToFwd32Variable
+//@main.cpp
+#include "I.h"
+int *i2 = &i;
+//@I.h
+int i = 1;

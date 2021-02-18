@@ -1,0 +1,14 @@
+//!MarkerTest5UndoMarkerTest1
+//@A.cpp
+int main() {
+	B b;
+	return 0;
+}
+//=
+#include "B.h"
+int main() {
+	B b;
+	return 0;
+}
+//@B.h
+class B { };

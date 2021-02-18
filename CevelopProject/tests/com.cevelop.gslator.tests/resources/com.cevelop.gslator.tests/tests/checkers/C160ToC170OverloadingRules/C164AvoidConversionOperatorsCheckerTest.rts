@@ -1,0 +1,46 @@
+//!OneConversionOperator
+//@.config
+markerLines=3
+//@main.h
+struct B;
+struct A {
+	operator B() {
+		return B();
+	}
+};
+//!OneComplexConversionOperator
+//@.config
+markerLines=2
+//@main.h
+struct A {
+	operator int const *() const ;
+};
+//!MultipleConversionOperators
+//@.config
+markerLines=5,8
+//@main.h
+struct A;
+struct B {
+	B()=default;
+	B (const A& x) {}
+	operator int const *() const ;
+};
+struct A {
+	operator B() {
+		return B();
+	}
+};
+//!Ignored
+//@main.h
+struct A;
+struct B {
+	B()=default;
+	B (const A& x) {}
+	[[gsl::suppress("Ro-conversion")]] operator int const *() const ;
+};
+struct A {
+	[[gsl::suppress("Ro-conversion")]]
+	operator B() {
+		return B();
+	}
+};

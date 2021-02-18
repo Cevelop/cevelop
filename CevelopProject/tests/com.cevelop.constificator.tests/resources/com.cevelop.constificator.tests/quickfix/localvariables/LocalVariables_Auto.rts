@@ -1,0 +1,24 @@
+//!AutoLocalVariableOfBuiltinType
+//@main.cpp
+int main() {
+	auto n = 42;
+}
+//=
+int main() {
+	const auto n = 42;
+}
+//!AutoLocalVariableOfClassType
+//@main.cpp
+struct s {
+};
+
+int main() {
+	auto obj = s{};
+}
+//=
+struct s {
+};
+
+int main() {
+	const auto obj = s{};
+}

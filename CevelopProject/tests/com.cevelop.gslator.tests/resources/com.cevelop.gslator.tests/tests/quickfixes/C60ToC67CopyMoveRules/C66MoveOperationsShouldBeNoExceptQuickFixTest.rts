@@ -1,0 +1,53 @@
+//!MoveAssignmentWithoutNoexcept
+//@main.h
+struct A {
+	A&operator =(A&& rhs){
+	}
+};
+//=
+struct A {
+	A&operator =(A&& rhs) noexcept {
+	}
+};
+//!MoveConstructorWithoutNoexcept
+//@main.h
+struct A {
+	A(A&& rhs){
+	}
+};
+//=
+struct A {
+	A(A&& rhs) noexcept {
+	}
+};
+//!MoveAssignmentWithoutNoexceptButHasCppFile
+//@A.h
+struct A {
+	A&operator =(A&& rhs);
+};
+//=
+struct A {
+	A&operator =(A&& rhs) noexcept;
+};
+//@A.cpp
+#include "A.h"
+A&A::operator =(A&& rhs){
+}
+//=
+#include "A.h"
+A&A::operator =(A&& rhs) noexcept {
+}
+//!SetAttributeMoveAssignmentWithoutNoexcept
+//@.config
+setIgnoreAttribute=true
+//@main.h
+struct A {
+	A&operator =(A&& rhs){
+	}
+};
+//=
+struct A {
+	[[gsl::suppress("Rc-move-noexcept")]]
+	A& operator =(A&& rhs) {
+	}
+};

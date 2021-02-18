@@ -1,0 +1,11 @@
+//!DeclRefTest4ForwardDeclEnough3ManySimilarDecls
+//@main.cpp
+#include "B.h"
+
+int main() {
+	B* pB3;
+	B b1;
+	B& b2 = b1;
+}
+//@B.h
+class B { };

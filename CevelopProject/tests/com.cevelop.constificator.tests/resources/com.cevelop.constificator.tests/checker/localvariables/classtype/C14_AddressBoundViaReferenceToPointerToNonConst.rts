@@ -1,0 +1,23 @@
+//!NonConstDeclClassTypeBindReferenceToConstPtrNonConst
+//@.config
+markerLines=6
+//@main.cpp
+#include "cls.h"
+
+int main()
+  {
+  cls o{42};
+  cls * const &ptr{&o};
+  }
+
+//!NonConstDeclClassTypeBindReferenceToConstPtrConst
+//@.config
+markerLines=5
+//@main.cpp
+#include "cls.h"
+
+int main()
+  {
+  cls o{42};
+  cls const * const &ptr{&o};
+  }

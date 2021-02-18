@@ -1,0 +1,16 @@
+//!RemoveUnused24NameCorrelationSimple
+//@A.cpp
+#include "A.h"
+#include "B.h"
+void a() {
+	A a;
+	B b;
+}
+//@A.h
+#ifndef A_H
+#define A_H
+class A { };
+#endif //A_H
+//@B.h
+#include "A.h"
+class B { };

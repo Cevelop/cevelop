@@ -1,0 +1,46 @@
+//!IncludeToFwd24SeveralQuickFixesAndUndosWithUserTyping
+//@main.cpp
+#include "A.h"
+//blub1
+#include "B.h"
+A *a;
+B *b;
+//=
+//blub1
+#include "B.h"
+//blub2
+class A;
+//blub3
+A *a;
+B *b;
+//@A.h
+class A { };
+//@B.h
+class B { };
+//@expected.cpp
+//blub00
+//blub11
+//blub22
+class A;
+//blub33
+class B;
+//blub44
+A *a;
+B *b;
+//=
+//blub000
+#include "A.h"
+//blub111
+//blub222
+class B;
+//blub444
+A *a;
+B *b;
+//@expected2.cpp
+//blub000
+#include "A.h"
+//blub111
+#include "B.h"
+//blub222
+A *a;
+B *b;

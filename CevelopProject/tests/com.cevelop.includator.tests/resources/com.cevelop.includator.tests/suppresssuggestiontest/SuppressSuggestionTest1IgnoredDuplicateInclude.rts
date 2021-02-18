@@ -1,0 +1,11 @@
+//!Duplicate Include which Is Ignored
+//@main.cpp
+#include "A.h"
+#include "A.h"
+
+int main() {
+  A a;
+  return 0;
+}
+//@A.h
+class A { };

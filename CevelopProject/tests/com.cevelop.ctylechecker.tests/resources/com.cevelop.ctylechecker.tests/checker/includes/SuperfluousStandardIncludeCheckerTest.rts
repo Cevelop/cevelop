@@ -1,0 +1,18 @@
+//!Vector include not needed
+//@.config
+markerLines=1
+//@main.cpp
+#include <vector>
+
+void foo() {
+}
+
+//!Only needed includes, all good
+//@.config
+//@main.cpp
+#include <vector>
+#include <string>
+
+void foo() {
+	std::vector<std::string> vec {};
+}

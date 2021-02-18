@@ -1,0 +1,12 @@
+//!DeclRefTest1GroupedDeclarations
+//@main.cpp
+#include "B.h"
+
+int main() {
+	B b1;
+	B b2;
+	B* b3;
+	B& b4 = b1;
+}
+//@B.h
+class B { };

@@ -1,0 +1,27 @@
+//!IncludeToFwd18TemplateWithTypedef
+//@main.cpp
+#include "typedef.h"
+#include "Content.h"
+
+int main () {
+	Dummy<int>::IntContent *intIntContent;
+	return 0;
+}
+//@typedef.h
+#include "Content.h"
+
+template<class T>
+struct Dummy
+{
+    typedef Content<int, T> IntContent;
+};
+//@Content.h
+#ifndef CONTENT_H
+#define CONTENT_H
+template<class T1, class T2>
+class Content {
+public:
+	T1 t1;
+	T2 t2;
+};
+#endif //CONTENT_H

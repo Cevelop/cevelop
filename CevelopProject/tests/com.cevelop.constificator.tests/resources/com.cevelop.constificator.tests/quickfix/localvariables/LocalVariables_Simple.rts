@@ -1,0 +1,25 @@
+//!SimpleLocalVariableOfBuiltinType
+//@main.cpp
+int main() {
+	int n{};
+}
+//=
+int main() {
+	const int n{};
+}
+
+//!SimpleLocalVariableOfClassType
+//@main.cpp
+struct s {
+};
+
+int main() {
+	s obj{};
+}
+//=
+struct s {
+};
+
+int main() {
+	const s obj{};
+}

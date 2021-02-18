@@ -1,0 +1,68 @@
+//!ProjectCoverageTest48TemplPartialSpecialization
+//@main.cpp
+template<typename T, unsigned length>
+class Collection {
+public:
+	Collection(){}
+	~Collection(){}
+};
+
+
+template<unsigned length>
+class Collection<int, length> {
+public:
+	Collection(){}
+	~Collection(){}
+	int get(){
+		return length;
+	}
+};
+
+template<>
+class Collection<int, 5> {
+public:
+	Collection(){}
+	~Collection(){}
+	int get(){
+		return 5;
+	}
+};
+
+template<unsigned length>
+class Collection<float, length> {
+public:
+	Collection(){}
+	~Collection(){}
+};
+
+template<>
+class Collection<float, 5> {
+public:
+	Collection(){}
+	~Collection(){}
+};
+
+
+template<unsigned length>
+class Collection<bool, length> {
+public:
+	Collection(){}
+	~Collection(){}
+};
+
+
+template<>
+class Collection<bool, 9> {
+public:
+	Collection(){}
+	~Collection(){}
+};
+
+int main(){
+	Collection<int, 5> fiveInt;
+	fiveInt.get();
+	Collection<float, 6> sixFloat;
+	Collection<long, 7> longSeven;
+	Collection<double, 8> doubleEight;
+	return 0;
+}

@@ -1,0 +1,25 @@
+//!DataStructureReferenceTest6Templates
+//@A.cpp
+#include "B.hpp"
+#include "C.hpp"
+
+int main() {
+	Pair<My> p;
+    My x = p.first_;
+	return 0;
+}
+//@B.hpp
+template < typename T >
+class Pair {
+public:
+
+  T first_;
+  T second_;
+
+};
+//@C.hpp
+class My { };
+
+
+
+

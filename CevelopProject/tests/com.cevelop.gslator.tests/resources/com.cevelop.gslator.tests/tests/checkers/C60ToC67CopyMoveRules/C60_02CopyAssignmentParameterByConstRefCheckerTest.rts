@@ -1,0 +1,112 @@
+//!NormalCopyAssignmentDeclaration
+//@main.h
+struct Named_map {
+
+public:
+	Named_map& operator=(const Named_map& rhs) const;
+
+private:
+	std::string name;
+	std::map<int, int> rep;
+	gsl::owner<int *> io;
+	gsl::owner<int *> oeee;
+
+};
+//!NormalCopyAssignmentDefinition
+//@main.h
+struct Named_map {
+
+public:
+	Named_map& operator=(const Named_map& rhs) = default;
+
+private:
+	std::string name;
+	std::map<int, int> rep;
+	gsl::owner<int *> io;
+	gsl::owner<int *> oeee;
+
+};
+//!NormalCopyAssignmentDefinitionWithBody
+//@main.h
+struct Named_map {
+
+public:
+	Named_map& operator=(const Named_map& rhs){
+	}
+
+private:
+	std::string name;
+	std::map<int, int> rep;
+	gsl::owner<int *> io;
+	gsl::owner<int *> oeee;
+
+};
+//!CopyAssignmentDeclarationWithoutConstInParameter
+//@.config
+markerLines=4
+//@main.h
+struct Named_map {
+
+public:
+	Named_map& operator=(Named_map& rhs) const;
+
+private:
+	std::string name;
+	std::map<int, int> rep;
+	gsl::owner<int *> io;
+	gsl::owner<int *> oeee;
+
+};
+//!CopyAssignmentDefinitionWithoutConstInParameter
+//@.config
+markerLines=4
+//@main.h
+struct Named_map {
+
+public:
+	Named_map& operator=(Named_map& rhs) = default;
+
+private:
+	std::string name;
+	std::map<int, int> rep;
+	gsl::owner<int *> io;
+	gsl::owner<int *> oeee;
+
+};
+//!CopyAssignmentDefinitionWithoutConstInParameterWithBody
+//@.config
+markerLines=4
+//@main.h
+struct Named_map {
+
+public:
+	Named_map& operator=(Named_map& rhs){
+	}
+
+private:
+	std::string name;
+	std::map<int, int> rep;
+	gsl::owner<int *> io;
+	gsl::owner<int *> oeee;
+
+};
+//!IgnoreBecAttrCopyAssignmentDefinitionWithoutConstInParameter
+//@main.h
+struct Named_map {
+
+public:
+	[[gsl::suppress("Rc-copy-assignment")]]
+	Named_map& operator=(Named_map& rhs) = default;
+
+private:
+	std::string name;
+	std::map<int, int> rep;
+	gsl::owner<int *> io;
+	gsl::owner<int *> oeee;
+
+};
+//!ShouldBeIgnored
+//@main.h
+struct Named_map {
+	bool operator==(const Named_map& rhs) const;
+};

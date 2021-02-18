@@ -1,0 +1,124 @@
+//!FunctionQuickFix
+//@main.h
+void func(char c) {	}
+int main() {
+	float f = 7.9;
+	func(f);
+}
+//=
+#include "gsl.h"
+void func(char c) {	}
+int main() {
+	float f = 7.9;
+	func(gsl::narrow<char>(f));
+}
+//!FunctionWithMultipleParamsQuickFix
+//@main.h
+void func(char c, int i) {	}
+int main() {
+	float f = 7.9;
+	func(f, 5);
+}
+//=
+#include "gsl.h"
+void func(char c, int i) {	}
+int main() {
+	float f = 7.9;
+	func(gsl::narrow<char>(f), 5);
+}
+//!FunctionCastQuickFix
+//@main.h
+void func(char c) {	}
+int main() {
+	float f = 7.9;
+	func((char) f);
+}
+//=
+#include "gsl.h"
+void func(char c) {	}
+int main() {
+	float f = 7.9;
+	func(gsl::narrow<char>(f));
+}
+//!FunctionCastWithMultipleUnaryExpressionsQuickFix
+//@main.h
+void func(char c) {	}
+int main() {
+	float f = 7.9;
+	func((char) (((f))));
+}
+//=
+#include "gsl.h"
+void func(char c) {	}
+int main() {
+	float f = 7.9;
+	func(gsl::narrow<char>(f));
+}
+//!FunctionQuickFixWithExistingGSL
+//@main.h
+#include "gsl.h"
+void func(char c) {	}
+int main() {
+	float f = 7.9;
+	int i = gsl::narrow<int>(f); 
+	func(f);
+}
+//=
+#include "gsl.h"
+void func(char c) {	}
+int main() {
+	float f = 7.9;
+	int i = gsl::narrow<int>(f); 
+	func(gsl::narrow<char>(f));
+}
+//!AddIgnoreFunction
+//@.config
+setIgnoreAttribute=true
+//@main.h
+void func(char c) {	}
+int main() {
+	float f = 7.9;
+	func(f);
+}
+//=
+void func(char c) {	}
+int main() {
+	float f = 7.9;
+	[[gsl::suppress("Res-narrowing")]] {
+		func(f);
+	}
+}
+//!AddIgnoreFunctionWithMultipleParams
+//@.config
+setIgnoreAttribute=true
+//@main.h
+void func(char c, int i) {	}
+int main() {
+	float f = 7.9;
+	func(f, 5);
+}
+//=
+void func(char c, int i) {	}
+int main() {
+	float f = 7.9;
+	[[gsl::suppress("Res-narrowing")]] {
+		func(f, 5);
+	}
+}
+//!AddIgnoreFunctionCast
+//@.config
+setIgnoreAttribute=true
+//@main.h
+void func(char c) {	}
+int main() {
+	float f = 7.9;
+	func((char) f);
+}
+//=
+void func(char c) {	}
+int main() {
+	float f = 7.9;
+	[[gsl::suppress("Res-narrowing")]] {
+		func((char) (f));
+	}
+}

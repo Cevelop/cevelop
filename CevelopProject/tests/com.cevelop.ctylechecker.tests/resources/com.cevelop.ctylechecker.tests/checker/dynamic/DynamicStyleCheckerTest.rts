@@ -1,0 +1,248 @@
+//!Geosoft:Naming violation with simple int variable found
+//@.config
+markerLines=4
+activeStyleguide=predefined:Geosoft
+//@foo.cpp
+#include <iostream>
+
+void main() {
+	int test_number{0};
+	std::cout << testNumber;
+}
+//!Geosoft:No Naming violation with simple int variable found
+//@.config
+activeStyleguide=predefined:Geosoft
+//@foo.cpp
+#include <iostream>
+
+void main() {
+	int testNumber{0};
+	std::cout << test_number;
+}
+
+//!Geosoft:Multiple naming violations with simple int variables
+//@.config
+markerLines=4,9,10
+activeStyleguide=predefined:Geosoft
+//@foo.cpp
+#include <iostream>
+
+void main() {
+	int test_number{0};
+	std::cout << test_number;
+	test_number = 3;
+	test_number = 4;
+	test_number = 5;
+	int test_number2{1};
+	int test_number3{2};
+}
+
+//!Google:Naming violation with simple int variable found
+//@.config
+markerLines=4
+activeStyleguide=predefined:Google
+//@foo.cpp
+#include <iostream>
+
+void main() {
+	int testNumber{0};
+	std::cout << testNumber;
+}
+//!Google:No Naming violation with simple int variable found
+//@.config
+activeStyleguide=predefined:Google
+//@foo.cpp
+#include <iostream>
+
+void main() {
+	int test_number{0};
+	std::cout << test_number;
+}
+
+//!Google:Multiple naming violations with simple int variables
+//@.config
+markerLines=4,9,10
+activeStyleguide=predefined:Google
+//@foo.cpp
+#include <iostream>
+
+void main() {
+	int testNumber{0};
+	std::cout << testNumber;
+	testNumber = 3;
+	testNumber = 4;
+	testNumber = 5;
+	int testNumber2{1};
+	int testNumber3{2};
+}
+
+//!Canonical:Naming violation with simple int variable found
+//@.config
+markerLines=4
+activeStyleguide=predefined:Canonical
+//@foo.cpp
+#include <iostream>
+
+void main() {
+	int testNumber{0};
+	std::cout << testNumber;
+}
+//!Canonical:No Naming violation with simple int variable found
+//@.config
+activeStyleguide=predefined:Canonical
+//@foo.cpp
+#include <iostream>
+
+void main() {
+	int test_number{0};
+	std::cout << test_number;
+}
+
+//!Canonical:Multiple naming violations with simple int variables
+//@.config
+markerLines=4,9,10
+activeStyleguide=predefined:Canonical
+//@foo.cpp
+#include <iostream>
+
+void main() {
+	int testNumber{0};
+	std::cout << testNumber;
+	testNumber = 3;
+	testNumber = 4;
+	testNumber = 5;
+	int testNumber2{1};
+	int testNumber3{2};
+}
+
+//!Test Styleguide No rules No Groupings no violations
+//@.config
+activeStyleguide=file:testStyleguideNoRulesNoGroups
+//@foo.cpp
+#include <iostream>
+
+void main() {
+	int testNumber{0};
+	std::cout << testNumber;
+	testNumber = 3;
+	int test_number2{1};
+	int TestNumber3{2};
+	const int kMathPi{3.1415};
+}
+
+//!Test Styleguide Class Naming Pascal Case no violations
+//@.config
+activeStyleguide=file:testStyleguideClassNamingPascalCase
+//@foo.cpp
+#include <iostream>
+
+class MyValue{
+int value;
+public:
+	MyValue(int pValue):value{pValue}{}
+};
+
+void main() {
+	MyValue value{3};
+}
+
+//!Test Styleguide Class Naming Pascal Case violated
+//@.config
+markerLines=3
+activeStyleguide=file:testStyleguideClassNamingPascalCase
+//@foo.cpp
+#include <iostream>
+
+class my_value{
+int value;
+public:
+	my_value(int pValue):value{pValue}{}
+};
+
+int main() {
+	my_value value{3};
+}
+
+//!Test Styleguide Class Naming Snake Case no violations
+//@.config
+activeStyleguide=file:testStyleguideClassNamingSnakeCase
+//@foo.cpp
+#include <iostream>
+
+class my_value{
+int value;
+public:
+	my_value{int pValue}:value{pValue}{}
+};
+
+void main() {
+	my_value value{3)};
+}
+
+//!Test Styleguide Class Naming Snake Case violated
+//@.config
+markerLines=3
+activeStyleguide=file:testStyleguideClassNamingSnakeCase
+//@foo.cpp
+#include <iostream>
+
+class MyValue{
+int value;
+public:
+	MyValue{int pValue}:value{pValue}{}
+};
+
+void main() {
+	MyValue value{3)};
+}
+
+//!Test Styleguide Variable Naming with Alternate Casing Pascal and Snake Case no violations
+//@.config
+activeStyleguide=file:testStyleguideAlternateCasing
+//@foo.cpp
+#include <iostream>
+
+void main() {
+	int MyValue{3};
+	int my_value{3};
+}
+
+//!Test Styleguide Variable Naming with Alternate Casing Pascal and Snake Case violated
+//@.config
+markerLines=6,7
+activeStyleguide=file:testStyleguideAlternateCasing
+//@foo.cpp
+#include <iostream>
+
+void main() {
+	int MyValue{3};
+	int my_value{3};
+	int MY_VALUE{3};
+	INT myValue{3};
+}
+
+//!Test Styleguide Variable Naming with Alternate Casing Pascal, Const and Snake Case no violations
+//@.config
+activeStyleguide=file:testStyleguideCasingGroupPascalSnakeConstCaseMatchAnyConstPrefered
+//@foo.cpp
+#include <iostream>
+
+void main() {
+	int MyValue{3};
+	int my_value{3};
+	int MY_VALUE{3};
+}
+
+//!Test Styleguide Variable Naming with Alternate Casing Pascal, Const and Snake Case violated
+//@.config
+markerLines=7
+activeStyleguide=file:testStyleguideCasingGroupPascalSnakeConstCaseMatchAnyConstPrefered
+//@foo.cpp
+#include <iostream>
+
+void main() {
+	int MyValue{3};
+	int my_value{3};
+	int MY_VALUE{3};
+	int myValue{3};
+}

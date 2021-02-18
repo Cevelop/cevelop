@@ -1,0 +1,107 @@
+//!Fix single uninitialized variable
+//@main.cpp
+void foo() {
+	int i;
+	i = 10;
+}
+//=
+void foo() {
+	int i { };
+	i = 10;
+}
+
+//!Ignore single uninitialized variable
+//@.config
+setIgnoreAttribute=true
+//@main.cpp
+void foo() {
+	int i;
+	i = 10;
+}
+//=
+void foo() {
+	[[gsl::suppress("Res-always")]] int i;
+	i = 10;
+}
+
+//!Fix multiple uninitialized variable, second variable
+//@.config
+markerNr=2
+//@main.cpp
+void foo() {
+	int i, k;
+	i = 10;
+	k = 20;
+}
+//=
+void foo() {
+	int i, k { };
+	i = 10;
+	k = 20;
+}
+
+//!Fix multiple uninitialized variable, first variable
+//@.config
+markerNr=1
+//@main.cpp
+void foo() {
+	int i, k;
+	i = 10;
+	k = 20;
+}
+//=
+void foo() {
+	int i { }, k;
+	i = 10;
+	k = 20;
+}
+
+//!Fix uninitialized array variable
+//@.config
+markerNr=2
+//@main.cpp
+void foo() {
+	int i, k[20], j;
+	i = 10;
+	j = 20;
+}
+//=
+void foo() {
+	int i, k[20] { }, j;
+	i = 10;
+	j = 20;
+}
+
+//!Ignore multiple uninitialized variable, second variable
+//@.config
+setIgnoreAttribute=true
+markerNr=2
+//@main.cpp
+void foo() {
+	int i, k;
+	i = 10;
+	k = 20;
+}
+//=
+void foo() {
+	[[gsl::suppress("Res-always")]] int i, k;
+	i = 10;
+	k = 20;
+}
+
+//!Ignore multiple uninitialized variable, first variable
+//@.config
+setIgnoreAttribute=true
+markerNr=1
+//@main.cpp
+void foo() {
+	int i, k;
+	i = 10;
+	k = 20;
+}
+//=
+void foo() {
+	[[gsl::suppress("Res-always")]] int i, k;
+	i = 10;
+	k = 20;
+}

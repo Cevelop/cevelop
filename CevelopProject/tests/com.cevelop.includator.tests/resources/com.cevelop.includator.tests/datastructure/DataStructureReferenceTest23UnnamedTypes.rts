@@ -1,0 +1,9 @@
+//!DataStructureReferenceTest23UnnamedTypes
+//@A.cpp
+class {
+
+} a;
+struct {
+	int i;
+} b;
+enum { E, F } o;

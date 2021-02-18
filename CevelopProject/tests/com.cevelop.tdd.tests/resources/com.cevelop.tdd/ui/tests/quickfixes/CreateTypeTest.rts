@@ -1,0 +1,316 @@
+//!Test Detect Marker
+//@.config
+markerLines=2
+//@A.cpp
+void func() {
+	A a1;
+}
+//=
+struct A {
+};
+
+void func() {
+	A a1;
+}
+//!Test Bug 232
+//@.config
+markerLines=3
+//@A.cpp
+namespace N {
+void test() {
+	Klass k;
+}
+}
+//=
+namespace N {
+
+struct Klass {
+};
+
+void test() {
+	Klass k;
+}
+}
+//!Test Call Default Constructor
+//@.config
+markerLines=2
+//@A.cpp
+void test() {
+	B b();
+}
+//=
+struct B {
+};
+
+void test() {
+	B b();
+}
+//!Create Type Out Of A Templated Function
+//@.config
+markerLines=3
+//@A.cpp
+template<typename T>
+T testy(T t) {
+	Klasse k;
+}
+//=
+struct Klasse {
+};
+
+template<typename T>
+T testy(T t) {
+	Klasse k;
+}
+//!Create Type Out Of A Multi Templated Function
+//@.config
+markerLines=4
+//@A.cpp
+template<typename U>
+template<typename T>
+T testy(T t) {
+	Klasse k;
+}
+//=
+struct Klasse {
+};
+
+template<typename U>
+template<typename T>
+T testy(T t) {
+	Klasse k;
+}
+//!Create Type Out Of A Member Function
+//@.config
+markerLines=3
+//@A.cpp
+struct Test {
+	void testy() {
+		Klasse k;
+	}
+};
+//=
+struct Test {
+	struct Klasse {
+	};
+
+	void testy() {
+		Klasse k;
+	}
+};
+//!Create Type Out Of A Templated Member Function
+//@.config
+markerLines=4
+//@A.cpp
+struct Test {
+	template<typename T>
+	T testy(T t) {
+		Klasse k;
+		return T();
+	}
+};
+//=
+struct Test {
+	struct Klasse {
+	};
+
+	template<typename T>
+	T testy(T t) {
+		Klasse k;
+		return T();
+	}
+};
+//!Create Type Out Of A Templated Member Function Inside A Templated Class
+//@.config
+markerLines=5
+//@A.cpp
+template <typename C>
+struct Test {
+	template<typename T>
+	T testy(T t) {
+		Klasse k;
+		return T();
+	}
+};
+//=
+template <typename C>
+struct Test {
+	struct Klasse {
+	};
+
+	template<typename T>
+	T testy(T t) {
+		Klasse k;
+		return T();
+	}
+};
+//!Create Type From Inheritance
+//@.config
+markerLines=1
+//@A.cpp
+struct A: B
+{
+};
+
+void test() {
+}
+//=
+struct B {
+};
+struct A: B
+{
+};
+
+void test() {
+}
+//!Create Templated Type
+//@.config
+markerLines=2
+//@A.cpp
+void test() {
+	B<int, double> b;
+}
+//=
+template<typename T0, typename T1> struct B {
+};
+
+void test() {
+	B<int, double> b;
+}
+//!Create Templated Grad Type
+//@.config
+markerLines=1
+//@A.cpp
+struct A: B<int> {
+};
+void test() {
+	A a;
+}
+//=
+template<typename T0> struct B {
+};
+struct A: B<int> {
+};
+void test() {
+	A a;
+}
+//!Create In Totally Empty File
+//@.config
+markerLines=1
+//@A.cpp
+Type t;
+//=
+struct Type {
+};
+Type t;
+//!Create Class With Namespace Access
+//@.config
+markerLines=2,2
+markerCount=2
+//@A.cpp
+void test() {
+	/*$*/X/*$*/::foo();
+}
+//=
+struct X {
+};
+
+void test() {
+	X::foo();
+}
+//!Create First Of Multiple Types
+//@.config
+markerLines=2,2,2
+markerCount=3
+//@A.cpp
+void test() {
+	/*$*/X/*$*/::Y::foo();
+}
+//=
+struct X {
+};
+
+void test() {
+	X::Y::foo();
+}
+//!Create Second Of Multiple Types
+//@.config
+markerLines=4,4
+markerCount=2
+//@A.cpp
+struct X {
+};
+void test() {
+	X::/*$*/Y/*$*/::foo();
+}
+//=
+struct X {
+	struct Y {
+	};
+};
+void test() {
+	X::Y::foo();
+}
+//!Class In Namespace
+//@.config
+markerLines=4,4
+markerCount=2
+//@A.cpp
+namespace X {
+}
+void test() {
+	X::/*$*/A/*$*/::foo();
+}
+//=
+namespace X {
+
+struct A {
+};
+
+}
+void test() {
+	X::A::foo();
+}
+//!Class in Namespace from Declaration
+//@.config
+markerLines=5
+//@A.cpp
+namespace X {
+}
+
+void test() {
+	X::Inner xi;
+}
+//=
+namespace X {
+
+struct Inner {
+};
+
+}
+
+void test() {
+	X::Inner xi;
+}
+
+//!Test Create Class in Decltype
+//@.config
+markerLines=7
+//@main.h
+struct Outer {
+
+};
+
+void foo() {
+	Outer o{};
+	decltype(o)::Inner i{};
+}
+//=
+struct Outer {
+	struct Inner {
+	};
+};
+
+void foo() {
+	Outer o{};
+	decltype(o)::Inner i{};
+}

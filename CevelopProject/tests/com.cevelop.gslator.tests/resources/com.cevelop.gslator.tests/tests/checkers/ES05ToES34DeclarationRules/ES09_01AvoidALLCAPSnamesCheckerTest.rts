@@ -1,0 +1,133 @@
+//!AllCapsNames
+//@.config
+markerLines=5,8,16,16,16,16,16,16,16,16
+//@main.cpp
+class names {
+	int lowercase = 0;
+	int camelCase = 1;
+	int PascalCase = 2;
+	int UPPERCASE = 3;
+	int sum;
+
+	class INNER {
+	public:
+		static int foo() {
+			return 1;
+		}
+	};
+
+	enum Coord {
+		N, NE, NW, S, SE, SW, E, W
+	};
+
+	names() noexcept {
+		sum = lowercase+camelCase+PascalCase+UPPERCASE+INNER::foo();
+	}
+};
+//!TemplateParamNotToMark
+//@main.cpp
+template<typename T>
+class someClass {
+	T v;
+public:
+	someClass() = default;
+	explicit someClass(T v) :
+			v { v } {
+	}
+};
+
+//!MarkNonCapsMakros
+//@main.cpp
+#define NOTEQ !=
+#define IsEQ ==
+int function(int i) {
+	if(5 NOTEQ i) return 1;
+	if(5 IsEQ i) return 0;
+	return -1;
+}
+//!AllCapsNamesIgnored
+//@main.cpp
+class names {
+	int lowercase = 0;
+	int camelCase = 1;
+	int PascalCase = 2;
+	[[gsl::suppress("Res-not-CAPS")]]
+	int UPPERCASE = 3;
+	int sum;
+
+	class [[gsl::suppress("Res-not-CAPS")]] INNER {
+	public:
+		static int foo() {
+			return 1;
+		}
+	};
+
+	enum [[gsl::suppress("Res-not-CAPS")]] Coord {
+		N, NE, NW, S, SE, SW, E, W
+	};
+
+	names() noexcept {
+		sum = lowercase+camelCase+PascalCase+UPPERCASE+INNER::foo();
+	}
+};
+
+//!Ignore Names without Characters
+//@main.cpp
+struct names {
+	static void _(){}
+};
+
+//!Names starting with Underline
+//@.config
+markerLines=2
+//@main.cpp
+struct names {
+	static void _F(){}
+};
+
+//!Names ending with Underline
+//@.config
+markerLines=2
+//@main.cpp
+struct names {
+	static void F_(){}
+};
+
+//!Ignore Special Member functions
+//@.config
+markerLines=1
+//@main.cpp
+struct X {
+	X& operator=(X const & rhs) = default;
+
+	X(X const & rhs) = default;
+
+	X& operator=(X&& rhs) noexcept =default;
+
+	X(X&& rhs) noexcept =default;
+
+	X() noexcept;
+	~X() noexcept;
+};
+
+//!Ignore Special Member functions even in implementation file
+//@.config
+markerLines=1
+//@foo.hpp
+struct X {
+	X& operator=(X const & rhs) = default;
+
+	X(X const & rhs) = default;
+
+	X& operator=(X&& rhs) noexcept =default;
+
+	X(X&& rhs) noexcept =default;
+
+	X() noexcept;
+	~X() noexcept;
+};
+//@foo.cpp
+#include "foo.hpp"
+
+X::X() noexcept =default;
+X::~X() noexcept =default;

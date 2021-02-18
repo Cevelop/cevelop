@@ -1,0 +1,79 @@
+//!StrstrCleanup
+//@.config
+markerLines=4,5
+//@main.cpp
+#include <string>
+int main() {
+	std::string str = "my string";
+	char *found = strstr(&*str.begin(), "string");
+	const char *found = strstr(str.c_str(), "string");
+}
+
+
+//!StrchrCleanup
+//@.config
+markerLines=4,5
+//@main.cpp
+#include <string>
+int main() {
+	std::string str = "my string";
+	char *found = strchr(&*str.begin(), 's');
+	const char *found = strchr(str.c_str(), 's');
+}
+
+
+//!StrrchrCleanup
+//@.config
+markerLines=4,5
+//@main.cpp
+#include <string>
+int main() {
+	std::string str = "my string";
+	char *found = strrchr(&*str.begin(), 's');
+	const char *found = strrchr(str.c_str(), 's');
+}
+
+
+//!StrpbrkCleanup
+//@.config
+markerLines=4,5
+//@main.cpp
+#include <string>
+int main() {
+	std::string str = "my string";
+	char *found = strpbrk(&*str.begin(), "0123456789");
+	const char *found = strpbrk(str.c_str(), "0123456789");
+}
+
+
+//!StrcspnCleanup
+//@.config
+markerLines=4
+//@main.cpp
+#include <string>
+int main() {
+	std::string str = "this is a string";
+	size_t first_digit = strcspn(str.c_str(), "0123456789");
+}
+
+
+//!StrspnCleanup
+//@.config
+markerLines=4
+//@main.cpp
+#include <string>
+int main() {
+	std::string str = "this is a string";
+	size_t first_non_digit = strspn(str.c_str(), "0123456789");
+}
+
+
+//!IgnoreIfNotAssignedToVariable
+//@main.cpp
+#include <string>
+int main() {
+	std::string str = "hello world";
+	std::cout << strstr(str.c_str(), "world") << std::endl;
+	std::cout << strstr(&*str.begin(), "world") << std::endl;	
+}
+

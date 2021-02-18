@@ -1,0 +1,106 @@
+//!whileLabelOnlyUsedOnce
+//@.config
+markerLines=8
+//@main.h
+void doSomething() {}
+bool someCondition = false;
+
+void case3() {
+	doSomething();
+	loop1:
+	doSomething();
+	if(someCondition) goto loop1;
+	doSomething();
+}
+//!whileLabelUsedMultipleTimes
+//@.config
+markerLines=8,9
+//@main.h
+void doSomething() {}
+bool someCondition = false;
+
+void case4() {
+	doSomething();
+	loop2:
+	doSomething();
+	if(someCondition) goto loop2;
+	if(someCondition) goto loop2;
+	doSomething();
+}
+//!whileWithBracketedIf
+//@.config
+markerLines=9
+//@main.h
+void doSomething() {}
+bool someCondition = false;
+
+void case3() {
+	doSomething();
+	loop1:
+	doSomething();
+	if(someCondition) {
+		goto loop1;
+	}
+	else doSomething();
+	doSomething();
+}
+//!whileWithElse
+//@.config
+markerLines=8
+//@main.h
+void doSomething() {}
+bool someCondition = false;
+
+void case3() {
+	doSomething();
+	loop1:
+	doSomething();
+	if(someCondition) goto loop1;
+	else doSomething();
+	doSomething();
+}
+//!whileWithBiggerElse
+//@.config
+markerLines=8
+//@main.h
+void doSomething() {}
+bool someCondition = false;
+
+void case3() {
+	doSomething();
+	loop1:
+	doSomething();
+	if(someCondition) goto loop1;
+	else {
+		doSomething();
+		doSomething();
+	}
+	doSomething();
+}
+//!whileLabelOnlyUsedOnceIgnored
+//@.config
+//@main.h
+void doSomething() {}
+bool someCondition = false;
+
+void case3() {
+	doSomething();
+	loop1:
+	doSomething();
+	if(someCondition) [[gsl::suppress("Res-goto")]] goto loop1;
+	doSomething();
+}
+//!whileLabelUsedMultipleTimesIgnored
+//@.config
+//@main.h
+void doSomething() {}
+bool someCondition = false;
+
+void case4() {
+	doSomething();
+	loop2:
+	doSomething();
+	if(someCondition) [[gsl::suppress("Res-goto")]] goto loop2;
+	if(someCondition) [[gsl::suppress("Res-goto")]] goto loop2;
+	doSomething();
+}

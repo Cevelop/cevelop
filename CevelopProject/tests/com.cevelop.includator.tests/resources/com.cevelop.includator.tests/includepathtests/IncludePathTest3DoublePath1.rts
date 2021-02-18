@@ -1,0 +1,15 @@
+//!IncludePathTest3DoublePath1
+//@A.cpp
+#include "B.h"
+#include "D.h"
+
+int main(int argc, char** argv) {
+	D d;
+}
+//@B.h
+#include "C.h"
+//@C.h
+#include "D.h"
+//@D.h
+class D { };
+

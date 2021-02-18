@@ -1,0 +1,16 @@
+//!MultipleDefinitionTest3WeightSelection2
+//@main.cpp
+int main() {
+  size_t t;
+}
+//@a.h
+#include "other.h"
+typedef long unsigned int size_t;
+//@b.h
+#include "other2.h"
+typedef long unsigned int size_t;
+//@other.h
+#include "other2.h"
+int i;
+//@other2.h
+int i2;

@@ -1,0 +1,434 @@
+{
+  "groupings": {
+    "a527f28e-8199-4215-a63c-ccf64b5c7301": {
+      "rules": {
+        "9054bb24-39de-4322-9d3c-cb32a177a80c": {
+          "checkedConcepts": [
+            {
+              "type": "Source File",
+              "qualifiers": [
+                "File Ending"
+              ]
+            }
+          ],
+          "predefinedExpressions": [
+            {
+              "type": "Expression",
+              "properties": {
+                "order": "LOW",
+                "resolution": {
+                  "type": "ReplaceResolution",
+                  "properties": {}
+                },
+                "argument": "cpp",
+                "expression": "(^(?!cpp$).*$)",
+                "hint": "NONE",
+                "name": "CPP_FILE_ENDING",
+                "id": "3409bc12-8a4c-44cb-98a5-c4773490cb01",
+                "enabled": false
+              }
+            }
+          ],
+          "customExpressions": [],
+          "message": "Source File naming violation detected",
+          "name": "Source File Ending Naming",
+          "id": "9054bb24-39de-4322-9d3c-cb32a177a80c",
+          "enabled": true
+        },
+        "832b0c91-b50d-499b-82eb-afad00f11610": {
+          "checkedConcepts": [
+            {
+              "type": "Header File",
+              "qualifiers": [
+                "File Ending"
+              ]
+            }
+          ],
+          "predefinedExpressions": [
+            {
+              "type": "Expression",
+              "properties": {
+                "order": "LOW",
+                "resolution": {
+                  "type": "ReplaceResolution",
+                  "properties": {}
+                },
+                "argument": "h",
+                "expression": "(^(?!h$).*$)",
+                "hint": "NONE",
+                "name": "H_FILE_ENDING",
+                "id": "d48964cf-df83-43b2-8046-3aa061614dfd",
+                "enabled": false
+              }
+            }
+          ],
+          "customExpressions": [],
+          "message": "Header File naming violation detected",
+          "name": "Header File Ending Naming",
+          "id": "832b0c91-b50d-499b-82eb-afad00f11610",
+          "enabled": true
+        },
+        "85a3f623-eb3b-4b5d-91f5-b5634bdabb86": {
+          "checkedConcepts": [
+            {
+              "type": "Header File",
+              "qualifiers": [
+                "File Body"
+              ]
+            }
+          ],
+          "predefinedExpressions": [
+            {
+              "type": "Expression",
+              "properties": {
+                "order": "HIGH",
+                "resolution": {
+                  "type": "CaseTransformerResolution",
+                  "properties": {}
+                },
+                "argument": "",
+                "expression": "^[a-z](|[a-z0-9][_-]|[_-])(|[a-z0-9]+|[a-z0-9]+[_-](|[a-z0-9]+))+$",
+                "hint": "NONE",
+                "name": "SNAKE_CASE",
+                "id": "1d3980d1-0c22-48b2-b740-04cdfd06ea68",
+                "enabled": true
+              }
+            }
+          ],
+          "customExpressions": [],
+          "message": "Header File naming violation detected",
+          "name": "Header File Naming",
+          "id": "85a3f623-eb3b-4b5d-91f5-b5634bdabb86",
+          "enabled": true
+        },
+        "a547bbf5-8b26-4225-a57e-6e26fb431d37": {
+          "checkedConcepts": [
+            {
+              "type": "Source File",
+              "qualifiers": [
+                "File Body"
+              ]
+            }
+          ],
+          "predefinedExpressions": [
+            {
+              "type": "Expression",
+              "properties": {
+                "order": "HIGH",
+                "resolution": {
+                  "type": "CaseTransformerResolution",
+                  "properties": {}
+                },
+                "argument": "",
+                "expression": "^[a-z](|[a-z0-9][_-]|[_-])(|[a-z0-9]+|[a-z0-9]+[_-](|[a-z0-9]+))+$",
+                "hint": "NONE",
+                "name": "SNAKE_CASE",
+                "id": "1d3980d1-0c22-48b2-b740-04cdfd06ea68",
+                "enabled": true
+              }
+            }
+          ],
+          "customExpressions": [],
+          "message": "Source File naming violation detected",
+          "name": "Source File Naming",
+          "id": "a547bbf5-8b26-4225-a57e-6e26fb431d37",
+          "enabled": true
+        }
+      },
+      "name": "File Naming Conventions",
+      "id": "a527f28e-8199-4215-a63c-ccf64b5c7301",
+      "enabled": true
+    },
+    "b96f6c91-5070-4305-9677-e32942db2a49": {
+      "rules": {
+        "b45caf05-ca16-4fc7-8ea0-103b4f807ab3": {
+          "checkedConcepts": [
+            {
+              "type": "CPPEnumerator",
+              "qualifiers": []
+            }
+          ],
+          "predefinedExpressions": [
+            {
+              "type": "Expression",
+              "properties": {
+                "order": "HIGH",
+                "resolution": {
+                  "type": "CaseTransformerResolution",
+                  "properties": {}
+                },
+                "argument": "",
+                "expression": "^[a-z](|[a-z0-9][_-]|[_-])(|[a-z0-9]+|[a-z0-9]+[_-](|[a-z0-9]+))+$",
+                "hint": "NONE",
+                "name": "SNAKE_CASE",
+                "id": "1d3980d1-0c22-48b2-b740-04cdfd06ea68",
+                "enabled": true
+              }
+            }
+          ],
+          "customExpressions": [],
+          "message": "Enumerator Variable naming violation detected",
+          "name": "Enumerator Variable Naming",
+          "id": "b45caf05-ca16-4fc7-8ea0-103b4f807ab3",
+          "enabled": true
+        },
+        "65705946-ac9c-46b9-bca2-6076bac3f844": {
+          "checkedConcepts": [
+            {
+              "type": "ObjectStyleMacro",
+              "qualifiers": []
+            }
+          ],
+          "predefinedExpressions": [
+            {
+              "type": "Expression",
+              "properties": {
+                "order": "HIGH",
+                "resolution": {
+                  "type": "CaseTransformerResolution",
+                  "properties": {}
+                },
+                "argument": "",
+                "expression": "^[A-Z](|[A-Z0-9][_]|[_])(|[A-Z0-9]+|[A-Z0-9]+[_](|[A-Z0-9]+))+$",
+                "hint": "NONE",
+                "name": "CONST_CASE",
+                "id": "0be683c0-f7dd-436f-9be8-189418ada73d",
+                "enabled": true
+              }
+            }
+          ],
+          "customExpressions": [],
+          "message": "Macro naming violation detected",
+          "name": "Macro Naming",
+          "id": "65705946-ac9c-46b9-bca2-6076bac3f844",
+          "enabled": true
+        },
+        "e2231f67-0132-4dad-8e4c-0ed13231d6e0": {
+          "checkedConcepts": [
+            {
+              "type": "CPPField",
+              "qualifiers": [
+                "default",
+                "static"
+              ]
+            }
+          ],
+          "predefinedExpressions": [
+            {
+              "type": "Expression",
+              "properties": {
+                "order": "HIGH",
+                "resolution": {
+                  "type": "CaseTransformerResolution",
+                  "properties": {}
+                },
+                "argument": "",
+                "expression": "^[a-z](|[a-z0-9][_-]|[_-])(|[a-z0-9]+|[a-z0-9]+[_-](|[a-z0-9]+))+$",
+                "hint": "NONE",
+                "name": "SNAKE_CASE",
+                "id": "1d3980d1-0c22-48b2-b740-04cdfd06ea68",
+                "enabled": true
+              }
+            }
+          ],
+          "customExpressions": [],
+          "message": "Member Variable naming violation detected",
+          "name": "Member Variable Naming",
+          "id": "e2231f67-0132-4dad-8e4c-0ed13231d6e0",
+          "enabled": true
+        },
+        "acc5a608-0246-42e6-ab92-c083ae1d806b": {
+          "checkedConcepts": [
+            {
+              "type": "CPPNamespace",
+              "qualifiers": []
+            },
+            {
+              "type": "CPPNamespaceAlias",
+              "qualifiers": []
+            }
+          ],
+          "predefinedExpressions": [
+            {
+              "type": "Expression",
+              "properties": {
+                "order": "HIGH",
+                "resolution": {
+                  "type": "CaseTransformerResolution",
+                  "properties": {}
+                },
+                "argument": "",
+                "expression": "^[a-z0-9_$]+$",
+                "hint": "NONE",
+                "name": "IS_ALL_SMALL",
+                "id": "0a831aea-ddcd-4932-8e83-deba19263c79",
+                "enabled": true
+              }
+            }
+          ],
+          "customExpressions": [],
+          "message": "Namespace naming violation detected",
+          "name": "Namespace Naming",
+          "id": "acc5a608-0246-42e6-ab92-c083ae1d806b",
+          "enabled": true
+        },
+        "88be1c2c-7153-41ef-96cb-680b829c7208": {
+          "checkedConcepts": [
+            {
+              "type": "CPPFunction",
+              "qualifiers": []
+            },
+            {
+              "type": "CPPFunctionTemplate",
+              "qualifiers": []
+            },
+            {
+              "type": "CPPMethod",
+              "qualifiers": []
+            },
+            {
+              "type": "CPPMethodTemplate",
+              "qualifiers": []
+            }
+          ],
+          "predefinedExpressions": [
+            {
+              "type": "Expression",
+              "properties": {
+                "order": "HIGH",
+                "resolution": {
+                  "type": "CaseTransformerResolution",
+                  "properties": {}
+                },
+                "argument": "",
+                "expression": "^[a-z](|[a-z0-9][_-]|[_-])(|[a-z0-9]+|[a-z0-9]+[_-](|[a-z0-9]+))+$",
+                "hint": "NONE",
+                "name": "SNAKE_CASE",
+                "id": "1d3980d1-0c22-48b2-b740-04cdfd06ea68",
+                "enabled": true
+              }
+            }
+          ],
+          "customExpressions": [],
+          "message": "Regular Function naming violation detected",
+          "name": "Regular Function Naming",
+          "id": "88be1c2c-7153-41ef-96cb-680b829c7208",
+          "enabled": true
+        },
+        "237b345d-395d-4658-afd5-04d59dff49e7": {
+          "checkedConcepts": [
+            {
+              "type": "CPPTypedef",
+              "qualifiers": []
+            },
+            {
+              "type": "CPPClassType",
+              "qualifiers": []
+            },
+            {
+              "type": "CPPEnumeration",
+              "qualifiers": []
+            }
+          ],
+          "predefinedExpressions": [
+            {
+              "type": "Expression",
+              "properties": {
+                "order": "HIGH",
+                "resolution": {
+                  "type": "CaseTransformerResolution",
+                  "properties": {}
+                },
+                "argument": "",
+                "expression": "^[A-Z][a-z]+(?:[A-Z][a-z]+)*$",
+                "hint": "NONE",
+                "name": "PASCAL_CASE",
+                "id": "3ac59f6c-b9b2-435c-830c-20cff77c772b",
+                "enabled": true
+              }
+            }
+          ],
+          "customExpressions": [],
+          "message": "Type naming violation detected",
+          "name": "Type Naming",
+          "id": "237b345d-395d-4658-afd5-04d59dff49e7",
+          "enabled": true
+        },
+        "ac3695a5-51bf-4893-b137-c531c723b7b7": {
+          "checkedConcepts": [
+            {
+              "type": "CPPVariable",
+              "qualifiers": [
+                "default"
+              ]
+            }
+          ],
+          "predefinedExpressions": [
+            {
+              "type": "Expression",
+              "properties": {
+                "order": "HIGH",
+                "resolution": {
+                  "type": "CaseTransformerResolution",
+                  "properties": {}
+                },
+                "argument": "",
+                "expression": "^[a-z](|[a-z0-9][_-]|[_-])(|[a-z0-9]+|[a-z0-9]+[_-](|[a-z0-9]+))+$",
+                "hint": "NONE",
+                "name": "SNAKE_CASE",
+                "id": "1d3980d1-0c22-48b2-b740-04cdfd06ea68",
+                "enabled": true
+              }
+            }
+          ],
+          "customExpressions": [],
+          "message": "Common Variable naming violation detected",
+          "name": "Common Variable Naming",
+          "id": "ac3695a5-51bf-4893-b137-c531c723b7b7",
+          "enabled": true
+        },
+        "a017a8aa-478b-4059-9118-705ee6890aae": {
+          "checkedConcepts": [
+            {
+              "type": "CPPVariable",
+              "qualifiers": [
+                "const",
+                "constexpr"
+              ]
+            }
+          ],
+          "predefinedExpressions": [
+            {
+              "type": "Expression",
+              "properties": {
+                "order": "HIGH",
+                "resolution": {
+                  "type": "CaseTransformerResolution",
+                  "properties": {}
+                },
+                "argument": "",
+                "expression": "^[a-z](|[a-z0-9][_-]|[_-])(|[a-z0-9]+|[a-z0-9]+[_-](|[a-z0-9]+))+$",
+                "hint": "NONE",
+                "name": "SNAKE_CASE",
+                "id": "1d3980d1-0c22-48b2-b740-04cdfd06ea68",
+                "enabled": true
+              }
+            }
+          ],
+          "customExpressions": [],
+          "message": "Constant Variable naming violation detected",
+          "name": "Constant Variable Naming",
+          "id": "a017a8aa-478b-4059-9118-705ee6890aae",
+          "enabled": true
+        }
+      },
+      "name": "Naming Conventions",
+      "id": "b96f6c91-5070-4305-9677-e32942db2a49",
+      "enabled": true
+    }
+  },
+  "rules": {},
+  "name": "Canonical Styleguide",
+  "id": "cc16af67-f616-4c01-b24f-0bdbbcfb8269",
+  "enabled": true
+}

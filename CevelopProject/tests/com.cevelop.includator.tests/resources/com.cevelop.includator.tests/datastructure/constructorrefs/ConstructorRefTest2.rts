@@ -1,0 +1,15 @@
+//!DataStructureReferenceTest31Constructor2 function
+//@A.cpp
+#include "X.h"
+int main() {
+  X x;
+  return 0;
+}
+//@X.h
+class X {
+public:
+  X();
+};
+//@X.cpp
+#include "X.h"
+X::X() { }

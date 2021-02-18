@@ -1,0 +1,461 @@
+//! Bool expression with unary operator AND
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|MISRA_GUIDELINE_ID)
+markerLines=5
+//@main.h
+int main() {
+	bool b1 = true;
+	bool b2 = false;
+
+	if(b1 & b2){}
+}
+
+//! Const bool expression with unary operator AND
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|MISRA_GUIDELINE_ID)
+markerLines=5
+//@main.h
+int main() {
+	const bool b1 = true;
+	const bool b2 = false;
+
+	if(b1 & b2){}
+}
+
+//! Bool expression with unary operator LOWERTHAN
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|MISRA_GUIDELINE_ID)
+markerLines=5
+//@main.h
+int main() {
+	bool b1 = true;
+	bool b2 = false;
+
+	if(b1 < b2){}
+}
+
+//! Const bool expression with unary operator LOWERTHAN
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|MISRA_GUIDELINE_ID)
+markerLines=5
+//@main.h
+int main() {
+	const bool b1 = true;
+	const bool b2 = false;
+
+	if(b1 < b2){}
+}
+
+//! Bool expression with unary operator HIGHERTHAN
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|MISRA_GUIDELINE_ID)
+markerLines=5
+//@main.h
+int main() {
+	bool b1 = true;
+	bool b2 = false;
+
+	if(b1 > b2){}
+}
+
+//! Const bool expression with unary operator HIGHERTHAN
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|MISRA_GUIDELINE_ID)
+markerLines=5
+//@main.h
+int main() {
+	const bool b1 = true;
+	const bool b2 = false;
+
+	if(b1 > b2){}
+}
+
+//! Bool expression with unary operator TILDE
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|MISRA_GUIDELINE_ID)
+markerLines=4
+//@main.h
+int main() {
+	bool b1 = true;
+
+	if(~b1){}
+}
+
+//! Const bool expression with unary operator TILDE
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|MISRA_GUIDELINE_ID)
+markerLines=4
+//@main.h
+int main() {
+	const bool b1 = true;
+
+	if(~b1){}
+}
+
+//! Bool expression with unary operator TILDEequals
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|MISRA_GUIDELINE_ID)
+markerLines=4
+//@main.h
+int main() {
+	bool b1 = true;
+
+	if(~b1 == true){}
+}
+
+//! Const bool expression with unary operator TILDEequals
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|MISRA_GUIDELINE_ID)
+markerLines=4
+//@main.h
+int main() {
+	const bool b1 = true;
+
+	if(~b1 == true){}
+}
+
+//! Bool expression with unary operator TILDELowerthan
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|MISRA_GUIDELINE_ID)
+markerLines=4,4
+//@main.h
+int main() {
+	bool b1 = true;
+
+	if(~b1 < true){}
+}
+
+//! Const bool expression with unary operator TILDELowerthan
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|MISRA_GUIDELINE_ID)
+markerLines=4,4
+//@main.h
+int main() {
+	const bool b1 = true;
+
+	if(~b1 < true){}
+}
+
+//! Bool expression with unary operator CARET
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|MISRA_GUIDELINE_ID)
+markerLines=5
+//@main.h
+int main() {
+	bool b1 = true;
+	bool b2 = false;
+
+	if(b1 ^ b2){}
+}
+
+//! Const bool expression with unary operator CARET
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|MISRA_GUIDELINE_ID)
+markerLines=5
+//@main.h
+int main() {
+	const bool b1 = true;
+	const bool b2 = false;
+
+	if(b1 ^ b2){}
+}
+
+//! Bool expression with assignment operator =
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|MISRA_GUIDELINE_ID)
+//@main.h
+int main() {
+	bool b1 = true;
+
+	b1 = false;
+}
+
+//! Bool expression with logic operator &&
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|MISRA_GUIDELINE_ID)
+//@main.h
+int main() {
+	bool b1 = true;
+	bool b2 = false;
+
+	if(b1 && b2){}
+}
+
+//! Const bool expression with logic operator &&
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|MISRA_GUIDELINE_ID)
+//@main.h
+int main() {
+	const bool b1 = true;
+	const bool b2 = false;
+
+	if(b1 && b2){}
+}
+
+//! Bool expression with logic operator ||
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|MISRA_GUIDELINE_ID)
+//@main.h
+int main() {
+	bool b1 = true;
+	bool b2 = false;
+
+	if(b1 || b2){}
+}
+
+//! Const bool expression with logic operator ||
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|MISRA_GUIDELINE_ID)
+//@main.h
+int main() {
+	const bool b1 = true;
+	const bool b2 = false;
+
+	if(b1 || b2){}
+}
+
+//! Bool expression with logic operator ==
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|MISRA_GUIDELINE_ID)
+//@main.h
+int main() {
+	bool b1 = true;
+	bool b2 = false;
+
+	if(b1 == b2){}
+}
+
+//! Const bool expression with logic operator ==
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|MISRA_GUIDELINE_ID)
+//@main.h
+int main() {
+	const bool b1 = true;
+	const bool b2 = false;
+
+	if(b1 == b2){}
+}
+
+//! Bool expression with logic operator !=
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|MISRA_GUIDELINE_ID)
+//@main.h
+int main() {
+	bool b1 = true;
+	bool b2 = false;
+
+	if(b1 != b2){}
+}
+
+//! Const bool expression with logic operator !=
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|MISRA_GUIDELINE_ID)
+//@main.h
+int main() {
+	const bool b1 = true;
+	const bool b2 = false;
+
+	if(b1 != b2){}
+}
+
+//! Bool expression with logic operator !
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|MISRA_GUIDELINE_ID)
+//@main.h
+int main() {
+	bool b1 = true;
+
+	if(!b1){}
+}
+
+//! Const bool expression with logic operator !
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|MISRA_GUIDELINE_ID)
+//@main.h
+int main() {
+	const bool b1 = true;
+
+	if(!b1){}
+}
+
+//! Bool expression with conditional operator ?
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|MISRA_GUIDELINE_ID)
+//@main.h
+int main() {
+	bool b1 = true;
+	int8_t s8a;
+
+	s8a = b1 ? 3 : 7;
+}
+
+//! Const bool expression with conditional operator ?
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|MISRA_GUIDELINE_ID)
+//@main.h
+int main() {
+	const bool b1 = true;
+	int8_t s8a;
+
+	s8a = b1 ? 3 : 7;
+}
+
+//! Function expression with equals operator
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|MISRA_GUIDELINE_ID)
+//@main.h
+bool testFn() {
+	return true;
+}
+int main() {
+	bool b1 = true;
+	if(testFn() == b1) {}
+}
+
+//! Function expression with int return
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|MISRA_GUIDELINE_ID)
+//@main.h
+int testFn() {
+	return 2;
+}
+int main() {
+	if(testFn() < 3) {}
+}
+
+//! Function expression with binary operator
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|MISRA_GUIDELINE_ID)
+markerLines=6
+//@main.h
+bool testFn() {
+	return true;
+}
+int main() {
+	bool b1 = true;
+	if(testFn() < b1) {}
+}
+
+//! Function expression with binary const operator
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|MISRA_GUIDELINE_ID)
+markerLines=6
+//@main.h
+bool testFn() {
+	return true;
+}
+int main() {
+	const bool b1 = true;
+	if(testFn() < b1) {}
+}
+
+//! Function expression with LowerThan bool
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|MISRA_GUIDELINE_ID)
+markerLines=5
+//@main.h
+bool testFn() {
+	return true;
+}
+int main() {
+	if(testFn() < 5) {}
+}
+
+//! Function expression with unary operator
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|MISRA_GUIDELINE_ID)
+markerLines=5
+//@main.h
+bool testFn() {
+	return true;
+}
+int main() {
+	if(~testFn()) {}
+}
+
+//! Function expression with unary and binary operator
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|MISRA_GUIDELINE_ID)
+markerLines=6,6
+//@main.h
+bool testFn() {
+	return true;
+}
+int main() {
+	bool b1 = true;
+	if(~testFn() < b1) {}
+}
+
+//! Function expression with unary and binary const operator
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|MISRA_GUIDELINE_ID)
+markerLines=6,6
+//@main.h
+bool testFn() {
+	return true;
+}
+int main() {
+	const bool b1 = true;
+	if(~testFn() < b1) {}
+}
+
+//! Expression with left const bool variable
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|MISRA_GUIDELINE_ID)
+//@main.h
+int main() {
+	const bool b1 = true;
+	bool b2 = true;
+	if(b1 == b2) {}
+}
+
+//! Expression with right const bool variable
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|MISRA_GUIDELINE_ID)
+//@main.h
+int main() {
+	bool b1 = true;
+	const bool b2 = true;
+	if(b1 == b2) {}
+}
+
+//! Int expression with unary operator
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|MISRA_GUIDELINE_ID)
+//@main.h
+int main() {
+	const int i1 = 1;
+	if(~i1) {}
+}
+
+//! Binary expression with non-expression second operand
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|MISRA_GUIDELINE_ID)
+markerLines=3
+//@main.h
+int main() {
+	bool b1 {};
+	if (~b1 = { true }) {}
+}
+
+//! Ceck ignore attribute
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|MISRA_GUIDELINE_ID)
+//@main.h
+int main() {
+	bool b1 = true;
+
+	[[misra::suppress("M4-5-1")]]
+	if(~b1){}
+}
+
+//! Ceck ignore all attribute
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|MISRA_GUIDELINE_ID)
+//@main.h
+int main() {
+	bool b1 = true;
+
+	[[all::suppress("")]]
+	if(~b1){}
+}

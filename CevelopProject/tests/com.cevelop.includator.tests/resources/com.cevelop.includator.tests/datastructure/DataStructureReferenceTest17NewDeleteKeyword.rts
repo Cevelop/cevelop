@@ -1,0 +1,15 @@
+//!DataStructureReferenceTest17NewDeleteKeyword
+//@A.cpp
+#include "A.h"
+
+int main() {
+	A *a = new A;
+	delete a;
+}
+//@A.h
+typedef long unsigned int size_t;
+class A {
+public:
+  void* operator new(size_t);
+  void operator delete(void * a);
+};

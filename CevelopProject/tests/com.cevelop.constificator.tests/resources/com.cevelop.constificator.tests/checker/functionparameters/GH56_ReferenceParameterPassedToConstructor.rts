@@ -1,0 +1,22 @@
+//!ReferenceParameterPassedToConstructorTakingConstReference
+//@.config
+markerLines=6
+//@main.cpp
+struct s
+{
+	s(int const &) { }
+};
+
+void gh56(int & n) {
+	s const obj{n};
+}
+//!ReferenceParameterPassedToConstructorTakingNonConstReference
+//@main.cpp
+struct s
+{
+	s(int &) { }
+};
+
+void gh56(int & n) {
+	s const obj{n};
+}

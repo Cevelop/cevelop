@@ -1,0 +1,12 @@
+//!HelperTest17IndexToASTNameHelper3
+//@A.cpp
+int main() {
+	foo();
+	return 0;
+}
+//@Foo.h
+void foo();
+
+void foo();
+
+void foo() { }

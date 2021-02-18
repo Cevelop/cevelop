@@ -1,0 +1,8 @@
+//!HelperTest11ExternalEditorFileTest
+//@A.cpp
+#include "B.h"
+int main() {
+	return 0;
+}
+//@b.h
+class B { };

@@ -1,0 +1,7 @@
+//!DataStructureReferenceTest13IfMacro
+//@A.cpp
+#define WIN32
+
+#if !defined(WIN32) || defined(WIN32)
+
+#endif

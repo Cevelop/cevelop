@@ -1,0 +1,21 @@
+//!DataStructureReferenceTest8Namespaces empty namespace reference
+//@A.cpp
+#include "B.hpp"
+
+int main() {
+	return blub::bluber();
+}
+
+namespace blub {
+	int bluber() {
+		return 9;
+	}
+}
+
+//@B.hpp
+namespace blub { }
+
+
+
+
+

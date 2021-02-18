@@ -1,0 +1,10 @@
+//!DeclRefTest8StructRefInMethodImplTest
+//@A.cpp
+#include "A.h"
+
+void A::foo() {
+}
+//@A.h
+struct A {
+	void foo();
+ };

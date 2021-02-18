@@ -1,0 +1,33 @@
+//! Register used as parameter, remove register keyword
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=2
+//@main.h
+#include <cstdint>
+std::int32_t F(register std::int16_t number) noexcept
+{
+	return ((number * number) + number);
+}
+//=
+#include <cstdint>
+std::int32_t F(std::int16_t number) noexcept
+{
+	return ((number * number) + number);
+}
+
+//! Register used in method body, remove register keyword
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=4
+//@main.h
+#include <cstdint>
+void F(std::int16_t number) noexcept
+{
+	register std::int8_t x = 10;
+}
+//=
+#include <cstdint>
+void F(std::int16_t number) noexcept
+{
+	std::int8_t x = 10;
+}

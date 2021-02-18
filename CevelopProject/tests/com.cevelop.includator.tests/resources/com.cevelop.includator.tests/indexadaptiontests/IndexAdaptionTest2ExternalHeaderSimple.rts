@@ -1,0 +1,6 @@
+//!IndexAdaptionTest2ExternalHeaderSimple
+//@A.cpp
+int main() {
+  QWER qwer;
+  return 0;
+}

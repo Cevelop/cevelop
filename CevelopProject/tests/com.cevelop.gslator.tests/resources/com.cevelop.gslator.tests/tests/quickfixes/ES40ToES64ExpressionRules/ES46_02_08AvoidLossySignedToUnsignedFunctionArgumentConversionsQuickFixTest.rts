@@ -1,0 +1,73 @@
+//!FunctionQuickFix
+//@main.h
+void func(unsigned u) {	}
+int main() {
+	int i = -34;
+	func(i);
+}
+//=
+#include "gsl.h"
+void func(unsigned u) {	}
+int main() {
+	int i = -34;
+	func(gsl::narrow_cast<unsigned>(i));
+}
+//!FunctionWithMultipleParamsQuickFix
+//@main.h
+void func(unsigned u, int i) {	}
+int main() {
+	int i = -34;
+	func(i, 5);
+}
+//=
+#include "gsl.h"
+void func(unsigned u, int i) {	}
+int main() {
+	int i = -34;
+	func(gsl::narrow_cast<unsigned>(i), 5);
+}
+//!FunctionCastQuickFix
+//@main.h
+void func(unsigned u) {	}
+int main() {
+	int i = -34;
+	func((unsigned) i);
+}
+//=
+#include "gsl.h"
+void func(unsigned u) {	}
+int main() {
+	int i = -34;
+	func(gsl::narrow_cast<unsigned>(i));
+}
+//!FunctionCastWithMultipleUnaryExpressionsQuickFix
+//@main.h
+void func(unsigned u) {	}
+int main() {
+	int i = -34;
+	func((unsigned) (((i))));
+}
+//=
+#include "gsl.h"
+void func(unsigned u) {	}
+int main() {
+	int i = -34;
+	func(gsl::narrow_cast<unsigned>(i));
+}
+//!FunctionQuickFixWithExistingGSL
+//@main.h
+#include "gsl.h"
+void func(unsigned u) {	}
+int main() {
+	int i = -34;
+	short s = gsl::narrow_cast<short>(i); 
+	func(i);
+}
+//=
+#include "gsl.h"
+void func(unsigned u) {	}
+int main() {
+	int i = -34;
+	short s = gsl::narrow_cast<short>(i);
+ 	func(gsl::narrow_cast<unsigned>(i));
+}

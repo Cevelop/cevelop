@@ -1,0 +1,111 @@
+//!ConstCastUnneded
+//@.config
+isApplicable=false
+//@main.h
+void foo() {
+	int i = 20;
+	int * ic = &i;
+	int * inew = const_cast<int *>(ic);
+	*inew = 10;
+}
+//!ConstCastFunctionIsConst
+//@.config
+isApplicable=true
+//@main.h
+class CacheClass {
+public:
+	void set(int x) {};
+};
+class constFuncExample {
+public:
+	int getVal() const {
+		const_cast<CacheClass&>(cache).set(val);
+		return val;
+	}
+private:
+	int val = 0;
+	CacheClass cache;
+};
+//=
+class CacheClass {
+public:
+	void set(int x) {};
+};
+class constFuncExample {
+public:
+	int getVal() const {
+		cache.set(val);
+		return val;
+	}
+private:
+	int val = 0;
+	mutable CacheClass cache;
+};
+//!ConstCastFunctionIsConstMultipleFiles
+//@.config
+isApplicable=true
+//@main.h
+class CacheClass {
+public:
+	void set(int x) {};
+};
+class constFuncExample {
+public:
+	int getVal() const;
+private:
+	int val = 0;
+	CacheClass cache;
+};
+//=
+class CacheClass {
+public:
+	void set(int x) {};
+};
+class constFuncExample {
+public:
+	int getVal() const;
+private:
+	int val = 0;
+	mutable CacheClass cache;
+};
+//@main.cpp
+#include "main.h"
+
+int constFuncExample::getVal() const {
+	const_cast<CacheClass&>(cache).set(val);
+	return val;
+}
+//=
+#include "main.h"
+
+int constFuncExample::getVal() const {
+	cache.set(val);
+	return val;
+}
+//!ConstCastVarIsConst
+//@.config
+isApplicable=false
+//@main.h
+void foo() {
+	int i = 20;
+	int const * ic = &i;
+	int * inew = const_cast<int *>(ic);
+	*inew = 10;
+}
+//!ConstCastVarIsConstMultipleFiles
+//@.config
+isApplicable=false
+//@main.h
+class constVarExample {
+private:
+	int theVar = 10;
+	void someFunc();
+public:
+	const int * theConstVar = &theVar;
+};
+//@main.cpp
+#include "main.h"
+
+void constVarExample::someFunc() {
+	*(const_cast<int *>(theConstVar))+=10;
+}

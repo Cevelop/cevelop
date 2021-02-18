@@ -1,0 +1,32 @@
+//!TypedefToMemberFunction
+//@src/main.cpp
+#include "Baum.h"
+
+typedef Baum T;
+
+typedef void (Baum::*function)();
+
+int main(int argc, char **argv) {
+	T* t2;
+	function f;
+	f = &Baum::foo;
+	(t2->*f)();
+	return 0;
+}
+//@src/Baum.h
+class Baum {
+public:
+	Baum();
+	virtual ~Baum();
+
+	void foo();
+};
+//@src/Baum.cpp
+Baum::Baum() {
+}
+
+Baum::~Baum() {
+}
+
+void Baum::foo() {
+}

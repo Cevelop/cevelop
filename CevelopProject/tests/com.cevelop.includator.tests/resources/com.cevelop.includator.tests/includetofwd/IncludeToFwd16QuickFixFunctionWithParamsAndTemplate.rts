@@ -1,0 +1,22 @@
+//!IncludeToFwd16QuickFixFunctionWithParamsAndTemplate
+//@main.cpp
+//@main.cpp
+#include "A.h"
+#include "foo.h"
+int main() {
+  A anA;
+  foo(anA);
+}
+//=
+#include "A.h"
+template<class T> void foo(T t);
+
+int main() {
+  A anA;
+  foo(anA);
+}
+//@A.h
+class A { };
+//@foo.h
+template<class T>
+void foo(T t) { }

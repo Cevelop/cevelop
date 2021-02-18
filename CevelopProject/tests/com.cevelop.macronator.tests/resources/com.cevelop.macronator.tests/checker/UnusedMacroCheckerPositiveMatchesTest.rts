@@ -1,0 +1,11 @@
+//!ShouldSuggestRefactoringIfObjectLikeMacroIsNeverUsed
+//@.config
+markerLines=1
+//@main.cpp
+#define UNUSED_OBJECTSTYLE_MACRO X
+
+//!ShouldSuggestRefactoringIfFunctionLikeMacroIsNeverUsed
+//@.config
+markerLines=1
+//@main.cpp
+#define UNUSED_FUNCTIONSTYLE_MACRO(X) X

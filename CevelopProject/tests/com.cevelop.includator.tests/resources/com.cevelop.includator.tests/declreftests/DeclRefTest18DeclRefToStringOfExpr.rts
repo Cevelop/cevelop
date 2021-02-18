@@ -1,0 +1,25 @@
+//!DeclRefTest18DeclRefToStringOfExpr
+//@X.cpp
+#include "X.h"
+#include "TheZ.h"
+X::X() : z(theZ) { }
+//@X.h
+#include "Z.h"
+class X {
+public:
+	X();
+private:
+	Z z;
+};
+//@Z.h
+#ifndef Z_H
+#define Z_H
+
+class Z {
+public:
+	Z() { }
+};
+#endif
+//@TheZ.h
+#include "Z.h"
+Z theZ;

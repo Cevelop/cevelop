@@ -1,0 +1,10 @@
+//!TypedefToClassFwdDecl
+//@src/main.cpp
+class Templ;
+
+typedef Templ T;
+
+int main(int argc, char **argv) {
+	T *t2;
+	return 0;
+}

@@ -1,0 +1,69 @@
+//!Missing string include
+//@.config
+markerLines=2
+//@main.cpp
+void foo() {
+	std::string s {};
+}
+
+//!Missing list include
+//@.config
+markerLines=2
+//@A.cpp
+void foo() {
+  std::list<int> l{};
+}
+
+//!Missing stack include
+//@.config
+markerLines=2
+//@A.cpp
+void foo() {
+  std::stack<int> s{};
+}
+
+//!Missing queue include for queue
+//@.config
+markerLines=2
+//@A.cpp
+void foo() {
+  std::queue<int> q{};
+}
+
+//!Missing queue include for priority_queue
+//@.config
+markerLines=2
+//@A.cpp
+void foo() {
+  std::priority_queue<int> q{};
+}
+
+//!Transitive vector include
+//@.config
+markerLines=4
+//@A.cpp
+#include <cppstdlib>
+
+void foo() {
+  std::vector<int> v{ };
+}
+
+//!Transitive string include
+//@.config
+markerLines=4
+//@A.cpp
+#include <cppstdlib>
+
+void foo() {
+  std::string s { };
+}
+
+//!Transitive nested vector string include
+//@.config
+markerLines=4,4,4
+//@A.cpp
+#include <cppstdlib>
+
+void foo() {
+  std::vector<std::vector<std::string>> s { };
+}

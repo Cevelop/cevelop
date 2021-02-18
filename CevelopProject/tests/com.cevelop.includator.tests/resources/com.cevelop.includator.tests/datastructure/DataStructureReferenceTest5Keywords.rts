@@ -1,0 +1,6 @@
+//!DataStructureReferenceTest5Keywords
+//@A.cpp
+int main() {
+  extern int i;
+  i = sizeof(int);
+}

@@ -1,0 +1,26 @@
+//!OverridingVirtualFunctionWithoutOverrideKeyword
+//@.config
+markerLines=2,7
+//@main.cpp
+struct Base {
+	virtual void func() {
+	}
+};
+
+struct Derived: Base {
+	void func() {
+	}
+};
+//!OverridingVirtualFunctionMarkedWithOverrideKeyword
+//@.config
+markerLines=2
+//@main.cpp
+struct Base {
+	virtual void func() {
+	}
+};
+
+struct Derived: Base {
+	void func() override {
+	}
+};

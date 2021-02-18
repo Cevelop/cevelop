@@ -1,0 +1,39 @@
+//! Expression with const bool true right
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|MISRA_GUIDELINE_ID)
+markerLines=3
+//@main.h
+int main() {
+	bool b2 = true;
+	if(b1 == true) {}
+}
+
+//! Expression with const bool false right
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|MISRA_GUIDELINE_ID)
+markerLines=3
+//@main.h
+int main() {
+	bool b2 = true;
+	if(b1 == false) {}
+}
+
+//! Expression with const bool true left
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|MISRA_GUIDELINE_ID)
+markerLines=3
+//@main.h
+int main() {
+	bool b2 = true;
+	if(true == b1) {}
+}
+
+//! Expression with const bool false left
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|MISRA_GUIDELINE_ID)
+markerLines=3
+//@main.h
+int main() {
+	bool b2 = true;
+	if(false == b1) {}
+}

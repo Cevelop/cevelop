@@ -1,0 +1,18 @@
+//!FunctionThatIsInNamespaceResolutionTest
+//@MyFileName.cpp
+namespace foo {
+    namespace bar {
+        template<typename T>
+        void inner(T first) {}
+        
+        void inner(double first) {}
+    }
+}
+template<typename T>
+void outer(T first) {
+    foo::bar::inner(first); // <int>    
+}
+
+int main() {
+    outer(1); //<int>
+}

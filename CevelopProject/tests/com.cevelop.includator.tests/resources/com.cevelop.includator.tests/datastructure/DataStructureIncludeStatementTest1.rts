@@ -1,0 +1,6 @@
+//!DataStructureIncludeStatementTest1
+//@A.cpp
+#include <iostream>
+
+int main() { return 0; }
+ 

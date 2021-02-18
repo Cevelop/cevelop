@@ -1,0 +1,567 @@
+{
+  "groupings": {
+    "794f8d6d-b14d-4b72-aec8-95a16f6149d1": {
+      "rules": {
+        "a9f65a61-124d-4ca3-9d70-daab2ac6ac35": {
+          "checkedConcepts": [
+            {
+              "type": "Header File",
+              "qualifiers": [
+                "File Ending"
+              ]
+            }
+          ],
+          "predefinedExpressions": [
+            {
+              "type": "Expression",
+              "properties": {
+                "order": "LOW",
+                "resolution": {
+                  "type": "ReplaceResolution",
+                  "properties": {}
+                },
+                "argument": "h",
+                "expression": "(^(?!h$).*$)",
+                "hint": "NONE",
+                "name": "H_FILE_ENDING",
+                "id": "d48964cf-df83-43b2-8046-3aa061614dfd",
+                "enabled": false
+              }
+            }
+          ],
+          "customExpressions": [],
+          "message": "Header File naming violation detected",
+          "name": "Header File Ending Naming",
+          "id": "a9f65a61-124d-4ca3-9d70-daab2ac6ac35",
+          "enabled": true
+        },
+        "34d2ce06-a309-460d-847e-326cb7a73dc1": {
+          "checkedConcepts": [
+            {
+              "type": "Source File",
+              "qualifiers": [
+                "File Ending"
+              ]
+            }
+          ],
+          "predefinedExpressions": [
+            {
+              "type": "Expression",
+              "properties": {
+                "order": "LOW",
+                "resolution": {
+                  "type": "ReplaceResolution",
+                  "properties": {}
+                },
+                "argument": "cc",
+                "expression": "(^(?!cc$).*$)",
+                "hint": "NONE",
+                "name": "CC_FILE_ENDING",
+                "id": "5ba0f0a1-5668-4c3b-a20b-76db74307157",
+                "enabled": false
+              }
+            }
+          ],
+          "customExpressions": [],
+          "message": "Source File naming violation detected",
+          "name": "Source File Ending Naming",
+          "id": "34d2ce06-a309-460d-847e-326cb7a73dc1",
+          "enabled": true
+        },
+        "f826ecd0-f67f-40ad-962e-8a2e03bd1b57": {
+          "checkedConcepts": [
+            {
+              "type": "Source File",
+              "qualifiers": [
+                "File Body"
+              ]
+            }
+          ],
+          "predefinedExpressions": [
+            {
+              "type": "Expression",
+              "properties": {
+                "order": "HIGH",
+                "resolution": {
+                  "type": "CaseTransformerResolution",
+                  "properties": {}
+                },
+                "argument": "",
+                "expression": "^[a-z](|[a-z0-9][_-]|[_-])(|[a-z0-9]+|[a-z0-9]+[_-](|[a-z0-9]+))+$",
+                "hint": "NONE",
+                "name": "SNAKE_CASE",
+                "id": "1d3980d1-0c22-48b2-b740-04cdfd06ea68",
+                "enabled": true
+              }
+            }
+          ],
+          "customExpressions": [],
+          "message": "Source File naming violation detected",
+          "name": "Source File Naming",
+          "id": "f826ecd0-f67f-40ad-962e-8a2e03bd1b57",
+          "enabled": true
+        },
+        "420d0403-0c82-40f2-a4c6-0bcf26ec93d5": {
+          "checkedConcepts": [
+            {
+              "type": "Header File",
+              "qualifiers": [
+                "File Body"
+              ]
+            }
+          ],
+          "predefinedExpressions": [
+            {
+              "type": "Expression",
+              "properties": {
+                "order": "HIGH",
+                "resolution": {
+                  "type": "CaseTransformerResolution",
+                  "properties": {}
+                },
+                "argument": "",
+                "expression": "^[a-z](|[a-z0-9][_-]|[_-])(|[a-z0-9]+|[a-z0-9]+[_-](|[a-z0-9]+))+$",
+                "hint": "NONE",
+                "name": "SNAKE_CASE",
+                "id": "1d3980d1-0c22-48b2-b740-04cdfd06ea68",
+                "enabled": true
+              }
+            }
+          ],
+          "customExpressions": [],
+          "message": "Header File naming violation detected",
+          "name": "Header File Naming",
+          "id": "420d0403-0c82-40f2-a4c6-0bcf26ec93d5",
+          "enabled": true
+        }
+      },
+      "name": "File Naming Conventions",
+      "id": "794f8d6d-b14d-4b72-aec8-95a16f6149d1",
+      "enabled": true
+    },
+    "ae3c7a32-ccf0-476d-8605-a06c8d98bd8f": {
+      "rules": {
+        "75ccae84-fafe-41c0-b954-9d3cb87794a9": {
+          "checkedConcepts": [
+            {
+              "type": "CPPField",
+              "qualifiers": [
+                "private",
+                "default",
+                "static"
+              ]
+            }
+          ],
+          "predefinedExpressions": [
+            {
+              "type": "Expression",
+              "properties": {
+                "order": "HIGH",
+                "resolution": {
+                  "type": "CaseTransformerResolution",
+                  "properties": {}
+                },
+                "argument": "",
+                "expression": "^[a-z](|[a-z0-9][_-]|[_-])(|[a-z0-9]+|[a-z0-9]+[_-](|[a-z0-9]+))+$",
+                "hint": "NONE",
+                "name": "SNAKE_CASE",
+                "id": "1d3980d1-0c22-48b2-b740-04cdfd06ea68",
+                "enabled": true
+              }
+            },
+            {
+              "type": "Expression",
+              "properties": {
+                "order": "LOW",
+                "resolution": {
+                  "type": "AddSuffixResolution",
+                  "properties": {}
+                },
+                "argument": "_",
+                "expression": "^(\\w+)+(%s)$",
+                "hint": "CAMEL_CASE",
+                "name": "HAS_SUFFIX",
+                "id": "95303398-7f42-41ec-bc5c-ee0c1761ce93",
+                "enabled": true
+              }
+            }
+          ],
+          "customExpressions": [],
+          "message": "Private Member Variable naming violation detected",
+          "name": "Private Member Variable Naming",
+          "id": "75ccae84-fafe-41c0-b954-9d3cb87794a9",
+          "enabled": true
+        },
+        "d4a6431d-a4b5-4982-ab7e-24ae5e3f9031": {
+          "checkedConcepts": [
+            {
+              "type": "CPPVariable",
+              "qualifiers": [
+                "default"
+              ]
+            }
+          ],
+          "predefinedExpressions": [
+            {
+              "type": "Expression",
+              "properties": {
+                "order": "HIGH",
+                "resolution": {
+                  "type": "CaseTransformerResolution",
+                  "properties": {}
+                },
+                "argument": "",
+                "expression": "^[a-z](|[a-z0-9][_-]|[_-])(|[a-z0-9]+|[a-z0-9]+[_-](|[a-z0-9]+))+$",
+                "hint": "NONE",
+                "name": "SNAKE_CASE",
+                "id": "1d3980d1-0c22-48b2-b740-04cdfd06ea68",
+                "enabled": true
+              }
+            }
+          ],
+          "customExpressions": [],
+          "message": "Common Variable naming violation detected",
+          "name": "Common Variable Naming",
+          "id": "d4a6431d-a4b5-4982-ab7e-24ae5e3f9031",
+          "enabled": true
+        },
+        "e461561e-98af-4297-8830-7f8a9e4ac135": {
+          "checkedConcepts": [
+            {
+              "type": "CPPVariable",
+              "qualifiers": [
+                "const",
+                "constexpr"
+              ]
+            }
+          ],
+          "predefinedExpressions": [
+            {
+              "type": "Expression",
+              "properties": {
+                "order": "HIGH",
+                "resolution": {
+                  "type": "CaseTransformerResolution",
+                  "properties": {}
+                },
+                "argument": "",
+                "expression": "[a-z]+((\\d)|([A-Z0-9][a-z0-9]+))*([A-Z])?",
+                "hint": "NONE",
+                "name": "CAMEL_CASE",
+                "id": "b902400e-5f8c-412b-b267-a3671de51b85",
+                "enabled": true
+              }
+            },
+            {
+              "type": "Expression",
+              "properties": {
+                "order": "LOW",
+                "resolution": {
+                  "type": "AddPrefixResolution",
+                  "properties": {}
+                },
+                "argument": "k",
+                "expression": "^(%s)(\\w+)+$",
+                "hint": "CAMEL_CASE",
+                "name": "HAS_PREFIX",
+                "id": "dfaad9d6-4f3a-406d-af19-a6cf7901336f",
+                "enabled": true
+              }
+            }
+          ],
+          "customExpressions": [],
+          "message": "Constant Variable naming violation detected",
+          "name": "Constant Variable Naming",
+          "id": "e461561e-98af-4297-8830-7f8a9e4ac135",
+          "enabled": true
+        },
+        "f47d8137-b27a-4623-ab47-19129c68ec6c": {
+          "checkedConcepts": [
+            {
+              "type": "CPPField",
+              "qualifiers": [
+                "public",
+                "default",
+                "static"
+              ]
+            }
+          ],
+          "predefinedExpressions": [
+            {
+              "type": "Expression",
+              "properties": {
+                "order": "HIGH",
+                "resolution": {
+                  "type": "CaseTransformerResolution",
+                  "properties": {}
+                },
+                "argument": "",
+                "expression": "^[a-z](|[a-z0-9][_-]|[_-])(|[a-z0-9]+|[a-z0-9]+[_-](|[a-z0-9]+))+$",
+                "hint": "NONE",
+                "name": "SNAKE_CASE",
+                "id": "1d3980d1-0c22-48b2-b740-04cdfd06ea68",
+                "enabled": true
+              }
+            }
+          ],
+          "customExpressions": [],
+          "message": "Public Member Variable naming violation detected",
+          "name": "Public Member Variable Naming",
+          "id": "f47d8137-b27a-4623-ab47-19129c68ec6c",
+          "enabled": true
+        },
+        "96e5a037-9a0a-4ca8-a0d9-4a7bb525ec90": {
+          "checkedConcepts": [
+            {
+              "type": "CPPTypedef",
+              "qualifiers": []
+            },
+            {
+              "type": "CPPClassType",
+              "qualifiers": []
+            },
+            {
+              "type": "CPPEnumeration",
+              "qualifiers": []
+            }
+          ],
+          "predefinedExpressions": [
+            {
+              "type": "Expression",
+              "properties": {
+                "order": "HIGH",
+                "resolution": {
+                  "type": "CaseTransformerResolution",
+                  "properties": {}
+                },
+                "argument": "",
+                "expression": "^[A-Z][a-z]+(?:[A-Z][a-z]+)*$",
+                "hint": "NONE",
+                "name": "PASCAL_CASE",
+                "id": "3ac59f6c-b9b2-435c-830c-20cff77c772b",
+                "enabled": true
+              }
+            }
+          ],
+          "customExpressions": [],
+          "message": "Type naming violation detected",
+          "name": "Type Naming",
+          "id": "96e5a037-9a0a-4ca8-a0d9-4a7bb525ec90",
+          "enabled": true
+        },
+        "1dd24111-d1f0-487b-97db-79679ee8b414": {
+          "checkedConcepts": [
+            {
+              "type": "CPPFunction",
+              "qualifiers": []
+            },
+            {
+              "type": "CPPFunctionTemplate",
+              "qualifiers": []
+            },
+            {
+              "type": "CPPMethod",
+              "qualifiers": []
+            },
+            {
+              "type": "CPPMethodTemplate",
+              "qualifiers": []
+            }
+          ],
+          "predefinedExpressions": [
+            {
+              "type": "Expression",
+              "properties": {
+                "order": "HIGH",
+                "resolution": {
+                  "type": "CaseTransformerResolution",
+                  "properties": {}
+                },
+                "argument": "",
+                "expression": "^[A-Z][a-z]+(?:[A-Z][a-z]+)*$",
+                "hint": "NONE",
+                "name": "PASCAL_CASE",
+                "id": "3ac59f6c-b9b2-435c-830c-20cff77c772b",
+                "enabled": true
+              }
+            }
+          ],
+          "customExpressions": [],
+          "message": "Regular Function naming violation detected",
+          "name": "Regular Function Naming",
+          "id": "1dd24111-d1f0-487b-97db-79679ee8b414",
+          "enabled": true
+        },
+        "cb1f4430-6f50-4dcf-afe7-251fbfa20340": {
+          "checkedConcepts": [
+            {
+              "type": "ObjectStyleMacro",
+              "qualifiers": []
+            }
+          ],
+          "predefinedExpressions": [
+            {
+              "type": "Expression",
+              "properties": {
+                "order": "HIGH",
+                "resolution": {
+                  "type": "CaseTransformerResolution",
+                  "properties": {}
+                },
+                "argument": "",
+                "expression": "^[A-Z](|[A-Z0-9][_]|[_])(|[A-Z0-9]+|[A-Z0-9]+[_](|[A-Z0-9]+))+$",
+                "hint": "NONE",
+                "name": "CONST_CASE",
+                "id": "0be683c0-f7dd-436f-9be8-189418ada73d",
+                "enabled": true
+              }
+            }
+          ],
+          "customExpressions": [],
+          "message": "Macro naming violation detected",
+          "name": "Macro Naming",
+          "id": "cb1f4430-6f50-4dcf-afe7-251fbfa20340",
+          "enabled": true
+        },
+        "fccfc6f5-d457-42eb-8654-82609bbcc0c5": {
+          "checkedConcepts": [
+            {
+              "type": "CPPEnumerator",
+              "qualifiers": []
+            }
+          ],
+          "predefinedExpressions": [
+            {
+              "type": "ExpressionGroup",
+              "properties": {
+                "expressions": [
+                  {
+                    "type": "ExpressionGroup",
+                    "properties": {
+                      "expressions": [
+                        {
+                          "type": "Expression",
+                          "properties": {
+                            "order": "HIGH",
+                            "resolution": {
+                              "type": "CaseTransformerResolution",
+                              "properties": {}
+                            },
+                            "argument": "",
+                            "expression": "[a-z]+((\\d)|([A-Z0-9][a-z0-9]+))*([A-Z])?",
+                            "hint": "NONE",
+                            "name": "CAMEL_CASE",
+                            "id": "b902400e-5f8c-412b-b267-a3671de51b85",
+                            "enabled": true
+                          }
+                        },
+                        {
+                          "type": "Expression",
+                          "properties": {
+                            "order": "LOW",
+                            "resolution": {
+                              "type": "AddPrefixResolution",
+                              "properties": {}
+                            },
+                            "argument": "k",
+                            "expression": "^(%s)(\\w+)+$",
+                            "hint": "CAMEL_CASE",
+                            "name": "HAS_PREFIX",
+                            "id": "dfaad9d6-4f3a-406d-af19-a6cf7901336f",
+                            "enabled": true
+                          }
+                        }
+                      ],
+                      "hint": "PREFERED",
+                      "name": "Camel Case",
+                      "id": "9f092986-92a6-4c25-abaa-4f05fc612816",
+                      "enabled": true
+                    }
+                  },
+                  {
+                    "type": "ExpressionGroup",
+                    "properties": {
+                      "expressions": [
+                        {
+                          "type": "Expression",
+                          "properties": {
+                            "order": "HIGH",
+                            "resolution": {
+                              "type": "CaseTransformerResolution",
+                              "properties": {}
+                            },
+                            "argument": "",
+                            "expression": "^[A-Z](|[A-Z0-9][_]|[_])(|[A-Z0-9]+|[A-Z0-9]+[_](|[A-Z0-9]+))+$",
+                            "hint": "NONE",
+                            "name": "CONST_CASE",
+                            "id": "0be683c0-f7dd-436f-9be8-189418ada73d",
+                            "enabled": true
+                          }
+                        }
+                      ],
+                      "hint": "NONE",
+                      "name": "Const Case",
+                      "id": "ff95414f-4191-4cf1-a4d5-826f6724d223",
+                      "enabled": true
+                    }
+                  }
+                ],
+                "hint": "NONE",
+                "name": "Casing Group",
+                "id": "bc4d0551-1aca-4f6e-bed4-ccb48b6a8edb",
+                "enabled": false
+              }
+            }
+          ],
+          "customExpressions": [],
+          "message": "Enumarator naming violation detected",
+          "name": "Enumarator Naming",
+          "id": "fccfc6f5-d457-42eb-8654-82609bbcc0c5",
+          "enabled": true
+        },
+        "cf66037a-29c2-45ef-9ffd-1a7eb1127f6b": {
+          "checkedConcepts": [
+            {
+              "type": "CPPNamespace",
+              "qualifiers": []
+            },
+            {
+              "type": "CPPNamespaceAlias",
+              "qualifiers": []
+            }
+          ],
+          "predefinedExpressions": [
+            {
+              "type": "Expression",
+              "properties": {
+                "order": "HIGH",
+                "resolution": {
+                  "type": "CaseTransformerResolution",
+                  "properties": {}
+                },
+                "argument": "",
+                "expression": "^[a-z0-9_$]+$",
+                "hint": "NONE",
+                "name": "IS_ALL_SMALL",
+                "id": "0a831aea-ddcd-4932-8e83-deba19263c79",
+                "enabled": true
+              }
+            }
+          ],
+          "customExpressions": [],
+          "message": "Namespace naming violation detected",
+          "name": "Namespace Naming",
+          "id": "cf66037a-29c2-45ef-9ffd-1a7eb1127f6b",
+          "enabled": true
+        }
+      },
+      "name": "Naming Conventions",
+      "id": "ae3c7a32-ccf0-476d-8605-a06c8d98bd8f",
+      "enabled": true
+    }
+  },
+  "rules": {},
+  "name": "Google Styleguide",
+  "id": "cbc75afb-a84a-470b-9949-9d4774aeec45",
+  "enabled": true
+}

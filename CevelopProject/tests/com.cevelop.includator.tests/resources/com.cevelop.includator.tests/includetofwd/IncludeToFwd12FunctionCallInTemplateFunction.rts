@@ -1,0 +1,11 @@
+//!IncludeToFwd12FunctionCallInTemplateFunction
+//@main.cpp
+#include "foo.h"
+
+template<typename T>
+void bar(T t) {
+	foo(t);
+}
+//@foo.h
+void foo(int i) { }
+void foo(double d) { }

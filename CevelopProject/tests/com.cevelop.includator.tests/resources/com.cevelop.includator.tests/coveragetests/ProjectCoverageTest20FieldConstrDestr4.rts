@@ -1,0 +1,28 @@
+//!ProjectCoverageTest20FieldConstrDestr4
+//@A.cpp
+class Y {
+public:
+  Y();
+  ~Y();
+};
+
+Y::Y() { }
+
+Y::~Y() { }
+
+class X {
+public :
+  X();
+  ~X();
+  Y y;
+};
+
+X::X() { }
+
+X::~X() { }
+
+int main() {
+  X *x;
+  delete x;
+  return 0;
+}

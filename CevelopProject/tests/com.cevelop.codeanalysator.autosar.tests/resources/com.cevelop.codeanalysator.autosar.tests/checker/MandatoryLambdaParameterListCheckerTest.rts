@@ -1,0 +1,37 @@
+//! Specified lambda parameter list
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+#include <cstdint>
+void Fn()
+{
+   std::int32_t i = 0;
+   std::int32_t j = 0;
+   auto lambda1 = [&i, &j]() { ++i, ++j; };
+}
+
+//! Ommited lambda parameter list
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=6
+//@main.h
+#include <cstdint>
+void Fn()
+{
+   std::int32_t i = 0;
+   std::int32_t j = 0;
+   auto lambda1 = [&i, &j] { ++i, ++j; };
+}
+
+//! Suppressed ommited lambda parameter list
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+#include <cstdint>
+void Fn()
+{
+   std::int32_t i = 0;
+   std::int32_t j = 0;
+   [[autosar::suppress("A5-1-3"), autosar::suppress("A5-1-6")]]
+   auto lambda1 = [&i, &j] { ++i, ++j; };
+}

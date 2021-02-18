@@ -1,0 +1,15 @@
+//!ProjectCoverageTest15DestructorTest1
+//@A.cpp
+class X {
+public :
+  X();
+  ~X();
+};
+
+X::X() { }
+
+X::~X() { }
+
+int main() {
+  X x;
+}

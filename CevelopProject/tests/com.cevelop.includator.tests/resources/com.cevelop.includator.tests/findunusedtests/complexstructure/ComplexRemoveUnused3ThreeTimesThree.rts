@@ -1,0 +1,28 @@
+//!Three Includes All Including Three Other Files
+//@main.cpp
+#include "I1.h"
+#include "I2.h"
+#include "I3.h"
+
+A a;
+B b;
+C c;
+//@I1.h
+#include "A.h
+#include "B.h
+#include "C.h
+//@I2.h
+#include "A.h
+#include "B.h
+#include "C.h
+//@I3.h
+#include "A.h
+#include "B.h
+#include "C.h
+//@A.h
+class A{};
+//@B.h
+class B{};
+//@C.h
+class C{};
+

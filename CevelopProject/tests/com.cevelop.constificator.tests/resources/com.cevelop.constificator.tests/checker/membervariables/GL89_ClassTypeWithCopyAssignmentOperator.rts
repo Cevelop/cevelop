@@ -1,0 +1,38 @@
+//!Member variable of a class-type with default-default copy-assignment-operator shall not be constifiable
+//@test.cpp
+struct S {
+  int v{};
+};
+
+//!Member variable of a class-type with default copy-assignment-operator shall not be constifiable
+//@test.cpp
+struct S {
+  S& operator=(S const &) = default;
+  int v{};
+};
+
+//!Member variable of a class-type with user-provided copy-assignment-operator shall not be constifiable
+//@test.cpp
+struct S {
+  S& operator=(S const &);
+  int v{};
+};
+
+//!Member variable of a class-type with explicitly deleted copy-assignment-operator shall be constifiable
+//@.config
+markerLines=3
+//@test.cpp
+struct S {
+  S& operator=(S const &) = delete;
+  int v{};
+};
+
+//!Member variable of a class-type with implicitly deleted copy-assignment-operator shall be constifiable
+//@.config
+markerLines=3
+skip=true
+//@test.cpp
+struct S {
+  S& operator=(S &&);
+  int v{};
+};

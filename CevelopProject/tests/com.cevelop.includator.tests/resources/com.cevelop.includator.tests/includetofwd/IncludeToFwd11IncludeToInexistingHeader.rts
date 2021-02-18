@@ -1,0 +1,7 @@
+//!IncludeToFwd11IncludeToInexistingHeader
+//@main.cpp
+#include "A.h"
+#include "B.h"
+A *a;
+//@A.h
+class A { };

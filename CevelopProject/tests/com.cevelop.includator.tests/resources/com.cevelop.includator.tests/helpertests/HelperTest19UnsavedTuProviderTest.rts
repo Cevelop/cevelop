@@ -1,0 +1,20 @@
+//!HelperTest19UnsavedTuProviderTest
+//@A.cpp
+#include "B.h"
+int main() {
+	B b;
+	C c;
+	return 0;
+}
+//=
+#include "B.h"
+#include "C.h"
+int main() {
+	B b;
+	C c;
+	return 0;
+}
+//@B.h
+class B { };
+//@C.h
+class C { };

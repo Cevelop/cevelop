@@ -1,0 +1,31 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Namespactor Plug-in
+Bundle-SymbolicName: com.cevelop.namespactor;singleton:=true
+Bundle-Version: 1.14.0.qualifier
+Bundle-Activator: com.cevelop.namespactor.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.cdt.ui;bundle-version="5.3.2",
+ org.eclipse.cdt.core;bundle-version="5.3.1",
+ org.eclipse.core.runtime,
+ org.eclipse.core.resources;bundle-version="3.7.100",
+ org.eclipse.ltk.core.refactoring;bundle-version="3.5.201",
+ org.eclipse.ltk.ui.refactoring;bundle-version="3.6.0",
+ org.eclipse.jface.text;bundle-version="3.7.2",
+ org.eclipse.cdt.codan.core.cxx;bundle-version="1.1.0",
+ ch.hsr.ifs.iltis.cpp.core
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-Vendor: IFS Institute for Software
+Eclipse-ExtensibleAPI: true
+Automatic-Module-Name: com.cevelop.namespactor
+Export-Package: com.cevelop.namespactor.astutil;x-friends:="com.cevelop.namespactor.checkers,com.cevelop.namespactor.tests",
+ com.cevelop.namespactor.handlers;x-friends:="com.cevelop.namespactor.checkers,com.cevelop.namespactor.tests",
+ com.cevelop.namespactor.refactoring.eudec;x-friends:="com.cevelop.namespactor.tests",
+ com.cevelop.namespactor.refactoring.eudir;x-friends:="com.cevelop.namespactor.tests",
+ com.cevelop.namespactor.refactoring.itda;x-friends:="com.cevelop.namespactor.tests",
+ com.cevelop.namespactor.refactoring.iudec;x-friends:="com.cevelop.namespactor.tests",
+ com.cevelop.namespactor.refactoring.iudir;x-friends:="com.cevelop.namespactor.tests",
+ com.cevelop.namespactor.refactoring.qun;x-friends:="com.cevelop.namespactor.tests",
+ com.cevelop.namespactor.refactoring.td2a;x-friends:="com.cevelop.namespactor.tests"
+

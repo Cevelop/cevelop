@@ -1,0 +1,6 @@
+//!RemoveUnused12SemanticalError
+//@A.cpp
+int main() {
+	X x;
+	return 0;
+}

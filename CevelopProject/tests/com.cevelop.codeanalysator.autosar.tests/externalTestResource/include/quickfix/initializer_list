@@ -1,0 +1,10 @@
+#ifndef INITIALIZER_LIST_H_
+#define INITIALIZER_LIST_H_
+
+/* Simulation of system-headers for testing */
+
+namespace std {
+  template<class E> class initializer_list;
+}
+
+#endif /* INITIALIZER_LIST_H_ */

@@ -1,0 +1,25 @@
+//!DirectIncludeDecl7QuickFix
+//@A.cpp
+#include "A.h"
+#include "E.h"
+
+int main() {
+	B b;
+	C c;
+	D d;
+	F f;
+}
+//@A.h
+#include "C.h"
+#include "D.h"
+
+class B { };
+//@C.h
+class C { };
+//@D.h
+class D { };
+//@E.h
+#include "F.h"
+class E { };
+//@F.h
+class F { };

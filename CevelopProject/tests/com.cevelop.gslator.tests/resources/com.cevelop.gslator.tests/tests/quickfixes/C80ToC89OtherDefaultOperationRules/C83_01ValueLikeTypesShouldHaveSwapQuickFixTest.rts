@@ -1,0 +1,122 @@
+//!ClassWithNoSwapAndNoVirtualFunctions
+//@.config
+isApplicable=true
+//@main.h
+struct A {
+	void swap(A &a);
+};
+struct B { };
+struct Subject {
+	A a;
+	B b;
+};
+//=
+#include <utility>
+struct A {
+	void swap(A &a);
+};
+struct B { };
+struct Subject {
+	A a;
+	B b;
+	void swap(Subject& other) noexcept
+	{
+		using std::swap;
+		// TODO Auto-generated method stub
+	}
+};
+//!ClassWithWrongParamInSwap
+//@.config
+isApplicable=true
+//@main.h
+struct A { };
+struct Subject {
+	int a = 0;
+	void swap(A &a) { }
+};
+//=
+#include <utility>
+struct A { };
+struct Subject {
+	int a = 0;
+	void swap(A &a) { }
+	void swap(Subject& other) noexcept
+	{
+		using std::swap;
+		// TODO Auto-generated method stub
+	}
+};
+//!ClassWithWrongSwapName
+//@.config
+isApplicable=true
+//@main.h
+#include <utility>
+struct Subject {
+	int a = 0;
+	void swapme(Subject &a) { }
+};
+//=
+#include <utility>
+struct Subject {
+	int a = 0;
+	void swapme(Subject &a) { }
+	void swap(Subject& other) noexcept
+	{
+		using std::swap;
+		// TODO Auto-generated method stub
+	}
+};
+//!ClassWithNonReferenceParamInSwap
+//@.config
+isApplicable=true
+//@main.h
+struct Subject {
+	int a = 0;
+	[[gsl::suppress("Rc-swap")]]
+	void swap(Subject a) {
+	}
+};
+//=
+#include <utility>
+struct Subject {
+	int a = 0;
+	[[gsl::suppress("Rc-swap")]]
+	void swap(Subject a) {
+	}
+
+	void swap(Subject& other) noexcept
+	{
+		using std::swap;
+		// TODO Auto-generated method stub
+	}
+};
+//!NotApplicableClassWithNonReferenceParamInSwap
+//@.config
+markerNr=2
+isApplicable=false
+//@main.h
+struct Subject {
+	int a = 0;
+	void swap(Subject a) {	}
+};
+//!AddIgnoreAttribute
+//@.config
+setIgnoreAttribute=true
+//@main.h
+struct A {
+	void swap(A &a);
+};
+struct B { };
+struct Subject {
+	A a;
+	B b;
+};
+//=
+struct A {
+	void swap(A &a);
+};
+struct B { };
+struct [[gsl::suppress("Rc-swap")]] Subject {
+	A a;
+	B b;
+};

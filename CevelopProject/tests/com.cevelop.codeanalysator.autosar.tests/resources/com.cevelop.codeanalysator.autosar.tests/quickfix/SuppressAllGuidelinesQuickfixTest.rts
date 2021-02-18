@@ -1,0 +1,11 @@
+//! Suppress all guidelines
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+int main(){
+	return 10;
+}
+//=
+int main(){
+	[[all::suppress("")]] return 10;
+}

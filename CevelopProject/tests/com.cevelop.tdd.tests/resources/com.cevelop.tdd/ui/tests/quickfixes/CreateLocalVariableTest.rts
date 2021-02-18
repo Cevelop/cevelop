@@ -1,0 +1,204 @@
+//!Test Simple Variable Creation
+//@.config
+markerLines=3
+//@A.cpp
+void func() {
+	int x = 1;
+	y = x;
+}
+//=
+void func() {
+	int x = 1;
+	int y;
+	y = x;
+}
+//!Test Named Type Variable Creation
+//@.config
+markerLines=7
+//@A.cpp
+struct B
+{
+};
+
+void func() {
+	B b1;
+	b2 = b1;
+}
+//=
+struct B
+{
+};
+
+void func() {
+	B b1;
+	B b2;
+	b2 = b1;
+}
+//!Simple Macro
+//@.config
+markerLines=4
+//@A.cpp
+#define MACRO(c) c
+
+void test() {
+	MACRO(k);
+}
+//=
+#define MACRO(c) c
+
+void test() {
+	int k;
+	MACRO(k);
+}
+//!Named Type Variable
+//@.config
+markerLines=2
+//@A.cpp
+void func() {
+	b.member();
+}
+//=
+void func() {
+	int b;
+	b.member();
+}
+//!Local Variable from First Statement in Scope
+//@.config
+markerLines=2
+//@A.cpp
+void func() {
+	num++;
+}
+//=
+void func() {
+	int num;
+	num++;
+}
+//!Test CUTE Macro Variable Creation ASSERT
+//@.config
+markerLines=4
+//@Test.cpp
+#include "cute.h"
+
+void blah() {
+	ASSERT(k);
+}
+//=
+#include "cute.h"
+
+void blah() {
+	bool k;
+	ASSERT(k);
+}
+//!Test CUTE Macro Variable Creation ASSERTM
+//@.config
+markerLines=4
+//@Test.cpp
+#include "cute.h"
+
+void blah() {
+	ASSERTM("start writing tests", k);
+}
+//=
+#include "cute.h"
+
+void blah() {
+	bool k;
+	ASSERTM("start writing tests", k);
+}
+//!Test CUTE Macro Variable Creation ASSERT_EQUALS
+//@.config
+markerLines=4
+//@Test.cpp
+#include "cute.h"
+
+void test() {
+	ASSERT_EQUAL(42, k.member());
+}
+//=
+#include "cute.h"
+
+void test() {
+	int k;
+	ASSERT_EQUAL(42, k.member());
+}
+//!Test CUTE Macro Variable Creation ASSERT_EQUALS_DELTA
+//@.config
+markerLines=4
+//@Test.cpp
+#include "cute.h"
+
+void testKreis() {
+	ASSERT_EQUAL_DELTA(42, b.member(), 0.0);
+}
+//=
+#include "cute.h"
+
+void testKreis() {
+	int b;
+	ASSERT_EQUAL_DELTA(42, b.member(), 0.0);
+}
+//!Test CUTE Macro Variable Creation ASSERT_EQUALS_DELTA_M
+//@.config
+markerLines=4
+//@Test.cpp
+#include "cute.h"
+
+void testKreis() {
+	ASSERT_EQUAL_DELTAM("foobar", 42, b.member(), 0.0);
+}
+//=
+#include "cute.h"
+
+void testKreis() {
+	int b;
+	ASSERT_EQUAL_DELTAM("foobar", 42, b.member(), 0.0);
+}
+//!TODO SHOULD ERROR Create Variable If Fieldref
+//@.config
+markerLines=2
+//@A.cpp
+void func() {
+	x.y();
+}
+//=
+void func() {
+	int x;
+	x.y();
+}
+//!No Variable for Non-typedef Enum Assignment
+//@.config
+markerCount=0
+//@A.cpp
+enum Color{RED, GREEN, BLUE};
+
+void func()
+{
+	Color c;
+	c = RED;
+}
+//=
+enum Color{RED, GREEN, BLUE};
+
+void func()
+{
+	Color c;
+	c = RED;
+}
+//!No Suggestion for Static Member Access
+//@.config
+markerCount=0
+//@A.cpp
+struct A {
+};
+
+void test() {
+  A::i = 5;
+}
+//=
+struct A {
+};
+
+void test() {
+  A::i = 5;
+}

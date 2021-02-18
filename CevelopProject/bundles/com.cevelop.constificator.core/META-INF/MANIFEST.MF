@@ -1,0 +1,25 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Constificator Core
+Bundle-SymbolicName: com.cevelop.constificator.core
+Bundle-Version: 1.14.0.qualifier
+Bundle-Activator: com.cevelop.constificator.core.Activator
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.cdt.ui,
+ org.eclipse.cdt.core,
+ org.eclipse.ltk.core.refactoring,
+ ch.hsr.ifs.iltis.core.kotlin
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
+Export-Package: com.cevelop.constificator.core;x-friends="com.cevelop.constificator",
+ com.cevelop.constificator.core.deciders.classmembers;x-friends="com.cevelop.constificator",
+ com.cevelop.constificator.core.deciders.decision;x-friends="com.cevelop.constificator",
+ com.cevelop.constificator.core.deciders.functionparameters;x-friends="com.cevelop.constificator",
+ com.cevelop.constificator.core.deciders.localvariables;x-friends="com.cevelop.constificator",
+ com.cevelop.constificator.core.util.ast;x-friends="com.cevelop.constificator",
+ com.cevelop.constificator.core.util.functional;x-friends="com.cevelop.constificator",
+ com.cevelop.constificator.core.util.structural;x-friends="com.cevelop.constificator",
+ com.cevelop.constificator.core.util.semantic;x-friends="com.cevelop.constificator",
+ com.cevelop.constificator.core.util.type;x-friends="com.cevelop.constificator"
+Bundle-Vendor: IFS Institute for Software
+Automatic-Module-Name: com.cevelop.constificator.core

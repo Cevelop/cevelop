@@ -1,0 +1,182 @@
+
+//!ReturnType
+//@.config
+markerLines=1
+//@main.cpp
+char foo(){
+}
+
+//!ParameterTypes
+//@.config
+markerLines=1,1
+//@main.cpp
+void foo(char, char){
+}
+
+//!VarArgParameterType
+//@.config
+markerLines=1
+//@main.cpp
+void foo(int...){
+}
+
+//!TrailingReturnType
+//@.config
+markerLines=1
+//@main.cpp
+auto foo() -> char {
+}
+
+//!DeclarationDefinition
+//@.config
+markerLines=1,3
+//@main.cpp
+int foo();
+
+int foo() {
+    return 42;
+}
+
+//!LambdaReturnValue
+//@.config
+markerLines=1
+//@main.cpp
+auto lambda = []() -> short {
+    return 42;
+};
+
+//!LambdaParameterTypes
+//@.config
+markerLines=1,1
+//@main.cpp
+auto lambda = [](int a, long b) {
+    return a + b;
+};
+
+//!FunctionArgumentTypes_std::function
+//@.config
+markerLines=1,1,1,1
+//@main.cpp
+std::function<void(int,int)> foo = [] (int a, int b) {
+};
+
+//!FunctionReturnType_std::function
+//@.config
+markerLines=1
+//@main.cpp
+std::function<int()> foo = [] () -> int {
+    return 42;
+};
+
+//!FunctionPointer
+//@.config
+markerLines=1,1,2,2,3,3,3
+//@main.cpp
+std::function<int(int, int)>* fooPointer = 
+    new std::function<int(int, int)>(
+        [=](int a, int b) -> int {
+            return a + b;
+        }
+    );
+
+//!MemberFunctionsReturnTypes
+//@.config
+markerLines=2,2
+//@class.h
+class Foo {
+    int foo();
+};
+//@class.cpp
+class Foo {
+    int foo() {
+        return 42;
+    }
+};
+
+//!MemberFunctionsParameterTypes
+//@.config
+markerLines=2,2,2,2
+//@class.h
+class Foo {
+    void foo(char, char);
+};
+//@class.cpp
+class Foo {
+    void foo(char, char) {
+    }
+};
+
+//!ClassOperatorInt
+//@.config
+markerLines=3
+//@main.cpp
+class Foo {
+    int foo = 42;
+    operator int()
+    {
+        return foo;
+    }
+}; 
+
+//!MemberFunctionsVarArgParameterTypes
+//@.config
+markerLines=2,2
+//@class.h
+class Foo {
+    void foo(char...);
+};
+//@class.cpp
+class Foo {
+    void foo(char...) {
+    }
+};
+
+//!MemberFunctionsFriendHandling
+//@.config
+markerLines=2,2,2,2
+//@class.h
+class Foo {
+    friend int foo(char in);
+};
+//@class.cpp
+class Foo {
+    friend int foo(char in) {
+        return in * 42;
+    }
+};
+
+//!AllTypesReturnValues
+//@.config
+markerLines=1,4,7,10,13
+//@main.cpp
+char cfoo () {
+    return 42;
+}
+short sfoo () {
+    return 42;
+}
+int ifoo () {
+    return 42;
+}
+long lfoo() {
+    return 42;
+}
+long long llfoo() {
+    reutnr 42;
+}
+
+//!AllParameterTypes
+//@.config
+markerLines=1,3,5,7,9
+//@main.cpp
+void cfoo(char) {
+}
+void sfoo(short) {
+}
+void ifoo(int) {
+}
+void lfoo(long) {
+}
+void llfoo(long long) {
+}
+

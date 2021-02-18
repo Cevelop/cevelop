@@ -1,0 +1,9 @@
+//!DeclRefTest2ForwardDeclEnough1
+//@main.cpp
+#include "B.h"
+
+int main() {
+	B b1;
+}
+//@B.h
+class B { };

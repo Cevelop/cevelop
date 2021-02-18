@@ -1,0 +1,67 @@
+//!ConstPtrToNonConstCallNonConstNonStaticMemberFunctionUsingDereference
+//@.config
+//@main.cpp
+#include "cls.h"
+
+int main()
+  {
+  cls * const ptr{};
+  (*ptr).number(42);
+  }
+
+//!ConstPtrToNonConstCallConstNonStaticMemberFunctionUsingDereference
+//@.config
+markerLines=5
+//@main.cpp
+#include "cls.h"
+
+int main()
+  {
+  cls * const ptr{};
+  (*ptr).number();
+  }
+
+//!ConstPtrToConstCallConstNonStaticMemberFunctionUsingDereference
+//@.config
+//@main.cpp
+#include "cls.h"
+
+int main()
+  {
+  cls const * const ptr{};
+  (*ptr).number();
+  }
+
+//!ConstPtrToNonConstCallNonConstNonStaticMemberFunctionUsingMemberOfObject
+//@.config
+//@main.cpp
+#include "cls.h"
+
+int main()
+  {
+  cls * const ptr{};
+  ptr->number(42);
+  }
+
+//!ConstPtrToNonConstCallConstNonStaticMemberFunctionUsingMemberOfObject
+//@.config
+markerLines=5
+//@main.cpp
+#include "cls.h"
+
+int main()
+  {
+  cls * const ptr{};
+  ptr->number();
+  }
+
+//!ConstPtrToConstCallConstNonStaticMemberFunctionUsingMemberOfObject
+//@.config
+//@main.cpp
+#include "cls.h"
+
+int main()
+  {
+  cls const * const ptr{};
+  ptr->number();
+  }

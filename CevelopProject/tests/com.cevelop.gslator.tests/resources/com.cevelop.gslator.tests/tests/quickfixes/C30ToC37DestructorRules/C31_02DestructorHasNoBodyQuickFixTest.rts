@@ -1,0 +1,179 @@
+//!DefaultDestructorWithOwner
+//@main.h
+struct Named_map {
+public:
+	~Named_map() = default;
+
+private:
+	std::string name;
+	std::map<int, int> rep;
+	gsl::owner<int *> owy;
+};
+//=
+struct Named_map {
+public:
+	~Named_map() {
+		delete owy;
+	}
+
+private:
+	std::string name;
+	std::map<int, int> rep;
+	gsl::owner<int *> owy;
+};
+//!DeletedDestructorWithOwner
+//@main.h
+struct Named_map {
+public:
+	~Named_map() = delete;
+
+private:
+	std::string name;
+	std::map<int, int> rep;
+	gsl::owner<int *> owy;
+};
+//=
+struct Named_map {
+public:
+	~Named_map() {
+		delete owy;
+	}
+
+private:
+	std::string name;
+	std::map<int, int> rep;
+	gsl::owner<int *> owy;
+};
+//!DeletedDestructorWithSeveralSpecialOwners
+//@main.h
+struct Named_map {
+public:
+	~Named_map() = delete;
+
+	Named_map() noexcept :io {new int},ooooo {*(new int)},a {new int[4]},oo {*(new int[5])} {}
+	
+private:
+	std::string name;
+	std::map<int, int> rep;
+	gsl::owner<int *> io;
+	gsl::owner<int &> ooooo;
+	gsl::owner<int *> a;
+	gsl::owner<int &> oo;
+};
+//=
+struct Named_map {
+public:
+
+	~Named_map() {
+		delete io;
+		delete &ooooo;
+		delete[] a;
+		delete[] &oo;
+	}
+
+	Named_map() noexcept :io {new int},ooooo {*(new int)},a {new int[4]},oo {*(new int[5])} {}
+	
+private:
+	std::string name;
+	std::map<int, int> rep;
+	gsl::owner<int *> io;
+	gsl::owner<int &> ooooo;
+	gsl::owner<int *> a;
+	gsl::owner<int &> oo;
+};
+//!DeletedDestructorWithSeveralSpecialOwnersHasToBeInNewExpression
+//@main.h
+struct Named_map {
+public:
+	~Named_map() = delete;
+	
+	Named_map(const Named_map & rhs){
+		a = &(trickyNumber);
+	}
+
+	Named_map() noexcept :io {new int},ooooo {*(new int)},a {new int[4]},oo {*(new int[5])} {}
+	
+	Named_map& operator =(const Named_map & rhs){
+		a = &(trickyNumber);
+	}
+	
+private:
+	int trickyNumber;
+	std::map<int, int> rep;
+	gsl::owner<int *> io;
+	gsl::owner<int &> ooooo;
+	gsl::owner<int *> a;
+	gsl::owner<int &> oo;
+};
+//=
+struct Named_map {
+public:
+
+	~Named_map() {
+		delete io;
+		delete &ooooo;
+		delete[] a;
+		delete[] &oo;
+	}
+	
+	Named_map(const Named_map & rhs){
+		a = &(trickyNumber);
+	}
+
+	Named_map() noexcept :io {new int},ooooo {*(new int)},a {new int[4]},oo {*(new int[5])} {}
+	
+	Named_map& operator =(const Named_map & rhs){
+		a = &(trickyNumber);
+	}
+	
+private:
+	int trickyNumber;
+	std::map<int, int> rep;
+	gsl::owner<int *> io;
+	gsl::owner<int &> ooooo;
+	gsl::owner<int *> a;
+	gsl::owner<int &> oo;
+};
+//!DefaultDestructorWithOwnerInCPP
+//@main.h
+struct Named_map {
+public:
+	~Named_map();
+
+private:
+	std::string name;
+	std::map<int, int> rep;
+	gsl::owner<int *> owy;
+};
+//@main.cpp
+#include "main.h"
+Named_map::~Named_map() = default;
+//=
+#include "main.h"
+Named_map::~Named_map() {
+	delete owy;
+}
+//!SetAttributeDefaultDestructorWithOwner
+//@.config
+setIgnoreAttribute=true
+//@main.h
+struct Named_map {
+public:
+	~Named_map() = default;
+
+private:
+	std::string name;
+	std::map<int, int> rep;
+	gsl::owner<int *> owy;
+};
+//=
+struct Named_map {
+public:
+	[[gsl::suppress("Rc-dtor-release")]]
+	~Named_map() = default;
+
+private:
+	std::string name;
+	std::map<int, int> rep;
+	gsl::owner<int *> owy;
+};

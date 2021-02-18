@@ -1,0 +1,106 @@
+//!normalIfLabelOnlyUsedOnce
+//@.config
+markerLines=6
+//@main.h
+void doSomething() {}
+bool someCondition = false;
+
+void case1() {
+	doSomething();
+	if (someCondition) goto end1;
+	doSomething();
+	end1:
+	doSomething();
+}
+//!normalIfLabelUsedMultipleTimes
+//@.config
+markerLines=6,7
+//@main.h
+void doSomething() {}
+bool someCondition = false;
+
+void case2() {
+	doSomething();
+	if (someCondition) goto end2;
+	if (someCondition) goto end2;
+	doSomething();
+	end2:
+	doSomething();
+}
+//!ifGotoNotAlone
+//@.config
+markerLines=8
+//@main.h
+void doSomething() {}
+bool someCondition = false;
+
+void case1() {
+	doSomething();
+	if (someCondition) {
+		doSomething();
+		goto end1;
+	}
+	doSomething();
+	end1:
+	doSomething();
+}
+//!ifGotoInElse
+//@.config
+markerLines=7
+//@main.h
+void doSomething() {}
+bool someCondition = false;
+
+void case1() {
+	doSomething();
+	if (someCondition) doSomething();
+	else goto end1;
+	doSomething();
+	end1:
+	doSomething();
+}
+//!ifGotoInElseNotAlone
+//@.config
+markerLines=9
+//@main.h
+void doSomething() {}
+bool someCondition = false;
+
+void case1() {
+	doSomething();
+	if (someCondition) doSomething();
+	else {
+		doSomething();
+		goto end1;
+	}
+	doSomething();
+	end1:
+	doSomething();
+}
+//!normalIfLabelOnlyUsedOnceIgnored
+//@.config
+//@main.h
+void doSomething() {}
+bool someCondition = false;
+
+void case1() {
+	doSomething();
+	if (someCondition) [[gsl::suppress("Res-goto")]] goto end1;
+	doSomething();
+	end1:
+	doSomething();
+}
+//!normalIfLabelUsedMultipleTimesIgnored
+//@.config
+//@main.h
+void doSomething() {}
+bool someCondition = false;
+
+void case2() {
+	doSomething();
+	if (someCondition) [[gsl::suppress("Res-goto")]] goto end2;
+	if (someCondition) [[gsl::suppress("Res-goto")]] goto end2;
+	doSomething();
+	end2:
+	doSomething();
+}

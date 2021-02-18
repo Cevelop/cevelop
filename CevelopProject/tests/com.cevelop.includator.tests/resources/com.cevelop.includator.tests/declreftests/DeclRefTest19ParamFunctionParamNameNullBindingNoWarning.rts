@@ -1,0 +1,3 @@
+//!DeclRefTest19ParamFunctionParamNameNullBindingNoWarning
+//@main.cpp
+void foo(void(blub)(int i));

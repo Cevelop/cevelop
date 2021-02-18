@@ -1,0 +1,27 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>com.cevelop.features</artifactId>
+    <packaging>pom</packaging>
+    <parent>
+        <groupId>com.cevelop</groupId>
+        <artifactId>com.cevelop.root</artifactId>
+        <version>1.14.0-SNAPSHOT</version>
+    </parent>
+    <modules>
+        <module>com.cevelop.aliextor.feature</module>
+        <module>com.cevelop.charwars.feature</module>
+        <module>com.cevelop.clonewar.feature</module>
+        <module>com.cevelop.codeanalysator.feature</module>
+        <module>com.cevelop.constificator.feature</module>
+        <module>com.cevelop.ctylechecker.feature</module>
+        <module>com.cevelop.elevator.feature</module>
+        <module>com.cevelop.gslator.feature</module>
+        <module>com.cevelop.includator.feature</module>
+        <module>com.cevelop.intwidthfixator.feature</module>
+        <module>com.cevelop.macronator.feature</module>
+        <module>com.cevelop.namespactor.feature</module>
+        <module>com.cevelop.tdd.feature</module>
+        <module>com.cevelop.templator.feature</module>
+    </modules>
+</project>

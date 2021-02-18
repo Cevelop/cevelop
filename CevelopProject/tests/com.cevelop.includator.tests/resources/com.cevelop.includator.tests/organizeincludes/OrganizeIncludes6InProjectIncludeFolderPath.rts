@@ -1,0 +1,10 @@
+//!OrganizeIncludes6InProjectIncludeFolderPath
+//@src/main.cpp
+
+int main() {
+  A a;
+  return 0;
+}
+//@header/a/b/A.h
+class A { };
+

@@ -1,0 +1,10 @@
+#ifndef STDDEF_H_
+#define STDDEF_H_
+
+/* Simulation of system-headers for testing */
+
+namespace std {
+    using nullptr_t = decltype(nullptr);
+}
+
+#endif /* STDDEF_H_ */

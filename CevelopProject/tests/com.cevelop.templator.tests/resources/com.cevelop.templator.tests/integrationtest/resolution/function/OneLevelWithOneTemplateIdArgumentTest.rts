@@ -1,0 +1,11 @@
+//!OneLevelWithOneTemplateIdArgumentTest
+//@MyFileName.cpp
+
+template<typename T>
+T id(T value) {
+    return value;
+}
+
+int main() {
+    id<double>(5); //<double>
+}

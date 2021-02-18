@@ -1,0 +1,73 @@
+//!FunctionQuickFix
+//@main.h
+void func(char c) {	}
+int main() {
+	int i = 123;
+	func(i);
+}
+//=
+#include "gsl.h"
+void func(char c) {	}
+int main() {
+	int i = 123;
+	func(gsl::narrow_cast<char>(i));
+}
+//!FunctionWithMultipleParamsQuickFix
+//@main.h
+void func(char c, int i) {	}
+int main() {
+	int i = 123;
+	func(i, 5);
+}
+//=
+#include "gsl.h"
+void func(char c, int i) {	}
+int main() {
+	int i = 123;
+	func(gsl::narrow_cast<char>(i), 5);
+}
+//!FunctionCastQuickFix
+//@main.h
+void func(char c) {	}
+int main() {
+	int i = 123;
+	func((char) i);
+}
+//=
+#include "gsl.h"
+void func(char c) {	}
+int main() {
+	int i = 123;
+	func(gsl::narrow_cast<char>(i));
+}
+//!FunctionCastWithMultipleUnaryExpressionsQuickFix
+//@main.h
+void func(char c) {	}
+int main() {
+	int i = 123;
+	func((char) (((i))));
+}
+//=
+#include "gsl.h"
+void func(char c) {	}
+int main() {
+	int i = 123;
+	func(gsl::narrow_cast<char>(i));
+}
+//!FunctionQuickFixWithExistingGSL
+//@main.h
+#include "gsl.h"
+void func(char c) {	}
+int main() {
+	int i = 123;
+	short s = gsl::narrow_cast<short>(i); 
+	func(i);
+}
+//=
+#include "gsl.h"
+void func(char c) {	}
+int main() {
+	int i = 123;
+	short s = gsl::narrow_cast<short>(i); 
+	func(gsl::narrow_cast<char>(i));
+}

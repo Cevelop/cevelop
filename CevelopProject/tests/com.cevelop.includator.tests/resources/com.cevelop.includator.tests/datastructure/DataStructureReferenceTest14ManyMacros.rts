@@ -1,0 +1,14 @@
+//!DataStructureReferenceTest14ManyMacros
+//@A.cpp
+#define BBB
+
+#ifdef BBB
+#endif
+
+#ifndef BBB
+#elif defined(BBB)
+#endif
+
+#if defined(BBB)
+
+#undef BBB

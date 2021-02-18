@@ -1,0 +1,18 @@
+//!DataStructureReferenceTest32Constructor3 class member var
+//@A.cpp
+#include "X.h"
+class UseX {
+  X x;
+};
+int main() {
+  UseX useX;
+  return 0;
+}
+//@X.h
+class X {
+public:
+  X();
+};
+//@X.cpp
+#include "X.h"
+X::X() { }

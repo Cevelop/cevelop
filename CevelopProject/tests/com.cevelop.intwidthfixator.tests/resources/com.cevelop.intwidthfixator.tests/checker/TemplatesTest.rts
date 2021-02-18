@@ -1,0 +1,86 @@
+//!NestedTemplate
+//@.config
+markerLines=2
+//@main.cpp
+int main(){ 
+    std::vector<std::vector<std::vector<int>>> foo { };
+}
+
+//!ParameterIn_std::function
+//@.config
+markerLines=1
+//@main.cpp
+std::function<int()> foo = [] {
+    return 42;
+};
+
+//!TemplatedFunction
+//@.config
+markerLines=1
+//@main.cpp
+template<int I>
+void foo() {
+}
+
+//!VariadicTemplate
+//@.config
+markerLines=11,11,11,11,11
+//@main.cpp
+template<typename H>
+int adder(H head){
+    return head;
+}
+
+template<typename H, typename ... Tail>
+int adder(H head, Tail... tail) {
+  return head + adder(tail...);
+}
+
+int blaz = adder<char,short,int,long,long long>(42,42,42,42,42);
+
+//!Calling
+//@.config
+markerLines=6
+//@main.cpp
+template<typename T>
+void foo(T t) {
+}
+
+int main() {
+    foo<int>(42);
+}
+
+//!OnHeap
+//@.config
+markerLines=1,1
+//@main.cpp
+std::vector<int>* vectorPointer = new std::vector<int> {42,42,42};
+
+//!ClassTemplate
+//@.config
+markerLines=1
+//@main.cpp
+template<int I>
+class Foo {
+    int bar;
+    
+public:
+
+    Foo(int i){
+        bar = i*I;
+    }
+};
+
+int main(){
+    Foo foo30 = Foo<42>(7);
+}
+
+//!AllTypes
+//@.config
+markerLines=1,2,3,4,5
+//@main.cpp
+std::vector<char> v_char { };
+std::vector<short> v_short { };
+std::vector<int> v_int32t { };
+std::vector<long> v_long { };
+std::vector<long long> v_longlong { };

@@ -1,0 +1,12 @@
+//!Strdup
+//@main.cpp
+int main() {
+	char *str = strdup("Hello, World");
+	free(str);
+}
+//=
+#include <string>
+int main() {
+	std::string str = "Hello, World";
+}
+

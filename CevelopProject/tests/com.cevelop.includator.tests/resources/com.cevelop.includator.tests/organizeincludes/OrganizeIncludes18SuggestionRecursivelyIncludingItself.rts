@@ -1,0 +1,14 @@
+//!OrganizeIncludes18SuggestionRecursivelyIncludingItself
+//@main.cpp
+int main() {
+  a1();
+  a2();
+  return 0;
+}
+//@A.h
+#ifndef A_H
+#define A_H
+#include "A.h"
+void a1() { }
+void a2() { }
+#endif

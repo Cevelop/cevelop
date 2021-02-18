@@ -1,0 +1,91 @@
+//!recogniseCast
+//@.config
+markerLines=4,5,6,7,8,9,10,10
+//@main.h
+int main() {
+	int i = 0;
+	long l = 9;
+	i = (int) l;
+	i = (int) (l);
+	i = ((int)(l));
+	l = (long) i;
+	l = (long) (i);
+	l = ((long)(l));
+	l = ((long)((int)(l)));
+	i = int(l);
+	i = int((l));
+	i = (int((l)));
+	l = long(i);
+	l = long((i));
+	l = (long((l)));
+	l = (long((int((l)))));
+}
+//!dontRecogniseConstCast
+//@.config
+markerLines=7
+//@main.h
+class log {
+	static int lastAccessTimeStamp = 0;
+};
+
+class blubb {
+	int getVal() const {
+		long tstmp = (long) log::lastAccessTimeStamp;
+		long tstmp = (long) lastAccessTimeStamp;
+		return 0;
+	}
+	int lastAccessTimeStamp = 0;
+};
+//!ignore
+//@main.h
+int main() {
+	int i = 0;
+	long l = 9;
+	[[gsl::suppress("Res-casts-named")]] i = (int) l;
+	[[gsl::suppress("Res-casts-named")]] i = (int) (l);
+	[[gsl::suppress("Res-casts-named")]] i = ((int)(l));
+	[[gsl::suppress("Res-casts-named")]] l = (long) i;
+	[[gsl::suppress("Res-casts-named")]] l = (long) (i);
+	[[gsl::suppress("Res-casts-named")]] l = ((long)(l));
+	[[gsl::suppress("Res-casts-named")]] l = ((long)((int)(l)));
+
+	[[gsl::suppress("type")]] i = (int) l;
+	[[gsl::suppress("type")]] i = (int) (l);
+	[[gsl::suppress("type")]] i = ((int)(l));
+	[[gsl::suppress("type")]] l = (long) i;
+	[[gsl::suppress("type")]] l = (long) (i);
+	[[gsl::suppress("type")]] l = ((long)(l));
+	[[gsl::suppress("type")]] l = ((long)((int)(l)));
+
+	[[gsl::suppress("type.4")]] i = (int) l;
+	[[gsl::suppress("type.4")]] i = (int) (l);
+	[[gsl::suppress("type.4")]] i = ((int)(l));
+	[[gsl::suppress("type.4")]] l = (long) i;
+	[[gsl::suppress("type.4")]] l = (long) (i);
+	[[gsl::suppress("type.4")]] l = ((long)(l));
+	[[gsl::suppress("type.4")]] l = ((long)((int)(l)));
+}
+//!castsInMacro
+//@main.h
+#define MACRO_1(val) (int) val
+#define MACRO_2(val) (int) (val)
+#define MACRO_3(val) ((int)(val))
+#define MACRO_4(val) (long) val
+#define MACRO_5(val) (long) (val)
+#define MACRO_6(val) ((long)(val))
+#define MACRO_7(val) ((long)((int)(val)))
+
+int main() {
+	int i = 0;
+	long l = 9;
+	i = MACRO_1(l);
+	i = MACRO_2(l);
+	i = MACRO_3(l);
+	l = MACRO_4(i);
+	l = MACRO_5(i);
+	l = MACRO_6(l);
+	l = MACRO_7(l);
+
+	i = MACRO_1(l);
+	l = MACRO_7(l);
+}

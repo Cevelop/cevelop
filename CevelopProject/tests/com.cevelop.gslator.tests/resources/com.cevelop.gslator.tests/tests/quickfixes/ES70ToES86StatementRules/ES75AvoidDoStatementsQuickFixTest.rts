@@ -1,0 +1,136 @@
+//!dowhilestatement
+//@main.h
+void doSomething() {}
+bool someCheck() {return false;}
+
+void bla() {
+	do {
+	    doSomething();
+	} while (someCheck());
+}
+//=
+void doSomething() {}
+bool someCheck() {return false;}
+
+void bla() {
+	bool firstRun = true;
+	while (firstRun || (someCheck())) {
+		firstRun = false;
+		doSomething();
+	}
+}
+//!dowhilestatementWithModifyingCheck
+//@main.h
+#include <iostream>
+void doSomething(int i) { }
+bool someCheck() {return false;}
+
+void bla() {
+	int i = 0;
+	do {
+		doSomething(i);
+	} while (someCheck() || i++ < 10);
+}
+//=
+#include <iostream>
+void doSomething(int i) { }
+bool someCheck() {return false;}
+
+void bla() {
+	int i = 0;
+	bool firstRun = true;
+	while (firstRun || (someCheck() || i++ < 10)) {
+		firstRun = false;
+		doSomething(i);
+	}
+}
+//!dowhilestatementWithExistingFirstRun
+//@main.h
+void doSomething() {}
+bool someCheck() {return false;}
+
+void bla() {
+	bool firstRun = true;
+	while (firstRun || (someCheck())) {
+		firstRun = false;
+		doSomething();
+	}
+	do {
+	    doSomething();
+	} while (someCheck());
+}
+//=
+void doSomething() {}
+bool someCheck() {return false;}
+
+void bla() {
+	bool firstRun = true;
+	while (firstRun || (someCheck())) {
+		firstRun = false;
+		doSomething();
+	}
+	bool firstRun1 = true;
+	while (firstRun1 || (someCheck())) {
+		firstRun1 = false;
+		doSomething();
+	}
+}
+//!dowhilestatementWithMultipleExistingFirstRun
+//@main.h
+void doSomething() {}
+bool someCheck() {return false;}
+
+void bla() {
+	bool firstRun = true;
+	bool firstRun1 = true;
+	bool firstRun2 = true;
+	bool firstRun3 = true;
+	bool firstRun4 = true;
+	bool firstRun6 = true;
+	bool firstRun7 = true;
+	
+	do {
+	    doSomething();
+	} while (someCheck());
+}
+//=
+void doSomething() {}
+bool someCheck() {return false;}
+
+void bla() {
+	bool firstRun = true;
+	bool firstRun1 = true;
+	bool firstRun2 = true;
+	bool firstRun3 = true;
+	bool firstRun4 = true;
+	bool firstRun6 = true;
+	bool firstRun7 = true;
+
+	bool firstRun5 = true;
+	while (firstRun5 || (someCheck())) {
+		firstRun5 = false;
+		doSomething();
+	}
+}
+//!setIgnoreAttribute
+//@.config
+setIgnoreAttribute=true
+//@main.h
+void doSomething() {}
+bool someCheck() {return false;}
+
+void bla() {
+	do {
+		doSomething();
+	} while (someCheck());
+}
+//=
+void doSomething() {}
+bool someCheck() {return false;}
+
+void bla() {
+	[[gsl::suppress("Res-do")]]
+	do {
+		doSomething();
+	} while (someCheck());
+}

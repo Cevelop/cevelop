@@ -1,0 +1,17 @@
+//!TypedefToClass
+//@src/main.cpp
+#include "templ.h"
+
+typedef Templ T;
+
+int main(int argc, char **argv) {
+	T *t2;
+	return 0;
+}
+//@src/templ.h
+class Templ {
+public:
+	Templ();
+	virtual ~Templ();
+	void foo();
+};

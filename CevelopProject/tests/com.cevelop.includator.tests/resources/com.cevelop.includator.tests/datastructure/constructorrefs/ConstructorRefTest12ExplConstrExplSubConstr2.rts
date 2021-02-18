@@ -1,0 +1,23 @@
+//!ConstructorRefTest12ExplConstrExplSubConstr2
+//@A.cpp
+#include "Y.h"
+#include "globalZ.h"
+
+Y::Y() : z(globalZ) { }
+Y::Y(const Y &y) : z() { }
+//@Y.h
+#include "Z.h"
+class Y {
+public:
+  Y();
+  Y(const Y &y);
+  Z z;
+};
+//@Z.h
+class Z {
+public:
+  Z() { }
+  Z(const Z &z) { }
+};
+//@globalZ.h
+Z globalZ; //uesd as copyConstr argument

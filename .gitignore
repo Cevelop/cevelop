@@ -1,0 +1,17 @@
+.DS_STORE
+.DS_Store
+.api_description
+.bundledata*
+.contributions*
+.contributors*
+.settings
+**/target/
+**/bin/
+*.class
+/*/surefire-reports/
+runtime-EclipseApplication/
+junit-workspace/
+.metadata/
+.polyglot.build.properties
+**/com.cevelop.charwars/lib/
+.recommenders

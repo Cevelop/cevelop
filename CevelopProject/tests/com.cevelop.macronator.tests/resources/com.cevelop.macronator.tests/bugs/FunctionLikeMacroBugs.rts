@@ -1,0 +1,11 @@
+//!ShouldNotSuggestTransformationForStringConcatenationMacros
+//@main.cpp
+#define ASM_COMMENT(X)  asm("#" X)
+
+//!DontTransformDefinitionsThatAreNotInGlobalScope
+//@main.cpp
+int main() {
+    #define MACRO(X) X
+    int a = 5;
+    MACRO(a);
+}

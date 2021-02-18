@@ -1,0 +1,11 @@
+//!HelperTest3FindHeaderFile3
+//@A.cpp
+#include "X/A.h"
+#include "A.h"
+int main() {
+	return 0;
+}
+//@A.h
+class A1 { };
+//@X/A.h
+class A2 { };

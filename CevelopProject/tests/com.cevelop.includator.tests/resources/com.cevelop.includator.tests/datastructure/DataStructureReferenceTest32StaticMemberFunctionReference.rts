@@ -1,0 +1,14 @@
+//!DataStructureReferenceTest32StaticMemberFunctionReference
+//@main.cpp
+#include "A.h"
+
+int main() {
+    A::nodeID();
+	return 0;
+}
+//@A.h
+class A
+{
+public:
+  static const char* nodeID() { return "nodeid"; }
+}

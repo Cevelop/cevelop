@@ -1,0 +1,425 @@
+//!whileLabelOnlyUsedOnce
+//@.config
+isApplicable=true
+//@main.h
+void doSomething() {}
+bool someCondition = false;
+
+void case3() {
+	doSomething();
+	loop1:
+	doSomething();
+	if(someCondition) goto loop1;
+	doSomething();
+}
+//=
+void doSomething() {}
+bool someCondition = false;
+
+void case3() {
+	doSomething();
+	bool firstRun = true;
+	while (firstRun || (someCondition)) {
+		firstRun = false;
+		doSomething();
+	}
+	doSomething();
+}
+//!whileLabelUsedMultipleTimes
+//@.config
+isApplicable=true
+//@main.h
+void doSomething() {}
+bool someCondition = false;
+
+void case4() {
+	doSomething();
+	loop2:
+	doSomething();
+	if(someCondition) goto loop2;
+	if(someCondition) [[gsl::suppress("Res-goto")]] goto loop2;
+	doSomething();
+}
+//=
+void doSomething() {}
+bool someCondition = false;
+
+void case4() {
+	doSomething();
+	loop2:
+	bool firstRun = true;
+	while (firstRun || (someCondition)) {
+		firstRun = false;
+		doSomething();
+	}
+	if(someCondition) [[gsl::suppress("Res-goto")]] goto loop2;
+	doSomething();
+}
+//!whileWithElse
+//@.config
+isApplicable=true
+//@main.h
+void doSomething() {}
+void doSomethingElse() {}
+bool someCondition = false;
+
+void case3() {
+	doSomething();
+	loop1:
+	doSomething();
+	if(someCondition) goto loop1;
+	else doSomethingElse();
+	doSomething();
+}
+//=
+void doSomething() {}
+void doSomethingElse() {}
+bool someCondition = false;
+
+void case3() {
+	doSomething();
+	bool firstRun = true;
+	while (firstRun || (someCondition)) {
+		firstRun = false;
+		doSomething();
+	}
+	doSomethingElse();
+	doSomething();
+}
+//!whileWithBiggerElse
+//@.config
+isApplicable=true
+//@main.h
+void doSomething() {}
+void doSomethingElse() {}
+void doSomethingElseAgain() {}
+bool someCondition = false;
+
+void case3() {
+	doSomething();
+	loop1:
+	doSomething();
+	if(someCondition) goto loop1;
+	else {
+		doSomethingElse();
+		doSomethingElseAgain();
+	}
+	doSomething();
+}
+//=
+void doSomething() {}
+void doSomethingElse() {}
+void doSomethingElseAgain() {}
+bool someCondition = false;
+
+void case3() {
+	doSomething();
+	bool firstRun = true;
+	while (firstRun || (someCondition)) {
+		firstRun = false;
+		doSomething();
+	}
+	doSomethingElse();
+	doSomethingElseAgain();
+	doSomething();
+}
+//!whileWithMultiStatementElse
+//@.config
+isApplicable=true
+//@main.h
+void doSomething() {}
+void doSomethingElse() {}
+bool someCondition = false;
+
+void case3() {
+	doSomething();
+	loop1:
+	doSomething();
+	if(someCondition) goto loop1;
+	else {
+		doSomething();
+		doSomethingElse();
+	}
+	doSomething();
+}
+//=
+void doSomething() {}
+void doSomethingElse() {}
+bool someCondition = false;
+
+void case3() {
+	doSomething();
+	bool firstRun = true;
+	while (firstRun || (someCondition)) {
+		firstRun = false;
+		doSomething();
+	}
+	doSomething();
+	doSomethingElse();
+	doSomething();
+}
+//!NotApplicableIfNormalIfLabelOnlyUsedOnce
+//@.config
+isApplicable=false
+//@main.h
+void doSomething() {}
+bool someCondition = false;
+
+void case1() {
+	doSomething();
+	if (someCondition) goto end1;
+	doSomething();
+	end1:
+	doSomething();
+}
+//!NotApplicableIfNormalIfLabelUsedMultipleTimes
+//@.config
+isApplicable=false
+//@main.h
+void doSomething() {}
+bool someCondition = false;
+
+void case2() {
+	doSomething();
+	if (someCondition) [[gsl::suppress("Res-goto")]] goto end1;
+	if (someCondition) goto end1;
+	doSomething();
+	end1:
+	doSomething();
+}
+//!NotApplicableIfNormalIfWithElse
+//@.config
+isApplicable=false
+//@main.h
+void doSomething() {}
+void doSomethingElse() {}
+bool someCondition = false;
+
+void case1() {
+	doSomething();
+	if (someCondition) goto end1;
+    else doSomethingElse();
+	doSomething();
+	end1:
+	doSomething();
+}
+//!NotApplicableIfNormalIfWithMultilineElse
+//@.config
+isApplicable=false
+//@main.h
+void doSomething() {}
+void doSomethingElse() {}
+void doSomethingElseAgain() {}
+bool someCondition = false;
+
+void case1() {
+	doSomething();
+	if (someCondition) goto end1;
+    else {
+		doSomethingElse();
+		doSomethingElseAgain();
+	}
+	doSomething();
+	end1:
+	doSomething();
+}
+//!NotApplicableIfIfNotAloneInThenStatement
+//@.config
+isApplicable=false
+//@main.h
+void doSomething() {}
+void doSomethingCond() {}
+bool someCondition = false;
+
+void case1() {
+	doSomething();
+	if (someCondition) {
+		doSomethingCond();
+		goto end1;
+	}
+	doSomething();
+	end1:
+	doSomething();
+}
+//!NotApplicableIfIfWithGotoInElseAlone
+//@.config
+isApplicable=false
+//@main.h
+void doSomething() {}
+void doSomethingCond() {}
+bool someCondition = false;
+
+void case1() {
+	doSomething();
+	if (someCondition) {
+		doSomethingCond();
+	}
+	else goto end1;
+	doSomething();
+	end1:
+	doSomething();
+}
+//!NotApplicableIfIfWithGotoInElseAloneBracketed
+//@.config
+isApplicable=false
+//@main.h
+void doSomething() {}
+void doSomethingCond() {}
+bool someCondition = false;
+
+void case1() {
+	doSomething();
+	if (someCondition) {
+		doSomethingCond();
+	} else {
+		goto end1;
+	}
+	doSomething();
+	end1:
+	doSomething();
+}
+//!NotApplicableIfIfWithGotoInElseNotAlone
+//@.config
+isApplicable=false
+//@main.h
+void doSomething() {}
+void doSomethingElse() {}
+void doSomethingCond() {}
+bool someCondition = false;
+
+void case1() {
+	doSomething();
+	if (someCondition) {
+		doSomethingCond();
+	} else {
+		doSomethingElse();
+		goto end1;
+	}
+	doSomething();
+	end1:
+	doSomething();
+}
+//!NotApplicableBreakLabelOnlyUsedOnce
+//@.config
+isApplicable=false
+//@main.h
+void doSomething() {}
+bool someCondition = false;
+
+void case5() {
+	doSomething();
+	while(someCondition) {
+		doSomething();
+		if (someCondition) goto exit1;
+		doSomething();
+	}
+	exit1:
+	doSomething();
+}
+//!NotApplicableBreakLabelUsedMultipleTimes
+//@.config
+isApplicable=false
+//@main.h
+void doSomething() {}
+bool someCondition = false;
+
+void case6() {
+	doSomething();
+	while(someCondition) {
+		doSomething();
+		if (someCondition) goto exit2;
+		if (someCondition) [[gsl::suppress("Res-goto")]] goto exit2;
+		doSomething();
+	}
+	// doSomething(69); <- with this the quickfix would not be valid
+	exit2:
+	doSomething();
+}
+//!NotApplicableMultibreak1
+//@.config
+isApplicable=false
+//@main.h
+void doSomething() {}
+bool someCondition = false;
+
+void case7() {
+	doSomething();
+	while (someCondition) {
+		while (someCondition) {
+			doSomething();
+			if(someCondition) goto exit3;
+			doSomething();
+		}
+	}
+	// doSomething(69); <- with this the quickfix would not be valid
+	exit3:
+	doSomething();
+}
+//!NotApplicableMultibreak2
+//@.config
+isApplicable=false
+//@main.h
+void doSomething() {}
+bool someCondition = false;
+
+void case8() {
+	doSomething();
+	while (someCondition) {
+		while (someCondition) {
+			while (someCondition) {
+				doSomething();
+				if (someCondition) goto exit2;
+				doSomething();
+			}
+		}
+	}
+	exit2:
+	doSomething();
+}
+//!NotApplicableMultibreak3
+//@.config
+isApplicable=false
+//@main.h
+void doSomething() {}
+bool someCondition = false;
+
+void case7() {
+	doSomething();
+	while (someCondition) {
+		while (someCondition) {
+			doSomething();
+			if (someCondition) goto exit3;
+			if (someCondition) [[gsl::suppress("Res-goto")]] goto exit3;
+			doSomething();
+		}
+	}
+	exit3:
+	doSomething();
+}
+//!setIgnoreAttribute
+//@.config
+setIgnoreAttribute=true
+//@main.h
+void doSomething() {}
+bool someCondition = false;
+
+void case3() {
+	doSomething();
+	loop1:
+	doSomething();
+	if (someCondition) goto loop1;
+	doSomething();
+}
+//=
+void doSomething() {}
+bool someCondition = false;
+
+void case3() {
+	doSomething();
+	loop1:
+	doSomething();
+	if (someCondition)
+		[[gsl::suppress("Res-goto")]]
+		goto loop1;
+	doSomething();
+}

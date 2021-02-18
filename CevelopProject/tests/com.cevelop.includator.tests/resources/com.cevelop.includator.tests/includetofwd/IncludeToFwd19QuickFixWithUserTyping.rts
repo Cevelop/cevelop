@@ -1,0 +1,18 @@
+//!IncludeToFwd19QuickFixWithUserTyping
+//@main.cpp
+#include "B.h"
+#include "A.h"
+B b;
+A *a;
+//=
+//blub
+#include "B.h"
+//blub
+class A;
+B b;
+//blub
+A *a;
+//@A.h
+class A { };
+//@B.h
+class B { };

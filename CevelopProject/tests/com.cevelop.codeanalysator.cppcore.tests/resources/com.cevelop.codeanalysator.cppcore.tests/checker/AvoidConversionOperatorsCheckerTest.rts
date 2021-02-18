@@ -1,0 +1,51 @@
+//!OneConversionOperator
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|CPPCORE_GUIDELINE_ID)
+markerLines=3
+//@main.h
+struct B;
+struct A {
+	operator B() {
+		return B();
+	}
+};
+//!OneComplexConversionOperator
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|CPPCORE_GUIDELINE_ID)
+markerLines=2
+//@main.h
+struct A {
+	operator int const *() const ;
+};
+//!MultipleConversionOperators
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|CPPCORE_GUIDELINE_ID)
+markerLines=5,8
+//@main.h
+struct A;
+struct B {
+	B()=default;
+	B (const A& x) {}
+	operator int const *() const ;
+};
+struct A {
+	operator B() {
+		return B();
+	}
+};
+//!Ignored
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|CPPCORE_GUIDELINE_ID)
+//@main.h
+struct A;
+struct B {
+	B()=default;
+	B (const A& x) {}
+	[[gsl::suppress("C.164")]] operator int const *() const ;
+};
+struct A {
+	[[gsl::suppress("C.164")]]
+	operator B() {
+		return B();
+	}
+};

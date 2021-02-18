@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin
+>
+   <extension
+         id="com.cevelop.ctylechecker.stylecheckers"
+         name="C Plus Plus Style Checkers"
+         point="org.eclipse.cdt.codan.core.checkers">
+      <category
+            id="com.cevelop.ctylechecker.category"
+            name="C++ Style Checkers">
+      </category>
+      <checker
+            class="com.cevelop.ctylechecker.checker.io.IostreamChecker"
+            id="com.cevelop.ctylechecker.iostreamchecker"
+            name="Iostream Include Checker">
+         <problem
+               category="com.cevelop.ctylechecker.category"
+               defaultEnabled="true"
+               defaultSeverity="Warning"
+               description="Include to iostream outside source file with main"
+               id="com.cevelop.ctylechecker.problems.iostream"
+               markerType="com.cevelop.ctylechecker.marker.stylemarker"
+               messagePattern="Include to iostream outside source file with main"
+               multiple="true"
+               name="Iostream Include Problem">
+         </problem>
+      </checker>
+      <checker
+            class="com.cevelop.ctylechecker.checker.io.CinCoutChecker"
+            id="com.cevelop.ctylechecker.cincoutchecker"
+            name="Cin Cout Checker">
+         <problem
+               category="com.cevelop.ctylechecker.category"
+               defaultEnabled="true"
+               defaultSeverity="Warning"
+               description="Cin/Cout should only be used inside the main function"
+               id="com.cevelop.ctylechecker.problems.cincout"
+               markerType="com.cevelop.ctylechecker.marker.stylemarker"
+               messagePattern="Cin/Cout should only be used inside the main function"
+               multiple="true"
+               name="Cin Cout Problem">
+         </problem>
+      </checker>
+      <checker
+            class="com.cevelop.ctylechecker.checker.header.UsingChecker"
+            id="com.cevelop.ctylechecker.usingchecker"
+            name="Using in Header Checker">
+         <problem
+               category="com.cevelop.ctylechecker.category"
+               defaultEnabled="true"
+               defaultSeverity="Warning"
+               description="Usings declarations and directives should not be used in header files"
+               id="com.cevelop.ctylechecker.problems.using"
+               markerType="com.cevelop.ctylechecker.marker.stylemarker"
+               messagePattern="Using declarations and directives should not be used in header files"
+               multiple="true"
+               name="Using in Header Problem">
+         </problem>
+      </checker>
+      <checker
+            class="com.cevelop.ctylechecker.checker.header.IncludeGuardChecker"
+            id="com.cevelop.ctylechecker.includeguardchecker"
+            name="Include Guard Checker">
+         <problem
+               category="com.cevelop.ctylechecker.category"
+               defaultEnabled="true"
+               defaultSeverity="Warning"
+               description="Header files should have an include guard"
+               id="com.cevelop.ctylechecker.problems.includeguard"
+               markerType="com.cevelop.ctylechecker.marker.stylemarker"
+               messagePattern="Header files should have an include guard for symbol {0}."
+               multiple="true"
+               name="Include Guard Missing">
+         </problem>
+      </checker>
+      <checker
+            class="com.cevelop.ctylechecker.checker.includes.SelfIncludeChecker"
+            id="com.cevelop.ctylechecker.selfincludechecker"
+            name="Self Include Position Checker">
+         <problem
+               category="com.cevelop.ctylechecker.category"
+               defaultEnabled="true"
+               defaultSeverity="Warning"
+               description="There should be an include to the own header from a source file"
+               id="com.cevelop.ctylechecker.problems.missingselfinclude"
+               markerType="com.cevelop.ctylechecker.marker.stylemarker"
+               messagePattern="Missing Include to Own Header ''{0}''"
+               name="Missing Include to Own Header">
+         </problem>
+         <problem
+               category="com.cevelop.ctylechecker.category"
+               defaultEnabled="true"
+               defaultSeverity="Warning"
+               description="Include to Own Header Should be the First Include"
+               id="com.cevelop.ctylechecker.problems.selfincludeposition"
+               markerType="com.cevelop.ctylechecker.marker.stylemarker"
+               messagePattern="Include to Own Header ({0}) Should be the First Include"
+               name="Self Include Position">
+         </problem>
+      </checker>
+      <checker
+            class="com.cevelop.ctylechecker.checker.cute.AssertChecker"
+            id="com.cevelop.ctylechecker.assertchecker"
+            name="Assert in Cute Test Checker">
+         <problem
+               category="com.cevelop.ctylechecker.category"
+               defaultEnabled="true"
+               defaultSeverity="Warning"
+               description="A test should only contain one assert."
+               id="com.cevelop.ctylechecker.problems.multipleasserts"
+               markerType="com.cevelop.ctylechecker.marker.stylemarker"
+               messagePattern="A test should only contain one assert."
+               name="Multiple Asserts in Cute Test">
+         </problem>
+      </checker>
+         <checker
+            class="com.cevelop.ctylechecker.checker.global.GlobalNonConstVariableChecker"
+            id="com.cevelop.ctylechecker.globalnonconstchecker"
+            name="Global Non Const Checker">
+         <problem
+               category="com.cevelop.ctylechecker.category"
+               defaultEnabled="true"
+               defaultSeverity="Warning"
+               description="Global variable is not const."
+               id="com.cevelop.ctylechecker.problems.globalnonconstvar"
+               markerType="com.cevelop.ctylechecker.marker.stylemarker"
+               messagePattern="Global variable is not const."
+               name="Global Non Const Variable Problem">
+         </problem>
+      </checker>
+         <checker
+               class="com.cevelop.ctylechecker.checker.includes.NonSystemIncludesFirstChecker"
+               id="com.cevelop.ctylechecker.NonSystemIncludesFirstChecker"
+               name="Non-System-Includes First Checker">
+            <problem
+                  category="com.cevelop.ctylechecker.category"
+                  defaultEnabled="true"
+                  defaultSeverity="Warning"
+                  description="Own includes (&quot;&quot;) should be before system includes (&lt;&gt;)."
+                  id="com.cevelop.ctylechecker.problems.nonsystemincludesfirst"
+                  markerType="com.cevelop.ctylechecker.marker.stylemarker"
+                  messagePattern="Own includes (&quot;&quot;) should be before system includes (&lt;&gt;)."
+                  name="System Include Before Own Include">
+            </problem>
+         </checker>
+         <checker
+               class="com.cevelop.ctylechecker.checker.includes.MissingStandardIncludeChecker"
+               id="com.cevelop.ctylechecker.missingstandardincludechecker"
+               name="Missing Standard Include Checker">
+            <problem
+                  category="com.cevelop.ctylechecker.category"
+                  defaultEnabled="true"
+                  defaultSeverity="Warning"
+                  description="Missing standard include"
+                  id="com.cevelop.ctylechecker.problems.missingstandardinclude"
+                  markerType="com.cevelop.ctylechecker.marker.stylemarker"
+                  messagePattern="Missing standard include &lt;{0}&gt;"
+                  multiple="true"
+                  name="Missing Standard Include">
+            </problem>
+         </checker>
+         <checker
+               class="com.cevelop.ctylechecker.checker.includes.SuperfluousStandardIncludeChecker"
+               id="com.cevelop.ctylechecker.superfluousstandardincludechecker"
+               name="Superfluous Standard Include Checker">
+            <problem
+                  category="com.cevelop.ctylechecker.category"
+                  defaultEnabled="true"
+                  defaultSeverity="Warning"
+                  description="Include not required"
+                  id="com.cevelop.ctylechecker.problems.superfluousstandardinclude"
+                  markerType="com.cevelop.ctylechecker.marker.stylemarker"
+                  messagePattern="Include &lt;{0}&gt; is not required"
+                  multiple="true"
+                  name="Superfluous Standard Include">
+            </problem>
+         </checker>
+         <checker
+               class="com.cevelop.ctylechecker.checker.classes.MemberInitializerChecker"
+               id="com.cevelop.ctylechecker.memberinitializerchecker"
+               name="Member Initializer Checker">
+            <problem
+                  category="com.cevelop.ctylechecker.category"
+                  defaultEnabled="true"
+                  defaultSeverity="Warning"
+                  description="Initialization of members should be in the constructors member initializer list"
+                  id="com.cevelop.ctylechecker.problems.memberinitializernotused"
+                  markerType="com.cevelop.ctylechecker.marker.stylemarker"
+                  messagePattern="Initialization of members should be in the constructors member initializer list"
+                  name="Member Initializer Not Used In Constructor">
+            </problem>
+         </checker>
+         <checker
+               class="com.cevelop.ctylechecker.checker.classes.ExplicitConstructorChecker"
+               id="com.cevelop.ctylechecker.explicitconstructorchecker"
+               name="Explicit Constructor Checker">
+            <problem
+                  category="com.cevelop.ctylechecker.category"
+                  defaultEnabled="true"
+                  defaultSeverity="Warning"
+                  description="Constructors callable with a single argument should be &apos;explicit&apos;"
+                  id="com.cevelop.ctylechecker.problems.constructorshouldbeexplicit"
+                  markerType="com.cevelop.ctylechecker.marker.stylemarker"
+                  messagePattern="Constructors callable with a single argument should be &apos;explicit&apos;"
+                  name="Non-&apos;explicit&apos; Single Argument Constructor">
+            </problem>
+         </checker>
+         <checker
+            class="com.cevelop.ctylechecker.checker.dynamic.DynamicStyleChecker"
+            id="com.cevelop.ctylechecker.dynamicstylechecker"
+            name="Dynamic Style Checker">
+         <problem
+               category="com.cevelop.ctylechecker.category"
+               defaultEnabled="true"
+               defaultSeverity="Warning"
+               description="Dynamic Style Problem"
+               id="com.cevelop.ctylechecker.problems.dynamicstyleproblem"
+               markerType="com.cevelop.ctylechecker.marker.stylemarker"
+               messagePattern="{0}"
+               name="Dynamic Style Problem">
+         </problem>
+         <problem
+               category="com.cevelop.ctylechecker.category"
+               defaultEnabled="true"
+               defaultSeverity="Warning"
+               description="Dynamic Style Problem For Files"
+               id="com.cevelop.ctylechecker.problems.dynamicstyleproblemforfiles"
+               markerType="com.cevelop.ctylechecker.marker.filestylemarker"
+               messagePattern="{0}"
+               name="Dynamic Style Problem For Files">
+         </problem>
+      </checker>
+         <checker
+               class="com.cevelop.ctylechecker.checker.classes.RedundantAccessSpecifierChecker"
+               id="com.cevelop.ctylechecker.redundantaccessspecifierchecker"
+               name="Redundant Access Specifier Checker">
+            <problem
+                  category="com.cevelop.ctylechecker.category"
+                  defaultEnabled="true"
+                  defaultSeverity="Warning"
+                  description="Redundant access specifier, which does not change the previously existing visibility."
+                  id="com.cevelop.ctylechecker.problems.redundantaccessspecifier"
+                  markerType="com.cevelop.ctylechecker.marker.stylemarker"
+                  messagePattern="Redundant access specifier. Visibility is already &quot;{0}&quot;."
+                  name="Redundant Access Specifier Problem">
+            </problem>
+         </checker>
+   </extension>
+   <extension
+         id="com.cevelop.ctylechecker.marker.stylemarker"
+         name="Ctylecheck Marker"
+         point="org.eclipse.core.resources.markers">
+      <super
+            type="org.eclipse.core.resources.problemmarker">
+      </super>
+      <super
+            type="org.eclipse.core.resources.textmarker">
+      </super>
+      <super
+            type="org.eclipse.cdt.codan.core.codanProblem">
+      </super>
+      <persistent
+            value="false">
+      </persistent>
+   </extension>
+   <extension
+         point="org.eclipse.ui.editors.annotationTypes">
+      <type
+            markerSeverity="1"
+            markerType="com.cevelop.ctylechecker.marker.stylemarker"
+            name="com.cevelop.ctylechecker.annotation.styleannotation"
+            super="org.eclipse.ui.workbench.texteditor.warning">
+      </type>
+      <type
+            markerSeverity="1"
+            markerType="com.cevelop.ctylechecker.marker.filestylemarker"
+            name="com.cevelop.ctylechecker.annotation.filestyleannotation"
+            super="org.eclipse.ui.workbench.texteditor.warning">
+      </type>
+   </extension>
+   <extension
+         point="org.eclipse.ui.editors.markerAnnotationSpecification">
+      <specification
+            annotationType="com.cevelop.ctylechecker.annotation.styleannotation"
+            colorPreferenceKey="com.cevelop.ctylechecker.annotation.specifiction.colorprefkey"
+            colorPreferenceValue="0,0,255"
+            contributesToHeader="true"
+            highlightPreferenceKey="com.cevelop.ctylechecker.annotation.specifiction.highlightprefkey"
+            highlightPreferenceValue="false"
+            icon="icons/icon-blue-s.png"
+            includeOnPreferencePage="true"
+            isGoToNextNavigationTarget="true"
+            isGoToNextNavigationTargetKey="com.cevelop.ctylechecker.annotation.specifiction.isgotonextnavigationtargetkey"
+            isGoToPreviousNavigationTarget="true"
+            isGoToPreviousNavigationTargetKey="com.cevelop.ctylechecker.annotation.specifiction.isgotopreviousnavigationtargetkey"
+            label="Ctyle Problem"
+            overviewRulerPreferenceKey="com.cevelop.ctylechecker.annotation.specifiction.overviewrulerprefkex"
+            overviewRulerPreferenceValue="true"
+            presentationLayer="0"
+            quickFixIcon="icons/icon-blue-s.png"
+            showInNextPrevDropdownToolbarAction="true"
+            showInNextPrevDropdownToolbarActionKey="com.cevelop.ctylechecker.annotation.specifiction.showinnextprevdropdowntoolbaractionkey"
+            textPreferenceKey="com.cevelop.ctylechecker.annotation.specifiction.textprefkey"
+            textPreferenceValue="true"
+            textStylePreferenceKey="com.cevelop.ctylechecker.annotation.specifiction.textstyleprefkey"
+            textStylePreferenceValue="SQUIGGLES"
+            verticalRulerPreferenceKey="com.cevelop.ctylechecker.annotation.specifiction.verticalrulerprefkey"
+            verticalRulerPreferenceValue="true">
+      </specification>
+      <specification
+            annotationType="com.cevelop.ctylechecker.annotation.filestyleannotation"
+            colorPreferenceKey="com.cevelop.ctylechecker.annotation.specifiction.colorprefkey"
+            colorPreferenceValue="0,0,255"
+            contributesToHeader="true"
+            highlightPreferenceKey="com.cevelop.ctylechecker.annotation.specifiction.highlightprefkey"
+            highlightPreferenceValue="false"
+            icon="icons/icon-blue-s-file.png"
+            includeOnPreferencePage="true"
+            isGoToNextNavigationTarget="true"
+            isGoToNextNavigationTargetKey="com.cevelop.ctylechecker.annotation.specifiction.isgotonextnavigationtargetkey"
+            isGoToPreviousNavigationTarget="true"
+            isGoToPreviousNavigationTargetKey="com.cevelop.ctylechecker.annotation.specifiction.isgotopreviousnavigationtargetkey"
+            label="File Ctyle Problem"
+            overviewRulerPreferenceKey="com.cevelop.ctylechecker.annotation.specifiction.overviewrulerprefkex"
+            overviewRulerPreferenceValue="true"
+            presentationLayer="0"
+            quickFixIcon="icons/icon-blue-s-file.png"
+            showInNextPrevDropdownToolbarAction="true"
+            showInNextPrevDropdownToolbarActionKey="com.cevelop.ctylechecker.annotation.specifiction.showinnextprevdropdowntoolbaractionkey"
+            textPreferenceKey="com.cevelop.ctylechecker.annotation.specifiction.textprefkey"
+            textPreferenceValue="true"
+            textStylePreferenceKey="com.cevelop.ctylechecker.annotation.specifiction.textstyleprefkey"
+            textStylePreferenceValue="SQUIGGLES"
+            verticalRulerPreferenceKey="com.cevelop.ctylechecker.annotation.specifiction.verticalrulerprefkey"
+            verticalRulerPreferenceValue="true">
+      </specification>
+   </extension>
+   <extension point="ch.hsr.ifs.iltis.cpp.core.infoMarkerResolution">
+      <resolution
+            class="com.cevelop.ctylechecker.quickfix.includes.MissingStandardIncludeQuickfix"
+            messagePattern="Missing standard include &lt;(.*)&gt;"
+            problemId="com.cevelop.ctylechecker.problems.missingstandardinclude">
+            <info class="com.cevelop.ctylechecker.infos.CtyleCheckerInfo"/>
+      </resolution>
+      <resolution
+            class="com.cevelop.ctylechecker.quickfix.includes.MissingUserIncludeQuickfix"
+            messagePattern="Missing self include &quot;(.*)&quot;"
+            problemId="com.cevelop.ctylechecker.problems.missingselfinclude">
+            <info class="com.cevelop.ctylechecker.infos.CtyleCheckerInfo"/>
+      </resolution>
+      <resolution
+            class="com.cevelop.ctylechecker.quickfix.dynamic.DynamicStyleResolution"
+            problemId="com.cevelop.ctylechecker.problems.dynamicstyleproblem">
+            <info class="com.cevelop.ctylechecker.infos.DynamicStyleInfo"/>
+      </resolution>
+      <resolution
+            class="com.cevelop.ctylechecker.quickfix.dynamic.DynamicStyleResolution"
+            problemId="com.cevelop.ctylechecker.problems.dynamicstyleproblemforfiles">
+            <info class="com.cevelop.ctylechecker.infos.DynamicStyleInfo"/>
+      </resolution>
+      
+   </extension>
+   <extension point="org.eclipse.ui.ide.markerResolution">
+      <markerResolutionGenerator
+            class="ch.hsr.ifs.iltis.cpp.core.codan.marker.InfoProblemMarkerResolutionGenerator"
+            markerType="com.cevelop.ctylechecker.marker.stylemarker">
+      </markerResolutionGenerator>
+      <markerResolutionGenerator
+            class="ch.hsr.ifs.iltis.cpp.core.codan.marker.InfoProblemMarkerResolutionGenerator"
+            markerType="com.cevelop.ctylechecker.marker.filestylemarker">
+      </markerResolutionGenerator>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            category="org.eclipse.cdt.codan.ui.preferences.CodanPreferencePage"
+            class="com.cevelop.ctylechecker.ui.preferences.CtylecheckerPreferencesPage"
+            id="com.cevelop.ctylechecker.preferences.CtylecheckerPreferencePage"
+            name="Ctylechecker">
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.ui.propertyPages">
+      <page
+            category="org.eclipse.cdt.codan.ui.properties.codanProblemsPropertyPage"
+            class="com.cevelop.ctylechecker.ui.preferences.CtylecheckerPropertiesPage"
+            id="com.cevelop.ctylechecker.preferences.CtylecheckerPropertiesPage"
+            name="Ctylechecker">
+      </page>
+   </extension>
+   <extension
+         id="com.cevelop.ctylechecker.marker.filestylemarker"
+         name="File Ctylecheck Marker"
+         point="org.eclipse.core.resources.markers">
+      <super
+            type="org.eclipse.core.resources.problemmarker">
+      </super>
+      <super
+            type="org.eclipse.core.resources.textmarker">
+      </super>
+      <super
+            type="org.eclipse.cdt.codan.core.codanProblem">
+      </super>
+      <persistent
+            value="false">
+      </persistent>
+   </extension>
+ 
+ 
+  </plugin>

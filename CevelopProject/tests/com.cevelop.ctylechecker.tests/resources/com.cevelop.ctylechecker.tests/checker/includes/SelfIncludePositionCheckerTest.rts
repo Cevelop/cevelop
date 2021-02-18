@@ -1,0 +1,57 @@
+//!Self include after system include
+//@.config
+markerLines=2
+//@foo.cpp
+#include <iostream>
+#include "foo.hpp"
+
+void main() {
+	std::cout << "blubber";
+}
+//@foo.hpp
+#ifndef FOO_HPP_
+#define FOO_HPP_
+
+struct Foo {
+
+};
+
+#endif /* FOO_HPP_ */
+
+//!Self include before system include
+//@.config
+//@foo.cpp
+#include "foo.hpp"
+#include <iostream>
+
+void main() {
+	std::cout << "blubber";
+}
+//@foo.hpp
+#ifndef FOO_HPP_
+#define FOO_HPP_
+
+struct Foo {
+
+};
+
+#endif /* FOO_HPP_ */
+
+//!Self include from subfolder
+//@.config
+//@foo.cpp
+#include "include/foo.hpp"
+#include <iostream>
+
+void main() {
+	std::cout << "blubber";
+}
+//@include/foo.hpp
+#ifndef FOO_HPP_
+#define FOO_HPP_
+
+struct Foo {
+
+};
+
+#endif /* FOO_HPP_ */

@@ -1,0 +1,7 @@
+//!SourceFileContentTest
+//@XY.cpp
+#include <iostream>
+
+int main() {}
+//=
+int main() {}

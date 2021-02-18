@@ -1,0 +1,18 @@
+//!DataStructureReferenceTest51UndefMacro undef first
+//@main.cpp
+int main() {
+	int i = XY;
+}
+//@undef.h
+#undef XY
+//@def.h
+#define XY 1
+//!DataStructureReferenceTest51UndefMacro def first
+//@main.cpp
+int main() {
+	int i = XY;
+}
+//@andef.h
+#undef XY
+//@bndef.h
+#define XY 1

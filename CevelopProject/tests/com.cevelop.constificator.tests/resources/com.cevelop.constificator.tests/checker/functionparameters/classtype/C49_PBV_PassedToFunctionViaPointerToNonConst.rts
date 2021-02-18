@@ -1,0 +1,41 @@
+//!Non Const Parameter ClassTypePassToFunctionTakingNonConstPtrNonConst
+//@.config
+//@main.cpp
+#include "cls.h"
+
+void foo(cls o)
+  {
+  func_nonconst_ptr_nonconst(&o);
+  }
+
+//!NonConstParameterClassTypePassToFunctionTakingConstPtrNonConst
+//@.config
+//@main.cpp
+#include "cls.h"
+
+void foo(cls o)
+  {
+  func_const_ptr_nonconst(&o);
+  }
+
+//!NonConstParameterClassTypePassToFunctionTakingNonConstPtrConst
+//@.config
+markerLines=3
+//@main.cpp
+#include "cls.h"
+
+void foo(cls o)
+  {
+  func_nonconst_ptr_const(&o);
+  }
+
+//!NonConstParameterClassTypePassToFunctionTakingConstPtrConst
+//@.config
+markerLines=3
+//@main.cpp
+#include "cls.h"
+
+void foo(cls o)
+  {
+  func_const_ptr_const(&o);
+  }

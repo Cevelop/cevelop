@@ -1,0 +1,476 @@
+//!CStrRefactoringOneParameter
+//@.config
+markerLines=7
+//@main.cpp
+#include "string.h"
+void func(const char *str);
+void func(const std::string &str);
+
+int main() {
+	std::string str = "Hello";
+	func(str.c_str());
+}
+
+void func(const char *str) {}
+void func(const std::string &str) {}
+
+
+//!CStrRefactoringMultipleParameters
+//@.config
+markerLines=7
+//@main.cpp
+#include "string.h"
+void func(int i, const char *str, double f);
+void func(int i, const std::string &str, double f);
+
+int main() {
+	std::string str = "Hello";
+	func(5, str.c_str(), 5.0);
+}
+
+void func(int i, const char *str, double f) {}
+void func(int i, const std::string &str, double f) {}
+
+
+//!CStrRefactoringNoDeclaration
+//@.config
+markerLines=8
+//@main.cpp
+#include "string.h"
+
+void func(int i, const char *str, double f) {}
+void func(int i, const std::string &str, double f) {}
+
+int main() {
+	std::string str = "Hello";
+	func(5, str.c_str(), 5.0);
+}
+
+
+//!CStrRefactoringMultipleParameterCountMismatch
+//@main.cpp
+#include "string.h"
+void func(int i, const char *str, double f);
+void func(int i, const std::string &str);
+
+int main() {
+	std::string str = "Hello";
+	func(5, str.c_str(), 5.0);
+}
+
+void func(int i, const char *str, double f) {}
+void func(int i, const std::string &str) {}
+
+
+//!CStrRefactoringMultipleParameterDeclSpecifierMismatch
+//@main.cpp
+#include "string.h"
+void func(const char *str, double f);
+void func(const std::string &str, int i);
+
+int main() {
+	std::string str = "Hello";
+	func(str.c_str(), 5.2);
+}
+
+void func(const char *str, double f) {}
+void func(const std::string &str, int i) {}
+
+
+//!CStrRefactoringMultipleParameterDeclSpecifierMatch
+//@.config
+markerLines=7
+//@main.cpp
+#include "string.h"
+void func(const char *str, const double f);
+void func(const std::string &str, double const f);
+
+int main() {
+	std::string str = "Hello";
+	func(str.c_str(), 5.2);
+}
+
+void func(const char *str, const double f) {}
+void func(const std::string &str, double const f) {}
+
+
+//!CStrRefactoringMultipleParameterDeclaratorMatch
+//@.config
+markerLines=8
+//@main.cpp
+#include "string.h"
+void func(const char *str, const double *f);
+void func(const std::string &str, double const *f);
+
+int main() {
+	std::string str = "Hello";
+	double x = 5.2;
+	func(str.c_str(), &x);
+}
+
+void func(const char *str, const double *f) {}
+void func(const std::string &str, double const *f) {}
+
+
+//!CStrRefactoringMultipleParameterDeclaratorMismatch
+//@main.cpp
+#include "string.h"
+void func(const char *str, const double f);
+void func(const std::string &str, double const *f);
+
+int main() {
+	std::string str = "Hello";
+	double x = 5.2;
+	func(str.c_str(), x);
+}
+
+void func(const char *str, const double f) {}
+void func(const std::string &str, double const *f) {}
+
+
+//!CStrRefactoringReturnTypeMismatch
+//@main.cpp
+#include "string.h"
+void func(const char *str, double f);
+int func(const std::string &str, double f);
+
+int main() {
+	std::string str = "Hello";
+	double x = 5.2;
+	func(str.c_str(), x);
+}
+
+void func(const char *str, double f) {}
+int func(const std::string &str, double f) { return 0; }
+
+
+//!CStrRefactoringStdStringReference
+//@main.cpp
+#include "string.h"
+void func(const char *str, double f);
+void func(std::string &str, double f);
+
+int main() {
+	std::string str = "Hello";
+	double x = 5.2;
+	func(str.c_str(), x);
+}
+
+void func(const char *str, double f) {}
+void func(std::string &str, double f) {}
+
+
+//!CStrRefactoringStdCout1
+//@.config
+markerLines=6,7
+//@main.cpp
+#include "string.h"
+#include "iostream.h"
+
+int main() {
+	std::string str = "mystring";
+	std::cout << str.c_str();
+	std::cout << "test" << str.c_str();
+}
+
+
+//!CStrRefactoringStdCout2
+//@.config
+markerLines=7,8
+//@main.cpp
+#include "string.h"
+#include "iostream.h"
+
+int main() {
+	using namespace std;
+	string str = "mystring";
+	cout << str.c_str();
+	cout << "test" << str.c_str();
+}
+
+
+//!CStrRefactoringOperator+1
+//@.config
+markerLines=7,8
+//@main.cpp
+#include "string.h"
+#include "iostream.h"
+
+int main() {
+	std::string str = "hello ";
+	std::string world = "world";
+	str = str + world.c_str();
+	str = world.c_str() + str;
+}
+
+
+//!CStrRefactoringOperator+2
+//@.config
+markerLines=8,9
+//@main.cpp
+#include "string.h"
+#include "iostream.h"
+
+int main() {
+	using namespace std;
+	string str = "hello ";
+	string world = "world";
+	str = str + world.c_str();
+	str = world.c_str() + str;
+}
+
+
+//!CStrRefactoringOperator+3
+//@.config
+markerLines=17,18
+//@main.cpp
+#include "string.h"
+
+class MyStringClass {
+public:
+	MyStringClass() {}
+	MyStringClass(const char *s) {}
+};
+
+MyStringClass operator +(const MyStringClass &s1, const char *s2) { return s1; }
+MyStringClass operator +(const char *s1, const MyStringClass &s2) { return s2; }
+MyStringClass operator +(const MyStringClass &s1, const std::string &s2) { return s1; }
+MyStringClass operator +(const std::string &s1, const MyStringClass &s2) { return s2; }
+
+int main() {
+	MyStringClass str = "my ";
+	std::string x = "string";
+	str = str + x.c_str();
+	str = x.c_str() + str;
+}
+
+
+//!CStrRefactoringScope1
+//@.config
+markerLines=12
+//@main.cpp
+#include "string.h"
+
+class MyClass {
+public:
+	void func(const char *str) const { }
+	void func(const std::string &str) const { }
+};
+
+int main() {
+	MyClass mc;
+	std::string str = "mystring";
+	mc.func(str.c_str());
+}
+
+
+//!CStrRefactoringScope2
+//@.config
+markerLines=12
+//@main.cpp
+#include "string.h"
+
+class MyClass {
+public:
+	void func(int i, const char *str) {}
+	void func(int i, const std::string &str) {}
+};
+
+int main() {
+	std::string s = "Hello";
+	MyClass m;
+	m.func(1, s.c_str());
+}
+
+
+//!CStrRefactoringScope3
+//@main.cpp
+#include "string.h"
+
+class MyClass {
+public:
+	void func(const char *str) const { }
+};
+
+void func(const std::string &str) {}
+
+int main() {
+	MyClass mc;
+	std::string str = "mystring";
+	mc.func(str.c_str());
+}
+
+
+//!CStrRefactoringScope4
+//@main.cpp
+#include "string.h"
+
+class MyClass1 {
+public:
+	MyClass1() {}
+	void func(const char *str) const { }
+};
+
+class MyClass2 {
+public:
+	MyClass2() {}
+	void func(const std::string &str) const { }
+};
+
+int main() {
+	MyClass1 mc;
+	std::string str = "mystring";
+	mc.func(str.c_str());
+}
+
+
+//!CStrRefactoringPrivateMemberFunction
+//@main.cpp
+#include "string.h"
+
+class MyClass {
+private:
+	void func(const std::string &str) {}
+public:
+	void func(const char *str) {}
+};
+
+int main() {
+	MyClass m;
+	std::string str = "hello";
+	m.func(str.c_str());
+}
+
+
+//!CStrRefactoringOperatorOverloadedAsMemberFunction1
+//@.config
+markerLines=6
+//@main.cpp
+#include "string.h"
+
+int main() {
+	std::string x = "x";
+	std::string y = "y";
+	x = y.c_str();	
+}
+
+
+//!CStrRefactoringOperatorOverloadedAsMemberFunction2
+//@.config
+markerLines=12
+//@main.cpp
+#include "string.h"
+
+class MyClass {
+public:
+	MyClass &operator=(const char *str) { return *this; }
+	MyClass &operator=(const std::string &str) { return *this; }
+};
+
+int main() {
+	MyClass m;
+	std::string str = "";
+	m = str.c_str();	
+}
+
+
+//!CStrRefactoringStdStringOverloadedOperators
+//@.config
+markerLines=7,8,9,10,11,12,14,15,16,17,18,19,21
+//@main.cpp
+#include "string.h"
+
+int main() {
+	std::string x = "hello";
+	std::string y = "";
+	
+	x > y.c_str();
+	x >= y.c_str();
+	x < y.c_str();
+	x <= y.c_str();
+	x == y.c_str();
+	x != y.c_str();
+
+	y.c_str() > x;
+	y.c_str() >= x;
+	y.c_str() < x;
+	y.c_str() <= x;
+	y.c_str() == x;
+	y.c_str() != x;
+	
+	x += y.c_str();
+}
+
+
+//!CStrRefactoringStdStringOverloadedConstructors
+//@.config
+markerLines=5,6,7,9,10,11,12
+//@main.cpp
+#include "string.h"
+void func(const std::string& str) {}
+int main() {
+	std::string x = "hello";
+	std::string y1 = x.c_str();
+	std::string y2{x.c_str()};
+	std::string y3 = {x.c_str()};
+	//func(std::string{x.c_str()});
+	std::string *y4 = new std::string{x.c_str()};
+	std::string y5(x.c_str());
+	func(std::string(x.c_str()));
+	std::string *y6 = new std::string(x.c_str());
+}
+
+
+//!CStrRefactoringOverloadedFunctionTemplates
+//@.config
+markerLines=13,14,15
+//@main.cpp
+#include "string.h"
+
+template<class T>
+void func(const std::string& str, const T t) {
+}
+
+template<class T>
+void func(const char* str, const T t) {
+}
+
+int main() {
+	std::string s = "Hello";
+	func(s.c_str(), 1);
+	func(s.c_str(), 1.2);
+	func(s.c_str(), 'a');
+}
+
+
+//!CStrIgnoreVarArgParameter
+//@main.cpp
+#include "string.h"
+void myfunc(const char *str, ...) {
+	std::cout << str << std::endl;
+}
+
+int main() {
+	std::string stdstr = "world";
+	myfunc("hello", stdstr.c_str());
+}
+
+
+//!CStrRefactoringFieldWithFunctionType
+//@main.cpp
+#include "string.h"
+
+using function_t = void(*)(const std::string&);
+
+struct S {
+	function_t f{nullptr};
+};
+
+void f(const std::string& x) {}
+
+int main() {
+	S s{};
+	s.f = f;
+	const std::string str = "";
+	s.f(str.c_str());
+}

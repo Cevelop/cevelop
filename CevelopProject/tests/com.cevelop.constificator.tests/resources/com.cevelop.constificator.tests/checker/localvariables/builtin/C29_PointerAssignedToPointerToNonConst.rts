@@ -1,0 +1,44 @@
+//!ConstPtrToNonConstPtrToNonConstAssignedToNonConstPtrToNonConstPtrToNonConst
+//@.config
+markerLines=4,4
+//@main.cpp
+int main()
+  {
+  int * * const ptr{};
+  int * * ptr_2{};
+  ptr_2 = ptr;
+  }
+
+//!NonConstPtrToNonConstPtrToNonConstAssignedToNonConstPtrToToNonConstPtrToConst
+//@.config
+markerLines=3,4
+//@main.cpp
+int main()
+  {
+  int * * const ptr{};
+  int const * * ptr_2{};
+  ptr_2 = ptr;
+  }
+
+//!NonConstPtrToNonConstPtrToNonConstAssignedToNonConstPtrToConstPtrToNonConst
+//@.config
+markerLines=3,4
+//@main.cpp
+int main()
+  {
+  int * * const ptr{};
+  int * const * ptr_2{};
+  ptr_2 = ptr;
+  }
+
+//!NonConstPtrToNonConstPtrToNonConstAssignedToNonConstPtrToConstPtrToConst
+//@.config
+markerLines=3,3
+//@main.cpp
+int main()
+  {
+  int * * const ptr{};
+  int const * const * ptr_2{};
+  ptr_2 = ptr;
+  }
+  

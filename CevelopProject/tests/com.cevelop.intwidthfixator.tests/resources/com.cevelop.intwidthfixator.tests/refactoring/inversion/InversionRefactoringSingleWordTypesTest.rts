@@ -1,0 +1,172 @@
+
+//!SingleWordTypesMultiDeclaratorAuto
+//@main.cpp
+#include <cstdint>
+
+auto foo1 = std::int8_t { 42 }, foo2 = std::int8_t { 43 }, foo3 = std::int8_t { 44 }, foo4 = std::int8_t {42};
+auto foo5 = std::int16_t { 42 }, foo6 = std::int16_t { 43 }, foo7 = std::int16_t { 44 }, foo8 = std::int16_t {42};
+auto foo9 = std::int32_t { 42 }, foo10 = std::int32_t { 43 }, foo11 = std::int32_t { 44 }, foo12 = std::int32_t {42};
+auto foo13 = std::int64_t { 42 }, foo14 = std::int64_t { 43 }, foo15 = std::int64_t { 44 }, foo16 = std::int64_t {42};
+
+//=
+#include <cstdint>
+
+auto foo1 = char { 42 }, foo2 = char { 43 }, foo3 = char { 44 }, foo4 = char {42};
+auto foo5 = short { 42 }, foo6 = short { 43 }, foo7 = short { 44 }, foo8 = short {42};
+auto foo9 = int { 42 }, foo10 = int { 43 }, foo11 = int { 44 }, foo12 = int {42};
+auto foo13 = static_cast<long long>(42), foo14 = static_cast<long long>(43), foo15 = static_cast<long long>(44), foo16 = static_cast<long long>(42);
+
+//!SingleWordTypesMultiDeclarator
+//@main.cpp
+#include <cstdint>
+
+std::int32_t foo1 = std::int32_t { 42 }, foo2 = std::int32_t { 43 }, foo3 = std::int32_t { 44 }, foo4 = std::int32_t {42};
+
+//=
+#include <cstdint>
+
+int foo1 = int { 42 }, foo2 = int { 43 }, foo3 = int { 44 }, foo4 = int {42};
+
+//!SingleWordTypesSigned
+//@main.cpp
+#include <cstdint>
+
+auto bar1 = std::int8_t {42};
+
+auto bar2 = std::int16_t {42};
+
+auto bar3 = std::int32_t {42};
+
+auto bar4 = std::int64_t {42};
+
+//=
+#include <cstdint>
+
+auto bar1 = char {42};
+
+auto bar2 = short {42};
+
+auto bar3 = int {42};
+
+auto bar4 = static_cast<long long>(42);
+
+//!SingleWordTypesEmptyInitializer
+//@main.cpp
+#include <cstdint>
+
+auto foo1 = std::uint8_t{};
+
+auto foo2 = std::uint8_t();
+
+//=
+#include <cstdint>
+
+auto foo1 = static_cast<unsigned char>(0);
+
+auto foo2 = static_cast<unsigned char>(0);
+
+//!SingleWordTypesUnsigned
+//@main.cpp
+#include <cstdint>
+
+auto bar1 = std::uint8_t {42};
+
+auto bar2 = std::uint16_t {42};
+
+auto bar3 = std::uint32_t {42};
+
+auto bar3 = std::uint64_t {42};
+
+//=
+#include <cstdint>
+
+auto bar1 = static_cast<unsigned char> (42);
+
+auto bar2 = static_cast<unsigned short> (42);
+
+auto bar3 = static_cast<unsigned int> (42);
+
+auto bar3 = static_cast<unsigned long long> (42);
+
+//!SingleWordTypesUnsignedCastUnsigned
+//@main.cpp
+#include <cstdint>
+
+std::int64_t foo1 = std::int64_t(42);
+
+std::uint64_t foo2 = std::uint64_t {42};
+
+//=
+#include <cstdint>
+
+long long foo1 = static_cast<long long>(42);
+
+unsigned long long foo2 = static_cast<unsigned long long>(42);
+
+//!SingleWordTypesNegative
+//@main.cpp
+#include <cstdint>
+
+std::uint8_t casted = (std::uint8_t) foo1;
+std::uint16_t casted = (std::uint16_t) foo1;
+std::uint32_t casted = (std::uint32_t) foo1;
+std::uint64_t casted = (std::uint64_t) foo1;
+
+//=
+#include <cstdint>
+
+unsigned char casted = (unsigned char) foo1;
+unsigned short casted = (unsigned short) foo1;
+unsigned int casted = (unsigned int) foo1;
+unsigned long long casted = (unsigned long long) foo1;
+
+
+//!SingleWordTypeFunctionCallExpressionsKeep
+//@main.cpp
+#include <cstdint>
+
+auto foo1 = std::int8_t(42);
+
+auto foo2 = std::int16_t(42);
+
+auto foo3 = std::int32_t(42);
+//=
+#include <cstdint>
+
+auto foo1 = char(42);
+
+auto foo2 = short(42);
+
+auto foo3 = int(42);
+
+//!SingleWordTypeFunctionCallExpressionsChange
+//@main.cpp
+#include <cstdint>
+
+auto foo1 = std::uint8_t(42);
+
+auto foo2 = std::uint16_t(42);
+
+auto foo3 = std::uint32_t(42);
+
+auto foo4 = std::int64_t(42);
+
+auto foo5 = std::uint64_t(42);
+
+//=
+#include <cstdint>
+
+auto foo1 = static_cast<unsigned char>(42);
+
+auto foo2 = static_cast<unsigned short>(42);
+
+auto foo3 = static_cast<unsigned int>(42);
+
+auto foo4 = static_cast<long long>(42);
+
+auto foo5 = static_cast<unsigned long long>(42);
+
+
+
+
+

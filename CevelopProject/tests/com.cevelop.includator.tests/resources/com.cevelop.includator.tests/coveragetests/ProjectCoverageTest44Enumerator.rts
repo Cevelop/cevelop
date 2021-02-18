@@ -1,0 +1,10 @@
+//!Enumerator
+//@main.cpp
+enum Color {
+	red, green, blue
+};
+
+int main(int argc, char **argv) {
+	int c = red;
+	return 0;
+}

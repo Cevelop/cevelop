@@ -1,0 +1,20 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: AliExtor
+Bundle-SymbolicName: com.cevelop.aliextor;singleton:=true
+Bundle-Version: 1.14.0.qualifier
+Bundle-Activator: com.cevelop.aliextor.AliExtorPlugin
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: IFS Institute for Software
+Automatic-Module-Name: com.cevelop.aliextor
+Require-Bundle: org.eclipse.ui.workbench,
+ ch.hsr.ifs.iltis.cpp.core,
+ org.eclipse.cdt.core,
+ org.eclipse.core.runtime,
+ org.eclipse.ltk.core.refactoring,
+ org.eclipse.jface.text,
+ org.eclipse.jface,
+ org.eclipse.ltk.ui.refactoring,
+ ch.hsr.ifs.iltis.core.core,
+ org.eclipse.core.resources

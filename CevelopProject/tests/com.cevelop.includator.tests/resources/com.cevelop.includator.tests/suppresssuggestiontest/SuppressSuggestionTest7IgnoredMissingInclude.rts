@@ -1,0 +1,9 @@
+//!Missing Include which Is Ignored
+//@main.cpp
+
+int main() {
+  A a;
+  return 0;
+}
+//@A.h
+class A { };

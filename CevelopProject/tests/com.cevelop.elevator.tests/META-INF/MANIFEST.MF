@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Elevator Test Plug-in
+Bundle-SymbolicName: com.cevelop.elevator.tests;singleton:=true
+Bundle-Version: 1.14.0.qualifier
+Fragment-Host: com.cevelop.elevator
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-Vendor: IFS Institute for Software
+Automatic-Module-Name: com.cevelop.elevator.tests
+Require-Bundle: org.eclipse.cdt.core.tests,
+ org.junit,
+ ch.hsr.ifs.iltis.testing.highlevel.testingplugin

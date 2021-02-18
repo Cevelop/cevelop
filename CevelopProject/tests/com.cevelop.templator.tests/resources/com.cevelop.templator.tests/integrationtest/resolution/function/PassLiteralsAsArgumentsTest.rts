@@ -1,0 +1,15 @@
+//!PassLiteralsAsArgumentsTest
+//@MyFileName.cpp
+template<typename T, typename F, typename G, typename H, typename I>
+void inner(T first, F second, G third, H forth, I fifth) {}
+
+void inner(char first, int second, char third, int fourth, float fifth) {}
+
+template<typename T>
+void outer(T t) {
+    inner('l', 0, 's', t, 108.0); // <char,int,char,int,double>    
+}
+
+int main() {
+    outer(16); //<int>
+}

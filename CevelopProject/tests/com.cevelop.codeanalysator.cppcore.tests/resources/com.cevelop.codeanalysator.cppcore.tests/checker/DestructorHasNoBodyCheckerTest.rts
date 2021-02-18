@@ -1,0 +1,142 @@
+//!DestructorDefaulted
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|CPPCORE_GUIDELINE_ID)
+markerLines=3
+//@main.h
+struct Named_map {
+public:
+	~Named_map() = default;
+	
+private:
+	std::string name;
+	std::map<int, int> rep;
+	gsl::owner<int *> owy;
+};
+//!DestructorDeleted
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|CPPCORE_GUIDELINE_ID)
+markerLines=3
+//@main.h
+struct Named_map {
+public:
+	~Named_map() = delete;
+	
+private:
+	std::string name;
+	std::map<int, int> rep;
+	gsl::owner<int *> owy;
+};
+//!DestructorDefaultedInCPP
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|CPPCORE_GUIDELINE_ID)
+markerLines=3
+//@main.h
+struct Named_map {
+public:
+	~Named_map();
+	
+private:
+	std::string name;
+	std::map<int, int> rep;
+	gsl::owner<int *> owy;
+};
+//@main.cpp
+#include "main.h"
+Named_map::~Named_map() = default;
+//!DestructorDeletedInCPP
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|CPPCORE_GUIDELINE_ID)
+markerLines=3
+//@main.h
+struct Named_map {
+public:
+	~Named_map();
+	
+private:
+	std::string name;
+	std::map<int, int> rep;
+	gsl::owner<int *> owy;
+};
+//@main.cpp
+#include "main.h"
+Named_map::~Named_map() = delete;
+//!IgnoreDestructorDefaultedCheckerBecauseOfAttribute
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|CPPCORE_GUIDELINE_ID)
+//@Named_map.h
+struct Named_map {
+public:
+	[[gsl::suppress("C.31")]]
+	~Named_map() = default;
+	
+private:
+	std::string name;
+	std::map<int, int> rep;
+	gsl::owner<int *> owy;
+};
+//!IgnoreDestructorDefaultedCheckerBecauseOfAttributeCPP
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|CPPCORE_GUIDELINE_ID)
+//@Named_map.h
+struct Named_map {
+public:
+	[[gsl::suppress("C.31")]]
+	~Named_map();
+	
+private:
+	std::string name;
+	std::map<int, int> rep;
+	gsl::owner<int *> owy;
+};
+//@Named_map.cpp
+#include "Named_map.h"
+inline Named_map::~Named_map() = default;
+//!IgnoreDestructorDefaultedCheckerBecauseOfAttributeCPPDeleted
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|CPPCORE_GUIDELINE_ID)
+//@Named_map.h
+struct Named_map {
+public:
+	[[gsl::suppress("C.31")]]
+	~Named_map();
+	
+private:
+	std::string name;
+	std::map<int, int> rep;
+	gsl::owner<int *> owy;
+};
+//@Named_map.cpp
+#include "Named_map.h"
+inline Named_map::~Named_map() = delete;
+//!IgnoreDestructorDefaultedCheckerBecauseOfAttributeInline
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|CPPCORE_GUIDELINE_ID)
+//@Named_map.h
+struct Named_map {
+public:
+	[[gsl::suppress("C.31")]]
+	inline ~Named_map();
+	
+private:
+	std::string name;
+	std::map<int, int> rep;
+	gsl::owner<int *> owy;
+};
+
+inline Named_map::~Named_map() = default;
+//!IgnoreDestructorDefaultedCheckerBecauseOfAttributeInlineDelete
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|CPPCORE_GUIDELINE_ID)
+//@Named_map.h
+struct Named_map {
+public:
+	[[gsl::suppress("C.31")]]
+	inline ~Named_map();
+	
+private:
+	std::string name;
+	std::map<int, int> rep;
+	gsl::owner<int *> owy;
+};
+
+inline Named_map::~Named_map() = default;

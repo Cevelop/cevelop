@@ -1,0 +1,12 @@
+//!RemoveUnused2RemoveSingleInclude
+//@A.cpp
+#include "B.h"
+
+int main();
+
+int main() {
+	main();
+	return 0;
+}
+//@B.h
+class B { };

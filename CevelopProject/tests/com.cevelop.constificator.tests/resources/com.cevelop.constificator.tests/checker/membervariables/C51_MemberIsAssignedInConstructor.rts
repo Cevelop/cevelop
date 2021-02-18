@@ -1,0 +1,20 @@
+//!MemberIsOnlyAssignedInConstructorInitializerList
+//@.config
+markerLines=5
+//@struct.h
+struct s {
+
+s() : data{} {}
+
+int data;
+};
+
+//!MemberIsNotAssignedInConstructorInitializerList
+//@.config
+//@struct.h
+struct s {
+
+s() {}
+
+int data;
+};

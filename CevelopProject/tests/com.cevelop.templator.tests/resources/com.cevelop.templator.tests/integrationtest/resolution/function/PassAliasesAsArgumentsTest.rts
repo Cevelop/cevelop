@@ -1,0 +1,18 @@
+//!PassAliasesAsArgumentsTest
+//@MyFileName.cpp
+typedef long mytype;
+typedef unsigned long mytype2;
+
+template<typename T=mytype2, typename F>
+void inner(F first) {}
+
+void inner(unsigned long first) {}
+
+template<typename T>
+void outer(T first, mytype second) {
+    inner(second); //<unsigned long int,long int>    
+}
+
+int main() {
+    outer(108, 42L); //<int>
+}

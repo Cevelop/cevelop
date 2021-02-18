@@ -1,0 +1,14 @@
+//!RemoveUnused15SeveralSameDefinitionsUnreachable
+//@A.cpp
+#include "B.h"
+#include "B3.h"
+
+int main() {
+	B b;
+}
+//@B.h
+class B;
+//@B2.h
+class B { };
+//@B3.h
+class B;

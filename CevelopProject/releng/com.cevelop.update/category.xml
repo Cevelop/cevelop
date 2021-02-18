@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <description name="Cevelop Beta Plug-ins" url="https://www.cevelop.com/update/latest">
+      Cevelop Beta Plug-ins. The plugins in this repository are not part of the standard Cevelop release and are considered Beta.
+   </description>
+   <feature url="features/com.cevelop.constificator.feature_1.14.0.qualifier.jar" id="com.cevelop.constificator.feature" version="1.14.0.qualifier">
+      <category name="com.cevelop.plugins.beta"/>
+   </feature>
+   <feature url="features/com.cevelop.intwidthfixator.feature_1.14.0.qualifier.jar" id="com.cevelop.intwidthfixator.feature" version="1.14.0.qualifier">
+      <category name="com.cevelop.plugins.beta"/>
+   </feature>
+   <feature url="features/com.cevelop.gslator.feature_1.14.0.qualifier.jar" id="com.cevelop.gslator.feature" version="1.14.0.qualifier">
+      <category name="com.cevelop.plugins.beta"/>
+   </feature>
+   <feature url="features/com.cevelop.ctylechecker.feature_1.14.0.qualifier.jar" id="com.cevelop.ctylechecker.feature" version="1.14.0.qualifier">
+      <category name="com.cevelop.plugins.beta"/>
+   </feature>
+   <feature url="features/com.cevelop.includator.feature_1.14.0.qualifier.jar" id="com.cevelop.includator.feature" version="1.14.0.qualifier">
+      <category name="com.cevelop.plugins.beta"/>
+   </feature>
+   <feature url="features/com.cevelop.templator.feature_1.14.0.qualifier.jar" id="com.cevelop.templator.feature" version="1.14.0.qualifier">
+      <category name="com.cevelop.plugins.beta"/>
+   </feature>
+   <feature url="features/com.cevelop.codeanalysator.feature_1.14.0.qualifier.jar" id="com.cevelop.codeanalysator.feature" version="1.14.0.qualifier">
+      <category name="com.cevelop.plugins.beta"/>
+   </feature>
+   <category-def name="com.cevelop.plugins.beta" label="Beta Plug-Ins"/>
+</site>

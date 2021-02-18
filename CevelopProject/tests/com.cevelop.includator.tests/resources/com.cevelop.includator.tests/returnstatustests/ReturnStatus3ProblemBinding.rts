@@ -1,0 +1,5 @@
+//!ReturnStatus3ProblemBinding
+//@main.cpp
+int main() {
+  bind();
+}

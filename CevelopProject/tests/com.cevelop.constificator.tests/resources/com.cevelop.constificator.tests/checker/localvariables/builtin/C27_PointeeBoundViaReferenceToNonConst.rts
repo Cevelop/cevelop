@@ -1,0 +1,19 @@
+//!ResultOfDereferencingPtrBindNonConstRef
+//@.config
+markerLines=4
+//@main.cpp
+int main()
+  {
+  int * const ptr{};
+  int & ref{*ptr};
+  }
+
+//!ResultOfDereferencingPtrBindConstRef
+//@.config
+markerLines=3
+//@main.cpp
+int main()
+  {
+  int * const ptr{};
+  int const & ref{*ptr};
+  }

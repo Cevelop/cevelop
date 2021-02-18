@@ -1,0 +1,960 @@
+//! Auto declaring int variable
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+void F()
+{
+	auto x = 12;
+}
+//=
+void F()
+{
+	int x = 12;
+}
+
+//! Auto declaring bool variable
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+void F()
+{
+	auto x = true;
+}
+//=
+void F()
+{
+	bool x = true;
+}
+
+//! Auto declaring unsigned int variable
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+void F()
+{
+	auto x = 12u;
+}
+//=
+void F()
+{
+	unsigned int x = 12u;
+}
+
+//! Auto declaring signed int variable
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+void F()
+{
+	signed int s = 12;
+	auto x = s;
+}
+//=
+void F()
+{
+	signed int s = 12;
+	signed int x = s;
+}
+
+//! Auto declaring short int variable
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+void F()
+{
+	short s = 12;
+	auto x = s;
+}
+//=
+void F()
+{
+	short s = 12;
+	short int x = s;
+}
+
+//! Auto declaring long int variable
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+void F()
+{
+	auto x = 12l;
+}
+//=
+void F()
+{
+	long int x = 12l;
+}
+
+//! Auto declaring long long int variable
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+void F()
+{
+	auto x = 12ll;
+}
+//=
+void F()
+{
+	long long int x = 12ll;
+}
+
+//! Auto declaring imaginay variable
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+#include <complex>
+void F()
+{
+	using namespace std::complex_literals;
+	auto x = 12i;
+}
+//=
+#include <complex>
+void F()
+{
+	using namespace std::complex_literals;
+	std::complex<double> x = 12i;
+}
+
+//! Auto declaring complex variable
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+#include <complex>
+void F()
+{
+	using namespace std::complex_literals;
+	auto x = 82. + 12i;
+}
+//=
+#include <complex>
+void F()
+{
+	using namespace std::complex_literals;
+	std::complex<double> x = 82. + 12i;
+}
+
+//! Auto declaring namespaced variable
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+namespace abc
+{
+	using T = int;
+}
+void F()
+{
+	abc::T a{};
+	auto x = a;
+}
+//=
+namespace abc
+{
+	using T = int;
+}
+void F()
+{
+	abc::T a{};
+	abc::T x = a;
+}
+
+//! Auto declaring non-fundamental variable
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+struct A
+{
+};
+void F()
+{
+	A a{};
+	auto x = a;
+}
+//=
+struct A
+{
+};
+void F()
+{
+	A a{};
+	A x = a;
+}
+
+//! Auto declaring static variable
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+void F()
+{
+	static auto x = 12;
+}
+//=
+void F()
+{
+	static int x = 12;
+}
+
+//! Auto declaring const variable
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+void F()
+{
+	const auto x = 12;
+}
+//=
+void F()
+{
+	const int x = 12;
+}
+
+//! Auto declaring volatile variable
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+void F()
+{
+	volatile auto x = 12;
+}
+//=
+void F()
+{
+	volatile int x = 12;
+}
+
+//! Auto declaring lvalue reference
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+void F()
+{
+	int i = 12;
+	auto &x = i;
+}
+//=
+void F()
+{
+	int i = 12;
+	int &x = i;
+}
+
+//! Auto declaring const lvalue reference
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+void F()
+{
+	const int i = 12;
+	auto &x = i;
+}
+//=
+void F()
+{
+	const int i = 12;
+	const int &x = i;
+}
+
+//! Auto declaring variable initialized with const variable
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+void F()
+{
+	const auto c = 12;
+	auto x = c;
+}
+//=
+void F()
+{
+	const int c = 12;
+	int x = c;
+}
+
+//! Auto declaring volatile lvalue reference
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+void F()
+{
+	volatile int i = 12;
+	auto &x = i;
+}
+//=
+void F()
+{
+	volatile int i = 12;
+	volatile int &x = i;
+}
+
+//! Auto declaring rvalue reference to lvalue
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+void F()
+{
+	int i = 12;
+	auto &&x = i;
+}
+//=
+void F()
+{
+	int i = 12;
+	int &x = i;
+}
+
+//! Auto declaring rvalue reference to lvalue reference
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+void F()
+{
+	int i = 12;
+	int &r = 12;
+	auto &&x = r;
+}
+//=
+void F()
+{
+	int i = 12;
+	int &r = 12;
+	int &x = r;
+}
+
+//! Auto declaring rvalue reference to rvalue reference
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+void F()
+{
+	int &&i = 12;
+	auto &&x = i;
+}
+//=
+void F()
+{
+	int &&i = 12;
+	int &x = i;
+}
+
+//! Auto declaring rvalue reference to rvalue
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+void F()
+{
+	auto &&x = 12;
+}
+//=
+void F()
+{
+	int &&x = 12;
+}
+
+//! Auto declaring variable of template type with lvalue reference non-type template parameter
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+struct RT
+{
+};
+template<RT &tp>
+struct T
+{
+};
+RT rt{};
+void F()
+{
+	T<rt> t{};
+	auto x = t;
+}
+//=
+struct RT
+{
+};
+template<RT &tp>
+struct T
+{
+};
+RT rt{};
+void F()
+{
+	T<rt> t{};
+	T<RT &> x = t;
+}
+
+//! Auto declaring variable of template type with null pointer non-type template parameter
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+#include <cstddef>
+template<std::nullptr_t tp>
+struct T
+{
+};
+void F()
+{
+	T<nullptr> t{};
+	auto x = t;
+}
+//=
+#include <cstddef>
+template<std::nullptr_t tp>
+struct T
+{
+};
+void F()
+{
+	T<nullptr> t{};
+	T<nullptr> x = t;
+}
+
+//! Auto declaring variable of template type with true value non-type template parameter
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+template<bool tp>
+struct T
+{
+};
+void F()
+{
+	T<true> t{};
+	auto x = t;
+}
+//=
+template<bool tp>
+struct T
+{
+};
+void F()
+{
+	T<true> t{};
+	T<true> x = t;
+}
+
+//! Auto declaring variable of template type with false value non-type template parameter
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+template<bool tp>
+struct T
+{
+};
+void F()
+{
+	T<false> t{};
+	auto x = t;
+}
+//=
+template<bool tp>
+struct T
+{
+};
+void F()
+{
+	T<false> t{};
+	T<false> x = t;
+}
+
+//! Auto declaring variable of template type with character value non-type template parameter
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+template<char tp>
+struct T
+{
+};
+void F()
+{
+	T<'c'> t{};
+	auto x = t;
+}
+//=
+template<char tp>
+struct T
+{
+};
+void F()
+{
+	T<'c'> t{};
+	T<'c'> x = t;
+}
+
+//! Auto declaring variable of template type with UCS-2 character value non-type template parameter
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+template<char16_t tp>
+struct T
+{
+};
+void F()
+{
+	T<u'c'> t{};
+	auto x = t;
+}
+//=
+template<char16_t tp>
+struct T
+{
+};
+void F()
+{
+	T<u'c'> t{};
+	T<char16_t> x = t;
+}
+
+//! Auto declaring variable of template type with UCS-4 character value non-type template parameter
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+template<char32_t tp>
+struct T
+{
+};
+void F()
+{
+	T<U'c'> t{};
+	auto x = t;
+}
+//=
+template<char32_t tp>
+struct T
+{
+};
+void F()
+{
+	T<U'c'> t{};
+	T<char32_t> x = t;
+}
+
+//! Auto declaring variable of template type with wide character BMP value non-type template parameter
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+template<wchar_t tp>
+struct T
+{
+};
+void F()
+{
+	T<L'貓'> t{};
+	auto x = t;
+}
+//=
+template<wchar_t tp>
+struct T
+{
+};
+void F()
+{
+	T<L'貓'> t{};
+	T<L'貓'> x = t;
+}
+
+//! Auto declaring variable of template type with wide character non-BMP value non-type template parameter
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+template<wchar_t tp>
+struct T
+{
+};
+void F()
+{
+	T<L'\U0001f34c'> t{};
+	auto x = t;
+}
+//=
+template<wchar_t tp>
+struct T
+{
+};
+void F()
+{
+	T<L'\U0001f34c'> t{};
+	T<L'\U0001f34c'> x = t;
+}
+
+//! Auto declaring variable of template type with int value non-type template parameter
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+template<int tp>
+struct T
+{
+};
+void F()
+{
+	T<12> t{};
+	auto x = t;
+}
+//=
+template<int tp>
+struct T
+{
+};
+void F()
+{
+	T<12> t{};
+	T<12> x = t;
+}
+
+//! Auto declaring variable of template type with long long value non-type template parameter
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+template<long long tp>
+struct T
+{
+};
+void F()
+{
+	T<123456789123456789> t{};
+	auto x = t;
+}
+//=
+template<long long tp>
+struct T
+{
+};
+void F()
+{
+	T<123456789123456789> t{};
+	T<123456789123456789> x = t;
+}
+
+//! Auto declaring variable of template type with pointer non-type template parameter
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+struct RT
+{
+};
+template<RT *tp>
+struct T
+{
+};
+RT rt{};
+void F()
+{
+	T<&rt> t{};
+	auto x = t;
+}
+//=
+struct RT
+{
+};
+template<RT *tp>
+struct T
+{
+};
+RT rt{};
+void F()
+{
+	T<&rt> t{};
+	T<RT *> x = t;
+}
+
+//! Auto declaring variable of template type with pointer to member non-type template parameter
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+struct RT
+{
+	int m;
+};
+template<int RT::*tp>
+struct T
+{
+};
+void F()
+{
+	T<&RT::m> t{};
+	auto x = t;
+}
+//=
+struct RT
+{
+	int m;
+};
+template<int RT::*tp>
+struct T
+{
+};
+void F()
+{
+	T<&RT::m> t{};
+	T<intRT::*> x = t;
+}
+
+//! Auto declaring variable of template type with enum value non-type template parameter
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+enum struct E { VALUE };
+template<E e>
+struct T
+{
+};
+void F()
+{
+	T<E::VALUE> t{};
+	auto x = t;
+}
+//=
+enum struct E { VALUE };
+template<E e>
+struct T
+{
+};
+void F()
+{
+	T<E::VALUE> t{};
+	T<E> x = t;
+}
+
+//! Auto declaring variable of template type with type template parameter
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+struct S
+{
+};
+template<typename T>
+struct C
+{
+};
+void F()
+{
+	C<S> c{};
+	auto x = c;
+}
+//=
+struct S
+{
+};
+template<typename T>
+struct C
+{
+};
+void F()
+{
+	C<S> c{};
+	C<S> x = c;
+}
+
+//! Auto declaring variable of template type with pointer type template parameter
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+struct S
+{
+};
+template<typename T>
+struct C
+{
+};
+void F()
+{
+	C<S*> c{};
+	auto x = c;
+}
+//=
+struct S
+{
+};
+template<typename T>
+struct C
+{
+};
+void F()
+{
+	C<S*> c{};
+	C<S*> x = c;
+}
+
+//! Auto declaring variable of template type with namespaced type template parameter
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+namespace abc
+{
+	using S = int;
+}
+template<typename T>
+struct C
+{
+};
+void F()
+{
+	C<abc::S> c{};
+	auto x = c;
+}
+//=
+namespace abc
+{
+	using S = int;
+}
+template<typename T>
+struct C
+{
+};
+void F()
+{
+	C<abc::S> c{};
+	C<abc::S> x = c;
+}
+
+//! Auto declaring variable equals initialized with initializer of fundamental type
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+void F()
+{
+	auto x = int{};
+}
+//=
+void F()
+{
+	int x = int{};
+}
+
+//! Auto declaring multiple variables equals initialized with initializers of fundamental types
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+#include <cstdint>
+void F()
+{
+	auto x = int{}, y = int{};
+}
+//=
+#include <cstdint>
+void F()
+{
+	int x = int{};
+	int y = int{};
+}
+
+//! Auto declaring function using trailing return type syntax
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+auto F() -> int {
+	return 12;
+}
+//=
+int F() {
+	return 12;
+}
+
+//! Auto declaring function
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+auto F() {
+	return 12;
+}
+//=
+int F() {
+	return 12;
+}
+
+//! Decltype auto declaring variable
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+void F()
+{
+	decltype(auto) x = 12;
+}
+//=
+void F()
+{
+	int x = 12;
+}
+
+//! Decltype auto declaring function
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+decltype(auto) F()
+{
+	return 12;
+}
+//=
+int F()
+{
+	return 12;
+}
+
+//! Auto declaring variable in if condition
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+void F() {
+	if (auto b { true }) {}
+}
+//=
+void F()
+{
+	if (auto b { true }) {}
+}
+
+//! Auto declaring variable in switch controller
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+void F() {
+	switch (auto i { 0 }) {}
+}
+//=
+void F()
+{
+	switch (auto i { 0 }) {}
+}
+
+//! Auto declaring variable in while condition
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+void F() {
+	while (auto b { true }) {}
+}
+//=
+void F()
+{
+	while (auto b { true }) {}
+}
+
+//! Auto declaring variable in for condition
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+void F() {
+	for (;auto b { true };) {}
+}
+//=
+void F()
+{
+	for (;auto b { true };) {}
+}
+
+//! Auto declaring variable in ranged-for condition
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+#include <initializer_list>
+void F()
+{
+	for (auto i : { 0 }) {}
+}
+//=
+#include <initializer_list>
+void F()
+{
+	for (auto i : { 0 }) {}
+}

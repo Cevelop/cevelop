@@ -1,0 +1,58 @@
+//!ParameterOfMoveCtorShouldNeverBeConstDefaulted
+//@main.cpp
+struct s {
+	s(s && other) = default;
+};
+
+//!ParameterOfMoveCtorShouldNeverBeConstEmptyBody
+//@main.cpp
+struct s {
+	s(s && other) {
+	}
+};
+
+//!ParameterOfMoveAssignmentShouldNeverBeConstDefaulted
+//@main.cpp
+struct s {
+	s & operator=(s && other) = default;
+};
+
+//!ParameterOfMoveAssignmentShouldNeverBeConstEmptyBody
+//@main.cpp
+struct s {
+	s & operator=(s && other) {
+	}
+};
+//!LocalClassParameterOfMoveCtorShouldNeverBeConstDefaulted
+//@main.cpp
+void f() {
+struct s {
+	s(s && other) = default;
+};
+}
+
+//!LocalClassParameterOfMoveCtorShouldNeverBeConstEmptyBody
+//@main.cpp
+void f() {
+struct s {
+	s(s && other) {
+	}
+};
+}
+
+//!LocalClassParameterOfMoveAssignmentShouldNeverBeConstDefaulted
+//@main.cpp
+void f() {
+struct s {
+	s & operator=(s && other) = default;
+};
+}
+
+//!LocalClassParameterOfMoveAssignmentShouldNeverBeConstEmptyBody
+//@main.cpp
+void f() {
+struct s {
+	s & operator=(s && other) {
+	}
+};
+}

@@ -1,0 +1,5 @@
+//!HelperTest7FileHelper
+//@A.cpp
+int main() {
+	return 0;
+}

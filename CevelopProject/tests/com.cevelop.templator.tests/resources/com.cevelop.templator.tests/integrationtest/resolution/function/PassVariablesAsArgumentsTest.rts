@@ -1,0 +1,17 @@
+//!PassVariablesAsArgumentsTest
+//@MyFileName.cpp
+template<typename T, typename F, typename G>
+void inner(T first, F second, G third) {}
+
+void inner(double first, int second, short third) {}
+
+template<typename T>
+void outer(T first) {
+    int i = 42;
+    double d = i/3.14;
+    inner(d, i, first); // <double,int,char>    
+}
+
+int main() {
+    outer('m'); //<char>
+}

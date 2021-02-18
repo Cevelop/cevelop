@@ -1,0 +1,47 @@
+//!CoverageTest4SystemIncludesTest1
+//@.config
+expectedSuggestionsCount=3
+//@A.cpp
+#include "Unused.h"
+#include "Used.h"
+#include "QWER.h"
+
+int main() {
+	X x;
+	QWER qwer;
+	return 0;
+}
+//@Unused.h
+class Unused { };
+//@Used.h
+class X { };
+//!CoverageTest4SystemIncludesTest2
+//@.config
+expectedSuggestionsCount=3
+//@A.cpp
+#include <Unused.h>
+#include <Used.h>
+#include <QWER.h>
+
+int main(int argc, char** argv) {
+	X x;
+}
+//@Unused.h
+class Unused { };
+//@Used.h
+class X { };
+//!CoverageTest4SystemIncludesTest3
+//@.config
+expectedSuggestionsCount=3
+//@A.cpp
+#include "Unused.h"
+#include "Used.h"
+#include <QWER.h>
+
+int main(int argc, char** argv) {
+	X x;
+}
+//@Unused.h
+class Unused { };
+//@Used.h
+class X { };

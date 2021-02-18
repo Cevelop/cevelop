@@ -1,0 +1,77 @@
+//! Lowercase Hex with lowercase prefix
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=2
+//@main.h
+int main(){
+	int a {0x0Af0};
+}
+//=
+int main(){
+	int a {0x0AF0};
+}
+
+//! Lowercase Hex with uppercase prefix
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=2
+//@main.h
+int main(){
+	int a {0X0Af0};
+}
+//=
+int main(){
+	int a {0X0AF0};
+}
+
+//! Float hex literal
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=2
+//@main.h
+int main(){
+	float a {0X0Af0};
+}
+//=
+int main(){
+	float a {0X0AF0};
+}
+
+//! Double Hex is reported
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=2
+//@main.h
+int main(){
+	float a {0X0Af0};
+}
+//=
+int main(){
+	float a {0X0AF0};
+}
+
+//! Unsigned Hex is reported
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=2
+//@main.h
+int main(){
+	unsigned a {0X0Af0};
+}
+//=
+int main(){
+	unsigned a {0X0AF0};
+}
+
+//! Hex with suffix is reported
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=2
+//@main.h
+int main(){
+	unsigned a {0X0Af0u};
+}
+//=
+int main(){
+	unsigned a {0X0AF0u};
+}

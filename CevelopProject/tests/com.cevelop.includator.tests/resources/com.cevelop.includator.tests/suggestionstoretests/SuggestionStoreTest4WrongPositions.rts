@@ -1,0 +1,20 @@
+//!SuggestionStore wrong postition test
+//@A.cpp
+#include "B.h"
+#include "C.h"
+#include "D.h"
+#include "E.h"
+
+int main() {
+	C c;
+	D d;
+	return 0;
+}
+//@B.h
+class B { };
+//@C.h
+class C { };
+//@D.h
+class D { };
+//@E.h
+class E { };

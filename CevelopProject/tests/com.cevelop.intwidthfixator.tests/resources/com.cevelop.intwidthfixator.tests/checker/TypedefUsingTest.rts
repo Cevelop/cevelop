@@ -1,0 +1,88 @@
+//!TypedefAllElidedTypes
+//@.config
+markerLines=2,3,4,5,6,7,8,9
+//@main.cpp
+int main(){
+    typedef char nchar;
+    typedef short nshort;
+    typedef short int nshortint;
+    typedef int nint;
+    typedef long nlong;
+    typedef long int nlongint;
+    typedef long long nlonglong;
+    typedef long long int nlonglongint;
+}
+//!TypedefAllUnsignedTypes
+//@.config
+markerLines=2,3,4,5,6,7,8,9
+//@main.cpp
+int main(){
+    typedef unsigned char uchar;
+    typedef unsigned short ushort;
+    typedef unsigned short int ushortint;
+    typedef unsigned int uint;
+    typedef unsigned long ulong;
+    typedef unsigned long int ulongint;
+    typedef unsigned long long ulonglong;
+    typedef unsigned long long int ulonglongint;
+}
+
+//!TypedefAllSignedTypes
+//@.config
+markerLines=2,3,4,5,6,7,8,9
+//@main.cpp
+int main(){
+    typedef signed char schar;
+    typedef signed short sshort;
+    typedef signed short int sshortint;
+    typedef signed int sint;
+    typedef signed long slong;
+    typedef signed long int slongint;
+    typedef signed long long slonglong;
+    typedef signed long long int slonglongint;
+}
+
+//!UsingAllElidedTypes
+//@.config
+markerLines=2,3,4,5,6,7,8,9
+//@main.cpp
+int main(){
+    using nchar = char;
+    using nshort = short;
+    using nshortint = short int;
+    using nint = int;
+    using nlong = long;
+    using nlongint = long int;
+    using nlonglong = long long;
+    using nlonglongint = long long int;
+}
+
+//!UsingAllUnsigendTypes
+//@.config
+markerLines=2,3,4,5,6,7,8,9
+//@main.cpp
+int main(){
+    using uchar = unsigned char;
+    using ushort = unsigned short;
+    using ushortint = unsigned short int;
+    using uint = unsigned int;
+    using ulong = unsigned long;
+    using ulongint = unsigned long int;
+    using ulonglong = unsigned long long;
+    using ulonglongint = unsigned long long int;
+}
+
+//!UsingAllSignedTypes
+//@.config
+markerLines=2,3,4,5,6,7,8,9
+//@main.cpp
+int main(){
+    using schar = signed char;
+    using sshort = signed short;
+    using sshortint = signed short int;
+    using sint = signed int;
+    using slong = signed long;
+    using slongint = signed long int;
+    using slonglong = signed long long;
+    using slonglongint = signed long long int;
+}

@@ -1,0 +1,22 @@
+//!NonConstParameterClassTypeBindNonConstRef
+//@.config
+//@main.cpp
+#include "cls.h"
+
+void foo(cls o)
+  {
+  cls & ref(o);
+  }
+
+//!NonConstParameterClassTypeBindConstRef
+//@.config
+markerLines=3
+//@main.cpp
+#include "cls.h"
+
+void foo(cls o)
+  {
+  cls const & ref(o);
+  }
+
+  

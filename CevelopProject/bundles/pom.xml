@@ -1,0 +1,36 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>com.cevelop.bundles</artifactId>
+    <packaging>pom</packaging>
+    <parent>
+        <groupId>com.cevelop</groupId>
+        <artifactId>com.cevelop.root</artifactId>
+        <version>1.14.0-SNAPSHOT</version>
+    </parent>
+    <modules>
+        <module>com.cevelop.aliextor</module>
+        <module>com.cevelop.charwars</module>
+        <module>com.cevelop.clonewar</module>
+        <module>com.cevelop.codeanalysator.core</module>
+        <module>com.cevelop.codeanalysator.misra</module>
+        <module>com.cevelop.codeanalysator.autosar</module>
+        <module>com.cevelop.codeanalysator.cppcore</module>
+        <module>com.cevelop.constificator</module>
+        <module>com.cevelop.constificator.core</module>
+        <module>com.cevelop.ctylechecker</module>
+        <module>com.cevelop.ctylechecker.reporting</module>
+        <module>com.cevelop.elevator</module>
+        <module>com.cevelop.gslator</module>
+        <module>com.cevelop.includator</module>
+        <module>com.cevelop.includator.codan</module>
+        <module>com.cevelop.includator.viewer</module>
+        <module>com.cevelop.intwidthfixator</module>
+        <module>com.cevelop.macronator</module>
+        <module>com.cevelop.namespactor</module>
+        <module>com.cevelop.namespactor.checkers</module>
+        <module>com.cevelop.tdd</module>
+        <module>com.cevelop.templator</module>
+        <module>com.cevelop.templator.instances</module>
+    </modules>
+</project>

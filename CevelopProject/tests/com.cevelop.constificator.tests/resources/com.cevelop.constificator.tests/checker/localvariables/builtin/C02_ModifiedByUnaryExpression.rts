@@ -1,0 +1,85 @@
+//!NonConstDeclLocallyChangedIncrementPrefix
+//@.config
+//@main.cpp
+int main()
+  {
+  int n{42};
+  ++n;
+  }
+
+//!NonConstDeclLocallyChangedIncrementPostfix
+//@.config
+//@main.cpp
+int main()
+  {
+  int n{42};
+  n++;
+  }
+  
+//!NonConstDeclLocallyChangedDecrementPrefix
+//@.config
+//@main.cpp
+int main()
+  {
+  int n{42};
+  --n;
+  }
+  
+//!NonConstDeclLocallyChangedDecrementPostfix
+//@.config
+//@main.cpp
+int main()
+  {
+  int n{42};
+  n--;
+  }
+//!++s with S::operator++(): s stays non-const (argument of overloaded non-const member operator)
+//@.config
+//@main.cpp
+struct S {
+  S& operator ++() {
+    return *this;  
+  }
+};
+int main(int argc, char **argv) {
+	S s{};
+	++s;
+}
+//!++s with S::operator++() const: s is marked constifiable (argument of overloaded const member operator)
+//@.config
+markerLines=7
+//@main.cpp
+struct S {
+  S& operator ++() const {
+    return *this;  
+  }
+};
+int main(int argc, char **argv) {
+  S s{};
+  ++s;
+}
+//!++s with operator++(S &): s stays non-const (non-const argument of overloaded free operator)
+//@.config
+//@main.cpp
+struct S {
+};
+S & operator ++(S & s) {
+  return *s;  
+}
+int main(int argc, char **argv) {
+  S s{};
+  ++s;
+}
+//!++s with operator++(S const &): s is marked constifiable (const argument of overloaded free operator)
+//@.config
+markerLines=7
+//@main.cpp
+struct S {
+};
+S const & operator ++(S const & s) {
+  return *s;  
+}
+int main(int argc, char **argv) {
+	S s{};
+	++s;
+}

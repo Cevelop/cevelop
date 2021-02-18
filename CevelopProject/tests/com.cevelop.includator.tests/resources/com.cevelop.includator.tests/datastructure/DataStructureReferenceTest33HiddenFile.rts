@@ -1,0 +1,7 @@
+//!DataStructureReferenceTest33HiddenFolder
+//@.subfolder/main.cpp
+int main() { return 0; }
+//!DataStructureReferenceTest33HiddenFile
+//@.main.cpp
+int main() { return 0; }
+ 

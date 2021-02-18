@@ -1,0 +1,1157 @@
+//!Prefix Operator
+//@.config
+markerLines=8
+//@A.cpp
+struct B
+{
+};
+
+void func()
+{
+	B b;
+	++b;
+}
+//=
+struct B
+{
+	B& operator++() {
+		return B();
+	}
+};
+
+void func()
+{
+	B b;
+	++b;
+}
+//!Postfix Operator
+//@.config
+markerLines=8
+//@A.cpp
+struct B
+{
+};
+
+void func()
+{
+	B b;
+	b++;
+}
+//=
+struct B
+{
+	B operator++(int) {
+		return B();
+	}
+};
+
+void func()
+{
+	B b;
+	b++;
+}
+//!Binary OperatorTest
+//@.config
+markerLines=9
+//@Test.cpp
+struct B
+{
+};
+
+void func()
+{
+	B b;
+	B b1;
+	b==b1;
+}
+//=
+struct B
+{
+	bool operator==(B& b1) const {
+		return bool();
+	}
+};
+
+void func()
+{
+	B b;
+	B b1;
+	b==b1;
+}
+//!Finds Good Unary Operator
+//@.config
+markerLines=11
+markerCount=0
+//@Test.cpp
+struct B
+{
+	void operator++()
+	{
+	}
+};
+
+void func()
+{
+	B b;
+	++b;
+}
+//=
+struct B
+{
+	void operator++()
+	{
+	}
+};
+
+void func()
+{
+	B b;
+	++b;
+}
+//!Finds Good Binary Operator
+//@.config
+markerLines=12
+markerCount=0
+//@Test.cpp
+struct B
+{
+	bool operator==(int) const
+	{
+		return int();
+	}
+};
+
+void func()
+{
+	B b;
+	b==3;
+}
+//=
+struct B
+{
+	bool operator==(int) const
+	{
+		return int();
+	}
+};
+
+void func()
+{
+	B b;
+	b==3;
+}
+//!Recognize Enum Assignment As OK
+//@.config
+markerCount=0
+//@Test.cpp
+typedef enum {RED, GREEN, BLUE} Color;
+
+void thisIsATest() {
+	Color c;
+	c = RED;
+}
+//=
+typedef enum {RED, GREEN, BLUE} Color;
+
+void thisIsATest() {
+	Color c;
+	c = RED;
+}
+//!ASSERT Operator Detection Unary
+//@.config
+markerLines=22
+//@Test.cpp
+#include <string>
+namespace cute{
+	struct test_failure {
+		std::string reason;
+		std::string filename;
+		int lineno;
+
+		test_failure(std::string const &r,char const *f, int line)
+		:reason(r),filename(f),lineno(line)
+		{   }
+		char const * what() const { return reason.c_str(); }
+	};
+}
+#define ASSERTM(msg,cond) if (!(cond)) throw cute::test_failure((msg),__FILE__,__LINE__)
+#define ASSERT(cond) ASSERTM(#cond,cond)
+
+struct A {
+};
+
+void test(){
+	A a;   
+	ASSERT(a++);
+}
+//=
+#include <string>
+namespace cute{
+	struct test_failure {
+		std::string reason;
+		std::string filename;
+		int lineno;
+
+		test_failure(std::string const &r,char const *f, int line)
+		:reason(r),filename(f),lineno(line)
+		{   }
+		char const * what() const { return reason.c_str(); }
+	};
+}
+#define ASSERTM(msg,cond) if (!(cond)) throw cute::test_failure((msg),__FILE__,__LINE__)
+#define ASSERT(cond) ASSERTM(#cond,cond)
+
+struct A {
+	A operator++(int) {
+		return A();
+	}
+};
+
+void test(){
+	A a;   
+	ASSERT(a++);
+}
+//!ASSERT_EQUALS Operator Detection Unary
+//@.config
+markerLines=20
+//@Test.cpp
+namespace cute {
+	template <typename ExpectedValue, typename ActualValue>
+		void assert_equal(ExpectedValue const &expected
+					,ActualValue const &actual
+					,char const *msg
+					,char const *file
+					,int line) {
+			// unfortunately there is no is_integral_but_not_bool_or_enum
+			typedef typename impl_place_for_traits::is_integral<ExpectedValue> exp_integral;
+			typedef typename impl_place_for_traits::is_integral<ActualValue> act_integral;
+	}
+}
+#define ASSERT_EQUALM(msg,expected,actual) cute::assert_equal((expected),(actual),msg,__FILE__,__LINE__)
+#define ASSERT_EQUAL(expected,actual) ASSERT_EQUALM(#expected " == " #actual, (expected),(actual))
+
+struct A {
+};
+void test(){
+	A a;
+	ASSERT_EQUAL(6, a++);
+}
+//=
+namespace cute {
+	template <typename ExpectedValue, typename ActualValue>
+		void assert_equal(ExpectedValue const &expected
+					,ActualValue const &actual
+					,char const *msg
+					,char const *file
+					,int line) {
+			// unfortunately there is no is_integral_but_not_bool_or_enum
+			typedef typename impl_place_for_traits::is_integral<ExpectedValue> exp_integral;
+			typedef typename impl_place_for_traits::is_integral<ActualValue> act_integral;
+	}
+}
+#define ASSERT_EQUALM(msg,expected,actual) cute::assert_equal((expected),(actual),msg,__FILE__,__LINE__)
+#define ASSERT_EQUAL(expected,actual) ASSERT_EQUALM(#expected " == " #actual, (expected),(actual))
+
+struct A {
+	int operator++(int) {
+		return int();
+	}
+};
+void test(){
+	A a;
+	ASSERT_EQUAL(6, a++);
+}
+//!ASSERT_EQUALS_DELTA Operator Detection Unary
+//@.config
+markerLines=18
+//@Test.cpp
+namespace cute {
+	template <typename ExpectedValue, typename ActualValue, typename DeltaValue>
+		void assert_equal_delta(ExpectedValue const &expected
+					,ActualValue const &actual
+					,DeltaValue const &delta
+					,char const *msg
+					,char const *file
+					,int line) {
+		}
+}
+#define ASSERT_EQUAL_DELTAM(msg,expected,actual,delta) cute::assert_equal_delta((expected),(actual),(delta),msg,__FILE__,__LINE__)
+#define ASSERT_EQUAL_DELTA(expected,actual,delta) ASSERT_EQUAL_DELTAM(#expected " == " #actual " with error " #delta  ,(expected),(actual),(delta))
+
+struct A {
+};
+void test(){
+	A a;
+	ASSERT_EQUAL_DELTA(6, a++, 0.0);
+}
+//=
+namespace cute {
+	template <typename ExpectedValue, typename ActualValue, typename DeltaValue>
+		void assert_equal_delta(ExpectedValue const &expected
+					,ActualValue const &actual
+					,DeltaValue const &delta
+					,char const *msg
+					,char const *file
+					,int line) {
+		}
+}
+#define ASSERT_EQUAL_DELTAM(msg,expected,actual,delta) cute::assert_equal_delta((expected),(actual),(delta),msg,__FILE__,__LINE__)
+#define ASSERT_EQUAL_DELTA(expected,actual,delta) ASSERT_EQUAL_DELTAM(#expected " == " #actual " with error " #delta  ,(expected),(actual),(delta))
+
+struct A {
+	int operator++(int) {
+		return int();
+	}
+};
+void test(){
+	A a;
+	ASSERT_EQUAL_DELTA(6, a++, 0.0);
+}
+//!ASSERT_EQUALS_DELTA Operator Unary with Double Result
+//@.config
+markerLines=18
+//@Test.cpp
+namespace cute {
+	template <typename ExpectedValue, typename ActualValue, typename DeltaValue>
+		void assert_equal_delta(ExpectedValue const &expected
+					,ActualValue const &actual
+					,DeltaValue const &delta
+					,char const *msg
+					,char const *file
+					,int line) {
+		}
+}
+#define ASSERT_EQUAL_DELTAM(msg,expected,actual,delta) cute::assert_equal_delta((expected),(actual),(delta),msg,__FILE__,__LINE__)
+#define ASSERT_EQUAL_DELTA(expected,actual,delta) ASSERT_EQUAL_DELTAM(#expected " == " #actual " with error " #delta  ,(expected),(actual),(delta))
+
+struct A {
+};
+void test(){
+	A a;
+	ASSERT_EQUAL_DELTA(6.0, a++, 0.0);
+}
+//=
+namespace cute {
+	template <typename ExpectedValue, typename ActualValue, typename DeltaValue>
+		void assert_equal_delta(ExpectedValue const &expected
+					,ActualValue const &actual
+					,DeltaValue const &delta
+					,char const *msg
+					,char const *file
+					,int line) {
+		}
+}
+#define ASSERT_EQUAL_DELTAM(msg,expected,actual,delta) cute::assert_equal_delta((expected),(actual),(delta),msg,__FILE__,__LINE__)
+#define ASSERT_EQUAL_DELTA(expected,actual,delta) ASSERT_EQUAL_DELTAM(#expected " == " #actual " with error " #delta  ,(expected),(actual),(delta))
+
+struct A {
+	double operator++(int) {
+		return double();
+	}
+};
+void test(){
+	A a;
+	ASSERT_EQUAL_DELTA(6.0, a++, 0.0);
+}
+//!ASSERT_EQUALS_DELTA_M Operator Detection Unary
+//@.config
+markerLines=18
+//@Test.cpp
+namespace cute {
+	template <typename ExpectedValue, typename ActualValue, typename DeltaValue>
+		void assert_equal_delta(ExpectedValue const &expected
+					,ActualValue const &actual
+					,DeltaValue const &delta
+					,char const *msg
+					,char const *file
+					,int line) {
+		}
+}
+#define ASSERT_EQUAL_DELTAM(msg,expected,actual,delta) cute::assert_equal_delta((expected),(actual),(delta),msg,__FILE__,__LINE__)
+#define ASSERT_EQUAL_DELTA(expected,actual,delta) ASSERT_EQUAL_DELTAM(#expected " == " #actual " with error " #delta  ,(expected),(actual),(delta))
+
+struct A {
+};
+void test(){
+	A a;
+	ASSERT_EQUAL_DELTAM("foobar", 6, a++, 0.0);
+}
+//=
+namespace cute {
+	template <typename ExpectedValue, typename ActualValue, typename DeltaValue>
+		void assert_equal_delta(ExpectedValue const &expected
+					,ActualValue const &actual
+					,DeltaValue const &delta
+					,char const *msg
+					,char const *file
+					,int line) {
+		}
+}
+#define ASSERT_EQUAL_DELTAM(msg,expected,actual,delta) cute::assert_equal_delta((expected),(actual),(delta),msg,__FILE__,__LINE__)
+#define ASSERT_EQUAL_DELTA(expected,actual,delta) ASSERT_EQUAL_DELTAM(#expected " == " #actual " with error " #delta  ,(expected),(actual),(delta))
+
+struct A {
+	int operator++(int) {
+		return int();
+	}
+};
+void test(){
+	A a;
+	ASSERT_EQUAL_DELTAM("foobar", 6, a++, 0.0);
+}
+//!ASSERT Operator Detection Binary
+//@.config
+markerLines=22
+//@Test.cpp
+#include <string>
+namespace cute{
+	struct test_failure {
+		std::string reason;
+		std::string filename;
+		int lineno;
+
+		test_failure(std::string const &r,char const *f, int line)
+		:reason(r),filename(f),lineno(line)
+		{   }
+		char const * what() const { return reason.c_str(); }
+	};
+}
+#define ASSERTM(msg,cond) if (!(cond)) throw cute::test_failure((msg),__FILE__,__LINE__)
+#define ASSERT(cond) ASSERTM(#cond,cond)
+
+struct A {
+};
+
+void test(){
+	A a;   
+	ASSERT(a==3);
+}
+//=
+#include <string>
+namespace cute{
+	struct test_failure {
+		std::string reason;
+		std::string filename;
+		int lineno;
+
+		test_failure(std::string const &r,char const *f, int line)
+		:reason(r),filename(f),lineno(line)
+		{   }
+		char const * what() const { return reason.c_str(); }
+	};
+}
+#define ASSERTM(msg,cond) if (!(cond)) throw cute::test_failure((msg),__FILE__,__LINE__)
+#define ASSERT(cond) ASSERTM(#cond,cond)
+
+struct A {
+	bool operator==(const int& i) const {
+		return bool();
+	}
+};
+
+void test(){
+	A a;   
+	ASSERT(a==3);
+}
+//!ASSERT_EQUALS Operator Detection Binary
+//@.config
+markerLines=20
+//@Test.cpp
+namespace cute {
+	template <typename ExpectedValue, typename ActualValue>
+		void assert_equal(ExpectedValue const &expected
+					,ActualValue const &actual
+					,char const *msg
+					,char const *file
+					,int line) {
+			// unfortunately there is no is_integral_but_not_bool_or_enum
+			typedef typename impl_place_for_traits::is_integral<ExpectedValue> exp_integral;
+			typedef typename impl_place_for_traits::is_integral<ActualValue> act_integral;
+	}
+}
+#define ASSERT_EQUALM(msg,expected,actual) cute::assert_equal((expected),(actual),msg,__FILE__,__LINE__)
+#define ASSERT_EQUAL(expected,actual) ASSERT_EQUALM(#expected " == " #actual, (expected),(actual))
+
+struct A {
+};
+void test(){
+	A a;
+	ASSERT_EQUAL(true, a==3);
+}
+//=
+namespace cute {
+	template <typename ExpectedValue, typename ActualValue>
+		void assert_equal(ExpectedValue const &expected
+					,ActualValue const &actual
+					,char const *msg
+					,char const *file
+					,int line) {
+			// unfortunately there is no is_integral_but_not_bool_or_enum
+			typedef typename impl_place_for_traits::is_integral<ExpectedValue> exp_integral;
+			typedef typename impl_place_for_traits::is_integral<ActualValue> act_integral;
+	}
+}
+#define ASSERT_EQUALM(msg,expected,actual) cute::assert_equal((expected),(actual),msg,__FILE__,__LINE__)
+#define ASSERT_EQUAL(expected,actual) ASSERT_EQUALM(#expected " == " #actual, (expected),(actual))
+
+struct A {
+	bool operator==(const int& i) const {
+		return bool();
+	}
+};
+void test(){
+	A a;
+	ASSERT_EQUAL(true, a==3);
+}
+//!ASSERT_EQUALS_DELTA Operator Detection Binary
+//@.config
+markerLines=18
+//@Test.cpp
+namespace cute {
+	template <typename ExpectedValue, typename ActualValue, typename DeltaValue>
+		void assert_equal_delta(ExpectedValue const &expected
+					,ActualValue const &actual
+					,DeltaValue const &delta
+					,char const *msg
+					,char const *file
+					,int line) {
+		}
+}
+#define ASSERT_EQUAL_DELTAM(msg,expected,actual,delta) cute::assert_equal_delta((expected),(actual),(delta),msg,__FILE__,__LINE__)
+#define ASSERT_EQUAL_DELTA(expected,actual,delta) ASSERT_EQUAL_DELTAM(#expected " == " #actual " with error " #delta  ,(expected),(actual),(delta))
+
+struct A {
+};
+void test(){
+	A a;
+	ASSERT_EQUAL_DELTA(true, a==3, 0.0);
+}
+//=
+namespace cute {
+	template <typename ExpectedValue, typename ActualValue, typename DeltaValue>
+		void assert_equal_delta(ExpectedValue const &expected
+					,ActualValue const &actual
+					,DeltaValue const &delta
+					,char const *msg
+					,char const *file
+					,int line) {
+		}
+}
+#define ASSERT_EQUAL_DELTAM(msg,expected,actual,delta) cute::assert_equal_delta((expected),(actual),(delta),msg,__FILE__,__LINE__)
+#define ASSERT_EQUAL_DELTA(expected,actual,delta) ASSERT_EQUAL_DELTAM(#expected " == " #actual " with error " #delta  ,(expected),(actual),(delta))
+
+struct A {
+	bool operator==(const int& i) const {
+		return bool();
+	}
+};
+void test(){
+	A a;
+	ASSERT_EQUAL_DELTA(true, a==3, 0.0);
+}
+//!ASSERT_EQUALS_DELTA_M Operator Detection Binary
+//@.config
+markerLines=18
+//@Test.cpp
+namespace cute {
+	template <typename ExpectedValue, typename ActualValue, typename DeltaValue>
+		void assert_equal_delta(ExpectedValue const &expected
+					,ActualValue const &actual
+					,DeltaValue const &delta
+					,char const *msg
+					,char const *file
+					,int line) {
+		}
+}
+#define ASSERT_EQUAL_DELTAM(msg,expected,actual,delta) cute::assert_equal_delta((expected),(actual),(delta),msg,__FILE__,__LINE__)
+#define ASSERT_EQUAL_DELTA(expected,actual,delta) ASSERT_EQUAL_DELTAM(#expected " == " #actual " with error " #delta  ,(expected),(actual),(delta))
+
+struct A {
+};
+void test(){
+	A a;
+	ASSERT_EQUAL_DELTAM("foobar", true, a==3, 0.0);
+}
+//=
+namespace cute {
+	template <typename ExpectedValue, typename ActualValue, typename DeltaValue>
+		void assert_equal_delta(ExpectedValue const &expected
+					,ActualValue const &actual
+					,DeltaValue const &delta
+					,char const *msg
+					,char const *file
+					,int line) {
+		}
+}
+#define ASSERT_EQUAL_DELTAM(msg,expected,actual,delta) cute::assert_equal_delta((expected),(actual),(delta),msg,__FILE__,__LINE__)
+#define ASSERT_EQUAL_DELTA(expected,actual,delta) ASSERT_EQUAL_DELTAM(#expected " == " #actual " with error " #delta  ,(expected),(actual),(delta))
+
+struct A {
+	bool operator==(const int& i) const {
+		return bool();
+	}
+};
+void test(){
+	A a;
+	ASSERT_EQUAL_DELTAM("foobar", true, a==3, 0.0);
+}
+//!Boost Operator Detection Prefix
+//@.config
+markerLines=9
+//@A.cpp
+#include "boost/operators.hpp"
+
+struct A : boost::operators<A>
+{
+};
+
+void thisIsATest() {
+	A a;
+	++a;
+}
+//=
+#include "boost/operators.hpp"
+
+struct A : boost::operators<A>
+{
+	A& operator++() {
+		return A();
+	}
+};
+
+void thisIsATest() {
+	A a;
+	++a;
+}
+//!Find Free Prefix Operator
+//@.config
+markerCount=0
+//@A.cpp
+struct A {
+};
+
+void operator++(A & a) 
+{}
+
+void test() {
+	A a;
+	++a;
+}
+//=
+struct A {
+};
+
+void operator++(A & a) 
+{}
+
+void test() {
+	A a;
+	++a;
+}
+//!Find Free Post Fix Operator
+//@.config
+markerCount=0
+//@A.cpp
+struct A {
+};
+
+void operator++(A & a, int) 
+{}
+
+void test() {
+	A a;
+	a++;
+}
+//=
+struct A {
+};
+
+void operator++(A & a, int) 
+{}
+
+void test() {
+	A a;
+	a++;
+}
+//!Find Unary Operator On Base Type
+//@.config
+markerCount=0
+//@A.cpp
+void test()
+{
+	int a = 3;
+	a++;
+}
+//=
+void test()
+{
+	int a = 3;
+	a++;
+}
+//!Find Binary Operator On Base Type
+//@.config
+markerCount=0
+//@A.cpp
+void test()
+{
+	int a = 3;
+	a==3;
+	a*a;
+}
+//=
+void test()
+{
+	int a = 3;
+	a==3;
+	a*a;
+}
+//!Do Not Report If Operand Not Defined
+//@.config
+markerCount=0
+//@A.cpp
+void test() {
+	a++;
+}
+//=
+void test() {
+	a++;
+}
+//!Do Not Report If Operand Not Defined in Binary Expression
+//@.config
+markerCount=0
+//@A.cpp
+void test() {
+	i = 5;
+}
+//=
+void test() {
+	i = 5;
+}
+//!Do Not Report Not Operator for Pointer Types
+//@.config
+markerCount=0
+//@A.cpp
+void foo(){
+	void *x=0;
+	ASSERT(!x);
+}
+//=
+void foo(){
+	void *x=0;
+	ASSERT(!x);
+}
+//!Do Not Report Deref Operator for Pointer Types
+//@.config
+markerCount=0
+//@A.cpp
+void foo(){
+	void *x=0;
+	ASSERT(*x);
+}
+//=
+void foo(){
+	void *x=0;
+	ASSERT(*x);
+}
+//!Do Not Report Prefix Increment Operator for Pointer Types
+//@.config
+markerCount=0
+//@A.cpp
+void foo(){
+	void *x=0;
+	++x;
+}
+//=
+void foo(){
+	void *x=0;
+	++x;
+}
+//!Do Not Report Postfix Increment Operator for Pointer Types
+//@.config
+markerCount=0
+//@A.cpp
+void foo(){
+	void *x=0;
+	x++;
+}
+//=
+void foo(){
+	void *x=0;
+	x++;
+}
+//!Do Not Report Prefix Decrement Operator for Pointer Types
+//@.config
+markerCount=0
+//@A.cpp
+void foo(){
+	void *x=0;
+	--x;
+}
+//=
+void foo(){
+	void *x=0;
+	--x;
+}
+//!Do Not Report Postfix Decrement Operator for Pointer Types
+//@.config
+markerCount=0
+//@A.cpp
+void foo(){
+	void *x=0;
+	x--;
+}
+//=
+void foo(){
+	void *x=0;
+	x--;
+}
+//!Do Not Report Operators in Template Context
+//@.config
+markerCount=0
+//@A.cpp
+template<typename _A_>
+struct B {
+	int i = _A_::value_t::value * 2;
+};
+//=
+template<typename _A_>
+struct B {
+	int i = _A_::value_t::value * 2;
+};
+//!Do Not Report Operator of Const Primitive Types
+//@.config
+markerCount=0
+//@A.cpp
+typedef int u8;
+void foo(const u8 a, u8 b) {
+	u8 v = a + b;
+}
+//=
+typedef int u8;
+void foo(const u8 a, u8 b) {
+	u8 v = a + b;
+}
+//!Do Not Report Operator for Primitive Types
+//@.config
+markerCount=0
+//@A.cpp
+bool needsFiltering(int argc, const char *const *argv) const
+{
+    return argc > 1 && argv ;
+}
+//=
+bool needsFiltering(int argc, const char *const *argv) const
+{
+    return argc > 1 && argv ;
+}
+//!Create Member Operator from Assert
+//@.config
+markerLines=11
+//@A.cpp
+struct otherType{};
+#define ASSERT_EQUAL(first, second) second; otherType ot;
+
+struct arithmetischeReihe {
+	arithmetischeReihe(int delta, int start, int position) {
+	}
+};
+
+void testArithmentischeReiheCtor() {
+	arithmetischeReihe ar { 1, 0, 0 };
+	ASSERT_EQUAL(0,*ar); // quick fix
+}
+//=
+struct otherType{};
+#define ASSERT_EQUAL(first, second) second; otherType ot;
+
+struct arithmetischeReihe {
+	otherType& operator*() {
+		return otherType();
+	}
+
+	arithmetischeReihe(int delta, int start, int position) {
+	}
+};
+
+void testArithmentischeReiheCtor() {
+	arithmetischeReihe ar { 1, 0, 0 };
+	ASSERT_EQUAL(0,*ar); // quick fix
+}
+//!Create Member Operator from Function Call in Macro
+//@.config
+markerLines=13
+//@A.cpp
+#define MACRO(x, y) x; foo(y)
+
+template<typename T>
+void foo(T const & t) {
+}
+
+struct S {
+};
+
+void bar() {
+	S s;
+	int i;
+	MACRO(*s, i);
+}
+//=
+#define MACRO(x, y) x; foo(y)
+
+template<typename T>
+void foo(T const & t) {
+}
+
+struct S {
+	void operator*() {
+	}
+};
+
+void bar() {
+	S s;
+	int i;
+	MACRO(*s, i);
+}
+//!Create Member Operator in Other File
+//@.config
+markerLines=4
+//@A.cpp
+#include "A.h"
+void foo() {
+	A a;
+	*a;
+}
+//=
+#include "A.h"
+void foo() {
+	A a;
+	*a;
+}
+//@A.h
+struct A {
+};
+//=
+struct A {
+	void operator*() {
+	}
+};
+//!Do not Report Operator for Boolean-convertible Type
+//@.config
+markerCount=0
+//@A.cpp
+struct A {
+	operator bool() {
+		return true;
+	}
+}
+bool foo() {
+	bool b{true};
+	A a{};
+	return a && b;
+}
+//=
+struct A {
+	operator bool() {
+		return true;
+	}
+}
+bool foo() {
+	bool b{true};
+	A a{};
+	return a && b;
+}
+//![WRONG] Do not Report Operator for Mixed-convertible Type
+//@.config
+markerCount=0
+//@A.cpp
+struct A {
+	operator bool() {
+		return true;
+	}
+	operator int() {
+		return 42;
+	}
+};
+bool foo() {
+	bool b{true};
+	A a{};
+//	return a && b; - uncomment this to enable the test
+}
+//=
+struct A {
+	operator bool() {
+		return true;
+	}
+	operator int() {
+		return 42;
+	}
+};
+bool foo() {
+	bool b{true};
+	A a{};
+//	return a && b; - uncomment this to enable the test
+}
+//!Do not Report Operator for Address of Function
+//@.config
+markerCount=0
+//@A.cpp
+void testFunction() {}
+
+void other() {
+	auto functionPointer = &testFunction;
+}
+//=
+void testFunction() {}
+
+void other() {
+	auto functionPointer = &testFunction;
+}
+//!Do not Report Unary Operator Depending on Template Type Parameter
+//@.config
+markerCount=0
+//@A.cpp
+template<typename T>
+struct S {
+	void foo() {
+		T t{};
+		&t;
+	}
+};
+//=
+template<typename T>
+struct S {
+	void foo() {
+		T t{};
+		&t;
+	}
+};
+//!Do not Report Unary Operator Depending on Template Value Parameter
+//@.config
+markerCount=0
+//@A.cpp
+template<typename T, T value>
+struct S {
+	void foo() {
+		&value;
+	}
+};
+//=
+template<typename T, T value>
+struct S {
+	void foo() {
+		&value;
+	}
+};
+//!Do not Report Binary Operator Depending on Template Type Parameter
+//@.config
+markerCount=0
+//@A.cpp
+template<typename T>
+struct S {
+	void foo() {
+		T t1{}, t2{};
+		t1 + t2;
+	}
+};
+//=
+template<typename T>
+struct S {
+	void foo() {
+		T t1{}, t2{};
+		t1 + t2;
+	}
+};
+//!Do not Report any Addressof Operator
+//@.config
+markerCount=0
+//@A.cpp
+struct S {};
+void foo() {
+	S s{};
+	S* s = &s;
+}
+//=
+struct S {};
+void foo() {
+	S s{};
+	S* s = &s;
+}
+//!Do not Report * Operator for Pointers
+//@.config
+markerCount=0
+//@A.cpp
+struct S {};
+void foo() {
+	S* s;
+	*s;
+}
+//=
+struct S {};
+void foo() {
+	S* s;
+	*s;
+}
+//!Do not Report Binary Operator for Template Parameter Depending Array
+//@.config
+markerCount=0
+//@A.cpp
+template <typename T, unsigned N>
+void print_pair(T const (&t)[N]){
+	t+N;
+}
+//=
+template <typename T, unsigned N>
+void print_pair(T const (&t)[N]){
+	t+N;
+}
+//!Do not Report Binary Operator on Typedefed Pointer
+//@.config
+markerCount=0
+//@A.cpp
+void foo() {
+	struct S{};
+	typedef S* SP;
+	SP sp{};
+	sp = sp + 0;
+}
+//=
+void foo() {
+	struct S{};
+	typedef S* SP;
+	SP sp{};
+	sp = sp + 0;
+}
+//!Do not Report Binary Operator on Aliased Pointer
+//@.config
+markerCount=0
+//@A.cpp
+void foo() {
+	struct S{};
+	using SP = S*;
+	SP sp{};
+	sp = sp + 0;
+}
+//=
+void foo() {
+	struct S{};
+	using SP = S*;
+	SP sp{};
+	sp = sp + 0;
+}
+//!Do not Report Unary Operator on Aliased Pointer
+//@.config
+markerCount=0
+//@A.cpp
+void foo() {
+	struct S{};
+	using SP = S*;
+	SP sp{};
+	*sp = *sp;
+}
+//=
+void foo() {
+	struct S{};
+	using SP = S*;
+	SP sp{};
+	*sp = *sp;
+}

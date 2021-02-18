@@ -1,0 +1,8 @@
+//!Global Variable from Class Definition
+//@main.cpp
+int main() { return 0; }
+//@X.h
+class X {
+public:
+	void foo(){}
+} x;

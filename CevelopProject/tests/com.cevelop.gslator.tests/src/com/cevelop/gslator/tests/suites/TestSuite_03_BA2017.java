@@ -1,0 +1,54 @@
+package com.cevelop.gslator.tests.suites;
+
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
+import org.junit.runners.Suite.SuiteClasses;
+
+import com.cevelop.gslator.tests.tests.checkers.ES05ToES34DeclarationRules.ES09_01AvoidALLCAPSnamesCheckerTest;
+import com.cevelop.gslator.tests.tests.checkers.ES05ToES34DeclarationRules.ES09_02AvoidALLCAPSnamesCheckerTestWithMacroMarkers;
+import com.cevelop.gslator.tests.tests.checkers.ES40ToES64ExpressionRules.ES50DontCastAwayConstCheckerTest;
+import com.cevelop.gslator.tests.tests.checkers.ES70ToES86StatementRules.ES75AvoidDoStatementsCheckerTest;
+import com.cevelop.gslator.tests.tests.checkers.ES70ToES86StatementRules.ES76_00AvoidGotoNoQuickFixCheckerTest;
+import com.cevelop.gslator.tests.tests.checkers.ES70ToES86StatementRules.ES76_01AvoidGotoUseNormalIfCheckerTest;
+import com.cevelop.gslator.tests.tests.checkers.ES70ToES86StatementRules.ES76_02AvoidGotoUseWhileCheckerTest;
+import com.cevelop.gslator.tests.tests.checkers.ES70ToES86StatementRules.ES76_03AvoidGotoUseBreakCheckerTest;
+import com.cevelop.gslator.tests.tests.checkers.ES70ToES86StatementRules.ES76_04_01AvoidGotoUseLambdaReturnCheckerEnabledTest;
+import com.cevelop.gslator.tests.tests.checkers.ES70ToES86StatementRules.ES76_04_02AvoidGotoUseLambdaReturnCheckerDisabledTest;
+import com.cevelop.gslator.tests.tests.quickfixes.ES05ToES34DeclarationRules.ES09AvoidALLCAPSnamesIgnoreQuickFixTest;
+import com.cevelop.gslator.tests.tests.quickfixes.ES40ToES64ExpressionRules.ES50_01RemoveConstCastAndConstFromVariableQuickFixTest;
+import com.cevelop.gslator.tests.tests.quickfixes.ES40ToES64ExpressionRules.ES50_02RemoveConstCastAndMakeMembervarMutableQuickFixTest;
+import com.cevelop.gslator.tests.tests.quickfixes.ES40ToES64ExpressionRules.ES50_03RemoveCCastAndConstFromVariableQuickFixTest;
+import com.cevelop.gslator.tests.tests.quickfixes.ES40ToES64ExpressionRules.ES50_04RemoveCCastAndMakeMembervarMutableQuickFixTest;
+import com.cevelop.gslator.tests.tests.quickfixes.ES70ToES86StatementRules.ES75AvoidDoStatementsQuickFixTest;
+import com.cevelop.gslator.tests.tests.quickfixes.ES70ToES86StatementRules.ES76_01AvoidGotoUseNormalIfQuickFixTest;
+import com.cevelop.gslator.tests.tests.quickfixes.ES70ToES86StatementRules.ES76_02AvoidGotoUseWhileQuickFixTest;
+import com.cevelop.gslator.tests.tests.quickfixes.ES70ToES86StatementRules.ES76_03AvoidGotoUseBreakQuickFixTest;
+import com.cevelop.gslator.tests.tests.quickfixes.ES70ToES86StatementRules.ES76_04AvoidGotoUseLambdaReturnQuickFixTest;
+
+
+@RunWith(Suite.class)
+@SuiteClasses({
+   // @formatter:off
+	ES75AvoidDoStatementsCheckerTest.class,
+	ES75AvoidDoStatementsQuickFixTest.class,
+	ES76_00AvoidGotoNoQuickFixCheckerTest.class,
+	ES76_01AvoidGotoUseNormalIfCheckerTest.class,
+	ES76_02AvoidGotoUseWhileCheckerTest.class,
+	ES76_03AvoidGotoUseBreakCheckerTest.class,
+	ES76_04_01AvoidGotoUseLambdaReturnCheckerEnabledTest.class,
+	ES76_04_02AvoidGotoUseLambdaReturnCheckerDisabledTest.class,
+	ES76_01AvoidGotoUseNormalIfQuickFixTest.class,
+	ES76_02AvoidGotoUseWhileQuickFixTest.class,
+	ES76_03AvoidGotoUseBreakQuickFixTest.class,
+	ES76_04AvoidGotoUseLambdaReturnQuickFixTest.class,
+	ES09_01AvoidALLCAPSnamesCheckerTest.class,
+	ES09_02AvoidALLCAPSnamesCheckerTestWithMacroMarkers.class,
+	ES09AvoidALLCAPSnamesIgnoreQuickFixTest.class,
+	ES50DontCastAwayConstCheckerTest.class,
+	ES50_01RemoveConstCastAndConstFromVariableQuickFixTest.class,
+	ES50_02RemoveConstCastAndMakeMembervarMutableQuickFixTest.class,
+	ES50_03RemoveCCastAndConstFromVariableQuickFixTest.class,
+	ES50_04RemoveCCastAndMakeMembervarMutableQuickFixTest.class
+	// @formatter:on
+})
+public class TestSuite_03_BA2017 {}

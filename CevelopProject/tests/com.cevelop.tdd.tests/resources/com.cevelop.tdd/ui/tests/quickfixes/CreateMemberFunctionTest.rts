@@ -1,0 +1,798 @@
+//!Test Simple Member Function
+//@.config
+markerLines=8
+//@A.cpp
+struct B
+{
+};
+
+void func()
+{
+	B b1;
+	b1.member();
+}
+//=
+struct B
+{
+	void member() {
+	}
+};
+
+void func()
+{
+	B b1;
+	b1.member();
+}
+//!Test Assignment Member Function
+//@.config
+markerLines=8
+//@A.cpp
+struct B
+{
+};
+
+void func()
+{
+	B b1;
+	int x = b1.member();
+}
+//=
+struct B
+{
+	int member() const {
+		return int();
+	}
+};
+
+void func()
+{
+	B b1;
+	int x = b1.member();
+}
+//!Test Simple Macro
+//@.config
+markerLines=10
+//@A.cpp
+#define MACRO(c) c()
+
+struct B
+{
+};
+
+void func()
+{
+	B b1;
+	MACRO(b1.member());
+}
+//=
+#define MACRO(c) c()
+
+struct B
+{
+	void member() {
+	}
+};
+
+void func()
+{
+	B b1;
+	MACRO(b1.member());
+}
+//!Test Other File Member
+//@.config
+markerLines=6
+//@A.cpp
+#include "B.h"
+
+void func()
+{
+	B b1;
+	b1.member();
+}
+//=
+#include "B.h"
+
+void func()
+{
+	B b1;
+	b1.member();
+}
+//@B.h
+struct B
+{
+};
+//=
+struct B
+{
+	void member() {
+	}
+};
+//!Private Class Insertion
+//@.config
+markerLines=7
+//@A.cpp
+class B {
+};
+
+void test()
+{
+	B b;
+	b.foo();
+}
+//=
+class B {
+public:
+	void foo() {
+	}
+};
+
+void test()
+{
+	B b;
+	b.foo();
+}
+//!Advanced Private Class
+//@.config
+markerLines=9
+//@A.cpp
+class B {
+protected:
+public:
+private:
+};
+
+void test() {
+	B b;
+	b.foo();
+}
+//=
+class B {
+protected:
+public:
+	void foo() {
+	}
+
+private:
+};
+
+void test() {
+	B b;
+	b.foo();
+}
+//!Test CUTE Macro Function Creation ASSERT
+//@.config
+markerLines=23
+//@Test.cpp
+#include <string>
+namespace cute{
+	struct test_failure {
+		std::string reason;
+		std::string filename;
+		int lineno;
+
+		test_failure(std::string const &r,char const *f, int line)
+		:reason(r),filename(f),lineno(line)
+		{   }
+		char const * what() const { return 0; }
+	};
+}
+#define ASSERTM(msg,cond) if (!(cond)) throw cute::test_failure((msg),__FILE__,__LINE__)
+#define ASSERT(cond) ASSERTM(#cond,cond)
+
+struct B
+{
+};
+
+void blah(){
+	B b1;
+	ASSERT(b1.member());
+}
+//=
+#include <string>
+namespace cute{
+	struct test_failure {
+		std::string reason;
+		std::string filename;
+		int lineno;
+
+		test_failure(std::string const &r,char const *f, int line)
+		:reason(r),filename(f),lineno(line)
+		{   }
+		char const * what() const { return 0; }
+	};
+}
+#define ASSERTM(msg,cond) if (!(cond)) throw cute::test_failure((msg),__FILE__,__LINE__)
+#define ASSERT(cond) ASSERTM(#cond,cond)
+
+struct B
+{
+	bool member() const {
+		return bool();
+	}
+};
+
+void blah(){
+	B b1;
+	ASSERT(b1.member());
+}
+//!Test CUTE Macro Function Creation ASSERT_EQUALS
+//@.config
+markerLines=22
+//@Test.cpp
+namespace cute {
+	template <typename ExpectedValue, typename ActualValue>
+		void assert_equal(ExpectedValue const &expected
+					,ActualValue const &actual
+					,char const *msg
+					,char const *file
+					,int line) {
+			// unfortunately there is no is_integral_but_not_bool_or_enum
+			typedef typename impl_place_for_traits::is_integral<ExpectedValue> exp_integral;
+			typedef typename impl_place_for_traits::is_integral<ActualValue> act_integral;
+	}
+}
+#define ASSERT_EQUALM(msg,expected,actual) cute::assert_equal((expected),(actual),msg,__FILE__,__LINE__)
+#define ASSERT_EQUAL(expected,actual) ASSERT_EQUALM(#expected " == " #actual, (expected),(actual))
+
+struct B
+{
+};
+
+void test(){
+	B b1;
+	ASSERT_EQUAL(42, b1.member());
+}
+//=
+namespace cute {
+	template <typename ExpectedValue, typename ActualValue>
+		void assert_equal(ExpectedValue const &expected
+					,ActualValue const &actual
+					,char const *msg
+					,char const *file
+					,int line) {
+			// unfortunately there is no is_integral_but_not_bool_or_enum
+			typedef typename impl_place_for_traits::is_integral<ExpectedValue> exp_integral;
+			typedef typename impl_place_for_traits::is_integral<ActualValue> act_integral;
+	}
+}
+#define ASSERT_EQUALM(msg,expected,actual) cute::assert_equal((expected),(actual),msg,__FILE__,__LINE__)
+#define ASSERT_EQUAL(expected,actual) ASSERT_EQUALM(#expected " == " #actual, (expected),(actual))
+
+struct B
+{
+	int member() const {
+		return int();
+	}
+};
+
+void test(){
+	B b1;
+	ASSERT_EQUAL(42, b1.member());
+}
+//!Test CUTE Macro Function Creation ASSERT_EQUALS_DELTA
+//@.config
+markerLines=20
+//@Test.cpp
+namespace cute {
+	template <typename ExpectedValue, typename ActualValue, typename DeltaValue>
+		void assert_equal_delta(ExpectedValue const &expected
+					,ActualValue const &actual
+					,DeltaValue const &delta
+					,char const *msg
+					,char const *file
+					,int line) {
+		}
+}
+#define ASSERT_EQUAL_DELTAM(msg,expected,actual,delta) cute::assert_equal_delta((expected),(actual),(delta),msg,__FILE__,__LINE__)
+#define ASSERT_EQUAL_DELTA(expected,actual,delta) ASSERT_EQUAL_DELTAM(#expected " == " #actual " with error " #delta  ,(expected),(actual),(delta))
+
+struct B
+{
+};
+
+void testKreis(){
+	B b;
+	ASSERT_EQUAL_DELTA(42, b.member(), 0.0);
+}
+//=
+namespace cute {
+	template <typename ExpectedValue, typename ActualValue, typename DeltaValue>
+		void assert_equal_delta(ExpectedValue const &expected
+					,ActualValue const &actual
+					,DeltaValue const &delta
+					,char const *msg
+					,char const *file
+					,int line) {
+		}
+}
+#define ASSERT_EQUAL_DELTAM(msg,expected,actual,delta) cute::assert_equal_delta((expected),(actual),(delta),msg,__FILE__,__LINE__)
+#define ASSERT_EQUAL_DELTA(expected,actual,delta) ASSERT_EQUAL_DELTAM(#expected " == " #actual " with error " #delta  ,(expected),(actual),(delta))
+
+struct B
+{
+	int member() const {
+		return int();
+	}
+};
+
+void testKreis(){
+	B b;
+	ASSERT_EQUAL_DELTA(42, b.member(), 0.0);
+}
+//!Test CUTE Macro Function Creation ASSERT_EQUALS_DELTA_M
+//@.config
+markerLines=20
+//@Test.cpp
+namespace cute {
+	template <typename ExpectedValue, typename ActualValue, typename DeltaValue>
+		void assert_equal_delta(ExpectedValue const &expected
+					,ActualValue const &actual
+					,DeltaValue const &delta
+					,char const *msg
+					,char const *file
+					,int line) {
+		}
+}
+#define ASSERT_EQUAL_DELTAM(msg,expected,actual,delta) cute::assert_equal_delta((expected),(actual),(delta),msg,__FILE__,__LINE__)
+#define ASSERT_EQUAL_DELTA(expected,actual,delta) ASSERT_EQUAL_DELTAM(#expected " == " #actual " with error " #delta  ,(expected),(actual),(delta))
+
+struct B
+{
+};
+
+void testKreis(){
+	B b;
+	ASSERT_EQUAL_DELTAM("foobar", 42, b.member(), 0.0);
+}
+//=
+namespace cute {
+	template <typename ExpectedValue, typename ActualValue, typename DeltaValue>
+		void assert_equal_delta(ExpectedValue const &expected
+					,ActualValue const &actual
+					,DeltaValue const &delta
+					,char const *msg
+					,char const *file
+					,int line) {
+		}
+}
+#define ASSERT_EQUAL_DELTAM(msg,expected,actual,delta) cute::assert_equal_delta((expected),(actual),(delta),msg,__FILE__,__LINE__)
+#define ASSERT_EQUAL_DELTA(expected,actual,delta) ASSERT_EQUAL_DELTAM(#expected " == " #actual " with error " #delta  ,(expected),(actual),(delta))
+
+struct B
+{
+	int member() const {
+		return int();
+	}
+};
+
+void testKreis(){
+	B b;
+	ASSERT_EQUAL_DELTAM("foobar", 42, b.member(), 0.0);
+}
+//!Struct Public Part If Exiplicit
+//@.config
+markerLines=8
+//@A.cpp
+struct B {
+public:
+};
+
+void test()
+{
+	B b;
+	b.foo();
+}
+//=
+struct B {
+public:
+	void foo() {
+	}
+};
+
+void test()
+{
+	B b;
+	b.foo();
+}
+//!Member With Parameter
+//@.config
+markerLines=8
+//@A.cpp
+struct B
+{
+};
+
+void func()
+{
+	B b1;
+	b1.member(42);
+}
+//=
+struct B
+{
+	void member(const int& i) {
+	}
+};
+
+void func()
+{
+	B b1;
+	b1.member(42);
+}
+//!CUTE AssertEqual Member With Parameter
+//@.config
+markerLines=12
+//@A.cpp
+namespace cute {
+template <typename ExpectedValue, typename ActualValue>
+	void assert_equal(ExpectedValue const &expected
+		,ActualValue const &actual ,char const *msg
+		,char const *file ,int line) {
+}}
+#define ASSERT_EQUALM(msg,expected,actual) cute::assert_equal((expected),(actual),msg,__FILE__,__LINE__)
+#define ASSERT_EQUAL(expected,actual) ASSERT_EQUALM(#expected " == " #actual, (expected),(actual))
+struct Type {};
+void test(){
+	Type t;
+	ASSERT_EQUAL(42, t.function(42));
+}
+//=
+namespace cute {
+template <typename ExpectedValue, typename ActualValue>
+	void assert_equal(ExpectedValue const &expected
+		,ActualValue const &actual ,char const *msg
+		,char const *file ,int line) {
+}}
+#define ASSERT_EQUALM(msg,expected,actual) cute::assert_equal((expected),(actual),msg,__FILE__,__LINE__)
+#define ASSERT_EQUAL(expected,actual) ASSERT_EQUALM(#expected " == " #actual, (expected),(actual))
+struct Type {
+	int function(const int& i) const {
+		return int();
+	}
+};
+void test(){
+	Type t;
+	ASSERT_EQUAL(42, t.function(42));
+}
+//!No Suggestion for Members of Fundamental Types
+//@.config
+markerCount=0
+//@A.cpp
+void test()
+{
+	int i = 5;
+	i.foo();
+}
+//=
+void test()
+{
+	int i = 5;
+	i.foo();
+}
+//!Create Member Function with One Argument and Return Type
+//@.config
+markerLines=6
+//@A.cpp
+struct A {
+};
+
+int main(int argc, char **argv) {
+	A a;
+	A b = a.create(1);
+}
+//=
+struct A {
+	A create(const int& i) const {
+		return A();
+	}
+};
+
+int main(int argc, char **argv) {
+	A a;
+	A b = a.create(1);
+}
+//!Create Member Function in Type in local TU
+//@.config
+markerLines=8
+//@A.cpp
+struct B
+{
+};
+
+struct T {
+
+	void thisIsATest() {
+		bool b = myB.bar();
+	}
+
+private:
+	B myB;
+};
+//=
+struct B
+{
+	bool bar() const {
+		return bool();
+	}
+};
+
+struct T {
+
+	void thisIsATest() {
+		bool b = myB.bar();
+	}
+
+private:
+	B myB;
+};
+//@B.h
+struct B
+{
+	void function()
+	{
+	}
+};
+//=
+struct B
+{
+	void function()
+	{
+	}
+};
+//@C.h
+struct B
+{
+	void foo()
+	{
+	}
+};
+//=
+struct B
+{
+	void foo()
+	{
+	}
+};
+//!Create Member Function in Type from Header
+//@.config
+markerLines=6
+//@A.cpp
+#include "A.h"
+
+struct T {
+
+	void thisIsATest() {
+		bool b = myB.bar();
+	}
+
+private:
+	B myB;
+};
+//=
+#include "A.h"
+
+struct T {
+
+	void thisIsATest() {
+		bool b = myB.bar();
+	}
+
+private:
+	B myB;
+};
+//@B.h
+struct B
+{
+	void function()
+	{
+	}
+};
+//=
+struct B
+{
+	void function()
+	{
+	}
+};
+//@A.h
+struct B
+{
+};
+//=
+struct B
+{
+	bool bar() const {
+		return bool();
+	}
+};
+//@C.h
+struct B
+{
+	void foo()
+	{
+	}
+};
+//=
+struct B
+{
+	void foo()
+	{
+	}
+};
+//!Create Member Function in Typedefed Typedef Type
+//@.config
+markerLines=9
+//@A.cpp
+struct K{
+};
+
+typedef K tdK;
+typedef tdK anotherTdK;
+
+int main(int argc, char **argv) {
+	anotherTdK k;
+	k.bar();
+}
+//=
+struct K{
+	void bar() {
+	}
+};
+
+typedef K tdK;
+typedef tdK anotherTdK;
+
+int main(int argc, char **argv) {
+	anotherTdK k;
+	k.bar();
+}
+//!Create Namespace Member Function
+//@.config
+markerLines=6
+//@A.cpp
+namespace X
+{
+}
+
+void test() {
+	X::foo();
+}
+//=
+namespace X
+{
+
+void foo() {
+}
+
+}
+
+void test() {
+	X::foo();
+}
+//!Create Namespace Member Function in Header
+//@.config
+markerLines=4
+//@A.cpp
+#include "A.h"
+
+void test() {
+	X::foo();
+}
+//=
+#include "A.h"
+
+void test() {
+	X::foo();
+}
+//@A.h
+namespace X
+{
+}
+//=
+namespace X
+{
+
+void foo() {
+}
+
+}
+//!Create Member Function for Type of Call Expression
+//@.config
+markerLines=9
+//@A.cpp
+struct S {
+	S f() {
+		return S();
+	}
+};
+
+void foo() {
+	S s;
+	s.f().b();
+}
+//=
+struct S {
+	void b() {
+	}
+
+	S f() {
+		return S();
+	}
+};
+
+void foo() {
+	S s;
+	s.f().b();
+}
+//!Create Member Function for Template
+//@.config
+markerLines=5
+//@A.cpp
+template<typename T> struct meintemplate {
+};
+int main(int argc, char const *argv[]) {
+	meintemplate<int> foo;
+	foo.clear();
+}
+//=
+template<typename T> struct meintemplate {
+	void clear() {
+	}
+};
+int main(int argc, char const *argv[]) {
+	meintemplate<int> foo;
+	foo.clear();
+}
+//!Create Member Function with const object
+//@.config
+markerLines=6
+//@A.cpp
+struct Switch {
+};
+
+void testSwitchZero(){
+	Switch const s { };
+	bool res = s.isOff(); // quick-fix
+}
+//=
+struct Switch {
+	bool isOff() const {
+		return bool();
+	}
+};
+
+void testSwitchZero(){
+	Switch const s { };
+	bool res = s.isOff(); // quick-fix
+}
+//!Create Member Function in Specialized Class Template
+//@.config
+markerLines=11
+//@A.cpp
+template<typename T>
+struct Tpl {
+};
+
+template<>
+struct Tpl<int> {
+};
+
+void foo() {
+	Tpl<int> t;
+	t.foo();
+}
+//=
+template<typename T>
+struct Tpl {
+};
+
+template<>
+struct Tpl<int> {
+	void foo() {
+	}
+};
+
+void foo() {
+	Tpl<int> t;
+	t.foo();
+}

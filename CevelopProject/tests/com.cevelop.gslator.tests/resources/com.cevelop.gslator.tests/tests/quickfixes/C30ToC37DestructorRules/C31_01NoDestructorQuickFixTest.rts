@@ -1,0 +1,262 @@
+//!NoDestructorWithOwner
+//@main.h
+struct Named_map {
+public:
+	
+private:
+	std::string name;
+	std::map<int, int> rep;
+	gsl::owner<int *> owy;
+};
+//=
+struct Named_map {
+public:
+	~Named_map() noexcept
+	{
+		delete owy;
+	}
+
+private:
+	std::string name;
+	std::map<int, int> rep;
+	gsl::owner<int *> owy;
+};
+//!NoDestructorWithOwnerOfArray
+//@main.h
+struct Named_map {
+public:
+	Named_map() noexcept :owy {new int[4]} {
+	}
+	
+private:
+	std::string name;
+	std::map<int, int> rep;
+	gsl::owner<int *> owy;
+};
+//=
+struct Named_map {
+public:
+	~Named_map() noexcept
+	{
+		delete[] owy;
+	}
+
+	Named_map() noexcept :owy {new int[4]} {
+	}
+
+private:
+	std::string name;
+	std::map<int, int> rep;
+	gsl::owner<int *> owy;
+};
+//!NoDestructorWithOwningReference
+//@main.h
+struct Named_map {
+public:
+	
+private:
+	std::string name;
+	std::map<int, int> rep;
+	gsl::owner<int &> owy;
+};
+//=
+struct Named_map {
+public:
+	~Named_map() noexcept
+	{
+		delete &owy;
+	}
+
+private:
+	std::string name;
+	std::map<int, int> rep;
+	gsl::owner<int &> owy;
+};
+//!NoDestructorWithOwnerOfArray2
+//@main.h
+struct Named_map {
+public:
+	Named_map() noexcept :owy {*(new int[4])} {
+	}
+	
+private:
+	std::string name;
+	std::map<int, int> rep;
+	gsl::owner<int &> owy;
+};
+//=
+struct Named_map {
+public:
+	~Named_map() noexcept
+	{
+		delete[] &owy;
+	}
+
+	Named_map() noexcept :owy {*(new int[4])} {
+	}
+
+private:
+	std::string name;
+	std::map<int, int> rep;
+	gsl::owner<int &> owy;
+};
+//!NoDestructorWithSeveralOwners
+//@main.h
+struct Named_map {
+public:
+	
+private:
+	std::string name;
+	std::map<int, int> rep;
+	gsl::owner<int *> owy;
+	gsl::owner<int *> otherowy;
+	gsl::owner<int *> bestowy;
+};
+//=
+struct Named_map {
+public:
+	~Named_map() noexcept
+	{
+		delete owy;
+		delete otherowy;
+		delete bestowy;
+	}
+
+private:
+	std::string name;
+	std::map<int, int> rep;
+	gsl::owner<int *> owy;
+	gsl::owner<int *> otherowy;
+	gsl::owner<int *> bestowy;
+};
+//!NoDestructorWithSeveralSpecialOwners
+//@main.h
+struct Named_map {
+public:
+	Named_map() noexcept :io {new int},ooooo {*(new int)},a {new int[4]},oo {*(new int[5])} {}
+	
+private:
+	std::string name;
+	std::map<int, int> rep;
+	gsl::owner<int *> io;
+	gsl::owner<int &> ooooo;
+	gsl::owner<int *> a;
+	gsl::owner<int &> oo;
+};
+//=
+struct Named_map {
+public:
+
+	~Named_map() noexcept
+	{
+		delete io;
+		delete &ooooo;
+		delete[] a;
+		delete[] &oo;
+	}
+
+	Named_map() noexcept :io {new int},ooooo {*(new int)},a {new int[4]},oo {*(new int[5])} {}
+	
+private:
+	std::string name;
+	std::map<int, int> rep;
+	gsl::owner<int *> io;
+	gsl::owner<int &> ooooo;
+	gsl::owner<int *> a;
+	gsl::owner<int &> oo;
+};
+//!NoDestructorWithSeveralSpecialOwnersInitializedInClass
+//@main.h
+struct Named_map {
+public:
+
+private:
+	std::string name { };
+	std::map<int, int> rep { };
+	gsl::owner<int *> io { new int };
+	gsl::owner<int &> ooooo { *(new int) };
+	gsl::owner<int *> a { new int[4] };
+	gsl::owner<int &> oo { *(new int[5]) };
+};
+//=
+struct Named_map {
+public:
+
+	~Named_map() noexcept
+	{
+		delete io;
+		delete &ooooo;
+		delete[] a;
+		delete[] &oo;
+	}
+
+private:
+	std::string name { };
+	std::map<int, int> rep { };
+	gsl::owner<int *> io { new int };
+	gsl::owner<int &> ooooo { *(new int) };
+	gsl::owner<int *> a { new int[4] };
+	gsl::owner<int &> oo { *(new int[5]) };
+};
+//!NoDestructorWithOwnerAndNoPublicScope
+//@main.h
+struct Named_map {
+	
+private:
+	std::string name;
+	std::map<int, int> rep;
+	gsl::owner<int *> owy;
+};
+//=
+struct Named_map {
+	~Named_map() noexcept
+	{
+		delete owy;
+	}
+
+private:
+	std::string name;
+	std::map<int, int> rep;
+	gsl::owner<int *> owy;
+};
+//!NoDestructorWithOwnerAndNoPublicScopeAndClass
+//@main.h
+class Named_map {
+private:
+	std::string name;
+	std::map<int, int> rep;
+	gsl::owner<int *> owy;
+};
+//=
+class Named_map {
+private:
+	std::string name;
+	std::map<int, int> rep;
+	gsl::owner<int *> owy;
+
+public:
+	~Named_map() noexcept
+	{
+		delete owy;
+	}
+};
+//!SetAttributeNoDestructorWithOwner
+//@.config
+setIgnoreAttribute=true
+//@main.h
+struct Named_map {
+public:
+	
+private:
+	std::string name;
+	std::map<int, int> rep;
+	gsl::owner<int *> owy;
+};
+//=
+struct [[gsl::suppress("Rc-dtor-release")]] Named_map {
+public:
+private:
+	std::string name;
+	std::map<int, int> rep;
+	gsl::owner<int*> owy;
+};

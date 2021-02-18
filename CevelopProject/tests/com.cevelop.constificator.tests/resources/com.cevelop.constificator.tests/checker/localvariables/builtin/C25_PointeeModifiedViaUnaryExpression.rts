@@ -1,0 +1,36 @@
+//!ResultOfDereferencingPtrIncrementPrefix
+//@.config
+//@main.cpp
+int main()
+  {
+  int * const ptr{};
+  ++*ptr;
+  }
+
+//!ResultOfDereferencingPtrIncrementPostfix
+//@.config
+//@main.cpp
+int main()
+  {
+  int * const ptr{};
+  (*ptr)++;
+  }
+  
+//!ResultOfDereferencingPtrDecrementPrefix
+//@.config
+//@main.cpp
+int main()
+  {
+  int * const ptr{};
+  --(*ptr);
+  }
+  
+//!ResultOfDereferencingPtrDecrementPostfix
+//@.config
+//@main.cpp
+int main()
+  {
+  int * const ptr{};
+  (*ptr)--;
+  }
+  

@@ -1,0 +1,780 @@
+//!EUDEC_NoSelection
+//@.config
+expectedNrOfFatalErrors=1
+//@A1.cpp
+int main() {}
+//!EUDEC_WrongSelection
+//@.config
+expectedNrOfFatalErrors=1
+//@A1.cpp
+using /*$*/A/*$*/::f;
+//!EUDEC_ReplacementWithinMacroShouldNotBeTouched
+//@A1.cpp
+#define macro(X) A::f(X)
+namespace A{
+	 void f(int){}
+}
+int main() {
+	/*$*/A/*$*/::f(0);
+	macro(42);
+}
+//=
+#define macro(X) A::f(X)
+namespace A{
+	 void f(int){}
+}
+int main() {
+	using A::f;
+	f(0);
+	macro(42);
+}
+//!EUDEC_ReplacementWithinMacroShouldNotBeTouched_type
+//@A1.cpp
+#define macro(X) A::f(X)
+namespace A{
+	 struct f{f(int){}};
+}
+int main() {
+	/*$*/A/*$*/::f(0);
+	macro(42);
+}
+//=
+#define macro(X) A::f(X)
+namespace A{
+	 struct f{f(int){}};
+}
+int main() {
+	using A::f;
+	f(0);
+	macro(42);
+}
+//!EUDEC_MacroWithinCall_type
+//@A1.cpp
+#define macro(X) A::f(X)
+namespace A{
+	struct f{f(int){}};
+	void doit(f){}
+}
+int main() {
+	/*$*/A/*$*/::f(0);
+	doit(macro(42));
+}
+//=
+#define macro(X) A::f(X)
+namespace A{
+	struct f{f(int){}};
+	void doit(f){}
+}
+int main() {
+	using A::f;
+	f(0);
+	doit(macro(42));
+}
+//!EUDEC_SingleNSSelectionOnCall
+//@A1.cpp
+namespace A{
+	 void f(){}
+}
+int main() {
+	/*$*/A/*$*/::f();
+}
+//=
+namespace A{
+	 void f(){}
+}
+int main() {
+	using A::f;
+	f();
+}
+//!EUDEC_OnlyReplaceExactNameOccurencies
+//@A1.cpp
+namespace A{
+	 void f(){}
+	 void a(){}
+}
+int main() {
+	/*$*/A/*$*/::f();
+	A::f();
+	A::a();
+}
+//=
+namespace A{
+	 void f(){}
+	 void a(){}
+}
+int main() {
+	using A::f;
+	f();
+	f();
+	A::a();
+}
+//!EUDEC_NameOverloadings
+//@A1.cpp
+namespace A{
+	 void f(){}
+	 void f(int i){}
+	 void f(double d){}
+}
+int main() {
+	/*$*/A/*$*/::f();
+	A::f(1);
+	A::f(1.1);
+}
+//=
+namespace A{
+	 void f(){}
+	 void f(int i){}
+	 void f(double d){}
+}
+int main() {
+	using A::f;
+	f();
+	f(1);
+	f(1.1);
+}
+//!EUDEC_SameNameInNestedNamespace1
+//@A1.cpp
+namespace A{
+	 void f(){}
+	 namespace AA{
+	 	 void f(){}
+	 }
+}
+int main() {
+	/*$*/A/*$*/::f();
+	A::AA::f();
+}
+//=
+namespace A{
+	 void f(){}
+	 namespace AA{
+	 	 void f(){}
+	 }
+}
+int main() {
+	using A::f;
+	f();
+	A::AA::f();
+}
+//!EUDEC_SameNameInNestedNamespace2
+//@A1.cpp
+namespace A{
+	 void f(){}
+	 namespace AA{
+	 	 void f(){}
+	 }
+}
+int main() {
+	A::f();
+	/*$*/A/*$*/::AA::f();
+}
+//=
+namespace A{
+	 void f(){}
+	 namespace AA{
+	 	 void f(){}
+	 }
+}
+int main() {
+	A::f();
+	using A::AA::f;
+	f();
+}
+//!EUDEC_Variables1
+//@A1.cpp
+namespace A{
+	int i;
+	namespace AA{
+		int i;
+	}
+}
+int main() {
+	/*$*/A/*$*/::i = 0;
+	A::AA::i = 0;
+}
+//=
+namespace A{
+	int i;
+	namespace AA{
+		int i;
+	}
+}
+int main() {
+	using A::i;
+	i = 0;
+	A::AA::i = 0;
+}
+//!EUDEC_Variables2
+//@A1.cpp
+namespace A{
+	int i;
+	namespace AA{
+		int i;
+	}
+}
+int main() {
+	A::i = 0;
+	/*$*/A/*$*/::AA::i = 0;
+}
+//=
+namespace A{
+	int i;
+	namespace AA{
+		int i;
+	}
+}
+int main() {
+	A::i = 0;
+	using A::AA::i;
+	i = 0;
+}
+//!EUDEC_Types1
+//@A1.cpp
+namespace A{
+	struct S1{};
+	struct S2{
+		struct S1{};
+	};
+}
+int main() {
+	/*$*/A/*$*/::S1 s1;
+	A::S2 s2;
+	A::S2::S1 s21;
+}
+//=
+namespace A{
+	struct S1{};
+	struct S2{
+		struct S1{};
+	};
+}
+int main() {
+	using A::S1;
+	S1 s1;
+	A::S2 s2;
+	A::S2::S1 s21;
+}
+//!EUDEC_Types2
+//@A1.cpp
+namespace A{
+	struct S1{};
+	struct S2{
+		struct S1{};
+	};
+}
+int main() {
+	A::S1 s1;
+	/*$*/A/*$*/::S2 s2;
+	A::S2::S1 s21;
+}
+//=
+namespace A{
+	struct S1{};
+	struct S2{
+		struct S1{};
+	};
+}
+int main() {
+	A::S1 s1;
+	using A::S2;
+	S2 s2;
+	S2::S1 s21;
+}
+//!EUDEC_Types3
+//@A1.cpp
+namespace A{
+	struct S1{};
+		struct S2{
+			struct S1{};
+		};
+}
+int main() {
+	A::S1 s1;
+	A::S2 s2;
+	/*$*/A/*$*/::S2::S1 s21;
+}
+//=
+namespace A{
+	struct S1{};
+		struct S2{
+			struct S1{};
+		};
+}
+int main() {
+	A::S1 s1;
+	using A::S2;
+	S2 s2;
+	S2::S1 s21;
+}
+//!EUDEC_Templates1
+//@A1.cpp
+#include <iostream>
+namespace A{
+	template<typename T> void f(T t){
+		std::cout << t << std::endl;
+	}
+	template<typename T> struct S1{
+		T arr[1];
+		void set(T t){
+			arr[0] = t;
+		}
+	};
+	struct S2{
+		int i;
+	};
+}
+int main(){
+	/*$*/A/*$*/::S2 s2;
+	A::S1<A::S2> s12;
+
+	A::f(5);
+	A::f("hello");
+	A::S1<int> s1;
+	s1.set(100);
+	std::cout << s1.arr[0] << std::endl;
+}
+//=
+#include <iostream>
+namespace A{
+	template<typename T> void f(T t){
+		std::cout << t << std::endl;
+	}
+	template<typename T> struct S1{
+		T arr[1];
+		void set(T t){
+			arr[0] = t;
+		}
+	};
+	struct S2{
+		int i;
+	};
+}
+int main(){
+	using A::S2;
+	S2 s2;
+	A::S1<S2> s12;
+
+	A::f(5);
+	A::f("hello");
+	A::S1<int> s1;
+	s1.set(100);
+	std::cout << s1.arr[0] << std::endl;
+}
+//!EUDEC_Templates2
+//@A1.cpp
+#include <iostream>
+namespace A{
+	template<typename T> void f(T t){
+		std::cout << t << std::endl;
+	}
+	template<typename T> struct S1{
+		T arr[1];
+		void set(T t){
+			arr[0] = t;
+		}
+	};
+	struct S2{
+		int i;
+	};
+}
+int main() {
+	A::S2 s2;
+	A::S1</*$*/A/*$*/::S2> s12;
+
+	A::f(5);
+	A::f("hello");
+	A::S1<int> s1;
+	s1.set(100);
+	std::cout << s1.arr[0] << std::endl;
+}
+//=
+#include <iostream>
+namespace A{
+	template<typename T> void f(T t){
+		std::cout << t << std::endl;
+	}
+	template<typename T> struct S1{
+		T arr[1];
+		void set(T t){
+			arr[0] = t;
+		}
+	};
+	struct S2{
+		int i;
+	};
+}
+int main() {
+	using A::S2;
+	S2 s2;
+	A::S1<S2> s12;
+
+	A::f(5);
+	A::f("hello");
+	A::S1<int> s1;
+	s1.set(100);
+	std::cout << s1.arr[0] << std::endl;
+}
+//!EUDEC_Templates3
+//@A1.cpp
+#include <iostream>
+namespace A{
+	template<typename T> void f(T t){
+		std::cout << t << std::endl;
+	}
+	template<typename T> struct S1{
+		T arr[1];
+		void set(T t){
+			arr[0] = t;
+		}
+	};
+	struct S2{
+		int i;
+	};
+}
+int main() {
+	A::S2 s2;
+	/*$*/A/*$*/::S1<A::S2> s12;
+	A::S1<A::S2> s12_;
+	A::S1<A::S1<A::S2> > sNested;
+	A::f(5);
+	A::f("hello");
+	A::S1<int> s1;
+	s1.set(100);
+	std::cout << s1.arr[0] << std::endl;
+}
+//=
+#include <iostream>
+namespace A{
+	template<typename T> void f(T t){
+		std::cout << t << std::endl;
+	}
+	template<typename T> struct S1{
+		T arr[1];
+		void set(T t){
+			arr[0] = t;
+		}
+	};
+	struct S2{
+		int i;
+	};
+}
+int main() {
+	A::S2 s2;
+	using A::S1;
+	S1<A::S2> s12;
+	S1<A::S2> s12_;
+	S1<S1<A::S2> > sNested;
+	A::f(5);
+	A::f("hello");
+	S1<int> s1;
+	s1.set(100);
+	std::cout << s1.arr[0] << std::endl;
+}
+//!EUDEC_Templates3a
+//@A1.cpp
+#include <iostream>
+namespace A{
+	template<typename T> void f(T t){
+		std::cout << t << std::endl;
+	}
+	template<typename T> struct S1{
+		T arr[1];
+		void set(T t){
+			arr[0] = t;
+		}
+	};
+	struct S2{
+		int i;
+	};
+}
+int main() {
+	/*$*/A/*$*/::S1<A::S2> s12;
+	A::S1<A::S1<A::S2> > sNested;
+}
+//=
+#include <iostream>
+namespace A{
+	template<typename T> void f(T t){
+		std::cout << t << std::endl;
+	}
+	template<typename T> struct S1{
+		T arr[1];
+		void set(T t){
+			arr[0] = t;
+		}
+	};
+	struct S2{
+		int i;
+	};
+}
+int main() {
+	using A::S1;
+	S1<A::S2> s12;
+	S1<S1<A::S2> > sNested;
+}
+//!EUDEC_Templates4NestedNS
+//@A1.cpp
+#include <iostream>
+namespace A{
+namespace B{
+	template<typename T> void f(T t){
+		std::cout << t << std::endl;
+	}
+	template<typename T> struct S1{
+		T arr[1];
+		void set(T t){
+			arr[0] = t;
+		}
+	};
+	struct S2{
+		int i;
+	};
+}
+}
+int main() {
+	A::B::S2 s2;
+	/*$*/A/*$*/::B::S1<A::B::S2> s12;
+	A::B::S1<A::B::S2> s12_;
+	A::B::S1<A::B::S1<A::B::S2> > sNested;
+	A::B::f(5);
+	A::B::f("hello");
+	A::B::S1<int> s1;
+	s1.set(100);
+	std::cout << s1.arr[0] << std::endl;
+}
+//=
+#include <iostream>
+namespace A{
+namespace B{
+	template<typename T> void f(T t){
+		std::cout << t << std::endl;
+	}
+	template<typename T> struct S1{
+		T arr[1];
+		void set(T t){
+			arr[0] = t;
+		}
+	};
+	struct S2{
+		int i;
+	};
+}
+}
+int main() {
+	A::B::S2 s2;
+	using A::B::S1;
+	S1<A::B::S2> s12;
+	S1<A::B::S2> s12_;
+	S1<S1<A::B::S2> > sNested;
+	A::B::f(5);
+	A::B::f("hello");
+	S1<int> s1;
+	s1.set(100);
+	std::cout << s1.arr[0] << std::endl;
+}
+//!EUDEC_Templates5
+//@A1.cpp
+#include <iostream>
+namespace A{
+	template<typename T> void f(T t){
+		std::cout << t << std::endl;
+	}
+	template<typename T> struct S1{
+		T arr[1];
+		void set(T t){
+			arr[0] = t;
+		}
+		struct S1nested{
+			void f(T t){
+
+			}
+		};
+	};
+	struct S2{
+		int i;
+	};
+}
+int main(){
+	/*$*/A/*$*/::S1<int>::S1nested s1nested;
+	s1nested.f(1);
+}
+//=
+#include <iostream>
+namespace A{
+	template<typename T> void f(T t){
+		std::cout << t << std::endl;
+	}
+	template<typename T> struct S1{
+		T arr[1];
+		void set(T t){
+			arr[0] = t;
+		}
+		struct S1nested{
+			void f(T t){
+
+			}
+		};
+	};
+	struct S2{
+		int i;
+	};
+}
+int main(){
+	using A::S1;
+	S1<int>::S1nested s1nested;
+	s1nested.f(1);
+}
+//!EUDEC_InheritedTypeSpecialCase
+//@A1.cpp
+namespace A{
+    struct Y{
+        void f(){}
+        struct YY{
+            struct YYY{};
+        };
+    };
+}
+struct X : A::Y::YY{
+    void bla( /*$*/A/*$*/::Y::YY::YYY){}
+};
+//=
+namespace A{
+    struct Y{
+        void f(){}
+        struct YY{
+            struct YYY{};
+        };
+    };
+}
+struct X : A::Y::YY{
+	using A::Y::YY::YYY;
+
+	void bla(YYY) {
+	}
+};
+//!EUDEC_TemplatesWithMultipleInheritance
+//@A1.cpp
+namespace A{
+	template <typename T>
+	struct S1{
+		template <typename U> static void s1(U t){ // geht auch ohne static!?
+		}
+		void s2(){}
+	};
+	template <typename T>
+	void a(T t){}
+}
+namespace B{
+	template <typename T>
+	struct S1{
+		template <typename U> void s1(U t){}
+	};
+	template <typename T>
+	void b(T t){}
+}
+namespace C{
+	template <typename T>
+	struct S3 : public A::S1<T>, public B::S1<T>{
+		void f(){
+			/*$*/A/*$*/::S1<T>::s1("hello");
+		}
+	};
+	template <typename T>
+	void b(T t){}
+}
+int main(){
+	C::S3<int> s3;
+	s3.f();
+}
+//=
+namespace A{
+	template <typename T>
+	struct S1{
+		template <typename U> static void s1(U t){ // geht auch ohne static!?
+		}
+		void s2(){}
+	};
+	template <typename T>
+	void a(T t){}
+}
+namespace B{
+	template <typename T>
+	struct S1{
+		template <typename U> void s1(U t){}
+	};
+	template <typename T>
+	void b(T t){}
+}
+namespace C{
+	template <typename T>
+	struct S3 : public A::S1<T>, public B::S1<T>{
+		void f(){
+		using A::S1<T>::s1;
+		s1("hello");
+		}
+	};
+	template <typename T>
+	void b(T t){}
+}
+int main(){
+	C::S3<int> s3;
+	s3.f();
+}
+//!EUDEC_SelectionInTypeDeclarationNoExtract
+//@.config
+expectedNrOfFatalErrors=1
+//@A1.cpp
+namespace A{
+	struct S1{
+		void s1(int){}
+	};
+	void a(){}
+}
+namespace B{
+	struct S1{
+		void s1(int){}
+		void s2(/*$*/A/*$*/::S1){}
+	};
+	void b(){}
+}
+//!EUDEC_InsideNamespaceDefinition
+//@A1.cpp
+namespace A{
+	struct SA1{};
+	struct SA2{};
+}
+namespace B{
+	void f1(/*$*/A/*$*/::SA1 sa1);
+	void f2(A::SA2 sa2);
+	void f3(A::SA1 sa1_2);
+}
+//=
+namespace A{
+	struct SA1{};
+	struct SA2{};
+}
+namespace B{
+
+using A::SA1;
+
+void f1(SA1 sa1);
+	void f2(A::SA2 sa2);
+void f3(SA1 sa1_2);
+}
+//!EUDEC_WithoutNS_in_Name
+//@A1.cpp
+struct S1{
+	struct S1_nested{};
+};
+struct S2 : S1 {
+	void f(/*$*/S1/*$*/::S1_nested);
+};
+//=
+struct S1{
+	struct S1_nested{};
+};
+struct S2 : S1 {
+	using S1::S1_nested;
+
+	void f(S1_nested);
+};

@@ -1,0 +1,14 @@
+//!DataStructureReferenceTest16ComplexMacro
+//@A.cpp
+#define AB(arg) arg
+#define CONCAT_CALL(first,second,arg) first##second(arg)
+#define DIRECT_CALL(arg) AB(arg)
+
+#if CONCAT_CALL(A,B,0) && defined(AB)
+#elif DIRECT_CALL(1)
+#endif
+
+int main() {
+	int i = CONCAT_CALL(A,B,5);
+	int i2 = DIRECT_CALL(6);
+}

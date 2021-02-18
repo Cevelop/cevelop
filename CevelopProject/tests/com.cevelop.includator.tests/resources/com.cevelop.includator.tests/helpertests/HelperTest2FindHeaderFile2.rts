@@ -1,0 +1,8 @@
+//!HelperTest2FindHeaderFile2
+//@A.cpp
+#include "B.h"
+int main() {
+	return 0;
+}
+//@B.h
+class B { };

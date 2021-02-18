@@ -1,0 +1,12 @@
+//!Two Unused Includes, 1 Ignored, 1 Suggested
+//@main.cpp
+#include "A.h"
+#include "B.h"
+
+int main() {
+  return 0;
+}
+//@A.h
+class A { };
+//@B.h
+class B { };

@@ -1,0 +1,9 @@
+//!OrganizeIncludes15SeveralUnincludedMacroCandidates
+//@main.cpp
+int main() {
+  int i = FOO;
+}
+//@foo1.h
+#define FOO 1;
+//@foo2.h
+#define FOO 2;

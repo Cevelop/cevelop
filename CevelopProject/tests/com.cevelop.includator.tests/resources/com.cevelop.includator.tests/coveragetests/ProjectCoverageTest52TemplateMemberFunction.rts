@@ -1,0 +1,15 @@
+//!Template Member Function
+//@main.cpp
+template<typename T>
+class V{
+public:
+	template<typename Iter>
+	void foo(Iter i0){
+
+	}
+};
+
+int main() {
+	V<int> v;
+	v.foo(5);
+}

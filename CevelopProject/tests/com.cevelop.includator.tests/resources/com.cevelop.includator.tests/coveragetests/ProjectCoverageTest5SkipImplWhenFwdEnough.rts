@@ -1,0 +1,28 @@
+//!ProjectCoverageTest5SkipImplWhenFwdEnough
+//@A.cpp
+#include "X.h"
+
+class X;
+
+int main() {
+	X* x;
+	return 0;
+}
+
+//@X.h
+class X {
+public:
+	X();
+	virtual ~X();
+	void foo();
+	int field;
+};
+//@X.cpp
+#include "X.h"
+
+X::X() { }
+
+X::~X() { }
+
+void X::foo() { }
+

@@ -1,0 +1,28 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Elevator Plug-in
+Bundle-SymbolicName: com.cevelop.elevator;singleton:=true
+Bundle-Version: 1.14.0.qualifier
+Bundle-Activator: com.cevelop.elevator.Activator
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.cdt.codan.core;bundle-version="2.0.0",
+ org.eclipse.cdt.codan.core.cxx;bundle-version="1.0.0",
+ org.eclipse.cdt.codan.ui;bundle-version="3.3.1",
+ org.eclipse.cdt.codan.ui.cxx;bundle-version="3.4.1",
+ org.eclipse.cdt.core;bundle-version="5.3.0",
+ org.eclipse.ltk.core.refactoring;bundle-version="3.5.200",
+ org.eclipse.jface.text;bundle-version="3.7.0",
+ org.eclipse.ui.workbench,
+ org.eclipse.jface;bundle-version="3.9.1",
+ org.eclipse.ltk.ui.refactoring;bundle-version="3.7.100",
+ org.eclipse.cdt.ui;bundle-version="5.7.0",
+ org.eclipse.debug.core,
+ ch.hsr.ifs.iltis.cpp.versionator,
+ ch.hsr.ifs.iltis.cpp.core,
+ ch.hsr.ifs.iltis.core.core,
+ org.eclipse.ui.ide;bundle-version="3.14.0",
+ org.eclipse.collections
+Bundle-Vendor: IFS Institute for Software
+Automatic-Module-Name: com.cevelop.elevator

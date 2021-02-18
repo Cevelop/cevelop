@@ -1,0 +1,12 @@
+//!AmbiguousLookupTest1NoneInclude
+//@main.cpp
+int main() {
+	using namespace otherFooNs;
+	foo();
+}
+//@foo.h
+void foo() { }
+//@otherFoo.h
+namespace otherFooNs {
+	void foo() { }
+}

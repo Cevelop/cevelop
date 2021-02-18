@@ -1,0 +1,9 @@
+//!IgnoredIncludes9IgnoredSubDirInclude
+//@main.cpp
+#include "foo/foo.h"
+
+int main() {
+  return 0;
+}
+//@foo/foo.h
+void foo();

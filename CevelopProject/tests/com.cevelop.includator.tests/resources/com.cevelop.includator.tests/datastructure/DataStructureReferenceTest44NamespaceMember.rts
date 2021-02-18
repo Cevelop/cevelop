@@ -1,0 +1,13 @@
+//!Refernce to Namespace Member
+//@src/main.cpp
+#include "ns.h"
+
+int main() {
+	NS::i = 5;
+	return 0;
+}
+
+//@src/ns.h
+namespace NS {
+	int i = 1;
+}

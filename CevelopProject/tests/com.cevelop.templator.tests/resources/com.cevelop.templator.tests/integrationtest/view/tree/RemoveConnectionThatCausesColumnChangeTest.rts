@@ -1,0 +1,13 @@
+//!DeleteConnectionThatCausesColumnChangeTest
+//@MyFileName.cpp
+void foo2() {
+}
+
+void foo1() {
+	foo2();	// index 0
+}
+
+int main() {
+	foo1();	// index 0
+	foo2();	// index 1
+}

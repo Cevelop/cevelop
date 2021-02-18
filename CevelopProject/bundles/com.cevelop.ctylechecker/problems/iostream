@@ -1,0 +1,5 @@
+# Include von iostream sollte nur in der Source-Datei mit der main()-Funktion verwendet werden.
+
+Der iostream Header beinhaltet nebst den Deklarationen von istream und ostream auch die globalen Objekte std::cin und std::cout.
+Diese sollten nur im main() verwendet werden. Alle anderen Funktionen und Klassen sollten mit den abstrakten Typen std::istream
+und std::ostream realisiert werden, welche in den entsprechenden Headern definiert sind.

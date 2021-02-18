@@ -1,0 +1,246 @@
+//!OneSingleArgCtorBeneathOther
+//@.config
+markerLines=3
+//@main.h
+struct X {
+	X() noexcept : y {}, s {"hello"} {}
+	X(int x);
+	~X();
+private:
+	int x;
+	double y {42.0};
+	std::string s {"test"};
+};
+//!MultipleSingleArgCtorBeneathOther
+//@.config
+markerLines=2,4,6,11
+//@main.h
+struct X {
+	X(double d);
+	X() noexcept : y {}, s {"hello"} {}
+	X(int x);
+	~X();
+	X(std::string s);
+protected:
+	int x;
+	double y {42.0};
+	std::string s {"test"};
+	X(std::istream &ios);
+};
+//!MultipleSingleArgCtorBeneathOtherAndVariousOtherNotSingleArg
+//@.config
+markerLines=2,5,8,13
+//@main.h
+struct X {
+	X(double d);
+	X(double d, int x);
+	X() noexcept : y {}, s {"hello"} {}
+	X(int x);
+	~X();
+	X(std::string s, double d);
+	X(std::string s);
+protected:
+	int x;
+	double y {42.0};
+	std::string s {"test"};
+	X(std::istream &ios);
+};
+//!MultipleExplicitSingleArgCtor
+//@.config
+markerLines=6,11
+//@main.h
+struct X {
+	explicit X(double d);
+	X() noexcept : y {}, s {"hello"} {}
+	~X();
+	X(std::string s, double d);
+	X(std::string s);
+protected:
+	int x;
+	double y {42.0};
+	std::string s {"test"};
+	X(std::istream &ios);
+};
+//!MultipleExplicitSingleArgCtorButOneWithDefValue
+//@.config
+markerLines=6,7,12
+//@main.h
+struct X {
+	explicit X(double d);
+	X() noexcept : y {}, s {"hello"} {}
+	~X();
+	X(std::string s, double d);
+	X(std::string s);
+	X(int x, double d = 42);
+protected:
+	int x;
+	double y {42.0};
+	std::string s {"test"};
+	X(std::istream &ios);
+};
+//!CheckInlineSingleArgCtor
+//@.config
+markerLines=3
+//@A.h
+struct A {
+	inline A() noexcept;
+	inline A(int x);
+
+private:
+	int a;
+	std::string s;
+};
+
+inline A::A() noexcept {
+
+}
+
+inline A::A(int x) : a {x} {
+
+}
+//!CheckInlineTwoArgCtorWithSecDefaulted
+//@.config
+markerLines=3
+//@A.h
+struct A {
+	inline A() noexcept;
+	inline A(int x, std::string s = "hello");
+
+private:
+	int a;
+	std::string s;
+};
+
+inline A::A() noexcept {
+
+}
+
+inline A::A(int x, std::string s) : a {x} , s {s} {
+
+}
+//!IgnoreCheckerBecauseOfAttributeHeaderImpl
+//@B.h
+struct B {
+	[[gsl::suppress("Rc-explicit")]]
+	inline explicit B::B(int a) {
+		this->a = a;
+	}
+
+private:
+	int a;
+	std::string s { "test" };
+};
+//!IgnoreCheckerBecauseOfAttributeInline
+//@B.h
+struct B {
+	[[gsl::suppress("Rc-explicit")]]
+	inline explicit B(int a);
+
+private:
+	int a;
+	std::string s { "test" };
+};
+
+inline explicit B::B(int a) {
+	this->a = a;
+}
+//!IgnoreCheckerBecauseOfAttributeCPP
+//@B.h
+struct B {
+	[[gsl::suppress("Rc-explicit")]]
+	explicit B(int a);
+
+private:
+	int a;
+	std::string s { "test" };
+};
+//@B.cpp
+#include "B.h"
+explicit B::B(int a) {
+	this->a = a;
+}
+//!TemplateClassOneSingleArgCtor
+//@.config
+markerLines=6
+//@C.h
+template<typename T>
+class C {
+	std::vector<T> v;
+public:
+	C() = default;
+	C(std::vector<T> v) : v { v } { }
+};
+//!IgnoreDefaultCtorWithVoidParam
+//@A.h
+struct A {
+	A(void);
+};
+//!Ignore private ctor
+//@A.h
+class A {
+	A(A const &){}
+	A(int){}
+};
+//!Ignore private ctor with templates
+//@A.h
+template<typename T>
+class A {
+	A(T const &){}
+	A(T &&){}
+};
+//!Mark multiple defaulted arguments
+//@.config
+markerLines=2
+//@A.h
+struct A {
+	A(int, bool = false, bool = true, int = 10){}
+};
+//!Ignore default ctors
+//@.config
+//@A.h
+struct A {
+	A(){}
+	A(A const &){}
+	A(A &&){}
+};
+//!Ignore default non-const ctors
+//@.config
+//@A.h
+struct A {
+	A(){}
+	A(A &){}
+	A(A &&){}
+};
+//!Ignore default void default ctor
+//@.config
+//@A.h
+struct A {
+	A(void){}
+	A(A &){}
+	A(A &&){}
+};
+//!Ignore defaulted copy ctor
+//@.config
+//@A.h
+struct A {
+	A(){}
+	A(A const &, int i = 42, bool b = true){}
+	A(A &&){}
+};
+//!Ignore defaulted move ctor
+//@.config
+//@A.h
+struct A {
+	A(){}
+	A(A const &){}
+	A(A &&, int i = 42, bool b = false){}
+};
+//!Mark template args
+//@.config
+markerLines=3,4
+//@A.h
+template<typename T>
+struct A {
+	A(T const &){}
+	A(T &&){}
+};

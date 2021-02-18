@@ -1,0 +1,42 @@
+//!ConstOverloadExists
+//@.config
+//@struct.h
+struct s {
+	void memfun() {}
+	void memfun() const {}
+};
+
+//!ConstOverloadExistsWithDifferentReferenceQualification
+//@.config
+markerLines=2
+//@struct.h
+struct s {
+	void memfun() & {}
+	void memfun() && const {}
+};
+
+//!ConstOverloadExistsWithSameReferenceQualification
+//@.config
+//@struct.h
+struct s {
+	void memfun() && {}
+	void memfun() const && {}
+};
+
+//!ConstOverloadExistsDifferentReturnTypes
+//@.config
+//@struct.h
+struct s {
+	void memfun() {}
+	int memfun() const {}
+};
+
+//!WouldOverrideVirtualMemberFunction
+//@.config
+//@struct.h
+struct Base {
+	virtual void f() const {}
+};
+struct Derived : Base {
+	void f() {}
+};

@@ -1,0 +1,23 @@
+//!NonConstDeclAddressPassedToFunctionTakingRefToConstPtrToNonConst
+//@.config
+//@main.cpp
+#include "pod_funcs.h"
+  
+int main()
+  {
+  int n{42};
+  func_ref_const_ptr_nonconst(&n);
+  }
+
+//!NonConstDeclAddressPassedToFunctionTakingRefToConstPtrToConst
+//@.config
+markerLines=5
+//@main.cpp
+#include "pod_funcs.h"
+  
+int main()
+  {
+  int n{42};
+  func_ref_const_ptr_const(&n);
+  }
+  

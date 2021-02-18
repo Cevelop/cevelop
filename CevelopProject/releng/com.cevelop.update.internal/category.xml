@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <description name="Cevelop Internal Plug-ins" url="https://www.cevelop.com/internal/latest">
+      Cevelop Internal Plug-ins. The plug-ins in this repository are part of the standard Cevelop release but not otherwise available.
+   </description>
+   <feature url="features/com.cevelop.charwars.feature_1.14.0.qualifier.jar" id="com.cevelop.charwars.feature" version="1.14.0.qualifier">
+      <category name="com.cevelop.plugins.internal"/>
+   </feature>
+   <feature url="features/com.cevelop.clonewar.feature_1.14.0.qualifier.jar" id="com.cevelop.clonewar.feature" version="1.14.0.qualifier">
+      <category name="com.cevelop.plugins.internal"/>
+   </feature>
+   <feature url="features/com.cevelop.elevator.feature_1.14.0.qualifier.jar" id="com.cevelop.elevator.feature" version="1.14.0.qualifier">
+      <category name="com.cevelop.plugins.internal"/>
+   </feature>
+   <feature url="features/com.cevelop.macronator.feature_1.14.0.qualifier.jar" id="com.cevelop.macronator.feature" version="1.14.0.qualifier">
+      <category name="com.cevelop.plugins.internal"/>
+   </feature>
+   <feature url="features/com.cevelop.namespactor.feature_1.14.0.qualifier.jar" id="com.cevelop.namespactor.feature" version="1.14.0.qualifier">
+      <category name="com.cevelop.plugins.internal"/>
+   </feature>
+   <feature url="features/com.cevelop.tdd.feature_1.14.0.qualifier.jar" id="com.cevelop.tdd.feature" version="1.14.0.qualifier">
+      <category name="com.cevelop.plugins.internal"/>
+   </feature>
+   <category-def name="com.cevelop.plugins.internal" label="Internal Plug-Ins"/>
+</site>

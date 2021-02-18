@@ -1,0 +1,10 @@
+//!OrganizeIncludes5SubSourceFolder
+//@src/main.cpp
+
+int main() {
+  A a;
+  return 0;
+}
+//@header/A.h
+class A { };
+

@@ -1,0 +1,35 @@
+target "Cevelop Development" with source requirements
+
+location "http://download.eclipse.org/releases/2019-12" {
+	org.eclipse.equinox.launcher lazy
+	org.eclipse.ui.ide.application lazy
+	org.eclipse.sdk.ide lazy
+	
+	org.eclipse.zest.sdk.feature.group lazy
+}
+
+location "http://download.eclipse.org/tools/cdt/releases/9.10" {
+	org.eclipse.cdt.sdk.feature.group lazy
+}
+
+location "http://download.eclipse.org/tools/orbit/downloads/drops/R20191126223242/repository/" {
+	javax.xml.stream lazy
+}
+
+location "https://ci.eclipse.org/cdt/job/cdt-9.10/lastSuccessfulBuild/artifact/releng/org.eclipse.cdt.testing.repo/target/repository/" {
+	org.eclipse.cdt.testing.source.feature.group lazy
+	org.eclipse.cdt.testing.feature.group lazy
+}
+
+location "https://www.cevelop.com/iltis-unstable" {
+	ch.hsr.ifs.iltis.core.kotlin.feature.feature.group lazy
+	
+	ch.hsr.ifs.iltis.cpp.versionator.feature.feature.group lazy
+	ch.hsr.ifs.iltis.cpp.core.feature.feature.group lazy
+	
+	ch.hsr.ifs.iltis.testing.cpp.feature.feature.group lazy
+	ch.hsr.ifs.iltis.testing.highlevel.feature.feature.group lazy
+	
+	/* Add pASTa here, so it will be available in instances started from the plug-in development IDE */
+	ch.hsr.ifs.iltis.testing.tools.pasta.feature.feature.group lazy
+}

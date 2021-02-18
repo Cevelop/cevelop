@@ -1,0 +1,37 @@
+//!DestructorRefTest11ExplDestrImplicitSubDestr1
+//@.config
+expectedRefTargetOffset=20
+expectedTargetName=~Z
+//@A.cpp
+#include "Y.h"
+
+Y::~Y() { }
+//@Z.h
+class Z {
+public:
+  ~Z() { }
+};
+//@Y.h
+#include "Z.h"
+class Y {
+public:
+  ~Y();
+  Z z;
+};
+//!DestructorRefTest11ExplDestrImplicitSubDestr2
+//@.config
+expectedRefTargetOffset=6
+expectedTargetName=Z
+//@A.cpp
+#include "Y.h"
+
+Y::~Y() { }
+//@Z.h
+class Z { };
+//@Y.h
+#include "Z.h"
+class Y {
+public:
+  ~Y();
+  Z z;
+};

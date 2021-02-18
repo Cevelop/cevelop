@@ -1,0 +1,41 @@
+//!NonConstPtrToConstAssign
+//@.config
+//@main.cpp
+#include "cls.h"
+
+int main()
+  {
+  char const * ptr{};
+  ptr = nullptr;
+  }
+
+//!NonConstPtrToConstPlusAssign
+//@.config
+//@main.cpp
+#include "cls.h"
+
+int main()
+  {
+  char const * ptr{};
+  ptr += 1;
+  }
+
+//!NonConstPtrToConstMinusAssign
+//@.config
+//@main.cpp
+#include "cls.h"
+
+int main()
+  {
+  char const * ptr{};
+  ptr -= 1;
+  }
+
+//!RegressionNonConstPtrToConstInDereferenceExpressionPlusAssign
+//@.config
+//@main.cpp
+int main()
+  {
+  int const * ptr{};
+  *(ptr += 1);
+  }

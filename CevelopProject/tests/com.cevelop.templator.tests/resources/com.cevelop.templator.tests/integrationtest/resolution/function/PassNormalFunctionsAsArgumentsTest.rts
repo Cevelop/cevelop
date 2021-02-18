@@ -1,0 +1,17 @@
+//!PassNormalFunctionsAsArgumentsTest
+//@MyFileName.cpp
+template<typename T, typename F>
+void inner(T first, F second) {}
+
+double returnsDouble(double d) { return d; }
+
+void inner(int first, double second) {}
+
+template<typename T>
+void outer(T first) {
+    inner(returnsDouble(13.37), first); // <double,int>    
+}
+
+int main() {
+    outer(16); //<int>
+}

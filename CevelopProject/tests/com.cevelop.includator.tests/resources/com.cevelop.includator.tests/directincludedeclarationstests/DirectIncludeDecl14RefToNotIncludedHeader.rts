@@ -1,0 +1,5 @@
+//!DirectIncludeDecl14RefToNotIncludedHeader
+//@main.cpp
+A a;
+//@A.h
+class A{ };

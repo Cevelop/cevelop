@@ -1,0 +1,89 @@
+//!StrncpyFirstArg
+//@main.cpp
+#include <cstring>
+int main() {
+	char a[] = "Hello";
+	strncpy(a, "Ha", 2);
+}
+//=
+#include <cstring>
+#include <string>
+
+int main() {
+	std::string a = "Hello";
+	a.replace(0, 2, "Ha", 0, 2);
+}
+
+
+//!StrncpyFirstArgWithString
+//@main.cpp
+#include <cstring>
+#include <string>
+int main() {
+	char a[] = "Hello";
+	std::string b = "Ha";
+	strncpy(a, b.c_str(), 2);
+}
+//=
+#include <cstring>
+#include <string>
+int main() {
+	std::string a = "Hello";
+	std::string b = "Ha";
+	a.replace(0, 2, b, 0, 2);
+}
+
+
+//!StrncpyFirstArgWithOffset
+//@main.cpp
+#include <cstring>
+int main() {
+	char a[] = "example@hotmail.ch";
+	strncpy(a + 8, "bluewin", 7);
+}
+//=
+#include <cstring>
+#include <string>
+int main() {
+	std::string a = "example@hotmail.ch";
+	a.replace(8, 7, "bluewin", 0, 7);
+}
+
+
+//!StrncpySecondArg
+//@main.cpp
+#include <cstring>
+int main() {
+	char *b = "Ha";
+	char a[] = "Hello";
+	strncpy(a, b, 2);
+}
+//=
+#include <cstring>
+#include <string>
+
+int main() {
+	std::string b = "Ha";
+	char a[] = "Hello";
+	strncpy(a, b.c_str(), 2);
+}
+
+
+//!ReplaceArg
+//@main.cpp
+#include <cstring>
+#include <string>
+int main() {
+	std::string a = "Hello";
+	char *b = "Ha";
+	a.replace(0, 2, b, 0, 2);
+}
+//=
+#include <cstring>
+#include <string>
+int main() {
+	std::string a = "Hello";
+	std::string b = "Ha";
+	a.replace(0, 2, b, 0, 2);
+}
+

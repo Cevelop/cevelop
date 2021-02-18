@@ -1,0 +1,38 @@
+//!ProjectCoverageTest21FieldConstrDestr5
+//@A.cpp
+class Y {
+public:
+  Y();
+  ~Y();
+  Y(const Y &y);
+};
+
+Y::Y() { }
+
+Y::~Y() { }
+
+Y::Y(const Y &y) { }
+
+class X {
+public :
+  X();
+  ~X();
+  X(const X &x);
+  Y y;
+};
+
+X::X() { }
+
+X::~X() { }
+
+X::X(const X &x) { }
+
+void foo(X x) {
+
+}
+
+int main() {
+  X *x;
+  foo(*x);
+  return 0;
+}

@@ -1,7 +1,5 @@
 package com.cevelop.codeanalysator.misra.guideline;
 
-import org.eclipse.ui.IMarkerResolution;
-
 import com.cevelop.codeanalysator.core.CodeAnalysatorRuntime;
 import com.cevelop.codeanalysator.core.guideline.IGuideline;
 import com.cevelop.codeanalysator.core.guideline.ISuppressionStrategy;
@@ -33,8 +31,8 @@ public class MisraGuideline implements IGuideline {
         M05_00_06_AvoidLossyConversion = registry.createAndRegisterRule("M5-0-6", this, MisraIdHelper.AvoidLossyConversionsProblemId,
                 CoreIdHelper.AvoidLossyConversionsSharedProblemId);
 
-        M03_04_01_DeclareLoopVariableInTheIntializer.addQuickFixes(new IMarkerResolution[] { new DeclareLoopVariableInTheInitializerQuickFix(
-                "M3-4-1: Declare variable in the loop initializer") });
+        M03_04_01_DeclareLoopVariableInTheIntializer.addQuickFixes(new DeclareLoopVariableInTheInitializerQuickFix(
+                "M3-4-1: Declare variable in the loop initializer"));
     }
 
     @Override

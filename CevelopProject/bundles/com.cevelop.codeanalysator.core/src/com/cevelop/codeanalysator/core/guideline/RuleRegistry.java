@@ -5,7 +5,7 @@ import java.util.HashMap;
 
 public class RuleRegistry {
 
-    private HashMap<String, Rule>      rulesById = new HashMap<String, Rule>();
+    private HashMap<String, Rule>      rulesById = new HashMap<>();
     private IGuidelinePriorityResolver priorityResolver;
 
     public RuleRegistry(IGuidelinePriorityResolver priorityResolver) {
@@ -14,7 +14,9 @@ public class RuleRegistry {
 
     public Rule getRuleByProblemId(String problemId) {
         Rule rule = rulesById.get(problemId);
-        if (rule == null) throw new IllegalStateException(String.format("no rule with this problemId registered. [%s]", problemId));
+        if (rule == null) {
+            throw new IllegalStateException(String.format("no rule with this problemId registered. [%s]", problemId));
+        }
         return rule;
     }
 
@@ -33,6 +35,8 @@ public class RuleRegistry {
 
     private void registerRule(Rule rule) {
         Rule previousRule = rulesById.putIfAbsent(rule.getProblemId(), rule);
-        if (previousRule != null) throw new IllegalArgumentException(String.format("rule with this problemId registered. [%s]", rule.getProblemId()));
+        if (previousRule != null) {
+            throw new IllegalArgumentException(String.format("rule with this problemId registered. [%s]", rule.getProblemId()));
+        }
     }
 }

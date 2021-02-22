@@ -21,7 +21,7 @@ import com.cevelop.codeanalysator.core.visitor.RuleReporter;
 
 public class DoNotUseLiteralValuesVisitor extends CodeAnalysatorVisitor {
 
-    private List<Integer> exceptedLiterals = new ArrayList<Integer>();
+    private List<Integer> exceptedLiterals = new ArrayList<>();
 
     public DoNotUseLiteralValuesVisitor(Rule rule, RuleReporter ruleReporter) {
         super(rule, ruleReporter);

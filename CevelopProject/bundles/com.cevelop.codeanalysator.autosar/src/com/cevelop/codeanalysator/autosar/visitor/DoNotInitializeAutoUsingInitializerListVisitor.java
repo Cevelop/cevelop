@@ -45,24 +45,34 @@ public class DoNotInitializeAutoUsingInitializerListVisitor extends CodeAnalysat
     }
 
     private boolean violatesRule(IASTDeclaration declaration) {
-        if (!(declaration instanceof IASTSimpleDeclaration)) return false;
+        if (!(declaration instanceof IASTSimpleDeclaration)) {
+            return false;
+        }
         IASTSimpleDeclaration simpleDeclaration = (IASTSimpleDeclaration) declaration;
-        if (!isAutoDeclaration(simpleDeclaration)) return false;
+        if (!isAutoDeclaration(simpleDeclaration)) {
+            return false;
+        }
         return hasInitializerList(simpleDeclaration);
     }
 
     private boolean hasInitializerList(IASTSimpleDeclaration simpleDeclaration) {
         IASTDeclarator[] declarators = simpleDeclaration.getDeclarators();
         for (IASTDeclarator declarator : declarators) {
-            if (hasInitializerList(declarator)) return true;
+            if (hasInitializerList(declarator)) {
+                return true;
+            }
         }
         return false;
     }
 
     private boolean hasInitializerList(IASTDeclarator declarator) {
         IASTInitializer initializer = declarator.getInitializer();
-        if (initializer instanceof CPPASTInitializerList) return true;
-        if (!(initializer instanceof CPPASTEqualsInitializer)) return false;
+        if (initializer instanceof CPPASTInitializerList) {
+            return true;
+        }
+        if (!(initializer instanceof CPPASTEqualsInitializer)) {
+            return false;
+        }
         CPPASTEqualsInitializer equalsInitializer = (CPPASTEqualsInitializer) initializer;
         IASTInitializerClause initClause = equalsInitializer.getInitializerClause();
         return (initClause instanceof CPPASTInitializerList);
@@ -70,14 +80,18 @@ public class DoNotInitializeAutoUsingInitializerListVisitor extends CodeAnalysat
 
     private boolean isAutoDeclaration(IASTSimpleDeclaration simpleDeclaration) {
         IASTDeclSpecifier declSpec = simpleDeclaration.getDeclSpecifier();
-        if (!(declSpec instanceof ICPPASTSimpleDeclSpecifier)) return false;
+        if (!(declSpec instanceof ICPPASTSimpleDeclSpecifier)) {
+            return false;
+        }
         ICPPASTSimpleDeclSpecifier simpleDeclSpec = (ICPPASTSimpleDeclSpecifier) declSpec;
         int type = simpleDeclSpec.getType();
         return (type == IASTSimpleDeclSpecifier.t_auto || type == IASTSimpleDeclSpecifier.t_decltype_auto);
     }
 
     private String createContextFlagsString(IASTDeclaration declaration) {
-        if (!(declaration instanceof IASTSimpleDeclaration)) return "";
+        if (!(declaration instanceof IASTSimpleDeclaration)) {
+            return "";
+        }
         IASTSimpleDeclaration simpleDeclaration = (IASTSimpleDeclaration) declaration;
         return isControlDeclaration(simpleDeclaration) ? ContextFlagsHelper.UseAutoSparinglyContextFlagControlDeclaration : "";
     }

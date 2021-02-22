@@ -2,6 +2,7 @@ package com.cevelop.codeanalysator.autosar.visitor;
 
 import org.eclipse.cdt.core.dom.ast.IASTDeclSpecifier;
 import org.eclipse.cdt.core.dom.ast.IASTDeclaration;
+import org.eclipse.cdt.core.dom.ast.IASTElaboratedTypeSpecifier;
 import org.eclipse.cdt.core.dom.ast.IASTSimpleDeclaration;
 import org.eclipse.cdt.core.dom.ast.cpp.ICPPASTElaboratedTypeSpecifier;
 
@@ -44,6 +45,6 @@ public class DoNotUseTypedefVisitor extends CodeAnalysatorVisitor {
             return false;
         }
         ICPPASTElaboratedTypeSpecifier elabTypeSpec = (ICPPASTElaboratedTypeSpecifier) declSpec;
-        return elabTypeSpec.getKind() == ICPPASTElaboratedTypeSpecifier.k_struct;
+        return elabTypeSpec.getKind() == IASTElaboratedTypeSpecifier.k_struct;
     }
 }

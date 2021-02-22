@@ -2,6 +2,7 @@ package com.cevelop.codeanalysator.misra.visitor;
 
 import org.eclipse.cdt.core.dom.ast.IASTBinaryExpression;
 import org.eclipse.cdt.core.dom.ast.IASTExpression;
+import org.eclipse.cdt.core.dom.ast.IASTUnaryExpression;
 import org.eclipse.cdt.core.dom.ast.IBasicType.Kind;
 import org.eclipse.cdt.core.dom.ast.IQualifierType;
 import org.eclipse.cdt.core.dom.ast.IType;
@@ -60,10 +61,10 @@ public class BoolExpressionOperandsWarningVisitor extends CodeAnalysatorVisitor 
     public void handleUnaryExpression(ICPPASTUnaryExpression expression) {
         int operator = expression.getOperator();
 
-        if (operator == ICPPASTUnaryExpression.op_star || operator == ICPPASTUnaryExpression.op_amper || operator == ICPPASTUnaryExpression.op_not ||
-            operator == ICPPASTUnaryExpression.op_bracketedPrimary || operator == ICPPASTUnaryExpression.op_throw ||
-            operator == ICPPASTUnaryExpression.op_typeid || operator == ICPPASTUnaryExpression.op_sizeof ||
-            operator == ICPPASTUnaryExpression.op_alignOf || operator == ICPPASTUnaryExpression.op_noexcept) {
+        if (operator == IASTUnaryExpression.op_star || operator == IASTUnaryExpression.op_amper || operator == IASTUnaryExpression.op_not ||
+            operator == IASTUnaryExpression.op_bracketedPrimary || operator == ICPPASTUnaryExpression.op_throw ||
+            operator == ICPPASTUnaryExpression.op_typeid || operator == IASTUnaryExpression.op_sizeof || operator == IASTUnaryExpression.op_alignOf ||
+            operator == IASTUnaryExpression.op_noexcept) {
             return;
         }
 

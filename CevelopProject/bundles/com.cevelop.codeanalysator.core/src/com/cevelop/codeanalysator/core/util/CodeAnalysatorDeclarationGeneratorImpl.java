@@ -398,13 +398,17 @@ public class CodeAnalysatorDeclarationGeneratorImpl extends DeclarationGenerator
 
     private boolean isTrueValue(IValue value) {
         Number numberValue = value.numberValue();
-        if (numberValue == null) return false;
+        if (numberValue == null) {
+            return false;
+        }
         return numberValue.intValue() != 0;
     }
 
     private String getCharacterLiteral(String prefix, IValue value) {
         Number numberValue = value.numberValue();
-        if (numberValue == null) return "";
+        if (numberValue == null) {
+            return "";
+        }
         int codePoint = numberValue.intValue();
 
         StringBuilder sb = new StringBuilder();
@@ -421,7 +425,9 @@ public class CodeAnalysatorDeclarationGeneratorImpl extends DeclarationGenerator
 
     private String getIntegerLiteral(IValue value) {
         Number numberValue = value.numberValue();
-        if (numberValue == null) return "0";
+        if (numberValue == null) {
+            return "0";
+        }
         return String.valueOf(numberValue.longValue());
     }
 

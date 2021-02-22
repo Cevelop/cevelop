@@ -20,12 +20,12 @@ import org.eclipse.cdt.core.dom.ast.cpp.ICPPASTFunctionDefinition;
 import org.eclipse.cdt.core.dom.ast.cpp.ICPPASTInitializerList;
 import org.eclipse.cdt.core.index.IIndex;
 
+import ch.hsr.ifs.iltis.cpp.core.resources.CProjectUtil;
+
 import com.cevelop.codeanalysator.core.guideline.Rule;
 import com.cevelop.codeanalysator.core.util.ASTHelper;
 import com.cevelop.codeanalysator.core.visitor.CodeAnalysatorVisitor;
 import com.cevelop.codeanalysator.core.visitor.RuleReporter;
-
-import ch.hsr.ifs.iltis.cpp.core.resources.CProjectUtil;
 
 
 public class RedundantOperationsVisitor extends CodeAnalysatorVisitor {
@@ -186,10 +186,14 @@ public class RedundantOperationsVisitor extends CodeAnalysatorVisitor {
                     IASTNode initializer = chainInitializer.getChildren()[1];
                     if (initializer instanceof IASTInitializerList) {
                         IASTInitializerList list = (IASTInitializerList) initializer;
-                        if (list.getChildren().length != 0) return true;
+                        if (list.getChildren().length != 0) {
+                            return true;
+                        }
                     }
                     if (initializer instanceof ICPPASTConstructorInitializer) {
-                        if (initializer.getChildren().length != 0) return true;
+                        if (initializer.getChildren().length != 0) {
+                            return true;
+                        }
                     }
                 }
             }

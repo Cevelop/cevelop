@@ -37,12 +37,20 @@ public class DeclareLoopVariableInTheInitializerVisitor extends CodeAnalysatorVi
         if (statement instanceof IASTForStatement) {
             final IASTForStatement forStatement = (IASTForStatement) statement;
 
-            if (isRuleSuppressedForNode(forStatement)) return PROCESS_CONTINUE;
-            if (forStatement.getInitializerStatement() instanceof IASTDeclarationStatement) return PROCESS_CONTINUE;
-            if (forStatement.getIterationExpression() instanceof IASTExpressionList) return PROCESS_CONTINUE;
+            if (isRuleSuppressedForNode(forStatement)) {
+                return PROCESS_CONTINUE;
+            }
+            if (forStatement.getInitializerStatement() instanceof IASTDeclarationStatement) {
+                return PROCESS_CONTINUE;
+            }
+            if (forStatement.getIterationExpression() instanceof IASTExpressionList) {
+                return PROCESS_CONTINUE;
+            }
 
             IASTName loopVariable = ASTHelper.getLoopVariable(forStatement);
-            if (loopVariable == null) return PROCESS_CONTINUE;
+            if (loopVariable == null) {
+                return PROCESS_CONTINUE;
+            }
 
             String contextFlagsString = createContextFlagsString(forStatement, loopVariable);
             reportRuleForNode(forStatement, contextFlagsString);

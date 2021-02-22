@@ -2,6 +2,7 @@ package com.cevelop.codeanalysator.core.quickassist.runnable;
 
 import java.util.Arrays;
 
+import org.eclipse.cdt.core.dom.ast.IASTCompositeTypeSpecifier;
 import org.eclipse.cdt.core.dom.ast.IASTNode;
 import org.eclipse.cdt.core.dom.ast.IASTNodeSelector;
 import org.eclipse.cdt.core.dom.ast.IASTTranslationUnit;
@@ -38,7 +39,7 @@ public class StructClassSwitcherRunnable implements ASTRunnable {
         while (node != null) {
             if (node instanceof ICPPASTCompositeTypeSpecifier) {
                 compositeTypeSpecifier = (ICPPASTCompositeTypeSpecifier) node;
-                if ((compositeTypeSpecifier.getKey() == ICPPASTCompositeTypeSpecifier.k_struct //
+                if ((compositeTypeSpecifier.getKey() == IASTCompositeTypeSpecifier.k_struct //
                      || compositeTypeSpecifier.getKey() == ICPPASTCompositeTypeSpecifier.k_class) //
                     && (isNotMemberOf(originNode, compositeTypeSpecifier) || isPrologVisibilityLabel(originNode, compositeTypeSpecifier))) {
                     return Status.OK_STATUS;

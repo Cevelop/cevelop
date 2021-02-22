@@ -1,5 +1,6 @@
 package com.cevelop.codeanalysator.core.quickassist.proposal;
 
+import org.eclipse.cdt.core.dom.ast.IASTCompositeTypeSpecifier;
 import org.eclipse.cdt.core.dom.ast.cpp.ICPPASTCompositeTypeSpecifier;
 import org.eclipse.cdt.ui.CDTSharedImages;
 import org.eclipse.cdt.ui.text.ICCompletionProposal;
@@ -39,7 +40,7 @@ public class StructClassSwitcherProposal implements ICCompletionProposal {
 
     @Override
     public String getDisplayString() {
-        if (compositeTypeSpecifier.getKey() == ICPPASTCompositeTypeSpecifier.k_struct) {
+        if (compositeTypeSpecifier.getKey() == IASTCompositeTypeSpecifier.k_struct) {
             return "Switch struct to class";
         } else {
             return "Switch class to struct";

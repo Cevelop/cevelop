@@ -13,8 +13,8 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.dialogs.ListDialog;
 
 import com.cevelop.codeanalysator.core.CodeAnalysatorRuntime;
-import com.cevelop.codeanalysator.core.guideline.IGuideline;
 import com.cevelop.codeanalysator.core.guideline.GuidelineRegistry;
+import com.cevelop.codeanalysator.core.guideline.IGuideline;
 import com.cevelop.codeanalysator.core.guideline.IGuidelinePreferences;
 import com.cevelop.codeanalysator.core.helper.TranslationHelper;
 

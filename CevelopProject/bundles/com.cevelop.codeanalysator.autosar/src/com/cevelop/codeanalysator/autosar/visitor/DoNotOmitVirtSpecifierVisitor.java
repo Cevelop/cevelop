@@ -38,11 +38,17 @@ public class DoNotOmitVirtSpecifierVisitor extends CodeAnalysatorVisitor {
         }
         ICPPASTFunctionDeclarator declarator = (ICPPASTFunctionDeclarator) decl;
         IASTName name = declarator.getName();
-        if (name == null) return false;
+        if (name == null) {
+            return false;
+        }
         IBinding binding = name.resolveBinding();
-        if (!(binding instanceof ICPPMethod)) return false;
+        if (!(binding instanceof ICPPMethod)) {
+            return false;
+        }
         ICPPMethod method = (ICPPMethod) binding;
-        if (!VirtualHelper.overridesVirtualMethod(method)) return false;
+        if (!VirtualHelper.overridesVirtualMethod(method)) {
+            return false;
+        }
         ICPPASTVirtSpecifier[] virtSpecs = declarator.getVirtSpecifiers();
         return virtSpecs.length < 1;
     }

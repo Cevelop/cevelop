@@ -11,7 +11,6 @@ import org.eclipse.jface.util.PropertyChangeEvent;
 import org.eclipse.jface.util.SafeRunnable;
 
 import ch.hsr.ifs.iltis.core.preferences.IPropertyAndPreferenceHelper;
-import ch.hsr.ifs.iltis.core.preferences.PropertyAndPreferenceHelper;
 
 
 public class GuidelinePreferencesImpl implements IGuidelinePreferences {
@@ -27,8 +26,12 @@ public class GuidelinePreferencesImpl implements IGuidelinePreferences {
     }
 
     public void startListening(IPropertyAndPreferenceHelper propAndPerfHelper) {
-        if (propAndPerfHelper == null) throw new IllegalArgumentException("propAndPerfHelper must not be null.");
-        if (this.propAndPerfHelper != null) throw new IllegalStateException("cannot listen to more than one PropertyAndPreferenceHelper.");
+        if (propAndPerfHelper == null) {
+            throw new IllegalArgumentException("propAndPerfHelper must not be null.");
+        }
+        if (this.propAndPerfHelper != null) {
+            throw new IllegalStateException("cannot listen to more than one PropertyAndPreferenceHelper.");
+        }
 
         this.propAndPerfHelper = propAndPerfHelper;
         guidelineWorkspacePreferences.startListening();
@@ -38,30 +41,42 @@ public class GuidelinePreferencesImpl implements IGuidelinePreferences {
 
     @Override
     public boolean isGuidelineEnabledForWorkspace(IGuideline guideline) {
-        if (guideline == null) throw new IllegalArgumentException("guideline must not be null.");
+        if (guideline == null) {
+            throw new IllegalArgumentException("guideline must not be null.");
+        }
 
         return guidelineWorkspacePreferences.isGuidelineEnabled(guideline);
     }
 
     @Override
     public boolean isGuidelineEnabledForProject(IGuideline guideline, IProject project) {
-        if (guideline == null) throw new IllegalArgumentException("guideline must not be null.");
-        if (project == null) throw new IllegalArgumentException("project must not be null.");
+        if (guideline == null) {
+            throw new IllegalArgumentException("guideline must not be null.");
+        }
+        if (project == null) {
+            throw new IllegalArgumentException("project must not be null.");
+        }
 
         return getGuidelinePreferencesForProject(project).isGuidelineEnabled(guideline);
     }
 
     @Override
     public int getGuidelinePriorityForWorkspace(IGuideline guideline) {
-        if (guideline == null) throw new IllegalArgumentException("guideline must not be null.");
+        if (guideline == null) {
+            throw new IllegalArgumentException("guideline must not be null.");
+        }
 
         return guidelineWorkspacePreferences.getGuidelinePriority(guideline);
     }
 
     @Override
     public int getGuidelinePriorityForProject(IGuideline guideline, IProject project) {
-        if (guideline == null) throw new IllegalArgumentException("guideline must not be null.");
-        if (project == null) throw new IllegalArgumentException("project must not be null.");
+        if (guideline == null) {
+            throw new IllegalArgumentException("guideline must not be null.");
+        }
+        if (project == null) {
+            throw new IllegalArgumentException("project must not be null.");
+        }
 
         return getGuidelinePreferencesForProject(project).getGuidelinePriority(guideline);
     }
@@ -157,7 +172,7 @@ public class GuidelinePreferencesImpl implements IGuidelinePreferences {
         @Override
         public void propertyChange(PropertyChangeEvent event) {
             String property = event.getProperty();
-            if (property.equals(GUIDELINE_PREFERENCE_NAME) || property.equals(PropertyAndPreferenceHelper.P_USE_PROJECT_PREFERENCES)) {
+            if (property.equals(GUIDELINE_PREFERENCE_NAME) || property.equals(IPropertyAndPreferenceHelper.P_USE_PROJECT_PREFERENCES)) {
                 readPreferenceList();
             }
         }

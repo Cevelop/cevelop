@@ -35,7 +35,9 @@ public class DeclareLoopVariableInTheInitializerQuickFix extends BaseQuickFix {
 
     @Override
     public boolean isApplicable(IMarker marker) {
-        if (!super.isApplicable(marker)) return false;
+        if (!super.isApplicable(marker)) {
+            return false;
+        }
 
         String contextFlagsString = getProblemArgument(marker, ContextFlagsHelper.DeclareLoopVariableInTheInitializerContextFlagsStringIndex);
         return contextFlagsString.contains(ContextFlagsHelper.DeclareLoopVariableInTheInitializerContextFlagValidReferences);
@@ -43,12 +45,16 @@ public class DeclareLoopVariableInTheInitializerQuickFix extends BaseQuickFix {
 
     @Override
     protected void handleMarkedNode(IASTNode markedNode, ASTRewrite hRewrite) {
-        if (!(markedNode instanceof IASTForStatement)) return;
+        if (!(markedNode instanceof IASTForStatement)) {
+            return;
+        }
         IASTForStatement forStatement = (IASTForStatement) markedNode;
         IASTTranslationUnit translationUnit = forStatement.getTranslationUnit();
 
         IASTName loopVariable = ASTHelper.getLoopVariable(forStatement);
-        if (loopVariable == null) return;
+        if (loopVariable == null) {
+            return;
+        }
 
         IASTName[] declarations = translationUnit.getDeclarationsInAST(loopVariable.resolveBinding());
         IASTName[] references = translationUnit.getReferences(loopVariable.resolveBinding());

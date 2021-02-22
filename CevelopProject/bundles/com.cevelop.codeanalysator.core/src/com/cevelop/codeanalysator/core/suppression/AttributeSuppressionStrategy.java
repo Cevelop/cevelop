@@ -20,7 +20,7 @@ public class AttributeSuppressionStrategy implements ISuppressionStrategy {
 
     @Override
     public boolean isRuleSuppressedForNode(String ruleNr, IASTNode node) {
-        ArrayList<SuppressionAttribute> attributes = new ArrayList<SuppressionAttribute>();
+        ArrayList<SuppressionAttribute> attributes = new ArrayList<>();
         attributes.add(createAllSuppressionAttribute());
         attributes.add(createSuppressionAttribute(ruleNr));
         return AttributeMatcher.check(attributes, node);

@@ -18,7 +18,9 @@ public class DoNotOmitVirtSpecifierAddFinalQuickFix extends BaseQuickFix {
 
     @Override
     protected void handleMarkedNode(IASTNode markedNode, ASTRewrite hRewrite) {
-        if (!(markedNode instanceof ICPPASTFunctionDeclarator)) return;
+        if (!(markedNode instanceof ICPPASTFunctionDeclarator)) {
+            return;
+        }
         ICPPASTFunctionDeclarator declarator = (ICPPASTFunctionDeclarator) markedNode;
 
         IASTDeclSpecifier declSpec = DeclaratorHelper.findDeclSpec(markedNode.getParent());

@@ -18,12 +18,12 @@ import org.eclipse.cdt.core.dom.ast.cpp.ICPPASTExpressionList;
 import org.eclipse.cdt.core.dom.ast.cpp.ICPPASTFunctionDefinition;
 import org.eclipse.cdt.core.index.IIndex;
 
+import ch.hsr.ifs.iltis.cpp.core.resources.CProjectUtil;
+
 import com.cevelop.codeanalysator.core.guideline.Rule;
 import com.cevelop.codeanalysator.core.util.ASTHelper;
 import com.cevelop.codeanalysator.core.visitor.RuleReporter;
 import com.cevelop.codeanalysator.cppcore.visitor.util.NameVisitor;
-
-import ch.hsr.ifs.iltis.cpp.core.resources.CProjectUtil;
 
 
 public class DestructorWithMissingDeleteStatementsVisitor extends DestructorHasNoBodyVisitor {
@@ -102,7 +102,7 @@ public class DestructorWithMissingDeleteStatementsVisitor extends DestructorHasN
     }
 
     public List<String> listOfMembersToListOfNames(final List<IASTSimpleDeclaration> memberVars) {
-        final List<String> namesOfMemberVars = new ArrayList<String>();
+        final List<String> namesOfMemberVars = new ArrayList<>();
         for (final IASTSimpleDeclaration memberVar : memberVars) {
             final StringBuffer buf = new StringBuffer();
             for (final IASTDeclarator decl : memberVar.getDeclarators()) {

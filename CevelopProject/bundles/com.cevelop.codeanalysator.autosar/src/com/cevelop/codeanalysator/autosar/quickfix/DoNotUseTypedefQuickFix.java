@@ -24,7 +24,9 @@ public class DoNotUseTypedefQuickFix extends BaseQuickFix {
 
     @Override
     public boolean isApplicable(IMarker marker) {
-        if (!super.isApplicable(marker)) return false;
+        if (!super.isApplicable(marker)) {
+            return false;
+        }
 
         String contextFlagsString = getProblemArgument(marker, ContextFlagsHelper.DoNotUseTypedefContextFlagsStringIndex);
         return !contextFlagsString.contains(ContextFlagsHelper.DoNotUseTypedefContextFlagContextFlagStruct);
@@ -32,7 +34,9 @@ public class DoNotUseTypedefQuickFix extends BaseQuickFix {
 
     @Override
     protected void handleMarkedNode(IASTNode markedNode, ASTRewrite hRewrite) {
-        if (!(markedNode instanceof IASTSimpleDeclaration)) return;
+        if (!(markedNode instanceof IASTSimpleDeclaration)) {
+            return;
+        }
         IASTSimpleDeclaration typedefDeclaration = (IASTSimpleDeclaration) markedNode;
 
         replaceTypedefWithUsing(typedefDeclaration, hRewrite);
@@ -66,7 +70,9 @@ public class DoNotUseTypedefQuickFix extends BaseQuickFix {
 
     private ICPPASTAliasDeclaration createAliasDeclaration(IASTDeclSpecifier declspecifier, IASTDeclarator declarator) {
         IASTName name = DeclarationHelper.findNameOfDeclarator(declarator);
-        if (name == null) return null; // OOPS, no name found
+        if (name == null) {
+            return null; // OOPS, no name found
+        }
         IASTDeclarator newdeclarator = declarator.copy(CopyStyle.withLocations);
         // remove name selectedName from declarator
         DeclarationHelper.makeDeclaratorAbstract(newdeclarator, factory);

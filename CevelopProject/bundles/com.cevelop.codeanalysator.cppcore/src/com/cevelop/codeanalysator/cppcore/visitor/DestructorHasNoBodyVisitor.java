@@ -11,11 +11,11 @@ import org.eclipse.cdt.core.dom.ast.cpp.ICPPASTCompositeTypeSpecifier;
 import org.eclipse.cdt.core.dom.ast.cpp.ICPPASTFunctionDefinition;
 import org.eclipse.cdt.core.index.IIndex;
 
+import ch.hsr.ifs.iltis.cpp.core.resources.CProjectUtil;
+
 import com.cevelop.codeanalysator.core.guideline.Rule;
 import com.cevelop.codeanalysator.core.util.ASTHelper;
 import com.cevelop.codeanalysator.core.visitor.RuleReporter;
-
-import ch.hsr.ifs.iltis.cpp.core.resources.CProjectUtil;
 
 
 public class DestructorHasNoBodyVisitor extends NoDestructorVisitor {

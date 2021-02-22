@@ -26,7 +26,9 @@ public class NoImplicitLambdaReturnTypeQuickFix extends BaseQuickFix {
 
     @Override
     protected void handleMarkedNode(IASTNode markedNode, ASTRewrite hRewrite) {
-        if (!(markedNode instanceof ICPPASTLambdaExpression)) return;
+        if (!(markedNode instanceof ICPPASTLambdaExpression)) {
+            return;
+        }
         ICPPASTLambdaExpression lambda = (ICPPASTLambdaExpression) markedNode;
 
         ICPPASTFunctionDeclarator lambdaDeclarator = lambda.getDeclarator();

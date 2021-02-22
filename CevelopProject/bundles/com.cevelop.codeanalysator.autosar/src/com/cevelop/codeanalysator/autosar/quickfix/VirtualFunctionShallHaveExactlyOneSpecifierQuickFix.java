@@ -28,7 +28,9 @@ public class VirtualFunctionShallHaveExactlyOneSpecifierQuickFix extends BaseQui
 
     @Override
     public boolean isApplicable(IMarker marker) {
-        if (!super.isApplicable(marker)) return false;
+        if (!super.isApplicable(marker)) {
+            return false;
+        }
 
         String contextFlagsString = getProblemArgument(marker, ContextFlagsHelper.VirtualFunctionShallHaveExactlyOneSpecifierContextFlagsStringIndex);
         return !contextFlagsString.contains(ContextFlagsHelper.VirtualFunctionShallHaveExactlyOneSpecifierContextFlagPureVirtual) //
@@ -37,7 +39,9 @@ public class VirtualFunctionShallHaveExactlyOneSpecifierQuickFix extends BaseQui
 
     @Override
     protected void handleMarkedNode(IASTNode markedNode, ASTRewrite hRewrite) {
-        if (!(markedNode instanceof ICPPASTFunctionDeclarator)) return;
+        if (!(markedNode instanceof ICPPASTFunctionDeclarator)) {
+            return;
+        }
         IASTFunctionDeclarator declarator = (IASTFunctionDeclarator) markedNode;
         ICPPASTFunctionDeclarator decl = (ICPPASTFunctionDeclarator) declarator;
 
@@ -53,7 +57,9 @@ public class VirtualFunctionShallHaveExactlyOneSpecifierQuickFix extends BaseQui
 
         IASTName name = decl.getName();
         IBinding binding = name.resolveBinding();
-        if (!(binding instanceof ICPPMethod)) return;
+        if (!(binding instanceof ICPPMethod)) {
+            return;
+        }
         ICPPMethod method = (ICPPMethod) binding;
 
         if (decl.isFinal()) {

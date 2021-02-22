@@ -38,7 +38,9 @@ public class ReplaceAutoWithDeducedTypeQuickFix extends BaseQuickFix {
 
     @Override
     public boolean isApplicable(IMarker marker) {
-        if (!super.isApplicable(marker)) return false;
+        if (!super.isApplicable(marker)) {
+            return false;
+        }
 
         String contextFlagsString = getProblemArgument(marker, ContextFlagsHelper.UseAutoSparinglyContextFlagsStringIndex);
         return !contextFlagsString.contains(ContextFlagsHelper.UseAutoSparinglyContextFlagControlDeclaration);
@@ -46,7 +48,9 @@ public class ReplaceAutoWithDeducedTypeQuickFix extends BaseQuickFix {
 
     @Override
     protected void handleMarkedNode(IASTNode markedNode, ASTRewrite hRewrite) {
-        if (!(markedNode instanceof IASTDeclaration)) return;
+        if (!(markedNode instanceof IASTDeclaration)) {
+            return;
+        }
         IASTDeclaration declaration = (IASTDeclaration) markedNode;
         if (declaration instanceof IASTSimpleDeclaration) {
             IASTSimpleDeclaration simpleDeclaration = (IASTSimpleDeclaration) declaration;
@@ -67,7 +71,9 @@ public class ReplaceAutoWithDeducedTypeQuickFix extends BaseQuickFix {
 
     private void replaceAutoVariableDeclarationWithDeducedType(IASTSimpleDeclaration simpleDeclaration, ASTRewrite hRewrite) {
         IASTDeclSpecifier declSpecifier = simpleDeclaration.getDeclSpecifier();
-        if (!(declSpecifier instanceof IASTSimpleDeclSpecifier)) return;
+        if (!(declSpecifier instanceof IASTSimpleDeclSpecifier)) {
+            return;
+        }
         IASTSimpleDeclSpecifier autoSpecifier = (IASTSimpleDeclSpecifier) declSpecifier;
 
         IASTDeclarator[] declarators = simpleDeclaration.getDeclarators();
@@ -88,11 +94,15 @@ public class ReplaceAutoWithDeducedTypeQuickFix extends BaseQuickFix {
 
     private void replaceAutoReturnTypeWithDeducedType(IASTFunctionDefinition functionDefinition, ASTRewrite hRewrite) {
         IASTDeclSpecifier functionDeclSpecifier = functionDefinition.getDeclSpecifier();
-        if (!(functionDeclSpecifier instanceof IASTSimpleDeclSpecifier)) return;
+        if (!(functionDeclSpecifier instanceof IASTSimpleDeclSpecifier)) {
+            return;
+        }
         IASTSimpleDeclSpecifier autoSpecifier = (IASTSimpleDeclSpecifier) functionDeclSpecifier;
 
         IBinding binding = functionDefinition.getDeclarator().getName().resolveBinding();
-        if (!(binding instanceof IFunction)) return;
+        if (!(binding instanceof IFunction)) {
+            return;
+        }
         IFunction function = (IFunction) binding;
 
         IType returnType = function.getType().getReturnType();
@@ -103,7 +113,9 @@ public class ReplaceAutoWithDeducedTypeQuickFix extends BaseQuickFix {
 
     private void removeTrailingReturnType(IASTFunctionDefinition functionDefinition, ASTRewrite hRewrite) {
         IASTFunctionDeclarator functionDeclarator = functionDefinition.getDeclarator();
-        if (!(functionDeclarator instanceof ICPPASTFunctionDeclarator)) return;
+        if (!(functionDeclarator instanceof ICPPASTFunctionDeclarator)) {
+            return;
+        }
         ICPPASTFunctionDeclarator cppFunctionDeclarator = (ICPPASTFunctionDeclarator) functionDeclarator;
 
         if (cppFunctionDeclarator.getTrailingReturnType() != null) {

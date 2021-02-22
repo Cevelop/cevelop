@@ -18,7 +18,9 @@ public class MandatoryLambdaParameterListQuickFix extends BaseQuickFix implement
 
     @Override
     protected void handleMarkedNode(IASTNode markedNode, ASTRewrite hRewrite) {
-        if (!(markedNode instanceof ICPPASTLambdaExpression)) return;
+        if (!(markedNode instanceof ICPPASTLambdaExpression)) {
+            return;
+        }
         ICPPASTLambdaExpression lambda = (ICPPASTLambdaExpression) markedNode;
         ICPPASTFunctionDeclarator newLambdaDeclarator = createLambdaDeclarator();
         hRewrite.insertBefore(lambda, lambda.getBody(), newLambdaDeclarator, null);

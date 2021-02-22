@@ -15,6 +15,8 @@ import org.eclipse.cdt.core.model.ITranslationUnit;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 
+import ch.hsr.ifs.iltis.cpp.core.resources.CProjectUtil;
+
 import com.cevelop.codeanalysator.core.CodeAnalysatorRuntime;
 import com.cevelop.codeanalysator.core.guideline.IGuidelinePreferences;
 import com.cevelop.codeanalysator.core.guideline.IGuidelinePriorityResolver;
@@ -22,8 +24,6 @@ import com.cevelop.codeanalysator.core.guideline.Rule;
 import com.cevelop.codeanalysator.core.visitor.CodeAnalysatorVisitor;
 import com.cevelop.codeanalysator.core.visitor.RuleReporter;
 import com.cevelop.codeanalysator.core.visitor.VisitorComposite;
-
-import ch.hsr.ifs.iltis.cpp.core.resources.CProjectUtil;
 
 
 public abstract class CodeAnalysatorChecker extends AbstractIndexAstChecker {

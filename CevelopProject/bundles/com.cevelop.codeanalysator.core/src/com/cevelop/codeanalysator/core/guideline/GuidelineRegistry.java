@@ -36,7 +36,9 @@ public class GuidelineRegistry {
 
     private void registerGuideline(IGuideline guideline) {
         boolean alreadyRegistered = getGuidelineById(guideline.getId()).isPresent();
-        if (alreadyRegistered) throw new IllegalArgumentException(String.format("guideline already registered. [%s]", guideline.getId()));
+        if (alreadyRegistered) {
+            throw new IllegalArgumentException(String.format("guideline already registered. [%s]", guideline.getId()));
+        }
 
         guidelines.add(guideline);
     }

@@ -95,10 +95,14 @@ public class DoNotOutliveReferenceCapturedObjectsVisitor extends CodeAnalysatorV
         }
 
         private int compareNestedScopes(IScope first, IScope second) {
-            if (first == second) return 0;
-            if (ScopeHelper.isSameOrChildScope(first, second))
+            if (first == second) {
+                return 0;
+            }
+            if (ScopeHelper.isSameOrChildScope(first, second)) {
                 return -1;
-            else return 1;
+            } else {
+                return 1;
+            }
         }
 
         private IScope limitScopeToOutermostValidLambdaScope(IScope outermostValidScope, ICPPASTLambdaExpression lambdaExpression,

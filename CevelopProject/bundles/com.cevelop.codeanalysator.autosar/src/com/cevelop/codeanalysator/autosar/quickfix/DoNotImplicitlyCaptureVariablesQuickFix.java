@@ -25,7 +25,9 @@ public class DoNotImplicitlyCaptureVariablesQuickFix extends BaseQuickFix {
 
     @Override
     protected void handleMarkedNode(IASTNode markedNode, ASTRewrite hRewrite) {
-        if (!(markedNode instanceof ICPPASTLambdaExpression)) return;
+        if (!(markedNode instanceof ICPPASTLambdaExpression)) {
+            return;
+        }
         ICPPASTLambdaExpression lambdaExpression = (ICPPASTLambdaExpression) markedNode;
 
         ICPPASTLambdaExpression newLambdaExpression = (ICPPASTLambdaExpression) lambdaExpression.copy(CopyStyle.withLocations);

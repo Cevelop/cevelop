@@ -33,18 +33,26 @@ public class AttributeMatcher {
 
     public static <T extends IASTNode> IASTAttributeSpecifier[] getAttributeSpec(IASTNode node, Class<T> upUntilType) {
         IASTAttributeOwner attrnode = AttributeOwnerHelper.getValidAttributeOwner(node);
-        if (attrnode == null) return null;
+        if (attrnode == null) {
+            return null;
+        }
         IASTAttributeSpecifier[] attrs = attrnode.getAttributeSpecifiers();
         while (attrnode != null && !isWantedNode(attrnode, upUntilType)) {
             attrnode = AttributeOwnerHelper.getValidAttributeOwner(attrnode.getParent());
-            if (attrnode != null) attrs = ArrayUtil.addAll(attrs, attrnode.getAttributeSpecifiers());
+            if (attrnode != null) {
+                attrs = ArrayUtil.addAll(attrs, attrnode.getAttributeSpecifiers());
+            }
         }
         return attrs;
     }
 
     private static <T extends IASTNode> boolean isWantedNode(IASTAttributeOwner attrnode, Class<T> optionalTypeRestriction) {
-        if (AttributeOwnerHelper.instanceOfUnwanted(attrnode)) return false;
-        if (optionalTypeRestriction != null && !optionalTypeRestriction.isAssignableFrom(attrnode.getClass())) return false;
+        if (AttributeOwnerHelper.instanceOfUnwanted(attrnode)) {
+            return false;
+        }
+        if (optionalTypeRestriction != null && !optionalTypeRestriction.isAssignableFrom(attrnode.getClass())) {
+            return false;
+        }
         return true;
     }
 

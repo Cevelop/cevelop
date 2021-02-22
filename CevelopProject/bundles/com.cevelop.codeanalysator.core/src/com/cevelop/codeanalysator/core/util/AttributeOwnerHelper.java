@@ -18,10 +18,10 @@ import org.eclipse.cdt.core.dom.ast.cpp.ICPPASTNamedTypeSpecifier;
 @SuppressWarnings("rawtypes")
 public class AttributeOwnerHelper {
 
-    public final static List<Class> invalidAttributeOwners = new ArrayList<Class>(Arrays.asList(ICPPASTNamedTypeSpecifier.class,
+    public final static List<Class> invalidAttributeOwners = new ArrayList<>(Arrays.asList(ICPPASTNamedTypeSpecifier.class,
             ICPPASTCatchHandler.class));
 
-    public final static List<Class> unwantedAttributeOwners = new ArrayList<Class>(Arrays.asList(ICPPASTFunctionDeclarator.class,
+    public final static List<Class> unwantedAttributeOwners = new ArrayList<>(Arrays.asList(ICPPASTFunctionDeclarator.class,
             ICPPASTDeclarator.class, IASTDeclarationStatement.class));
 
     public static boolean valid(Object obj) {
@@ -42,24 +42,34 @@ public class AttributeOwnerHelper {
 
     private static boolean instanceOfOne(Object obj, List<Class> list) {
         for (Class theClass : list) {
-            if (theClass.isInstance(obj)) return true;
+            if (theClass.isInstance(obj)) {
+                return true;
+            }
         }
         return false;
     }
 
     public static IASTAttributeOwner getWantedAttributeOwner(final IASTNode node) {
         IASTAttributeOwner attrnode = getValidAttributeOwner(node);
-        if (attrnode == null) return null;
-        if (instanceOfUnwanted(attrnode)) return getWantedAttributeOwner(attrnode.getParent());
-        return (IASTAttributeOwner) attrnode;
+        if (attrnode == null) {
+            return null;
+        }
+        if (instanceOfUnwanted(attrnode)) {
+            return getWantedAttributeOwner(attrnode.getParent());
+        }
+        return attrnode;
     }
 
     public static IASTAttributeOwner getValidAttributeOwner(IASTNode node) {
         while (!valid(node) && !(node instanceof IASTTranslationUnit)) {
-            if (node == null) return null;
+            if (node == null) {
+                return null;
+            }
             node = node.getParent();
         }
-        if (node instanceof IASTTranslationUnit) return null;
+        if (node instanceof IASTTranslationUnit) {
+            return null;
+        }
         return (IASTAttributeOwner) node;
     }
 }

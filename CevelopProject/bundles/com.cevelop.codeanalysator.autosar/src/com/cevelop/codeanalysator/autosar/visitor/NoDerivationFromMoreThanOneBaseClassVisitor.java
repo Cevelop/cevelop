@@ -30,7 +30,9 @@ public class NoDerivationFromMoreThanOneBaseClassVisitor extends CodeAnalysatorV
     }
 
     private boolean violatesRule(IASTDeclSpecifier declSpec) {
-        if (!(declSpec instanceof ICPPASTCompositeTypeSpecifier)) return false;
+        if (!(declSpec instanceof ICPPASTCompositeTypeSpecifier)) {
+            return false;
+        }
         ICPPASTCompositeTypeSpecifier typeSpec = (ICPPASTCompositeTypeSpecifier) declSpec;
         ICPPASTBaseSpecifier[] baseSpecs = typeSpec.getBaseSpecifiers();
 

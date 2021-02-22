@@ -3,6 +3,7 @@ package com.cevelop.codeanalysator.core.quickassist.refactoring;
 import java.util.Arrays;
 import java.util.Optional;
 
+import org.eclipse.cdt.core.dom.ast.IASTCompositeTypeSpecifier;
 import org.eclipse.cdt.core.dom.ast.IASTNode;
 import org.eclipse.cdt.core.dom.ast.cpp.ICPPASTCompositeTypeSpecifier;
 import org.eclipse.cdt.core.dom.ast.cpp.ICPPASTCompositeTypeSpecifier.ICPPASTBaseSpecifier;
@@ -17,11 +18,11 @@ import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.jface.text.ITextSelection;
 import org.eclipse.ltk.core.refactoring.RefactoringStatus;
 
-import com.cevelop.codeanalysator.core.quickassist.rewrite.QuickAssistRewriteStore;
-import com.cevelop.codeanalysator.core.quickassist.runnable.StructClassSwitcherRunnable;
-
 import ch.hsr.ifs.iltis.cpp.core.ast.nodefactory.ASTNodeFactoryFactory;
 import ch.hsr.ifs.iltis.cpp.core.ast.nodefactory.IBetterFactory;
+
+import com.cevelop.codeanalysator.core.quickassist.rewrite.QuickAssistRewriteStore;
+import com.cevelop.codeanalysator.core.quickassist.runnable.StructClassSwitcherRunnable;
 
 
 @SuppressWarnings("restriction")
@@ -43,7 +44,7 @@ public class StructClassSwitcherRefactoring extends RefactoringBase {
     @Override
     public RefactoringStatus checkInitialConditions(IProgressMonitor pm) throws CoreException, OperationCanceledException {
         if (compositeTypeSpecifier == null) {
-            ILanguage lang = (tu instanceof TranslationUnit) ? ((TranslationUnit) tu).getLanguageOfContext() : tu.getLanguage();;
+            ILanguage lang = (tu instanceof TranslationUnit) ? ((TranslationUnit) tu).getLanguageOfContext() : tu.getLanguage();
 
             StructClassSwitcherRunnable runnable = new StructClassSwitcherRunnable(selection.getOffset(), selection.getLength());
             IStatus status = runnable.runOnAST(lang, tu.getAST());
@@ -61,12 +62,12 @@ public class StructClassSwitcherRefactoring extends RefactoringBase {
         if (compositeTypeSpecifier != null) {
             ICPPASTCompositeTypeSpecifier switchedCompositeTypeSpecifier = compositeTypeSpecifier.copy();
             store.addReplaceChange(compositeTypeSpecifier, switchedCompositeTypeSpecifier);
-            if (compositeTypeSpecifier.getKey() == ICPPASTCompositeTypeSpecifier.k_struct) {
+            if (compositeTypeSpecifier.getKey() == IASTCompositeTypeSpecifier.k_struct) {
                 switchedCompositeTypeSpecifier.setKey(ICPPASTCompositeTypeSpecifier.k_class);
                 switchBaseSpecifierVisibilities(switchedCompositeTypeSpecifier, ICPPASTBaseSpecifier.v_public, ICPPASTBaseSpecifier.v_private);
                 switchPrologVisibilityLabel(switchedCompositeTypeSpecifier, ICPPASTVisibilityLabel.v_public, ICPPASTVisibilityLabel.v_private, store);
             } else if (compositeTypeSpecifier.getKey() == ICPPASTCompositeTypeSpecifier.k_class) {
-                switchedCompositeTypeSpecifier.setKey(ICPPASTCompositeTypeSpecifier.k_struct);
+                switchedCompositeTypeSpecifier.setKey(IASTCompositeTypeSpecifier.k_struct);
                 switchBaseSpecifierVisibilities(switchedCompositeTypeSpecifier, ICPPASTBaseSpecifier.v_private, ICPPASTBaseSpecifier.v_public);
                 switchPrologVisibilityLabel(switchedCompositeTypeSpecifier, ICPPASTVisibilityLabel.v_private, ICPPASTVisibilityLabel.v_public, store);
             }

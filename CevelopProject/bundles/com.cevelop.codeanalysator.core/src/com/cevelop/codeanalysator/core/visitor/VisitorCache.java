@@ -14,7 +14,7 @@ public class VisitorCache {
     List<CodeAnalysatorVisitor> getCache(Class<?> cls) {
         List<CodeAnalysatorVisitor> visitors = cache.get(cls.getTypeName());
         if (visitors == null) {
-            visitors = new ArrayList<CodeAnalysatorVisitor>();
+            visitors = new ArrayList<>();
         }
         return visitors;
     }

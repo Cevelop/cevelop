@@ -41,8 +41,8 @@ import ch.hsr.ifs.iltis.core.functional.functions.Function2;
 
 public class VisitorComposite extends ASTVisitor {
 
-    private List<CodeAnalysatorVisitor>                visitors         = new ArrayList<CodeAnalysatorVisitor>();
-    private List<CodeAnalysatorVisitor>                visitorsToRemove = new ArrayList<CodeAnalysatorVisitor>();
+    private List<CodeAnalysatorVisitor>                visitors         = new ArrayList<>();
+    private List<CodeAnalysatorVisitor>                visitorsToRemove = new ArrayList<>();
     private Map<IASTNode, List<CodeAnalysatorVisitor>> skippedVisitors  = new HashMap<>();
     private VisitorCache                               cache            = new VisitorCache();
 
@@ -177,7 +177,7 @@ public class VisitorComposite extends ASTVisitor {
             if (this.skippedVisitors.containsKey(node)) {
                 this.skippedVisitors.get(node).add(visitor);
             } else {
-                List<CodeAnalysatorVisitor> visitors = new ArrayList<CodeAnalysatorVisitor>();
+                List<CodeAnalysatorVisitor> visitors = new ArrayList<>();
                 visitors.add(visitor);
                 this.skippedVisitors.put(node, visitors);
             }
@@ -222,210 +222,262 @@ public class VisitorComposite extends ASTVisitor {
         return getCurrentResult();
     }
 
+    @Override
     public int visit(IASTTranslationUnit tu) {
         return doVisitForNode(IASTTranslationUnit.class, tu, ASTVisitor::visit);
     }
 
+    @Override
     public int visit(IASTName name) {
         return doVisitForNode(IASTName.class, name, ASTVisitor::visit);
     }
 
+    @Override
     public int visit(IASTDeclaration declaration) {
         return doVisitForNode(IASTDeclaration.class, declaration, ASTVisitor::visit);
     }
 
+    @Override
     public int visit(IASTInitializer initializer) {
         return doVisitForNode(IASTInitializer.class, initializer, ASTVisitor::visit);
     }
 
+    @Override
     public int visit(IASTParameterDeclaration parameterDeclaration) {
         return doVisitForNode(IASTParameterDeclaration.class, parameterDeclaration, ASTVisitor::visit);
     }
 
+    @Override
     public int visit(IASTDeclarator declarator) {
         return doVisitForNode(IASTDeclarator.class, declarator, ASTVisitor::visit);
     }
 
+    @Override
     public int visit(IASTDeclSpecifier declSpec) {
         return doVisitForNode(IASTDeclSpecifier.class, declSpec, ASTVisitor::visit);
     }
 
+    @Override
     public int visit(IASTArrayModifier arrayModifier) {
         return doVisitForNode(IASTArrayModifier.class, arrayModifier, ASTVisitor::visit);
     }
 
+    @Override
     public int visit(IASTPointerOperator ptrOperator) {
         return doVisitForNode(IASTPointerOperator.class, ptrOperator, ASTVisitor::visit);
     }
 
+    @Override
     public int visit(IASTAttribute attribute) {
         return doVisitForNode(IASTAttribute.class, attribute, ASTVisitor::visit);
     }
 
+    @Override
     public int visit(IASTAttributeSpecifier specifier) {
         return doVisitForNode(IASTAttributeSpecifier.class, specifier, ASTVisitor::visit);
     }
 
+    @Override
     public int visit(IASTToken token) {
         return doVisitForNode(IASTToken.class, token, ASTVisitor::visit);
     }
 
+    @Override
     public int visit(IASTExpression expression) {
         return doVisitForNode(IASTExpression.class, expression, ASTVisitor::visit);
     }
 
+    @Override
     public int visit(IASTStatement statement) {
         return doVisitForNode(IASTStatement.class, statement, ASTVisitor::visit);
     }
 
+    @Override
     public int visit(IASTTypeId typeId) {
         return doVisitForNode(IASTTypeId.class, typeId, ASTVisitor::visit);
     }
 
+    @Override
     public int visit(IASTEnumerator enumerator) {
         return doVisitForNode(IASTEnumerator.class, enumerator, ASTVisitor::visit);
     }
 
+    @Override
     public int visit(IASTProblem problem) {
         return doVisitForNode(IASTProblem.class, problem, ASTVisitor::visit);
     }
 
+    @Override
     public int visit(ICPPASTBaseSpecifier baseSpecifier) {
         return doVisitForNode(ICPPASTBaseSpecifier.class, baseSpecifier, ASTVisitor::visit);
     }
 
+    @Override
     public int visit(ICPPASTNamespaceDefinition namespaceDefinition) {
         return doVisitForNode(ICPPASTNamespaceDefinition.class, namespaceDefinition, ASTVisitor::visit);
     }
 
+    @Override
     public int visit(ICPPASTTemplateParameter templateParameter) {
         return doVisitForNode(ICPPASTTemplateParameter.class, templateParameter, ASTVisitor::visit);
     }
 
+    @Override
     public int visit(ICPPASTCapture capture) {
         return doVisitForNode(ICPPASTCapture.class, capture, ASTVisitor::visit);
     }
 
+    @Override
     public int visit(ICASTDesignator designator) {
         return doVisitForNode(ICASTDesignator.class, designator, ASTVisitor::visit);
     }
 
+    @Override
     public int visit(ICPPASTDesignator designator) {
         return doVisitForNode(ICPPASTDesignator.class, designator, ASTVisitor::visit);
     }
 
+    @Override
     public int visit(ICPPASTVirtSpecifier virtSpecifier) {
         return doVisitForNode(ICPPASTVirtSpecifier.class, virtSpecifier, ASTVisitor::visit);
     }
 
+    @Override
     public int visit(ICPPASTClassVirtSpecifier classVirtSpecifier) {
         return doVisitForNode(ICPPASTClassVirtSpecifier.class, classVirtSpecifier, ASTVisitor::visit);
     }
 
+    @Override
     public int visit(ICPPASTDecltypeSpecifier decltypeSpecifier) {
         return doVisitForNode(ICPPASTDecltypeSpecifier.class, decltypeSpecifier, ASTVisitor::visit);
     }
 
+    @Override
     public int leave(IASTTranslationUnit tu) {
         return processLeave(tu);
     }
 
+    @Override
     public int leave(IASTName name) {
         return processLeave(name);
     }
 
+    @Override
     public int leave(IASTDeclaration declaration) {
         return processLeave(declaration);
     }
 
+    @Override
     public int leave(IASTInitializer initializer) {
         return processLeave(initializer);
     }
 
+    @Override
     public int leave(IASTParameterDeclaration parameterDeclaration) {
         return processLeave(parameterDeclaration);
     }
 
+    @Override
     public int leave(IASTDeclarator declarator) {
         return processLeave(declarator);
     }
 
+    @Override
     public int leave(IASTDeclSpecifier declSpec) {
         return processLeave(declSpec);
     }
 
+    @Override
     public int leave(IASTArrayModifier arrayModifier) {
         return processLeave(arrayModifier);
     }
 
+    @Override
     public int leave(IASTPointerOperator ptrOperator) {
         return processLeave(ptrOperator);
     }
 
+    @Override
     public int leave(IASTAttribute attribute) {
         return processLeave(attribute);
     }
 
+    @Override
     public int leave(IASTAttributeSpecifier specifier) {
         return processLeave(specifier);
     }
 
+    @Override
     public int leave(IASTToken token) {
         return processLeave(token);
     }
 
+    @Override
     public int leave(IASTExpression expression) {
         return processLeave(expression);
     }
 
+    @Override
     public int leave(IASTStatement statement) {
         return processLeave(statement);
     }
 
+    @Override
     public int leave(IASTTypeId typeId) {
         return processLeave(typeId);
     }
 
+    @Override
     public int leave(IASTEnumerator enumerator) {
         return processLeave(enumerator);
     }
 
+    @Override
     public int leave(IASTProblem problem) {
         return processLeave(problem);
     }
 
+    @Override
     public int leave(ICPPASTBaseSpecifier baseSpecifier) {
         return processLeave(baseSpecifier);
     }
 
+    @Override
     public int leave(ICPPASTNamespaceDefinition namespaceDefinition) {
         return processLeave(namespaceDefinition);
     }
 
+    @Override
     public int leave(ICPPASTTemplateParameter templateParameter) {
         return processLeave(templateParameter);
     }
 
+    @Override
     public int leave(ICPPASTCapture capture) {
         return processLeave(capture);
     }
 
+    @Override
     public int leave(ICASTDesignator designator) {
         return processLeave(designator);
     }
 
+    @Override
     public int leave(ICPPASTDesignator designator) {
         return processLeave(designator);
     }
 
+    @Override
     public int leave(ICPPASTVirtSpecifier virtSpecifier) {
         return processLeave(virtSpecifier);
     }
 
+    @Override
     public int leave(ICPPASTClassVirtSpecifier virtSpecifier) {
         return processLeave(virtSpecifier);
     }
 
+    @Override
     public int leave(ICPPASTDecltypeSpecifier decltypeSpecifier) {
         return processLeave(decltypeSpecifier);
     }

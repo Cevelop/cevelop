@@ -2,9 +2,9 @@ package com.cevelop.codeanalysator.core.preference;
 
 import org.eclipse.jface.preference.IPreferenceStore;
 
-import com.cevelop.codeanalysator.core.helper.CoreIdHelper;
-
 import ch.hsr.ifs.iltis.core.preferences.PropertyAndPreferenceHelper;
+
+import com.cevelop.codeanalysator.core.helper.CoreIdHelper;
 
 
 public class PropAndPrefHelper extends PropertyAndPreferenceHelper {

@@ -12,7 +12,7 @@ public class NameVisitor extends ASTVisitor {
     List<IASTName> names;
 
     public NameVisitor() {
-        names = new ArrayList<IASTName>();
+        names = new ArrayList<>();
         shouldVisitNames = true;
     }
 

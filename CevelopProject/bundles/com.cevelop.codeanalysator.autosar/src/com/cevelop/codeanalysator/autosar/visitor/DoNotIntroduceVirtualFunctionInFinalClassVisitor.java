@@ -37,7 +37,9 @@ public class DoNotIntroduceVirtualFunctionInFinalClassVisitor extends CodeAnalys
     }
 
     private boolean violatesRule(IASTDeclarator decl) {
-        if (!(decl instanceof IASTFunctionDeclarator)) return false;
+        if (!(decl instanceof IASTFunctionDeclarator)) {
+            return false;
+        }
         IASTFunctionDeclarator functionDeclarator = (IASTFunctionDeclarator) decl;
 
         IASTNode parent = functionDeclarator.getParent().getParent();

@@ -38,11 +38,17 @@ public class NoVirtualAssignementOperatorsVisitor extends CodeAnalysatorVisitor 
     }
 
     private boolean violatesRule(IASTDeclarator declarator) {
-        if (!(declarator instanceof ICPPASTFunctionDeclarator)) return false;
+        if (!(declarator instanceof ICPPASTFunctionDeclarator)) {
+            return false;
+        }
         ICPPASTFunctionDeclarator funcDecl = (ICPPASTFunctionDeclarator) declarator;
-        if (!VirtualHelper.isVirtualMethod(funcDecl)) return false;
+        if (!VirtualHelper.isVirtualMethod(funcDecl)) {
+            return false;
+        }
         IASTName declName = funcDecl.getName();
-        if (declName == null) return false;
+        if (declName == null) {
+            return false;
+        }
         if (declName instanceof ICPPASTOperatorName) {
             ICPPASTOperatorName operatorName = (ICPPASTOperatorName) declName;
             return isAssignementOperator(operatorName);

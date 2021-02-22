@@ -11,10 +11,10 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.jface.text.IDocument;
 import org.eclipse.ltk.core.refactoring.Change;
 
-import com.cevelop.codeanalysator.core.util.ASTRewriteStore;
-
 import ch.hsr.ifs.iltis.cpp.core.ast.nodefactory.ASTNodeFactoryFactory;
 import ch.hsr.ifs.iltis.cpp.core.ast.nodefactory.IBetterFactory;
+
+import com.cevelop.codeanalysator.core.util.ASTRewriteStore;
 
 
 public abstract class BaseQuickFix extends AbstractAstRewriteQuickFix {

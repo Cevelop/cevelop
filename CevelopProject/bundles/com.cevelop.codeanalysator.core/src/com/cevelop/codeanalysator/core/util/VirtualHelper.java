@@ -25,7 +25,7 @@ public class VirtualHelper {
 
     /**
      * Looks up all base classes for given class type recursively
-     * 
+     *
      * @param classType
      * for which to find base classes
      * @return Array of base classes
@@ -42,7 +42,7 @@ public class VirtualHelper {
      * Finds out whether a functionDeclarator is a virtual method.
      * This can either be because of the virtual keyword or
      * because it overrides a method in a base class.
-     * 
+     *
      * @param functionDeclarator
      * for which to check
      * @return whether the functionDeclarator is virtual
@@ -69,7 +69,7 @@ public class VirtualHelper {
 
     /**
      * Finds the innermost nested declarator
-     * 
+     *
      * @param declarator
      * for which to search
      * @return the innermost declarator
@@ -85,7 +85,7 @@ public class VirtualHelper {
 
     /**
      * Finds out whether a given method shadows another method in a base class
-     * 
+     *
      * @param testedMethod
      * the method to test shadowing for
      * @return whether the method shadows another
@@ -123,7 +123,7 @@ public class VirtualHelper {
 
     /**
      * Tests whether the source is an overrider of target
-     * 
+     *
      * @param source
      * potentially overriding method
      * @param target
@@ -131,17 +131,27 @@ public class VirtualHelper {
      * @return whether the source is an overrider of target
      */
     public static boolean isOverrider(ICPPMethod source, ICPPMethod target) {
-        if (source instanceof ICPPConstructor || target instanceof ICPPConstructor) return false;
-        if (!target.isVirtual() && !overridesVirtualMethod(target)) return false;
-        if (!functionTypesAllowOverride(source.getType(), target.getType())) return false;
+        if (source instanceof ICPPConstructor || target instanceof ICPPConstructor) {
+            return false;
+        }
+        if (!target.isVirtual() && !overridesVirtualMethod(target)) {
+            return false;
+        }
+        if (!functionTypesAllowOverride(source.getType(), target.getType())) {
+            return false;
+        }
 
         final ICPPClassType sourceClass = source.getClassOwner();
         final ICPPClassType targetClass = target.getClassOwner();
-        if (sourceClass == null || targetClass == null) return false;
+        if (sourceClass == null || targetClass == null) {
+            return false;
+        }
 
         ICPPClassType[] bases = getAllBases(sourceClass);
         for (ICPPClassType base : bases) {
-            if (base.isSameType(targetClass)) return true;
+            if (base.isSameType(targetClass)) {
+                return true;
+            }
         }
 
         return false;
@@ -149,7 +159,7 @@ public class VirtualHelper {
 
     /**
      * Tests whether a virtual method overrides any other
-     * 
+     *
      * @param method
      * to be tested
      * @return whether a virtual method overrides any other
@@ -157,18 +167,26 @@ public class VirtualHelper {
     public static boolean overridesVirtualMethod(ICPPMethod method) {
         if (method.isDestructor()) {
             ICPPClassType classtype = method.getClassOwner();
-            if (classtype == null) return false;
+            if (classtype == null) {
+                return false;
+            }
             ICPPClassType[] bases = getAllBases(classtype);
-            if (bases.length < 1) return false;
+            if (bases.length < 1) {
+                return false;
+            }
             for (ICPPClassType type : bases) {
                 for (ICPPMethod meth : type.getAllDeclaredMethods()) {
-                    if (meth.isVirtual() && meth.isDestructor()) return true;
+                    if (meth.isVirtual() && meth.isDestructor()) {
+                        return true;
+                    }
                 }
             }
             return false;
         }
         ICPPClassType[] bases = VirtualHelper.getAllBases(method.getClassOwner());
-        if (bases.length < 1) return false;
+        if (bases.length < 1) {
+            return false;
+        }
 
         boolean overrides = false;
         try {
@@ -181,7 +199,7 @@ public class VirtualHelper {
 
     /***
      * counts the number of virtspecifiers. Virt specifiers are virtual, override and final
-     * 
+     *
      * @param declarator
      * the function declarator
      * @return the number of virtual specifiers
@@ -195,7 +213,9 @@ public class VirtualHelper {
             IBinding binding = name.resolveBinding();
             if (binding instanceof ICPPMethod) {
                 ICPPMethod method = (ICPPMethod) binding;
-                if (method.isVirtual()) numberOfVirtSpecs++;
+                if (method.isVirtual()) {
+                    numberOfVirtSpecs++;
+                }
             }
         }
         return numberOfVirtSpecs;
@@ -263,14 +283,20 @@ public class VirtualHelper {
         IType[] paramsB = b.getParameterTypes();
 
         if (paramsA.length == 1 && paramsB.length == 0) {
-            if (!isVoidType(paramsA[0])) return false;
+            if (!isVoidType(paramsA[0])) {
+                return false;
+            }
         } else if (paramsB.length == 1 && paramsA.length == 0) {
-            if (!isVoidType(paramsB[0])) return false;
+            if (!isVoidType(paramsB[0])) {
+                return false;
+            }
         } else if (paramsA.length != paramsB.length) {
             return false;
         } else {
             for (int i = 0; i < paramsA.length; i++) {
-                if (paramsA[i] == null || !paramsA[i].isSameType(paramsB[i])) return false;
+                if (paramsA[i] == null || !paramsA[i].isSameType(paramsB[i])) {
+                    return false;
+                }
             }
         }
         return true;

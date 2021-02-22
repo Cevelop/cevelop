@@ -23,6 +23,8 @@ import org.eclipse.cdt.core.dom.ast.cpp.ICPPASTSwitchStatement;
 import org.eclipse.cdt.core.dom.rewrite.ASTRewrite;
 import org.eclipse.core.resources.IMarker;
 
+import ch.hsr.ifs.iltis.cpp.core.ast.nodefactory.IBetterFactory;
+
 import com.cevelop.codeanalysator.autosar.util.ContextFlagsHelper;
 import com.cevelop.codeanalysator.autosar.util.ScopeHelper;
 import com.cevelop.codeanalysator.autosar.util.SwitchHelper;
@@ -30,8 +32,6 @@ import com.cevelop.codeanalysator.autosar.util.SwitchHelper.ClauseKind;
 import com.cevelop.codeanalysator.autosar.util.SwitchHelper.SwitchBody;
 import com.cevelop.codeanalysator.autosar.util.SwitchHelper.SwitchClause;
 import com.cevelop.codeanalysator.core.quickfix.BaseQuickFix;
-
-import ch.hsr.ifs.iltis.cpp.core.ast.nodefactory.IBetterFactory;
 
 
 public class SwitchMustHaveAtLeastTwoCasesQuickFix extends BaseQuickFix {
@@ -42,7 +42,9 @@ public class SwitchMustHaveAtLeastTwoCasesQuickFix extends BaseQuickFix {
 
     @Override
     public boolean isApplicable(IMarker marker) {
-        if (!super.isApplicable(marker)) return false;
+        if (!super.isApplicable(marker)) {
+            return false;
+        }
 
         String contextFlagsString = getProblemArgument(marker, ContextFlagsHelper.SwitchMustHaveAtLeastTwoCasesContextFlagsStringIndex);
         return contextFlagsString.contains(ContextFlagsHelper.SwitchMustHaveAtLeastTwoCasesContextFlagTrivial);
@@ -50,7 +52,9 @@ public class SwitchMustHaveAtLeastTwoCasesQuickFix extends BaseQuickFix {
 
     @Override
     protected void handleMarkedNode(IASTNode markedNode, ASTRewrite hRewrite) {
-        if (!(markedNode instanceof ICPPASTSwitchStatement)) return;
+        if (!(markedNode instanceof ICPPASTSwitchStatement)) {
+            return;
+        }
         ICPPASTSwitchStatement switchStatement = (ICPPASTSwitchStatement) markedNode;
         SwitchWithLessThanTwoCasesReplacer replacer = new SwitchWithLessThanTwoCasesReplacer(factory, switchStatement);
         replacer.replace(hRewrite);
@@ -215,7 +219,9 @@ public class SwitchMustHaveAtLeastTwoCasesQuickFix extends BaseQuickFix {
 
         private boolean wouldIdentifierCollideWithSurroundingScope() {
             IScope surroundingScope = ScopeHelper.getParentScope(switchStatement.getScope());
-            if (surroundingScope == null) return true; // cannot check without scope, assume an identifier would collide
+            if (surroundingScope == null) {
+                return true; // cannot check without scope, assume an identifier would collide
+            }
             BlockScopeIdentifierCollectorVisitor identifierCollectorVisitor = new BlockScopeIdentifierCollectorVisitor();
             replacementStatements.stream().forEach(statement -> statement.accept(identifierCollectorVisitor));
             return identifierCollectorVisitor.getCollectedIdentifiers().stream() //
@@ -246,7 +252,7 @@ public class SwitchMustHaveAtLeastTwoCasesQuickFix extends BaseQuickFix {
 
     private static class BlockScopeIdentifierCollectorVisitor extends ASTVisitor {
 
-        private final Set<IASTName> collectedIdentifiers = new LinkedHashSet<IASTName>();
+        private final Set<IASTName> collectedIdentifiers = new LinkedHashSet<>();
 
         public BlockScopeIdentifierCollectorVisitor() {
             shouldVisitStatements = true;

@@ -142,7 +142,9 @@ public class SwitchHelper {
         }
 
         public List<SwitchClause> getClauses() {
-            if (!isTrivial) throw new IllegalStateException("clauses are not available for non-trivial switch bodies.");
+            if (!isTrivial) {
+                throw new IllegalStateException("clauses are not available for non-trivial switch bodies.");
+            }
             return clauses;
         }
     }
@@ -199,12 +201,16 @@ public class SwitchHelper {
         }
 
         public List<IASTStatement> getStatements() {
-            if (!isTrivial) throw new IllegalStateException("statements are not available for non-trivial clauses.");
+            if (!isTrivial) {
+                throw new IllegalStateException("statements are not available for non-trivial clauses.");
+            }
             return statements;
         }
 
         public boolean isFallThrough() {
-            if (!isTrivial) throw new IllegalStateException("whether the clause is falling through is not available for non-trivial clauses.");
+            if (!isTrivial) {
+                throw new IllegalStateException("whether the clause is falling through is not available for non-trivial clauses.");
+            }
             return isFallThrough;
         }
     }
@@ -238,12 +244,16 @@ public class SwitchHelper {
         }
 
         public List<IASTStatement> getStatements() {
-            if (!isTrivial) throw new IllegalStateException("statements are not available for non-trivial clause bodies.");
+            if (!isTrivial) {
+                throw new IllegalStateException("statements are not available for non-trivial clause bodies.");
+            }
             return statements;
         }
 
         public boolean isFallThrough() {
-            if (!isTrivial) throw new IllegalStateException("whether the clause is falling through is not available for non-trivial clause bodies.");
+            if (!isTrivial) {
+                throw new IllegalStateException("whether the clause is falling through is not available for non-trivial clause bodies.");
+            }
             return isFallThrough;
         }
     }

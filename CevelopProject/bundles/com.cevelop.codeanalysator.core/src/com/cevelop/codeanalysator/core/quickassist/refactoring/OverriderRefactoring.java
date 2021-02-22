@@ -20,10 +20,10 @@ import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.jface.text.ITextSelection;
 import org.eclipse.ltk.core.refactoring.RefactoringStatus;
 
+import ch.hsr.ifs.iltis.cpp.core.ast.nodefactory.ASTNodeFactoryFactory;
+
 import com.cevelop.codeanalysator.core.quickassist.rewrite.QuickAssistRewriteStore;
 import com.cevelop.codeanalysator.core.quickassist.runnable.OverrideProposoalRunnable;
-
-import ch.hsr.ifs.iltis.cpp.core.ast.nodefactory.ASTNodeFactoryFactory;
 
 
 @SuppressWarnings("restriction")
@@ -47,7 +47,7 @@ public class OverriderRefactoring extends RefactoringBase {
     @Override
     public RefactoringStatus checkInitialConditions(IProgressMonitor pm) throws CoreException, OperationCanceledException {
         if (runnable == null) {
-            ILanguage lang = (tu instanceof TranslationUnit) ? ((TranslationUnit) tu).getLanguageOfContext() : tu.getLanguage();;
+            ILanguage lang = (tu instanceof TranslationUnit) ? ((TranslationUnit) tu).getLanguageOfContext() : tu.getLanguage();
             runnable = new OverrideProposoalRunnable(selection.getOffset(), selection.getLength());
             IStatus status = runnable.runOnAST(lang, tu.getAST());
             if (!status.isOK()) {

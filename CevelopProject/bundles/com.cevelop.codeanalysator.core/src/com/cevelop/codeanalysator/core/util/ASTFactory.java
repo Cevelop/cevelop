@@ -33,6 +33,7 @@ import org.eclipse.cdt.core.dom.ast.cpp.ICPPASTFunctionCallExpression;
 import org.eclipse.cdt.core.dom.ast.cpp.ICPPASTFunctionDeclarator;
 import org.eclipse.cdt.core.dom.ast.cpp.ICPPASTFunctionDefinition;
 import org.eclipse.cdt.core.dom.ast.cpp.ICPPASTLambdaExpression;
+import org.eclipse.cdt.core.dom.ast.cpp.ICPPASTLambdaExpression.CaptureDefault;
 import org.eclipse.cdt.core.dom.ast.cpp.ICPPASTNamedTypeSpecifier;
 import org.eclipse.cdt.core.dom.ast.cpp.ICPPASTParameterDeclaration;
 import org.eclipse.cdt.core.dom.ast.cpp.ICPPASTQualifiedName;
@@ -44,7 +45,6 @@ import org.eclipse.cdt.core.dom.ast.cpp.ICPPASTTemplateId;
 import org.eclipse.cdt.core.dom.ast.cpp.ICPPASTTemplateParameter;
 import org.eclipse.cdt.core.dom.ast.cpp.ICPPASTTemplatedTypeTemplateParameter;
 import org.eclipse.cdt.core.dom.ast.cpp.ICPPASTVisibilityLabel;
-import org.eclipse.cdt.core.dom.ast.cpp.ICPPASTLambdaExpression.CaptureDefault;
 import org.eclipse.cdt.core.parser.Keywords;
 import org.eclipse.cdt.internal.core.dom.parser.ASTQueries;
 import org.eclipse.cdt.internal.core.dom.parser.cpp.CPPNodeFactory;
@@ -209,11 +209,11 @@ public class ASTFactory {
         statement.addStatement(factory.newExpressionStatement(factory.newFunctionCallExpression(factory.newFieldReference(factory.newName("swap"),
                 factory.newIdExpression(factory.newName("a"))), new IASTInitializerClause[] { factory.newIdExpression(factory.newName("b")) })));
 
-        List<ICPPASTParameterDeclaration> params = new ArrayList<ICPPASTParameterDeclaration>();
+        List<ICPPASTParameterDeclaration> params = new ArrayList<>();
         params.add(newParameter(false, parameterTypeName, true, false, factory.newName("a")));
         params.add(newParameter(false, parameterTypeName, true, false, factory.newName("b")));
 
-        IASTDeclaration swapFunctionDefinition = newFunctionDefinition(ICPPASTSimpleDeclSpecifier.t_void, "swap", params, true, statement);
+        IASTDeclaration swapFunctionDefinition = newFunctionDefinition(IASTSimpleDeclSpecifier.t_void, "swap", params, true, statement);
         if (surroundingTemplateDeclaration != null) {
             ICPPASTTemplateDeclaration swapTemplateDeclaration = factory.newTemplateDeclaration(swapFunctionDefinition);
             List<ICPPASTTemplateParameter> adaptedTemplateParameters = adaptTemplateParameters(surroundingTemplateDeclaration);
@@ -252,7 +252,7 @@ public class ASTFactory {
                 }
                 adaptedParamters.add(adaptedParameter);
             }
-        } ;
+        }
         return adaptedParamters;
 
     }
@@ -280,7 +280,7 @@ public class ASTFactory {
                 argumentName += String.valueOf(Keywords.cpELLIPSIS);
             }
             names.add(argumentName);
-        } ;
+        }
         return names;
     }
 
@@ -289,10 +289,10 @@ public class ASTFactory {
         compoundstmt.addStatement(factory.newDeclarationStatement(factory.newUsingDeclaration(factory.newQualifiedName(new String[] { "std" },
                 "swap"))));
 
-        List<ICPPASTParameterDeclaration> params = new ArrayList<ICPPASTParameterDeclaration>();
+        List<ICPPASTParameterDeclaration> params = new ArrayList<>();
         params.add(newParameter(false, typeName, true, false, factory.newName("other")));
 
-        return newFunctionDefinition(ICPPASTSimpleDeclSpecifier.t_void, "swap", params, true, compoundstmt);
+        return newFunctionDefinition(IASTSimpleDeclSpecifier.t_void, "swap", params, true, compoundstmt);
     }
 
     public static ICPPASTFunctionCallExpression newQualifiedNamedFunctionCall(String[] nameQualifiers, String name,
@@ -314,7 +314,9 @@ public class ASTFactory {
         for (ICPPASTParameterDeclaration param : params) {
             functionDeclarator.addParameterDeclaration(param);
         }
-        if (noexcept) functionDeclarator.setNoexceptExpression(ICPPASTFunctionDeclarator.NOEXCEPT_DEFAULT);
+        if (noexcept) {
+            functionDeclarator.setNoexceptExpression(ICPPASTFunctionDeclarator.NOEXCEPT_DEFAULT);
+        }
 
         ICPPASTSimpleDeclSpecifier declspec = factory.newSimpleDeclSpecifier();
         declspec.setType(returnType);
@@ -385,7 +387,7 @@ public class ASTFactory {
 
     /**
      * Creates a new literal expression
-     * 
+     *
      * @param kind
      * Any IASTLiteralExpression.lk_XXX
      * @param val
@@ -401,7 +403,7 @@ public class ASTFactory {
 
     /**
      * Creates a new unary expression
-     * 
+     *
      * @param operator
      * Any IASTUnaryExpression.op_XXX
      * @param operand

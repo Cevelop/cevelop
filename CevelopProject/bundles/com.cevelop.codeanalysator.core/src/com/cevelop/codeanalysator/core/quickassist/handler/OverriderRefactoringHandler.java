@@ -5,11 +5,11 @@ import java.util.Optional;
 import org.eclipse.cdt.core.model.ICElement;
 import org.eclipse.jface.text.ITextSelection;
 
+import ch.hsr.ifs.iltis.cpp.core.ui.refactoring.WizardRefactoringStarterMenuHandler;
+
 import com.cevelop.codeanalysator.core.quickassist.refactoring.OverriderRefactoring;
 import com.cevelop.codeanalysator.core.quickassist.runnable.OverrideProposoalRunnable;
 import com.cevelop.codeanalysator.core.quickassist.util.CodeanalysatorWizard;
-
-import ch.hsr.ifs.iltis.cpp.core.ui.refactoring.WizardRefactoringStarterMenuHandler;
 
 
 public class OverriderRefactoringHandler extends WizardRefactoringStarterMenuHandler<CodeanalysatorWizard, OverriderRefactoring> {

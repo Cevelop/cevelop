@@ -23,7 +23,9 @@ public class DoNotIntroduceVirtualFunctionInFinalClassQuickFix extends BaseQuick
 
     @Override
     public boolean isApplicable(IMarker marker) {
-        if (!super.isApplicable(marker)) return false;
+        if (!super.isApplicable(marker)) {
+            return false;
+        }
         String contextFlagsString = getProblemArgument(marker, ContextFlagsHelper.DoNotIntroduceVirtualFunctionInFinalClassContextFlagsStringIndex);
         return !contextFlagsString.contains(ContextFlagsHelper.DoNotIntroduceVirtualFunctionInFinalClassContextFlagPureVirtual) //
                && !contextFlagsString.contains(ContextFlagsHelper.DoNotIntroduceVirtualFunctionInFinalClassContextFlagIntroducingVirtual);
@@ -31,7 +33,9 @@ public class DoNotIntroduceVirtualFunctionInFinalClassQuickFix extends BaseQuick
 
     @Override
     protected void handleMarkedNode(IASTNode markedNode, ASTRewrite hRewrite) {
-        if (!(markedNode instanceof ICPPASTFunctionDeclarator)) return;
+        if (!(markedNode instanceof ICPPASTFunctionDeclarator)) {
+            return;
+        }
         IASTNode parent = markedNode.getParent();
 
         IASTDeclSpecifier declSpec = DeclaratorHelper.findDeclSpec(parent);

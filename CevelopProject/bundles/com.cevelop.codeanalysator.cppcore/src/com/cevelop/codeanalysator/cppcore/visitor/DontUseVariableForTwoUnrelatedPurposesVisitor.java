@@ -49,7 +49,9 @@ public class DontUseVariableForTwoUnrelatedPurposesVisitor extends CodeAnalysato
 
     @Override
     public int visit(final IASTDeclaration declaration) {
-        if (!(declaration instanceof IASTSimpleDeclaration)) return PROCESS_CONTINUE;
+        if (!(declaration instanceof IASTSimpleDeclaration)) {
+            return PROCESS_CONTINUE;
+        }
 
         IASTSimpleDeclaration simpleDecl = (IASTSimpleDeclaration) declaration;
         IASTDeclarator[] declarators = simpleDecl.getDeclarators();
@@ -73,8 +75,12 @@ public class DontUseVariableForTwoUnrelatedPurposesVisitor extends CodeAnalysato
             IASTStatement declaratorInsideIfOrSwitch = getIfOrSwitchStatement(declarator.getName());
 
             for (IASTName name : usages) {
-                if (isRuleSuppressedForNode(getAttributeOwner(name))) return PROCESS_CONTINUE;
-                if (ASTHelper.isForLoopStatement(name)) return PROCESS_CONTINUE;
+                if (isRuleSuppressedForNode(getAttributeOwner(name))) {
+                    return PROCESS_CONTINUE;
+                }
+                if (ASTHelper.isForLoopStatement(name)) {
+                    return PROCESS_CONTINUE;
+                }
                 if (usedInitializations > ALLOWED_INITIALIZATIONS) {
                     reportRuleForNode(name);
                 } else {

@@ -87,7 +87,7 @@ public final class BracedInitializationHelper {
             Arrays.stream(parenthesesInitializer.getArguments()) //
                     .map(IASTInitializerClause::copy) //
                     .forEach(bracedInitializer::addClause);
-            IASTDeclarator bracedDeclarator = (IASTDeclarator) paranthesesDeclarator.copy();
+            IASTDeclarator bracedDeclarator = paranthesesDeclarator.copy();
             bracedDeclarator.setInitializer(bracedInitializer);
             bracedDeclarator.setParent(paranthesesDeclarator.getParent());
             return getConstructorCalled(bracedDeclarator);

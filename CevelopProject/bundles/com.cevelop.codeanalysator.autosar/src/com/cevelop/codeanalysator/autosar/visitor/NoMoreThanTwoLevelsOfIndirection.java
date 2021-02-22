@@ -109,7 +109,7 @@ public class NoMoreThanTwoLevelsOfIndirection extends CodeAnalysatorVisitor {
         }
         numberOfPointerOperators += Optional.ofNullable(declarator.getNestedDeclarator()) //
                 .map(nestedDeclarator -> levelsOfIndirection(nestedDeclarator, indirectionMode)) //
-                .orElse(Long.valueOf(0));
+                .orElse((long) 0);
         return numberOfPointerOperators;
     }
 

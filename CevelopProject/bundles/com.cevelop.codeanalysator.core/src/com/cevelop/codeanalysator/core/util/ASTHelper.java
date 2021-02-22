@@ -82,7 +82,7 @@ public class ASTHelper {
       MoveConstructor,
       DefaultDestructor,
       SwapFunction
-   };
+   }
    // @formatter:on
 
     private ASTHelper() {}
@@ -661,7 +661,7 @@ public class ASTHelper {
                 if (paramDeclName instanceof ICPPASTTemplateId) {
                     if (!((ICPPASTTemplateId) paramDeclName).getTemplateName().toString().equals(className)) {
                         return false;
-                    } ;
+                    }
                 } else if (!((ICPPASTNamedTypeSpecifier) parameter.getDeclSpecifier()).getName().toString().equals(className)) {
                     return false;
                 }

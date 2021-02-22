@@ -5,11 +5,12 @@ import java.util.Optional;
 import org.eclipse.cdt.core.dom.ast.cpp.ICPPASTCompositeTypeSpecifier;
 import org.eclipse.cdt.core.model.ICElement;
 import org.eclipse.jface.text.ITextSelection;
+import org.eclipse.ltk.ui.refactoring.RefactoringWizard;
+
+import ch.hsr.ifs.iltis.cpp.core.ui.refactoring.WizardRefactoringStarterMenuHandler;
 
 import com.cevelop.codeanalysator.core.quickassist.refactoring.StructClassSwitcherRefactoring;
 import com.cevelop.codeanalysator.core.quickassist.util.CodeanalysatorWizard;
-
-import ch.hsr.ifs.iltis.cpp.core.ui.refactoring.WizardRefactoringStarterMenuHandler;
 
 
 public class StructClassSwitcherRefactoringHandler extends WizardRefactoringStarterMenuHandler<CodeanalysatorWizard, StructClassSwitcherRefactoring> {
@@ -31,7 +32,7 @@ public class StructClassSwitcherRefactoringHandler extends WizardRefactoringStar
 
     @Override
     protected CodeanalysatorWizard getRefactoringWizard(StructClassSwitcherRefactoring refactoring) {
-        return new CodeanalysatorWizard(refactoring, CodeanalysatorWizard.CHECK_INITIAL_CONDITIONS_ON_OPEN |
-                                                     CodeanalysatorWizard.DIALOG_BASED_USER_INTERFACE);
+        return new CodeanalysatorWizard(refactoring, RefactoringWizard.CHECK_INITIAL_CONDITIONS_ON_OPEN |
+                                                     RefactoringWizard.DIALOG_BASED_USER_INTERFACE);
     }
 }

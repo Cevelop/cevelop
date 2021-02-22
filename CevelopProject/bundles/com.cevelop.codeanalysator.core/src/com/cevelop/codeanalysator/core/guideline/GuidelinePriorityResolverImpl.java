@@ -12,9 +12,9 @@ import java.util.Set;
 import org.eclipse.cdt.core.dom.ast.IASTNode;
 import org.eclipse.core.resources.IProject;
 
-import com.cevelop.codeanalysator.core.guideline.IGuidelinePreferences.IPreferencesChangeListener;
-
 import ch.hsr.ifs.iltis.cpp.core.resources.CProjectUtil;
+
+import com.cevelop.codeanalysator.core.guideline.IGuidelinePreferences.IPreferencesChangeListener;
 
 
 public class GuidelinePriorityResolverImpl implements IGuidelinePriorityResolver, IPreferencesChangeListener {
@@ -28,8 +28,12 @@ public class GuidelinePriorityResolverImpl implements IGuidelinePriorityResolver
     }
 
     public void startListening(IGuidelinePreferences guidelinePreferences) {
-        if (guidelinePreferences == null) throw new IllegalArgumentException("guidelinePreferences must not be null.");
-        if (this.guidelinePreferences != null) throw new IllegalStateException("cannot listen to more than one guideline preferences instance.");
+        if (guidelinePreferences == null) {
+            throw new IllegalArgumentException("guidelinePreferences must not be null.");
+        }
+        if (this.guidelinePreferences != null) {
+            throw new IllegalStateException("cannot listen to more than one guideline preferences instance.");
+        }
 
         this.guidelinePreferences = guidelinePreferences;
         guidelinePreferences.addPreferencesChangeListener(this);
@@ -37,17 +41,25 @@ public class GuidelinePriorityResolverImpl implements IGuidelinePriorityResolver
 
     @Override
     public void registerSharedRule(Rule rule) {
-        if (rule == null) throw new IllegalArgumentException("rule must not be null.");
-        if (!rule.isSharedProblem()) throw new IllegalArgumentException(String.format("rule is not a shared rule. [%s]", rule.getProblemId()));
+        if (rule == null) {
+            throw new IllegalArgumentException("rule must not be null.");
+        }
+        if (!rule.isSharedProblem()) {
+            throw new IllegalArgumentException(String.format("rule is not a shared rule. [%s]", rule.getProblemId()));
+        }
 
-        Set<Rule> sharedRules = sharedRulesByGuideline.computeIfAbsent(rule.getGuideline(), k -> new HashSet<Rule>());
+        Set<Rule> sharedRules = sharedRulesByGuideline.computeIfAbsent(rule.getGuideline(), k -> new HashSet<>());
         boolean alreadyRegistered = !sharedRules.add(rule);
-        if (alreadyRegistered) throw new IllegalArgumentException(String.format("rule already registered. [%s]", rule.getProblemId()));
+        if (alreadyRegistered) {
+            throw new IllegalArgumentException(String.format("rule already registered. [%s]", rule.getProblemId()));
+        }
     }
 
     @Override
     public void computePriorityOrderings() {
-        if (guidelinePreferences == null) throw new IllegalStateException("cannot compute priority orderings while not listening.");
+        if (guidelinePreferences == null) {
+            throw new IllegalStateException("cannot compute priority orderings while not listening.");
+        }
 
         guidelinePriorityResolversByProject.values().stream() //
                 .forEach(GuidelineProjectPriorityResolver::computePriorityOrderings);
@@ -55,11 +67,17 @@ public class GuidelinePriorityResolverImpl implements IGuidelinePriorityResolver
 
     @Override
     public boolean isHighestActiveRuleForNode(Rule rule, IASTNode node) {
-        if (rule == null) throw new IllegalArgumentException("rule must not be null.");
-        if (node == null) throw new IllegalArgumentException("node must not be null.");
+        if (rule == null) {
+            throw new IllegalArgumentException("rule must not be null.");
+        }
+        if (node == null) {
+            throw new IllegalArgumentException("node must not be null.");
+        }
 
         IProject project = CProjectUtil.getProject(node);
-        if (project == null) throw new IllegalArgumentException("node must be associated with a project.");
+        if (project == null) {
+            throw new IllegalArgumentException("node must be associated with a project.");
+        }
 
         if (rule.isSharedProblem()) {
             GuidelineProjectPriorityResolver guidelinePriorityResolverForProject = getSharedRulesBySharedProblemIdForProject(project);
@@ -110,7 +128,7 @@ public class GuidelinePriorityResolverImpl implements IGuidelinePriorityResolver
                     .sorted((a, b) -> guidelinePriorityComparator.compare(a.getKey(), b.getKey())) //
                     .forEachOrdered(entry -> entry.getValue().stream() //
                             .forEach(rule -> newSharedRulesBySharedProblemId.computeIfAbsent(rule.getSharedProblemId(), //
-                                    k -> new ArrayList<Rule>()).add(rule)));
+                                    k -> new ArrayList<>()).add(rule)));
             this.sharedRulesBySharedProblemId = newSharedRulesBySharedProblemId;
         }
 
@@ -122,8 +140,10 @@ public class GuidelinePriorityResolverImpl implements IGuidelinePriorityResolver
 
         private Optional<Rule> getHighestActiveSharedRuleForNode(String sharedProblemId, IASTNode node) {
             List<Rule> sharedRules = sharedRulesBySharedProblemId.get(sharedProblemId);
-            if (sharedRules == null) throw new IllegalStateException(String.format("no shared rule with this shared problem id registered. [%s]", //
-                    sharedProblemId));
+            if (sharedRules == null) {
+                throw new IllegalStateException(String.format("no shared rule with this shared problem id registered. [%s]", //
+                        sharedProblemId));
+            }
 
             return sharedRules.stream() //
                     .filter(r -> !r.isSuppressedForNode(node)) //

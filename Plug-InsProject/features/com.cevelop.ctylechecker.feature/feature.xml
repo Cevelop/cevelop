@@ -28,7 +28,7 @@ SPDX-License-Identifier: EPL-2.0
    </license>
 
    <url>
-      <update label="Cevelop Update Site" url="https://www.cevelop.com/update/latest"/>
+      <update label="Cevelop Plug-Ins" url="https://www.cevelop.com/update/latest"/>
       <discovery label="Eclipse Orbit" url="http://download.eclipse.org/tools/orbit/downloads/drops/R20190726180751/repository/"/>
    </url>
 

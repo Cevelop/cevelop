@@ -27,7 +27,7 @@ SPDX-License-Identifier: EPL-2.0
    </license>
 
    <url>
-      <update label="Cevelop Update Site" url="https://www.cevelop.com/update/latest"/>
+      <update label="Cevelop Plug-Ins" url="https://www.cevelop.com/update/latest"/>
    </url>
 
    <requires>

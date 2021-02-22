@@ -21,8 +21,12 @@ SPDX-License-Identifier: EPL-2.0
    </copyright>
 
    <license>
-   %license%
+      %license%
    </license>
+
+   <url>
+      <update label="Cevelop Plug-Ins" url="https://www.cevelop.com/update/latest"/>
+   </url>
 
    <plugin
          id="com.cevelop.aliextor"

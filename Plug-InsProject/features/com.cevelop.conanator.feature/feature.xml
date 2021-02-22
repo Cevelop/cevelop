@@ -27,7 +27,7 @@ SPDX-License-Identifier: EPL-2.0
    </license>
 
    <url>
-      <discovery label="conan Discovery Site" url="http://www.example.com/update"/>
+      <update label="Cevelop Plug-Ins" url="https://www.cevelop.com/update/latest"/>
    </url>
 
    <requires>

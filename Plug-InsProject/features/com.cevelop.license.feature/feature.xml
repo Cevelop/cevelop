@@ -297,4 +297,8 @@ version(s), and exceptions or additional permissions here}.&quot;
   You may add additional accurate notices of copyright ownership.
    </license>
 
+   <url>
+      <update label="Cevelop Plug-Ins" url="https://www.cevelop.com/update/latest"/>
+   </url>
+
 </feature>

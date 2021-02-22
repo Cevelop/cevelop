@@ -12,7 +12,7 @@ There are few things worse than an out-of-date documentation.
 The project layout follows the following conventions:
 
 * Top-level helpers, configurations, and this file are located at the repository root
-* All plug-in code resides in the folder *CevelopProject* in the repository root
+* All plug-in code resides in the folder *Plug-InsProject* in the repository root
 
 ### Helpers and Configuration
 

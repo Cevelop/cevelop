@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl -->
-<target name="Cevelop Development" sequenceNumber="1581694321">
+<target name="Cevelop Development" sequenceNumber="1614026617">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.equinox.launcher" version="0.0.0"/>
@@ -24,7 +24,7 @@
       <repository location="https://ci.eclipse.org/cdt/job/cdt-9.10/lastSuccessfulBuild/artifact/releng/org.eclipse.cdt.testing.repo/target/repository/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
-      <unit id="ch.hsr.ifs.iltis.core.kotlin.feature.feature.group" version="0.0.0"/>
+      <unit id="ch.hsr.ifs.iltis.kotlin.feature.feature.group" version="0.0.0"/>
       <unit id="ch.hsr.ifs.iltis.cpp.versionator.feature.feature.group" version="0.0.0"/>
       <unit id="ch.hsr.ifs.iltis.cpp.core.feature.feature.group" version="0.0.0"/>
       <unit id="ch.hsr.ifs.iltis.testing.cpp.feature.feature.group" version="0.0.0"/>

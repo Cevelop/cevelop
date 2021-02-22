@@ -22,14 +22,11 @@ location "https://ci.eclipse.org/cdt/job/cdt-9.10/lastSuccessfulBuild/artifact/r
 }
 
 location "https://www.cevelop.com/iltis-unstable" {
-	ch.hsr.ifs.iltis.core.kotlin.feature.feature.group lazy
-	
+	ch.hsr.ifs.iltis.kotlin.feature.feature.group lazy
 	ch.hsr.ifs.iltis.cpp.versionator.feature.feature.group lazy
 	ch.hsr.ifs.iltis.cpp.core.feature.feature.group lazy
-	
 	ch.hsr.ifs.iltis.testing.cpp.feature.feature.group lazy
 	ch.hsr.ifs.iltis.testing.highlevel.feature.feature.group lazy
-	
 	/* Add pASTa here, so it will be available in instances started from the plug-in development IDE */
 	ch.hsr.ifs.iltis.testing.tools.pasta.feature.feature.group lazy
 }

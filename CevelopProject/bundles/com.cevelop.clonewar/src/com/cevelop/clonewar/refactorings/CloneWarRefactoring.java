@@ -23,12 +23,12 @@ import org.eclipse.ltk.core.refactoring.RefactoringDescriptor;
 import org.eclipse.ltk.core.refactoring.RefactoringStatus;
 import org.eclipse.ltk.core.refactoring.participants.CheckConditionsContext;
 
+import ch.hsr.ifs.iltis.cpp.core.wrappers.CRefactoring;
+import ch.hsr.ifs.iltis.cpp.core.wrappers.ModificationCollector;
+
 import com.cevelop.clonewar.transformation.ETTPFunctionTransform;
 import com.cevelop.clonewar.transformation.ETTPTypeTransform;
 import com.cevelop.clonewar.transformation.Transform;
-
-import ch.hsr.ifs.iltis.cpp.core.wrappers.CRefactoring;
-import ch.hsr.ifs.iltis.cpp.core.wrappers.ModificationCollector;
 
 
 /**
@@ -65,7 +65,9 @@ public class CloneWarRefactoring extends CRefactoring {
     public RefactoringStatus checkInitialConditions(IProgressMonitor pm) throws CoreException, OperationCanceledException {
         RefactoringStatus status = super.checkInitialConditions(pm);
         determineRefactoringType(status);
-        if (status.hasError()) return status;
+        if (status.hasError()) {
+            return status;
+        }
         transformation.preprocess(status);
         return status;
     }
@@ -104,7 +106,7 @@ public class CloneWarRefactoring extends CRefactoring {
             status.addFatalError("No type/function selected!");
         } catch (CoreException e) {
             status.addFatalError("No type/function selected!");
-        } ;
+        }
 
     }
 

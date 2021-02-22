@@ -22,9 +22,11 @@ public class FunctionOrderingChangeAction implements IConfigChangeAction {
     public void applyChange(TransformConfiguration config, RefactoringStatus status) {
         int i = 1;
         for (TypeInformation type : config.getAllTypes()) {
-            if (config.hasReturnTypeAction(type))
+            if (config.hasReturnTypeAction(type)) {
                 type.setOrderId(0);
-            else type.setOrderId(i++);
+            } else {
+                type.setOrderId(i++);
+            }
         }
     }
 }

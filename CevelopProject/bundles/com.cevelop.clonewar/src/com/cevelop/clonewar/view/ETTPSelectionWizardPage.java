@@ -192,10 +192,13 @@ public abstract class ETTPSelectionWizardPage extends AbstractETTPWizardPage {
         for (TableItem item : table.getItems()) {
             TypeInformation type = getTypePair(item).getTypeInfo();
             TransformAction action = getTypePair(item).getAction();
-            if (action.shouldPerform() && !types.contains(type.getTemplateName() + COMMA_SPACE)) types += (TYPENAME + type.getTemplateName() +
-                                                                                                           COMMA_SPACE);
+            if (action.shouldPerform() && !types.contains(type.getTemplateName() + COMMA_SPACE)) {
+                types += (TYPENAME + type.getTemplateName() + COMMA_SPACE);
+            }
         }
-        if (types.isEmpty()) return;
+        if (types.isEmpty()) {
+            return;
+        }
         types = types.substring(0, types.length() - 2);
         orderPreview.setText("\t" + TEMPLATE_TEXT + OPEN_BRACKET + types.trim() + CLOSE_BRACKET);
         orderPreview.setSize(orderPreview.computeSize(SWT.DEFAULT, SWT.DEFAULT));
@@ -373,7 +376,9 @@ public abstract class ETTPSelectionWizardPage extends AbstractETTPWizardPage {
     private void addTableValues(Table table) {
         for (TypeInformation type : getConfig().getAllTypesOrdered()) {
             for (TransformAction action : getConfig().getActionsOf(type)) {
-                if (action.shouldPerform()) createTableItem(table, type, action);
+                if (action.shouldPerform()) {
+                    createTableItem(table, type, action);
+                }
             }
         }
     }
@@ -513,10 +518,14 @@ public abstract class ETTPSelectionWizardPage extends AbstractETTPWizardPage {
      */
     private void changeOrdering(Table table) {
         TableItem[] items = table.getItems();
-        for (TableItem item : items)
+        for (TableItem item : items) {
             ((TypePair) item.getData()).getTypeInfo().setOrderId(-1);
-        for (int i = 0; i < items.length; ++i)
-            if (((TypePair) items[i].getData()).getTypeInfo().getOrderId() == -1) ((TypePair) items[i].getData()).getTypeInfo().setOrderId(i);
+        }
+        for (int i = 0; i < items.length; ++i) {
+            if (((TypePair) items[i].getData()).getTypeInfo().getOrderId() == -1) {
+                ((TypePair) items[i].getData()).getTypeInfo().setOrderId(i);
+            }
+        }
         updateOrderPreview(table);
     }
 
@@ -579,7 +588,9 @@ public abstract class ETTPSelectionWizardPage extends AbstractETTPWizardPage {
                 return;
             }
             TypePair pair = findTypePair(dialog.getResult()[0]);
-            if (pair == null) return;
+            if (pair == null) {
+                return;
+            }
             pair.getAction().setPerform(true);
             createTableItem(table, pair.getTypeInfo(), pair.getAction());
             changeOrdering(table);
@@ -597,7 +608,9 @@ public abstract class ETTPSelectionWizardPage extends AbstractETTPWizardPage {
         private TypePair findTypePair(Object selection) {
             for (TypeInformation type : getConfig().getAllTypes()) {
                 for (TransformAction action : getConfig().getActionsOf(type)) {
-                    if (action.getVariableName().equals(selection)) return new TypePair(type, action);
+                    if (action.getVariableName().equals(selection)) {
+                        return new TypePair(type, action);
+                    }
                 }
             }
             return null;
@@ -624,7 +637,9 @@ public abstract class ETTPSelectionWizardPage extends AbstractETTPWizardPage {
         private Object[] createProposals() {
             List<String> types = new ArrayList<>();
             for (TransformAction action : getConfig().getAllActions()) {
-                if (!action.shouldPerform()) types.add(action.getVariableName());
+                if (!action.shouldPerform()) {
+                    types.add(action.getVariableName());
+                }
             }
             return types.toArray();
         }
@@ -747,8 +762,11 @@ public abstract class ETTPSelectionWizardPage extends AbstractETTPWizardPage {
          * @return The event column or -1, if no column was found.
          */
         private int findEventCol(TableItem item, Point point) {
-            for (int i = 0; i < table.getColumnCount(); ++i)
-                if (item.getBounds(i).contains(point)) return i;
+            for (int i = 0; i < table.getColumnCount(); ++i) {
+                if (item.getBounds(i).contains(point)) {
+                    return i;
+                }
+            }
             return -1;
         }
 
@@ -778,7 +796,9 @@ public abstract class ETTPSelectionWizardPage extends AbstractETTPWizardPage {
          * Dispose the old editor control if necessary.
          */
         private void disposeOldEditor() {
-            if (editor.getEditor() != null) editor.getEditor().dispose();
+            if (editor.getEditor() != null) {
+                editor.getEditor().dispose();
+            }
         }
     }
 
@@ -844,8 +864,12 @@ public abstract class ETTPSelectionWizardPage extends AbstractETTPWizardPage {
          */
         private boolean handleTraverseEvent(Event event) {
             if (event.type == SWT.Traverse) {
-                if (handleTraverseReturn(event)) return true;
-                if (handleTraverseEscape(event)) return true;
+                if (handleTraverseReturn(event)) {
+                    return true;
+                }
+                if (handleTraverseEscape(event)) {
+                    return true;
+                }
             }
             return false;
         }
@@ -916,10 +940,14 @@ public abstract class ETTPSelectionWizardPage extends AbstractETTPWizardPage {
             TransformAction action = getTypePair(item).getAction();
             List<TransformAction> actionList = getConfig().getActionsOf(typeInfo);
             actionList.remove(action);
-            if (actionList.isEmpty()) getConfig().remove(typeInfo);
+            if (actionList.isEmpty()) {
+                getConfig().remove(typeInfo);
+            }
             TypeInformation newTypeInfo = copy(typeInfo);
             newTypeInfo.setTemplateName(item.getText(getEditableColumn()));
-            if (!getConfig().getAllTypes().contains(newTypeInfo)) getConfig().add(newTypeInfo, new ArrayList<TransformAction>());
+            if (!getConfig().getAllTypes().contains(newTypeInfo)) {
+                getConfig().add(newTypeInfo, new ArrayList<TransformAction>());
+            }
             getConfig().getActionsOf(newTypeInfo).add(action);
             item.setData(new TypePair(newTypeInfo, action));
             checkConversionProblems(newTypeInfo.getType(), newTypeInfo.getTemplateName(), action.getVariableName());
@@ -999,9 +1027,13 @@ public abstract class ETTPSelectionWizardPage extends AbstractETTPWizardPage {
          */
         @Override
         public void widgetSelected(SelectionEvent e) {
-            if (table.getSelectionIndex() == -1) return;
+            if (table.getSelectionIndex() == -1) {
+                return;
+            }
             TableItem item = table.getItem(table.getSelectionIndex());
-            if (item == null) return;
+            if (item == null) {
+                return;
+            }
             TypePair pair = (TypePair) item.getData();
             pair.getAction().setPerform(false);
             table.remove(table.getSelectionIndex());

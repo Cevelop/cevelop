@@ -19,7 +19,8 @@ public class TypeOrderingChangeAction implements IConfigChangeAction {
     @Override
     public void applyChange(TransformConfiguration config, RefactoringStatus status) {
         int i = 0;
-        for (TypeInformation type : config.getAllTypes())
+        for (TypeInformation type : config.getAllTypes()) {
             type.setOrderId(i++);
+        }
     }
 }

@@ -63,7 +63,9 @@ public class SingleSelectionChangeAction implements IConfigChangeAction {
             return true;
         }
         for (int i = 0; i < origParent.getChildren().length; ++i) {
-            if (traverseRecursive(origParent.getChildren()[i], copyParent.getChildren()[i], config)) return true;
+            if (traverseRecursive(origParent.getChildren()[i], copyParent.getChildren()[i], config)) {
+                return true;
+            }
         }
         return false;
     }
@@ -78,7 +80,9 @@ public class SingleSelectionChangeAction implements IConfigChangeAction {
      */
     private void disableActionExceptNodeMatch(IASTNode node, TransformConfiguration config) {
         for (TransformAction action : config.getAllActions()) {
-            if (!(action.getNode() == node)) action.setPerform(false);
+            if (!(action.getNode() == node)) {
+                action.setPerform(false);
+            }
         }
     }
 }

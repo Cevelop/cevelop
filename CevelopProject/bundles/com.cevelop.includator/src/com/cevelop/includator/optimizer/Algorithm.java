@@ -61,7 +61,7 @@ public abstract class Algorithm {
 
     protected void postRun() {
         // do nothing. Subclasses can override if desired.
-    };
+    }
 
     public abstract AlgorithmScope getScope();
 

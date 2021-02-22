@@ -11,7 +11,7 @@ public class FileScopedAlgorithm extends ScopedAlgorithm {
 
     @Override
     protected List<IncludatorFile> getAffectedFiles(AlgorithmStartingPoint startingPoint) {
-        return Arrays.asList(new IncludatorFile[] { startingPoint.getFile() });
+        return Arrays.asList(startingPoint.getFile());
     }
 
     @Override

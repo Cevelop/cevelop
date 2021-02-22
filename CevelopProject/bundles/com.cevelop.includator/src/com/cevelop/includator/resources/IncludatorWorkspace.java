@@ -77,7 +77,8 @@ public class IncludatorWorkspace {
     /**
      * Returns a IncludatorProject for a given absolute path. the path can also be a sub-resource of the element.
      *
-     * @param absolutePathToContainedElement The absolute path to the containing element as {@link String}
+     * @param absolutePathToContainedElement
+     * The absolute path to the containing element as {@link String}
      * @return The {@link IncludatorProject}
      */
     public IncludatorProject findProject(String absolutePathToContainedElement) {

@@ -28,8 +28,10 @@ public class IncludeSubstitutionStore {
     }
 
     /**
-     * In the case of the std-library it is important that instead of {@code <bits/std_vector>}, {@code <vector>} gets included even if the declaration of the type
-     * {@code vector} is in {@code <bits/std_vector>}. when calling this method with "/path/to/bits/std_vector" the return value will be "/path/to/vector". If
+     * In the case of the std-library it is important that instead of {@code <bits/std_vector>}, {@code <vector>} gets included even if the
+     * declaration of the type
+     * {@code vector} is in {@code <bits/std_vector>}. when calling this method with "/path/to/bits/std_vector" the return value will be
+     * "/path/to/vector". If
      * there is nothing to substitute, the original path will be returned.
      *
      * @param originalFilePath

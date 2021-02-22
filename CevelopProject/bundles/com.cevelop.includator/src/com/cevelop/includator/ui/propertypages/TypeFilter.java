@@ -17,7 +17,9 @@ final class TypeFilter extends ViewerFilter {
     public boolean select(Viewer viewer, Object parentElement, Object element) {
 
         for (Class<?> acceptedType : acceptedTypes) {
-            if (acceptedType.isInstance(element)) return true;
+            if (acceptedType.isInstance(element)) {
+                return true;
+            }
         }
         return false;
     }

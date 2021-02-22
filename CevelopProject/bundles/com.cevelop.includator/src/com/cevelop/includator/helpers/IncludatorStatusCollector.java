@@ -14,7 +14,7 @@ import com.cevelop.includator.helpers.comparators.StatusComparator;
 
 public class IncludatorStatusCollector {
 
-    private static final Map<Integer, String> groupNames = new HashMap<>();;
+    private static final Map<Integer, String> groupNames = new HashMap<>();
 
     private final StatiGroups groupedStati;
 

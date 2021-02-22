@@ -16,8 +16,9 @@ public abstract class SuggestionSolutionOperation {
 
     /**
      * Note that all suggestions which are not added to the SuggestionStore by the executeOn impl, should be disposed here.
-     * 
-     * @param suggestions A {@link Collection} of {@link Suggestion}s.
+     *
+     * @param suggestions
+     * A {@link Collection} of {@link Suggestion}s.
      */
     public abstract void executeOn(Collection<Suggestion<?>> suggestions);
 

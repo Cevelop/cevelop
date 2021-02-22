@@ -314,14 +314,15 @@ public class DeclarationReference {
 
     /**
      * TODO: Fix this method!
-     * 
+     *
      * If a IASTName is part of a qName, then often resolving to the definition is required because other parts of the qName needs to be resolvable as
      * well (which is given with the declaration) <br>
      * <br>
      * e.g. void "N::foo() { }". Here, N needs to be resolved as well, because otherwise the given code would be seen as independently correct, which
      * is not the case since the compiler results in a "unknown N" error.
      *
-     * @param otherName Currently <b>UNUSED</b>!
+     * @param otherName
+     * Currently <b>UNUSED</b>!
      *
      * @return {@code true} iff {@link #declarationReferenceNode} is part of a qName
      */

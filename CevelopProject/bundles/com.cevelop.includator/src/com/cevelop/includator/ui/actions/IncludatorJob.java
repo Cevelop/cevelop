@@ -22,9 +22,10 @@ public abstract class IncludatorJob extends Job {
     /**
      * overriding this run method instead of the default Job.run() causes IncludatorEclipseUIHelper.getActiveWorkbenchWindow() to not return
      * <code>null</code>.
-     * 
-     * @param monitor The {@link IProgressMonitor} to be used
-     * 
+     *
+     * @param monitor
+     * The {@link IProgressMonitor} to be used
+     *
      * @return The {@link IStatus}
      */
     public abstract IStatus runWithWorkbenchWindow(IProgressMonitor monitor);

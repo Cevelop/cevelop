@@ -46,7 +46,9 @@ final class ViewUpdater implements IPartListener2, ISelectionListener, IProperty
 
     private boolean updateEditor(final ITextEditor editor) {
         if (activeEditor != editor) {
-            if (activeEditor != null) activeEditor.removePropertyListener(this);
+            if (activeEditor != null) {
+                activeEditor.removePropertyListener(this);
+            }
             activeEditor = editor;
             activeEditor.addPropertyListener(this);
             return true;

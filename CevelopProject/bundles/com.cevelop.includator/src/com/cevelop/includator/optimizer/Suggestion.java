@@ -77,11 +77,14 @@ public abstract class Suggestion<InitializationDataType extends SuggestionInitia
     protected abstract void init();
 
     /**
-     * No work intensive task should be executed here. The constructor must make sure that {@link #getSuppressSuggestionTargetFileName()} already returns its
+     * No work intensive task should be executed here. The constructor must make sure that {@link #getSuppressSuggestionTargetFileName()} already
+     * returns its
      * meant value.
-     * 
-     * @param initData The initial data as {@link InitializationDataType}
-     * @param originAlgorithm The class of the original {@link Algorithm}
+     *
+     * @param initData
+     * The initial data as {@link InitializationDataType}
+     * @param originAlgorithm
+     * The class of the original {@link Algorithm}
      */
     public Suggestion(InitializationDataType initData, Class<? extends Algorithm> originAlgorithm) {
         this.initData = initData;
@@ -265,8 +268,9 @@ public abstract class Suggestion<InitializationDataType extends SuggestionInitia
     /**
      * Subclasses can override this to extend their suggestion location. IMORTANT after returning from this method, Suggestions are not allowed to
      * keep references to ASTNodes, IncludatorFiles/Projects since these will get released.
-     * 
-     * @param commentMap A {@link NodeCommentMap} containing the comments, here unused.
+     *
+     * @param commentMap
+     * A {@link NodeCommentMap} containing the comments, here unused.
      */
     public void extendLocationsWithSurroundingCommentsLocation(NodeCommentMap commentMap) {}
 

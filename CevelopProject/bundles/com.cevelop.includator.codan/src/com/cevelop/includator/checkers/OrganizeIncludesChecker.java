@@ -20,6 +20,8 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 
+import ch.hsr.ifs.iltis.cpp.core.wrappers.AbstractIndexAstChecker;
+
 import com.cevelop.includator.IncludatorPlugin;
 import com.cevelop.includator.helpers.FileHelper;
 import com.cevelop.includator.helpers.IncludatorException;
@@ -30,8 +32,6 @@ import com.cevelop.includator.optimizer.organizeincludes.OrganizeIncludesAlgorit
 import com.cevelop.includator.resources.IncludatorFile;
 import com.cevelop.includator.startingpoints.FileStartingPoint;
 import com.cevelop.includator.ui.Markers;
-
-import ch.hsr.ifs.iltis.cpp.core.wrappers.AbstractIndexAstChecker;
 
 
 public class OrganizeIncludesChecker extends AbstractIndexAstChecker {

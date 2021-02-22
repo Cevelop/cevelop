@@ -142,4 +142,4 @@ class BindingToAstNameMatcher extends ASTVisitor {
     public List<IASTName> getMatches() {
         return results;
     }
-};
+}

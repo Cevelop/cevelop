@@ -369,7 +369,8 @@ public class NodeHelper {
      * Returns the first of all given declarators which is not a pointer and ref
      * type.
      *
-     * @param declarators A variable number of {@link IASTDeclarator}
+     * @param declarators
+     * A variable number of {@link IASTDeclarator}
      * @return The first {@link IASTDeclarator} which has no pointer operators
      */
     public static Optional<IASTDeclarator> getFirstValueDeclarator(IASTDeclarator... declarators) {
@@ -403,8 +404,9 @@ public class NodeHelper {
      * <br>
      * This code is an adaption of the method
      * PDOMCPPMethod.getAdditionalNameFlags().
-     * 
-     * @param methodName The method name to check
+     *
+     * @param methodName
+     * The method name to check
      * @return {@code true} iff the method could be a potential polymorphic call
      */
     public static boolean couldBePolymorphicMethodCall(IASTName methodName) {

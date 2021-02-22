@@ -33,7 +33,7 @@ public abstract class IncludatorAlgorithmAction extends IncludatorAction {
 
     /**
      * Subclasses can override this to have the user asked if index should be adapted before algorithm is run (only if index is not adapted yet.
-     * 
+     *
      * @return {@code false} as a default, override in subclass
      */
     protected boolean shouldSuggestToAdaptIndexBeforeRun() {

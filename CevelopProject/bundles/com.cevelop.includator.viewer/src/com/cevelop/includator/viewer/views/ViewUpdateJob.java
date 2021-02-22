@@ -92,19 +92,25 @@ final class ViewUpdateJob extends HighlightJob {
 
     private void drawModel(final IProgressMonitor monitor) {
         monitor.subTask("Include View: Drawing Include Dependencies");
-        if (modelView.continueUpdate(this)) model.draw();
+        if (modelView.continueUpdate(this)) {
+            model.draw();
+        }
         monitor.worked(1);
     }
 
     private void buildModel(final IProgressMonitor monitor, final AlgorithmStartingPoint startingPoint) {
         monitor.subTask("Include View: Building Include Dependencies");
-        if (modelView.continueUpdate(this)) buildModel(startingPoint);
+        if (modelView.continueUpdate(this)) {
+            buildModel(startingPoint);
+        }
         monitor.worked(1);
     }
 
     private void resetModel(final IProgressMonitor monitor) {
         monitor.subTask("Include View: Clearing Include Dependencies");
-        if (modelView.continueUpdate(this)) model.clear();
+        if (modelView.continueUpdate(this)) {
+            model.clear();
+        }
         monitor.worked(1);
     }
 
@@ -125,7 +131,9 @@ final class ViewUpdateJob extends HighlightJob {
 
         final Node<String> startNode = getNodeForFile(includatorFile);
         for (IASTPreprocessorIncludeStatement includeDirective : includatorFile.getIncludes()) {
-            if (!modelView.continueUpdate(this)) return;
+            if (!modelView.continueUpdate(this)) {
+                return;
+            }
             IncludatorFile includeFile = IncludeHelper.findIncludedFile(includeDirective, includatorFile.getProject());
             String includeFilePath = includeFile.getFilePath();
 

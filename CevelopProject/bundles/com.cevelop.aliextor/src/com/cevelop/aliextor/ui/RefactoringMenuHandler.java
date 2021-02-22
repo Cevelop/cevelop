@@ -6,10 +6,10 @@ import org.eclipse.cdt.core.model.ICElement;
 import org.eclipse.jface.text.ITextSelection;
 import org.eclipse.ltk.ui.refactoring.RefactoringWizard;
 
+import ch.hsr.ifs.iltis.cpp.core.ui.refactoring.WizardRefactoringStarterMenuHandler;
+
 import com.cevelop.aliextor.refactoring.ProxyRefactoring;
 import com.cevelop.aliextor.wizard.Wizard;
-
-import ch.hsr.ifs.iltis.cpp.core.ui.refactoring.WizardRefactoringStarterMenuHandler;
 
 
 public class RefactoringMenuHandler extends WizardRefactoringStarterMenuHandler<Wizard, ProxyRefactoring> {

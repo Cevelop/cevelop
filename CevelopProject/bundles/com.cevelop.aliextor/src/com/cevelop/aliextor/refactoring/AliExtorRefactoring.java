@@ -18,6 +18,8 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jface.text.ITextSelection;
 import org.eclipse.ltk.core.refactoring.RefactoringDescriptor;
 
+import ch.hsr.ifs.iltis.cpp.core.wrappers.CRefactoring;
+
 import com.cevelop.aliextor.ast.ASTHelper;
 import com.cevelop.aliextor.ast.ASTHelper.Type;
 import com.cevelop.aliextor.ast.selection.BasicRefactorSelection;
@@ -25,8 +27,6 @@ import com.cevelop.aliextor.ast.selection.IRefactorSelection;
 import com.cevelop.aliextor.ast.selection.PartialRefactorSelection;
 import com.cevelop.aliextor.refactoring.strategy.TemplateAliasRefactoringConcreteStrategy;
 import com.cevelop.aliextor.wizard.helper.Pair;
-
-import ch.hsr.ifs.iltis.cpp.core.wrappers.CRefactoring;
 
 
 @SuppressWarnings("restriction")

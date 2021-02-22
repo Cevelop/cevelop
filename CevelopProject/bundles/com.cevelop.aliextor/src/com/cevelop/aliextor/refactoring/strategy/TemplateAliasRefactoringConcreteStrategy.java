@@ -213,7 +213,9 @@ public class TemplateAliasRefactoringConcreteStrategy extends SimpleRefactoringC
 
     private int countOccurrence(String name) {
         int i;
-        for (i = 0; helperList.contains(Pair.of(name, i)); i++);
+        for (i = 0; helperList.contains(Pair.of(name, i)); i++) {
+            ;
+        }
         return i;
     }
 

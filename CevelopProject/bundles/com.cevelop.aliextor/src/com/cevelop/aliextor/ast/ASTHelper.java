@@ -62,7 +62,7 @@ public class ASTHelper {
 		CPPASTName,
 		ICPPASTTemplateId,
 		ICPPASTName
-	};
+	}
 	// @formatter:on
 
     public static <T extends IASTNode> boolean isSameIASTDeclSpecifier(T node, T selectedNode) {
@@ -254,7 +254,9 @@ public class ASTHelper {
                 ICPPASTQualifiedName qualifiedNameOfNamedTypeSpec = (ICPPASTQualifiedName) childrenOfNamedTypeSpec[0];
                 IASTNode childrenOfQualifiedName[] = qualifiedNameOfNamedTypeSpec.getChildren();
                 for (int i = 1; i < childrenOfQualifiedName.length; i++) {
-                    if (childrenOfQualifiedName[i] instanceof ICPPASTTemplateId) return newSelectedNode;
+                    if (childrenOfQualifiedName[i] instanceof ICPPASTTemplateId) {
+                        return newSelectedNode;
+                    }
                 }
             }
         }

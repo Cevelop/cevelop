@@ -100,7 +100,9 @@ public class TemplateNameHelper {
 
     private int countOccurrence(String name) {
         int i;
-        for (i = 0; orderingOfNames.contains(Pair.of(name, i)); i++);
+        for (i = 0; orderingOfNames.contains(Pair.of(name, i)); i++) {
+            ;
+        }
         return i;
     }
 

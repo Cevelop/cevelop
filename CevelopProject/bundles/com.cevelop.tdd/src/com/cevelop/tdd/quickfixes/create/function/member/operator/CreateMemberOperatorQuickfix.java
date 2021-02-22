@@ -13,11 +13,11 @@ import org.eclipse.cdt.ui.CDTSharedImages;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.swt.graphics.Image;
 
+import ch.hsr.ifs.iltis.core.functional.functions.Function2;
+
 import com.cevelop.tdd.infos.MemberOperatorInfo;
 import com.cevelop.tdd.quickfixes.TddQuickfix;
 import com.cevelop.tdd.refactorings.create.function.member.operator.CreateMemberOperatorRefactoring;
-
-import ch.hsr.ifs.iltis.core.functional.functions.Function2;
 
 
 public class CreateMemberOperatorQuickfix extends TddQuickfix<MemberOperatorInfo> {

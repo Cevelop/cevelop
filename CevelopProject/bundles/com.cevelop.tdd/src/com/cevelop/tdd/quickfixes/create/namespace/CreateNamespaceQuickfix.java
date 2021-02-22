@@ -12,11 +12,11 @@ import org.eclipse.cdt.core.model.ICElement;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.swt.graphics.Image;
 
+import ch.hsr.ifs.iltis.core.functional.functions.Function2;
+
 import com.cevelop.tdd.infos.NamespaceInfo;
 import com.cevelop.tdd.quickfixes.TddQuickfix;
 import com.cevelop.tdd.refactorings.create.namespace.CreateNamespaceRefactoring;
-
-import ch.hsr.ifs.iltis.core.functional.functions.Function2;
 
 
 public class CreateNamespaceQuickfix extends TddQuickfix<NamespaceInfo> {

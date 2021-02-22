@@ -4,11 +4,11 @@ import java.util.Map;
 
 import org.eclipse.ltk.core.refactoring.RefactoringDescriptor;
 
+import ch.hsr.ifs.iltis.cpp.core.resources.info.IInfo;
+
 import com.cevelop.tdd.helpers.IdHelper.RefactoringId;
 import com.cevelop.tdd.infos.TypeInfo;
 import com.cevelop.tdd.refactorings.AbstractTddRefactoringContribution;
-
-import ch.hsr.ifs.iltis.cpp.core.resources.info.IInfo;
 
 
 public class CreateTypeRefactoringContribution extends AbstractTddRefactoringContribution {

@@ -87,7 +87,9 @@ public class PossibleReturnTypeFindVisitor extends ASTVisitor {
                 if (problemNodeInOperand1) {
                     operand = binex.getOperand2();
                 }
-                if (operand != null) handleType(operand.getExpressionType());
+                if (operand != null) {
+                    handleType(operand.getExpressionType());
+                }
             }
         }
         return PROCESS_CONTINUE;

@@ -19,14 +19,14 @@ import org.eclipse.jface.text.IDocument;
 import org.eclipse.ltk.core.refactoring.Change;
 import org.eclipse.ui.IMarkerResolution2;
 
-import com.cevelop.tdd.refactorings.TddRefactoringContext;
-
 import ch.hsr.ifs.iltis.core.functional.functions.Function2;
 
 import ch.hsr.ifs.iltis.cpp.core.codan.marker.IInfoMarkerResolution;
 import ch.hsr.ifs.iltis.cpp.core.resources.info.MarkerInfo;
 import ch.hsr.ifs.iltis.cpp.core.ui.refactoring.SelectionRefactoring;
 import ch.hsr.ifs.iltis.cpp.core.wrappers.CRefactoringContext;
+
+import com.cevelop.tdd.refactorings.TddRefactoringContext;
 
 
 public abstract class TddQuickfix<I extends MarkerInfo<I>> extends AbstractCodanCMarkerResolution implements IInfoMarkerResolution<I>,
@@ -36,7 +36,9 @@ public abstract class TddQuickfix<I extends MarkerInfo<I>> extends AbstractCodan
 
     @Override
     public void apply(IMarker marker, IDocument document) {
-        if (!isApplicable(marker)) return;
+        if (!isApplicable(marker)) {
+            return;
+        }
 
         ITranslationUnit tu = getTranslationUnitViaEditor(marker);
 

@@ -9,7 +9,7 @@ public class Messages extends NLS {
     public static String        ArgumentMismatchQuickfixGenerator_Add;
     public static String        ArgumentMismatchQuickfixGenerator_Remove;
     public static String        ArgumentMismatchQuickfixGenerator_Placeholder;
-//    public static String        ArgumentMismatchQuickfixGenerator_Argument;
+    //    public static String        ArgumentMismatchQuickfixGenerator_Argument;
     static {
         NLS.initializeMessages(BUNDLE_NAME, Messages.class);
     }

@@ -31,14 +31,14 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.ltk.core.refactoring.RefactoringDescriptor;
 
-import com.cevelop.tdd.helpers.TddHelper;
-import com.cevelop.tdd.infos.TypeInfo;
-
 import ch.hsr.ifs.iltis.core.functional.OptionalUtil;
 
 import ch.hsr.ifs.iltis.cpp.core.ui.refactoring.SelectionRefactoring;
 import ch.hsr.ifs.iltis.cpp.core.wrappers.CRefactoringContext;
 import ch.hsr.ifs.iltis.cpp.core.wrappers.ModificationCollector;
+
+import com.cevelop.tdd.helpers.TddHelper;
+import com.cevelop.tdd.infos.TypeInfo;
 
 
 public class CreateTypeRefactoring extends SelectionRefactoring<TypeInfo> {
@@ -64,7 +64,9 @@ public class CreateTypeRefactoring extends SelectionRefactoring<TypeInfo> {
     @Override
     protected void collectModifications(IProgressMonitor pm, ModificationCollector collector) throws CoreException, OperationCanceledException {
         Optional<IASTName> nameNearSelection = OptionalUtil.of(findFirstEnclosingName(selection)).orElse(findFirstEnclosedName(selection)).get();
-        if (!nameNearSelection.isPresent()) return;
+        if (!nameNearSelection.isPresent()) {
+            return;
+        }
         IASTNode newType = createTemplatedType(info.typeName);
         IASTNode insertionPoint = getInsertionPoint(getAST(tu, null), nameNearSelection.get(), refactoringContext);
 

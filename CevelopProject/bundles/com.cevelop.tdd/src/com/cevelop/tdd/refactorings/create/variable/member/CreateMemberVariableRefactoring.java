@@ -49,13 +49,13 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.ltk.core.refactoring.RefactoringDescriptor;
 
+import ch.hsr.ifs.iltis.cpp.core.ui.refactoring.SelectionRefactoring;
+import ch.hsr.ifs.iltis.cpp.core.wrappers.ModificationCollector;
+
 import com.cevelop.tdd.helpers.FunctionCreationHelper;
 import com.cevelop.tdd.helpers.TddHelper;
 import com.cevelop.tdd.helpers.TypeHelper;
 import com.cevelop.tdd.infos.MemberVariableInfo;
-
-import ch.hsr.ifs.iltis.cpp.core.ui.refactoring.SelectionRefactoring;
-import ch.hsr.ifs.iltis.cpp.core.wrappers.ModificationCollector;
 
 
 public class CreateMemberVariableRefactoring extends SelectionRefactoring<MemberVariableInfo> {
@@ -83,10 +83,14 @@ public class CreateMemberVariableRefactoring extends SelectionRefactoring<Member
 
     @Override
     protected void collectModifications(IProgressMonitor pm, ModificationCollector collector) throws CoreException, OperationCanceledException {
-        if (!selection.isPresent()) return;
+        if (!selection.isPresent()) {
+            return;
+        }
         IASTTranslationUnit localunit = refactoringContext.getAST(tu, pm);
         IASTName selectedNode = FunctionCreationHelper.getMostCloseSelectedNodeName(localunit, selection.get());
-        if (selectedNode == null) return;
+        if (selectedNode == null) {
+            return;
+        }
         IASTNode memberOwner = TypeHelper.getMemberOwner(localunit, selectedNode, refactoringContext);
         IASTDeclaration newMember = getMemberVariableDeclaration(selectedNode, memberOwner);
         boolean isPrivate = isPartOf(selectedNode, memberOwner) && memberOwner instanceof ICPPASTCompositeTypeSpecifier;

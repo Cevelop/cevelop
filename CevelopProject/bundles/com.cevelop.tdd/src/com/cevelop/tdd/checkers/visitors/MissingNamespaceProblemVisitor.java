@@ -8,12 +8,12 @@ import org.eclipse.cdt.core.dom.ast.cpp.ICPPASTQualifiedName;
 import org.eclipse.cdt.core.dom.ast.cpp.ICPPASTTemplateId;
 import org.eclipse.cdt.core.dom.ast.cpp.ICPPClassType;
 
-import com.cevelop.tdd.helpers.IdHelper.ProblemId;
-import com.cevelop.tdd.infos.NamespaceInfo;
-
 import ch.hsr.ifs.iltis.core.functional.functions.Consumer3;
 
 import ch.hsr.ifs.iltis.cpp.core.ast.checker.helper.IProblemId;
+
+import com.cevelop.tdd.helpers.IdHelper.ProblemId;
+import com.cevelop.tdd.infos.NamespaceInfo;
 
 
 public class MissingNamespaceProblemVisitor extends AbstractResolutionProblemVisitor {
@@ -45,8 +45,12 @@ public class MissingNamespaceProblemVisitor extends AbstractResolutionProblemVis
             for (ICPPASTNameSpecifier partname : ((ICPPASTQualifiedName) name).getQualifier()) {
                 if (partname instanceof IASTName) {
                     IBinding b = partname.resolveBinding();
-                    if (b instanceof ICPPClassType) return null;
-                    if (b instanceof IProblemBinding) return (IASTName) partname;
+                    if (b instanceof ICPPClassType) {
+                        return null;
+                    }
+                    if (b instanceof IProblemBinding) {
+                        return (IASTName) partname;
+                    }
                 }
             }
         }

@@ -24,12 +24,12 @@ import org.eclipse.cdt.internal.core.dom.parser.cpp.ICPPUnknownType;
 import org.eclipse.cdt.internal.core.dom.parser.cpp.OverloadableOperator;
 import org.eclipse.cdt.internal.core.dom.parser.cpp.semantics.SemanticUtil;
 
-import com.cevelop.tdd.helpers.IdHelper.ProblemId;
-import com.cevelop.tdd.infos.MemberOperatorInfo;
-
 import ch.hsr.ifs.iltis.core.functional.functions.Consumer3;
 
 import ch.hsr.ifs.iltis.cpp.core.ast.checker.helper.IProblemId;
+
+import com.cevelop.tdd.helpers.IdHelper.ProblemId;
+import com.cevelop.tdd.infos.MemberOperatorInfo;
 
 
 public class MissingMemberOperatorProblemVisitor extends ASTVisitor {

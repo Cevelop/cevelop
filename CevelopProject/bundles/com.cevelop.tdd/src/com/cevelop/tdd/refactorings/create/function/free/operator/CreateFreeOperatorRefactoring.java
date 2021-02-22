@@ -20,13 +20,13 @@ import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.ltk.core.refactoring.RefactoringDescriptor;
 
+import ch.hsr.ifs.iltis.cpp.core.ui.refactoring.SelectionRefactoring;
+import ch.hsr.ifs.iltis.cpp.core.wrappers.ModificationCollector;
+
 import com.cevelop.tdd.helpers.FunctionCreationHelper;
 import com.cevelop.tdd.helpers.ParameterHelper;
 import com.cevelop.tdd.helpers.TddHelper;
 import com.cevelop.tdd.infos.FreeOperatorInfo;
-
-import ch.hsr.ifs.iltis.cpp.core.ui.refactoring.SelectionRefactoring;
-import ch.hsr.ifs.iltis.cpp.core.wrappers.ModificationCollector;
 
 
 public class CreateFreeOperatorRefactoring extends SelectionRefactoring<FreeOperatorInfo> {
@@ -51,15 +51,23 @@ public class CreateFreeOperatorRefactoring extends SelectionRefactoring<FreeOper
 
     @Override
     protected void collectModifications(IProgressMonitor pm, ModificationCollector collector) throws CoreException, OperationCanceledException {
-        if (!selection.isPresent()) return;
+        if (!selection.isPresent()) {
+            return;
+        }
         IASTTranslationUnit localunit = refactoringContext.getAST(tu, pm);
         IASTName selectedName = FunctionCreationHelper.getMostCloseSelectedNodeName(localunit, selection.get());
-        if (selectedName == null) return;
+        if (selectedName == null) {
+            return;
+        }
         ICPPASTFunctionDefinition functionToWrite = getFunctionDefinition(localunit, selectedName, info.operatorName, selection.get());
-        if (functionToWrite == null) return;
+        if (functionToWrite == null) {
+            return;
+        }
         ((ICPPASTFunctionDeclarator) functionToWrite.getDeclarator()).setConst(false);
         IASTFunctionDefinition outerFunction = TddHelper.getOuterFunctionDeclaration(localunit, selection.get());
-        if (outerFunction == null) return;
+        if (outerFunction == null) {
+            return;
+        }
         ASTRewrite rewrite = collector.rewriterForTranslationUnit(localunit);
         rewrite.insertBefore(outerFunction.getParent(), outerFunction, functionToWrite, null);
     }

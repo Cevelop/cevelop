@@ -35,14 +35,14 @@ import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.jface.text.ITextSelection;
 import org.eclipse.ltk.core.refactoring.RefactoringDescriptor;
 
+import ch.hsr.ifs.iltis.cpp.core.ui.refactoring.SelectionRefactoring;
+import ch.hsr.ifs.iltis.cpp.core.wrappers.ModificationCollector;
+
 import com.cevelop.tdd.Activator;
 import com.cevelop.tdd.helpers.TddHelper;
 import com.cevelop.tdd.helpers.TypeHelper;
 import com.cevelop.tdd.infos.ArgumentMismatchInfo;
 import com.cevelop.tdd.refactorings.argument.visitors.NameCollector;
-
-import ch.hsr.ifs.iltis.cpp.core.ui.refactoring.SelectionRefactoring;
-import ch.hsr.ifs.iltis.cpp.core.wrappers.ModificationCollector;
 
 
 public class ArgumentRefactoring extends SelectionRefactoring<ArgumentMismatchInfo> {
@@ -69,7 +69,9 @@ public class ArgumentRefactoring extends SelectionRefactoring<ArgumentMismatchIn
 
     @Override
     protected void collectModifications(IProgressMonitor pm, ModificationCollector collector) throws CoreException {
-        if (!selection.isPresent()) return;
+        if (!selection.isPresent()) {
+            return;
+        }
         IASTTranslationUnit unit = refactoringContext.getAST(tu, pm);
         IASTFunctionCallExpression call = findSelectedCall(unit);
         ASTRewrite rewrite = collector.rewriterForTranslationUnit(unit);

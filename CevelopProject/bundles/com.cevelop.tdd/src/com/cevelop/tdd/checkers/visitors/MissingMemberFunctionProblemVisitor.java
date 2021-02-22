@@ -18,13 +18,13 @@ import org.eclipse.cdt.core.dom.ast.cpp.ICPPClassType;
 import org.eclipse.cdt.internal.core.dom.parser.cpp.CPPASTQualifiedName;
 import org.eclipse.cdt.internal.core.dom.parser.cpp.semantics.SemanticUtil;
 
-import com.cevelop.tdd.helpers.IdHelper.ProblemId;
-import com.cevelop.tdd.helpers.TddHelper;
-import com.cevelop.tdd.infos.MemberFunctionInfo;
-
 import ch.hsr.ifs.iltis.core.functional.functions.Consumer3;
 
 import ch.hsr.ifs.iltis.cpp.core.ast.checker.helper.IProblemId;
+
+import com.cevelop.tdd.helpers.IdHelper.ProblemId;
+import com.cevelop.tdd.helpers.TddHelper;
+import com.cevelop.tdd.infos.MemberFunctionInfo;
 
 
 public class MissingMemberFunctionProblemVisitor extends AbstractResolutionProblemVisitor {

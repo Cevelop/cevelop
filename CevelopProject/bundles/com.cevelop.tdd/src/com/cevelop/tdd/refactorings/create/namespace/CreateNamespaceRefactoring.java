@@ -26,12 +26,12 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.ltk.core.refactoring.RefactoringDescriptor;
 
+import ch.hsr.ifs.iltis.cpp.core.ui.refactoring.SelectionRefactoring;
+import ch.hsr.ifs.iltis.cpp.core.wrappers.ModificationCollector;
+
 import com.cevelop.tdd.helpers.TddHelper;
 import com.cevelop.tdd.infos.NamespaceInfo;
 import com.cevelop.tdd.refactorings.create.type.CreateTypeRefactoring;
-
-import ch.hsr.ifs.iltis.cpp.core.ui.refactoring.SelectionRefactoring;
-import ch.hsr.ifs.iltis.cpp.core.wrappers.ModificationCollector;
 
 
 public class CreateNamespaceRefactoring extends SelectionRefactoring<NamespaceInfo> {
@@ -58,7 +58,9 @@ public class CreateNamespaceRefactoring extends SelectionRefactoring<NamespaceIn
     protected void collectModifications(IProgressMonitor pm, ModificationCollector collector) throws CoreException, OperationCanceledException {
         IASTTranslationUnit localunit = getAST(tu, pm);
         Optional<IASTName> maybeNode = findFirstEnclosingName(selection);
-        if (!maybeNode.isPresent()) return;
+        if (!maybeNode.isPresent()) {
+            return;
+        }
         IASTNode selectedNode = maybeNode.get();
         IASTName selectedNodeName = TddHelper.getAncestorOfType(selectedNode, CPPASTName.class);
         ICPPASTQualifiedName qname = TddHelper.getAncestorOfType(selectedNode, CPPASTQualifiedName.class);

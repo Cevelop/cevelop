@@ -13,13 +13,13 @@ import org.eclipse.cdt.core.dom.ast.cpp.ICPPASTTemplateId;
 import org.eclipse.cdt.internal.core.dom.parser.cpp.CPPASTNamedTypeSpecifier;
 import org.eclipse.cdt.internal.core.dom.parser.cpp.CPPASTTypeId;
 
-import com.cevelop.tdd.helpers.IdHelper.ProblemId;
-import com.cevelop.tdd.helpers.TddHelper;
-import com.cevelop.tdd.infos.TypeInfo;
-
 import ch.hsr.ifs.iltis.core.functional.functions.Consumer3;
 
 import ch.hsr.ifs.iltis.cpp.core.ast.checker.helper.IProblemId;
+
+import com.cevelop.tdd.helpers.IdHelper.ProblemId;
+import com.cevelop.tdd.helpers.TddHelper;
+import com.cevelop.tdd.infos.TypeInfo;
 
 
 public class MissingTypeProblemVisitor extends AbstractResolutionProblemVisitor {
@@ -36,11 +36,17 @@ public class MissingTypeProblemVisitor extends AbstractResolutionProblemVisitor 
     @Override
     protected void reactOnProblemBinding(IProblemBinding problemBinding, IASTName name) {
         // do not report B<int> twice
-        if (name instanceof ICPPASTQualifiedName) return;
-        if (name.getParent() != null && name.getParent() instanceof ICPPASTTemplateId && reportedNames.contains(name.getParent())) return;
+        if (name instanceof ICPPASTQualifiedName) {
+            return;
+        }
+        if (name.getParent() != null && name.getParent() instanceof ICPPASTTemplateId && reportedNames.contains(name.getParent())) {
+            return;
+        }
 
         final ICPPASTNamedTypeSpecifier nts = TddHelper.getAncestorOfType(name, CPPASTNamedTypeSpecifier.class);
-        if (nts != null && nts.isTypename()) return;
+        if (nts != null && nts.isTypename()) {
+            return;
+        }
         TypeInfo info = createInfo(name, String.valueOf(name.getSimpleID()), nts);
         if (TddHelper.nameNotFoundProblem(problemBinding)) {
             int roleOfName = name.getRoleOfName(true);

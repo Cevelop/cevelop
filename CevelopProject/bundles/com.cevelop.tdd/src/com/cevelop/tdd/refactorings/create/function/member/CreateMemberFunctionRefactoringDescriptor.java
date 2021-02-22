@@ -4,11 +4,11 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.ltk.core.refactoring.RefactoringDescriptor;
 import org.eclipse.ltk.core.refactoring.RefactoringStatus;
 
-import com.cevelop.tdd.helpers.IdHelper.RefactoringId;
-import com.cevelop.tdd.infos.MemberFunctionInfo;
-
 import ch.hsr.ifs.iltis.cpp.core.wrappers.CRefactoring;
 import ch.hsr.ifs.iltis.cpp.core.wrappers.CRefactoringDescriptor;
+
+import com.cevelop.tdd.helpers.IdHelper.RefactoringId;
+import com.cevelop.tdd.infos.MemberFunctionInfo;
 
 
 public class CreateMemberFunctionRefactoringDescriptor extends CRefactoringDescriptor<RefactoringId, MemberFunctionInfo> {

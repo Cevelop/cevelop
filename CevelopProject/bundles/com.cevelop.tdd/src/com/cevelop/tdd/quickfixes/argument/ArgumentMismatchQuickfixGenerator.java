@@ -17,10 +17,10 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.IMarkerResolution;
 import org.eclipse.ui.IMarkerResolutionGenerator2;
 
+import ch.hsr.ifs.iltis.cpp.core.resources.info.MarkerInfo;
+
 import com.cevelop.tdd.Activator;
 import com.cevelop.tdd.infos.ArgumentMismatchInfo;
-
-import ch.hsr.ifs.iltis.cpp.core.resources.info.MarkerInfo;
 
 
 public class ArgumentMismatchQuickfixGenerator implements IMarkerResolutionGenerator2 {

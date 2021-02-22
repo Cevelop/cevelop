@@ -94,10 +94,10 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.viewers.ISelection;
 
+import ch.hsr.ifs.iltis.cpp.core.wrappers.CRefactoringContext;
+
 import com.cevelop.tdd.Activator;
 import com.cevelop.tdd.helpers.visitors.PossibleReturnTypeFindVisitor;
-
-import ch.hsr.ifs.iltis.cpp.core.wrappers.CRefactoringContext;
 
 
 public class TypeHelper {

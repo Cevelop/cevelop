@@ -12,7 +12,7 @@ public final class ArgumentMismatchInfo extends MarkerInfo<ArgumentMismatchInfo>
     public String argumentName = "";
 
     @NonPersistentCopyArgument
-    public int    candidateNr;
+    public int candidateNr;
 
     @InfoArgument
     public String candidates = "";

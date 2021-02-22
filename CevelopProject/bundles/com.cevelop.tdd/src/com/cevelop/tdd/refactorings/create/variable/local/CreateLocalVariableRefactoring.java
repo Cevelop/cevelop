@@ -30,15 +30,15 @@ import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.jface.text.ITextSelection;
 import org.eclipse.ltk.core.refactoring.RefactoringDescriptor;
 
-import com.cevelop.tdd.helpers.TddHelper;
-import com.cevelop.tdd.helpers.TypeHelper;
-import com.cevelop.tdd.infos.LocalVariableInfo;
-import com.cevelop.tdd.refactorings.create.variable.member.Messages;
-
 import ch.hsr.ifs.iltis.core.functional.OptionalUtil;
 
 import ch.hsr.ifs.iltis.cpp.core.ui.refactoring.SelectionRefactoring;
 import ch.hsr.ifs.iltis.cpp.core.wrappers.ModificationCollector;
+
+import com.cevelop.tdd.helpers.TddHelper;
+import com.cevelop.tdd.helpers.TypeHelper;
+import com.cevelop.tdd.infos.LocalVariableInfo;
+import com.cevelop.tdd.refactorings.create.variable.member.Messages;
 
 
 public class CreateLocalVariableRefactoring extends SelectionRefactoring<LocalVariableInfo> {
@@ -65,7 +65,9 @@ public class CreateLocalVariableRefactoring extends SelectionRefactoring<LocalVa
     protected void collectModifications(IProgressMonitor pm, ModificationCollector collector) throws CoreException, OperationCanceledException {
         IASTTranslationUnit localunit = getAST(tu, pm);
         Optional<IASTName> maybeNode = OptionalUtil.of(findFirstEnclosedName(selection)).orElse(findFirstEnclosingName(selection)).get();
-        if (!maybeNode.isPresent()) return;
+        if (!maybeNode.isPresent()) {
+            return;
+        }
         IASTNode selectedNode = maybeNode.get();
 
         IASTIdExpression owner = TddHelper.getAncestorOfType(selectedNode, IASTIdExpression.class);

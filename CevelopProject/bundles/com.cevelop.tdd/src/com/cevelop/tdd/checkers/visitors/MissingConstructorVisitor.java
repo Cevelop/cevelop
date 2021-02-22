@@ -26,14 +26,14 @@ import org.eclipse.cdt.internal.core.dom.parser.cpp.ICPPDeferredClassInstance;
 import org.eclipse.cdt.internal.core.dom.parser.cpp.ICPPUnknownMemberClass;
 import org.eclipse.cdt.internal.core.dom.parser.cpp.semantics.SemanticUtil;
 
+import ch.hsr.ifs.iltis.core.functional.functions.Consumer3;
+
+import ch.hsr.ifs.iltis.cpp.core.ast.checker.helper.IProblemId;
+
 import com.cevelop.tdd.helpers.IdHelper.ProblemId;
 import com.cevelop.tdd.helpers.TddHelper;
 import com.cevelop.tdd.helpers.TypeHelper;
 import com.cevelop.tdd.infos.ConstructorInfo;
-
-import ch.hsr.ifs.iltis.core.functional.functions.Consumer3;
-
-import ch.hsr.ifs.iltis.cpp.core.ast.checker.helper.IProblemId;
 
 
 public class MissingConstructorVisitor extends ASTVisitor {
@@ -141,7 +141,7 @@ public class MissingConstructorVisitor extends ASTVisitor {
     private void reportMemberProblem(String missingName, IASTName name) {
         ConstructorInfo info = new ConstructorInfo();
         info.typeName = missingName;
-//        info.message = missingName;
+        //        info.message = missingName;
         problemReporter.accept(ProblemId.MISSING_CONSTRUCTOR, name, info);
     }
 

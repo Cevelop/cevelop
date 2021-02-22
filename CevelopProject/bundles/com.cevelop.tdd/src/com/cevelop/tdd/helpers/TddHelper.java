@@ -19,7 +19,6 @@ import org.eclipse.cdt.core.dom.ast.IASTIdExpression;
 import org.eclipse.cdt.core.dom.ast.IASTName;
 import org.eclipse.cdt.core.dom.ast.IASTNode;
 import org.eclipse.cdt.core.dom.ast.IASTNode.CopyStyle;
-import org.eclipse.cdt.core.dom.ast.IASTReturnStatement;
 import org.eclipse.cdt.core.dom.ast.IASTSimpleDeclSpecifier;
 import org.eclipse.cdt.core.dom.ast.IASTTranslationUnit;
 import org.eclipse.cdt.core.dom.ast.IBinding;
@@ -56,11 +55,11 @@ import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
 
-import com.cevelop.tdd.Activator;
-import com.cevelop.tdd.helpers.visitors.VisibilityLabelFinder;
-
 import ch.hsr.ifs.iltis.cpp.core.wrappers.CRefactoringContext;
 import ch.hsr.ifs.iltis.cpp.core.wrappers.ModificationCollector;
+
+import com.cevelop.tdd.Activator;
+import com.cevelop.tdd.helpers.visitors.VisibilityLabelFinder;
 
 
 public class TddHelper {
@@ -86,13 +85,13 @@ public class TddHelper {
     }
 
     public static CPPASTReturnStatement getDefaultReturnValue(CPPASTBaseDeclSpecifier spec) {
-        if(TypeVoid(spec)) {
+        if (TypeVoid(spec)) {
             return null;
         } else if (TypeAuto(spec)) {
             ICPPASTFunctionDefinition function = (ICPPASTFunctionDefinition) spec.getParent();
             ICPPASTFunctionDeclarator declarator = (ICPPASTFunctionDeclarator) function.getDeclarator();
             final ICPPASTParameterDeclaration[] parameters = declarator.getParameters();
-            if(parameters.length > 0) {
+            if (parameters.length > 0) {
                 ICPPASTParameterDeclaration parameterDeclaration = parameters[0];
                 ICPPASTDeclarator parameter = parameterDeclaration.getDeclarator();
                 IASTName parameterName = parameter.getName();
@@ -119,7 +118,7 @@ public class TddHelper {
     private static boolean TypeAuto(CPPASTBaseDeclSpecifier spec) {
         return (spec instanceof IASTSimpleDeclSpecifier) && ((IASTSimpleDeclSpecifier) spec).getType() == IASTSimpleDeclSpecifier.t_auto;
     }
-    
+
     public static void insertMember(IASTNode member, ICPPASTCompositeTypeSpecifier type, ASTRewrite rewrite) {
         IASTNode publiclabel = findVisibilityLabel(type, ICPPASTVisibilityLabel.v_public);
         if (type.getKey() == IASTCompositeTypeSpecifier.k_struct) {

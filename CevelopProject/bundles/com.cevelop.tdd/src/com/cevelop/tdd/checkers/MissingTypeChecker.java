@@ -10,9 +10,9 @@ package com.cevelop.tdd.checkers;
 
 import org.eclipse.cdt.core.dom.ast.IASTTranslationUnit;
 
-import com.cevelop.tdd.checkers.visitors.MissingTypeProblemVisitor;
-
 import ch.hsr.ifs.iltis.cpp.core.wrappers.AbstractIndexAstChecker;
+
+import com.cevelop.tdd.checkers.visitors.MissingTypeProblemVisitor;
 
 
 public class MissingTypeChecker extends AbstractIndexAstChecker {

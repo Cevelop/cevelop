@@ -16,13 +16,13 @@ import org.eclipse.cdt.core.index.IIndex;
 import org.eclipse.cdt.core.parser.util.ArrayUtil;
 import org.eclipse.cdt.internal.core.dom.parser.cpp.CPPASTBaseDeclSpecifier;
 
-import com.cevelop.tdd.helpers.IdHelper.ProblemId;
-import com.cevelop.tdd.helpers.TddHelper;
-import com.cevelop.tdd.infos.VisibilityInfo;
-
 import ch.hsr.ifs.iltis.core.functional.functions.Consumer3;
 
 import ch.hsr.ifs.iltis.cpp.core.ast.checker.helper.IProblemId;
+
+import com.cevelop.tdd.helpers.IdHelper.ProblemId;
+import com.cevelop.tdd.helpers.TddHelper;
+import com.cevelop.tdd.infos.VisibilityInfo;
 
 
 public class VisibilityProblemVisitor extends ASTVisitor {
@@ -73,7 +73,9 @@ public class VisibilityProblemVisitor extends ASTVisitor {
     }
 
     private boolean canAccessPrivateMember(final ICPPClassType owner, IBinding surroundingFunction) {
-        if (owner == null || surroundingFunction == null) return false;
+        if (owner == null || surroundingFunction == null) {
+            return false;
+        }
         final IType typeOfContext = findTypeOfContext(surroundingFunction);
         return owner.isSameType(typeOfContext) || isFriendOf(surroundingFunction.getOwner(), owner) || isFriendOf(surroundingFunction, owner);
     }

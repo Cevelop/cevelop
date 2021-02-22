@@ -50,7 +50,9 @@ public class FunctionCreationHelper {
                 IBinding nameBinding = nameAround.resolveBinding();
                 if (nameBinding instanceof ICPPNamespace || nameBinding instanceof IType) {
                     IASTIdExpression idex = new LastIDExpressionFinder().getLastIDExpression(selectedNode);
-                    if (idex != null) nameAround = idex.getName();
+                    if (idex != null) {
+                        nameAround = idex.getName();
+                    }
                 }
             }
         }

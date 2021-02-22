@@ -18,15 +18,15 @@ import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.ltk.core.refactoring.RefactoringDescriptor;
 
+import ch.hsr.ifs.iltis.cpp.core.ui.refactoring.SelectionRefactoring;
+import ch.hsr.ifs.iltis.cpp.core.wrappers.CRefactoringContext;
+import ch.hsr.ifs.iltis.cpp.core.wrappers.ModificationCollector;
+
 import com.cevelop.tdd.helpers.FunctionCreationHelper;
 import com.cevelop.tdd.helpers.ParameterHelper;
 import com.cevelop.tdd.helpers.TddHelper;
 import com.cevelop.tdd.helpers.TypeHelper;
 import com.cevelop.tdd.infos.MemberFunctionInfo;
-
-import ch.hsr.ifs.iltis.cpp.core.ui.refactoring.SelectionRefactoring;
-import ch.hsr.ifs.iltis.cpp.core.wrappers.CRefactoringContext;
-import ch.hsr.ifs.iltis.cpp.core.wrappers.ModificationCollector;
 
 
 public class CreateMemberFunctionRefactoring extends SelectionRefactoring<MemberFunctionInfo> {
@@ -51,10 +51,14 @@ public class CreateMemberFunctionRefactoring extends SelectionRefactoring<Member
 
     @Override
     protected void collectModifications(IProgressMonitor pm, ModificationCollector collector) throws CoreException, OperationCanceledException {
-        if (!selection.isPresent()) return;
+        if (!selection.isPresent()) {
+            return;
+        }
         IASTTranslationUnit localunit = refactoringContext.getAST(tu, pm);
         IASTName selectedNode = FunctionCreationHelper.getMostCloseSelectedNodeName(localunit, selection.get());
-        if (selectedNode == null) return;
+        if (selectedNode == null) {
+            return;
+        }
         ICPPASTCompositeTypeSpecifier type = getDefinitionScopeForName(localunit, selectedNode, refactoringContext);
         if (type == null) {
             IASTNode node = localunit.getNodeSelector(null).findEnclosingNodeInExpansion(selection.get().getOffset(), selection.get().getLength());
@@ -63,7 +67,9 @@ public class CreateMemberFunctionRefactoring extends SelectionRefactoring<Member
             }
         }
         ICPPASTFunctionDefinition newFunction = getFunctionDefinition(localunit, selectedNode, info.name, selection.get());
-        if (newFunction == null) return;
+        if (newFunction == null) {
+            return;
+        }
         if (type == null) {
             final IASTNode parent = selectedNode.getParent();
             IASTNode insertionPoint;

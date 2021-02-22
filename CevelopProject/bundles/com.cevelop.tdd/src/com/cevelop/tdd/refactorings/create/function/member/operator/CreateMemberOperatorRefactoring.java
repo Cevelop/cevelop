@@ -20,15 +20,15 @@ import org.eclipse.jface.text.TextSelection;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.ltk.core.refactoring.RefactoringDescriptor;
 
+import ch.hsr.ifs.iltis.cpp.core.ui.refactoring.SelectionRefactoring;
+import ch.hsr.ifs.iltis.cpp.core.wrappers.CRefactoringContext;
+import ch.hsr.ifs.iltis.cpp.core.wrappers.ModificationCollector;
+
 import com.cevelop.tdd.helpers.FunctionCreationHelper;
 import com.cevelop.tdd.helpers.ParameterHelper;
 import com.cevelop.tdd.helpers.TddHelper;
 import com.cevelop.tdd.helpers.TypeHelper;
 import com.cevelop.tdd.infos.MemberOperatorInfo;
-
-import ch.hsr.ifs.iltis.cpp.core.ui.refactoring.SelectionRefactoring;
-import ch.hsr.ifs.iltis.cpp.core.wrappers.CRefactoringContext;
-import ch.hsr.ifs.iltis.cpp.core.wrappers.ModificationCollector;
 
 
 public class CreateMemberOperatorRefactoring extends SelectionRefactoring<MemberOperatorInfo> {
@@ -53,10 +53,14 @@ public class CreateMemberOperatorRefactoring extends SelectionRefactoring<Member
 
     @Override
     protected void collectModifications(IProgressMonitor pm, ModificationCollector collector) throws CoreException, OperationCanceledException {
-        if (!selection.isPresent()) return;
+        if (!selection.isPresent()) {
+            return;
+        }
         IASTTranslationUnit localAST = refactoringContext.getAST(tu, pm);
         IASTName selectedNode = FunctionCreationHelper.getMostCloseSelectedNodeName(localAST, selection.get());
-        if (selectedNode == null) return;
+        if (selectedNode == null) {
+            return;
+        }
         ICPPASTCompositeTypeSpecifier hostType = null;
         if (info.hostTypeStart == -1 || info.hostTypeLength == -1) {
             hostType = getDefinitionScopeForName(localAST, selectedNode, refactoringContext);
@@ -69,7 +73,9 @@ public class CreateMemberOperatorRefactoring extends SelectionRefactoring<Member
         // TODO(tstauber - Sep 19, 2018) Fix this shitty selection
         ICPPASTFunctionDefinition newFunction = getFunctionDefinition(localAST, selectedNode, info.operatorName, new TextSelection(selection.get()
                 .getOffset(), 0));
-        if (newFunction == null) return;
+        if (newFunction == null) {
+            return;
+        }
         if (hostType == null) {
             final IASTNode parent = selectedNode.getParent();
             IASTNode insertionPoint;

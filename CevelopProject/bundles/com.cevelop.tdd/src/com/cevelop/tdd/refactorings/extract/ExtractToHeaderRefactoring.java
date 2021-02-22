@@ -46,11 +46,11 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.internal.UIPlugin;
 
-import com.cevelop.tdd.helpers.TddHelper;
-import com.cevelop.tdd.infos.ExtractToHeaderInfo;
-
 import ch.hsr.ifs.iltis.cpp.core.ui.refactoring.SelectionRefactoring;
 import ch.hsr.ifs.iltis.cpp.core.wrappers.ModificationCollector;
+
+import com.cevelop.tdd.helpers.TddHelper;
+import com.cevelop.tdd.infos.ExtractToHeaderInfo;
 
 
 @SuppressWarnings("restriction")

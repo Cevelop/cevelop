@@ -11,6 +11,7 @@ public class IdHelper {
     public static final String PLUGIN_ID = FrameworkUtil.getBundle(IdHelper.class).getSymbolicName();
 
     public enum RefactoringId implements IRefactoringId<RefactoringId> {
+
       //@formatter:off
       ARGUMENT(PLUGIN_ID + ".refactorings.argument.ArgumentRefactoring"),
       CREATE_CONSTRUCTOR(PLUGIN_ID + ".refactorings.create.function.constructor.ConstructorRefactoring"),
@@ -58,6 +59,7 @@ public class IdHelper {
     }
 
     public enum ProblemId implements IProblemId<ProblemId> {
+
       //@formatter:off
       ARGUMENT_MISMATCH(PLUGIN_ID + ".ArgumentMismatchProblem"),
       MISSING_CONSTRUCTOR(PLUGIN_ID + ".MissingConstructorProblem"),

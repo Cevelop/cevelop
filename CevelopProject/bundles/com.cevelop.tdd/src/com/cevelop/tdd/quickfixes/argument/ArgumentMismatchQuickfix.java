@@ -11,11 +11,11 @@ package com.cevelop.tdd.quickfixes.argument;
 import org.eclipse.cdt.core.model.ICElement;
 import org.eclipse.swt.graphics.Image;
 
+import ch.hsr.ifs.iltis.core.functional.functions.Function2;
+
 import com.cevelop.tdd.infos.ArgumentMismatchInfo;
 import com.cevelop.tdd.quickfixes.TddQuickfix;
 import com.cevelop.tdd.refactorings.argument.ArgumentRefactoring;
-
-import ch.hsr.ifs.iltis.core.functional.functions.Function2;
 
 
 public class ArgumentMismatchQuickfix extends TddQuickfix<ArgumentMismatchInfo> {

@@ -18,15 +18,15 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.ltk.core.refactoring.RefactoringDescriptor;
 
+import ch.hsr.ifs.iltis.cpp.core.ui.refactoring.SelectionRefactoring;
+import ch.hsr.ifs.iltis.cpp.core.wrappers.CRefactoringContext;
+import ch.hsr.ifs.iltis.cpp.core.wrappers.ModificationCollector;
+
 import com.cevelop.tdd.helpers.FunctionCreationHelper;
 import com.cevelop.tdd.helpers.ParameterHelper;
 import com.cevelop.tdd.helpers.TddHelper;
 import com.cevelop.tdd.helpers.TypeHelper;
 import com.cevelop.tdd.infos.ConstructorInfo;
-
-import ch.hsr.ifs.iltis.cpp.core.ui.refactoring.SelectionRefactoring;
-import ch.hsr.ifs.iltis.cpp.core.wrappers.CRefactoringContext;
-import ch.hsr.ifs.iltis.cpp.core.wrappers.ModificationCollector;
 
 
 public class CreateConstructorRefactoring extends SelectionRefactoring<ConstructorInfo> {
@@ -51,10 +51,14 @@ public class CreateConstructorRefactoring extends SelectionRefactoring<Construct
 
     @Override
     protected void collectModifications(IProgressMonitor pm, ModificationCollector collector) throws CoreException, OperationCanceledException {
-        if (!selection.isPresent()) return;
+        if (!selection.isPresent()) {
+            return;
+        }
         IASTTranslationUnit localunit = refactoringContext.getAST(tu, pm);
         IASTName selectedNode = FunctionCreationHelper.getMostCloseSelectedNodeName(localunit, selection.get());
-        if (selectedNode == null) return;
+        if (selectedNode == null) {
+            return;
+        }
         ICPPASTCompositeTypeSpecifier type = getDefinitionScopeForName(localunit, selectedNode, refactoringContext);
         if (type == null) {
             IASTNode node = localunit.getNodeSelector(null).findEnclosingNodeInExpansion(selection.get().getOffset(), selection.get().getLength());
@@ -63,7 +67,9 @@ public class CreateConstructorRefactoring extends SelectionRefactoring<Construct
             }
         }
         ICPPASTFunctionDefinition newFunction = getFunctionDefinition(selectedNode, info.typeName);
-        if (newFunction == null) return;
+        if (newFunction == null) {
+            return;
+        }
         if (type == null) {
             final IASTNode parent = selectedNode.getParent();
             IASTNode insertionPoint;
@@ -81,7 +87,9 @@ public class CreateConstructorRefactoring extends SelectionRefactoring<Construct
     private ICPPASTFunctionDefinition getFunctionDefinition(IASTNode selectedName, String name) {
         CPPASTFunctionDeclarator funcdecl = new CPPASTFunctionDeclarator(new CPPASTName(name.toCharArray()));
         CPPASTDeclarator declarator = TddHelper.getAncestorOfType(selectedName, CPPASTDeclarator.class);
-        if (declarator == null) return null;
+        if (declarator == null) {
+            return null;
+        }
         ParameterHelper.addTo(declarator, funcdecl);
         CPPASTNamedTypeSpecifier declspec = new CPPASTNamedTypeSpecifier();
         declspec.setName(new CPPASTName());

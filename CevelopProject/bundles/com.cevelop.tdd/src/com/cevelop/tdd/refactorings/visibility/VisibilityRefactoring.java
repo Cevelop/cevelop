@@ -25,12 +25,12 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.ltk.core.refactoring.RefactoringDescriptor;
 
+import ch.hsr.ifs.iltis.cpp.core.ui.refactoring.SelectionRefactoring;
+import ch.hsr.ifs.iltis.cpp.core.wrappers.ModificationCollector;
+
 import com.cevelop.tdd.helpers.TddHelper;
 import com.cevelop.tdd.helpers.TypeHelper;
 import com.cevelop.tdd.infos.VisibilityInfo;
-
-import ch.hsr.ifs.iltis.cpp.core.ui.refactoring.SelectionRefactoring;
-import ch.hsr.ifs.iltis.cpp.core.wrappers.ModificationCollector;
 
 
 public class VisibilityRefactoring extends SelectionRefactoring<VisibilityInfo> {
@@ -55,10 +55,14 @@ public class VisibilityRefactoring extends SelectionRefactoring<VisibilityInfo> 
 
     @Override
     protected void collectModifications(IProgressMonitor pm, ModificationCollector collector) throws CoreException, OperationCanceledException {
-        if (!selection.isPresent()) return;
+        if (!selection.isPresent()) {
+            return;
+        }
         IASTTranslationUnit localunit = refactoringContext.getAST(tu, pm);
         IASTNode selectedNode = localunit.getNodeSelector(null).findEnclosingNode(selection.get().getOffset(), selection.get().getLength());
-        if (!(selectedNode instanceof IASTName)) return;
+        if (!(selectedNode instanceof IASTName)) {
+            return;
+        }
         ICPPASTCompositeTypeSpecifier typeSpec = TypeHelper.getTypeOfMember(localunit, (IASTName) selectedNode, refactoringContext);
         MethodFindVisitor memberfinder = new MethodFindVisitor(info.memberName);
         typeSpec.accept(memberfinder);

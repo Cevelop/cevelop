@@ -15,16 +15,16 @@ import org.eclipse.cdt.core.dom.ast.cpp.ICPPFunction;
 import org.eclipse.cdt.core.dom.ast.cpp.ICPPParameter;
 import org.eclipse.cdt.core.parser.util.ArrayUtil;
 
+import ch.hsr.ifs.iltis.core.functional.functions.Consumer3;
+
+import ch.hsr.ifs.iltis.cpp.core.ast.checker.helper.IProblemId;
+
 import com.cevelop.tdd.helpers.IdHelper.ProblemId;
 import com.cevelop.tdd.helpers.TddHelper;
 import com.cevelop.tdd.helpers.TypeHelper;
 import com.cevelop.tdd.infos.ArgumentMismatchInfo;
 import com.cevelop.tdd.quickfixes.argument.ArgumentMismatchQuickfixGenerator;
 import com.cevelop.tdd.refactorings.argument.ArgumentRefactoring;
-
-import ch.hsr.ifs.iltis.core.functional.functions.Consumer3;
-
-import ch.hsr.ifs.iltis.cpp.core.ast.checker.helper.IProblemId;
 
 
 public class ArgumentMismatchProblemVisitor extends AbstractResolutionProblemVisitor {
@@ -64,7 +64,9 @@ public class ArgumentMismatchProblemVisitor extends AbstractResolutionProblemVis
                 contextString += getContextString(name, candidate);
             }
         }
-        if (candidates.length == 0) return;
+        if (candidates.length == 0) {
+            return;
+        }
         String missingName = new String(name.getLastName().getSimpleID());
         String message = missingName;
         ArgumentMismatchInfo info = new ArgumentMismatchInfo();

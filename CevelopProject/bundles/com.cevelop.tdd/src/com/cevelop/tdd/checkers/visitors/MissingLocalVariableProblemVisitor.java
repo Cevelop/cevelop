@@ -22,15 +22,15 @@ import org.eclipse.cdt.core.dom.ast.cpp.ICPPClassType;
 import org.eclipse.cdt.internal.core.dom.parser.cpp.CPPASTTemplateId;
 import org.eclipse.cdt.internal.core.dom.parser.cpp.semantics.SemanticUtil;
 
-import com.cevelop.tdd.helpers.IdHelper.ProblemId;
-import com.cevelop.tdd.helpers.TddHelper;
-import com.cevelop.tdd.infos.LocalVariableInfo;
-import com.cevelop.tdd.infos.MemberVariableInfo;
-
 import ch.hsr.ifs.iltis.core.functional.functions.Consumer3;
 
 import ch.hsr.ifs.iltis.cpp.core.ast.checker.helper.IProblemId;
 import ch.hsr.ifs.iltis.cpp.core.resources.info.MarkerInfo;
+
+import com.cevelop.tdd.helpers.IdHelper.ProblemId;
+import com.cevelop.tdd.helpers.TddHelper;
+import com.cevelop.tdd.infos.LocalVariableInfo;
+import com.cevelop.tdd.infos.MemberVariableInfo;
 
 
 public class MissingLocalVariableProblemVisitor extends AbstractResolutionProblemVisitor {

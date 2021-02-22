@@ -210,7 +210,9 @@ public class IUDecRefactoring extends InlineRefactoringBase {
             }
 
             private boolean isCandidate(IASTName name) {
-                if (name != null && name.getTranslationUnit() != null && name.getFileLocation() != null && CxxAstUtils.isInMacro(name)) return false;
+                if (name != null && name.getTranslationUnit() != null && name.getFileLocation() != null && CxxAstUtils.isInMacro(name)) {
+                    return false;
+                }
                 if (name.toString().equals("")) {
                     return false;
                 }
@@ -225,7 +227,9 @@ public class IUDecRefactoring extends InlineRefactoringBase {
                 }
                 IASTFileLocation pos = name.getFileLocation();
                 IASTFileLocation declpos = ctx.selectedUsing.getFileLocation();
-                if (pos.getNodeOffset() <= declpos.getNodeOffset() + declpos.getNodeLength()) return false;
+                if (pos.getNodeOffset() <= declpos.getNodeOffset() + declpos.getNodeLength()) {
+                    return false;
+                }
                 if (ctx.enclosingCompound != null) {
                     if (!NSNodeHelper.isNodeEnclosedBy(ctx.enclosingCompound, name)) {
                         return false;
@@ -234,11 +238,15 @@ public class IUDecRefactoring extends InlineRefactoringBase {
                 if (ctx.enclosingNSContext != null && ((ctx.enclosingNSContext.namespaceDefNode != null && NSNodeHelper
                         .isNodeEnclosedByScopeDefinedBy(name, ctx.enclosingNSContext.namespaceDefNode)) ||
                                                        (ctx.enclosingNSContext.classDefNode != null && NSNodeHelper.isNodeEnclosedByScopeDefinedBy(
-                                                               name, ctx.enclosingNSContext.classDefNode)))) return false;
+                                                               name, ctx.enclosingNSContext.classDefNode)))) {
+                    return false;
+                }
                 IBinding refBinding = name.resolveBinding();
                 IIndexBinding adaptedRefBinding = indexer.adaptBinding(refBinding);
 
-                if (targetDeclarationBinding.equals(adaptedRefBinding)) return true;
+                if (targetDeclarationBinding.equals(adaptedRefBinding)) {
+                    return true;
+                }
                 if (refBinding instanceof ICPPSpecialization) {
                     refBinding = ((ICPPSpecialization) refBinding).getSpecializedBinding();
                     adaptedRefBinding = indexer.adaptBinding(refBinding);
@@ -261,7 +269,9 @@ public class IUDecRefactoring extends InlineRefactoringBase {
         List<IPath> paths = includeDepAnalyser.getIncludeDependentPathsOf(tu);
         for (IPath filePath : paths) {
             IFile[] files = ResourcesPlugin.getWorkspace().getRoot().findFilesForLocationURI(new File(filePath.toOSString()).toURI());
-            if (files.length < 1) continue;
+            if (files.length < 1) {
+                continue;
+            }
             ITranslationUnit tu = CoreModelUtil.findTranslationUnit(files[0]);
             enclosingCompound = getAST(tu, npm);
             enclosingCompound.accept(v);

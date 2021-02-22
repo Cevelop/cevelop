@@ -82,7 +82,9 @@ public abstract class EUReplaceVisitor extends ASTVisitor {
             ICPPASTQualifiedName replaceName = ASTNodeFactory.getDefault().newQualifiedName(null);
             ICPPASTNameSpecifier[] names = getNamesOf(name);
             ICPPASTNameSpecifier foundName = searchNamesFor(context.startingNamespaceName, names);
-            if (foundName != null && CxxAstUtils.isInMacro(foundName)) return null;
+            if (foundName != null && CxxAstUtils.isInMacro(foundName)) {
+                return null;
+            }
             if (isReplaceCandidate(foundName, name, names)) {
                 boolean start = false;
                 for (ICPPASTNameSpecifier iastName : names) {

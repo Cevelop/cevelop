@@ -23,9 +23,9 @@ import org.eclipse.cdt.core.dom.ast.cpp.ICPPASTUsingDeclaration;
 import org.eclipse.cdt.core.dom.ast.cpp.ICPPASTUsingDirective;
 import org.eclipse.cdt.internal.core.dom.parser.cpp.semantics.CPPVisitor;
 
-import com.cevelop.namespactor.helpers.IdHelper.ProblemId;
-
 import ch.hsr.ifs.iltis.cpp.core.wrappers.AbstractIndexAstChecker;
+
+import com.cevelop.namespactor.helpers.IdHelper.ProblemId;
 
 
 /**

@@ -50,8 +50,10 @@ public class NSSelectionHelper extends SelectionHelper {
      * is inside the qualified name {@code A::B::S1<A::B::S2>}. {@code NSSelectionHelper.getInnerMostSelectedNameInExpression} returns the exact match
      * of the selection: {@code A::B::S2}
      *
-     * @param textSelection The {@link Region} selected
-     * @param expression The expression as a {@link ICPPASTQualifiedName}
+     * @param textSelection
+     * The {@link Region} selected
+     * @param expression
+     * The expression as a {@link ICPPASTQualifiedName}
      * @return exact qualified name inside a qualifiedName with templateId
      */
     public static ICPPASTQualifiedName getInnerMostSelectedNameInExpression(final Region textSelection, ICPPASTQualifiedName expression) {

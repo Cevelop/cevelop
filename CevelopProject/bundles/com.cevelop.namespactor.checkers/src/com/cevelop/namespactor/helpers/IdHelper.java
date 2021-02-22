@@ -14,6 +14,7 @@ public class IdHelper {
     public static final String PROBLEMS_PREFIX    = DEFAULT_QUALIFIER + ".problems.";
 
     public enum ProblemId implements IProblemId<ProblemId> {
+
         UDIR_IN_HEADER_PROBLEM_ID(PROBLEMS_PREFIX + "UDIRInHeader"), //
         UDIR_UNQUALIFIED_PROBLEM_ID(PROBLEMS_PREFIX + "UDIRUnqualified"), //
         UDEC_IN_HEADER_PROBLEM_ID(PROBLEMS_PREFIX + "UDECInHeader"), //
@@ -39,7 +40,9 @@ public class IdHelper {
 
         public static ProblemId of(String string) {
             for (final ProblemId id : values()) {
-                if (id.getId().equals(string)) return id;
+                if (id.getId().equals(string)) {
+                    return id;
+                }
             }
             throw new IllegalArgumentException("Illegal ProblemId: " + string);
         }

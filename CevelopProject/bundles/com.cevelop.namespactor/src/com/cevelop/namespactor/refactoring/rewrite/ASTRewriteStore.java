@@ -76,7 +76,9 @@ public class ASTRewriteStore {
     public void performChanges() {
         for (IASTChange change : changes) {
             ASTRewrite newRewrite = change.apply(getRewrite(change));
-            if (newRewrite != null) register(change.getChangeRoot(), newRewrite);
+            if (newRewrite != null) {
+                register(change.getChangeRoot(), newRewrite);
+            }
         }
     }
 
@@ -95,14 +97,17 @@ public class ASTRewriteStore {
 
     private IASTNode lookupNodeInRewrites(IASTNode node) {
         IASTNode lookup = node;
-        while (!(lookup == null) && !hasFirsthandRewriteFor(lookup))
+        while (!(lookup == null) && !hasFirsthandRewriteFor(lookup)) {
             lookup = lookup.getParent();
+        }
         return lookup;
     }
 
     private void enforceRewriteExistance(IASTChange change) {
         IASTNode root = change.getRewriteRoot();
-        if (!hasFirsthandRewriteFor(root) && !hasIndirectRewriteFor(root)) register(root.getTranslationUnit(), createRewrite(change));
+        if (!hasFirsthandRewriteFor(root) && !hasIndirectRewriteFor(root)) {
+            register(root.getTranslationUnit(), createRewrite(change));
+        }
     }
 
     private boolean hasIndirectRewriteFor(IASTNode node) {

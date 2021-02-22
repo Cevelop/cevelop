@@ -115,7 +115,9 @@ public class ITDARefactoring extends RefactoringBase {
         public IStatus runOnAST(ILanguage lang, IASTTranslationUnit astRoot) throws CoreException {
             IASTNodeSelector selector = astRoot.getNodeSelector(null);
             IASTName name = selector.findEnclosingName(textSelection.getOffset(), textSelection.getLength());
-            if (name == null) return Status.CANCEL_STATUS;
+            if (name == null) {
+                return Status.CANCEL_STATUS;
+            }
             // find enclosing declaration and if it is a typedef, adjust region.
             IBinding thebinding = ((ICPPASTName) name).resolveBinding();
 
@@ -482,8 +484,12 @@ public class ITDARefactoring extends RefactoringBase {
                 }
                 IASTPointerOperator po = inner.getPointerOperators()[i];
                 if (po instanceof IASTPointer) {
-                    if (origin.isConst()) ((IASTPointer) po).setConst(true);
-                    if (origin.isVolatile()) ((IASTPointer) po).setVolatile(true);
+                    if (origin.isConst()) {
+                        ((IASTPointer) po).setConst(true);
+                    }
+                    if (origin.isVolatile()) {
+                        ((IASTPointer) po).setVolatile(true);
+                    }
                     return declarator;
                 } else {
                     //this might be a problem and shouldn't happen, be optimistic and just add it to the specifier
@@ -529,7 +535,9 @@ public class ITDARefactoring extends RefactoringBase {
         }
         IASTDeclarator nested = toreplace.getNestedDeclarator();
         if (fromtypealias.getNestedDeclarator() != null) {
-            if (nested != null) fromtypealias.setNestedDeclarator(nested.copy(CopyStyle.withLocations));
+            if (nested != null) {
+                fromtypealias.setNestedDeclarator(nested.copy(CopyStyle.withLocations));
+            }
             target.setNestedDeclarator(fromtypealias);
         }
     }

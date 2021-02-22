@@ -65,7 +65,9 @@ public abstract class EUTemplateIdFactory extends TemplateIdFactory {
                 } else if (vDeclSpecifier instanceof ICPPASTSimpleDeclSpecifier) {
                     newDeclSpec = createSimpleDeclSpec(vDeclSpecifier);
                 }
-                if (newDeclSpec != null) typeId.setDeclSpecifier(newDeclSpec);
+                if (newDeclSpec != null) {
+                    typeId.setDeclSpecifier(newDeclSpec);
+                }
                 return super.visit(typeId);
             }
 

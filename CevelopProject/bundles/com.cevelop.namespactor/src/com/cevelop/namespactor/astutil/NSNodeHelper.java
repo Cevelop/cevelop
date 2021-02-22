@@ -66,7 +66,9 @@ public class NSNodeHelper extends NodeHelper {
         IBinding search = descendant;
 
         while (search != null) {
-            if (search.equals(potentialowner)) return true;
+            if (search.equals(potentialowner)) {
+                return true;
+            }
             search = search.getOwner();
         }
         return false;

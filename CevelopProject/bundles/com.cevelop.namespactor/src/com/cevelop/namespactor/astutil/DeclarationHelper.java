@@ -30,7 +30,9 @@ public class DeclarationHelper {
 
     public static IASTName findNameOfDeclarator(IASTDeclarator declarator) {
         IASTName name = ASTQueries.findInnermostDeclarator(declarator).getName();
-        if (name.toString().length() == 0) name = null; // abstract
+        if (name.toString().length() == 0) {
+            name = null; // abstract
+        }
         return name;
     }
 
@@ -43,7 +45,9 @@ public class DeclarationHelper {
     public static IASTDeclarator optimizeDeclaratorNesting(IASTDeclarator declarator) {
         IASTDeclarator root = ASTQueries.findOutermostDeclarator(declarator);
         IASTDeclarator current = ASTQueries.findInnermostDeclarator(declarator);
-        if (root.isFrozen()) return declarator; // can not do anything
+        if (root.isFrozen()) {
+            return declarator; // can not do anything
+        }
         IASTNode parent = current.getParent();
         while (parent instanceof IASTDeclarator) {
             IASTDeclarator parentdeclarator = (IASTDeclarator) parent;
@@ -149,13 +153,16 @@ public class DeclarationHelper {
     /**
      * cloned and corrected from ASTQueries
      * Searches for the innermost declarator that contributes the the type declared.
-     * 
-     * @param declarator A possible outer {@link IASTDeclarator}
-     * 
+     *
+     * @param declarator
+     * A possible outer {@link IASTDeclarator}
+     *
      * @return the innermost and type relevant {@link IASTDeclarator}
      */
     public static IASTDeclarator findTypeRelevantDeclarator(IASTDeclarator declarator) {
-        if (declarator == null) return null;
+        if (declarator == null) {
+            return null;
+        }
 
         IASTDeclarator result = ASTQueries.findInnermostDeclarator(declarator);
         while (result.getPointerOperators().length == 0 && !(result instanceof IASTFieldDeclarator) && !(result instanceof IASTFunctionDeclarator) &&

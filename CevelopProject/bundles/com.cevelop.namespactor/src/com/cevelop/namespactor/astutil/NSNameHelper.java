@@ -58,9 +58,15 @@ public class NSNameHelper extends NameHelper {
                 continue;
             }
             String n = owner.getName();
-            if (n == null) break;
-            if (owner instanceof ICPPFunction) break;
-            if (owner instanceof ICPPClassType) continue;
+            if (n == null) {
+                break;
+            }
+            if (owner instanceof ICPPFunction) {
+                break;
+            }
+            if (owner instanceof ICPPClassType) {
+                continue;
+            }
             if (isNamespaceToIgnore(owner, n)) {
                 continue;
             }
@@ -86,8 +92,12 @@ public class NSNameHelper extends NameHelper {
                 continue;
             }
             String n = owner.getName();
-            if (n == null) break;
-            if (owner instanceof ICPPFunction) break;
+            if (n == null) {
+                break;
+            }
+            if (owner instanceof ICPPFunction) {
+                break;
+            }
             if (isNamespaceToIgnore(owner, n)) {
                 continue;
             }
@@ -140,9 +150,11 @@ public class NSNameHelper extends NameHelper {
                 if (existingName.equals(nameToPrefix)) {
                     addPrefix(prefixName, newQName);
                 }
-                if (existingName instanceof IASTName)
+                if (existingName instanceof IASTName) {
                     newQName.addName((IASTName) existingName.copy());
-                else newQName.addNameSpecifier(existingName.copy());
+                } else {
+                    newQName.addNameSpecifier(existingName.copy());
+                }
             }
 
         } else {
@@ -159,7 +171,9 @@ public class NSNameHelper extends NameHelper {
                 newQName.addNameSpecifier(prefix.copy());
             }
             IASTName lastName = prefixName.getLastName();
-            if (lastName != null) newQName.addName(lastName.copy());
+            if (lastName != null) {
+                newQName.addName(lastName.copy());
+            }
         } else {
             newQName.addName(prefixName.copy());
         }
@@ -198,8 +212,12 @@ public class NSNameHelper extends NameHelper {
                 continue;
             }
             String n = owner.getName();
-            if (n == null) break;
-            if (owner instanceof ICPPFunction) break;
+            if (n == null) {
+                break;
+            }
+            if (owner instanceof ICPPFunction) {
+                break;
+            }
             if (isNamespaceToIgnore(owner, n)) {
                 // ignore anonymous and inline namespaces internal to the implementation, such as __1 from libstdc++
                 continue;
@@ -222,8 +240,10 @@ public class NSNameHelper extends NameHelper {
     }
 
     public static void addNameOrNameSpecifierWithStyle(ICPPASTQualifiedName newQName, ICPPASTNameSpecifier n, CopyStyle style) {
-        if (n instanceof IASTName)
+        if (n instanceof IASTName) {
             newQName.addName((IASTName) n.copy(style));
-        else newQName.addNameSpecifier(n.copy(style));
+        } else {
+            newQName.addNameSpecifier(n.copy(style));
+        }
     }
 }

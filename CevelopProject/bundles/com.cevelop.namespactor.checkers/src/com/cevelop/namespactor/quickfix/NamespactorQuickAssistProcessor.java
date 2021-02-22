@@ -73,7 +73,9 @@ public class NamespactorQuickAssistProcessor implements IQuickAssistProcessor {
                             getTD2ARefactoringProposal(context, locations, lowerPriortyIfThereAreErrors, proposals);
                         }
                         if (name != null || node instanceof ICPPASTName) {
-                            if (name == null) name = (IASTName) node;
+                            if (name == null) {
+                                name = (IASTName) node;
+                            }
                             IBinding thebinding = name.resolveBinding();
 
                             if (thebinding instanceof CPPTypedef && !isWithinOwnTypedef(name, (CPPTypedef) thebinding)) {

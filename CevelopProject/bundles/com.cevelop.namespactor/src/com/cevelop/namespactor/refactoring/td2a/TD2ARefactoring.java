@@ -77,7 +77,9 @@ public class TD2ARefactoring extends RefactoringBase {
         public IStatus runOnAST(ILanguage lang, IASTTranslationUnit astRoot) throws CoreException {
             IASTNodeSelector selector = astRoot.getNodeSelector(null);
             IASTNode node = selector.findEnclosingNode(textSelection.getOffset(), textSelection.getLength());
-            if (node == null) return Status.CANCEL_STATUS;
+            if (node == null) {
+                return Status.CANCEL_STATUS;
+            }
             // find enclosing declaration and if it is a typedef, adjust region.
             if ((node = NSNodeHelper.nodeIsInTypedefSimpleDeclaration(node)) != null) {
                 selectedTypeDefRegion = NSSelectionHelper.getNodeSpan(node);
@@ -103,7 +105,9 @@ public class TD2ARefactoring extends RefactoringBase {
         try {
             runner.runOnAST(null, tu);
         } catch (CoreException e) {}
-        if (runner.getTheTypedefNode() != null) return runner.getTheTypedefNode();
+        if (runner.getTheTypedefNode() != null) {
+            return runner.getTheTypedefNode();
+        }
         // now search using a visitor, if shortcut above doesn't succeed.
         final Container<IASTNode> container = new Container<>();
         final Region selection = runner.getSelectedTypeDefRegion() != null ? runner.getSelectedTypeDefRegion() : textSelection;
@@ -139,7 +143,9 @@ public class TD2ARefactoring extends RefactoringBase {
     protected static boolean nameIsParameter(IASTName name) {
         IASTNode parent = name.getParent();
         while (parent != null) {
-            if (parent instanceof ICPPASTParameterDeclaration) return true;
+            if (parent instanceof ICPPASTParameterDeclaration) {
+                return true;
+            }
             parent = parent.getParent();
         }
         return false;
@@ -192,7 +198,9 @@ public class TD2ARefactoring extends RefactoringBase {
     private ICPPASTAliasDeclaration createAliasDeclaration(IASTDeclSpecifier declspecifier, IASTDeclarator declarator) {
         ICPPNodeFactory factory = ASTNodeFactoryFactory.getDefaultCPPNodeFactory();
         IASTName name = DeclarationHelper.findNameOfDeclarator(declarator);
-        if (name == null) return null; // OOPS, no name found
+        if (name == null) {
+            return null; // OOPS, no name found
+        }
         IASTDeclarator newdeclarator = declarator.copy(CopyStyle.withLocations);
         // remove name selectedName from declarator
         DeclarationHelper.makeDeclaratorAbstract(newdeclarator, factory);
@@ -213,8 +221,9 @@ public class TD2ARefactoring extends RefactoringBase {
                     ICPPASTAliasDeclaration alias = createAliasDeclaration(typedefDeclSpecifier, declarator);
                     // there is more than one, so do not replace, but
                     // insert and then remove
-                    if (alias != null) // some problem here if null
+                    if (alias != null) {
                         store.addInsertChange(typedef2Replace.getParent(), alias, typedef2Replace);
+                    }
                 }
             }
             store.addRemoveChange(typedef2Replace);
@@ -224,7 +233,9 @@ public class TD2ARefactoring extends RefactoringBase {
                 ICPPASTAliasDeclaration alias = createAliasDeclaration(typedefDeclSpecifier, declarator);
                 // there might be more than one, so do not replace, but
                 // insert and then remove
-                if (alias != null) store.addReplaceChange(typedef2Replace, alias);
+                if (alias != null) {
+                    store.addReplaceChange(typedef2Replace, alias);
+                }
             }
         }
         super.collectModifications(store);

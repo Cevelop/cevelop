@@ -31,12 +31,12 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.text.ITextSelection;
 import org.eclipse.ltk.core.refactoring.RefactoringDescriptor;
 
+import ch.hsr.ifs.iltis.cpp.core.wrappers.CRefactoring;
+import ch.hsr.ifs.iltis.cpp.core.wrappers.ModificationCollector;
+
 import com.cevelop.namespactor.Activator;
 import com.cevelop.namespactor.NSAssert;
 import com.cevelop.namespactor.refactoring.rewrite.ASTRewriteStore;
-
-import ch.hsr.ifs.iltis.cpp.core.wrappers.CRefactoring;
-import ch.hsr.ifs.iltis.cpp.core.wrappers.ModificationCollector;
 
 
 /**
@@ -54,7 +54,9 @@ public abstract class RefactoringBase extends CRefactoring {
     protected IASTTranslationUnit getASTOf(IName ref, IProgressMonitor pm) {
         String fileName = ref.getFileLocation().getFileName();
         ITranslationUnit tu = getTuForFilename(fileName);
-        if (tu == null) return null;
+        if (tu == null) {
+            return null;
+        }
         try {
             return getAST(tu, pm);
         } catch (OperationCanceledException e) {
@@ -108,7 +110,9 @@ public abstract class RefactoringBase extends CRefactoring {
     protected IASTName getNodeOf(IName name, IProgressMonitor pm) throws CoreException, NodeDefinitionNotInWorkspaceException {
 
         IASTTranslationUnit astOf = getASTOf(name, pm);
-        if (astOf == null) throw new NodeDefinitionNotInWorkspaceException();
+        if (astOf == null) {
+            throw new NodeDefinitionNotInWorkspaceException();
+        }
         IASTNode childRefNode = astOf.getNodeSelector(name.getFileLocation().getFileName()).findNode(name.getFileLocation().getNodeOffset(), name
                 .getFileLocation().getNodeLength());
         NSAssert.isInstanceOf(IASTName.class, childRefNode);

@@ -32,13 +32,13 @@ import org.eclipse.jface.text.Region;
 import org.eclipse.ltk.core.refactoring.RefactoringStatus;
 import org.eclipse.ltk.core.refactoring.participants.CheckConditionsContext;
 
+import ch.hsr.ifs.iltis.cpp.core.wrappers.ModificationCollector;
+
 import com.cevelop.namespactor.astutil.NSNodeHelper;
 import com.cevelop.namespactor.astutil.NSSelectionHelper;
 import com.cevelop.namespactor.refactoring.RefactoringBase;
 import com.cevelop.namespactor.refactoring.rewrite.ASTRewriteStore;
 import com.cevelop.namespactor.resources.Labels;
-
-import ch.hsr.ifs.iltis.cpp.core.wrappers.ModificationCollector;
 
 
 /**

@@ -319,7 +319,9 @@ public class IUDirRefactoring extends InlineRefactoringBase {
         List<IPath> paths = includeDepAnalyser.getIncludeDependentPathsOf(tu);
         for (IPath filePath : paths) {
             IFile[] files = ResourcesPlugin.getWorkspace().getRoot().findFilesForLocationURI(new File(filePath.toOSString()).toURI());
-            if (files.length < 1) continue;
+            if (files.length < 1) {
+                continue;
+            }
             ITranslationUnit tu = CoreModelUtil.findTranslationUnit(files[0]);
             enclosingCompound = getAST(tu, npm);
             enclosingCompound.accept(v);

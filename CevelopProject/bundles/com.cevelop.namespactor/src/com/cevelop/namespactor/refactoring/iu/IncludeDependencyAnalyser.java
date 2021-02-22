@@ -71,7 +71,9 @@ public class IncludeDependencyAnalyser {
         IIndexInclude[] includes = index.findIncludes(file, IIndex.DEPTH_INFINITE);
         for (IIndexInclude include : includes) {
             IIndexFileLocation includesLocation = include.getIncludesLocation();
-            if (includesLocation == null) continue;
+            if (includesLocation == null) {
+                continue;
+            }
             String includedFileName = URIUtil.toFile(includesLocation.getURI()).getAbsolutePath();
 
             if (originFileName.equals(includedFileName)) {
@@ -91,7 +93,9 @@ public class IncludeDependencyAnalyser {
         try {
             IIndexFileLocation ifl = IndexLocationFactory.getIFL(tu);
             IIndexFile[] files = index.getFiles(ILinkage.CPP_LINKAGE_ID, ifl);
-            if (files.length <= 0) return dependentFiles;
+            if (files.length <= 0) {
+                return dependentFiles;
+            }
             IIndexFile iFile = files[0];
 
             // h file is only in the indexer if its included by another file (h or cpp)

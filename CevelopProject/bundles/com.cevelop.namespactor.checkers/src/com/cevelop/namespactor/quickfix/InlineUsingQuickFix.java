@@ -11,9 +11,9 @@
  ******************************************************************************/
 package com.cevelop.namespactor.quickfix;
 
-import com.cevelop.namespactor.handlers.IURefactoringMenuHandler;
-
 import ch.hsr.ifs.iltis.cpp.core.ui.refactoring.WizardRefactoringStarterMenuHandler;
+
+import com.cevelop.namespactor.handlers.IURefactoringMenuHandler;
 
 
 /**

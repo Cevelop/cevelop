@@ -90,7 +90,9 @@ public abstract class TemplateIdFactory extends ASTVisitor {
                 } else if (vDeclSpecifier instanceof ICPPASTSimpleDeclSpecifier) {
                     newDeclSpec = createSimpleDeclSpec(vDeclSpecifier);
                 }
-                if (newDeclSpec != null) typeId.setDeclSpecifier(newDeclSpec);
+                if (newDeclSpec != null) {
+                    typeId.setDeclSpecifier(newDeclSpec);
+                }
                 return super.visit(typeId);
             }
 

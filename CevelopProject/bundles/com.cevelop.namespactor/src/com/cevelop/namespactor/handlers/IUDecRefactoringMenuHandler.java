@@ -5,10 +5,10 @@ import java.util.Optional;
 import org.eclipse.cdt.core.model.ICElement;
 import org.eclipse.jface.text.ITextSelection;
 
+import ch.hsr.ifs.iltis.cpp.core.ui.refactoring.WizardRefactoringStarterMenuHandler;
+
 import com.cevelop.namespactor.refactoring.NSRefactoringWizard;
 import com.cevelop.namespactor.refactoring.iudec.IUDecRefactoring;
-
-import ch.hsr.ifs.iltis.cpp.core.ui.refactoring.WizardRefactoringStarterMenuHandler;
 
 
 public class IUDecRefactoringMenuHandler extends WizardRefactoringStarterMenuHandler<NSRefactoringWizard, IUDecRefactoring> {

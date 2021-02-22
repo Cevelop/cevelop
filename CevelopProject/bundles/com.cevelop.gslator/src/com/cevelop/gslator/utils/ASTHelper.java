@@ -66,10 +66,10 @@ import org.eclipse.cdt.internal.core.dom.parser.cpp.CPPFunctionType;
 import org.eclipse.cdt.internal.core.dom.parser.cpp.semantics.SemanticUtil;
 import org.eclipse.core.runtime.CoreException;
 
+import ch.hsr.ifs.iltis.cpp.core.resources.CProjectUtil;
+
 import com.cevelop.gslator.CCGlator;
 import com.cevelop.gslator.quickfixes.utils.ASTRewriteStore;
-
-import ch.hsr.ifs.iltis.cpp.core.resources.CProjectUtil;
 
 
 @SuppressWarnings("restriction")
@@ -85,7 +85,7 @@ public class ASTHelper {
 		MoveConstructor,
 		DefaultDestructor,
 		SwapFunction
-	};
+	}
 	// @formatter:on
 
     private ASTHelper() {}
@@ -558,8 +558,8 @@ public class ASTHelper {
             return SpecialFunction.MoveConstructor;
         } else if (getSwapFunctionType(decl, "") == AnalyseSwapFunction.IsFriendFunction || getSwapFunctionType(decl,
                 "") == AnalyseSwapFunction.IsMemberFunction) {
-            return SpecialFunction.SwapFunction;
-        }
+                    return SpecialFunction.SwapFunction;
+                }
         return SpecialFunction.NoSpecialFunction;
     }
 
@@ -667,7 +667,7 @@ public class ASTHelper {
                 if (paramDeclName instanceof ICPPASTTemplateId) {
                     if (!((ICPPASTTemplateId) paramDeclName).getTemplateName().toString().equals(className)) {
                         return false;
-                    } ;
+                    }
                 } else if (!((ICPPASTNamedTypeSpecifier) parameter.getDeclSpecifier()).getName().toString().equals(className)) {
                     return false;
                 }

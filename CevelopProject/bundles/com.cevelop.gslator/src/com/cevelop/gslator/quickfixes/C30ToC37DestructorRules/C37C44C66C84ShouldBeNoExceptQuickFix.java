@@ -25,7 +25,9 @@ public class C37C44C66C84ShouldBeNoExceptQuickFix extends RuleQuickFix {
             return Rule.C44 + ": Set to noexcept";
         } else if (problemId.contentEquals(ProblemId.P_C66.getId())) {
             return Rule.C66 + ": Set to noexcept";
-        } else if (problemId.contentEquals(ProblemId.P_C84.getId())) return Rule.C84 + ": Set to noexcept";
+        } else if (problemId.contentEquals(ProblemId.P_C84.getId())) {
+            return Rule.C84 + ": Set to noexcept";
+        }
         return BaseQuickFix.FAIL;
     }
 

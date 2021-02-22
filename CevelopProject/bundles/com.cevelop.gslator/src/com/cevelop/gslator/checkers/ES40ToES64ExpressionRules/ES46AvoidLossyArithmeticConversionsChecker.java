@@ -56,8 +56,10 @@ public class ES46AvoidLossyArithmeticConversionsChecker extends BaseChecker {
     }
 
     public void reportProblem(ES46LossyType type, IASTNode node) {
-        if (isEnabled(type, node.getTranslationUnit().getOriginatingTranslationUnit().getResource())) super.reportProblem(ProblemId.P_ES46, node,
-                new GslatorInfo(type.getMessage()));
+        if (isEnabled(type, node.getTranslationUnit().getOriginatingTranslationUnit().getResource())) {
+            super.reportProblem(ProblemId.P_ES46, node,
+                    new GslatorInfo(type.getMessage()));
+        }
     }
 
     private boolean isEnabled(ES46LossyType type, IResource res) {

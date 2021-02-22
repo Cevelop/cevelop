@@ -29,7 +29,9 @@ public class SetAttributeQuickFix extends BaseQuickFix {
 
     @Override
     public boolean isApplicable(IMarker marker) {
-        if (!super.isApplicable(marker)) return false;
+        if (!super.isApplicable(marker)) {
+            return false;
+        }
         setProblemIdIfIsNull();
         return BaseChecker.getCheckerByProblemId(problemId).isIgnoreApplicable(marker, getMarkedNode(marker));
     }
@@ -63,7 +65,9 @@ public class SetAttributeQuickFix extends BaseQuickFix {
     }
 
     private void setProblemIdIfIsNull() {
-        if (problemId == null) problemId = ProblemId.of(getProblemId(marker));
+        if (problemId == null) {
+            problemId = ProblemId.of(getProblemId(marker));
+        }
     }
 
     private void modifyAttributeSpec(final IASTAttributeOwner decl, final String ruleNr) {

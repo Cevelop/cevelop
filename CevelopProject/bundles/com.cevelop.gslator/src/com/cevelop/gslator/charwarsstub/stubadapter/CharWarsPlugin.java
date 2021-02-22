@@ -9,7 +9,9 @@ public class CharWarsPlugin extends AbstractUIPlugin {
     private static CharWarsPlugin plugin;
 
     public static AbstractUIPlugin getDefault() {
-        if (plugin == null) plugin = new CharWarsPlugin();
+        if (plugin == null) {
+            plugin = new CharWarsPlugin();
+        }
         return plugin;
     }
 

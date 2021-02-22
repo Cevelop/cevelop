@@ -40,7 +40,9 @@ public class ES74DeclareLoopVariableInTheInitializerChecker extends BaseChecker 
         while (!(node instanceof IASTForStatement) && !(node instanceof IASTTranslationUnit)) {
             node = node.getParent();
         }
-        if (node instanceof IASTForStatement) return node;
+        if (node instanceof IASTForStatement) {
+            return node;
+        }
         return null;
     }
 }

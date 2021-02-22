@@ -50,8 +50,8 @@ public class ES49IfMustUseNamedCastVisitor extends BaseVisitor {
         } else if (expression instanceof ICPPASTSimpleTypeConstructorExpression && isTypeConstEnabled(expression) && expression
                 .getChildren()[0] instanceof IASTSimpleDeclSpecifier && expression.getChildren()[1] instanceof ICPPASTConstructorInitializer &&
                    ((ICPPASTConstructorInitializer) expression.getChildren()[1]).getArguments().length > 0) {
-            reportProblem(expression);
-        }
+                       reportProblem(expression);
+                   }
 
         return super.visit(expression);
     }

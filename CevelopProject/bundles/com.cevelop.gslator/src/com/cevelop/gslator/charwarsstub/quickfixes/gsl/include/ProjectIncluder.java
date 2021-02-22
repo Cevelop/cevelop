@@ -107,7 +107,9 @@ public class ProjectIncluder {
 
     private static void linkCppLanguageInclueds(ICLanguageSetting[] settings) {
         for (ICLanguageSetting setting : settings) {
-            if (!"org.eclipse.cdt.core.g++".equals(setting.getLanguageId())) continue;
+            if (!"org.eclipse.cdt.core.g++".equals(setting.getLanguageId())) {
+                continue;
+            }
             addLinkIfNeeded(setting);
         }
     }
@@ -116,7 +118,9 @@ public class ProjectIncluder {
         List<ICLanguageSettingEntry> includes = new ArrayList<>();
         includes.addAll(setting.getSettingEntriesList(ICSettingEntry.INCLUDE_PATH));
         String linkString = "/" + getGslProjectName();
-        if (containsLink(linkString, includes)) return;
+        if (containsLink(linkString, includes)) {
+            return;
+        }
         includes.add(new CIncludePathEntry(linkString, ICSettingEntry.VALUE_WORKSPACE_PATH));
         setting.setSettingEntries(ICSettingEntry.INCLUDE_PATH, includes);
     }

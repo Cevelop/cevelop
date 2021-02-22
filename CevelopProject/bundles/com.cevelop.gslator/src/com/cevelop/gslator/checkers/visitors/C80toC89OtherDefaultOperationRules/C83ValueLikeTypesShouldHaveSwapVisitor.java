@@ -36,14 +36,22 @@ public class C83ValueLikeTypesShouldHaveSwapVisitor extends BaseVisitor {
         if (declchildren.length == 1 && declchildren[0] instanceof ICPPASTCompositeTypeSpecifier) {
             final ICPPASTCompositeTypeSpecifier typespec = (ICPPASTCompositeTypeSpecifier) declchildren[0];
 
-            if (!nodeHasNoIgnoreAttribute(this, typespec)) return PROCESS_CONTINUE;
+            if (!nodeHasNoIgnoreAttribute(this, typespec)) {
+                return PROCESS_CONTINUE;
+            }
 
-            if (!hasMemberVariables(typespec)) return PROCESS_CONTINUE;
+            if (!hasMemberVariables(typespec)) {
+                return PROCESS_CONTINUE;
+            }
 
-            if (hasBase(typespec)) return PROCESS_CONTINUE;
+            if (hasBase(typespec)) {
+                return PROCESS_CONTINUE;
+            }
 
             List<ICPPASTFunctionDeclarator> wankyswaps = new ArrayList<>();
-            if (hasMemberSwapOrVirtualFunction(typespec, wankyswaps)) return PROCESS_CONTINUE;
+            if (hasMemberSwapOrVirtualFunction(typespec, wankyswaps)) {
+                return PROCESS_CONTINUE;
+            }
 
             reportProblems(typespec, wankyswaps);
         }
@@ -54,7 +62,9 @@ public class C83ValueLikeTypesShouldHaveSwapVisitor extends BaseVisitor {
         List<IASTDeclaration> functions = ASTHelper.collectMemberFunctions(typespec);
         for (IASTDeclaration function : functions) {
             List<AnalyseSwapFunction> whynot = ASTHelper.analyseSwapFunction(function, "");
-            if (whynot.size() == 1 && whynot.get(0) == AnalyseSwapFunction.IsMemberFunction) return true;
+            if (whynot.size() == 1 && whynot.get(0) == AnalyseSwapFunction.IsMemberFunction) {
+                return true;
+            }
 
             if (whynot.size() == 2 && whynot.contains(AnalyseSwapFunction.IsMemberFunction) && whynot.contains(
                     AnalyseSwapFunction.ParamIsNotReference)) {
@@ -77,7 +87,9 @@ public class C83ValueLikeTypesShouldHaveSwapVisitor extends BaseVisitor {
 
     private boolean hasBase(final ICPPASTCompositeTypeSpecifier typespec) {
         for (IASTNode iastNode : typespec.getChildren()) {
-            if (iastNode instanceof ICPPASTBaseSpecifier) return true;
+            if (iastNode instanceof ICPPASTBaseSpecifier) {
+                return true;
+            }
         }
         return false;
     }

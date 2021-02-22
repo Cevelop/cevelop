@@ -37,7 +37,7 @@ public class C46DeclareSingleCtorExplicitVisitor extends BaseVisitor {
 
             final ICPPASTFunctionDeclarator funcDecl = (ICPPASTFunctionDeclarator) declarator;
             final IASTName funcName = funcDecl.getName();
-            if(funcName == null) {
+            if (funcName == null) {
                 return PROCESS_CONTINUE;
             }
             final IBinding binding = funcName.resolveBinding();

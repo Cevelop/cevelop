@@ -25,9 +25,13 @@ public class C45_01DefaultInClassInitializeQuickFix extends RuleQuickFix {
 
     @Override
     public boolean isApplicable(IMarker marker) {
-        if (!super.isApplicable(marker)) return false;
+        if (!super.isApplicable(marker)) {
+            return false;
+        }
         IASTNode markedNode = getMarkedNode(marker);
-        if (markedNode == null) return false;
+        if (markedNode == null) {
+            return false;
+        }
         return markedNode instanceof IASTName;
     }
 

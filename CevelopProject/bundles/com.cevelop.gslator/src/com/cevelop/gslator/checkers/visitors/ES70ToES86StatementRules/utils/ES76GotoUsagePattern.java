@@ -11,6 +11,7 @@ import com.cevelop.gslator.utils.ASTHelper;
 
 
 public enum ES76GotoUsagePattern {
+
     UNKNOWN, IF, LOOP, BREAK, LAMBDA;
 
     public static ES76GotoUsagePattern getPattern(IASTGotoStatement gotostmt) {
@@ -18,12 +19,16 @@ public enum ES76GotoUsagePattern {
 
         IASTLabelStatement label = null;
         for (IASTName iastName : refs) {
-            if (iastName.getParent() instanceof IASTLabelStatement) label = (IASTLabelStatement) iastName.getParent();
+            if (iastName.getParent() instanceof IASTLabelStatement) {
+                label = (IASTLabelStatement) iastName.getParent();
+            }
         }
 
         if (label != null) {
             ES76GotoUsagePattern tmp = ifOrLoopBehaviourDetected(gotostmt, label);
-            if (tmp != UNKNOWN) return tmp;
+            if (tmp != UNKNOWN) {
+                return tmp;
+            }
             return breakBehaviourDetected(gotostmt, label);
         }
         return UNKNOWN;
@@ -38,8 +43,12 @@ public enum ES76GotoUsagePattern {
                 boolean foundIf = false;
                 boolean foundLabel = false;
                 for (IASTNode iastNode : samelevelnodes) {
-                    if (iastNode.equals(parentIf)) foundIf = true;
-                    if (iastNode.equals(label)) foundLabel = true;
+                    if (iastNode.equals(parentIf)) {
+                        foundIf = true;
+                    }
+                    if (iastNode.equals(label)) {
+                        foundLabel = true;
+                    }
 
                     // CASE: if behaviour
                     if (foundIf && !foundLabel) {

@@ -21,7 +21,9 @@ public class C21MissingSpecialMemberFunctionsQuickFix extends RuleQuickFix {
     @Override
     public String getLabel() {
         final String problemId = getProblemId(marker);
-        if (problemId.contentEquals(ProblemId.P_C21.getId())) return Rule.C21.toString() + ": Define missing special member functions";
+        if (problemId.contentEquals(ProblemId.P_C21.getId())) {
+            return Rule.C21.toString() + ": Define missing special member functions";
+        }
         return BaseQuickFix.FAIL;
     }
 

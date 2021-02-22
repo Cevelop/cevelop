@@ -23,7 +23,9 @@ public class C83_02SwapParamIsNotReferenceQuickFix extends RuleQuickFix {
 
     @Override
     public boolean isApplicable(IMarker marker) {
-        if (!super.isApplicable(marker)) return false;
+        if (!super.isApplicable(marker)) {
+            return false;
+        }
         return getMarkedNode(marker) instanceof IASTFunctionDeclarator;
     }
 

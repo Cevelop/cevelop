@@ -7,12 +7,12 @@ import org.eclipse.cdt.core.dom.ast.cpp.ICPPASTFunctionDefinition;
 import org.eclipse.cdt.core.dom.ast.cpp.ICPPASTSimpleDeclSpecifier;
 import org.eclipse.cdt.core.dom.rewrite.ASTRewrite;
 
+import ch.hsr.ifs.iltis.cpp.core.ast.checker.helper.IProblemId;
+
 import com.cevelop.gslator.ids.IdHelper.ProblemId;
 import com.cevelop.gslator.ids.IdHelper.Rule;
 import com.cevelop.gslator.quickfixes.BaseQuickFix;
 import com.cevelop.gslator.quickfixes.RuleQuickFix;
-
-import ch.hsr.ifs.iltis.cpp.core.ast.checker.helper.IProblemId;
 
 
 public class C46C164DeclareFunctionExplicitQuickFix extends RuleQuickFix {

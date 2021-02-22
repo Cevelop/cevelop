@@ -17,16 +17,16 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.jface.text.IDocument;
 import org.eclipse.ltk.core.refactoring.CompositeChange;
 
+import ch.hsr.ifs.iltis.cpp.core.codan.marker.IInfoMarkerResolution;
+
 import com.cevelop.gslator.charwarsstub.asttools.ASTModifier;
 import com.cevelop.gslator.infos.GslatorInfo;
 import com.cevelop.gslator.quickfixes.utils.ASTRewriteStore;
 import com.cevelop.gslator.utils.CCGlatorCPPNodeFactory;
 
-import ch.hsr.ifs.iltis.cpp.core.codan.marker.IInfoMarkerResolution;
-
 
 @SuppressWarnings("restriction")
-public abstract class BaseQuickFix extends AbstractAstRewriteQuickFix implements IInfoMarkerResolution<GslatorInfo> { 
+public abstract class BaseQuickFix extends AbstractAstRewriteQuickFix implements IInfoMarkerResolution<GslatorInfo> {
 
     protected static final String FAIL = "There was something wrong";
 
@@ -35,13 +35,13 @@ public abstract class BaseQuickFix extends AbstractAstRewriteQuickFix implements
     protected ASTRewriteStore astRewriteStore;
 
     protected HashSet<String> newHeaders = new HashSet<>();
-    protected GslatorInfo info;
-    
+    protected GslatorInfo     info;
+
     public BaseQuickFix() {
         super();
         factory = CCGlatorCPPNodeFactory.getCPPNodeFactory();
     }
-    
+
     @Override
     public void configure(GslatorInfo info) {
         this.info = info;
@@ -73,7 +73,9 @@ public abstract class BaseQuickFix extends AbstractAstRewriteQuickFix implements
 
         handleMarkedNode(markedNode, astRewriteStore.getASTRewrite(markedNode));
         CompositeChange change = (CompositeChange) astRewriteStore.getChange();
-        if (newHeaders.size() > 0) ASTModifier.includeHeaders(newHeaders, change, (IFile) marker.getResource(), ast, getDocument());
+        if (newHeaders.size() > 0) {
+            ASTModifier.includeHeaders(newHeaders, change, (IFile) marker.getResource(), ast, getDocument());
+        }
         performChange(change, marker);
     }
 
@@ -96,7 +98,9 @@ public abstract class BaseQuickFix extends AbstractAstRewriteQuickFix implements
             } catch (CoreException | InterruptedException e) {
                 e.printStackTrace();
             } finally {
-                if (index != null) index.releaseReadLock();
+                if (index != null) {
+                    index.releaseReadLock();
+                }
             }
         } else {
             astRewriteStore = new ASTRewriteStore(index);
@@ -112,7 +116,7 @@ public abstract class BaseQuickFix extends AbstractAstRewriteQuickFix implements
     }
 
     protected IASTNode getMarkedNode(final IASTTranslationUnit astTranslationUnit, final IMarker marker) {
-        if(astTranslationUnit == null) {
+        if (astTranslationUnit == null) {
             return null;
         }
         final int start = marker.getAttribute(IMarker.CHAR_START, -1);

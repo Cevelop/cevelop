@@ -22,7 +22,9 @@ public class C35BaseClassDestructorQuickFix extends RuleQuickFix {
     @Override
     public String getLabel() {
         final String problemId = getProblemId(marker);
-        if (problemId.contentEquals(ProblemId.P_C35.getId())) return Rule.C35 + ": Set destructor to public virtual or protected non-virtual";
+        if (problemId.contentEquals(ProblemId.P_C35.getId())) {
+            return Rule.C35 + ": Set destructor to public virtual or protected non-virtual";
+        }
         return BaseQuickFix.FAIL;
     }
 

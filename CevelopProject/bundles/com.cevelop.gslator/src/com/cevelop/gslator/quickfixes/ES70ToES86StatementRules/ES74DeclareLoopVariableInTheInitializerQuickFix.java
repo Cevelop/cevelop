@@ -37,15 +37,23 @@ public class ES74DeclareLoopVariableInTheInitializerQuickFix extends BaseQuickFi
 
     @Override
     public boolean isApplicable(IMarker marker) {
-        if (!super.isApplicable(marker)) return false;
+        if (!super.isApplicable(marker)) {
+            return false;
+        }
         final IASTNode markedNode = getMarkedNode(marker);
-        if (markedNode == null) return false;
+        if (markedNode == null) {
+            return false;
+        }
         IASTTranslationUnit translatioUnit = markedNode.getTranslationUnit();
         IASTNode forStatement = markedNode.getParent();
-        if (!(forStatement instanceof IASTForStatement)) return false;
+        if (!(forStatement instanceof IASTForStatement)) {
+            return false;
+        }
 
         IASTName loopVariable = ASTHelper.getLoopVariable((IASTForStatement) forStatement);
-        if (loopVariable == null) return false;
+        if (loopVariable == null) {
+            return false;
+        }
 
         IBinding loopBinding = loopVariable.resolveBinding();
         IASTName[] variableReferences = translatioUnit.getReferences(loopBinding);

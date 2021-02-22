@@ -8,7 +8,9 @@ public class ES49_01UseStaticCastQuickFix extends ES49_00UseNamedCastQuickFix {
     @Override
     public String getLabel() {
         String num = "";
-        if (isReinterpretCastQuickFixEnabled(marker)) num = "a) ";
+        if (isReinterpretCastQuickFixEnabled(marker)) {
+            num = "a) ";
+        }
         return Rule.ES49 + ": " + num + "use static_cast()";
     }
 

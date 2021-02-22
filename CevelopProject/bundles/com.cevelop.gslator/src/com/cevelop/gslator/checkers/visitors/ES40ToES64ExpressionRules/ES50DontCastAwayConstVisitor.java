@@ -18,13 +18,13 @@ import org.eclipse.cdt.core.dom.ast.cpp.ICPPASTNameSpecifier;
 import org.eclipse.cdt.core.dom.ast.cpp.ICPPASTQualifiedName;
 import org.eclipse.cdt.core.index.IIndex;
 
+import ch.hsr.ifs.iltis.cpp.core.resources.CProjectUtil;
+
 import com.cevelop.gslator.checkers.BaseChecker;
 import com.cevelop.gslator.checkers.visitors.BaseVisitor;
 import com.cevelop.gslator.ids.IdHelper.ProblemId;
 import com.cevelop.gslator.quickfixes.utils.ASTRewriteStore;
 import com.cevelop.gslator.utils.ASTHelper;
-
-import ch.hsr.ifs.iltis.cpp.core.resources.CProjectUtil;
 
 
 public class ES50DontCastAwayConstVisitor extends BaseVisitor {
@@ -48,10 +48,16 @@ public class ES50DontCastAwayConstVisitor extends BaseVisitor {
     }
 
     public static boolean isConstCast(IASTCastExpression expression) {
-        if (expression.getOperator() == ICPPASTCastExpression.op_const_cast) return true;
+        if (expression.getOperator() == ICPPASTCastExpression.op_const_cast) {
+            return true;
+        }
         if (expression.getOperator() == IASTCastExpression.op_cast) {
-            if (isCCastRemovingConst(expression)) return true;
-            if (isFunctionConst(expression) && isOperandMemberOfClass(expression, null)) return true;
+            if (isCCastRemovingConst(expression)) {
+                return true;
+            }
+            if (isFunctionConst(expression) && isOperandMemberOfClass(expression, null)) {
+                return true;
+            }
         }
         return false;
     }
@@ -62,11 +68,15 @@ public class ES50DontCastAwayConstVisitor extends BaseVisitor {
         IType sourceType = ASTHelper.getTypeFromExpressionElement(expression.getOperand(), true, intermediates, IASTTypeId.class);
         boolean isTargetConst = targetType.getDeclSpecifier().isConst();
         boolean isSourceConst = ASTHelper.isTypeConst(sourceType);
-        if (!isTargetConst && isSourceConst) return true;
+        if (!isTargetConst && isSourceConst) {
+            return true;
+        }
         if (!isTargetConst && !isSourceConst) {
             IASTTypeId toType = targetType;
             for (IASTTypeId fromType : intermediates) {
-                if (!toType.getDeclSpecifier().isConst() && fromType.getDeclSpecifier().isConst()) return true;
+                if (!toType.getDeclSpecifier().isConst() && fromType.getDeclSpecifier().isConst()) {
+                    return true;
+                }
                 toType = fromType;
             }
         }
@@ -77,15 +87,19 @@ public class ES50DontCastAwayConstVisitor extends BaseVisitor {
         ICPPASTFunctionDefinition funcdef = ASTHelper.getFunctionDefinition(node);
         if (funcdef != null && funcdef.getDeclarator() instanceof ICPPASTFunctionDeclarator) {
             ICPPASTFunctionDeclarator funcdelc = (ICPPASTFunctionDeclarator) funcdef.getDeclarator();
-            if (funcdelc != null) return funcdelc.isConst();
+            if (funcdelc != null) {
+                return funcdelc.isConst();
+            }
         }
         return false;
     }
 
     public static boolean isOperandMemberOfClass(IASTCastExpression markedNode, ASTRewriteStore astRewriteStore) {
         ICPPASTCompositeTypeSpecifier theClass = ASTHelper.getCompositeTypeSpecifier(markedNode);
-        if (theClass == null) theClass = getCompositeTypeDeclarationFromFunctionWithQualifiedName(ASTHelper.getFunctionDefinition(markedNode),
-                astRewriteStore);
+        if (theClass == null) {
+            theClass = getCompositeTypeDeclarationFromFunctionWithQualifiedName(ASTHelper.getFunctionDefinition(markedNode),
+                    astRewriteStore);
+        }
 
         IASTExpression op = markedNode.getOperand();
         if (op instanceof IASTIdExpression) {

@@ -42,24 +42,34 @@ public class AttributeOwnerHelper {
 
     private static boolean instanceOfOne(Object obj, List<Class> list) {
         for (Class theClass : list) {
-            if (theClass.isInstance(obj)) return true;
+            if (theClass.isInstance(obj)) {
+                return true;
+            }
         }
         return false;
     }
 
     public static IASTAttributeOwner getWantedAttributeOwner(final IASTNode node) {
         IASTAttributeOwner attrnode = getValidAttributeOwner(node);
-        if (attrnode == null) return null;
-        if (instanceOfUnwanted(attrnode)) return getWantedAttributeOwner(attrnode.getParent());
+        if (attrnode == null) {
+            return null;
+        }
+        if (instanceOfUnwanted(attrnode)) {
+            return getWantedAttributeOwner(attrnode.getParent());
+        }
         return attrnode;
     }
 
     public static IASTAttributeOwner getValidAttributeOwner(IASTNode node) {
         while (!valid(node) && !(node instanceof IASTTranslationUnit)) {
-            if (node == null) return null;
+            if (node == null) {
+                return null;
+            }
             node = node.getParent();
         }
-        if (node instanceof IASTTranslationUnit) return null;
+        if (node instanceof IASTTranslationUnit) {
+            return null;
+        }
         return (IASTAttributeOwner) node;
     }
 }

@@ -12,16 +12,16 @@ import org.eclipse.collections.impl.factory.Lists;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IResource;
 
+import ch.hsr.ifs.iltis.cpp.core.ast.checker.helper.IProblemId;
+import ch.hsr.ifs.iltis.cpp.core.resources.info.MarkerInfo;
+import ch.hsr.ifs.iltis.cpp.core.wrappers.AbstractIndexAstChecker;
+
 import com.cevelop.gslator.checkers.visitors.util.ICheckIgnoreAttribute;
 import com.cevelop.gslator.ids.IdHelper.ProblemId;
 import com.cevelop.gslator.ids.IdHelper.Rule;
 import com.cevelop.gslator.infos.GslatorInfo;
 import com.cevelop.gslator.nodes.util.AttributeOwnerHelper;
 import com.cevelop.gslator.utils.ASTHelper;
-
-import ch.hsr.ifs.iltis.cpp.core.ast.checker.helper.IProblemId;
-import ch.hsr.ifs.iltis.cpp.core.resources.info.MarkerInfo;
-import ch.hsr.ifs.iltis.cpp.core.wrappers.AbstractIndexAstChecker;
 
 
 public abstract class BaseChecker extends AbstractIndexAstChecker implements ICheckIgnoreAttribute {
@@ -49,7 +49,9 @@ public abstract class BaseChecker extends AbstractIndexAstChecker implements ICh
 
     @Override
     public void reportProblem(IProblemId<?> id, IASTNode astNode) {
-        if (!ASTHelper.isInMacro(astNode)) super.reportProblem(id, astNode, new GslatorInfo());
+        if (!ASTHelper.isInMacro(astNode)) {
+            super.reportProblem(id, astNode, new GslatorInfo());
+        }
     }
 
     // TODO(tstauber - Sep 27, 2018) REMOVE AFTER TESTING
@@ -60,7 +62,9 @@ public abstract class BaseChecker extends AbstractIndexAstChecker implements ICh
 
     @Override
     public void reportProblem(IProblemId<?> id, IASTNode astNode, MarkerInfo<?> info) {
-        if (!ASTHelper.isInMacro(astNode)) super.reportProblem(id, astNode, info);
+        if (!ASTHelper.isInMacro(astNode)) {
+            super.reportProblem(id, astNode, info);
+        }
     }
     // // TODO(tstauber - Sep 27, 2018) REMOVE AFTER TESTING
     //   @Override

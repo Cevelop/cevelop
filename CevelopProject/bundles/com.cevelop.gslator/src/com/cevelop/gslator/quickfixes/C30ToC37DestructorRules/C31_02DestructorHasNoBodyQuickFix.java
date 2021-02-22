@@ -19,7 +19,9 @@ public class C31_02DestructorHasNoBodyQuickFix extends C31_00DeleteOwnersInDestr
     @Override
     public String getLabel() {
         final String problemId = getProblemId(marker);
-        if (problemId.contentEquals(ProblemId.P_C31_02.getId())) return Rule.C31 + ": Add body to destructor and insert delete statements";
+        if (problemId.contentEquals(ProblemId.P_C31_02.getId())) {
+            return Rule.C31 + ": Add body to destructor and insert delete statements";
+        }
         return BaseQuickFix.FAIL;
     }
 

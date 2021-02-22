@@ -15,6 +15,7 @@ public class IdHelper {
     public static final String PROBLEMS_PREFIX    = DEFAULT_QUALIFIER + ".problems.";
 
     public enum ProblemId implements IProblemId<ProblemId> {
+
         P_C164(PROBLEMS_PREFIX + Rule.C164 + "AvoidConversionOperators"), //
         P_C20(PROBLEMS_PREFIX + Rule.C20 + "RedundantOperations"), //
         P_C21(PROBLEMS_PREFIX + Rule.C21 + "MissingSpecialMemberFunctions"), //
@@ -67,7 +68,9 @@ public class IdHelper {
 
         public static ProblemId of(String string) {
             for (final ProblemId id : values()) {
-                if (id.getId().equals(string)) return id;
+                if (id.getId().equals(string)) {
+                    return id;
+                }
             }
             throw new IllegalArgumentException("Illegal ProblemId: " + string);
         }
@@ -85,6 +88,7 @@ public class IdHelper {
     }
 
     public enum Rule implements IId<Rule> {
+
         C164("C.164"), //
         C20("C.20"), //
         C21("C.21"), //
@@ -132,7 +136,9 @@ public class IdHelper {
 
         public static Rule of(String string) {
             for (final Rule id : values()) {
-                if (id.getId().equals(string)) return id;
+                if (id.getId().equals(string)) {
+                    return id;
+                }
             }
             throw new IllegalArgumentException("Illegal Rule: " + string);
         }

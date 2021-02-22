@@ -21,8 +21,8 @@ public class ES50_02RemoveConstCastAndMakeMembervarMutableQuickFix extends ES50_
     public boolean isApplicable(IMarker marker) {
         if (super.isApplicable(marker)) {
             IASTCastExpression markedNode = (IASTCastExpression) getMarkedNode(marker);
-            if(markedNode == null) {
-            	return false;
+            if (markedNode == null) {
+                return false;
             }
             IIndex index = markedNode.getTranslationUnit().getIndex();
             try {
@@ -31,7 +31,9 @@ public class ES50_02RemoveConstCastAndMakeMembervarMutableQuickFix extends ES50_
                 if (!ASTHelper.isTypeConst(type) && isFunctionConst(markedNode) && isOperandMemberOfClass(markedNode)) { // Case "func is const" (membervar can be mutable)
                     IASTExpression op = markedNode.getOperand();
                     if (op instanceof IASTIdExpression) {
-                        if (isFileWithDeclarationOfNameModifiable(((IASTIdExpression) op).getName())) return true;
+                        if (isFileWithDeclarationOfNameModifiable(((IASTIdExpression) op).getName())) {
+                            return true;
+                        }
                     }
                 }
             } catch (InterruptedException e) {

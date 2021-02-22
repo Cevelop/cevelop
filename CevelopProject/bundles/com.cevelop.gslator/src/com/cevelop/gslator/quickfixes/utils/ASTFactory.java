@@ -253,7 +253,7 @@ public class ASTFactory {
                 }
                 adaptedParamters.add(adaptedParameter);
             }
-        } ;
+        }
         return adaptedParamters;
 
     }
@@ -281,7 +281,7 @@ public class ASTFactory {
                 argumentName += String.valueOf(Keywords.cpELLIPSIS);
             }
             names.add(argumentName);
-        } ;
+        }
         return names;
     }
 
@@ -315,7 +315,9 @@ public class ASTFactory {
         for (ICPPASTParameterDeclaration param : params) {
             functionDeclarator.addParameterDeclaration(param);
         }
-        if (noexcept) functionDeclarator.setNoexceptExpression(ICPPASTFunctionDeclarator.NOEXCEPT_DEFAULT);
+        if (noexcept) {
+            functionDeclarator.setNoexceptExpression(ICPPASTFunctionDeclarator.NOEXCEPT_DEFAULT);
+        }
 
         ICPPASTSimpleDeclSpecifier declspec = factory.newSimpleDeclSpecifier();
         declspec.setType(returnType);
@@ -386,13 +388,13 @@ public class ASTFactory {
 
     /**
      * Creates a new literal expression
-     * 
+     *
      * @param kind
      * The literal expression kind {@link IASTLiteralExpression}
-     * 
+     *
      * @param val
      * The literal expression value
-     * 
+     *
      * @return A new {@link IASTLiteralExpression}
      */
     public static IASTLiteralExpression newLiteralExpression(int kind, String val) {
@@ -405,13 +407,13 @@ public class ASTFactory {
 
     /**
      * Creates a new unary expression
-     * 
+     *
      * @param operator
      * The unary expression operator
-     * 
+     *
      * @param operand
      * The unary expression operand
-     * 
+     *
      * @return a new {@link IASTUnaryExpression}
      */
     public static IASTUnaryExpression newUnaryExpression(int operator, IASTExpression operand) {

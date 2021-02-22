@@ -49,7 +49,9 @@ public class ES26DontUseVariableForTwoUnrelatedPurposesVisitor extends BaseVisit
 
     @Override
     public int visit(final IASTDeclaration declaration) {
-        if (!(declaration instanceof IASTSimpleDeclaration)) return PROCESS_CONTINUE;
+        if (!(declaration instanceof IASTSimpleDeclaration)) {
+            return PROCESS_CONTINUE;
+        }
 
         IASTSimpleDeclaration simpleDecl = (IASTSimpleDeclaration) declaration;
         IASTDeclarator[] declarators = simpleDecl.getDeclarators();
@@ -73,8 +75,12 @@ public class ES26DontUseVariableForTwoUnrelatedPurposesVisitor extends BaseVisit
             IASTStatement declaratorInsideIfOrSwitch = getIfOrSwitchStatement(declarator.getName());
 
             for (IASTName name : usages) {
-                if (!nodeHasNoIgnoreAttribute(this, getAttributeOwner(name))) return PROCESS_CONTINUE;
-                if (ASTHelper.isForLoopStatement(name)) return PROCESS_CONTINUE;
+                if (!nodeHasNoIgnoreAttribute(this, getAttributeOwner(name))) {
+                    return PROCESS_CONTINUE;
+                }
+                if (ASTHelper.isForLoopStatement(name)) {
+                    return PROCESS_CONTINUE;
+                }
                 if (usedInitializations > ALLOWED_INITIALIZATIONS) {
                     checker.reportProblem(ProblemId.P_ES26, name);
                 } else {

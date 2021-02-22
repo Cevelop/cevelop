@@ -48,10 +48,14 @@ public class ES75AvoidDoStatementsQuickFix extends BaseQuickFix {
     private static String findFreeName(IASTNode scopePoint) {
         IASTNode node = scopePoint;
         IScope scope = ASTHelper.getNextParentScope(node);
-        if (scope == null) return "firstRun";
+        if (scope == null) {
+            return "firstRun";
+        }
 
         List<String> names = getNameListFromScope(scope, "firstRun", scopePoint);
-        if (!names.contains("firstRun")) return "firstRun";
+        if (!names.contains("firstRun")) {
+            return "firstRun";
+        }
 
         int i = 0;
         do {

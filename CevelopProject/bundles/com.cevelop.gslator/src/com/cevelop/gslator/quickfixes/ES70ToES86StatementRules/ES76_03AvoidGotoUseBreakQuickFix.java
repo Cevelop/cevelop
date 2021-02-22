@@ -21,16 +21,22 @@ public class ES76_03AvoidGotoUseBreakQuickFix extends ES76_00AvoidGotoQuickFix {
 
     @Override
     public boolean isApplicable(IMarker marker) {
-        if (!super.isApplicable(marker)) return false;
+        if (!super.isApplicable(marker)) {
+            return false;
+        }
         final IASTNode markedNode = getMarkedNode(marker);
-        if (markedNode == null) return false;
+        if (markedNode == null) {
+            return false;
+        }
         return ES76GotoUsagePattern.getPattern((IASTGotoStatement) markedNode) == ES76GotoUsagePattern.BREAK;
     }
 
     @Override
     protected void handleMarkedNode(IASTNode markedNode, ASTRewrite hRewrite) {
         IASTLabelStatement label = getLabelStatement((IASTGotoStatement) markedNode);
-        if (canRemoveLabel(label)) hRewrite.replace(label, label.getNestedStatement().copy(CopyStyle.withLocations), null);
+        if (canRemoveLabel(label)) {
+            hRewrite.replace(label, label.getNestedStatement().copy(CopyStyle.withLocations), null);
+        }
         hRewrite.replace(markedNode, ASTFactory.newBreakStatement(), null);
     }
 }

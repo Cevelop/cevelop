@@ -25,7 +25,9 @@ public class C31_03DestructorWithMissingDeleteStatementsQuickFix extends C31_00D
     @Override
     public String getLabel() {
         final String problemId = getProblemId(marker);
-        if (problemId.contentEquals(ProblemId.P_C31_03.getId())) return Rule.C31 + ": Add delete statements to destructor body";
+        if (problemId.contentEquals(ProblemId.P_C31_03.getId())) {
+            return Rule.C31 + ": Add delete statements to destructor body";
+        }
         return BaseQuickFix.FAIL;
     }
 

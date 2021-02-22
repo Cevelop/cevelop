@@ -25,7 +25,9 @@ abstract public class ES76_00AvoidGotoQuickFix extends BaseQuickFix {
 
         IASTLabelStatement label = null;
         for (IASTName iastName : refs) {
-            if (iastName.getParent() instanceof IASTLabelStatement) label = (IASTLabelStatement) iastName.getParent();
+            if (iastName.getParent() instanceof IASTLabelStatement) {
+                label = (IASTLabelStatement) iastName.getParent();
+            }
         }
         return label;
     }
@@ -56,10 +58,14 @@ abstract public class ES76_00AvoidGotoQuickFix extends BaseQuickFix {
         for (IASTNode iastNode : samelevelnodes) {
             if (!foundStartBorder && (iastNode.equals(ifstmt) || iastNode.equals(label))) {
                 foundStartBorder = true;
-                if (iastNode.equals(label)) optionalNodes.add(label.getNestedStatement());
+                if (iastNode.equals(label)) {
+                    optionalNodes.add(label.getNestedStatement());
+                }
                 continue;
             }
-            if (foundStartBorder && (iastNode.equals(ifstmt) || iastNode.equals(label))) foundEndBorder = true;
+            if (foundStartBorder && (iastNode.equals(ifstmt) || iastNode.equals(label))) {
+                foundEndBorder = true;
+            }
 
             if (foundStartBorder && !foundEndBorder) {
                 optionalNodes.add(iastNode);

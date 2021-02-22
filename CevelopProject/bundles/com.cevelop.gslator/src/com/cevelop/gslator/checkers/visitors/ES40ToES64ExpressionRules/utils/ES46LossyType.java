@@ -1,6 +1,7 @@
 package com.cevelop.gslator.checkers.visitors.ES40ToES64ExpressionRules.utils;
 
 public enum ES46LossyType {
+
     UNKNOWN(""), FpToInt("Floating Point to Integer"), FpToIntFunc("Floating Point to Integer Function Argument"), IntToCharBig(
             "Integer (>= long) to Char"), IntToCharBigFunc("Integer (>= long) to Char Function Argument"), IntToCharSmll(
                     "Integer (< long) to Char"), IntToCharSmllFunc("Integer (< long) to Char Function Argument"), ToUnsigned(

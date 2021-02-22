@@ -29,9 +29,13 @@ public class ES76_01AvoidGotoUseNormalIfQuickFix extends ES76_00AvoidGotoQuickFi
 
     @Override
     public boolean isApplicable(IMarker marker) {
-        if (!super.isApplicable(marker)) return false;
+        if (!super.isApplicable(marker)) {
+            return false;
+        }
         final IASTNode markedNode = getMarkedNode(marker);
-        if (markedNode == null) return false;
+        if (markedNode == null) {
+            return false;
+        }
         return ES76GotoUsagePattern.getPattern((IASTGotoStatement) markedNode) == ES76GotoUsagePattern.IF;
     }
 
@@ -61,13 +65,17 @@ public class ES76_01AvoidGotoUseNormalIfQuickFix extends ES76_00AvoidGotoQuickFi
 
         List<IASTStatement> elseStatements = prepareStatements(markedNode, optionalNodes, parentIf.getElseClause());
         IASTCompoundStatement newElseClause = null;
-        if (elseStatements.size() > 0) newElseClause = ASTFactory.newCompoundStatement(elseStatements);
+        if (elseStatements.size() > 0) {
+            newElseClause = ASTFactory.newCompoundStatement(elseStatements);
+        }
 
         IASTExpression newCond = parentIf.getConditionExpression().copy(CopyStyle.withLocations);
 
         // swap "then" and "else" if "then" empty
         if (thenStatements.size() == 0) {
-            if (!(newCond instanceof IASTIdExpression)) newCond = ASTFactory.newUnaryExpression(IASTUnaryExpression.op_bracketedPrimary, newCond);
+            if (!(newCond instanceof IASTIdExpression)) {
+                newCond = ASTFactory.newUnaryExpression(IASTUnaryExpression.op_bracketedPrimary, newCond);
+            }
             newCond = ASTFactory.newUnaryExpression(IASTUnaryExpression.op_not, newCond);
             newThenClause = newElseClause;
             newElseClause = null;
@@ -92,7 +100,9 @@ public class ES76_01AvoidGotoUseNormalIfQuickFix extends ES76_00AvoidGotoQuickFi
         IASTGotoStatement[] gotoInNewList = new IASTGotoStatement[thenStatements.size()];
         int i = 0;
         for (IASTStatement iastStatement : thenStatements) {
-            if (iastStatement instanceof IASTGotoStatement) gotoInNewList[i++] = (IASTGotoStatement) iastStatement;
+            if (iastStatement instanceof IASTGotoStatement) {
+                gotoInNewList[i++] = (IASTGotoStatement) iastStatement;
+            }
         }
         IASTNode toDelete = findCorrespondingGoto(markedNode, getAllGotosInParent(markedNode.getParent()), gotoInNewList);
         return toDelete;

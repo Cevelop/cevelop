@@ -17,12 +17,12 @@ import org.eclipse.cdt.core.dom.ast.cpp.ICPPASTFunctionDefinition;
 import org.eclipse.cdt.core.dom.ast.cpp.ICPPASTLiteralExpression;
 import org.eclipse.cdt.core.index.IIndex;
 
+import ch.hsr.ifs.iltis.cpp.core.resources.CProjectUtil;
+
 import com.cevelop.gslator.checkers.BaseChecker;
 import com.cevelop.gslator.checkers.visitors.util.AttributeMatcher;
 import com.cevelop.gslator.checkers.visitors.util.ICheckIgnoreAttribute;
 import com.cevelop.gslator.utils.ASTHelper;
-
-import ch.hsr.ifs.iltis.cpp.core.resources.CProjectUtil;
 
 
 public abstract class BaseVisitor extends ASTVisitor implements ICheckIgnoreAttribute {

@@ -119,7 +119,9 @@ public class C48PreferInClassInitializerToCtorsVisitor extends BaseVisitor {
     }
 
     private IASTName findParamName(final ICPPASTConstructorChainInitializer member) {
-        if (member == null || member.getInitializer() == null) return null;
+        if (member == null || member.getInitializer() == null) {
+            return null;
+        }
         for (final IASTNode node : member.getInitializer().getChildren()) {
             if (node instanceof IASTIdExpression) {
                 return ((IASTIdExpression) node).getName();

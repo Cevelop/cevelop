@@ -51,7 +51,9 @@ abstract public class ES46_00AvoidLossyArithmeticConversionsQuickFix extends Bas
         } else if (markedNode instanceof IASTDeclarator) {
             data = getRewriteDataFromDeclarator((IASTDeclarator) markedNode);
         }
-        if (data == null) data = new ES46QuickFixData();
+        if (data == null) {
+            data = new ES46QuickFixData();
+        }
         return data;
     }
 

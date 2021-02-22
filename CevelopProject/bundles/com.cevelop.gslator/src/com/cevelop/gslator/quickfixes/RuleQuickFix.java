@@ -13,9 +13,9 @@ import org.eclipse.cdt.core.dom.ast.cpp.ICPPASTVisibilityLabel;
 import org.eclipse.cdt.core.dom.rewrite.ASTRewrite;
 import org.eclipse.cdt.core.index.IIndex;
 
-import com.cevelop.gslator.utils.ASTHelper;
-
 import ch.hsr.ifs.iltis.cpp.core.resources.CProjectUtil;
+
+import com.cevelop.gslator.utils.ASTHelper;
 
 
 @SuppressWarnings("restriction")
@@ -95,7 +95,9 @@ public abstract class RuleQuickFix extends BaseQuickFix {
     public ICPPASTFunctionDefinition getImplFromDeclaration(final IASTSimpleDeclaration decl) {
         final ASTHelper.SpecialFunction type = ASTHelper.getSpecialMemberFunctionType(decl);
         final ICPPASTCompositeTypeSpecifier typeSpecifier = ASTHelper.getCompositeTypeSpecifier(decl);
-        if (typeSpecifier == null) return null;
+        if (typeSpecifier == null) {
+            return null;
+        }
         final IASTName name = typeSpecifier.getName();
 
         //TODO(tstauber): Extract the livin' hell out of this. BRAAAHHHH

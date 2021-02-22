@@ -127,10 +127,14 @@ public class C20RedundantOperationsVisitor extends BaseVisitor {
                     IASTNode initializer = chainInitializer.getChildren()[1];
                     if (initializer instanceof IASTInitializerList) {
                         IASTInitializerList list = (IASTInitializerList) initializer;
-                        if (list.getChildren().length != 0) return true;
+                        if (list.getChildren().length != 0) {
+                            return true;
+                        }
                     }
                     if (initializer instanceof ICPPASTConstructorInitializer) {
-                        if (initializer.getChildren().length != 0) return true;
+                        if (initializer.getChildren().length != 0) {
+                            return true;
+                        }
                     }
                 }
             }

@@ -47,7 +47,9 @@ public class ES46AvoidLossyArithmeticConversionsVisitor extends BaseVisitor {
 
     @Override
     public int visit(final IASTExpression expression) {
-        if (!nodeHasNoIgnoreAttribute(this, expression.getParent())) return PROCESS_CONTINUE;
+        if (!nodeHasNoIgnoreAttribute(this, expression.getParent())) {
+            return PROCESS_CONTINUE;
+        }
         if (expression instanceof IASTBinaryExpression) {
             IASTBinaryExpression binexp = (IASTBinaryExpression) expression;
             int operator = binexp.getOperator();
@@ -82,7 +84,9 @@ public class ES46AvoidLossyArithmeticConversionsVisitor extends BaseVisitor {
                     List<String> intermediateTypes = new ArrayList<>();
                     String from = getTypeStringFromExpressionElement(iastInitializerClause, intermediateTypes);
                     String to = "";
-                    if (paramsspec.get(i) != null) to = paramsspec.get(i).toString();
+                    if (paramsspec.get(i) != null) {
+                        to = paramsspec.get(i).toString();
+                    }
                     analyseLossy(from, to, iastInitializerClause, true, intermediateTypes);
                     i++;
                 }
@@ -93,7 +97,9 @@ public class ES46AvoidLossyArithmeticConversionsVisitor extends BaseVisitor {
 
     @Override
     public int visit(final IASTDeclarator declarator) {
-        if (!nodeHasNoIgnoreAttribute(this, declarator.getParent())) return PROCESS_CONTINUE;
+        if (!nodeHasNoIgnoreAttribute(this, declarator.getParent())) {
+            return PROCESS_CONTINUE;
+        }
         for (IASTNode declaratorChild : declarator.getChildren()) {
             if (declaratorChild instanceof IASTEqualsInitializer) {
                 IASTEqualsInitializer eqinit = (IASTEqualsInitializer) declaratorChild;

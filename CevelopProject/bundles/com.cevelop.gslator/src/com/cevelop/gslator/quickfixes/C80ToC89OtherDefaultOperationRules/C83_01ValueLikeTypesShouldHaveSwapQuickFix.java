@@ -25,7 +25,9 @@ public class C83_01ValueLikeTypesShouldHaveSwapQuickFix extends RuleQuickFix {
 
     @Override
     public boolean isApplicable(IMarker marker) {
-        if (!super.isApplicable(marker)) return false;
+        if (!super.isApplicable(marker)) {
+            return false;
+        }
         return getMarkedNode(marker) instanceof IASTName;
     }
 

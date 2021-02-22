@@ -38,8 +38,10 @@ public class ES76AvoidGotoVisitor extends BaseVisitor {
                 break;
             case LAMBDA:
                 if (((ES76AvoidGotoChecker) checker).isMultibreakMarkerEnabled(statement.getTranslationUnit().getOriginatingTranslationUnit()
-                        .getResource())) checker.reportProblem(ProblemId.P_ES76, gotostmt, new GslatorInfo(
-                                " (lambda and return might be more elegant)"));
+                        .getResource())) {
+                    checker.reportProblem(ProblemId.P_ES76, gotostmt, new GslatorInfo(
+                            " (lambda and return might be more elegant)"));
+                }
                 break;
             default:
                 checker.reportProblem(ProblemId.P_ES76, statement, new GslatorInfo(""));

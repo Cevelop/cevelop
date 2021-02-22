@@ -11,11 +11,11 @@ import org.eclipse.cdt.core.dom.rewrite.ASTRewrite;
 import org.eclipse.cdt.core.index.IIndex;
 import org.eclipse.core.resources.IFile;
 
+import ch.hsr.ifs.iltis.cpp.core.resources.CProjectUtil;
+
 import com.cevelop.gslator.checkers.visitors.ES40ToES64ExpressionRules.ES50DontCastAwayConstVisitor;
 import com.cevelop.gslator.quickfixes.BaseQuickFix;
 import com.cevelop.gslator.utils.ASTHelper;
-
-import ch.hsr.ifs.iltis.cpp.core.resources.CProjectUtil;
 
 
 abstract public class ES50_00RemoveConstCastQuickFix extends BaseQuickFix {
@@ -39,7 +39,9 @@ abstract public class ES50_00RemoveConstCastQuickFix extends BaseQuickFix {
         if (names.size() == 1) {
             IASTNode name = names.get(0);
             IFile file = name.getTranslationUnit().getOriginatingTranslationUnit().getFile();
-            if (file != null) return !file.isReadOnly();
+            if (file != null) {
+                return !file.isReadOnly();
+            }
         }
         return true; // when in doubt assume writable
     }

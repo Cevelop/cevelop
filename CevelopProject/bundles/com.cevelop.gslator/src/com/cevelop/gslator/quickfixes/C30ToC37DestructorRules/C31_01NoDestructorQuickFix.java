@@ -23,7 +23,9 @@ public class C31_01NoDestructorQuickFix extends C31_00DeleteOwnersInDestructorQu
     @Override
     public String getLabel() {
         final String problemId = getProblemId(marker);
-        if (problemId.contentEquals(ProblemId.P_C31_01.getId())) return Rule.C31.toString() + ": Add destructor with delete statements";
+        if (problemId.contentEquals(ProblemId.P_C31_01.getId())) {
+            return Rule.C31.toString() + ": Add destructor with delete statements";
+        }
         return BaseQuickFix.FAIL;
     }
 

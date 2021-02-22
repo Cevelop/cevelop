@@ -25,10 +25,16 @@ public class ES76_04AvoidGotoUseLambdaReturnQuickFix extends ES76_00AvoidGotoQui
 
     @Override
     public boolean isApplicable(final IMarker marker) {
-        if (!super.isApplicable(marker)) return false;
+        if (!super.isApplicable(marker)) {
+            return false;
+        }
         final IASTNode markedNode = getMarkedNode(marker);
-        if (markedNode == null) return false;
-        if (ES76GotoUsagePattern.getPattern((IASTGotoStatement) markedNode) != ES76GotoUsagePattern.LAMBDA) return false;
+        if (markedNode == null) {
+            return false;
+        }
+        if (ES76GotoUsagePattern.getPattern((IASTGotoStatement) markedNode) != ES76GotoUsagePattern.LAMBDA) {
+            return false;
+        }
 
         IASTLabelStatement label = getLabelStatement((IASTGotoStatement) markedNode);
         IASTNode oldLoop = findParentLoopInFrontOfLabel(markedNode, label);
@@ -83,7 +89,9 @@ public class ES76_04AvoidGotoUseLambdaReturnQuickFix extends ES76_00AvoidGotoQui
     private IASTNode findParentLoopInFrontOfLabel(IASTNode markedNode, IASTLabelStatement label) {
         IASTNode loop = ASTHelper.getNextOuterLoop(markedNode);
         while (loop != null) {
-            if (ASTHelper.isDirecltyAfterwards(loop, label)) break;
+            if (ASTHelper.isDirecltyAfterwards(loop, label)) {
+                break;
+            }
             loop = ASTHelper.getNextOuterLoop(loop);
         }
         return loop;

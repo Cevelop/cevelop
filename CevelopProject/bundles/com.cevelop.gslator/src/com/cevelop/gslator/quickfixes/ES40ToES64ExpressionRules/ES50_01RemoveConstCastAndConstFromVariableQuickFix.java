@@ -28,15 +28,15 @@ public class ES50_01RemoveConstCastAndConstFromVariableQuickFix extends ES50_00R
     public boolean isApplicable(IMarker marker) {
         if (super.isApplicable(marker)) {
             IASTCastExpression markedNode = (IASTCastExpression) getMarkedNode(marker);
-            if(markedNode == null) {
-            	return false;
+            if (markedNode == null) {
+                return false;
             }
-            
+
             IASTTranslationUnit tu = markedNode.getTranslationUnit();
             if (tu == null) {
-            	return false;
+                return false;
             }
-            
+
             IIndex index = tu.getIndex();
             try {
                 index.acquireReadLock();
@@ -109,7 +109,9 @@ public class ES50_01RemoveConstCastAndConstFromVariableQuickFix extends ES50_00R
             if (!func.getTranslationUnit().equals(declarator.getTranslationUnit())) {
                 rewr = astRewriteStore.getASTRewrite(declarator);
             }
-            if (declarator != null) removeConstFromDeclarator(declarator, rewr);
+            if (declarator != null) {
+                removeConstFromDeclarator(declarator, rewr);
+            }
         }
     }
 

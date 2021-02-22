@@ -19,7 +19,9 @@ public class C20RedundantOperationsQuickFix extends RuleQuickFix {
     @Override
     public String getLabel() {
         final String problemId = getProblemId(marker);
-        if (problemId.contentEquals(ProblemId.P_C20.getId())) return Rule.C20.toString() + ": Set to = default";
+        if (problemId.contentEquals(ProblemId.P_C20.getId())) {
+            return Rule.C20.toString() + ": Set to = default";
+        }
         return BaseQuickFix.FAIL;
     }
 

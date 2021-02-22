@@ -16,6 +16,8 @@ import org.eclipse.cdt.core.dom.ast.cpp.ICPPASTNewExpression;
 import org.eclipse.cdt.core.dom.rewrite.ASTRewrite;
 import org.eclipse.cdt.core.index.IIndex;
 
+import ch.hsr.ifs.iltis.cpp.core.resources.CProjectUtil;
+
 import com.cevelop.gslator.checkers.visitors.util.PointerFromDeclarationVisitor;
 import com.cevelop.gslator.checkers.visitors.util.TypeIdVisitor;
 import com.cevelop.gslator.quickfixes.RuleQuickFix;
@@ -23,8 +25,6 @@ import com.cevelop.gslator.quickfixes.utils.ASTFactory;
 import com.cevelop.gslator.utils.ASTHelper;
 import com.cevelop.gslator.utils.ASTHelper.SpecialFunction;
 import com.cevelop.gslator.utils.OwnerInformation;
-
-import ch.hsr.ifs.iltis.cpp.core.resources.CProjectUtil;
 
 
 public abstract class C31_00DeleteOwnersInDestructorQuickFix extends RuleQuickFix {

@@ -29,7 +29,9 @@ public class C45_02UseInClassInitializerForConstValsQuickFix extends C45_01Defau
     public boolean isApplicable(IMarker marker) {
         super.isApplicable(marker); // run but ignore value of super.isApplicable()
         IASTNode markedNode = getMarkedNode(marker);
-        if (markedNode == null) return false;
+        if (markedNode == null) {
+            return false;
+        }
         return markedNode instanceof IASTDeclarator;
     }
 

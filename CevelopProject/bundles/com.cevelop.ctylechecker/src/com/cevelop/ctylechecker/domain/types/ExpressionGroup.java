@@ -3,11 +3,12 @@ package com.cevelop.ctylechecker.domain.types;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.annotations.Expose;
+
 import com.cevelop.ctylechecker.domain.ExpressionType;
 import com.cevelop.ctylechecker.domain.IExpression;
 import com.cevelop.ctylechecker.domain.IGroupExpression;
 import com.cevelop.ctylechecker.domain.ResolutionHint;
-import com.google.gson.annotations.Expose;
 
 
 public class ExpressionGroup extends AbstractCtyleElement implements IGroupExpression {
@@ -28,6 +29,7 @@ public class ExpressionGroup extends AbstractCtyleElement implements IGroupExpre
         setHint(ResolutionHint.NONE);
     }
 
+    @Override
     public Boolean check(String pName) {
         if (shouldMatchAll()) {
             return checkMatchAll(pName);
@@ -64,6 +66,7 @@ public class ExpressionGroup extends AbstractCtyleElement implements IGroupExpre
         return false;
     }
 
+    @Override
     public Boolean isPrefered() {
         return isPrefered(this);
     }
@@ -83,6 +86,7 @@ public class ExpressionGroup extends AbstractCtyleElement implements IGroupExpre
         return prefered;
     }
 
+    @Override
     public void addExpression(IExpression pExpression) {
         this.expressions.add(pExpression);
     }
@@ -110,10 +114,12 @@ public class ExpressionGroup extends AbstractCtyleElement implements IGroupExpre
         return ExpressionType.GROUP;
     }
 
+    @Override
     public ResolutionHint getHint() {
         return hint;
     }
 
+    @Override
     public void setHint(ResolutionHint hint) {
         this.hint = hint;
     }

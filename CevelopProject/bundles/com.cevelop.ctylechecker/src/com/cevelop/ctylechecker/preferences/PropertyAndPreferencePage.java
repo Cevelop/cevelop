@@ -3,13 +3,13 @@ package com.cevelop.ctylechecker.preferences;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
-import com.cevelop.ctylechecker.ids.IdHelper;
-
 import ch.hsr.ifs.iltis.core.preferences.IPropertyAndPreferenceHelper;
 import ch.hsr.ifs.iltis.core.preferences.fieldeditor.GroupFieldEditor;
 import ch.hsr.ifs.iltis.core.preferences.fieldeditor.GroupingFieldEditor;
 
 import ch.hsr.ifs.iltis.cpp.core.preferences.CFieldEditorPropertyAndPreferencePage;
+
+import com.cevelop.ctylechecker.ids.IdHelper;
 
 
 /**

@@ -6,10 +6,11 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
+import com.google.gson.annotations.Expose;
+
 import com.cevelop.ctylechecker.domain.ConfigurationType;
 import com.cevelop.ctylechecker.domain.IConfiguration;
 import com.cevelop.ctylechecker.domain.IStyleguide;
-import com.google.gson.annotations.Expose;
 
 
 public class Configuration implements IConfiguration {

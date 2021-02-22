@@ -12,8 +12,11 @@ public class AddSuffixResolution extends AbstractRenameResolution {
         super(expression);
     }
 
+    @Override
     public String transform(String pName) {
-        if (expression.getArgument().isEmpty()) return pName;
+        if (expression.getArgument().isEmpty()) {
+            return pName;
+        }
         if (expression.getHint() != null && ResolutionHint.casingHints().contains(expression.getHint())) {
             return hintTransform(pName, expression.getHint());
         } else {

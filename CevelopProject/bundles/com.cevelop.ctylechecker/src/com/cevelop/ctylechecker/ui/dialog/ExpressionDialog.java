@@ -1,6 +1,10 @@
 package com.cevelop.ctylechecker.ui.dialog;
 
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.graphics.Point;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Dialog;
 import org.eclipse.swt.widgets.Display;
@@ -13,11 +17,6 @@ import com.cevelop.ctylechecker.ui.parts.ExpressionGroupComposite;
 import com.cevelop.ctylechecker.ui.parts.PredefinedExpressionComposite;
 import com.cevelop.ctylechecker.ui.util.DialogResult;
 import com.cevelop.ctylechecker.ui.util.ItemDataInfo;
-
-import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.layout.GridData;
-import org.eclipse.swt.graphics.Image;
-import org.eclipse.swt.graphics.Point;
 
 
 public class ExpressionDialog extends Dialog {
@@ -33,7 +32,7 @@ public class ExpressionDialog extends Dialog {
 
     /**
      * Create the dialog.
-     * 
+     *
      * @param parent
      * The shell
      * @param title
@@ -47,7 +46,7 @@ public class ExpressionDialog extends Dialog {
 
     /**
      * Open the dialog.
-     * 
+     *
      * @return the result
      */
     public int open() {
@@ -64,13 +63,13 @@ public class ExpressionDialog extends Dialog {
 
     /**
      * Create contents of the dialog.
-     * 
+     *
      * @param pTree
      * The tree item
-     * 
+     *
      * @param pIsCustom
      * True iff this is a custom expression.
-     * 
+     *
      */
     private void createContents(TreeItem pItem, Boolean pIsCustom) {
         shell = new Shell(getParent(), SWT.DIALOG_TRIM | SWT.RESIZE | SWT.PRIMARY_MODAL);

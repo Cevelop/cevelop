@@ -2,9 +2,6 @@ package com.cevelop.ctylechecker.service.adapter;
 
 import java.lang.reflect.Type;
 
-import com.cevelop.ctylechecker.domain.IConfiguration;
-import com.cevelop.ctylechecker.domain.IStyleguide;
-import com.cevelop.ctylechecker.domain.types.Configuration;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonDeserializationContext;
@@ -14,6 +11,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
+
+import com.cevelop.ctylechecker.domain.IConfiguration;
+import com.cevelop.ctylechecker.domain.IStyleguide;
+import com.cevelop.ctylechecker.domain.types.Configuration;
 
 
 public class IConfigurationAdapter implements JsonSerializer<IConfiguration>, JsonDeserializer<IConfiguration> {

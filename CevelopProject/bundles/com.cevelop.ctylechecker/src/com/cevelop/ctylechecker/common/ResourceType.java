@@ -4,6 +4,7 @@ import ch.hsr.ifs.iltis.cpp.core.resources.info.IStringifyable;
 
 
 public enum ResourceType implements IStringifyable<ResourceType> {
+
     AST("AST"), //
     FILE("FILE"), //
     FILE_ENDING("FILE_ENDING"); //
@@ -21,7 +22,9 @@ public enum ResourceType implements IStringifyable<ResourceType> {
 
     public static ResourceType of(String string) {
         for (final ResourceType resourceType : values()) {
-            if (resourceType.toString().equals(string)) return resourceType;
+            if (resourceType.toString().equals(string)) {
+                return resourceType;
+            }
         }
         throw new IllegalArgumentException("Illegal ResourceType: " + string);
     }

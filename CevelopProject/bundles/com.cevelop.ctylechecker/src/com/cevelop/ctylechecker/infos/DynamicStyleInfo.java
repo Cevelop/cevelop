@@ -1,11 +1,11 @@
 package com.cevelop.ctylechecker.infos;
 
+import ch.hsr.ifs.iltis.cpp.core.resources.info.MarkerInfo;
+import ch.hsr.ifs.iltis.cpp.core.resources.info.annotations.InfoArgument;
+
 import com.cevelop.ctylechecker.common.ResourceType;
 import com.cevelop.ctylechecker.domain.IRule;
 import com.cevelop.ctylechecker.service.util.ConfigurationMapper;
-
-import ch.hsr.ifs.iltis.cpp.core.resources.info.MarkerInfo;
-import ch.hsr.ifs.iltis.cpp.core.resources.info.annotations.InfoArgument;
 
 
 public class DynamicStyleInfo extends MarkerInfo<DynamicStyleInfo> {
@@ -22,7 +22,7 @@ public class DynamicStyleInfo extends MarkerInfo<DynamicStyleInfo> {
     @InfoArgument
     public ResourceType type = ResourceType.AST;
 
-    public DynamicStyleInfo() {};
+    public DynamicStyleInfo() {}
 
     public DynamicStyleInfo(IRule rule) {
         ruleName = rule.getName();

@@ -50,10 +50,18 @@ public class ResolutionFactory {
     }
 
     public static String getType(IResolution pResolution) {
-        if (pResolution instanceof DefaultRenameResolution) return DEFAULT_RENAME_RESOLUTION;
-        if (pResolution instanceof CaseTransformerResolution) return CASE_TRANSFORMER_RESOLUTION;
-        if (pResolution instanceof AddPrefixResolution) return ADD_PREFIX_RESOLUTION;
-        if (pResolution instanceof AddSuffixResolution) return ADD_SUFFIX_RESOLUTION;
+        if (pResolution instanceof DefaultRenameResolution) {
+            return DEFAULT_RENAME_RESOLUTION;
+        }
+        if (pResolution instanceof CaseTransformerResolution) {
+            return CASE_TRANSFORMER_RESOLUTION;
+        }
+        if (pResolution instanceof AddPrefixResolution) {
+            return ADD_PREFIX_RESOLUTION;
+        }
+        if (pResolution instanceof AddSuffixResolution) {
+            return ADD_SUFFIX_RESOLUTION;
+        }
         if (pResolution instanceof ReplaceResolution) {
             return REPLACE_RESOLUTION;
         }
@@ -61,18 +69,34 @@ public class ResolutionFactory {
     }
 
     public static IResolution createResolution(String pResolutionType, ISingleExpression pExpression) {
-        if (pResolutionType.equals(CASE_TRANSFORMER_RESOLUTION)) return createCaseTransformerResolution(pExpression);
-        if (pResolutionType.equals(ADD_PREFIX_RESOLUTION)) return createPrefixResolution(pExpression);
-        if (pResolutionType.equals(ADD_SUFFIX_RESOLUTION)) return createSuffixResolution(pExpression);
-        if (pResolutionType.equals(REPLACE_RESOLUTION)) return createReplaceResolution(pExpression);
+        if (pResolutionType.equals(CASE_TRANSFORMER_RESOLUTION)) {
+            return createCaseTransformerResolution(pExpression);
+        }
+        if (pResolutionType.equals(ADD_PREFIX_RESOLUTION)) {
+            return createPrefixResolution(pExpression);
+        }
+        if (pResolutionType.equals(ADD_SUFFIX_RESOLUTION)) {
+            return createSuffixResolution(pExpression);
+        }
+        if (pResolutionType.equals(REPLACE_RESOLUTION)) {
+            return createReplaceResolution(pExpression);
+        }
         return createDefaultRenameResolution();
     }
 
     public static String getResolutionInfo(String pResolutionType) {
-        if (pResolutionType.equals(ADD_PREFIX_RESOLUTION)) return Messages.ADD_PREFIX_RESOLUTION_TEXT;
-        if (pResolutionType.equals(ADD_SUFFIX_RESOLUTION)) return Messages.ADD_SUFFIX_RESOLUTION_TEXT;
-        if (pResolutionType.equals(REPLACE_RESOLUTION)) return Messages.REPLACE_RESOLUTION_TEXT;
-        if (pResolutionType.equals(DEFAULT_RENAME_RESOLUTION)) return Messages.DEFAULT_RENAME_RESOLUTION_TEXT;
+        if (pResolutionType.equals(ADD_PREFIX_RESOLUTION)) {
+            return Messages.ADD_PREFIX_RESOLUTION_TEXT;
+        }
+        if (pResolutionType.equals(ADD_SUFFIX_RESOLUTION)) {
+            return Messages.ADD_SUFFIX_RESOLUTION_TEXT;
+        }
+        if (pResolutionType.equals(REPLACE_RESOLUTION)) {
+            return Messages.REPLACE_RESOLUTION_TEXT;
+        }
+        if (pResolutionType.equals(DEFAULT_RENAME_RESOLUTION)) {
+            return Messages.DEFAULT_RENAME_RESOLUTION_TEXT;
+        }
         return "";
     }
 }

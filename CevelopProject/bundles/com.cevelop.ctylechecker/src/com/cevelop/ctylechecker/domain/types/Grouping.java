@@ -5,9 +5,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
+import com.google.gson.annotations.Expose;
+
 import com.cevelop.ctylechecker.domain.IGrouping;
 import com.cevelop.ctylechecker.domain.IRule;
-import com.google.gson.annotations.Expose;
 
 
 public class Grouping extends AbstractCtyleElement implements IGrouping {

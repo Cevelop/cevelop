@@ -1,5 +1,10 @@
 package com.cevelop.ctylechecker.service.util;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+
 import com.cevelop.ctylechecker.domain.IConfiguration;
 import com.cevelop.ctylechecker.domain.IExpression;
 import com.cevelop.ctylechecker.domain.IGrouping;
@@ -12,10 +17,6 @@ import com.cevelop.ctylechecker.service.adapter.IGroupingAdapter;
 import com.cevelop.ctylechecker.service.adapter.IResolutionAdapter;
 import com.cevelop.ctylechecker.service.adapter.IRuleAdapter;
 import com.cevelop.ctylechecker.service.adapter.IStyleguideAdapter;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 
 
 public class ConfigurationMapper {

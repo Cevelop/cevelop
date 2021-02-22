@@ -1,11 +1,12 @@
 package com.cevelop.ctylechecker.domain.types;
 
+import com.google.gson.annotations.Expose;
+
 import com.cevelop.ctylechecker.domain.ExpressionType;
 import com.cevelop.ctylechecker.domain.IResolution;
 import com.cevelop.ctylechecker.domain.ISingleExpression;
 import com.cevelop.ctylechecker.domain.OrderPriority;
 import com.cevelop.ctylechecker.domain.ResolutionHint;
-import com.google.gson.annotations.Expose;
 
 
 public class Expression extends AbstractCtyleElement implements ISingleExpression {

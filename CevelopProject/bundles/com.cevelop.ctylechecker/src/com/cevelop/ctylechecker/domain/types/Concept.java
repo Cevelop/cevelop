@@ -3,8 +3,9 @@ package com.cevelop.ctylechecker.domain.types;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.cevelop.ctylechecker.domain.IConcept;
 import com.google.gson.annotations.Expose;
+
+import com.cevelop.ctylechecker.domain.IConcept;
 
 
 public class Concept implements IConcept {

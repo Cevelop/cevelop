@@ -20,7 +20,6 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
@@ -66,7 +65,7 @@ public class SettingsComposite extends AbstractCtylecheckerComposite {
      * The composite
      * @param pConfig
      * The configuration
-     * 
+     *
      * @wbp.parser.constructor
      */
     public SettingsComposite(Composite parent, IConfiguration pConfig) {
@@ -232,7 +231,7 @@ public class SettingsComposite extends AbstractCtylecheckerComposite {
         codanComposite.setLayout(gl_codanComposite);
         codanComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 1, 1));
 
-        // TODO(tstauber - May 20, 2019) REMOVE AFTER TESTING 
+        // TODO(tstauber - May 20, 2019) REMOVE AFTER TESTING
         //        Button btnGoToCodanSettings = new Button(codanComposite, SWT.NONE);
         //        btnGoToCodanSettings.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, true, false, 1, 1));
         //        btnGoToCodanSettings.setText("Codan Settings...");
@@ -266,7 +265,7 @@ public class SettingsComposite extends AbstractCtylecheckerComposite {
 
         activeStyleguideCombo = new Combo(activeStyleguideComposite, SWT.READ_ONLY);
         activeStyleguideCombo.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 3, 1));
-        activeStyleguideCombo.setItems(new String[] {});
+        activeStyleguideCombo.setItems();
         activeStyleguideCombo.select(0);
 
         Listener activeStyleguideChangeListener = (event) -> {
@@ -274,7 +273,7 @@ public class SettingsComposite extends AbstractCtylecheckerComposite {
             if (styleguide.isPresent()) {
                 config.setActiveStyleguide(styleguide.get());
                 refreshGroupingsAndRulesTree();
-            } ;
+            }
         };
 
         activeStyleguideCombo.addListener(SWT.Selection, activeStyleguideChangeListener);
@@ -489,17 +488,13 @@ public class SettingsComposite extends AbstractCtylecheckerComposite {
             }
         });
 
-        newActiveStyleguideButton.addListener(SWT.MouseUp, new Listener() {
-
-            @Override
-            public void handleEvent(Event event) {
-                InputDialog inputDialog = new InputDialog(getShell(), "New Styleguide", "Name", "", null);
-                inputDialog.open();
-                String input = inputDialog.getValue();
-                if (input != null && !input.isEmpty()) {
-                    activeStyleguideCombo.add(input);
-                    config.addStyleguide(input);
-                }
+        newActiveStyleguideButton.addListener(SWT.MouseUp, event -> {
+            InputDialog inputDialog = new InputDialog(getShell(), "New Styleguide", "Name", "", null);
+            inputDialog.open();
+            String input = inputDialog.getValue();
+            if (input != null && !input.isEmpty()) {
+                activeStyleguideCombo.add(input);
+                config.addStyleguide(input);
             }
         });
     }
@@ -580,7 +575,9 @@ public class SettingsComposite extends AbstractCtylecheckerComposite {
                 item.setChecked(grouping.isEnabled());
                 item.setImage(groupImage);
                 for (IRule rule : grouping.getRules()) {
-                    if (!pattern.matcher(rule.getName()).find()) continue;
+                    if (!pattern.matcher(rule.getName()).find()) {
+                        continue;
+                    }
                     TreeItem subItem = new TreeItem(item, SWT.CHECK);
                     subItem.setText(rule.getName());
                     subItem.setData(ItemDataInfo.DATA_TYPE_KEY, ItemDataInfo.DATA_RULE_VALUE);
@@ -594,7 +591,9 @@ public class SettingsComposite extends AbstractCtylecheckerComposite {
                 }
             }
             for (IRule rule : config.getActiveStyleguide().getRules()) {
-                if (!pattern.matcher(rule.getName()).find()) continue;
+                if (!pattern.matcher(rule.getName()).find()) {
+                    continue;
+                }
                 TreeItem item = new TreeItem(groupingsAndRulesTree, SWT.CHECK);
                 item.setText(rule.getName());
                 item.setData(ItemDataInfo.DATA_TYPE_KEY, ItemDataInfo.DATA_RULE_VALUE);

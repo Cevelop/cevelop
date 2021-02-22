@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.eclipse.cdt.core.dom.ast.ASTVisitor;
+import org.eclipse.cdt.core.dom.ast.IASTCompositeTypeSpecifier;
 import org.eclipse.cdt.core.dom.ast.IASTDeclSpecifier;
 import org.eclipse.cdt.core.dom.ast.IASTDeclaration;
 import org.eclipse.cdt.core.dom.ast.IASTNode;
@@ -14,6 +15,7 @@ import org.eclipse.cdt.core.dom.ast.cpp.ICPPASTCompositeTypeSpecifier.ICPPASTBas
 import org.eclipse.cdt.core.dom.ast.cpp.ICPPASTVisibilityLabel;
 
 import com.cevelop.ctylechecker.ids.IdHelper.ProblemId;
+
 
 public class RedundantAccessSpecifierChecker extends AbstractClassChecker {
 
@@ -31,8 +33,7 @@ public class RedundantAccessSpecifierChecker extends AbstractClassChecker {
                 if (declSpecifier instanceof ICPPASTCompositeTypeSpecifier) {
                     ICPPASTCompositeTypeSpecifier classDeclaration = (ICPPASTCompositeTypeSpecifier) declSpecifier;
                     int classKeyword = classDeclaration.getKey();
-                    if (classKeyword == ICPPASTCompositeTypeSpecifier.k_struct
-                            || classKeyword == ICPPASTCompositeTypeSpecifier.k_class) {
+                    if (classKeyword == IASTCompositeTypeSpecifier.k_struct || classKeyword == ICPPASTCompositeTypeSpecifier.k_class) {
                         classDeclarations.add(classDeclaration);
                     }
                 }
@@ -43,7 +44,7 @@ public class RedundantAccessSpecifierChecker extends AbstractClassChecker {
     }
 
     private static int getKeywordVisibility(int classKeyword) {
-        if (classKeyword == ICPPASTCompositeTypeSpecifier.k_struct) {
+        if (classKeyword == IASTCompositeTypeSpecifier.k_struct) {
             return ICPPASTVisibilityLabel.v_public;
         }
         return ICPPASTVisibilityLabel.v_private;

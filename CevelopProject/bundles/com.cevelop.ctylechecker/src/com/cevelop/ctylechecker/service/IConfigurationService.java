@@ -42,7 +42,7 @@ public interface IConfigurationService {
     /**
      * This method is necessary when one tries to access the property preferences
      * page via a File, i.e. Alt + Enter shortcut
-     * 
+     *
      * @return project of the current active editor
      */
     Optional<IProject> getActiveProject();
@@ -50,7 +50,7 @@ public interface IConfigurationService {
     /**
      * This method is necessary to manually kick off Codan Checkers
      * after a save operation.
-     * 
+     *
      * @return file of the current active editor
      */
     Optional<IFile> getActiveFile();

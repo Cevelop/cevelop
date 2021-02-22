@@ -13,6 +13,7 @@ public class RuleService implements IRuleService {
         return newRule;
     }
 
+    @Override
     public IRule updateRule(IRule pSource, IRule pTarget) {
         pSource.setName(pTarget.getName());
         pSource.setMessage(pTarget.getMessage());

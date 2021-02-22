@@ -5,12 +5,14 @@ import java.util.regex.PatternSyntaxException;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.layout.FillLayout;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.layout.GridData;
-import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.TreeItem;
 
@@ -24,9 +26,6 @@ import com.cevelop.ctylechecker.ui.AbstractCtylecheckerComposite;
 import com.cevelop.ctylechecker.ui.util.DialogResult;
 import com.cevelop.ctylechecker.ui.util.ExpressionItemArg;
 import com.cevelop.ctylechecker.ui.util.ExpressionUIUtil;
-
-import org.eclipse.swt.widgets.Combo;
-import org.eclipse.swt.widgets.Button;
 
 
 public class CustomExpressionComposite extends AbstractCtylecheckerComposite {

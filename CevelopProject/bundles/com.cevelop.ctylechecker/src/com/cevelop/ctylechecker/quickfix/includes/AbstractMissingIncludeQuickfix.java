@@ -8,10 +8,10 @@ import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jface.text.IDocument;
 
+import ch.hsr.ifs.iltis.cpp.core.codan.marker.IInfoMarkerResolution;
+
 import com.cevelop.ctylechecker.Activator;
 import com.cevelop.ctylechecker.infos.CtyleCheckerInfo;
-
-import ch.hsr.ifs.iltis.cpp.core.codan.marker.IInfoMarkerResolution;
 
 
 @SuppressWarnings("restriction")

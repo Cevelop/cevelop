@@ -30,8 +30,7 @@ public class IncludeGuardChecker extends AbstractStyleChecker {
 
             if (isPragmaOnce(firstPPStatement)) {
                 return;
-            } else if (preprocessorStatements.length < 3)
-            {
+            } else if (preprocessorStatements.length < 3) {
                 reportIncludeGuardMissing(ast, fileName);
                 return;
             }
@@ -46,7 +45,7 @@ public class IncludeGuardChecker extends AbstractStyleChecker {
     }
 
     private boolean isPragmaOnce(IASTPreprocessorStatement statement) {
-        if(statement instanceof IASTPreprocessorPragmaStatement) {
+        if (statement instanceof IASTPreprocessorPragmaStatement) {
             IASTPreprocessorPragmaStatement pragma = (IASTPreprocessorPragmaStatement) statement;
             return String.valueOf(pragma.getMessage()).equals("once");
         }

@@ -169,7 +169,7 @@ public class ConfigurationService implements IConfigurationService {
 
     private Optional<IProject> getProjectFromAdaptable(IAdaptable resource) {
         if (resource != null) {
-            IProject project = (IProject) resource.getAdapter(IProject.class);
+            IProject project = resource.getAdapter(IProject.class);
             if (project != null) {
                 return Optional.of(project);
             }
@@ -190,15 +190,25 @@ public class ConfigurationService implements IConfigurationService {
     @Override
     public Optional<IFile> getActiveFile() {
         IWorkbench iWorkbench = PlatformUI.getWorkbench();
-        if (iWorkbench == null) return Optional.empty();
+        if (iWorkbench == null) {
+            return Optional.empty();
+        }
         IWorkbenchWindow iWorkbenchWindow = iWorkbench.getActiveWorkbenchWindow();
-        if (iWorkbenchWindow == null) return Optional.empty();
+        if (iWorkbenchWindow == null) {
+            return Optional.empty();
+        }
         IWorkbenchPage iWorkbenchPage = iWorkbenchWindow.getActivePage();
-        if (iWorkbenchPage == null) return Optional.empty();
+        if (iWorkbenchPage == null) {
+            return Optional.empty();
+        }
         IEditorPart editorPart = iWorkbenchPage.getActiveEditor();
-        if (editorPart == null) return Optional.empty();
+        if (editorPart == null) {
+            return Optional.empty();
+        }
         IFileEditorInput input = (IFileEditorInput) editorPart.getEditorInput();
-        if (input == null) return Optional.empty();
+        if (input == null) {
+            return Optional.empty();
+        }
         IFile file = input.getFile();
         return Optional.ofNullable(file);
     }

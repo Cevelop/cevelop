@@ -5,6 +5,7 @@ import java.util.List;
 
 
 public enum ResolutionHint {
+
     NONE, PREFERED, CAMEL_CASE, SNAKE_CASE, CONST_CASE, PASCAL_CASE, ALL_SMALL_CASE, ALL_BIG_CASE;
 
     public static List<ResolutionHint> nonCasingHints() {

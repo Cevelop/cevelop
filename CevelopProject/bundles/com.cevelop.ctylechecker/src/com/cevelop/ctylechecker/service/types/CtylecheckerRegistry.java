@@ -27,6 +27,7 @@ public class CtylecheckerRegistry implements ICtylecheckerRegistry {
         configurationService = new ConfigurationService();
     }
 
+    @Override
     public IRuleService getRuleService() {
         return ruleService;
     }

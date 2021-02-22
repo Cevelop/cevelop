@@ -2,8 +2,9 @@ package com.cevelop.ctylechecker.domain.types;
 
 import java.util.UUID;
 
-import com.cevelop.ctylechecker.domain.ICtyleElement;
 import com.google.gson.annotations.Expose;
+
+import com.cevelop.ctylechecker.domain.ICtyleElement;
 
 
 public abstract class AbstractCtyleElement implements ICtyleElement {
@@ -21,22 +22,27 @@ public abstract class AbstractCtyleElement implements ICtyleElement {
         enabled = pEnabled;
     }
 
+    @Override
     public UUID getId() {
         return id;
     }
 
+    @Override
     public String getName() {
         return name;
     }
 
+    @Override
     public void setName(String name) {
         this.name = name;
     }
 
+    @Override
     public Boolean isEnabled() {
         return enabled;
     }
 
+    @Override
     public void isEnabled(Boolean pEnabled) {
         this.enabled = pEnabled;
     }

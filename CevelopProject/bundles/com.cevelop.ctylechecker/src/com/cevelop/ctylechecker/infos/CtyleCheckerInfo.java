@@ -9,7 +9,7 @@ public class CtyleCheckerInfo extends MarkerInfo<CtyleCheckerInfo> {
     @MessageInfoArgument(0)
     public String headerName;
 
-    public CtyleCheckerInfo() {};
+    public CtyleCheckerInfo() {}
 
     public CtyleCheckerInfo(String headerName) {
         this.headerName = headerName;

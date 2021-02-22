@@ -7,6 +7,8 @@ import java.util.Optional;
 import org.eclipse.cdt.core.dom.ast.IASTName;
 import org.eclipse.cdt.core.dom.ast.IBinding;
 
+import com.google.gson.annotations.Expose;
+
 import com.cevelop.ctylechecker.common.ConceptNames;
 import com.cevelop.ctylechecker.domain.ExpressionType;
 import com.cevelop.ctylechecker.domain.IConcept;
@@ -18,7 +20,6 @@ import com.cevelop.ctylechecker.domain.types.util.Concepts;
 import com.cevelop.ctylechecker.domain.types.util.Qualifiers;
 import com.cevelop.ctylechecker.domain.types.util.ReservedNamesChecker;
 import com.cevelop.ctylechecker.domain.types.util.TypeChecker;
-import com.google.gson.annotations.Expose;
 
 
 public class Rule extends AbstractCtyleElement implements IRule {
@@ -55,6 +56,7 @@ public class Rule extends AbstractCtyleElement implements IRule {
         return predefinedExpressions;
     }
 
+    @Override
     public void setPredefinedExpressions(List<IExpression> pPredefinedExpressions) {
         predefinedExpressions = pPredefinedExpressions;
     }
@@ -68,6 +70,7 @@ public class Rule extends AbstractCtyleElement implements IRule {
         return customExpressions;
     }
 
+    @Override
     public void setCustomExpressions(List<IExpression> pCustomExpressions) {
         customExpressions = pCustomExpressions;
     }
@@ -105,6 +108,7 @@ public class Rule extends AbstractCtyleElement implements IRule {
         return msg;
     }
 
+    @Override
     public void setMessage(String pMessage) {
         this.message = pMessage;
     }
@@ -115,7 +119,9 @@ public class Rule extends AbstractCtyleElement implements IRule {
      */
     @Override
     public Boolean matches(IASTName pName) {
-        if (ReservedNamesChecker.check(pName.toString())) return true;
+        if (ReservedNamesChecker.check(pName.toString())) {
+            return true;
+        }
         Boolean matched = matchesExpressions(pName.toString(), predefinedExpressions);
         if (matched) {
             matched = matchesExpressions(pName.toString(), customExpressions);
@@ -221,6 +227,7 @@ public class Rule extends AbstractCtyleElement implements IRule {
         return checkedConcepts;
     }
 
+    @Override
     public void setCheckedConcepts(List<IConcept> checkedBindings) {
         this.checkedConcepts = checkedBindings;
     }

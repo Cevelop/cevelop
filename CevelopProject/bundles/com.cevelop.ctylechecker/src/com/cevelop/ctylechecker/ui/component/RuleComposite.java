@@ -1,15 +1,16 @@
 package com.cevelop.ctylechecker.ui.component;
 
-import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Event;
-import org.eclipse.swt.widgets.Listener;
-import org.eclipse.swt.layout.GridLayout;
-
 import java.util.Optional;
 import java.util.UUID;
 
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Listener;
 
 import com.cevelop.ctylechecker.domain.IConfiguration;
 import com.cevelop.ctylechecker.domain.ICtyleElement;
@@ -24,9 +25,6 @@ import com.cevelop.ctylechecker.ui.parts.ExpressionsComposite;
 import com.cevelop.ctylechecker.ui.parts.MessageComposite;
 import com.cevelop.ctylechecker.ui.parts.RuleNameComposite;
 import com.cevelop.ctylechecker.ui.util.DialogResult;
-
-import org.eclipse.swt.widgets.Button;
-import org.eclipse.swt.layout.FillLayout;
 
 
 public class RuleComposite extends AbstractCtylecheckerComposite {

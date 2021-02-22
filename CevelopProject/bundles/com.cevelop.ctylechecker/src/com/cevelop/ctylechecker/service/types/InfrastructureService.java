@@ -6,7 +6,7 @@ import org.eclipse.cdt.codan.internal.core.model.ProblemLocationFactory;
 import org.eclipse.cdt.core.dom.ast.IASTFileLocation;
 import org.eclipse.cdt.core.dom.ast.IASTNode;
 import org.eclipse.cdt.core.dom.ast.IASTNodeLocation;
-import org.eclipse.cdt.internal.core.dom.parser.cpp.semantics.CPPVisitor;
+import org.eclipse.cdt.internal.core.dom.parser.ASTQueries;
 import org.eclipse.core.resources.IFile;
 
 
@@ -16,7 +16,7 @@ public class InfrastructureService {
     private InfrastructureService() {}
 
     public static <T extends IASTNode> T findAncestorWithType(IASTNode node, Class<T> type) {
-        return CPPVisitor.findAncestorWithType(node, type);
+        return ASTQueries.findAncestorWithType(node, type);
     }
 
     @SuppressWarnings("unchecked")

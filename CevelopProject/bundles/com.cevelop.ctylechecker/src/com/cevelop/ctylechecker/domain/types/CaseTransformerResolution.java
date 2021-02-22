@@ -11,6 +11,7 @@ public class CaseTransformerResolution extends AbstractRenameResolution {
         super(expression);
     }
 
+    @Override
     public String transform(String name) {
         RenameTransformer transformer = new RenameTransformer();
         if (expression.equals(Expressions.SNAKE_CASE)) {

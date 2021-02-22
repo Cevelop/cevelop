@@ -1,12 +1,14 @@
 package com.cevelop.ctylechecker.ui.component;
 
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.layout.FillLayout;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
-import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.layout.GridData;
-import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Text;
 
 import com.cevelop.ctylechecker.domain.IConfiguration;
@@ -15,9 +17,6 @@ import com.cevelop.ctylechecker.domain.IGrouping;
 import com.cevelop.ctylechecker.ui.AbstractCtylecheckerComposite;
 import com.cevelop.ctylechecker.ui.listener.EnterKeyListener;
 import com.cevelop.ctylechecker.ui.util.DialogResult;
-
-import org.eclipse.swt.widgets.Button;
-import org.eclipse.swt.widgets.Label;
 
 
 public class GroupingComposite extends AbstractCtylecheckerComposite {
@@ -37,7 +36,7 @@ public class GroupingComposite extends AbstractCtylecheckerComposite {
      * The style element
      * @param pDialogResult
      * The result of the dialog
-     * 
+     *
      * @wbp.parser.constructor
      */
     public GroupingComposite(Composite parent, IConfiguration pConfig, ICtyleElement pElement, DialogResult pDialogResult) {

@@ -8,9 +8,9 @@ import org.eclipse.cdt.core.dom.ast.ASTVisitor;
 import org.eclipse.cdt.core.dom.ast.IASTName;
 import org.eclipse.cdt.core.dom.ast.IASTNode;
 
-import com.cevelop.ctylechecker.infos.DynamicStyleInfo;
-
 import ch.hsr.ifs.iltis.cpp.core.codan.marker.IInfoMarkerResolution;
+
+import com.cevelop.ctylechecker.infos.DynamicStyleInfo;
 
 
 public abstract class AbstractStyleResolver extends AbstractCodanCMarkerResolution implements IInfoMarkerResolution<DynamicStyleInfo> {

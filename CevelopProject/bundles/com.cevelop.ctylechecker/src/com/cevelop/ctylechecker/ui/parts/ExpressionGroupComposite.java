@@ -1,21 +1,20 @@
 package com.cevelop.ctylechecker.ui.parts;
 
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.TreeItem;
 
 import com.cevelop.ctylechecker.domain.ResolutionHint;
 import com.cevelop.ctylechecker.ui.util.DialogResult;
 import com.cevelop.ctylechecker.ui.util.ExpressionItemArg;
 import com.cevelop.ctylechecker.ui.util.ExpressionUIUtil;
-
-import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.layout.GridData;
-import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.widgets.Text;
-import org.eclipse.swt.widgets.Button;
-import org.eclipse.swt.widgets.Combo;
 
 
 public class ExpressionGroupComposite extends Composite {

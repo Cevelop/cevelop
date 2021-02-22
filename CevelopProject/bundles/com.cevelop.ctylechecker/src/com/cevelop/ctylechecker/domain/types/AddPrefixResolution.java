@@ -32,7 +32,9 @@ public class AddPrefixResolution extends AbstractRenameResolution {
 
     @Override
     public String transform(String pName) {
-        if (expression.getArgument().isEmpty()) return pName;
+        if (expression.getArgument().isEmpty()) {
+            return pName;
+        }
         nameModel = new NameModel(pName, expression.getArgument());
         if (expression.getHint() != null && ResolutionHint.casingHints().contains(expression.getHint())) {
             return hintTransform(expression.getHint());

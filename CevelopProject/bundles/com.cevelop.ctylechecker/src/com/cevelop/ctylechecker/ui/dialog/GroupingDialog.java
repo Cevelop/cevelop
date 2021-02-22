@@ -1,5 +1,10 @@
 package com.cevelop.ctylechecker.ui.dialog;
 
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.graphics.Point;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Dialog;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
@@ -9,12 +14,6 @@ import com.cevelop.ctylechecker.domain.ICtyleElement;
 import com.cevelop.ctylechecker.service.types.CtylecheckerRuntime;
 import com.cevelop.ctylechecker.ui.component.GroupingComposite;
 import com.cevelop.ctylechecker.ui.util.DialogResult;
-
-import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.layout.GridData;
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.graphics.Image;
-import org.eclipse.swt.graphics.Point;
 
 
 public class GroupingDialog extends Dialog {
@@ -26,7 +25,7 @@ public class GroupingDialog extends Dialog {
 
     /**
      * Create the dialog.
-     * 
+     *
      * @param parent
      * The shell
      * @param title
@@ -35,7 +34,7 @@ public class GroupingDialog extends Dialog {
      * The configuration
      * @param pElement
      * The style element
-     * 
+     *
      */
     public GroupingDialog(Shell parent, String title, IConfiguration pConfig, ICtyleElement pElement) {
         super(parent);
@@ -45,7 +44,7 @@ public class GroupingDialog extends Dialog {
 
     /**
      * Open the dialog.
-     * 
+     *
      * @return the result
      */
     public int open() {
@@ -62,7 +61,7 @@ public class GroupingDialog extends Dialog {
 
     /**
      * Create contents of the dialog.
-     * 
+     *
      * @param pConfig
      * The configuration
      * @param pElement

@@ -28,6 +28,7 @@ public class IdHelper {
     public static final String MARKER_ID = DEFAULT_QUALIFIER + ".marker.stylemarker";
 
     public enum ProblemId implements IProblemId<ProblemId> {
+
         EXPLICIT_CONSTRUCTOR(PROBLEMS_PREFIX + "constructorshouldbeexplicit"), //
         MEMBER_INITIALIZER_UNUSED(PROBLEMS_PREFIX + "memberinitializernotused"), //
         REDUNDANT_ACCESS_SPECIFIER(PROBLEMS_PREFIX + "redundantaccessspecifier"), //
@@ -63,7 +64,9 @@ public class IdHelper {
 
         public static ProblemId of(String string) {
             for (final ProblemId id : values()) {
-                if (id.getId().equals(string)) return id;
+                if (id.getId().equals(string)) {
+                    return id;
+                }
             }
             throw new IllegalArgumentException("Illegal ProblemId: " + string);
         }

@@ -20,5 +20,5 @@ public abstract class AbstractRenameResolution implements IResolution {
     @Override
     public void setExpression(ISingleExpression pExpression) {
         expression = pExpression;
-    };
+    }
 }

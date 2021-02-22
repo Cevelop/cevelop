@@ -8,14 +8,14 @@ import org.eclipse.cdt.core.dom.ast.IASTPreprocessorMacroDefinition;
 import org.eclipse.cdt.core.dom.ast.IASTTranslationUnit;
 import org.eclipse.cdt.core.model.ITranslationUnit;
 
+import ch.hsr.ifs.iltis.cpp.core.wrappers.AbstractIndexAstChecker;
+
 import com.cevelop.macronator.common.MacroClassifier;
 import com.cevelop.macronator.common.MacroProperties;
 import com.cevelop.macronator.transform.AutoFunctionTransformer;
 import com.cevelop.macronator.transform.DeclarationTransformer;
 import com.cevelop.macronator.transform.MacroTransformation;
 import com.cevelop.macronator.transform.VoidFunctionTransformer;
-
-import ch.hsr.ifs.iltis.cpp.core.wrappers.AbstractIndexAstChecker;
 
 
 public class FunctionLikeMacroChecker extends AbstractIndexAstChecker {

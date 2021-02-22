@@ -5,9 +5,9 @@ import org.eclipse.cdt.core.dom.ast.IASTPreprocessorMacroDefinition;
 import org.eclipse.cdt.core.dom.ast.IASTTranslationUnit;
 import org.eclipse.cdt.internal.core.model.ExternalTranslationUnit;
 
-import com.cevelop.macronator.common.MacroProperties;
-
 import ch.hsr.ifs.iltis.cpp.core.wrappers.AbstractIndexAstChecker;
+
+import com.cevelop.macronator.common.MacroProperties;
 
 
 public class UnusedMacroChecker extends AbstractIndexAstChecker {

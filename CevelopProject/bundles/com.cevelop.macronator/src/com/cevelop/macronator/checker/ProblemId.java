@@ -4,6 +4,7 @@ import ch.hsr.ifs.iltis.cpp.core.ast.checker.helper.IProblemId;
 
 
 public enum ProblemId implements IProblemId<ProblemId> {
+
    //@formatter:off
    FUN_LIKE_MACRO("com.cevelop.macronator.plugin.ObsoleteFunctionLikeMacro"),
    UNUSED_MACRO("com.cevelop.macronator.plugin.UnusedMacro"),

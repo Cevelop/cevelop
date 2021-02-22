@@ -5,9 +5,9 @@ import java.util.Optional;
 import org.eclipse.cdt.core.model.ICElement;
 import org.eclipse.jface.text.ITextSelection;
 
-import com.cevelop.macronator.refactoring.ExpandMacroRefactoring;
-
 import ch.hsr.ifs.iltis.cpp.core.ui.refactoring.RefactoringStarterMenuHandler;
+
+import com.cevelop.macronator.refactoring.ExpandMacroRefactoring;
 
 
 public class ExpandMacroHandler extends RefactoringStarterMenuHandler<ExpandMacroRefactoring> {

@@ -33,11 +33,11 @@ import org.eclipse.ltk.core.refactoring.participants.CheckConditionsContext;
 import org.eclipse.text.edits.MultiTextEdit;
 import org.eclipse.text.edits.ReplaceEdit;
 
-import com.cevelop.macronator.common.LocalExpansion;
-import com.cevelop.macronator.quickassist.SelectionResolver;
-
 import ch.hsr.ifs.iltis.cpp.core.wrappers.CRefactoring;
 import ch.hsr.ifs.iltis.cpp.core.wrappers.ModificationCollector;
+
+import com.cevelop.macronator.common.LocalExpansion;
+import com.cevelop.macronator.quickassist.SelectionResolver;
 
 
 public class ExpandMacroRefactoring extends CRefactoring {

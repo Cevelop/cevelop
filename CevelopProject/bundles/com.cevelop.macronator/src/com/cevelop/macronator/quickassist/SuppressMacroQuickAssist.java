@@ -76,7 +76,9 @@ public class SuppressMacroQuickAssist implements IQuickAssistProcessor {
                 IMarker[] markers = resource.findMarkers("org.eclipse.cdt.codan.core.codanProblem", true, IResource.DEPTH_INFINITE);
                 for (IMarker marker : markers) {
                     Integer lineNumber = (Integer) marker.getAttribute(IMarker.LINE_NUMBER);
-                    if (macroName.getFileLocation().getStartingLineNumber() == lineNumber) marker.delete();
+                    if (macroName.getFileLocation().getStartingLineNumber() == lineNumber) {
+                        marker.delete();
+                    }
                 }
             } catch (CoreException e) {
                 Activator.log("Error deleting marker", e);

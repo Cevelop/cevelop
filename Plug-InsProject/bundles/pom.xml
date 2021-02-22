@@ -16,6 +16,7 @@
         <module>com.cevelop.codeanalysator.misra</module>
         <module>com.cevelop.codeanalysator.autosar</module>
         <module>com.cevelop.codeanalysator.cppcore</module>
+        <module>com.cevelop.conanator</module>
         <module>com.cevelop.constificator</module>
         <module>com.cevelop.constificator.core</module>
         <module>com.cevelop.ctylechecker</module>

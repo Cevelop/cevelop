@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Stream;
 
@@ -15,7 +14,6 @@ import org.eclipse.cdt.core.dom.ast.IQualifierType;
 import org.eclipse.cdt.core.dom.ast.IType;
 import org.eclipse.cdt.core.dom.ast.cpp.ICPPBase;
 import org.eclipse.cdt.core.dom.ast.cpp.ICPPClassType;
-import org.eclipse.cdt.core.dom.ast.cpp.ICPPConstructor;
 import org.eclipse.cdt.core.dom.ast.cpp.ICPPFunctionType;
 import org.eclipse.cdt.core.dom.ast.cpp.ICPPMethod;
 import org.eclipse.cdt.core.dom.ast.cpp.ICPPParameter;
@@ -66,7 +64,7 @@ public class Type {
              * </pre>
              * <p>
              * Using this policy element would cause A to be visited twice.
-             * 
+             *
              */
             DONT_SKIP_VIRTUAL,
             /**
@@ -395,15 +393,14 @@ public class Type {
     }
 
     public static boolean isArrayLike(IType suspect) {
-        if(isArray(suspect)) {
+        if (isArray(suspect)) {
             return true;
         }
 
         IType simplifiedType = SemanticUtil.getSimplifiedType(suspect);
         final boolean isReferenceToArray = simplifiedType instanceof ICPPReferenceType && ((ICPPReferenceType) simplifiedType)
                 .getType() instanceof IArrayType;
-        final boolean isPointerToArray = simplifiedType instanceof IPointerType && ((IPointerType) simplifiedType)
-                        .getType() instanceof IArrayType;
+        final boolean isPointerToArray = simplifiedType instanceof IPointerType && ((IPointerType) simplifiedType).getType() instanceof IArrayType;
         return isReferenceToArray || isPointerToArray;
     }
 
@@ -517,7 +514,7 @@ public class Type {
                          return parameters.length == 1 && Stream.of(parameters)
                                  .allMatch(param -> {
                                      IType type = param.getType();
-                                     return (type instanceof ICPPReferenceType) && 
+                                     return (type instanceof ICPPReferenceType) &&
                                              !((ICPPReferenceType)type).isRValueReference() &&
                                              areSameTypeIgnoringConst(((ITypeContainer) type).getType(), classType);
                                  });

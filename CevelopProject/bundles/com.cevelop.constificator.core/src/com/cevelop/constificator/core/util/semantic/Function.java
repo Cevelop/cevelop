@@ -85,7 +85,6 @@ public class Function {
         return Type.isReference(parameter.getType());
     }
 
-
     /**
      * Determine the argument indices of <code>name</code> in the argument list
      * <code>arguments</code>

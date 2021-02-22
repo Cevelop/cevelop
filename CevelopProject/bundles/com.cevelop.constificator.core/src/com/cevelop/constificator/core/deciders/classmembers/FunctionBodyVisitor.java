@@ -66,7 +66,9 @@ public class FunctionBodyVisitor extends ASTVisitor {
                 ICPPDeferredFunction db = (ICPPDeferredFunction) b;
                 ICPPFunction[] candidates = db.getCandidates();
                 return candidates == null ? new ArrayList<ICPPFunction>() : java.util.Arrays.asList(db.getCandidates());
-            } else return Collections.singletonList((ICPPFunction) b);
+            } else {
+                return Collections.singletonList((ICPPFunction) b);
+            }
         }).reduce(new ArrayList<>(), (acc, l) -> {
             acc.addAll(l);
             return acc;

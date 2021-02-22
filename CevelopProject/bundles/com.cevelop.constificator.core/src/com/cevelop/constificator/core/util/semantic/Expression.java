@@ -88,7 +88,7 @@ public class Expression {
         } else if (clause instanceof ICPPASTFieldReference) {
             return (ICPPASTName) ((ICPPASTFieldReference) clause).getFieldName();
         } else if (clause instanceof ICPPASTArraySubscriptExpression) {
-            return Expression.getResultingName((ICPPASTInitializerClause) ((ICPPASTArraySubscriptExpression) clause).getArrayExpression());
+            return Expression.getResultingName(((ICPPASTArraySubscriptExpression) clause).getArrayExpression());
         }
 
         return null;
@@ -177,6 +177,7 @@ public class Expression {
      * finishes at the desired dimension or another breakage occurs. Consider
      * the following example:
      * </p>
+     *
      * <pre>
      * void f() {
      *   int * * * * ptr{};

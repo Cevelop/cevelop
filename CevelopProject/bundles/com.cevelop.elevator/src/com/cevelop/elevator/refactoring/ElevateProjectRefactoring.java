@@ -21,15 +21,15 @@ import org.eclipse.ltk.core.refactoring.RefactoringDescriptor;
 import org.eclipse.ltk.core.refactoring.RefactoringStatus;
 import org.eclipse.text.edits.TextEditGroup;
 
+import ch.hsr.ifs.iltis.cpp.core.wrappers.CRefactoring;
+import ch.hsr.ifs.iltis.cpp.core.wrappers.ModificationCollector;
+
 import com.cevelop.elevator.ast.analysis.DeclaratorCollector;
 import com.cevelop.elevator.ast.analysis.InitializerCollector;
 import com.cevelop.elevator.ast.transformation.ConstructorChainConverter;
 import com.cevelop.elevator.ast.transformation.DeclaratorConverter;
 import com.cevelop.elevator.checker.Configuration;
 import com.cevelop.elevator.checker.InitializationChecker;
-
-import ch.hsr.ifs.iltis.cpp.core.wrappers.CRefactoring;
-import ch.hsr.ifs.iltis.cpp.core.wrappers.ModificationCollector;
 
 
 public class ElevateProjectRefactoring extends CRefactoring {

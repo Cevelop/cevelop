@@ -62,13 +62,19 @@ public class HasInitializerListConstructor extends Condition {
     }
 
     private boolean containsInitializerList(ICPPConstructor constructor) {
-        if (constructor == null) return false;
+        if (constructor == null) {
+            return false;
+        }
         for (ICPPParameter parameter : constructor.getParameters()) {
             if (parameter.getType() instanceof ICPPClassType) {
                 ICPPClassType type = (ICPPClassType) parameter.getType();
-                if (type == null) return false;
+                if (type == null) {
+                    return false;
+                }
                 Optional<IScope> scope = getScope(type);
-                if (!scope.isPresent() || scope.get() == null) return false;
+                if (!scope.isPresent() || scope.get() == null) {
+                    return false;
+                }
                 String name = type.getName();
                 IName scopeName = scope.get().getScopeName();
                 return name != null && name.startsWith("initializer_list") && scopeName != null && "std".equals(scopeName.toString());

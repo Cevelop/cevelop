@@ -9,7 +9,7 @@ public class HasEqualsInitializer extends Condition {
 
     @Override
     public boolean satifies(IASTNode node) {
-        if(node instanceof IASTDeclarator) {
+        if (node instanceof IASTDeclarator) {
             return satisfies((IASTDeclarator) node);
         }
         return false;

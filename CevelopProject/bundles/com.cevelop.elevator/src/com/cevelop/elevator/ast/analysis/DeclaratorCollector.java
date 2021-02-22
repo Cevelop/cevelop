@@ -37,7 +37,7 @@ public class DeclaratorCollector extends ASTVisitor {
 
     public DeclaratorCollector(boolean markEqualsInitializers) {
         declarators = new ArrayList<>();
-        
+
         //@formatter:off
         Condition baseCondition = isAlreadyElevated.or(new HasNarrowingTypeConversion())
                                                    .or(new HasInitializerListConstructor())
@@ -46,8 +46,9 @@ public class DeclaratorCollector extends ASTVisitor {
                                                    .or(new IsExternDeclaration())
                                                    .or(new IsCatchParameter());
         //@formatter:on
-        isElevationCandidate = not(markEqualsInitializers ? baseCondition : baseCondition.or(new HasEqualsInitializer())).and(new OtherDeclaratorElevationConditions());
-        
+        isElevationCandidate = not(markEqualsInitializers ? baseCondition : baseCondition.or(new HasEqualsInitializer())).and(
+                new OtherDeclaratorElevationConditions());
+
         this.shouldVisitDeclarators = true;
     }
 

@@ -12,6 +12,9 @@ import org.eclipse.cdt.core.dom.ast.IASTTranslationUnit;
 import org.eclipse.cdt.core.dom.ast.cpp.ICPPASTNewExpression;
 import org.eclipse.core.resources.IFile;
 
+import ch.hsr.ifs.iltis.cpp.core.ast.checker.helper.IProblemId;
+import ch.hsr.ifs.iltis.cpp.core.wrappers.AbstractIndexAstChecker;
+
 import com.cevelop.elevator.ast.analysis.DeclaratorCollector;
 import com.cevelop.elevator.ast.analysis.InitializerCollector;
 import com.cevelop.elevator.ast.analysis.NodeProperties;
@@ -19,9 +22,6 @@ import com.cevelop.elevator.ast.analysis.NullPointerCollector;
 import com.cevelop.elevator.ast.analysis.conditions.Condition;
 import com.cevelop.elevator.ast.analysis.conditions.HasDefaultConstructor;
 import com.cevelop.elevator.ids.IdHelper.ProblemId;
-
-import ch.hsr.ifs.iltis.cpp.core.ast.checker.helper.IProblemId;
-import ch.hsr.ifs.iltis.cpp.core.wrappers.AbstractIndexAstChecker;
 
 
 public class InitializationChecker extends AbstractIndexAstChecker implements IChecker {

@@ -17,6 +17,8 @@ import org.eclipse.ltk.core.refactoring.Change;
 import org.eclipse.ltk.core.refactoring.CompositeChange;
 import org.eclipse.ltk.ui.refactoring.RefactoringWizardOpenOperation;
 
+import ch.hsr.ifs.iltis.cpp.core.codan.marker.IInfoMarkerResolution;
+
 import com.cevelop.charwars.asttools.ASTAnalyzer;
 import com.cevelop.charwars.asttools.ASTModifier;
 import com.cevelop.charwars.asttools.ASTRewriteCache;
@@ -25,8 +27,6 @@ import com.cevelop.charwars.dialogs.ErrorRefactoring;
 import com.cevelop.charwars.dialogs.ErrorRefactoringWizard;
 import com.cevelop.charwars.info.CharwarsInfo;
 import com.cevelop.charwars.utils.ErrorLogger;
-
-import ch.hsr.ifs.iltis.cpp.core.codan.marker.IInfoMarkerResolution;
 
 
 public abstract class BaseQuickFix extends AbstractAstRewriteQuickFix implements IInfoMarkerResolution<CharwarsInfo> {

@@ -30,6 +30,8 @@ import org.eclipse.cdt.internal.core.dom.rewrite.ASTModificationStore;
 import org.eclipse.cdt.internal.core.dom.rewrite.changegenerator.ChangeGeneratorWriterVisitor;
 import org.eclipse.cdt.internal.core.dom.rewrite.commenthandler.NodeCommentMap;
 
+import ch.hsr.ifs.iltis.cpp.core.ast.nodefactory.ASTNodeFactoryFactory;
+
 import com.cevelop.charwars.constants.Constants;
 import com.cevelop.charwars.constants.Function;
 import com.cevelop.charwars.utils.analyzers.BEAnalyzer;
@@ -39,8 +41,6 @@ import com.cevelop.charwars.utils.analyzers.TypeAnalyzer;
 import com.cevelop.charwars.utils.analyzers.UEAnalyzer;
 import com.cevelop.charwars.utils.visitors.IdExpressionsCollector;
 import com.cevelop.charwars.utils.visitors.NameOccurrenceChecker;
-
-import ch.hsr.ifs.iltis.cpp.core.ast.nodefactory.ASTNodeFactoryFactory;
 
 
 @SuppressWarnings("restriction")
@@ -74,14 +74,18 @@ public class ASTAnalyzer {
     }
 
     public static boolean isStringLengthCalculation(IASTIdExpression idExpression) {
-        if (UEAnalyzer.isDereferenceExpression(idExpression.getParent())) return false;
+        if (UEAnalyzer.isDereferenceExpression(idExpression.getParent())) {
+            return false;
+        }
 
         IASTNode currentNode = idExpression;
         while (currentNode != null && !BEAnalyzer.isSubtraction(currentNode)) {
             currentNode = currentNode.getParent();
         }
 
-        if (currentNode == null) return false;
+        if (currentNode == null) {
+            return false;
+        }
 
         IASTNode minuend = BEAnalyzer.getOperand1(currentNode);
         IASTNode subtrahend = BEAnalyzer.getOperand2(currentNode);
@@ -276,7 +280,9 @@ public class ASTAnalyzer {
 
     public static boolean isOffsettedCString(IASTExpression expr) {
         IASTIdExpression idExpression = getStdStringIdExpression(expr);
-        if (idExpression == null) return false;
+        if (idExpression == null) {
+            return false;
+        }
 
         IASTNode cstrCall = idExpression.getParent().getParent();
         boolean isCstrCall = isConversionToCharPointer(cstrCall, true);
@@ -299,7 +305,9 @@ public class ASTAnalyzer {
             IASTIdExpression idExpression = idExpressions.get(0);
             IASTIdExpression originalIdExpression = (IASTIdExpression) idExpression.getOriginalNode();
             boolean isStdStringType = TypeAnalyzer.isStdStringType(originalIdExpression.getExpressionType());
-            if (isStdStringType) return idExpression;
+            if (isStdStringType) {
+                return idExpression;
+            }
         }
         return null;
     }

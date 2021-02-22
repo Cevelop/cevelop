@@ -24,7 +24,8 @@ public class ArrayProblemGenerator {
             for (IASTDeclarator declarator : simpleDeclaration.getDeclarators()) {
                 if (DeclaratorTypeAnalyzer.isArray(declarator) && !DeclaratorAnalyzer.isCString(declarator)) {
                     IASTName name = declarator.getName();
-                    ProblemReport report = ProblemReport.create(file, ProblemId.ARRAY_PROBLEM, declarator, new CharwarsInfo().also(i -> i.nodeName = name.toString()));
+                    ProblemReport report = ProblemReport.create(file, ProblemId.ARRAY_PROBLEM, declarator, new CharwarsInfo().also(i -> i.nodeName =
+                                                                                                                                                   name.toString()));
                     if (report != null) {
                         problemReports.add(report);
                     }

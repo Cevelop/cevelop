@@ -120,18 +120,26 @@ public class CheckAnalyzer {
             IASTExpression ifCondition = ifStatement.getConditionExpression();
 
             IASTIdExpression idExpression = findFirstIdExpression(name, ifCondition);
-            if (idExpression == null) return false;
+            if (idExpression == null) {
+                return false;
+            }
 
             IASTNode check = idExpression.getParent();
             if ((check == ifStatement || BEAnalyzer.isLogicalAnd(check)) && !equalCheck) {
                 return true;
             }
 
-            if (!isNodeComparedToNull(idExpression, equalCheck)) return false;
-            if (check == ifCondition) return true;
+            if (!isNodeComparedToNull(idExpression, equalCheck)) {
+                return false;
+            }
+            if (check == ifCondition) {
+                return true;
+            }
 
             IASTNode checkParent = check.getParent();
-            if (checkParent != ifCondition) return false;
+            if (checkParent != ifCondition) {
+                return false;
+            }
             return equalCheck ? BEAnalyzer.isLogicalOr(checkParent) : BEAnalyzer.isLogicalAnd(checkParent);
         }
         return false;
@@ -143,7 +151,9 @@ public class CheckAnalyzer {
             IASTExpression expression = expressionStatement.getExpression();
 
             IASTIdExpression idExpression = findFirstIdExpression(name, expression);
-            if (idExpression == null) return false;
+            if (idExpression == null) {
+                return false;
+            }
 
             if (isNodeComparedToNull(idExpression, false)) {
                 IASTNode booleanExpression = BoolAnalyzer.getEnclosingBoolean(idExpression);
@@ -219,13 +229,17 @@ public class CheckAnalyzer {
             IASTExpression operand = BEAnalyzer.getOtherOperand(node);
             boolean isStrlenOperand = FunctionAnalyzer.isCallToFunction(operand, Function.STRLEN) || FunctionAnalyzer.isCallToMemberFunction(operand,
                     Function.SIZE);
-            if (!isStrlenOperand) return false;
+            if (!isStrlenOperand) {
+                return false;
+            }
 
             int operator = comparison.getOperator();
             if (equalityComparison) {
                 return operator == IASTBinaryExpression.op_equals;
             } else {
-                if (operator == IASTBinaryExpression.op_notequals) return true;
+                if (operator == IASTBinaryExpression.op_notequals) {
+                    return true;
+                }
                 return operator == (BEAnalyzer.isOp1(node) ? IASTBinaryExpression.op_lessThan : IASTBinaryExpression.op_greaterThan);
             }
         }

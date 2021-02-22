@@ -22,6 +22,9 @@ import org.eclipse.cdt.core.dom.ast.cpp.ICPPASTQualifiedName;
 import org.eclipse.cdt.core.dom.ast.cpp.ICPPASTTemplateId;
 import org.eclipse.cdt.core.dom.rewrite.ASTRewrite;
 
+import ch.hsr.ifs.iltis.cpp.core.ast.nodefactory.ASTNodeFactoryFactory;
+import ch.hsr.ifs.iltis.cpp.core.ast.nodefactory.IBetterFactory;
+
 import com.cevelop.charwars.asttools.ASTAnalyzer;
 import com.cevelop.charwars.asttools.ASTModifier;
 import com.cevelop.charwars.asttools.ASTRewriteCache;
@@ -30,9 +33,6 @@ import com.cevelop.charwars.constants.QuickFixLabels;
 import com.cevelop.charwars.constants.StdArray;
 import com.cevelop.charwars.quickfixes.BaseQuickFix;
 import com.cevelop.charwars.utils.analyzers.ExpressionAnalyzer;
-
-import ch.hsr.ifs.iltis.cpp.core.ast.nodefactory.ASTNodeFactoryFactory;
-import ch.hsr.ifs.iltis.cpp.core.ast.nodefactory.IBetterFactory;
 
 
 public class ArrayQuickFix extends BaseQuickFix {

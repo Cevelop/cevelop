@@ -8,15 +8,15 @@ import org.eclipse.cdt.core.dom.ast.IASTIdExpression;
 import org.eclipse.cdt.core.dom.ast.IASTInitializerClause;
 import org.eclipse.cdt.core.dom.ast.IASTNode;
 
+import ch.hsr.ifs.iltis.cpp.core.ast.nodefactory.ASTNodeFactoryFactory;
+import ch.hsr.ifs.iltis.cpp.core.ast.nodefactory.IBetterFactory;
+
 import com.cevelop.charwars.asttools.ASTAnalyzer;
 import com.cevelop.charwars.asttools.CheckAnalyzer;
 import com.cevelop.charwars.constants.Function;
 import com.cevelop.charwars.quickfixes.cstring.common.refactorings.Context.Kind;
 import com.cevelop.charwars.utils.analyzers.BoolAnalyzer;
 import com.cevelop.charwars.utils.analyzers.FunctionAnalyzer;
-
-import ch.hsr.ifs.iltis.cpp.core.ast.nodefactory.ASTNodeFactoryFactory;
-import ch.hsr.ifs.iltis.cpp.core.ast.nodefactory.IBetterFactory;
 
 
 public class OperatorRefactoring extends Refactoring {

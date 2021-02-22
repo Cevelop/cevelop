@@ -15,6 +15,8 @@ import org.eclipse.cdt.core.dom.ast.IASTNode.CopyStyle;
 import org.eclipse.cdt.core.dom.ast.IASTStatement;
 import org.eclipse.cdt.core.dom.rewrite.ASTRewrite;
 
+import ch.hsr.ifs.iltis.cpp.core.ast.nodefactory.ASTNodeFactoryFactory;
+
 import com.cevelop.charwars.asttools.ASTAnalyzer;
 import com.cevelop.charwars.asttools.ASTModifier;
 import com.cevelop.charwars.constants.StringType;
@@ -24,8 +26,6 @@ import com.cevelop.charwars.quickfixes.cstring.common.refactorings.Refactoring;
 import com.cevelop.charwars.quickfixes.cstring.common.refactorings.RefactoringFactory;
 import com.cevelop.charwars.utils.analyzers.BoolAnalyzer;
 import com.cevelop.charwars.utils.visitors.StatementsVisitor;
-
-import ch.hsr.ifs.iltis.cpp.core.ast.nodefactory.ASTNodeFactoryFactory;
 
 
 public class BlockRefactoring {

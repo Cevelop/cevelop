@@ -9,11 +9,11 @@ import org.eclipse.cdt.core.dom.ast.IASTNode;
 import org.eclipse.cdt.core.dom.ast.IASTUnaryExpression;
 import org.eclipse.cdt.core.dom.rewrite.ASTRewrite;
 
+import ch.hsr.ifs.iltis.cpp.core.ast.nodefactory.ASTNodeFactoryFactory;
+
 import com.cevelop.charwars.asttools.ASTAnalyzer;
 import com.cevelop.charwars.asttools.ASTModifier;
 import com.cevelop.charwars.utils.analyzers.UEAnalyzer;
-
-import ch.hsr.ifs.iltis.cpp.core.ast.nodefactory.ASTNodeFactoryFactory;
 
 
 public class ReplaceInsideFunctionBodyVisitor extends ASTVisitor {

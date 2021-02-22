@@ -24,7 +24,9 @@ public class DeclaratorTypeAnalyzer {
 
     private static boolean hasType(IASTDeclarator declarator, int type) {
         IASTSimpleDeclSpecifier ds = getDeclSpecifier(declarator);
-        if (ds == null) return false;
+        if (ds == null) {
+            return false;
+        }
         return ds.getType() == type;
     }
 
@@ -34,7 +36,9 @@ public class DeclaratorTypeAnalyzer {
 
     public static boolean hasCStringType(IASTDeclarator declarator, boolean isConst) {
         IASTSimpleDeclSpecifier ds = getDeclSpecifier(declarator);
-        if (ds == null) return false;
+        if (ds == null) {
+            return false;
+        }
 
         int type = ds.getType();
         boolean isValidType = type == IASTSimpleDeclSpecifier.t_char || type == IASTSimpleDeclSpecifier.t_wchar_t ||

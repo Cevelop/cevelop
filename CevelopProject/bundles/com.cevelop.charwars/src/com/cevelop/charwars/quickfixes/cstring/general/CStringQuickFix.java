@@ -28,6 +28,9 @@ import org.eclipse.cdt.core.dom.ast.cpp.ICPPASTInitializerList;
 import org.eclipse.cdt.core.dom.ast.cpp.ICPPASTNamespaceDefinition;
 import org.eclipse.cdt.core.dom.rewrite.ASTRewrite;
 
+import ch.hsr.ifs.iltis.cpp.core.ast.nodefactory.ASTNodeFactoryFactory;
+import ch.hsr.ifs.iltis.cpp.core.ast.nodefactory.IBetterFactory;
+
 import com.cevelop.charwars.asttools.ASTAnalyzer;
 import com.cevelop.charwars.asttools.ASTModifier;
 import com.cevelop.charwars.asttools.ASTRewriteCache;
@@ -41,9 +44,6 @@ import com.cevelop.charwars.quickfixes.BaseQuickFix;
 import com.cevelop.charwars.quickfixes.cstring.common.BlockRefactoring;
 import com.cevelop.charwars.quickfixes.cstring.common.BlockRefactoringConfiguration;
 import com.cevelop.charwars.utils.analyzers.DeclaratorTypeAnalyzer;
-
-import ch.hsr.ifs.iltis.cpp.core.ast.nodefactory.ASTNodeFactoryFactory;
-import ch.hsr.ifs.iltis.cpp.core.ast.nodefactory.IBetterFactory;
 
 
 public class CStringQuickFix extends BaseQuickFix {

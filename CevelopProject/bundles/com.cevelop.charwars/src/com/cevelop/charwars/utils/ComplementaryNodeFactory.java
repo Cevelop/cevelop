@@ -3,11 +3,11 @@ package com.cevelop.charwars.utils;
 import org.eclipse.cdt.core.dom.ast.IASTExpression;
 import org.eclipse.cdt.core.dom.ast.cpp.ICPPASTQualifiedName;
 
-import com.cevelop.charwars.constants.StdString;
-import com.cevelop.charwars.constants.StringType;
-
 import ch.hsr.ifs.iltis.cpp.core.ast.nodefactory.ASTNodeFactoryFactory;
 import ch.hsr.ifs.iltis.cpp.core.ast.nodefactory.IBetterFactory;
+
+import com.cevelop.charwars.constants.StdString;
+import com.cevelop.charwars.constants.StringType;
 
 
 public class ComplementaryNodeFactory {

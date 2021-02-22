@@ -6,11 +6,11 @@ import org.eclipse.cdt.core.dom.ast.IASTSimpleDeclaration;
 import org.eclipse.cdt.core.dom.ast.IASTStatement;
 import org.eclipse.cdt.core.dom.ast.cpp.ICPPASTFunctionDeclarator;
 
+import ch.hsr.ifs.iltis.cpp.core.ast.nodefactory.ASTNodeFactoryFactory;
+
 import com.cevelop.charwars.asttools.ASTModifier;
 import com.cevelop.charwars.asttools.IndexFinder;
 import com.cevelop.charwars.asttools.IndexFinder.IndexFinderInstruction;
-
-import ch.hsr.ifs.iltis.cpp.core.ast.nodefactory.ASTNodeFactoryFactory;
 
 
 public class NoNullCheckRewriteStrategy extends RewriteStrategy {

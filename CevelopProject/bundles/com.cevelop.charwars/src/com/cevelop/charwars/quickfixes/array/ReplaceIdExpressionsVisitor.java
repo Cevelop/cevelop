@@ -11,13 +11,13 @@ import org.eclipse.cdt.core.dom.ast.IBasicType;
 import org.eclipse.cdt.core.dom.ast.IType;
 import org.eclipse.cdt.core.dom.rewrite.ASTRewrite;
 
+import ch.hsr.ifs.iltis.cpp.core.ast.nodefactory.ASTNodeFactoryFactory;
+import ch.hsr.ifs.iltis.cpp.core.ast.nodefactory.IBetterFactory;
+
 import com.cevelop.charwars.asttools.ASTAnalyzer;
 import com.cevelop.charwars.asttools.ASTModifier;
 import com.cevelop.charwars.constants.StdArray;
 import com.cevelop.charwars.utils.analyzers.BEAnalyzer;
-
-import ch.hsr.ifs.iltis.cpp.core.ast.nodefactory.ASTNodeFactoryFactory;
-import ch.hsr.ifs.iltis.cpp.core.ast.nodefactory.IBetterFactory;
 
 
 public class ReplaceIdExpressionsVisitor extends ASTVisitor {
@@ -45,7 +45,9 @@ public class ReplaceIdExpressionsVisitor extends ASTVisitor {
                     IASTNode currentNode = idExpression;
                     while (currentNode != null) {
                         currentNode = currentNode.getParent();
-                        if (BEAnalyzer.isDivision(currentNode)) break;
+                        if (BEAnalyzer.isDivision(currentNode)) {
+                            break;
+                        }
                     }
                     IASTFunctionCallExpression sizeCall = nodeFactory.newMemberFunctionCallExpression(arrayName, StdArray.SIZE);
                     ASTModifier.replace(currentNode, sizeCall, rewrite);

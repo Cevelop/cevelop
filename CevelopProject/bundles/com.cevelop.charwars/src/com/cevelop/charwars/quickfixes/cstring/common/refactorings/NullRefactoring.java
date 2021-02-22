@@ -40,9 +40,11 @@ public class NullRefactoring extends Refactoring {
 
     private boolean isStdStringParameterDeclaration(IASTIdExpression idExpression, Context context) {
         IType parameterType = FunctionBindingAnalyzer.getParameterType(idExpression);
-        if (parameterType == null)
+        if (parameterType == null) {
             return false;
-        else return TypeAnalyzer.isStdStringType(parameterType);
+        } else {
+            return TypeAnalyzer.isStdStringType(parameterType);
+        }
     }
 
     @Override

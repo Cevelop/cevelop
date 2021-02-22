@@ -4,10 +4,10 @@ import org.eclipse.cdt.core.dom.ast.IASTCompoundStatement;
 import org.eclipse.cdt.core.dom.ast.IASTNode.CopyStyle;
 import org.eclipse.cdt.core.dom.ast.IASTStatement;
 
+import ch.hsr.ifs.iltis.cpp.core.ast.nodefactory.ASTNodeFactoryFactory;
+
 import com.cevelop.charwars.asttools.ASTModifier;
 import com.cevelop.charwars.asttools.CheckAnalyzer;
-
-import ch.hsr.ifs.iltis.cpp.core.ast.nodefactory.ASTNodeFactoryFactory;
 
 
 public class NullCheckRewriteStrategy extends RewriteStrategy {

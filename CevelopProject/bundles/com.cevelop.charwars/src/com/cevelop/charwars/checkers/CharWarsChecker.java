@@ -11,10 +11,10 @@ import org.eclipse.cdt.core.dom.ast.IASTTranslationUnit;
 import org.eclipse.cdt.core.dom.ast.cpp.ICPPASTTranslationUnit;
 import org.eclipse.core.resources.IFile;
 
-import com.cevelop.charwars.constants.ProblemId;
-
 import ch.hsr.ifs.iltis.cpp.core.resources.info.MarkerInfo;
 import ch.hsr.ifs.iltis.cpp.core.wrappers.AbstractIndexAstChecker;
+
+import com.cevelop.charwars.constants.ProblemId;
 
 
 public class CharWarsChecker extends AbstractIndexAstChecker {

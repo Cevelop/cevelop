@@ -13,6 +13,9 @@ import org.eclipse.cdt.core.dom.ast.IASTNode;
 import org.eclipse.cdt.core.dom.ast.IASTStatement;
 import org.eclipse.cdt.core.dom.rewrite.ASTRewrite;
 
+import ch.hsr.ifs.iltis.cpp.core.ast.nodefactory.ASTNodeFactoryFactory;
+import ch.hsr.ifs.iltis.cpp.core.ast.nodefactory.IBetterFactory;
+
 import com.cevelop.charwars.asttools.ASTAnalyzer;
 import com.cevelop.charwars.asttools.ASTModifier;
 import com.cevelop.charwars.constants.Constants;
@@ -22,9 +25,6 @@ import com.cevelop.charwars.constants.StringType;
 import com.cevelop.charwars.quickfixes.cstring.common.BlockRefactoring;
 import com.cevelop.charwars.quickfixes.cstring.common.BlockRefactoringConfiguration;
 import com.cevelop.charwars.utils.ComplementaryNodeFactory;
-
-import ch.hsr.ifs.iltis.cpp.core.ast.nodefactory.ASTNodeFactoryFactory;
-import ch.hsr.ifs.iltis.cpp.core.ast.nodefactory.IBetterFactory;
 
 
 public class PtrCleanupRefactoring extends CleanupRefactoring {

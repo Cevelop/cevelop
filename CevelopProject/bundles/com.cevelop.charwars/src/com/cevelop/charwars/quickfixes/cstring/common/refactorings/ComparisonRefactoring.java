@@ -8,6 +8,8 @@ import org.eclipse.cdt.core.dom.ast.IASTFunctionCallExpression;
 import org.eclipse.cdt.core.dom.ast.IASTIdExpression;
 import org.eclipse.cdt.core.dom.ast.IASTNode;
 
+import ch.hsr.ifs.iltis.cpp.core.ast.nodefactory.ASTNodeFactoryFactory;
+
 import com.cevelop.charwars.asttools.CheckAnalyzer;
 import com.cevelop.charwars.constants.Function;
 import com.cevelop.charwars.constants.Function.Sentinel;
@@ -17,8 +19,6 @@ import com.cevelop.charwars.utils.analyzers.BEAnalyzer;
 import com.cevelop.charwars.utils.analyzers.BoolAnalyzer;
 import com.cevelop.charwars.utils.analyzers.FunctionAnalyzer;
 import com.cevelop.charwars.utils.analyzers.UEAnalyzer;
-
-import ch.hsr.ifs.iltis.cpp.core.ast.nodefactory.ASTNodeFactoryFactory;
 
 
 public class ComparisonRefactoring extends Refactoring {

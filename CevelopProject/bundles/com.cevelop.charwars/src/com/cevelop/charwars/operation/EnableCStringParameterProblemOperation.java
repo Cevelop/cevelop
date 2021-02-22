@@ -2,11 +2,11 @@ package com.cevelop.charwars.operation;
 
 import org.eclipse.core.resources.IProject;
 
-import com.cevelop.charwars.constants.ProblemId;
-
 import ch.hsr.ifs.iltis.cpp.versionator.definition.CPPVersion;
 import ch.hsr.ifs.iltis.cpp.versionator.definition.EnableCodanCheckers;
 import ch.hsr.ifs.iltis.cpp.versionator.definition.IVersionModificationOperation;
+
+import com.cevelop.charwars.constants.ProblemId;
 
 
 public class EnableCStringParameterProblemOperation implements IVersionModificationOperation {

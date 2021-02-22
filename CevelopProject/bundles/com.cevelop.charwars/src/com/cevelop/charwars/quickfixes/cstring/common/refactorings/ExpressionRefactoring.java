@@ -9,6 +9,9 @@ import org.eclipse.cdt.core.dom.ast.IASTName;
 import org.eclipse.cdt.core.dom.ast.IASTNode;
 import org.eclipse.cdt.core.dom.ast.IASTUnaryExpression;
 
+import ch.hsr.ifs.iltis.cpp.core.ast.nodefactory.ASTNodeFactoryFactory;
+import ch.hsr.ifs.iltis.cpp.core.ast.nodefactory.IBetterFactory;
+
 import com.cevelop.charwars.asttools.ASTAnalyzer;
 import com.cevelop.charwars.asttools.CheckAnalyzer;
 import com.cevelop.charwars.constants.StdString;
@@ -18,9 +21,6 @@ import com.cevelop.charwars.utils.analyzers.BEAnalyzer;
 import com.cevelop.charwars.utils.analyzers.BoolAnalyzer;
 import com.cevelop.charwars.utils.analyzers.LiteralAnalyzer;
 import com.cevelop.charwars.utils.analyzers.UEAnalyzer;
-
-import ch.hsr.ifs.iltis.cpp.core.ast.nodefactory.ASTNodeFactoryFactory;
-import ch.hsr.ifs.iltis.cpp.core.ast.nodefactory.IBetterFactory;
 
 
 public class ExpressionRefactoring extends Refactoring {
@@ -92,8 +92,8 @@ public class ExpressionRefactoring extends Refactoring {
             makeApplicable(nodeToReplace, Transformation.INDEX_CALCULATION);
         } else if (context.getKind() == Kind.Modified_Alias && !ASTAnalyzer.isLValueInAssignment(idExpression) && (CheckAnalyzer.isNodeComparedToNull(
                 idExpression) || CheckAnalyzer.isNodeComparedToStrlen(idExpression))) {
-            makeApplicable(BoolAnalyzer.getEnclosingBoolean(idExpression), Transformation.ALIAS_COMPARISON);
-        }
+                    makeApplicable(BoolAnalyzer.getEnclosingBoolean(idExpression), Transformation.ALIAS_COMPARISON);
+                }
     }
 
     @Override

@@ -16,6 +16,8 @@ import org.eclipse.cdt.core.dom.ast.cpp.ICPPASTFunctionDeclarator;
 import org.eclipse.cdt.core.dom.ast.cpp.ICPPASTParameterDeclaration;
 import org.eclipse.cdt.core.dom.rewrite.ASTRewrite;
 
+import ch.hsr.ifs.iltis.cpp.core.ast.nodefactory.ASTNodeFactoryFactory;
+
 import com.cevelop.charwars.asttools.ASTModifier;
 import com.cevelop.charwars.asttools.ASTRewriteCache;
 import com.cevelop.charwars.asttools.IndexFinder;
@@ -25,8 +27,6 @@ import com.cevelop.charwars.constants.QuickFixLabels;
 import com.cevelop.charwars.quickfixes.BaseQuickFix;
 import com.cevelop.charwars.utils.analyzers.FunctionAnalyzer;
 import com.cevelop.charwars.utils.analyzers.UEAnalyzer;
-
-import ch.hsr.ifs.iltis.cpp.core.ast.nodefactory.ASTNodeFactoryFactory;
 
 
 public class PointerParameterQuickFix extends BaseQuickFix {

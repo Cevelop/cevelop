@@ -8,9 +8,9 @@ import org.eclipse.cdt.core.dom.ast.IASTNode;
 import org.eclipse.cdt.core.dom.ast.IASTNodeLocation;
 import org.eclipse.core.resources.IFile;
 
-import com.cevelop.charwars.constants.ProblemId;
-
 import ch.hsr.ifs.iltis.cpp.core.resources.info.MarkerInfo;
+
+import com.cevelop.charwars.constants.ProblemId;
 
 
 public class ProblemReport {
@@ -26,7 +26,9 @@ public class ProblemReport {
     }
 
     public static ProblemReport create(IFile file, ProblemId problemID, IASTNode markedNode, MarkerInfo<?> info) {
-        if (!isValidMarkedNode(markedNode)) return null;
+        if (!isValidMarkedNode(markedNode)) {
+            return null;
+        }
 
         return new ProblemReport(problemID, createProblemLocation(file, markedNode), info);
     }

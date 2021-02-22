@@ -19,6 +19,9 @@ import org.eclipse.cdt.core.dom.ast.cpp.ICPPASTFunctionDeclarator;
 import org.eclipse.cdt.core.dom.ast.cpp.ICPPASTParameterDeclaration;
 import org.eclipse.cdt.core.dom.rewrite.ASTRewrite;
 
+import ch.hsr.ifs.iltis.cpp.core.ast.nodefactory.ASTNodeFactoryFactory;
+import ch.hsr.ifs.iltis.cpp.core.ast.nodefactory.IBetterFactory;
+
 import com.cevelop.charwars.asttools.ASTModifier;
 import com.cevelop.charwars.asttools.ASTRewriteCache;
 import com.cevelop.charwars.asttools.IndexFinder;
@@ -29,9 +32,6 @@ import com.cevelop.charwars.quickfixes.cstring.common.BlockRefactoring;
 import com.cevelop.charwars.quickfixes.cstring.common.BlockRefactoringConfiguration;
 import com.cevelop.charwars.utils.analyzers.DeclaratorTypeAnalyzer;
 import com.cevelop.charwars.utils.analyzers.FunctionAnalyzer;
-
-import ch.hsr.ifs.iltis.cpp.core.ast.nodefactory.ASTNodeFactoryFactory;
-import ch.hsr.ifs.iltis.cpp.core.ast.nodefactory.IBetterFactory;
 
 
 public abstract class RewriteStrategy {

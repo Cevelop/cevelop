@@ -19,6 +19,7 @@
         <module>com.cevelop.gslator.feature</module>
         <module>com.cevelop.includator.feature</module>
         <module>com.cevelop.intwidthfixator.feature</module>
+        <module>com.cevelop.license.feature</module>
         <module>com.cevelop.macronator.feature</module>
         <module>com.cevelop.namespactor.feature</module>
         <module>com.cevelop.tdd.feature</module>

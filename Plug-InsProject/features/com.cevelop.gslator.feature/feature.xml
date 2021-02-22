@@ -3,7 +3,9 @@
       id="com.cevelop.gslator.feature"
       label="GSLAtor"
       version="1.14.0.qualifier"
-      provider-name="IFS Institute for Software">
+      provider-name="IFS Institute for Software"
+      license-feature="com.cevelop.license.feature"
+      license-feature-version="1.14.0.qualifier">
 
    <description url="https://www.cevelop.com/features">
       The GSLAtor is an Eclipse CDT plug-in that provides hints and
@@ -12,15 +14,12 @@ Guidelines
    </description>
 
    <copyright>
-      Copyright (c) 2016 Institute for Software, HSR Hochschule für Technik Rapperswil
-The Software and Documentation are copyrighted by HSR and are protected by
-international copyright laws. The product contains copyrighted software of HSR.
-All rights reserved. You agree not to remove any trademarks or copyright notices
-from the Software or Documentation.
-
-Contributors:
-Kaya Özhan &lt;oezhan.kaya@hsr.ch&gt;, Kevin Schmidiger &lt;kevin.schmidiger@hsr.ch&gt; - initial API and implementation (C.ctor rules)
-Rolf Bislin &lt;rolf.bislin@hsr.ch&gt;, Kilian Diener &lt;kilian.diener@hsr.ch&gt; - initial API and implementation (ES and additional C.ctor rules)
+      Copyright (c) 2016 IFS Institute for Software
+Copyright (c) 2021 The Authors of Cevelop
+This program and the accompanying materials are made available
+under the terms of the Eclipse Public License 2.0 which accompanies
+this distribution, and is available at https://www.eclipse.org/legal/epl-2.0/
+SPDX-License-Identifier: EPL-2.0
    </copyright>
 
    <license url="https://www.cevelop.com/license">

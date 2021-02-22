@@ -3,7 +3,9 @@
       id="com.cevelop.ctylechecker.feature"
       label="Ctylechecker"
       version="1.14.0.qualifier"
-      provider-name="IFS Institute for Software">
+      provider-name="IFS Institute for Software"
+      license-feature="com.cevelop.license.feature"
+      license-feature-version="1.14.0.qualifier">
 
    <description url="https://www.cevelop.com/features">
       Ctylechecker performs a lightweight check of simple style mistakes
@@ -13,20 +15,12 @@ the resulting program.
    </description>
 
    <copyright>
-      Copyright (c) 2018 Institute for Software, HSR Hochschule für
-Technik Rapperswil
-The Software and Documentation are copyrighted by HSR and are
-protected by
-international copyright laws. The product contains copyrighted
-software of HSR.
-All rights reserved. You agree not to remove any trademarks or
-copyright notices
-from the Software or Documentation.
-Contributors:
-Thomas Corbat &lt;thomas.corbat@hsr.ch&gt;
-- Initial API and implementation
-Zafer Dogan &lt;zafer.dogan@hsr.ch&gt;
-- Initial implementation of the coding style guidelines
+      Copyright (c) 2018 IFS Institute for Software
+Copyright (c) 2021 The Authors of Cevelop
+This program and the accompanying materials are made available
+under the terms of the Eclipse Public License 2.0 which accompanies
+this distribution, and is available at https://www.eclipse.org/legal/epl-2.0/
+SPDX-License-Identifier: EPL-2.0
    </copyright>
 
    <license url="https://www.cevelop.com/license">

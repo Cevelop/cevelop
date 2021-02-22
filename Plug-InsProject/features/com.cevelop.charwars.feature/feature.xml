@@ -3,25 +3,21 @@
       id="com.cevelop.charwars.feature"
       label="CharWars"
       version="1.14.0.qualifier"
-      provider-name="IFS Institute for Software">
+      provider-name="IFS Institute for Software"
+      license-feature="com.cevelop.license.feature"
+      license-feature-version="1.14.0.qualifier">
 
    <description url="https://www.cevelop.com/features">
       This plug-in contains the CharWars plugin to refactor pointers.
    </description>
 
    <copyright>
-      Copyright (c) 2014 Institute for Software, HSR Hochschule für
-Technik Rapperswil
-The Software and Documentation are copyrighted by HSR and are
-protected by
-international copyright laws. The product contains copyrighted
-software of HSR.
-All rights reserved. You agree not to remove any trademarks or
-copyright notices
-from the Software or Documentation.
-Contributors:
-Toni Suter &lt;toni.suter@hsr.ch&gt;, Fabian Gonzalez &lt;fabian.gonzalez@hsr.ch&gt;
-- initial API and implementation
+      Copyright (c) 2014 IFS Institute for Software
+Copyright (c) 2021 The Authors of Cevelop
+This program and the accompanying materials are made available
+under the terms of the Eclipse Public License 2.0 which accompanies
+this distribution, and is available at https://www.eclipse.org/legal/epl-2.0/
+SPDX-License-Identifier: EPL-2.0
    </copyright>
 
    <license url="https://www.cevelop.com/license">

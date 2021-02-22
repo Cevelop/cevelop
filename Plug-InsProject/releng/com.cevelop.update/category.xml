@@ -24,5 +24,8 @@
    <feature url="features/com.cevelop.codeanalysator.feature_1.14.0.qualifier.jar" id="com.cevelop.codeanalysator.feature" version="1.14.0.qualifier">
       <category name="com.cevelop.plugins.beta"/>
    </feature>
+   <feature url="features/com.cevelop.license.feature_1.14.0.qualifier.jar" id="com.cevelop.license.feature" version="1.14.0.qualifier">
+      <category name="com.cevelop.plugins.beta"/>
+   </feature>
    <category-def name="com.cevelop.plugins.beta" label="Beta Plug-Ins"/>
 </site>

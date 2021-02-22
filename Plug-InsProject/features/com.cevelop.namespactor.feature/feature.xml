@@ -3,7 +3,9 @@
       id="com.cevelop.namespactor.feature"
       label="Namespactor"
       version="1.14.0.qualifier"
-      provider-name="IFS Institute for Software">
+      provider-name="IFS Institute for Software"
+      license-feature="com.cevelop.license.feature"
+      license-feature-version="1.14.0.qualifier">
 
    <description url="https://www.cevelop.com/features">
       Namespactor is a namespace refactoring tool that simplifies and
@@ -11,18 +13,12 @@ speeds up working with names, using directives and using declarations.
    </description>
 
    <copyright>
-      Copyright (c) 2012 Institute for Software, HSR Hochschule für
-Technik Rapperswil
-The Software and Documentation are copyrighted by HSR and are
-protected by
-international copyright laws. The product contains copyrighted
-software of HSR.
-All rights reserved. You agree not to remove any trademarks or
-copyright notices
-from the Software or Documentation.
-Contributors:
-Ueli Kunz &lt;kunz@ideadapt.net&gt;, Jules Weder &lt;julesweder@gmail.com&gt;
-- initial API and implementation
+      Copyright (c) 2012 IFS Institute for Software
+Copyright (c) 2021 The Authors of Cevelop
+This program and the accompanying materials are made available
+under the terms of the Eclipse Public License 2.0 which accompanies
+this distribution, and is available at https://www.eclipse.org/legal/epl-2.0/
+SPDX-License-Identifier: EPL-2.0
    </copyright>
 
    <license url="https://www.cevelop.com/license">

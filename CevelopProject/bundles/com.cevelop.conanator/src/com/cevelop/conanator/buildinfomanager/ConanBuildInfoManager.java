@@ -77,7 +77,9 @@ public class ConanBuildInfoManager {
 
         for (Section section : Section.values()) {
             List<String> newConanValues = parser.getSection(section);
-            if (newConanValues == null) newConanValues = new ArrayList<>();
+            if (newConanValues == null) {
+                newConanValues = new ArrayList<>();
+            }
             updateOption(project, toolChain, resourceInfo, section, newConanValues);
         }
 

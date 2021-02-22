@@ -93,7 +93,9 @@ public class NamedSectionParser<Section extends Enum<Section>> extends SectionPa
                 }
             }
 
-            if (builder.length() != 0) builder.append(System.lineSeparator());
+            if (builder.length() != 0) {
+                builder.append(System.lineSeparator());
+            }
         }
 
         writer.write(builder.toString().replaceFirst("(\\r?\\n)++$", ""));

@@ -71,9 +71,10 @@ public class ProfileListViewer {
         viewer.getList().setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
         viewer.addSelectionChangedListener(e -> updateButtonStates());
         currentInput = loadProfiles();
-        ViewerSupport.bind(viewer, currentInput, BeanProperties.values(new String[] { "name" }));
-        for (ConanProfile p : currentInput)
+        ViewerSupport.bind(viewer, currentInput, BeanProperties.values("name"));
+        for (ConanProfile p : currentInput) {
             defaultInput.add(p.clone());
+        }
     }
 
     private void createButtons(Composite parent) {
@@ -140,7 +141,9 @@ public class ProfileListViewer {
 
     private boolean containsProfile(String name) {
         for (ConanProfile p : currentInput) {
-            if (p.getName().equals(name)) return true;
+            if (p.getName().equals(name)) {
+                return true;
+            }
         }
         return false;
     }
@@ -222,8 +225,9 @@ public class ProfileListViewer {
                 List<String> values = parser.getSection("build_requires");
                 if (values != null) {
                     List<Line> buildRequires = new ArrayList<>();
-                    for (String s : values)
+                    for (String s : values) {
                         buildRequires.add(new Line(s));
+                    }
                     profile.setBuildRequires(buildRequires);
                 }
             } catch (IOException e) {
@@ -233,10 +237,14 @@ public class ProfileListViewer {
     }
 
     public void performOk() {
-        if (presentsDefault) return;
+        if (presentsDefault) {
+            return;
+        }
 
         File profilesFolder = new File(PROFILES_FOLDER);
-        if (!profilesFolder.exists()) profilesFolder.mkdirs();
+        if (!profilesFolder.exists()) {
+            profilesFolder.mkdirs();
+        }
 
         for (ConanProfile profile : profilesToAdd) {
             File file = new File(PROFILES_FOLDER + profile.getName());
@@ -268,26 +276,30 @@ public class ProfileListViewer {
         profilesToDelete.clear();
 
         defaultInput = new ArrayList<>();
-        for (ConanProfile p : currentInput)
+        for (ConanProfile p : currentInput) {
             defaultInput.add(p.clone());
+        }
         presentsDefault = true;
     }
 
     private void updateNamelessSection(ConanProfile profile, NamedSectionParser<Section> parser) {
         List<String> namelessSection = new ArrayList<>();
-        for (String dep : profile.getDependencies())
+        for (String dep : profile.getDependencies()) {
             namelessSection.add("include(" + dep + ")");
+        }
         List<Entry> variables = profile.getVariables();
-        for (Entry entry : variables)
+        for (Entry entry : variables) {
             namelessSection.add(String.join("=", entry.getKey(), entry.getValue()));
+        }
         parser.setNamelessSection(namelessSection);
     }
 
     private void updateSections(ConanProfile profile, NamedSectionParser<Section> parser) {
         List<Line> buildRequires = profile.getBuildRequires();
         List<String> lines = new ArrayList<>();
-        for (Line l : buildRequires)
+        for (Line l : buildRequires) {
             lines.add(l.getValue());
+        }
         parser.setSection("build_requires", lines);
         for (ProfileSection section : profile.getSections()) {
             List<String> updatedSection = section.getEntries().stream().map(entry -> String.join("=", entry.getKey(), entry.getValue())).collect(
@@ -297,11 +309,14 @@ public class ProfileListViewer {
     }
 
     public void performDefaults() {
-        if (presentsDefault) return;
+        if (presentsDefault) {
+            return;
+        }
 
         currentInput.clear();
-        for (ConanProfile p : defaultInput)
+        for (ConanProfile p : defaultInput) {
             currentInput.add(p.clone());
+        }
 
         profilesToAdd.clear();
         profilesToUpdate.clear();

@@ -87,7 +87,9 @@ public class ConanProfilesPreferencePage extends PreferencePage implements IWork
 
     private int getMatchingProfileIndex(String profile) {
         for (int index = 0; index < profileCombo.getItemCount(); index++) {
-            if (profileCombo.getItem(index).equals(profile)) return index;
+            if (profileCombo.getItem(index).equals(profile)) {
+                return index;
+            }
         }
 
         return 0;
@@ -95,7 +97,9 @@ public class ConanProfilesPreferencePage extends PreferencePage implements IWork
 
     private String[] getProfiles() {
         File[] files = new File(PROFILES_FOLDER).listFiles();
-        if (files == null) return new String[0];
+        if (files == null) {
+            return new String[0];
+        }
         return Arrays.stream(files).map(File::getName).toArray(String[]::new);
     }
 
@@ -104,7 +108,9 @@ public class ConanProfilesPreferencePage extends PreferencePage implements IWork
         viewer.performOk();
 
         String profile = profileCombo.getText();
-        if (profile.equals(NONE_ENTRY)) profile = "";
+        if (profile.equals(NONE_ENTRY)) {
+            profile = "";
+        }
         getPreferenceStore().setValue(PreferenceConstants.P_WORKSPACE_PROFILE, profile);
 
         return super.performOk();

@@ -43,9 +43,11 @@ public abstract class SectionParser<TMapKey> {
     protected abstract Map<TMapKey, List<String>> parse(BufferedReader reader) throws IOException;
 
     public void save() throws IOException {
-        if (file == null) throw new IOException("Cannot save() to file 'null'");
+        if (file == null) {
+            throw new IOException("Cannot save() to file 'null'");
+        }
         save(file);
-    };
+    }
 
     public void save(File file) throws IOException {
         try (FileWriter writer = new FileWriter(file)) {

@@ -105,7 +105,9 @@ public class ProfileBuildRequiresTableViewer {
 
     private boolean contains(String result) {
         for (Line line : model) {
-            if (line.getValue().equals(result)) return true;
+            if (line.getValue().equals(result)) {
+                return true;
+            }
         }
         return false;
     }

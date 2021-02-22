@@ -68,7 +68,9 @@ public class AddDependencyDialog extends TitleAreaDialog {
 
     private ConanProfile getProfileFromName(String name) {
         for (ConanProfile p : available) {
-            if (p.getName().equals(name)) return p;
+            if (p.getName().equals(name)) {
+                return p;
+            }
         }
         return null;
     }
@@ -77,19 +79,24 @@ public class AddDependencyDialog extends TitleAreaDialog {
         Set<String> visited = new HashSet<>();
         visited.add(profile.getName());
         boolean hasCycle = checkCycle(dependency, visited);
-        getButton(IDialogConstants.OK_ID).setEnabled(!hasCycle);;
-        if (hasCycle)
+        getButton(IDialogConstants.OK_ID).setEnabled(!hasCycle);
+        if (hasCycle) {
             setMessage("The selected profile creates a dependency cycle", IMessageProvider.WARNING);
-        else setMessage("");
+        } else {
+            setMessage("");
+        }
     }
 
     private boolean checkCycle(String profileName, Set<String> visited) {
-        if (visited.contains(profileName)) return true;
+        if (visited.contains(profileName)) {
+            return true;
+        }
         visited.add(profileName);
         boolean hasCycle = false;
         ConanProfile profile = getProfileFromName(profileName);
-        for (String p : profile.getDependencies())
+        for (String p : profile.getDependencies()) {
             hasCycle = hasCycle || checkCycle(p, visited);
+        }
         return hasCycle;
     }
 

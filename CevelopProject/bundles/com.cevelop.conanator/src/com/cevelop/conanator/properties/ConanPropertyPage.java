@@ -91,8 +91,9 @@ public class ConanPropertyPage extends PropertyPage {
             }
         });
 
-        if (preferenceNode != null) enableProjectSettingsCheck.setSelection(preferenceNode.getBoolean(PreferenceConstants.P_ENABLE_PROJECT_SETTINGS,
-                false));
+        if (preferenceNode != null) {
+            enableProjectSettingsCheck.setSelection(preferenceNode.getBoolean(PreferenceConstants.P_ENABLE_PROJECT_SETTINGS, false));
+        }
     }
 
     private void createConfigWorkspaceSettingsLink(Composite parent) {
@@ -142,7 +143,9 @@ public class ConanPropertyPage extends PropertyPage {
     private void reloadProfiles() {
         String activeProfile = profileCombo.getText();
 
-        if (activeProfile.isEmpty() && preferenceNode != null) activeProfile = preferenceNode.get(PreferenceConstants.P_PROJECT_PROFILE, "");
+        if (activeProfile.isEmpty() && preferenceNode != null) {
+            activeProfile = preferenceNode.get(PreferenceConstants.P_PROJECT_PROFILE, "");
+        }
 
         profileCombo.setItems(getProfiles());
         profileCombo.add(NONE_ENTRY, 0);
@@ -151,13 +154,17 @@ public class ConanPropertyPage extends PropertyPage {
 
     private String[] getProfiles() {
         File[] files = new File(PROFILES_FOLDER).listFiles();
-        if (files == null) return new String[0];
+        if (files == null) {
+            return new String[0];
+        }
         return Arrays.stream(files).map(File::getName).toArray(String[]::new);
     }
 
     private int getMatchingProfileIndex(String profile) {
         for (int index = 0; index < profileCombo.getItemCount(); index++) {
-            if (profileCombo.getItem(index).equals(profile)) return index;
+            if (profileCombo.getItem(index).equals(profile)) {
+                return index;
+            }
         }
 
         return 0;

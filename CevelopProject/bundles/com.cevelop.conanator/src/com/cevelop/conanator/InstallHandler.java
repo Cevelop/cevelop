@@ -50,7 +50,9 @@ public class InstallHandler extends AbstractHandler {
         if (!command.canExecute()) {
             IPath executable = promptUserForExecutable();
 
-            if (executable == null) return null;
+            if (executable == null) {
+                return null;
+            }
 
             command.setExecutable(executable);
         }
@@ -62,7 +64,9 @@ public class InstallHandler extends AbstractHandler {
         command.setWorkingDirectory(selectedProject.getLocation());
         command.showCommand(true);
         command.executeAsync(msgConsole.newMessageStream(), msgConsole.newMessageStream(), (successful) -> {
-            if (!successful) return;
+            if (!successful) {
+                return;
+            }
 
             File cbiFile = selectedProject.getLocation().append("conanbuildinfo.txt").toFile();
 

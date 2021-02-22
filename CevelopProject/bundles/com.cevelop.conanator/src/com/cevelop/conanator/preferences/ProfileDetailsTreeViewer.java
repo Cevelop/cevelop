@@ -56,7 +56,9 @@ public class ProfileDetailsTreeViewer {
                 return element.toString();
             }
         }, "Key", 150, entry -> entry instanceof SectionEntry ? ((Entry) entry).getKey() : null, (entry, key) -> {
-            if (entry instanceof SectionEntry) ((Entry) entry).setKey(key);
+            if (entry instanceof SectionEntry) {
+                ((Entry) entry).setKey(key);
+            }
         }, e -> e instanceof SectionEntry ? true : false));
         columns.add(new ColumnData<>(new ColumnLabelProvider() {
 
@@ -65,7 +67,9 @@ public class ProfileDetailsTreeViewer {
                 return element instanceof SectionEntry ? ((SectionEntry) element).getValue() : null;
             }
         }, "Value", 250, entry -> entry instanceof SectionEntry ? ((Entry) entry).getValue() : null, (entry, value) -> {
-            if (entry instanceof SectionEntry) ((Entry) entry).setValue(value);
+            if (entry instanceof SectionEntry) {
+                ((Entry) entry).setValue(value);
+            }
         }, e -> e instanceof SectionEntry ? true : false));
         ColumnBuilder.createColumns(viewer, columns);
 

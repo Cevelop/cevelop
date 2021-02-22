@@ -144,7 +144,9 @@ public class EditRemoteDialog extends TitleAreaDialog {
 
     private boolean hasDuplicateAttribute(String attribute, Function<Remote, String> getAttribute) {
         for (Remote r : existingRemotes) {
-            if (getAttribute.apply(r).equals(attribute)) return true;
+            if (getAttribute.apply(r).equals(attribute)) {
+                return true;
+            }
         }
 
         return false;

@@ -85,7 +85,9 @@ public class ConanCliCommand {
             process.getOutputStream().close();
             launcher.waitAndRead(out, err, new NullProgressMonitor());
 
-            if (process.exitValue() == 0) return true;
+            if (process.exitValue() == 0) {
+                return true;
+            }
         } catch (CoreException | IOException e) {
             Activator.log(e);
         }

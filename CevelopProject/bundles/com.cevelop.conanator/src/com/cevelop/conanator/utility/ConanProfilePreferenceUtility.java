@@ -14,7 +14,9 @@ public class ConanProfilePreferenceUtility {
         IEclipsePreferences preferenceNode = null;
         String profile = "";
 
-        if (project != null) preferenceNode = new ProjectScope(project).getNode(Activator.PLUGIN_ID);
+        if (project != null) {
+            preferenceNode = new ProjectScope(project).getNode(Activator.PLUGIN_ID);
+        }
 
         if (preferenceNode != null && preferenceNode.getBoolean(PreferenceConstants.P_ENABLE_PROJECT_SETTINGS, false)) {
             profile = preferenceNode.get(PreferenceConstants.P_PROJECT_PROFILE, "");

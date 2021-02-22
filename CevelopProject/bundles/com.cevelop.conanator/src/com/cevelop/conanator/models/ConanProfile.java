@@ -48,9 +48,11 @@ public class ConanProfile extends ModelBase implements Cloneable {
     }
 
     public void setDependencies(List<String> dependencies) {
-        if (dependencies != null)
+        if (dependencies != null) {
             this.dependencies = dependencies;
-        else this.dependencies.clear();
+        } else {
+            this.dependencies.clear();
+        }
     }
 
     public List<Entry> getVariables() {
@@ -58,9 +60,11 @@ public class ConanProfile extends ModelBase implements Cloneable {
     }
 
     public void setVariables(List<Entry> variables) {
-        if (variables != null)
+        if (variables != null) {
             this.variables = variables;
-        else this.variables.clear();
+        } else {
+            this.variables.clear();
+        }
     }
 
     public List<ProfileSection> getSections() {
@@ -68,9 +72,11 @@ public class ConanProfile extends ModelBase implements Cloneable {
     }
 
     public void setSections(List<ProfileSection> sections) {
-        if (sections != null)
+        if (sections != null) {
             this.sections = sections;
-        else this.sections.clear();
+        } else {
+            this.sections.clear();
+        }
     }
 
     public List<Line> getBuildRequires() {
@@ -78,9 +84,11 @@ public class ConanProfile extends ModelBase implements Cloneable {
     }
 
     public void setBuildRequires(List<Line> buildRequires) {
-        if (buildRequires != null)
+        if (buildRequires != null) {
             this.buildRequires = buildRequires;
-        else this.buildRequires.clear();
+        } else {
+            this.buildRequires.clear();
+        }
     }
 
     @Override
@@ -94,25 +102,32 @@ public class ConanProfile extends ModelBase implements Cloneable {
         clone.dependencies = new ArrayList<>(dependencies);
 
         clone.variables = new ArrayList<>();
-        for (Entry e : variables)
+        for (Entry e : variables) {
             clone.variables.add(e.clone());
+        }
 
         clone.buildRequires = new ArrayList<>();
-        for (Line l : buildRequires)
+        for (Line l : buildRequires) {
             clone.buildRequires.add(l.clone());
+        }
 
         clone.sections = new ArrayList<>();
-        for (ProfileSection s : sections)
+        for (ProfileSection s : sections) {
             clone.sections.add(s.clone());
+        }
 
         return clone;
     }
 
     @Override
     public boolean equals(Object obj) {
-        if (!(obj instanceof ConanProfile)) return false;
+        if (!(obj instanceof ConanProfile)) {
+            return false;
+        }
         ConanProfile other = (ConanProfile) obj;
-        if (this.name.equals(other.name)) return true;
+        if (this.name.equals(other.name)) {
+            return true;
+        }
         return false;
     }
 }

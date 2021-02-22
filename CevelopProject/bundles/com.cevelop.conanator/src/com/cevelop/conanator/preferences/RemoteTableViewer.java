@@ -33,7 +33,7 @@ public class RemoteTableViewer {
 
     private Shell                parentShell;
     private OrderedSectionParser parser;
-    private List<Remote>         defaultInput    = new ArrayList<>();;
+    private List<Remote>         defaultInput    = new ArrayList<>();
     private WritableList<Remote> currentInput;
     private TableViewer          viewer;
     private Table                table;
@@ -71,17 +71,19 @@ public class RemoteTableViewer {
         viewer.addSelectionChangedListener(e -> updateButtonStates());
 
         currentInput = getRemotesFromFile();
-        ViewerSupport.bind(viewer, currentInput, BeanProperties.values(new String[] { "name", "url", "ssl" }));
-        for (Remote r : currentInput)
+        ViewerSupport.bind(viewer, currentInput, BeanProperties.values("name", "url", "ssl"));
+        for (Remote r : currentInput) {
             defaultInput.add(r.clone());
+        }
     }
 
     private void createColumns() {
         String[] titles = { "Remote Name", "Remote URL", "Verify SSL" };
         int[] widths = { 150, 250, 100 };
 
-        for (int columnId = 0; columnId < titles.length; columnId++)
+        for (int columnId = 0; columnId < titles.length; columnId++) {
             createColumn(titles[columnId], widths[columnId]);
+        }
     }
 
     private void createColumn(String title, int width) {
@@ -165,8 +167,9 @@ public class RemoteTableViewer {
         if (index >= 0) {
             currentInput.remove(index);
 
-            if (!currentInput.isEmpty()) viewer.setSelection(new StructuredSelection(currentInput.get(index >= currentInput.size() ? index - 1
-                                                                                                                                   : index)));
+            if (!currentInput.isEmpty()) {
+                viewer.setSelection(new StructuredSelection(currentInput.get(index >= currentInput.size() ? index - 1 : index)));
+            }
 
             presentsDefault = false;
             updateButtonStates();
@@ -206,24 +209,30 @@ public class RemoteTableViewer {
     }
 
     public void save() throws IOException {
-        if (presentsDefault) return;
+        if (presentsDefault) {
+            return;
+        }
 
         List<String> remotesSection = currentInput.stream().map(Remote::toString).collect(Collectors.toList());
         parser.setSection(0, remotesSection);
         parser.save();
 
         defaultInput = new ArrayList<>();
-        for (Remote r : currentInput)
+        for (Remote r : currentInput) {
             defaultInput.add(r.clone());
+        }
         presentsDefault = true;
     }
 
     public void loadDefault() {
-        if (presentsDefault) return;
+        if (presentsDefault) {
+            return;
+        }
 
         currentInput.clear();
-        for (Remote r : defaultInput)
+        for (Remote r : defaultInput) {
             currentInput.add(r.clone());
+        }
 
         presentsDefault = true;
         updateButtonStates();
@@ -235,7 +244,9 @@ public class RemoteTableViewer {
 
         try {
             if (!remotesFile.exists()) {
-                if (!remotesFile.getParentFile().exists()) remotesFile.getParentFile().mkdirs();
+                if (!remotesFile.getParentFile().exists()) {
+                    remotesFile.getParentFile().mkdirs();
+                }
                 remotesFile.createNewFile();
             }
 

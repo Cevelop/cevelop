@@ -2,7 +2,7 @@
 <feature
       id="com.cevelop.conanator.feature"
       label="Conanator"
-      version="1.12.2.qualifier"
+      version="1.14.0.qualifier"
       provider-name="IFS Institute for Software"
       license-feature="com.cevelop.license.feature"
       license-feature-version="1.14.0.qualifier">
@@ -110,7 +110,7 @@ Switzerland
          id="com.cevelop.conanator"
          download-size="0"
          install-size="0"
-         version="1.9.1.qualifier"
+         version="1.14.0.qualifier"
          unpack="false"/>
 
 </feature>

@@ -219,7 +219,9 @@ public class ViewData {
         case CLASS:
             return ImageID.TYPE_CLASS;
         case FUNCTION:
-            if (resolvedNameInfo.getBinding() instanceof ICPPMethod) return ImageID.TYPE_MEMBER_FUNCTION;
+            if (resolvedNameInfo.getBinding() instanceof ICPPMethod) {
+                return ImageID.TYPE_MEMBER_FUNCTION;
+            }
             return ImageID.TYPE_FUNCTION;
         case METHOD:
             return ImageID.TYPE_MEMBER_FUNCTION;

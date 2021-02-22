@@ -76,6 +76,7 @@ public class AutoResolver {
 
     /**
      * Tests if a decl specifier is auto or decltype(auto)
+     *
      * @param declSpecifier
      * The decl specifier to check if it is auto
      * @return true for auto and decltype(auto), false otherwise
@@ -111,9 +112,11 @@ public class AutoResolver {
      * Creates a ResolvedName from an auto decl specifier. This only works if the
      * type is template dependent, else it is not important and null is returned.
      *
-     * @param declSpec A decl specifier
-     * 
-     * @param parent A {@link AbstractResolvedNameInfo}
+     * @param declSpec
+     * A decl specifier
+     *
+     * @param parent
+     * A {@link AbstractResolvedNameInfo}
      *
      * @return A ResolvedName which is created by searching a name and a definition
      * which represents the type auto resolves to or {@code null}
@@ -177,12 +180,12 @@ public class AutoResolver {
             return createResolvedNameFromConditionalExpression((IASTConditionalExpression) expr, parent);
         } else if (expr instanceof ICPPASTBinaryExpression || expr instanceof ICPPASTUnaryExpression || expr instanceof ICPPASTLiteralExpression ||
                    expr instanceof IASTArraySubscriptExpression) {
-            return createResolvedNameFromImplicitNameOwner((IASTImplicitNameOwner) expr, parent);
-        } else if (expr instanceof IASTIdExpression) {
-            return createResolvedNameFromIdExpression((IASTIdExpression) expr, parent);
-        } else if (expr instanceof ICPPASTFieldReference) {
-            return createResolvedNameFromFieldReference((ICPPASTFieldReference) expr, parent);
-        }
+                       return createResolvedNameFromImplicitNameOwner((IASTImplicitNameOwner) expr, parent);
+                   } else if (expr instanceof IASTIdExpression) {
+                       return createResolvedNameFromIdExpression((IASTIdExpression) expr, parent);
+                   } else if (expr instanceof ICPPASTFieldReference) {
+                       return createResolvedNameFromFieldReference((ICPPASTFieldReference) expr, parent);
+                   }
         return null;
     }
 

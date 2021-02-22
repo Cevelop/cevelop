@@ -7,6 +7,7 @@ import com.cevelop.templator.plugin.view.components.DirectConnection;
 public interface IDirectConnectionContextActionHandler {
 
     public enum DirectConnectionContextAction implements IContextAction {
+
         CUT("cut", ImageID.CUT), TRAVEL_TO_START("start", ImageID.TRAVEL_TO_START), TRAVEL_TO_END("end", ImageID.TRAVEL_TO_END);
 
         private final String  text;

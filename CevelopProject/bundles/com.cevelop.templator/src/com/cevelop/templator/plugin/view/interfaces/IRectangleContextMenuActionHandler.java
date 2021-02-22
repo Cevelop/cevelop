@@ -6,6 +6,7 @@ import com.cevelop.templator.plugin.util.ImageCache.ImageID;
 public interface IRectangleContextMenuActionHandler {
 
     public enum RectangleContextAction implements IContextAction {
+
         OPEN_CLOSE("Open/Close Link", ImageID.ARROW_RIGHT), GO_TO_SOURCE("Go to Source", ImageID.MAGNIFIER);
 
         private String        text;

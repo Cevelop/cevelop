@@ -43,10 +43,10 @@ public class TemplateInstance extends AbstractTemplateInstance {
         } else if ((unresolvedName.getType() == NameTypeKind.FUNCTION_TEMPLATE || unresolvedName.getType() == NameTypeKind.CLASS_TEMPLATE ||
                     unresolvedName.getType() == NameTypeKind.METHOD_TEMPLATE || unresolvedName.getType() == NameTypeKind.VARIABLE_TEMPLATE ||
                     unresolvedName.getType() == NameTypeKind.ALIAS_TEMPLATE) && resolvedTemplateInstance instanceof ICPPTemplateInstance) {
-            templateDeclaration = analyzer.getTemplateDeclaration(resolvedTemplateInstance);
-        } else {
-            return null;
-        }
+                        templateDeclaration = analyzer.getTemplateDeclaration(resolvedTemplateInstance);
+                    } else {
+                        return null;
+                    }
         return new TemplateInstance(unresolvedName, templateDeclaration, parent, analyzer);
     }
 

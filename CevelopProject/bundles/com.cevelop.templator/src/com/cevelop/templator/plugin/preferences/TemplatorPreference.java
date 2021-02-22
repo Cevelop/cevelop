@@ -1,6 +1,7 @@
 package com.cevelop.templator.plugin.preferences;
 
 public enum TemplatorPreference {
+
     HAS_MAX_WIDTH("HAS_MAX_WIDTH", "use a maximum width for new opened entries"), HAS_MAX_HEIGHT("HAS_MAX_HEIGHT",
             "use a maximum height for new opened entries"), RECTANGLE_ALWAYS_VISIBLE("RECTANGLE_ALWAYS_VISIBLE",
                     "always show rectangles around traceable nodes"), DISABLE_NORMAL_FUNCTIONS("DISABLE_NORMAL_FUNCTIONS",

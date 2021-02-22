@@ -33,7 +33,6 @@ import org.eclipse.cdt.internal.core.dom.parser.cpp.ICPPUnknownBinding;
 import org.eclipse.cdt.internal.core.dom.parser.cpp.semantics.CPPVisitor;
 import org.eclipse.cdt.internal.core.dom.parser.cpp.semantics.SemanticUtil;
 import org.eclipse.jface.text.IRegion;
-import org.eclipse.swt.widgets.Link;
 
 import com.cevelop.templator.plugin.logger.TemplatorException;
 import com.cevelop.templator.plugin.util.SettingsCache;
@@ -51,13 +50,13 @@ public final class ASTTools {
     /**
      * The maximum offset for a file and length {@code 0} returns the root node (an
      * {@code IASTTranslationUnit} and <b>NOT</b> {@code null}.
-     * 
+     *
      * @param region
-     *        The region to search
-     * 
+     * The region to search
+     *
      * @param ast
-     *        The translation unit containing the region
-     * 
+     * The translation unit containing the region
+     *
      * @return the smallest {@code IASTName} enclosing in the given range
      * (impossible to return {@code null} if there is no other error)
      * @throws IllegalArgumentException
@@ -74,13 +73,13 @@ public final class ASTTools {
     /**
      * The maximum offset for a file and length {@code 0} returns the root node (an
      * {@code IASTTranslationUnit} and <b>NOT</b> {@code null}.
-     * 
+     *
      * @param region
-     *        The region to search
-     * 
+     * The region to search
+     *
      * @param ast
-     *        The translation unit containing the region
-     * 
+     * The translation unit containing the region
+     *
      * @return the smallest {@code IASTNode} enclosing the given range (impossible
      * to return null if there is no other error)
      * @throws IllegalArgumentException
@@ -101,14 +100,14 @@ public final class ASTTools {
     /**
      * See {@link #findFirstAncestorByType(IASTNode, Class, int)}, last argument is
      * {@code Integer.MAX_VALUE}.
-     * 
+     *
      * @param <T>
      * The class type
      * @param node
      * name where to start the search to the top
      * @param type
      * class type to check for with {@code instanceof}
-     * 
+     *
      * @return the first parent with this type or {@code null}
      * @throws TemplatorException
      * if the given {@code node} is null
@@ -121,7 +120,7 @@ public final class ASTTools {
      * Searches the AST from a given {@code IASTName name} to the top and returns
      * the first found parent node for the given class {@code type}, otherwise
      * {@code null} is returned.
-     * 
+     *
      * @param <T>
      * The class type
      * @param node

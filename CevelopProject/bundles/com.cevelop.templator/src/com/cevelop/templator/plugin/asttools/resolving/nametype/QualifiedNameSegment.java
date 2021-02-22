@@ -50,40 +50,42 @@ public class QualifiedNameSegment extends TypeNameToType {
             setAll(currentSegment);
         } else if (unresolvedCurrentSegmentType instanceof ICPPUnknownMemberClassInstance &&
                    lastNameSegmentSpecialization instanceof ICPPClassSpecialization) {
-            // pass parent and not currentContextParent. The member itself is defined in the currentContextParent
-            // but the qualified name is still defined in parent and uses template arguments from parent
-            IBinding memberClassInstance = ClassTemplateMemberResolver.instantiateMember(unresolvedCurrentSegmentType,
-                    (ICPPClassSpecialization) lastNameSegmentSpecialization, typeName, currentContext);
-            if (memberClassInstance instanceof ICPPAliasTemplateInstance) {
-                TypeNameToType aliasType = getAliasTemplateInstanceType((ICPPAliasTemplateInstance) memberClassInstance, typeName, currentContext,
-                        lastSegment, typeDeducer);
-                memberClassInstance = aliasType.getSpecialization();
-            }
+                       // pass parent and not currentContextParent. The member itself is defined in the currentContextParent
+                       // but the qualified name is still defined in parent and uses template arguments from parent
+                       IBinding memberClassInstance = ClassTemplateMemberResolver.instantiateMember(unresolvedCurrentSegmentType,
+                               (ICPPClassSpecialization) lastNameSegmentSpecialization, typeName, currentContext);
+                       if (memberClassInstance instanceof ICPPAliasTemplateInstance) {
+                           TypeNameToType aliasType = getAliasTemplateInstanceType((ICPPAliasTemplateInstance) memberClassInstance, typeName,
+                                   currentContext,
+                                   lastSegment, typeDeducer);
+                           memberClassInstance = aliasType.getSpecialization();
+                       }
 
-            AbstractResolvedNameInfo newContext = typeDeducer.createNewContext(typeName, memberClassInstance, currentContext, true);
-            setCurrentContext(newContext);
-            TypeNameToType classMemberResult = typeDeducer.getMemberType(memberClassInstance, this, currentContext);
-            setAll(classMemberResult);
-        } else if (unresolvedCurrentSegmentType instanceof ICPPUnknownMemberClass &&
-                   lastNameSegmentSpecialization instanceof ICPPClassSpecialization) {
-            IBinding memberBinding = ClassTemplateMemberResolver.instantiateMember(unresolvedCurrentSegmentType,
-                    (ICPPClassSpecialization) lastNameSegmentSpecialization, typeName, currentContext);
-            TypeNameToType memberResult = typeDeducer.getMemberType(memberBinding, lastSegment, currentContext);
-            setAll(memberResult);
-        } else if (unresolvedCurrentSegmentType instanceof ICPPTemplateParameter) {
-            ICPPTemplateArgument argument = currentContext.getArgument((ICPPTemplateParameter) unresolvedCurrentSegmentType);
-            IType typeValue = argument.getTypeValue();
-            setType(typeValue);
-            setCompletelyResolved(true);
-            if (typeValue instanceof IBinding) {
-                AbstractResolvedNameInfo newContext = typeDeducer.createNewContext(typeName, (IBinding) typeValue, currentContext, true);
-                setCurrentContext(newContext);
-                if (typeValue instanceof ICPPSpecialization) {
-                    setSpecialization((ICPPSpecialization) typeValue);
-                }
+                       AbstractResolvedNameInfo newContext = typeDeducer.createNewContext(typeName, memberClassInstance, currentContext, true);
+                       setCurrentContext(newContext);
+                       TypeNameToType classMemberResult = typeDeducer.getMemberType(memberClassInstance, this, currentContext);
+                       setAll(classMemberResult);
+                   } else if (unresolvedCurrentSegmentType instanceof ICPPUnknownMemberClass &&
+                              lastNameSegmentSpecialization instanceof ICPPClassSpecialization) {
+                                  IBinding memberBinding = ClassTemplateMemberResolver.instantiateMember(unresolvedCurrentSegmentType,
+                                          (ICPPClassSpecialization) lastNameSegmentSpecialization, typeName, currentContext);
+                                  TypeNameToType memberResult = typeDeducer.getMemberType(memberBinding, lastSegment, currentContext);
+                                  setAll(memberResult);
+                              } else if (unresolvedCurrentSegmentType instanceof ICPPTemplateParameter) {
+                                  ICPPTemplateArgument argument = currentContext.getArgument((ICPPTemplateParameter) unresolvedCurrentSegmentType);
+                                  IType typeValue = argument.getTypeValue();
+                                  setType(typeValue);
+                                  setCompletelyResolved(true);
+                                  if (typeValue instanceof IBinding) {
+                                      AbstractResolvedNameInfo newContext = typeDeducer.createNewContext(typeName, (IBinding) typeValue,
+                                              currentContext, true);
+                                      setCurrentContext(newContext);
+                                      if (typeValue instanceof ICPPSpecialization) {
+                                          setSpecialization((ICPPSpecialization) typeValue);
+                                      }
 
-            }
-        }
+                                  }
+                              }
         return this;
     }
 

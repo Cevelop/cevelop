@@ -24,6 +24,7 @@ import org.eclipse.cdt.internal.core.dom.parser.cpp.ICPPUnknownMemberClassInstan
 
 
 public enum NameTypeKind {
+
     // @formatter:off
 	FUNCTION(false),
 	CLASS(false),

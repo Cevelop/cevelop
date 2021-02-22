@@ -28,9 +28,12 @@ public class RelevantNameCache {
         return declarationCache.get(declaration);
     }
 
-    /** Can be used for variables, parameters and such.
-     *  @param binding The binding to get the {@link RelevantNameType} for
-     *  @return The {@link RelevantNameType}
+    /**
+     * Can be used for variables, parameters and such.
+     *
+     * @param binding
+     * The binding to get the {@link RelevantNameType} for
+     * @return The {@link RelevantNameType}
      */
     public RelevantNameType getFor(IBinding binding) {
         return bindingCache.get(binding);

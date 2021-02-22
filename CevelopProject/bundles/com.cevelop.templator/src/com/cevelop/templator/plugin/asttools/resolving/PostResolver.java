@@ -65,15 +65,15 @@ public final class PostResolver {
                 finalResolvedBinding = resolveFunction(resolvingName, parent, analyzer);
             } else if (type == NameTypeKind.DEFERRED_CLASS_TEMPLATE || type == NameTypeKind.DEFERRED_VARIABLE_TEMPLATE ||
                        type == NameTypeKind.UNKNOWN_MEMBER_ALIAS_TEMPLATE_INSTANCE) {
-                IBinding classInstance = resolveClassTemplate(resolvingName, parent, analyzer);
-                if (classInstance != null) {
-                    finalResolvedBinding = classInstance;
-                }
-            } else if (type.isMember()) {
-                finalResolvedBinding = ClassTemplateMemberResolver.resolveClassTemplateMember(unresolvedName, parent);
-            } else {
-                return null;
-            }
+                           IBinding classInstance = resolveClassTemplate(resolvingName, parent, analyzer);
+                           if (classInstance != null) {
+                               finalResolvedBinding = classInstance;
+                           }
+                       } else if (type.isMember()) {
+                           finalResolvedBinding = ClassTemplateMemberResolver.resolveClassTemplateMember(unresolvedName, parent);
+                       } else {
+                           return null;
+                       }
         } catch (Exception e) {
             throw new TemplatorException(e);
         }
@@ -185,10 +185,13 @@ public final class PostResolver {
      * the name resolved to a member function template we need to check if one
      * argument depends on any class template argument and if so replace it with the
      * chosen class template argument.
-     * 
-     * @param templateInfo A {@link TemplateInstance} 
-     * @param parent A {@link AbstractResolvedNameInfo}
-     * @param analyzer A {@link ASTAnalyzer}
+     *
+     * @param templateInfo
+     * A {@link TemplateInstance}
+     * @param parent
+     * A {@link AbstractResolvedNameInfo}
+     * @param analyzer
+     * A {@link ASTAnalyzer}
      * @throws TemplatorException
      * If {@link ASTAnalyzer#getFunctionDefinition(IBinding)} throws
      */

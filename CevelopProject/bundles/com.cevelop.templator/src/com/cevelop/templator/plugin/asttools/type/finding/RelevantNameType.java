@@ -33,12 +33,12 @@ public abstract class RelevantNameType {
             type = new Parameter(definitionName);
         } else if (definitionBinding instanceof IVariable && !(definitionBinding instanceof ICPPVariableInstance) &&
                    !(definitionBinding instanceof CPPFieldSpecialization)) {
-            type = new Variable(definitionName);
-        } else if (definitionBinding instanceof ITypedef && !(definitionBinding instanceof ICPPAliasTemplateInstance)) {
-            type = new Alias(definitionName);
-        } else {
-            type = new AlreadyRelevantType(definitionName);
-        }
+                       type = new Variable(definitionName);
+                   } else if (definitionBinding instanceof ITypedef && !(definitionBinding instanceof ICPPAliasTemplateInstance)) {
+                       type = new Alias(definitionName);
+                   } else {
+                       type = new AlreadyRelevantType(definitionName);
+                   }
         type.typeName = type.getTypeFromDefinition();
         if (type.typeName != null) {
             type.typeBinding = type.typeName.resolveBinding();

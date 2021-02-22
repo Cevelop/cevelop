@@ -205,8 +205,9 @@ public final class ClassTemplateResolver {
                 return new CPPUnknownClassInstance(owner, id.getSimpleID(), args);
             }
 
-            if (!(template instanceof ICPPPartiallySpecializable) || template instanceof ICPPClassTemplatePartialSpecialization)
+            if (!(template instanceof ICPPPartiallySpecializable) || template instanceof ICPPClassTemplatePartialSpecialization) {
                 return new ProblemBinding(id, IProblemBinding.SEMANTIC_INVALID_TYPE, templateName.toCharArray());
+            }
 
             final ICPPPartiallySpecializable classTemplate = (ICPPPartiallySpecializable) template;
             ICPPTemplateArgument[] args = CPPTemplates.createTemplateArgumentArray(id);
@@ -245,8 +246,10 @@ public final class ClassTemplateResolver {
                                     } else {
                                         partialSpec = new CPPVariableTemplatePartialSpecialization(id, args);
                                     }
-                                    if (template instanceof CPPVariableTemplate) ((CPPVariableTemplate) template).addPartialSpecialization(
-                                            partialSpec);
+                                    if (template instanceof CPPVariableTemplate) {
+                                        ((CPPVariableTemplate) template).addPartialSpecialization(
+                                                partialSpec);
+                                    }
                                 }
                                 return partialSpec;
                             }

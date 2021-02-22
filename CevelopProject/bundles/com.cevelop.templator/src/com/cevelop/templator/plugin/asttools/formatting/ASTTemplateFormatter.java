@@ -74,8 +74,8 @@ public final class ASTTemplateFormatter {
             formatTemplateDeclarator((ICPPASTTemplateDeclaration) definitionCopy, ((TemplateInstance) resolvedName).getTemplateArgumentMap());
         } else if (resolvedName instanceof FunctionCall || resolvedName instanceof MemberFunctionInstance || resolvedName instanceof ClassType ||
                    resolvedName instanceof LambdaExpression) {
-            definitionCopy = resolvedName.getDefinition().copy(CopyStyle.withLocations);
-        }
+                       definitionCopy = resolvedName.getDefinition().copy(CopyStyle.withLocations);
+                   }
         if (resolvedName.getBinding() instanceof ICPPMethod) {
             formatMethodName(definitionCopy, resolvedName);
         }

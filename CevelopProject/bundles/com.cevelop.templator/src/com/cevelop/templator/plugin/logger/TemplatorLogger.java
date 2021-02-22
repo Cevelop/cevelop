@@ -44,13 +44,13 @@ public final class TemplatorLogger {
 
     /**
      * Shows JFace ErrorDialog but improved by constructing full stack trace in detail area.
-     * 
+     *
      * @param title
-     *        The dialogs title
+     * The dialogs title
      * @param msg
-     *        The message to display, <b>currenty unused</b>
+     * The message to display, <b>currenty unused</b>
      * @param t
-     *        The {@link Throwable} from which to get the stack trace
+     * The {@link Throwable} from which to get the stack trace
      */
     public static void errorDialogWithStackTrace(String title, String msg, Throwable t) {
 

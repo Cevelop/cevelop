@@ -86,16 +86,16 @@ public class ASTAnalyzer {
     /**
      * This method is unused at the moment but stays for later when member function declarations outside the
      * ICPPASTTemplateDeclaration for the class should be found.
-     * 
+     *
      * @param templateDeclaration
-     *        The template declaration to search
+     * The template declaration to search
      *
      * @throws TemplatorException
-     *         Thrown by either {@link #resolveTargetBinding(IASTName)}
-     *         or {@link #getFunctionDefinition(IBinding)}
-     * 
+     * Thrown by either {@link #resolveTargetBinding(IASTName)}
+     * or {@link #getFunctionDefinition(IBinding)}
+     *
      * @return A {@link Map} containing {@link IASTSimpleDeclaration} as keys
-     *         and {@link IASTFunctionDefinition} as values. Can be empty, never null.
+     * and {@link IASTFunctionDefinition} as values. Can be empty, never null.
      */
     public Map<IASTSimpleDeclaration, IASTFunctionDefinition> searchFunctionDeclarationsToDefinitions(ICPPASTTemplateDeclaration templateDeclaration)
             throws TemplatorException {
@@ -209,20 +209,20 @@ public class ASTAnalyzer {
     /**
      * Returns the {@code IASTName} that can be used to resolve the binding to a template instance or an
      * {@code IFunction}.
-     * 
+     *
      * @param originalName
-     *        The original name
-     * 
+     * The original name
+     *
      * @param acceptUnknownBindings
-     *        Set if unknown bindings should be accepted
-     * 
+     * Set if unknown bindings should be accepted
+     *
      * @param isStartingPoint
-     *        Set if this is a starting point
-     * 
+     * Set if this is a starting point
+     *
      * @throws TemplatorException
-     *         Thrown be either {@link #getDefinitionName(IASTName, boolean, boolean)}
-     *         or {@link #resolveTargetBinding(IASTName)}
-     * 
+     * Thrown be either {@link #getDefinitionName(IASTName, boolean, boolean)}
+     * or {@link #resolveTargetBinding(IASTName)}
+     *
      * @return The {@link RelevantNameType} or {@code null} if no relevant name has been found
      */
     public RelevantNameType extractResolvingName(IASTName originalName, boolean acceptUnknownBindings, boolean isStartingPoint)

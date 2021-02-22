@@ -14,6 +14,7 @@ public final class ImageCache {
     private ImageCache() {}
 
     public enum ImageID {
+
         // @formatter:off
 		HAND_OPEN("/icons/hand_open.png"),
 		HAND_CLOSED("/icons/hand_closed.png"),

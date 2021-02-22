@@ -43,12 +43,12 @@
       <category name="com.cevelop.plugins.beta"/>
    </feature>
    <feature url="features/com.cevelop.license.feature_1.14.0.qualifier.jar" id="com.cevelop.license.feature" version="1.14.0.qualifier">
-      <category name="com.cevelop.plugins.beta"/>
+      <category name="com.cevelop.plugins.core"/>
    </feature>
    <feature url="features/com.cevelop.aliextor.feature_1.14.0.qualifier.jar" id="com.cevelop.aliextor.feature" version="1.14.0.qualifier">
       <category name="com.cevelop.plugins.beta"/>
    </feature>
-   <feature id="com.cevelop.conanator.feature">
+   <feature url="features/com.cevelop.conanator.feature_1.14.0.qualifier.jar" id="com.cevelop.conanator.feature" version="1.14.0.qualifier">
       <category name="com.cevelop.plugins.beta"/>
    </feature>
    <category-def name="com.cevelop.plugins.core" label="Core Plug-Ins"/>

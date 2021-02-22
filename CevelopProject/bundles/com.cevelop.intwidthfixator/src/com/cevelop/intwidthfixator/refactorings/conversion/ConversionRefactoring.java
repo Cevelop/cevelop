@@ -21,6 +21,11 @@ import org.eclipse.ltk.core.refactoring.RefactoringDescriptor;
 import org.eclipse.ltk.core.refactoring.RefactoringTickProvider;
 import org.eclipse.text.edits.TextEditGroup;
 
+import ch.hsr.ifs.iltis.cpp.core.ast.checker.VisitorReport;
+import ch.hsr.ifs.iltis.cpp.core.includes.IncludeInsertionUtil;
+import ch.hsr.ifs.iltis.cpp.core.ui.refactoring.SelectionRefactoring;
+import ch.hsr.ifs.iltis.cpp.core.wrappers.ModificationCollector;
+
 import com.cevelop.intwidthfixator.helpers.ConversionHelper;
 import com.cevelop.intwidthfixator.helpers.IdHelper.ProblemId;
 import com.cevelop.intwidthfixator.helpers.Includes;
@@ -28,11 +33,6 @@ import com.cevelop.intwidthfixator.helpers.PositionHelper;
 import com.cevelop.intwidthfixator.refactorings.Messages;
 import com.cevelop.intwidthfixator.visitors.VisitorArgs;
 import com.cevelop.intwidthfixator.visitors.intvisitors.IntVisitor;
-
-import ch.hsr.ifs.iltis.cpp.core.ast.checker.VisitorReport;
-import ch.hsr.ifs.iltis.cpp.core.includes.IncludeInsertionUtil;
-import ch.hsr.ifs.iltis.cpp.core.ui.refactoring.SelectionRefactoring;
-import ch.hsr.ifs.iltis.cpp.core.wrappers.ModificationCollector;
 
 
 /**

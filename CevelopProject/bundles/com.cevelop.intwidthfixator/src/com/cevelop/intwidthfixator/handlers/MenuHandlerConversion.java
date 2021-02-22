@@ -5,11 +5,11 @@ import java.util.Optional;
 import org.eclipse.cdt.core.model.ICElement;
 import org.eclipse.jface.text.ITextSelection;
 
+import ch.hsr.ifs.iltis.cpp.core.ui.refactoring.WizardRefactoringStarterMenuHandler;
+
 import com.cevelop.intwidthfixator.refactorings.conversion.ConversionInfo;
 import com.cevelop.intwidthfixator.refactorings.conversion.ConversionRefactoring;
 import com.cevelop.intwidthfixator.refactorings.wizards.ConversionRefactoringWizard;
-
-import ch.hsr.ifs.iltis.cpp.core.ui.refactoring.WizardRefactoringStarterMenuHandler;
 
 
 /**

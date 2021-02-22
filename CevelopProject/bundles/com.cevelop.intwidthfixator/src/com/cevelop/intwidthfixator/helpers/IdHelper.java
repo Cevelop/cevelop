@@ -44,6 +44,7 @@ public class IdHelper {
 
     /* Enums for better comparison */
     public enum ProblemId implements IProblemId<ProblemId> {
+
       //@formatter:off
       CASTS(Intern_P_PROBLEM_CASTS),
       FUNCTION(Intern_P_PROBLEM_FUNCTIONS),
@@ -89,6 +90,7 @@ public class IdHelper {
     }
 
     public enum RefactoringId implements IRefactoringId<RefactoringId> {
+
       //@formatter:off
       INVERSION(DEFAULT_QUALIFIER + ".refactoring.inversion.InversionRefactoring"),
       CONVERSION(DEFAULT_QUALIFIER + ".refactoring.conversion.ConversionRefactoring");
@@ -131,6 +133,7 @@ public class IdHelper {
     }
 
     public enum WidthId {
+
       //@formatter:off
       WIDTH_8(Intern_V_WIDTH_8,8),
       WIDTH_16(Intern_V_WIDTH_16,16),

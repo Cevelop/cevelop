@@ -2,10 +2,10 @@ package com.cevelop.intwidthfixator.preferences;
 
 import org.eclipse.jface.preference.IPreferenceStore;
 
+import ch.hsr.ifs.iltis.core.preferences.PropertyAndPreferenceHelper;
+
 import com.cevelop.intwidthfixator.IntwidthfixatorPlugin;
 import com.cevelop.intwidthfixator.helpers.IdHelper;
-
-import ch.hsr.ifs.iltis.core.preferences.PropertyAndPreferenceHelper;
 
 
 public class PropAndPrefHelper extends PropertyAndPreferenceHelper {

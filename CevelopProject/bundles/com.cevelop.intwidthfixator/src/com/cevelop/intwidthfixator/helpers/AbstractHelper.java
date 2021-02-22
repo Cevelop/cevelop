@@ -23,7 +23,7 @@ public abstract class AbstractHelper {
      *
      * @throws IllegalArgumentException
      * If the preference store returned an invalid value.
-     * 
+     *
      * @return The {@link WidthId} for the passed id
      */
     public static WidthId getWidthIdFromPreferenceId(final String id, final IProject project) {
@@ -36,10 +36,10 @@ public abstract class AbstractHelper {
      *
      * @param key
      * The id of a preference constant
-     * 
+     *
      * @param project
      * The project to get the preferences for
-     * 
+     *
      * @return The string returned by the default {@code PreferenceStore}
      */
     public static String getStringPreference(final String key, final IProject project) {
@@ -48,10 +48,10 @@ public abstract class AbstractHelper {
 
     /**
      * Copies the preferences from a sourceNode to another node.
-     * 
+     *
      * @param sourceNode
      * Source node from which to copy the preferences
-     * 
+     *
      * @param node
      * Target node for which to set the preferences
      */

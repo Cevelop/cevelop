@@ -6,15 +6,15 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
-import com.cevelop.intwidthfixator.IntwidthfixatorPlugin;
-import com.cevelop.intwidthfixator.helpers.IdHelper;
-import com.cevelop.intwidthfixator.helpers.IdHelper.WidthId;
-
 import ch.hsr.ifs.iltis.core.preferences.IPropertyAndPreferenceHelper;
 import ch.hsr.ifs.iltis.core.preferences.fieldeditor.GroupFieldEditor;
 import ch.hsr.ifs.iltis.core.preferences.fieldeditor.GroupingFieldEditor;
 
 import ch.hsr.ifs.iltis.cpp.core.preferences.CFieldEditorPropertyAndPreferencePage;
+
+import com.cevelop.intwidthfixator.IntwidthfixatorPlugin;
+import com.cevelop.intwidthfixator.helpers.IdHelper;
+import com.cevelop.intwidthfixator.helpers.IdHelper.WidthId;
 
 
 /**

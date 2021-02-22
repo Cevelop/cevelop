@@ -38,13 +38,13 @@ import org.eclipse.cdt.core.dom.ast.cpp.ICPPASTTemplateParameter;
 import org.eclipse.cdt.core.dom.ast.cpp.ICPPASTTypeId;
 import org.eclipse.cdt.core.dom.ast.cpp.ICPPBasicType;
 
+import ch.hsr.ifs.iltis.cpp.core.ast.checker.helper.IProblemId;
+import ch.hsr.ifs.iltis.cpp.core.ast.checker.helper.ISimpleReporter;
+
 import com.cevelop.intwidthfixator.helpers.IdHelper.ProblemId;
 import com.cevelop.intwidthfixator.helpers.InversionHelper;
 import com.cevelop.intwidthfixator.visitors.AbstractVisitor;
 import com.cevelop.intwidthfixator.visitors.VisitorArgs;
-
-import ch.hsr.ifs.iltis.cpp.core.ast.checker.helper.IProblemId;
-import ch.hsr.ifs.iltis.cpp.core.ast.checker.helper.ISimpleReporter;
 
 
 public class CstdintVisitor extends AbstractVisitor {

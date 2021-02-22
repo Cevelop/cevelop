@@ -27,14 +27,14 @@ import org.eclipse.cdt.core.dom.ast.cpp.ICPPASTTemplateId;
 import org.eclipse.cdt.core.dom.ast.cpp.ICPPASTTemplateParameter;
 import org.eclipse.cdt.core.dom.ast.cpp.ICPPASTTypeId;
 
+import ch.hsr.ifs.iltis.cpp.core.ast.checker.helper.IProblemId;
+import ch.hsr.ifs.iltis.cpp.core.ast.checker.helper.ISimpleReporter;
+
 import com.cevelop.intwidthfixator.helpers.IdHelper.ProblemId;
 import com.cevelop.intwidthfixator.quickfixes.ProblemToLabelMapper;
 import com.cevelop.intwidthfixator.refactorings.conversion.ConversionInfo;
 import com.cevelop.intwidthfixator.visitors.AbstractVisitor;
 import com.cevelop.intwidthfixator.visitors.VisitorArgs;
-
-import ch.hsr.ifs.iltis.cpp.core.ast.checker.helper.IProblemId;
-import ch.hsr.ifs.iltis.cpp.core.ast.checker.helper.ISimpleReporter;
 
 
 public class IntVisitor extends AbstractVisitor {
@@ -195,19 +195,29 @@ public class IntVisitor extends AbstractVisitor {
     protected void reportChecked(final ProblemId id, final IASTSimpleDeclSpecifier node) {
         switch (id) {
         case CASTS:
-            if (!reportCasts) return;
+            if (!reportCasts) {
+                return;
+            }
             break;
         case FUNCTION:
-            if (!reportFunctions) return;
+            if (!reportFunctions) {
+                return;
+            }
             break;
         case TEMPLATE:
-            if (!reportTemplates) return;
+            if (!reportTemplates) {
+                return;
+            }
             break;
         case TYPEDEF:
-            if (!reportTypedefs) return;
+            if (!reportTypedefs) {
+                return;
+            }
             break;
         case VARIABLES:
-            if (!reportVariables) return;
+            if (!reportVariables) {
+                return;
+            }
         }
         reporter.addNodeForReporting(id, node, new ConversionInfo().also(i -> i.mrLabel = ProblemToLabelMapper.getLabel(id)));
     }

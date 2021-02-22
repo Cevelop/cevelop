@@ -4,12 +4,12 @@ import java.util.Map;
 
 import org.eclipse.ltk.core.refactoring.RefactoringDescriptor;
 
-import com.cevelop.intwidthfixator.helpers.IdHelper.RefactoringId;
-
 import ch.hsr.ifs.iltis.core.functional.functions.Function;
 
 import ch.hsr.ifs.iltis.cpp.core.resources.info.IInfo;
 import ch.hsr.ifs.iltis.cpp.core.wrappers.CRefactoringContribution;
+
+import com.cevelop.intwidthfixator.helpers.IdHelper.RefactoringId;
 
 
 /**

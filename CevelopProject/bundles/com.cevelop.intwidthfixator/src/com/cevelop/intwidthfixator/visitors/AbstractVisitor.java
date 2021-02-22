@@ -2,11 +2,11 @@ package com.cevelop.intwidthfixator.visitors;
 
 import java.util.Arrays;
 
-import com.cevelop.intwidthfixator.helpers.IdHelper.ProblemId;
-
 import ch.hsr.ifs.iltis.cpp.core.ast.checker.helper.ISimpleReporter;
 import ch.hsr.ifs.iltis.cpp.core.ast.visitor.SimpleVisitor;
 // import ch.hsr.ifs.iltis.cpp.core.ast.visitor.helper.IVisitorArgument;
+
+import com.cevelop.intwidthfixator.helpers.IdHelper.ProblemId;
 
 
 public abstract class AbstractVisitor extends SimpleVisitor<ProblemId, VisitorArgs> {

@@ -15,9 +15,9 @@ import org.eclipse.cdt.core.dom.rewrite.ASTRewrite;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.osgi.util.NLS;
 
-import com.cevelop.intwidthfixator.helpers.IdHelper.WidthId;
-
 import ch.hsr.ifs.iltis.cpp.core.resources.CProjectUtil;
+
+import com.cevelop.intwidthfixator.helpers.IdHelper.WidthId;
 
 
 /**
@@ -50,15 +50,17 @@ public class InversionHelper extends AbstractHelper {
      * equivalent.
      *
      * @param node
-     *        A node of unfixed width integer type that shall be converted to
-     *        its unfixed width integer type equivalent.
+     * A node of unfixed width integer type that shall be converted to
+     * its unfixed width integer type equivalent.
      *
      * @return ASTRewrite The {@code ICPPASTSimpleDeclSpecifier} able to replace
-     *         the provided {@code node}, or Null if the {@code node} could not be
-     *         converted to a unfixed width integer type.
+     * the provided {@code node}, or Null if the {@code node} could not be
+     * converted to a unfixed width integer type.
      */
     public static ICPPASTSimpleDeclSpecifier convertToSimpleDeclSpecifier(final IASTNode node) {
-        if (node == null || !(node instanceof ICPPASTName || node instanceof ICPPASTNamedTypeSpecifier)) { return null; }
+        if (node == null || !(node instanceof ICPPASTName || node instanceof ICPPASTNamedTypeSpecifier)) {
+            return null;
+        }
 
         final IProject project = CProjectUtil.getProject(node);
 
@@ -89,13 +91,15 @@ public class InversionHelper extends AbstractHelper {
      * typeName.
      *
      * @param typeName
-     *        Has to be a cstdint type.
+     * Has to be a cstdint type.
      * @throws IllegalArgumentException
-     *         If not an cstdint type was passed.
+     * If not an cstdint type was passed.
      * @return The types width
      */
     public static int getWidthFromCstdint(final String typeName) throws IllegalArgumentException {
-        if (!isCstdint(typeName)) { throw new IllegalArgumentException(NLS.bind(Messages.InversionHelper_Exception, typeName)); }
+        if (!isCstdint(typeName)) {
+            throw new IllegalArgumentException(NLS.bind(Messages.InversionHelper_Exception, typeName));
+        }
         final Matcher matcher = getWidthMatcher(typeName);
         matcher.find();
         return Integer.parseUnsignedInt(typeName.substring(matcher.start(), matcher.end()));
@@ -108,12 +112,12 @@ public class InversionHelper extends AbstractHelper {
     /**
      * Returns a matcher to find the values (8|16|32|64) in the passed
      * {@code String}
-     * 
+     *
      * @param target
-     *        The target {@code String} to search for the width values
-     * 
+     * The target {@code String} to search for the width values
+     *
      * @return A matcher to find the values (8|16|32|64) in the passed
-     *         {@code String}
+     * {@code String}
      */
     public static Matcher getWidthMatcher(final String target) {
         final Pattern pattern = Pattern.compile(RX_WIDTHS);
@@ -125,17 +129,19 @@ public class InversionHelper extends AbstractHelper {
      * {@code node} by its respective fixed width integer type node.
      *
      * @param node
-     *        A node of fixed width integer type that shall be replaced its
-     *        unfixed width integer type equivalent, not Null.
+     * A node of fixed width integer type that shall be replaced its
+     * unfixed width integer type equivalent, not Null.
      *
      * @return ASTRewrite The {@code ASTRewrite} able to replace the provided
-     *         {@code node} or Null, if the {@code node} could not be converted to
-     *         a {@code cstdint} type.
+     * {@code node} or Null, if the {@code node} could not be converted to
+     * a {@code cstdint} type.
      */
     public static ASTRewrite createASTRewrite(final IASTNode node) {
         final IASTNode replacementNode = convertToSimpleDeclSpecifier(node);
         final ASTRewrite rewrite = ASTRewrite.create(node.getTranslationUnit());
-        if (replacementNode == null) { return null; }
+        if (replacementNode == null) {
+            return null;
+        }
         rewrite.replace(node, replacementNode, null);
         return rewrite;
     }
@@ -178,7 +184,7 @@ public class InversionHelper extends AbstractHelper {
 
     /**
      * Copies the preferences from a sourceNode to another node.
-     * 
+     *
      * @param sourceNode
      * The node to be copied from
      * @param node
@@ -195,7 +201,7 @@ public class InversionHelper extends AbstractHelper {
      * Set to {@code true} iff the target should be {@code long long}
      */
     protected static void setPreferences(final ICPPASTNamedTypeSpecifier sourceNode, //
-            final ICPPASTSimpleDeclSpecifier node, final int type, // 
+            final ICPPASTSimpleDeclSpecifier node, final int type, //
             final boolean isUnsigned, final boolean isShort, final boolean isLong, final boolean isLongLong) {
         setPreferences(sourceNode, node);
         setPreferences(node, type, isUnsigned, isShort, isLong, isLongLong);

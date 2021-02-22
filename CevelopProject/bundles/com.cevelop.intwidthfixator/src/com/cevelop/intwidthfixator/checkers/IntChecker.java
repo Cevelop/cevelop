@@ -6,12 +6,12 @@ import org.eclipse.cdt.core.dom.ast.IASTNode;
 import org.eclipse.cdt.core.dom.ast.cpp.ICPPASTSimpleDeclSpecifier;
 import org.eclipse.jface.text.IRegion;
 
+import ch.hsr.ifs.iltis.cpp.core.ast.checker.SimpleChecker;
+
 import com.cevelop.intwidthfixator.helpers.IdHelper.ProblemId;
 import com.cevelop.intwidthfixator.helpers.PositionHelper;
 import com.cevelop.intwidthfixator.visitors.VisitorArgs;
 import com.cevelop.intwidthfixator.visitors.intvisitors.IntVisitor;
-
-import ch.hsr.ifs.iltis.cpp.core.ast.checker.SimpleChecker;
 
 
 public class IntChecker extends SimpleChecker<ProblemId> {

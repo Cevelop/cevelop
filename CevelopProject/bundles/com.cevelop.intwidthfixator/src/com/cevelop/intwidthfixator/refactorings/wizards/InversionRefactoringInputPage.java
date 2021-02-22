@@ -9,12 +9,12 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
+import ch.hsr.ifs.iltis.cpp.core.ui.refactoring.SelectionRefactoring;
+
 import com.cevelop.intwidthfixator.helpers.AbstractHelper;
 import com.cevelop.intwidthfixator.helpers.IdHelper;
 import com.cevelop.intwidthfixator.helpers.IdHelper.WidthId;
 import com.cevelop.intwidthfixator.refactorings.inversion.InversionRefactoringInfo;
-
-import ch.hsr.ifs.iltis.cpp.core.ui.refactoring.SelectionRefactoring;
 
 
 /**

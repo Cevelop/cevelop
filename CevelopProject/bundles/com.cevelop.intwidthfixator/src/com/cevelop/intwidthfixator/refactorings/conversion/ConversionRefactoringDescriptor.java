@@ -4,10 +4,10 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.ltk.core.refactoring.RefactoringDescriptor;
 import org.eclipse.ltk.core.refactoring.RefactoringStatus;
 
-import com.cevelop.intwidthfixator.helpers.IdHelper.RefactoringId;
-
 import ch.hsr.ifs.iltis.cpp.core.wrappers.CRefactoring;
 import ch.hsr.ifs.iltis.cpp.core.wrappers.CRefactoringDescriptor;
+
+import com.cevelop.intwidthfixator.helpers.IdHelper.RefactoringId;
 
 
 /**

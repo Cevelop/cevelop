@@ -15,12 +15,12 @@ import org.eclipse.jface.text.BadLocationException;
 import org.eclipse.jface.text.IDocument;
 import org.eclipse.ltk.core.refactoring.TextFileChange;
 
+import ch.hsr.ifs.iltis.cpp.core.codan.marker.IInfoMarkerResolution;
+import ch.hsr.ifs.iltis.cpp.core.includes.IncludeInsertionUtil;
+
 import com.cevelop.intwidthfixator.helpers.ConversionHelper;
 import com.cevelop.intwidthfixator.helpers.Includes;
 import com.cevelop.intwidthfixator.refactorings.conversion.ConversionInfo;
-
-import ch.hsr.ifs.iltis.cpp.core.codan.marker.IInfoMarkerResolution;
-import ch.hsr.ifs.iltis.cpp.core.includes.IncludeInsertionUtil;
 
 
 /**
@@ -67,11 +67,11 @@ public class IntQuickFix extends AbstractAstRewriteQuickFix implements IInfoMark
      * Get length from marker. If {@code CHAR_END} attribute is not set for marker,
      * line and document would be used. {@code CHAR_START} is obtained by using
      * {@link #getOffset(IMarker,IDocument)}.
-     * 
+     *
      * @param marker
-     *        The marker for which the length needs to be calculated
+     * The marker for which the length needs to be calculated
      * @param doc
-     *        The document to which the marker belongs
+     * The document to which the marker belongs
      * @return the markers length
      */
     public int getLength(final IMarker marker, final IDocument doc) {

@@ -7,11 +7,11 @@ import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 
-import com.cevelop.intwidthfixator.helpers.AbstractHelper;
-import com.cevelop.intwidthfixator.helpers.IdHelper.WidthId;
-
 import ch.hsr.ifs.iltis.cpp.core.resources.info.MarkerInfo;
 import ch.hsr.ifs.iltis.cpp.core.ui.refactoring.SelectionRefactoring;
+
+import com.cevelop.intwidthfixator.helpers.AbstractHelper;
+import com.cevelop.intwidthfixator.helpers.IdHelper.WidthId;
 
 
 /**
@@ -49,7 +49,7 @@ public abstract class AbstractRefactoringInputPage<T extends MarkerInfo<T>> exte
 
     /**
      * Used to enable / disable finish button.
-     * 
+     *
      * @return {@code true} iff at least one is selected
      */
     protected abstract boolean isAtLeastOneSelected();
@@ -78,10 +78,10 @@ public abstract class AbstractRefactoringInputPage<T extends MarkerInfo<T>> exte
     /**
      * Helper method to get the width from the {@link WidthId} stored in the
      * value for {@code key}.
-     * 
+     *
      * @param key
      * The key from which to get the width
-     * 
+     *
      * @return The width
      */
     protected int getWidthForPref(final String key) {

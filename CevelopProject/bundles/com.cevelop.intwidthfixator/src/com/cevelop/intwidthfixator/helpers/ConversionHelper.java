@@ -40,13 +40,13 @@ public class ConversionHelper extends AbstractHelper {
     /**
      * Creates an {@link ICPPASTNamedTypeSpecifier} as the fixed-width equivalent
      * of the passed {@code sourceNode}.
-     * 
+     *
      * @param sourceNode
      * The source node from which to create the {@link ICPPASTNamedTypeSpecifier}
-     * 
+     *
      * @param sizePref
      * The size preference id
-     * 
+     *
      * @return The newly created {@link ICPPASTNamedTypeSpecifier}
      */
     private static ICPPASTNamedTypeSpecifier createNode(final ICPPASTSimpleDeclSpecifier sourceNode, final String sizePref) {
@@ -70,10 +70,10 @@ public class ConversionHelper extends AbstractHelper {
      * Creates an {@link ASTRewrite} from to replace the passed {@code IASTNode}
      * with an fixed-width {@code ICPPASTNamedTypeSpecifier}. If the node somehow
      * could not be converted, this method will return {@code null}.
-     * 
+     *
      * @param node
      * The source node to be replaced
-     * 
+     *
      * @return A new {@link ASTRewrite}
      */
     public static ASTRewrite createASTRewrite(final IASTNode node) {
@@ -88,10 +88,10 @@ public class ConversionHelper extends AbstractHelper {
 
     /**
      * Determines if @{code char} is by default configured as signed or unsigned
-     * 
+     *
      * @param project
      * The project for which the unsigned preference needs to be checked
-     * 
+     *
      * @return {@code true} iff the default for this project is set to unsigned
      */
     private static boolean isDefaultUnsigned(final IProject project) {

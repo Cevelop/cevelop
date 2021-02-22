@@ -17,7 +17,7 @@ import com.cevelop.tdd.infos.FreeFunctionInfo;
 import com.cevelop.tdd.quickfixes.TddQuickfix;
 import com.cevelop.tdd.refactorings.create.function.free.CreateFreeFunctionRefactoring;
 
-import ch.hsr.ifs.iltis.core.core.functional.functions.Function2;
+import ch.hsr.ifs.iltis.core.functional.functions.Function2;
 
 
 public class CreateFreeFunctionQuickfix extends TddQuickfix<FreeFunctionInfo> {

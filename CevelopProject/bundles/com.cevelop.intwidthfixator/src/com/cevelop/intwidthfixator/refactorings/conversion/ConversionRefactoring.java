@@ -1,6 +1,6 @@
 package com.cevelop.intwidthfixator.refactorings.conversion;
 
-import static ch.hsr.ifs.iltis.core.core.functional.Functional.as;
+import static ch.hsr.ifs.iltis.core.functional.Functional.as;
 
 import java.util.ArrayList;
 import java.util.Collection;

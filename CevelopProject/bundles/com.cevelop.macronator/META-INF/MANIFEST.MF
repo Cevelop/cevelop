@@ -19,7 +19,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.ui.editors,
  org.eclipse.ltk.core.refactoring,
  ch.hsr.ifs.iltis.cpp.core,
- ch.hsr.ifs.iltis.core.core,
+ ch.hsr.ifs.iltis.core,
  ch.hsr.ifs.iltis.cpp.versionator
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy

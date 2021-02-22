@@ -114,7 +114,7 @@ Switzerland
       <import plugin="org.eclipse.swt"/>
       <import plugin="org.eclipse.ltk.ui.refactoring" version="3.8.0" match="greaterOrEqual"/>
       <import plugin="ch.hsr.ifs.iltis.cpp.core"/>
-      <import plugin="ch.hsr.ifs.iltis.core.core"/>
+      <import plugin="ch.hsr.ifs.iltis.core"/>
       <import plugin="org.eclipse.core.resources"/>
       <import plugin="org.eclipse.core.commands"/>
    </requires>

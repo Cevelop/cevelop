@@ -15,7 +15,7 @@ import com.cevelop.tdd.infos.ArgumentMismatchInfo;
 import com.cevelop.tdd.quickfixes.TddQuickfix;
 import com.cevelop.tdd.refactorings.argument.ArgumentRefactoring;
 
-import ch.hsr.ifs.iltis.core.core.functional.functions.Function2;
+import ch.hsr.ifs.iltis.core.functional.functions.Function2;
 
 
 public class ArgumentMismatchQuickfix extends TddQuickfix<ArgumentMismatchInfo> {

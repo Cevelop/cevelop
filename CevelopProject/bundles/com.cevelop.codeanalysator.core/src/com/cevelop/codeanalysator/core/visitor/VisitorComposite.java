@@ -36,7 +36,7 @@ import org.eclipse.cdt.core.dom.ast.cpp.ICPPASTNamespaceDefinition;
 import org.eclipse.cdt.core.dom.ast.cpp.ICPPASTTemplateParameter;
 import org.eclipse.cdt.core.dom.ast.cpp.ICPPASTVirtSpecifier;
 
-import ch.hsr.ifs.iltis.core.core.functional.functions.Function2;
+import ch.hsr.ifs.iltis.core.functional.functions.Function2;
 
 
 public class VisitorComposite extends ASTVisitor {

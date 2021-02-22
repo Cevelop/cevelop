@@ -16,5 +16,5 @@ Require-Bundle: org.eclipse.ui.workbench,
  org.eclipse.jface.text,
  org.eclipse.jface,
  org.eclipse.ltk.ui.refactoring,
- ch.hsr.ifs.iltis.core.core,
+ ch.hsr.ifs.iltis.core,
  org.eclipse.core.resources

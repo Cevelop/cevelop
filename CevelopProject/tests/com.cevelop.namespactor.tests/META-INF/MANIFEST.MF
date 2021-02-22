@@ -18,7 +18,7 @@ Require-Bundle: org.junit,
  org.eclipse.cdt.core.tests,
  com.cevelop.namespactor.checkers,
  org.eclipse.ltk.core.refactoring,
- ch.hsr.ifs.iltis.core.core
+ ch.hsr.ifs.iltis.core
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-Vendor: IFS Institute for Software

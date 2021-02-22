@@ -16,7 +16,7 @@ import com.cevelop.tdd.infos.NamespaceInfo;
 import com.cevelop.tdd.quickfixes.TddQuickfix;
 import com.cevelop.tdd.refactorings.create.namespace.CreateNamespaceRefactoring;
 
-import ch.hsr.ifs.iltis.core.core.functional.functions.Function2;
+import ch.hsr.ifs.iltis.core.functional.functions.Function2;
 
 
 public class CreateNamespaceQuickfix extends TddQuickfix<NamespaceInfo> {

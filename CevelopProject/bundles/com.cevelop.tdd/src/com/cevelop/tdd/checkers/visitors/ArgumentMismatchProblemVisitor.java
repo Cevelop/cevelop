@@ -22,7 +22,7 @@ import com.cevelop.tdd.infos.ArgumentMismatchInfo;
 import com.cevelop.tdd.quickfixes.argument.ArgumentMismatchQuickfixGenerator;
 import com.cevelop.tdd.refactorings.argument.ArgumentRefactoring;
 
-import ch.hsr.ifs.iltis.core.core.functional.functions.Consumer3;
+import ch.hsr.ifs.iltis.core.functional.functions.Consumer3;
 
 import ch.hsr.ifs.iltis.cpp.core.ast.checker.helper.IProblemId;
 

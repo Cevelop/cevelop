@@ -17,7 +17,7 @@ import com.cevelop.tdd.infos.MemberVariableInfo;
 import com.cevelop.tdd.quickfixes.TddQuickfix;
 import com.cevelop.tdd.refactorings.create.variable.member.CreateMemberVariableRefactoring;
 
-import ch.hsr.ifs.iltis.core.core.functional.functions.Function2;
+import ch.hsr.ifs.iltis.core.functional.functions.Function2;
 
 
 public class CreateMemberVariableQuickfix extends TddQuickfix<MemberVariableInfo> {

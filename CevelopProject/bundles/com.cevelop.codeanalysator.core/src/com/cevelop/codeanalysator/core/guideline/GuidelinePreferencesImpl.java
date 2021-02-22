@@ -10,8 +10,8 @@ import org.eclipse.jface.util.IPropertyChangeListener;
 import org.eclipse.jface.util.PropertyChangeEvent;
 import org.eclipse.jface.util.SafeRunnable;
 
-import ch.hsr.ifs.iltis.core.core.preferences.IPropertyAndPreferenceHelper;
-import ch.hsr.ifs.iltis.core.core.preferences.PropertyAndPreferenceHelper;
+import ch.hsr.ifs.iltis.core.preferences.IPropertyAndPreferenceHelper;
+import ch.hsr.ifs.iltis.core.preferences.PropertyAndPreferenceHelper;
 
 
 public class GuidelinePreferencesImpl implements IGuidelinePreferences {

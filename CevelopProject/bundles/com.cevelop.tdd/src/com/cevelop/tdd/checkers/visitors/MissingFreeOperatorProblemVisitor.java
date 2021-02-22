@@ -30,7 +30,7 @@ import org.eclipse.jface.text.TextSelection;
 import com.cevelop.tdd.helpers.IdHelper.ProblemId;
 import com.cevelop.tdd.infos.FreeOperatorInfo;
 
-import ch.hsr.ifs.iltis.core.core.functional.functions.Consumer3;
+import ch.hsr.ifs.iltis.core.functional.functions.Consumer3;
 
 import ch.hsr.ifs.iltis.cpp.core.ast.checker.helper.IProblemId;
 

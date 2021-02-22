@@ -10,9 +10,9 @@ import com.cevelop.intwidthfixator.IntwidthfixatorPlugin;
 import com.cevelop.intwidthfixator.helpers.IdHelper;
 import com.cevelop.intwidthfixator.helpers.IdHelper.WidthId;
 
-import ch.hsr.ifs.iltis.core.core.preferences.IPropertyAndPreferenceHelper;
-import ch.hsr.ifs.iltis.core.core.preferences.fieldeditor.GroupFieldEditor;
-import ch.hsr.ifs.iltis.core.core.preferences.fieldeditor.GroupingFieldEditor;
+import ch.hsr.ifs.iltis.core.preferences.IPropertyAndPreferenceHelper;
+import ch.hsr.ifs.iltis.core.preferences.fieldeditor.GroupFieldEditor;
+import ch.hsr.ifs.iltis.core.preferences.fieldeditor.GroupingFieldEditor;
 
 import ch.hsr.ifs.iltis.cpp.core.preferences.CFieldEditorPropertyAndPreferencePage;
 

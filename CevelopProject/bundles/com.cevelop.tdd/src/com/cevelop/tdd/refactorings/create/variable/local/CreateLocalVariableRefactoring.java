@@ -35,7 +35,7 @@ import com.cevelop.tdd.helpers.TypeHelper;
 import com.cevelop.tdd.infos.LocalVariableInfo;
 import com.cevelop.tdd.refactorings.create.variable.member.Messages;
 
-import ch.hsr.ifs.iltis.core.core.functional.OptionalUtil;
+import ch.hsr.ifs.iltis.core.functional.OptionalUtil;
 
 import ch.hsr.ifs.iltis.cpp.core.ui.refactoring.SelectionRefactoring;
 import ch.hsr.ifs.iltis.cpp.core.wrappers.ModificationCollector;

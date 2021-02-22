@@ -5,7 +5,7 @@ import org.eclipse.jface.preference.IPreferenceStore;
 import com.cevelop.intwidthfixator.IntwidthfixatorPlugin;
 import com.cevelop.intwidthfixator.helpers.IdHelper;
 
-import ch.hsr.ifs.iltis.core.core.preferences.PropertyAndPreferenceHelper;
+import ch.hsr.ifs.iltis.core.preferences.PropertyAndPreferenceHelper;
 
 
 public class PropAndPrefHelper extends PropertyAndPreferenceHelper {

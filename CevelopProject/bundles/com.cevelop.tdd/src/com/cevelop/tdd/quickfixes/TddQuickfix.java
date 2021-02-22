@@ -21,7 +21,7 @@ import org.eclipse.ui.IMarkerResolution2;
 
 import com.cevelop.tdd.refactorings.TddRefactoringContext;
 
-import ch.hsr.ifs.iltis.core.core.functional.functions.Function2;
+import ch.hsr.ifs.iltis.core.functional.functions.Function2;
 
 import ch.hsr.ifs.iltis.cpp.core.codan.marker.IInfoMarkerResolution;
 import ch.hsr.ifs.iltis.cpp.core.resources.info.MarkerInfo;

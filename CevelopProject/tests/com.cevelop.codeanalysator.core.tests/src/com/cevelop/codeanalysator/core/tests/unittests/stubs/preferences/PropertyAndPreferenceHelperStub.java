@@ -7,7 +7,7 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.preference.PreferenceStore;
 
-import ch.hsr.ifs.iltis.core.core.preferences.PropertyAndPreferenceHelper;
+import ch.hsr.ifs.iltis.core.preferences.PropertyAndPreferenceHelper;
 
 
 public class PropertyAndPreferenceHelperStub extends PropertyAndPreferenceHelper {

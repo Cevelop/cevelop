@@ -34,7 +34,7 @@ import org.eclipse.ltk.core.refactoring.RefactoringDescriptor;
 import com.cevelop.tdd.helpers.TddHelper;
 import com.cevelop.tdd.infos.TypeInfo;
 
-import ch.hsr.ifs.iltis.core.core.functional.OptionalUtil;
+import ch.hsr.ifs.iltis.core.functional.OptionalUtil;
 
 import ch.hsr.ifs.iltis.cpp.core.ui.refactoring.SelectionRefactoring;
 import ch.hsr.ifs.iltis.cpp.core.wrappers.CRefactoringContext;

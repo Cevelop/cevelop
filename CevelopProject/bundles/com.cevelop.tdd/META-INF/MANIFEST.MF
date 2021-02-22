@@ -16,7 +16,7 @@ Require-Bundle: org.eclipse.ui;bundle-version="3.6.2",
  org.eclipse.cdt.codan.ui.cxx;bundle-version="2.0.0",
  org.eclipse.cdt.codan.core.cxx,
  ch.hsr.ifs.iltis.cpp.core,
- ch.hsr.ifs.iltis.core.core,
+ ch.hsr.ifs.iltis.core,
  org.eclipse.collections,
  org.eclipse.ltk.ui.refactoring
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8

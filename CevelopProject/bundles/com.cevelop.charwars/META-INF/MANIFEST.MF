@@ -15,7 +15,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.jface.text;bundle-version="3.8.1",
  org.eclipse.ltk.core.refactoring;bundle-version="3.6.0",
  ch.hsr.ifs.iltis.cpp.versionator,
- ch.hsr.ifs.iltis.core.core,
+ ch.hsr.ifs.iltis.core,
  ch.hsr.ifs.iltis.cpp.core,
  org.eclipse.ui.ide;bundle-version="3.13.1",
  org.eclipse.ltk.ui.refactoring

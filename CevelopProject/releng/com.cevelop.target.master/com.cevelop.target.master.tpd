@@ -18,11 +18,9 @@ location "https://ci.eclipse.org/cdt/job/cdt-9.10/lastSuccessfulBuild/artifact/r
 }
 
 location "https://www.cevelop.com/iltis" {
-	ch.hsr.ifs.iltis.core.kotlin.feature.feature.group 2.5.0
-
-	ch.hsr.ifs.iltis.cpp.versionator.feature.feature.group 3.3.0
-	ch.hsr.ifs.iltis.cpp.core.feature.feature.group 3.3.0
-
-	ch.hsr.ifs.iltis.testing.cpp.feature.feature.group 2.4.0
-	ch.hsr.ifs.iltis.testing.highlevel.feature.feature.group 2.4.0
+	ch.hsr.ifs.iltis.kotlin.feature.feature.group 4.0.1
+	ch.hsr.ifs.iltis.cpp.versionator.feature.feature.group 4.0.1
+	ch.hsr.ifs.iltis.cpp.core.feature.feature.group 4.0.1
+	ch.hsr.ifs.iltis.testing.cpp.feature.feature.group 4.0.1
+	ch.hsr.ifs.iltis.testing.highlevel.feature.feature.group 4.0.1
 }

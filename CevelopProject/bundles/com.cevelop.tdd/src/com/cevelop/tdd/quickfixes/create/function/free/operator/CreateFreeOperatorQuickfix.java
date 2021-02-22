@@ -17,7 +17,7 @@ import com.cevelop.tdd.infos.FreeOperatorInfo;
 import com.cevelop.tdd.quickfixes.TddQuickfix;
 import com.cevelop.tdd.refactorings.create.function.free.operator.CreateFreeOperatorRefactoring;
 
-import ch.hsr.ifs.iltis.core.core.functional.functions.Function2;
+import ch.hsr.ifs.iltis.core.functional.functions.Function2;
 
 
 public class CreateFreeOperatorQuickfix extends TddQuickfix<FreeOperatorInfo> {

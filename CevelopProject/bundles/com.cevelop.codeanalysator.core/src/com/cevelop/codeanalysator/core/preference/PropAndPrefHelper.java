@@ -4,7 +4,7 @@ import org.eclipse.jface.preference.IPreferenceStore;
 
 import com.cevelop.codeanalysator.core.helper.CoreIdHelper;
 
-import ch.hsr.ifs.iltis.core.core.preferences.PropertyAndPreferenceHelper;
+import ch.hsr.ifs.iltis.core.preferences.PropertyAndPreferenceHelper;
 
 
 public class PropAndPrefHelper extends PropertyAndPreferenceHelper {

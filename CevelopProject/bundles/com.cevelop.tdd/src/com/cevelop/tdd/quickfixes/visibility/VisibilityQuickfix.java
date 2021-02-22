@@ -16,7 +16,7 @@ import com.cevelop.tdd.infos.VisibilityInfo;
 import com.cevelop.tdd.quickfixes.TddQuickfix;
 import com.cevelop.tdd.refactorings.visibility.VisibilityRefactoring;
 
-import ch.hsr.ifs.iltis.core.core.functional.functions.Function2;
+import ch.hsr.ifs.iltis.core.functional.functions.Function2;
 
 
 public class VisibilityQuickfix extends TddQuickfix<VisibilityInfo> {

@@ -4,7 +4,7 @@ import com.cevelop.codeanalysator.core.CodeAnalysatorRuntime;
 import com.cevelop.codeanalysator.core.helper.CoreIdHelper;
 import com.cevelop.codeanalysator.core.helper.TranslationHelper;
 
-import ch.hsr.ifs.iltis.core.core.preferences.IPropertyAndPreferenceHelper;
+import ch.hsr.ifs.iltis.core.preferences.IPropertyAndPreferenceHelper;
 
 import ch.hsr.ifs.iltis.cpp.core.preferences.CFieldEditorPropertyAndPreferencePage;
 

@@ -1,6 +1,3 @@
-[submodule "tools"]
-	path = tools
-	url = ../../sloth/tools.git
-[submodule "support"]
-	path = support
-	url = ../support
+[submodule "releng-tools"]
+	path = releng-tools
+	url = ../releng-tools/

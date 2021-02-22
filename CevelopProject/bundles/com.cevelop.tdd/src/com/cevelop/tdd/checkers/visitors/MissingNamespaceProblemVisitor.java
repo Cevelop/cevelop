@@ -11,7 +11,7 @@ import org.eclipse.cdt.core.dom.ast.cpp.ICPPClassType;
 import com.cevelop.tdd.helpers.IdHelper.ProblemId;
 import com.cevelop.tdd.infos.NamespaceInfo;
 
-import ch.hsr.ifs.iltis.core.core.functional.functions.Consumer3;
+import ch.hsr.ifs.iltis.core.functional.functions.Consumer3;
 
 import ch.hsr.ifs.iltis.cpp.core.ast.checker.helper.IProblemId;
 

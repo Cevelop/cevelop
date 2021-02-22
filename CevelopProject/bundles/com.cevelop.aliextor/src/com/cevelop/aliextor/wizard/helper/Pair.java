@@ -1,6 +1,6 @@
 package com.cevelop.aliextor.wizard.helper;
 
-import ch.hsr.ifs.iltis.core.core.data.AbstractPair;
+import ch.hsr.ifs.iltis.core.data.AbstractPair;
 
 
 public class Pair<L, R> extends AbstractPair<L, R> {

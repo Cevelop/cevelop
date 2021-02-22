@@ -31,7 +31,7 @@ import com.cevelop.tdd.helpers.TddHelper;
 import com.cevelop.tdd.helpers.TypeHelper;
 import com.cevelop.tdd.infos.ConstructorInfo;
 
-import ch.hsr.ifs.iltis.core.core.functional.functions.Consumer3;
+import ch.hsr.ifs.iltis.core.functional.functions.Consumer3;
 
 import ch.hsr.ifs.iltis.cpp.core.ast.checker.helper.IProblemId;
 

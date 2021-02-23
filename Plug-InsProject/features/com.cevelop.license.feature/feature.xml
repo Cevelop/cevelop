@@ -3,7 +3,8 @@
       id="com.cevelop.license.feature"
       label="License Feature"
       version="1.14.0.qualifier"
-      provider-name="Cevelop">
+      provider-name="Cevelop"
+      plugin="com.cevelop.branding">
 
    <description url="http://www.cevelop.com">
       This feature contains the license applying to the Cevelop Plug-Ins

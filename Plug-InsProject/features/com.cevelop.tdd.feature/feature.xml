@@ -4,6 +4,7 @@
       label="TDD for Cevelop"
       version="1.14.0.qualifier"
       provider-name="IFS Institute for Software"
+      plugin="com.cevelop.branding"
       license-feature="com.cevelop.license.feature"
       license-feature-version="1.14.0.qualifier">
 

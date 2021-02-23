@@ -10,6 +10,7 @@
     </parent>
     <modules>
         <module>com.cevelop.aliextor</module>
+        <module>com.cevelop.branding</module>
         <module>com.cevelop.charwars</module>
         <module>com.cevelop.clonewar</module>
         <module>com.cevelop.codeanalysator.core</module>

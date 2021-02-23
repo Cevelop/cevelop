@@ -381,6 +381,7 @@
     </setAttribute>
     <setAttribute key="selected_workspace_bundles">
         <setEntry value="com.cevelop.aliextor@default:default"/>
+        <setEntry value="com.cevelop.branding@default:default"/>
         <setEntry value="com.cevelop.charwars@default:default"/>
         <setEntry value="com.cevelop.clonewar@default:default"/>
         <setEntry value="com.cevelop.codeanalysator.autosar@default:false"/>

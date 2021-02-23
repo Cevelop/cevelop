@@ -2,11 +2,11 @@
 <feature
       id="com.cevelop.elevator.feature"
       label="Elevator"
-      version="1.14.0.qualifier"
+      version="1.14.2.qualifier"
       provider-name="IFS Institute for Software"
       plugin="com.cevelop.branding"
       license-feature="com.cevelop.license.feature"
-      license-feature-version="1.14.0.qualifier">
+      license-feature-version="1.14.2.qualifier">
 
    <description url="https://www.cevelop.com/features">
       Elevator is a Plug-in for Eclipse CDT that helps refactor existing

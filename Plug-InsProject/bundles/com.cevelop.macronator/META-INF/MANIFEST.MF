@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Macronator Plug-in
 Bundle-SymbolicName: com.cevelop.macronator;singleton:=true
-Bundle-Version: 1.14.0.qualifier
+Bundle-Version: 1.14.2.qualifier
 Require-Bundle: org.eclipse.ui,
  org.eclipse.cdt.codan.core,
  org.eclipse.cdt.codan.core.cxx,

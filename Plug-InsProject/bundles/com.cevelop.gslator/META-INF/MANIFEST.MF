@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: GSLAtor
 Bundle-SymbolicName: com.cevelop.gslator;singleton:=true
-Bundle-Version: 1.14.0.qualifier
+Bundle-Version: 1.14.2.qualifier
 Bundle-Activator: com.cevelop.gslator.CCGlator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,

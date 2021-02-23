@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Clonewar Plug-in
 Bundle-SymbolicName: com.cevelop.clonewar;singleton:=true
-Bundle-Version: 1.14.0.qualifier
+Bundle-Version: 1.14.2.qualifier
 Bundle-Activator: com.cevelop.clonewar.Activator
 Bundle-Vendor: IFS Institute for Software
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8

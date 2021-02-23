@@ -2,7 +2,7 @@
 <feature
       id="com.cevelop.license.feature"
       label="License Feature"
-      version="1.14.0.qualifier"
+      version="1.14.2.qualifier"
       provider-name="Cevelop"
       plugin="com.cevelop.branding">
 

@@ -2,11 +2,11 @@
 <feature
       id="com.cevelop.gslator.feature"
       label="GSLAtor"
-      version="1.14.0.qualifier"
+      version="1.14.2.qualifier"
       provider-name="IFS Institute for Software"
       plugin="com.cevelop.branding"
       license-feature="com.cevelop.license.feature"
-      license-feature-version="1.14.0.qualifier">
+      license-feature-version="1.14.2.qualifier">
 
    <description url="https://www.cevelop.com/features">
       The GSLAtor is an Eclipse CDT plug-in that provides hints and
@@ -53,7 +53,7 @@ SPDX-License-Identifier: EPL-2.0
          id="com.cevelop.gslator"
          download-size="0"
          install-size="0"
-         version="1.14.0.qualifier"
+         version="1.14.2.qualifier"
          unpack="false"/>
 
 </feature>

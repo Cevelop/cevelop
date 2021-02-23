@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: MISRA
 Bundle-SymbolicName: com.cevelop.codeanalysator.misra;singleton:=true
 Fragment-Host: com.cevelop.codeanalysator.core
-Bundle-Version: 1.14.0.qualifier
+Bundle-Version: 1.14.2.qualifier
 Bundle-Vendor: IFS Institute for Software
 Require-Bundle: 
  org.eclipse.core.runtime;bundle-version="3.12.0",

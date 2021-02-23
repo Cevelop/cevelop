@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Intwidthfixator
 Bundle-SymbolicName: com.cevelop.intwidthfixator;singleton:=true
-Bundle-Version: 1.14.0.qualifier
+Bundle-Version: 1.14.2.qualifier
 Bundle-Vendor: IFS Institute for Software
 Bundle-Activator: com.cevelop.intwidthfixator.IntwidthfixatorPlugin
 Require-Bundle: ch.hsr.ifs.iltis.core,

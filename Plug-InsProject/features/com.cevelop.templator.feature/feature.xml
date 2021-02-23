@@ -2,11 +2,11 @@
 <feature
       id="com.cevelop.templator.feature"
       label="Templator"
-      version="1.14.0.qualifier"
+      version="1.14.2.qualifier"
       provider-name="IFS Institute for Software"
       plugin="com.cevelop.branding"
       license-feature="com.cevelop.license.feature"
-      license-feature-version="1.14.0.qualifier">
+      license-feature-version="1.14.2.qualifier">
 
    <description url="https://www.cevelop.com/features">
       This package contains the Templator plug-in to visualize function
@@ -50,7 +50,7 @@ SPDX-License-Identifier: EPL-2.0
          id="com.cevelop.templator"
          download-size="0"
          install-size="0"
-         version="1.14.0.qualifier"
+         version="1.14.2.qualifier"
          unpack="false"/>
 
 </feature>

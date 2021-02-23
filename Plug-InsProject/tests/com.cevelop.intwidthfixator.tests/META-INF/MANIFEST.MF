@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Intwidthfixator Test
 Bundle-SymbolicName: com.cevelop.intwidthfixator.tests;singleton:=true
-Bundle-Version: 1.14.0.qualifier
+Bundle-Version: 1.14.2.qualifier
 Bundle-Vendor: IFS Institute for Software
 Fragment-Host: com.cevelop.intwidthfixator
 Require-Bundle: org.eclipse.core.runtime,

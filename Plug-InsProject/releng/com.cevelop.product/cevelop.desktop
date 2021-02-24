@@ -1,0 +1,8 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Type=Application
+Terminal=false
+Icon=icon.xpm
+Name=Cevelop C++ IDE
+Exec=bash -c "export PATH=$PATH:`dirname %k`; cevelop.sh"
+StartupWMClass=Cevelop C++ IDE

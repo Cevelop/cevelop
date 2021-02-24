@@ -10,6 +10,7 @@
     </parent>
     <modules>
         <module>com.cevelop.aliextor.feature</module>
+        <module>com.cevelop.branding.feature</module>
         <module>com.cevelop.charwars.feature</module>
         <module>com.cevelop.clonewar.feature</module>
         <module>com.cevelop.codeanalysator.feature</module>
@@ -23,6 +24,7 @@
         <module>com.cevelop.license.feature</module>
         <module>com.cevelop.macronator.feature</module>
         <module>com.cevelop.namespactor.feature</module>
+        <module>com.cevelop.product.feature</module>
         <module>com.cevelop.tdd.feature</module>
         <module>com.cevelop.templator.feature</module>
     </modules>

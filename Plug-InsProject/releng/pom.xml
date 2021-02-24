@@ -11,6 +11,7 @@
 	</parent>
 	<modules>
 		<module>com.cevelop.update</module>
+		<module>com.cevelop.product</module>
 	</modules>
 	<profiles>
 		<profile>

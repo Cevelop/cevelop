@@ -1,18 +1,35 @@
 target "Cevelop Development" with source requirements
 
 location "http://download.eclipse.org/releases/2019-12" {
-	org.eclipse.equinox.launcher lazy
+	org.eclipse.equinox.sdk.feature.group lazy
+	org.eclipse.platform.feature.group lazy
 	org.eclipse.ui.ide.application lazy
-	org.eclipse.sdk.ide lazy
-	
+	org.eclipse.sdk.feature.group lazy
 	org.eclipse.zest.sdk.feature.group lazy
+	org.eclipse.emf.sdk.feature.group lazy
+	org.eclipse.epp.mpc.feature.group lazy
+	org.eclipse.gef.sdk.feature.group lazy
+	org.eclipse.tm.terminal.feature.feature.group lazy
+}
+
+location "http://download.eclipse.org/egit/updates" {
+	org.eclipse.egit.feature.group lazy
+	org.eclipse.jgit.feature.group lazy
+	org.eclipse.jgit.http.apache.feature.group lazy
+	org.eclipse.jgit.lfs.feature.group lazy
 }
 
 location "http://download.eclipse.org/tools/cdt/releases/9.10" {
 	org.eclipse.cdt.sdk.feature.group lazy
+	org.eclipse.cdt.feature.group lazy
+	org.eclipse.cdt.autotools.feature.group lazy
+	org.eclipse.cdt.build.crossgcc.feature.group lazy
+	org.eclipse.cdt.cmake.feature.group lazy
+	org.eclipse.launchbar.feature.group lazy
 }
 
 location "http://download.eclipse.org/tools/orbit/downloads/drops/R20191126223242/repository/" {
+	org.apache.commons.codec lazy
 	javax.xml.stream lazy
 }
 

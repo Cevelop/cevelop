@@ -146,22 +146,24 @@ Switzerland
    </plugins>
 
    <features>
+      <feature id="com.cevelop.aliextor.feature" installMode="root"/>
       <feature id="com.cevelop.branding.feature" installMode="root"/>
       <feature id="com.cevelop.charwars.feature" installMode="root"/>
       <feature id="com.cevelop.clonewar.feature" installMode="root"/>
       <feature id="com.cevelop.codeanalysator.feature" installMode="root"/>
+      <feature id="com.cevelop.conanator.feature" installMode="root"/>
       <feature id="com.cevelop.constificator.feature" installMode="root"/>
       <feature id="com.cevelop.ctylechecker.feature" installMode="root"/>
       <feature id="com.cevelop.elevator.feature" installMode="root"/>
       <feature id="com.cevelop.gslator.feature" installMode="root"/>
-      <feature id="com.cevelop.product.feature"/>
       <feature id="com.cevelop.includator.feature" installMode="root"/>
       <feature id="com.cevelop.intwidthfixator.feature" installMode="root"/>
+      <feature id="com.cevelop.license.feature" installMode="root"/>
       <feature id="com.cevelop.macronator.feature" installMode="root"/>
       <feature id="com.cevelop.namespactor.feature" installMode="root"/>
+      <feature id="com.cevelop.product.feature"/>
       <feature id="com.cevelop.tdd.feature" installMode="root"/>
       <feature id="com.cevelop.templator.feature" installMode="root"/>
-      <feature id="com.cevelop.license.feature" installMode="root"/>
       <feature id="org.eclipse.cdt" installMode="root"/>
       <feature id="org.eclipse.cdt.cmake" installMode="root"/>
       <feature id="org.eclipse.cdt.gdb" installMode="root"/>
@@ -213,10 +215,10 @@ Switzerland
       <plugin id="org.eclipse.equinox.simpleconfigurator" autoStart="true" startLevel="1" />
       <plugin id="org.eclipse.ui.workbench" autoStart="true" startLevel="4" />
       <plugin id="org.eclipse.update.configurator" autoStart="true" startLevel="3" />
-      <property name="cssTheme" value="org.eclipse.e4.ui.css.theme.e4_classic" />
-      <property name="applicationCSSResources" value="platform:/plugin/org.eclipse.platform/images/" />
       <property name="osgi.instance.area.default" value="@user.home/workspace" />
       <property name="perspective" value="org.eclipse.cdt.ui.CPerspective" />
+      <property name="cssTheme" value="org.eclipse.e4.ui.css.theme.e4_classic" />
+      <property name="applicationCSSResources" value="platform:/plugin/org.eclipse.platform/images/" />
    </configurations>
 
    <repositories>

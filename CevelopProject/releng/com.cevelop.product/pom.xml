@@ -137,7 +137,7 @@
 							</target>
 						</configuration>
 					</execution>
-					<!--execution>
+					<execution>
 						<id>copy-auxiliary-files-windows</id>
 						<phase>${package-windows-phase}</phase>
 						<goals>
@@ -146,12 +146,13 @@
 						<configuration>
 							<target>
 								<exec executable="osslsigncode">
+									<arg value="sign" />
 									<arg value="-pkcs12" />
 									<arg value="${keystore}" />
 									<arg value="-pass" />
 									<arg value="${certpass}" />
 									<arg value="-t" />
-									<arg value="http://timestamp.verisign.com/scripts/timstamp.dll" />
+									<arg value="http://timestamp.comodoca.com/authenticode" />
 									<arg value="-in" />
 									<arg value="${project.build.directory}/products/${product-id}/win32/win32/${env.IDE_ARCH}/${rootFolder}/cevelop.exe" />
 									<arg value="-out" />
@@ -163,7 +164,7 @@
 									tofile="${project.build.directory}/products/${product-id}/win32/win32/${env.IDE_ARCH}/${rootFolder}/cevelop.exe"></move>
 							</target>
 						</configuration>
-					</execution-->
+					</execution>
 					<execution>
 						<id>copy-auxiliary-files-all</id>
 						<phase>${package-all-phase}</phase>
@@ -179,20 +180,21 @@
 								<chmod file="${project.build.directory}/products/${product-id}/linux/gtk/x86_64/${rootFolder}/cevelop.sh" perm="+x"></chmod>
 								<chmod file="${project.build.directory}/products/${product-id}/linux/gtk/x86_64/${rootFolder}/cevelop.desktop"
 									perm="+x"></chmod>
-								<!--exec executable="osslsigncode">
+								<exec executable="osslsigncode">
+									<arg value="sign" />
 									<arg value="-pkcs12" />
 									<arg value="${keystore}" />
 									<arg value="-pass" />
 									<arg value="${certpass}" />
 									<arg value="-t" />
-									<arg value="http://timestamp.verisign.com/scripts/timstamp.dll" />
+									<arg value="http://timestamp.comodoca.com/authenticode" />
 									<arg value="-in" />
 									<arg value="${project.build.directory}/products/${product-id}/win32/win32/x86_64/${rootFolder}/cevelop.exe" />
 									<arg value="-out" />
 									<arg value="${project.build.directory}/products/${product-id}/win32/win32/x86_64/${rootFolder}/cevelop-signed.exe" />
 								</exec>
 								<move file="${project.build.directory}/products/${product-id}/win32/win32/x86_64/${rootFolder}/cevelop-signed.exe"
-									tofile="${project.build.directory}/products/${product-id}/win32/win32/x86_64/${rootFolder}/cevelop.exe"></move-->
+									tofile="${project.build.directory}/products/${product-id}/win32/win32/x86_64/${rootFolder}/cevelop.exe"></move>
 							</target>
 						</configuration>
 					</execution>

@@ -168,6 +168,8 @@ Switzerland
       <feature id="ch.hsr.ifs.cute.feature" installMode="root"/>
       <feature id="ch.hsr.ifs.cute.gcov.feature" installMode="root"/>
       <feature id="ch.hsr.ifs.cute.mockator.feature" installMode="root"/>
+      <feature id="ch.hsr.ifs.sconsolidator.depviz.feature" installMode="root"/>
+      <feature id="ch.hsr.ifs.sconsolidator.feature" installMode="root"/>
       <feature id="org.eclipse.cdt" installMode="root"/>
       <feature id="org.eclipse.cdt.cmake" installMode="root"/>
       <feature id="org.eclipse.cdt.gdb" installMode="root"/>
@@ -219,10 +221,10 @@ Switzerland
       <plugin id="org.eclipse.equinox.simpleconfigurator" autoStart="true" startLevel="1" />
       <plugin id="org.eclipse.ui.workbench" autoStart="true" startLevel="4" />
       <plugin id="org.eclipse.update.configurator" autoStart="true" startLevel="3" />
-      <property name="osgi.instance.area.default" value="@user.home/workspace" />
       <property name="perspective" value="org.eclipse.cdt.ui.CPerspective" />
-      <property name="cssTheme" value="org.eclipse.e4.ui.css.theme.e4_classic" />
       <property name="applicationCSSResources" value="platform:/plugin/org.eclipse.platform/images/" />
+      <property name="cssTheme" value="org.eclipse.e4.ui.css.theme.e4_classic" />
+      <property name="osgi.instance.area.default" value="@user.home/workspace" />
    </configurations>
 
    <repositories>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl -->
-<target name="Cevelop Development" sequenceNumber="1614265593">
+<target name="Cevelop Development" sequenceNumber="1614273268">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.equinox.sdk.feature.group" version="0.0.0"/>
@@ -56,7 +56,12 @@
       <unit id="ch.hsr.ifs.cute.feature.feature.group" version="0.0.0"/>
       <unit id="ch.hsr.ifs.cute.gcov.feature.feature.group" version="0.0.0"/>
       <unit id="ch.hsr.ifs.cute.mockator.feature.feature.group" version="0.0.0"/>
-      <repository location="https://cute-test.com/updatesite"/>
+      <repository location="https://cute-test.com/updatesite-unstable"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="ch.hsr.ifs.sconsolidator.depviz.feature.feature.group" version="0.0.0"/>
+      <unit id="ch.hsr.ifs.sconsolidator.feature.feature.group" version="0.0.0"/>
+      <repository location="http://sconsolidator.com/update-unstable"/>
     </location>
   </locations>
 </target>

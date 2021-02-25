@@ -49,9 +49,15 @@ location "https://www.cevelop.com/iltis-unstable" {
 	ch.hsr.ifs.iltis.testing.tools.pasta.feature.feature.group lazy
 }
 
-location "https://cute-test.com/updatesite" {
+location "https://cute-test.com/updatesite-unstable" {
 	ch.hsr.ifs.cute.boost.feature.feature.group lazy
 	ch.hsr.ifs.cute.feature.feature.group lazy
 	ch.hsr.ifs.cute.gcov.feature.feature.group lazy
 	ch.hsr.ifs.cute.mockator.feature.feature.group lazy
+}
+
+
+location "http://sconsolidator.com/update-unstable" {
+	ch.hsr.ifs.sconsolidator.depviz.feature.feature.group lazy
+	ch.hsr.ifs.sconsolidator.feature.feature.group lazy
 }

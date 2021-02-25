@@ -1,0 +1,14 @@
+//!DestructorRefTest3MemberVar
+//@A.cpp
+#include "X.h"
+class UseX {
+  X x;
+};
+//@X.h
+class X {
+public:
+  ~X();
+};
+//@X.cpp
+#include "X.h"
+X::~X() { }

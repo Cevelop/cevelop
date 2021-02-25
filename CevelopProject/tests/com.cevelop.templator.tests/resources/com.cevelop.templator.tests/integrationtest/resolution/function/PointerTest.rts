@@ -1,0 +1,16 @@
+//!PointerTest
+//@MyFileName.cpp
+template<typename T, typename F, typename G>
+void inner(T first, F second, G third) {}
+
+void inner(double, int second, int third) {}
+
+template<typename T, typename F>
+void outer(T first, F second) {
+    int *const pi = new int{8};
+    inner(first, new int{5}, pi); // <double, int*, int *>, const does not matter here    
+}
+
+int main() {
+    outer(42.0, 23ull); //<double, unsigned long long>
+}

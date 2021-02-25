@@ -1,0 +1,4 @@
+class Sub {
+public:
+	Sub();
+ };

@@ -1,0 +1,19 @@
+//!Two Covered Includes, 1 Ignored, 1 Suggested
+//@main.cpp
+#include "A.h"
+#include "B.h"
+#include "C.h"
+
+int main() {
+  A a;
+  B b;
+  return 0;
+}
+//@A.h
+#include "B.h"
+
+class A { };
+//@B.h
+class B { };
+//@C.h
+#include "B.h"

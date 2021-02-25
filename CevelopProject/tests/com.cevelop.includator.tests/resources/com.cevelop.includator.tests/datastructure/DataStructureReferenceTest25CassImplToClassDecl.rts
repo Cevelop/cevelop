@@ -1,0 +1,11 @@
+//!DataStructureReferenceTest25CassImplToClassDecl
+//@A.cpp
+#include "A.h"
+
+void A::foo() {
+}
+//@A.h
+class A {
+	public:
+	void foo();
+ };

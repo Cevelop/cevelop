@@ -1,0 +1,12 @@
+//!SuggestionStoreTest8OverlappigFixes
+//@main.cpp
+#include "C.h"
+
+int main() {
+	B b;
+	return 0;
+}
+//@B.h
+class B { };
+//@C.h
+class C { };

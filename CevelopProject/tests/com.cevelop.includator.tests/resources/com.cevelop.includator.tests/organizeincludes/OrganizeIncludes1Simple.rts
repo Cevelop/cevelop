@@ -1,0 +1,17 @@
+//!OrganizeIncludes1Simple
+//@main.cpp
+#include "A.h"
+#include "B.h"
+
+int main() {
+  B b;
+  C c;
+  return 0;
+}
+//@A.h
+class A { };
+//@B.h
+class B { };
+//@C.h
+class C { };
+

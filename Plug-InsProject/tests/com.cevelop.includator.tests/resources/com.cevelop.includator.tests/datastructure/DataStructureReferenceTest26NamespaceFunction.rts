@@ -1,8 +1,0 @@
-//!DataStructureReferenceTest26NamespaceFunction
-//@A.cpp
-void A::bar() {
-}
-//@A.h
-namespace A {
-	void bar();
-}

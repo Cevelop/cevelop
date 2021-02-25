@@ -1,0 +1,9 @@
+//!Ignored Unused Include
+//@main.cpp
+#include "A.h"
+
+int main() {
+  return 0;
+}
+//@A.h
+class A { };

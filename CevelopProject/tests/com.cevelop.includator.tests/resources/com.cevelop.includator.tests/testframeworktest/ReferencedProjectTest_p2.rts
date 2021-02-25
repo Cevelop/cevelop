@@ -1,0 +1,10 @@
+//!ReferencedProjectTest_p2
+//@A.cpp
+#include "A.h"
+
+A::A() { };
+//@A.h
+class A {
+public:
+  A();
+};

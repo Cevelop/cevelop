@@ -1,0 +1,102 @@
+//!Rule4.4.4-1
+//@.config
+markerLines=4
+//@main.cpp
+int main()
+  {
+  int * * * const ptr{};
+  int * * * const pptr{ptr};
+  }
+
+//!Rule4.4.4-1-max
+//@.config
+//@main.cpp
+int main()
+  {
+  int const * const * const * const ptr{};
+  int const * const * const * const pptr{ptr};
+  }
+
+//!Rule4.4.4-2
+//@.config
+markerLines=4
+//@main.cpp
+int main()
+  {
+  int * * * const ptr{};
+  int * * * pptr{ptr};
+  pptr = nullptr;
+  }
+
+//!Rule4.4.4-2-max
+//@.config
+//@main.cpp
+int main()
+  {
+  int const * const * const * const ptr{};
+  int const * const * const * pptr{ptr};
+  pptr = nullptr;
+  }
+
+//!Rule4.4.4-3
+//@.config
+markerLines=4
+//@main.cpp
+int main()
+  {
+  int * * * const ptr{};
+  int * * * pptr{ptr};
+  *pptr = nullptr;
+  }
+
+//!Rule4.4.4-3-max
+//@.config
+//@main.cpp
+int main()
+  {
+  int * * * const ptr{};
+  int * * * const pptr{ptr};
+  *pptr = nullptr;
+  }
+
+//!Rule4.4.4-4
+//@.config
+markerLines=4,4
+//@main.cpp
+int main()
+  {
+  int * * * const ptr{};
+  int * * * pptr{ptr};
+  **pptr = nullptr;
+  }
+
+//!Rule4.4.4-4-max
+//@.config
+//@main.cpp
+int main()
+  {
+  int * * const * const ptr{};
+  int * * const * const pptr{ptr};
+  **pptr = nullptr;
+  }
+
+//!Rule4.4.4-5
+//@.config
+markerLines=4,4
+//@main.cpp
+int main()
+  {
+  int * * * const ptr{};
+  int * * * pptr{ptr};
+  ***pptr = 42;
+  }
+
+//!Rule4.4.4-5-max
+//@.config
+//@main.cpp
+int main()
+  {
+  int * const * const * const ptr{};
+  int * const * const * const pptr{ptr};
+  ***pptr = 42;
+  }

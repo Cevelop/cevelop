@@ -1,0 +1,57 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>com.cevelop.releng</artifactId>
+	<packaging>pom</packaging>
+	<parent>
+		<groupId>com.cevelop</groupId>
+		<artifactId>com.cevelop.root</artifactId>
+		<version>1.14.2-SNAPSHOT</version>
+	</parent>
+	<modules>
+		<module>com.cevelop.update</module>
+		<module>com.cevelop.product</module>
+	</modules>
+	<profiles>
+		<profile>
+			<id>master</id>
+			<activation>
+				<property>
+					<name>gitflow.branch</name>
+					<value>master</value>
+				</property>
+			</activation>
+			<modules>
+				<module>com.cevelop.target.master</module>
+			</modules>
+		</profile>
+
+		<profile>
+			<id>develop</id>
+			<activation>
+				<property>
+					<name>gitflow.branch</name>
+					<value>develop</value>
+				</property>
+			</activation>
+			<modules>
+				<module>com.cevelop.target.develop</module>
+			</modules>
+		</profile>
+
+		<profile>
+			<id>illegal</id>
+			<activation>
+				<property>
+					<name>!gitflow.branch</name>
+				</property>
+			</activation>
+			<modules>
+				<module>com.cevelop.target.develop</module>
+			</modules>
+		</profile>
+	</profiles>
+
+
+</project>

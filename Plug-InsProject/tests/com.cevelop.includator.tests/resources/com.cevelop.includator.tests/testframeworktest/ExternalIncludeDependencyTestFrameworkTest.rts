@@ -1,7 +1,0 @@
-//!ExternalIncludeDependencyTestFrameworkTest
-//@A.cpp
-#include "QWER.h"
-int main() {
-	QWER qwer;
-	return 0;
-}

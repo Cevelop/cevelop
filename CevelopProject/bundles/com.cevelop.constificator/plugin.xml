@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+	<extension point="org.eclipse.cdt.codan.core.checkers" id="org.eclipse.cdt.codan.core.categories">
+		<category id="com.cevelop.constificator.categories.ConstificatorProblems" name="Constificator Problems"/>
+	</extension>
+
+	<extension point="org.eclipse.cdt.codan.core.checkers">
+		<checker
+        	class="com.cevelop.constificator.checkers.ConstificatorChecker"
+        	id="com.cevelop.constificator.checkers.HighConfidenceChecker"
+        	name="Missing const qualifications">
+
+        	<problem
+				category="com.cevelop.constificator.categories.ConstificatorProblems"
+				defaultEnabled="true"
+				defaultSeverity="Warning"
+				description="Finds declarations that can be const qualified"
+				id="com.cevelop.constificator.problems.MissingQualification"
+				messagePattern="Const-qualification can be added."
+				name="Missing const-qualification"
+				markerType="com.cevelop.constificator.ConstificatorWarningMarker">
+			</problem>
+
+        	<problem
+				category="com.cevelop.constificator.categories.ConstificatorProblems"
+				defaultEnabled="false"
+				defaultSeverity="Info"
+				description="Finds declarations that can potentially be const qualified"
+				id="com.cevelop.constificator.problems.PotentiallyMissingQualification"
+				messagePattern="Const-qualification can potentially be added."
+				name="Possibly missing const-qualification"
+				markerType="com.cevelop.constificator.ConstificatorInformationalMarker">
+			</problem>
+		</checker>
+	</extension>
+
+	<extension point="org.eclipse.cdt.codan.ui.codanMarkerResolution">
+		<resolution
+			class="com.cevelop.constificator.resolution.ConstificatorQuickFix"
+			problemId="com.cevelop.constificator.problems.MissingQualification">
+		</resolution>
+
+		<resolution
+			class="com.cevelop.constificator.resolution.ConstificatorQuickFix"
+			problemId="com.cevelop.constificator.problems.PotentiallyMissingQualification">
+		</resolution>
+	</extension> 
+ 
+	<extension point="org.eclipse.ui.ide.markerResolution">
+		<markerResolutionGenerator
+			class="com.cevelop.constificator.resolution.Generator"
+			markerType="com.cevelop.constificator.ConstificatorWarningMarker">
+		</markerResolutionGenerator>
+	</extension>
+ 
+	<extension point="org.eclipse.ui.ide.markerResolution">
+		<markerResolutionGenerator
+			class="com.cevelop.constificator.resolution.Generator"
+			markerType="com.cevelop.constificator.ConstificatorInformationalMarker">
+		</markerResolutionGenerator>
+	</extension>
+ 
+	<extension name="Constificator Warning Marker" point="org.eclipse.core.resources.markers" id="com.cevelop.constificator.ConstificatorWarningMarker">
+		<super type="org.eclipse.cdt.codan.core.codanProblem"/>         
+		<persistent value="true"/>
+	</extension>
+ 
+	<extension name="Constificator Informational Marker" point="org.eclipse.core.resources.markers" id="com.cevelop.constificator.ConstificatorInformationalMarker">
+		<super type="org.eclipse.cdt.codan.core.codanProblem"/>         
+		<persistent value="true"/>
+	</extension>
+ 
+	<extension point="org.eclipse.ui.editors.annotationTypes">
+		<type
+			super="org.eclipse.ui.workbench.texteditor.warning"
+			markerType="com.cevelop.constificator.ConstificatorWarningMarker"
+			name="com.cevelop.constificator.ConstificatorWarningAnnotation"
+			markerSeverity="1"/>
+	</extension>
+ 
+	<extension point="org.eclipse.ui.editors.annotationTypes">
+		<type
+			super="org.eclipse.ui.workbench.texteditor.info"
+			markerType="com.cevelop.constificator.ConstificatorInformationalMarker"
+			name="com.cevelop.constificator.ConstificatorInformationalAnnotation"
+			markerSeverity="0"/>
+	</extension>
+   
+	<extension point="org.eclipse.ui.editors.markerAnnotationSpecification">
+ 		<specification
+			annotationType="com.cevelop.constificator.ConstificatorWarningAnnotation"
+			colorPreferenceKey="com.cevelop.constificator.warn.keys.color"
+			colorPreferenceValue="0,180,80"
+			contributesToHeader="false"
+			includeOnPreferencePage="true"
+			label="Constificator Warning Marker"
+			presentationLayer="0"
+			overviewRulerPreferenceKey="com.cevelop.constificator.warn.keys.overviewruler"
+			overviewRulerPreferenceValue="true"
+			highlightPreferenceKey="com.cevelop.constificator.warn.highlight"
+			highlightPreferenceValue="false"
+			textPreferenceKey="com.cevelop.constificator.warn.keys.text"
+			textPreferenceValue="true"
+			textStylePreferenceValue="PROBLEM_UNDERLINE"
+			textStylePreferenceKey="com.cevelop.constificator.keys.textstyle"
+			verticalRulerPreferenceKey="com.cevelop.constificator.warn.keys.verticalruler"
+			verticalRulerPreferenceValue="true"
+			showInNextPrevDropdownToolbarActionKey="com.cevelop.constificator.keys.ShowInNextPrevDropdownToolbarAction"
+			showInNextPrevDropdownToolbarAction="true"
+			isGoToNextNavigationTargetKey="com.cevelop.constificator.warn.keys.GoToNextNavigationTarget"
+			isGoToNextNavigationTarget="true"
+			isGoToPreviousNavigationTargetKey="com.cevelop.constificator.warn.keys.GoToPreviousNavigationTarget"
+			isGoToPreviousNavigationTarget="true"
+			icon="icons/greenc.png"
+			quickFixIcon="icons/greenc.png"
+			symbolicIcon="warning">
+		</specification>
+	</extension>
+
+	<extension point="org.eclipse.ui.editors.markerAnnotationSpecification">
+ 		<specification
+			annotationType="com.cevelop.constificator.ConstificatorInformationalAnnotation"
+			colorPreferenceKey="com.cevelop.constificator.info.keys.color"
+			colorPreferenceValue="0,80,180"
+			contributesToHeader="false"
+			includeOnPreferencePage="true"
+			label="Constificator Informational Marker"
+			presentationLayer="0"
+			overviewRulerPreferenceKey="com.cevelop.constificator.info.keys.overviewruler"
+			overviewRulerPreferenceValue="true"
+			highlightPreferenceKey="com.cevelop.constificator.info.highlight"
+			highlightPreferenceValue="false"
+			textPreferenceKey="com.cevelop.constificator.info.keys.text"
+			textPreferenceValue="true"
+			textStylePreferenceValue="PROBLEM_UNDERLINE"
+			textStylePreferenceKey="com.cevelop.constificator.info.keys.textstyle"
+			verticalRulerPreferenceKey="com.cevelop.constificator.info.keys.verticalruler"
+			verticalRulerPreferenceValue="true"
+			showInNextPrevDropdownToolbarActionKey="com.cevelop.constificator.info.keys.ShowInNextPrevDropdownToolbarAction"
+			showInNextPrevDropdownToolbarAction="true"
+			isGoToNextNavigationTargetKey="com.cevelop.constificator.info.keys.GoToNextNavigationTarget"
+			isGoToNextNavigationTarget="true"
+			isGoToPreviousNavigationTargetKey="com.cevelop.constificator.info.keys.GoToPreviousNavigationTarget"
+			isGoToPreviousNavigationTarget="true"
+			icon="icons/bluec.png"
+			quickFixIcon="icons/bluec.png"
+			symbolicIcon="info">
+		</specification>
+	</extension>
+
+</plugin>

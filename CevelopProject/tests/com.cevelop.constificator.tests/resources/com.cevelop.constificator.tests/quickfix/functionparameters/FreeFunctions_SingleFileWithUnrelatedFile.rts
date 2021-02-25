@@ -1,0 +1,49 @@
+//!UnrelatedDeclarationWithReferenceParametersExistsInDifferentTranslationUnit
+//@main.cpp
+void f(int & p) {
+}
+//=
+void f(const int & p) {
+}
+//@other.cpp
+void f(int const & p);
+//=
+void f(int const & p);
+
+//!UnrelatedDefinitionWithReferenceParametersExistsInDifferentTranslationUnit
+//@main.cpp
+void f(int & p) {
+}
+//=
+void f(const int & p) {
+}
+//@other.cpp
+void f(int const & p) {
+}
+//=
+void f(int const & p) {
+}
+
+//!UnrelatedDeclarationWithPointerParametersExistsInDifferentTranslationUnit
+//@main.cpp
+void f(int * const p) {
+}
+//=
+void f(const int * const p) {
+}
+//@other.cpp
+void f(int const * const p);
+//=
+void f(int const * const p);
+
+//!UnrelatedDeclarationWithValueParametersExistsInDifferentTranslationUnit
+//@main.cpp
+void f(int p) {
+}
+//=
+void f(const int p) {
+}
+//@other.cpp
+void f(int const p);
+//=
+void f(int const p);

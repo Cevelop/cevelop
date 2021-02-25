@@ -1,5 +1,0 @@
-//!ShouldNotSuggestTransformationForMacrosThatContainCppCodeReplacementMacros
-//@main.cpp
-#define MINLINE static __forceinline
-#define MALWAYS_INLINE MINLINE
-

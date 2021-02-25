@@ -1,0 +1,73 @@
+//!FunctionQuickFix
+//@main.h
+void func(float f) {	}
+int main() {
+	double d = 7.9;
+	func(d);
+}
+//=
+#include "gsl.h"
+void func(float f) {	}
+int main() {
+	double d = 7.9;
+	func(gsl::narrow_cast<float>(d));
+}
+//!FunctionWithMultipleParamsQuickFix
+//@main.h
+void func(float f, int i) {	}
+int main() {
+	double d = 7.9;
+	func(d, 5);
+}
+//=
+#include "gsl.h"
+void func(float f, int i) {	}
+int main() {
+	double d = 7.9;
+	func(gsl::narrow_cast<float>(d), 5);
+}
+//!FunctionCastQuickFix
+//@main.h
+void func(float f) {	}
+int main() {
+	double d = 7.9;
+	func((float) d);
+}
+//=
+#include "gsl.h"
+void func(float f) {	}
+int main() {
+	double d = 7.9;
+	func(gsl::narrow_cast<float>(d));
+}
+//!FunctionCastWithMultipleUnaryExpressionsQuickFix
+//@main.h
+void func(float f) {	}
+int main() {
+	double d = 7.9;
+	func((float) (((d))));
+}
+//=
+#include "gsl.h"
+void func(float f) {	}
+int main() {
+	double d = 7.9;
+	func(gsl::narrow_cast<float>(d));
+}
+//!FunctionQuickFixWithExistingGSL
+//@main.h
+#include "gsl.h"
+void func(float f) {	}
+int main() {
+	double d = 7.9;
+	int i = gsl::narrow_cast<int>(d); 
+	func(d);
+}
+//=
+#include "gsl.h"
+void func(float f) {	}
+int main() {
+	double d = 7.9;
+	int i = gsl::narrow_cast<int>(d); 
+	func(gsl::narrow_cast<float>(d));
+}

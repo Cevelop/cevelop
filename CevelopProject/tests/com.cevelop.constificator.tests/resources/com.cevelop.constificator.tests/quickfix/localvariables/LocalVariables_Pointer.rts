@@ -1,0 +1,51 @@
+//!PointerLocalVariableOfBuiltinTypeNonConstPointer
+//@main.cpp
+int main() {
+	const int * ptr{};
+}
+//=
+int main() {
+	const int * const ptr{};
+}
+
+//!PointerLocalVariableOfBuiltinTypeNonConstPointee
+//@main.cpp
+int main() {
+	int * const ptr{};
+}
+//=
+int main() {
+	const int * const ptr{};
+}
+
+//!PointerLocalVariableOfClassTypeNonConstPointer
+//@main.cpp
+struct s {
+};
+
+int main() {
+	const s * ptr{};
+}
+//=
+struct s {
+};
+
+int main() {
+	const s * const ptr{};
+}
+
+//!PointerLocalVariableOfClassTypeNonConstPointee
+//@main.cpp
+struct s {
+};
+
+int main() {
+	s * const ptr{};
+}
+//=
+struct s {
+};
+
+int main() {
+	const s * const ptr{};
+}

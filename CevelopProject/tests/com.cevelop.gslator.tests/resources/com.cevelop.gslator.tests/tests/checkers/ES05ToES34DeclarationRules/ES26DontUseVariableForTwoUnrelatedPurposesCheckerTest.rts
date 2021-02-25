@@ -1,0 +1,151 @@
+//!FlagRecylcedVariable
+//@.config
+markerLines=4
+//@main.h
+void function() {
+	int i = 1;
+	i = 2;
+	i = 3;
+}
+//!DontFlagRecylcedVariableInIfStatement
+//@main.h
+void function() {
+	int i = 0;
+	if(true) {
+		i = 2;
+	}
+	else {
+		i = 3;
+	}
+}
+//!DontFlagVariableInIfStatement
+//@main.h
+void function() {
+	int i;
+	if(true) {
+		i = 2;
+	}
+	else {
+		i = 3;
+	}
+}
+//!DontFlagRecylcedVariableInForStatement
+//@main.h
+void function() {
+	for(int i = 0; i > 10; i++) {
+	}
+}
+//!DontFlagDefinitionStatement
+//@main.h
+void function() {
+	int i;
+	i = 3;
+}
+//!FlagDoubleDefinitionOfSameVariable
+//@.config
+markerLines=4,4
+//@main.h
+void function() {
+	int i = 0;
+	int i = 1;
+	i = 2;
+}
+//!InitializeVariableInsideIfStatement
+//@.config
+markerLines=5
+//@main.h
+void function() {
+	if(true) {
+		int i = 0;
+		i = 1;
+		i = 2;
+	}
+}
+
+//!DontFlagWithIgnoreAttribute
+//@main.h
+void function()  {
+	int i = 0;
+	[[gsl::suppress("Res-recycle")]] i = 2;
+	i = 3;
+}
+//!DontFlagReusedIncrementOperator
+//@main.h
+void function() {
+	int i = 1;
+	i++;
+	++i;
+}
+//!DontFlagReusedDecrementOperator
+//@main.h
+void function() {
+	int i = 1;
+	i--;
+	--i;
+}
+//!DontFlagNotOperator
+//@main.h
+void function() {
+	bool inserted = true;
+    if (!inserted) {
+    }
+}
+//!MultipleInstantiationOfVariables
+//@main.h
+void function() {
+	int i = 0, j = 0;
+	i = 2;
+	j = 3;
+}
+//!VariableAssignmentInsideSwitch
+//@main.h
+void function() {
+	int i = 0;
+	char c = 'a';
+	switch(c) {
+	case 'a': {
+		i = 1;
+		break;
+	}
+	case 'b': {
+		i = 2;
+		break;
+	}
+}
+//!Field is not reported
+//@main.cpp
+struct Depth {
+	Depth() noexcept {
+		++mDepth;
+	}
+	~Depth() noexcept {
+		--mDepth;
+	}
+	void setOne() {
+		mDepth = 1;
+	}
+	void setTwo() {
+		mDepth = 2;
+	}
+	static int8_t mDepth { };
+};
+//!Local string variable composition is not reported
+//@main.cpp
+string getNodeText() const {
+	string text = getNodeId() + " ";
+	text += getName() + " ";
+	text += getStateText(mState) + " ";
+	return text;
+}
+//!Local variable assignment depending on itself is not reported
+//@main.cpp
+int inc(int i) {
+	return i + 1;
+}
+int do_magic() {
+	int i = 1;
+	i = i + 1;
+	i = 1 + i;
+	i = inc(i);
+	return i;
+}

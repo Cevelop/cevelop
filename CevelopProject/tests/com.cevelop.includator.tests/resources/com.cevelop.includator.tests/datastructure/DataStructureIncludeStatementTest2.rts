@@ -1,0 +1,10 @@
+//!DataStructureIncludeStatementTest2
+//@A.cpp
+#include <iostream>
+#include "B.h"
+
+int main() { return 0; }
+//@B.h
+#include "C.h"
+//@C.h
+class C { };

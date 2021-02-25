@@ -1,0 +1,279 @@
+//!NoDestructorWithVirtualMemberFunction
+//@main.h
+struct Named_map {
+
+public:
+	virtual void foo() {
+		std::cout << "foo() was called on base class";
+	}
+
+private:
+	std::string name;
+	std::map<int, int> rep;
+	gsl::owner<int *> io;
+	gsl::owner<int *> oeee;
+
+};
+//!PublicVirtualDestructorOutsidePublicScopeOK
+//@main.h
+struct Named_map {
+
+	virtual ~Named_map() {
+		delete io;
+		delete oeee;
+	}
+
+public:
+	virtual void foo() {
+		std::cout << "foo() was called on base class";
+	}
+
+private:
+	std::string name;
+	std::map<int, int> rep;
+	gsl::owner<int *> io;
+	gsl::owner<int *> oeee;
+
+};
+//!PublicVirtualDestructorInsidePublicScopeOK
+//@main.h
+struct Named_map {
+
+public:
+	virtual ~Named_map() {
+		delete io;
+		delete oeee;
+	}
+	
+	virtual void foo() {
+		std::cout << "foo() was called on base class";
+	}
+
+private:
+	std::string name;
+	std::map<int, int> rep;
+	gsl::owner<int *> io;
+	gsl::owner<int *> oeee;
+
+};
+//!ProtectedNonVirtualDestructorInsideProtectedScopeOK
+//@main.h
+struct Named_map {
+
+public:	
+	virtual void foo() {
+		std::cout << "foo() was called on base class";
+	}
+
+private:
+	std::string name;
+	std::map<int, int> rep;
+	gsl::owner<int *> io;
+	gsl::owner<int *> oeee;
+	
+protected:
+	~Named_map() {
+		delete io;
+		delete oeee;
+	}
+
+};
+//!PublicNonVirtualDestructorInsidePublicScope
+//@.config
+markerLines=4
+//@main.h
+struct Named_map {
+
+public:
+	~Named_map() {
+		delete io;
+		delete oeee;
+	}
+	
+	virtual void foo() {
+		std::cout << "foo() was called on base class";
+	}
+
+private:
+	std::string name;
+	std::map<int, int> rep;
+	gsl::owner<int *> io;
+	gsl::owner<int *> oeee;
+
+};
+//!PublicNonVirtualDestructorInsidePublicScopeWithoutVirtualMethod
+//@main.h
+struct Named_map {
+
+public:
+	~Named_map() {
+		delete io;
+		delete oeee;
+	}
+	
+	void foo() {
+		std::cout << "foo() was called";
+	}
+
+private:
+	std::string name;
+	std::map<int, int> rep;
+	gsl::owner<int *> io;
+	gsl::owner<int *> oeee;
+
+};
+//!PublicNonVirtualDestructorOutsidePublicScope
+//@.config
+markerLines=3
+//@main.h
+struct Named_map {
+
+	~Named_map() {
+		delete io;
+		delete oeee;
+	}
+
+public:
+	virtual void foo() {
+		std::cout << "foo() was called on base class";
+	}
+
+private:
+	std::string name;
+	std::map<int, int> rep;
+	gsl::owner<int *> io;
+	gsl::owner<int *> oeee;
+
+};
+//!ProtectedVirtualDestructorInsideProtectedScope
+//@.config
+markerLines=15
+//@main.h
+struct Named_map {
+
+public:	
+	virtual void foo() {
+		std::cout << "foo() was called on base class";
+	}
+
+private:
+	std::string name;
+	std::map<int, int> rep;
+	gsl::owner<int *> io;
+	gsl::owner<int *> oeee;
+	
+protected:
+	virtual ~Named_map() {
+		delete io;
+		delete oeee;
+	}
+
+};
+//!PrivateDestructorOutsidePrivateScope
+//@.config
+markerLines=3
+//@main.h
+class Named_map {
+
+	~Named_map() {
+		delete io;
+		delete oeee;
+	}
+
+public:
+	virtual void foo() {
+		std::cout << "foo() was called on base class";
+	}
+
+private:
+	std::string name;
+	std::map<int, int> rep;
+	gsl::owner<int *> io;
+	gsl::owner<int *> oeee;
+
+};
+//!PrivateDestructorInsidePrivateScope
+//@.config
+markerLines=14
+//@main.h
+struct Named_map {
+
+public:
+	virtual void foo() {
+		std::cout << "foo() was called on base class";
+	}
+
+private:
+	std::string name;
+	std::map<int, int> rep;
+	gsl::owner<int *> io;
+	gsl::owner<int *> oeee;
+	
+	~Named_map() {
+		delete io;
+		delete oeee;
+	}
+
+};
+//!IgnorePublicNonVirtualDestructorInsidePublicScopeCheckerBecauseAttribute
+//@main.h
+struct Named_map {
+	[[gsl::suppress("Rc-dtor-virtual")]]
+	~Named_map() {
+		delete io;
+		delete oeee;
+	}
+	
+	virtual void foo() {
+		std::cout << "foo() was called on base class";
+	}
+
+private:
+	std::string name;
+	std::map<int, int> rep;
+	gsl::owner<int *> io;
+	gsl::owner<int *> oeee;
+};
+//!IgnorePublicNonVirtualDestructorInsidePublicScopeCheckerBecauseAttributeInline
+//@main.h
+struct Named_map {
+	[[gsl::suppress("Rc-dtor-virtual")]]
+	inline ~Named_map();
+	
+	virtual void foo() {
+		std::cout << "foo() was called on base class";
+	}
+
+private:
+	std::string name;
+	std::map<int, int> rep;
+	gsl::owner<int *> io;
+	gsl::owner<int *> oeee;
+};
+
+inline Named_map::~Named_map() {
+	delete io;
+	delete oeee;
+}
+//!IgnorePublicNonVirtualDestructorInsidePublicScopeCheckerBecauseAttributeCPP
+//@Named_map.h
+struct Named_map {
+	[[gsl::suppress("Rc-dtor-virtual")]]
+	~Named_map();
+	
+	virtual void foo() {
+		std::cout << "foo() was called on base class";
+	}
+
+private:
+	std::string name;
+	std::map<int, int> rep;
+	gsl::owner<int *> io;
+	gsl::owner<int *> oeee;
+};
+//@Named_map.cpp
+#include "Named_map.h"
+Named_map::~Named_map() {
+	delete io;
+	delete oeee;
+}

@@ -1,8 +1,0 @@
-//!ReturnStatus4DuplicateDeclFunctionArgNoWarningTest
-//@main.cpp
-void foo(int i);
-void foo(int i) { }
-
-int main() {
-  foo(1);
-}

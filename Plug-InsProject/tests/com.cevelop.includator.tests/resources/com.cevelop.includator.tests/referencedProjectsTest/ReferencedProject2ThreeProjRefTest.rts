@@ -1,6 +1,0 @@
-//!ReferencedProjectTest1TwoProjects
-//@main.cpp
-int main() {
-  A *a;
-  B *b;
-}

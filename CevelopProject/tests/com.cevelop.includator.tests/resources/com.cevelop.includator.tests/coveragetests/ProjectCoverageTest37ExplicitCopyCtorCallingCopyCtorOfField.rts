@@ -1,0 +1,31 @@
+//!ProjectCoverageTest37ExplicitCopyCtorCallingCopyCtorOfField
+//@A.cpp
+class Y {
+public:
+  Y();
+  ~Y();
+  Y(const Y &y);
+};
+
+Y::Y() { }
+
+Y::~Y() { }
+
+Y::Y(const Y &y) { }
+
+class X {
+public :
+  X(const X&);
+  ~X();
+  Y y;
+};
+
+X::X(const X &x) : y(x.y) { }
+
+X::~X() { }
+
+int main() {
+  X *x;
+  X x2 = *x;
+  return 0;
+}

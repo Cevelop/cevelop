@@ -1,0 +1,39 @@
+//!BindNonConstReferenceToNonConstReferenceArgument
+//@main.cpp
+struct s {
+	s(int & n) : m_ref{n} { }
+
+private:
+	int & m_ref;
+};
+
+//!BindConstReferenceToNonConstReferenceArgument
+//@.config
+markerLines=2
+//@main.cpp
+struct s {
+	s(int & n) : m_ref{n} { }
+
+private:
+	int const & m_ref;
+}
+
+//!AssignPointerToNonConstToPointerToNonConst
+//@main.cpp
+struct s {
+	s(int * const n) : m_ptr{n} { }
+
+private:
+	int * m_ptr;
+}
+
+//!AssignPointerToNonConstToPointerToConst
+//@.config
+markerLines=2
+//@main.cpp
+struct s {
+	s(int * const n) : m_ptr{n} { }
+
+private:
+	int const * m_ptr;
+}

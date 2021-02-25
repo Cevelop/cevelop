@@ -1,0 +1,7 @@
+//!OrganizeIncludes19CoverageDataTest
+//@main.cpp
+int main() {
+  foo();
+  bar();
+  return 0;
+}

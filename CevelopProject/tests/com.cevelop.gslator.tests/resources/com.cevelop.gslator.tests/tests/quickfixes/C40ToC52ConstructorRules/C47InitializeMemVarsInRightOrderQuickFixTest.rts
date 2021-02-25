@@ -1,0 +1,333 @@
+//!InitializeMemVarsNotInRightOrder
+//@main.h
+struct X {
+	explicit X(double d);
+	X() noexcept : y {}, x {}, s {"hello"} {}
+	X(int x, double y = 0.0 );
+	~X();
+	X(std::string s);
+private:
+	int x;
+	double y {42.0};
+	std::string s {"test"};
+	X(std::istream &ios);
+};
+//=
+struct X {
+	explicit X(double d);
+	X() noexcept :x {}, y {}, s {"hello"} {}
+	X(int x, double y = 0.0 );
+	~X();
+	X(std::string s);
+private:
+	int x;
+	double y {42.0};
+	std::string s {"test"};
+	X(std::istream &ios);
+};
+//!InitializeMemVarsNotInRightOrderAndOneMissing
+//@main.h
+struct X {
+	explicit X(double d);
+	X() noexcept : y {}, x {} {}
+	X(int x, double y = 0.0 );
+	~X();
+	X(std::string s);
+private:
+	int x;
+	double y {42.0};
+	std::string s {"test"};
+	X(std::istream &ios);
+};
+//=
+struct X {
+	explicit X(double d);
+	X() noexcept :x {}, y {} {}
+	X(int x, double y = 0.0 );
+	~X();
+	X(std::string s);
+private:
+	int x;
+	double y {42.0};
+	std::string s {"test"};
+	X(std::istream &ios);
+};
+//!InitializeMemVarsFullyScrambeled
+//@main.h
+struct X {
+	explicit X(double d);
+	X() noexcept : is {nullptr}, x {}, s {"hello"}, y { 42.0 }{}
+	X(int x, double y = 0.0 );
+	~X();
+	X(std::string s);
+private:
+	int x;
+	double y {42.0};
+	std::string s {"test"};
+	std::istream is;
+	X(std::istream &ios);
+};
+//=
+struct X {
+	explicit X(double d);
+	X() noexcept :x {}, y {42.0}, s {"hello"}, is {nullptr} {}
+	X(int x, double y = 0.0 );
+	~X();
+	X(std::string s);
+private:
+	int x;
+	double y {42.0};
+	std::string s {"test"};
+	std::istream is;
+	X(std::istream &ios);
+};
+//!WrongMemberVarInitInCtor
+//@A.h
+struct A {
+	inline A() noexcept : 
+		s { "42" }, a { 42 } {
+	}
+
+private:
+	int a;
+	std::string s;
+};
+//=
+struct A {
+	inline A() noexcept : 
+		a {42}, s {"42"} {
+	}
+
+private:
+	int a;
+	std::string s;
+};
+//!InlineWrongMemberVarInitInCtor
+//@X.h
+struct X {
+	X(double d);
+	inline X() noexcept;
+	~X() = default;
+	X(std::string s);
+private:
+	int x;
+	double y { 42.0 };
+	std::string s { "test" };
+	X(std::istream &ios);
+};
+
+inline X::X() noexcept : y {}, x {}, s {"hello"} {}
+//=
+struct X {
+	X(double d);
+	inline X() noexcept;
+	~X() = default;
+	X(std::string s);
+private:
+	int x;
+	double y { 42.0 };
+	std::string s { "test" };
+	X(std::istream &ios);
+};
+
+inline X::X() noexcept :x {}, y {}, s {"hello"} {}
+//!WrongMemberVarInitInCtorInCPP
+//@X.h
+struct X {
+	X(double d);
+	X() noexcept;
+	~X() = default;
+	X(std::string s);
+private:
+	int x;
+	double y { 42.0 };
+	std::string s { "test" };
+	X(std::istream &ios);
+};
+//@X.cpp
+#include "X.h"
+X::X() noexcept : y {}, x {}, s {"hello"} {}
+//=
+#include "X.h"
+X::X() noexcept :x {}, y {}, s {"hello"} {}
+//!SetAttributeInitializeMemVarsNotInRightOrder
+//@.config
+setIgnoreAttribute=true
+//@main.h
+struct X {
+	explicit X(double d);
+	X() noexcept : y {}, x {}, s {"hello"} {}
+	X(int x, double y = 0.0 );
+	~X();
+	X(std::string s);
+private:
+	int x;
+	double y {42.0};
+	std::string s {"test"};
+	X(std::istream &ios);
+};
+//=
+struct X {
+	explicit X(double d);
+	[[gsl::suppress("Rc-order")]]
+	X() noexcept
+	:y {}, x {}, s {"hello"}
+	{
+	}
+	X(int x, double y = 0.0 );
+	~X();
+	X(std::string s);
+private:
+	int x;
+	double y {42.0};
+	std::string s {"test"};
+	X(std::istream &ios);
+};
+//!InitializeMemVarsNotInRightOrderMultipleDeclarations
+//@main.h
+struct X {
+	explicit X(double d);
+	X() noexcept : y {}, z {}, x {}, s {"hello"} {}
+	X(int x, double y = 0.0 );
+	~X();
+	X(std::string s);
+private:
+	int x;
+	double y {42.0}, z;
+	std::string s {"test"};
+	X(std::istream &ios);
+};
+//=
+struct X {
+	explicit X(double d);
+	X() noexcept :x {}, y {}, z {}, s {"hello"} {}
+	X(int x, double y = 0.0 );
+	~X();
+	X(std::string s);
+private:
+	int x;
+	double y {42.0}, z;
+	std::string s {"test"};
+	X(std::istream &ios);
+};
+//!TemplateClassInitializeMemVarsNotInRightOrder
+//@.config
+markerLines=3
+//@C.h
+template<typename T>
+class C {
+	std::vector<T> v;
+	std::string name;
+public:
+	C() = default;
+	C(std::vector<T> v, std::string name) : name { name }, v { v } { }
+};
+//=
+template<typename T>
+class C {
+	std::vector<T> v;
+	std::string name;
+public:
+	C() = default;
+	C(std::vector<T> v, std::string name) :
+			v { v }, name { name } {
+	}
+};
+
+//!Fix initializer order containing base class constructor call (QF)
+//@.config
+markerLines=9
+//@C.h
+struct B {
+	B(int k) : k { k } {}
+
+private:
+	int k;
+};
+
+struct C : B {
+	C(int a, int b, int c) : B { a }, b { b }, i { c } {}
+
+private:
+	int i;
+	int b;
+};
+//=
+struct B {
+	B(int k) : k { k } {}
+
+private:
+	int k;
+};
+
+struct C : B {
+	C(int a, int b, int c) : B { a }, i { c }, b { b } {}
+
+private:
+	int i;
+	int b;
+};
+
+//!Base class ctor and members mixed, wrong base class (QF)
+//@.config
+markerLines=4
+//@A.h
+struct A {};
+struct B {};
+struct C : A, B {
+	C() : B {}, A {}, i { 20 }, j { 10 } {}
+
+private:
+	int i;
+	int j;
+};
+//=
+struct A {};
+struct B {};
+struct C : A, B {
+	C() : A {}, B {}, i { 20 }, j { 10 } {}
+
+private:
+	int i;
+	int j;
+};
+
+//!Base class ctor and members mixed, wrong members (QF)
+//@.config
+markerLines=4
+//@A.h
+struct A {};
+struct B {};
+struct C : A, B {
+	C() : A {}, B {}, j { 10 }, i { 20 } {}
+
+private:
+	int i;
+	int j;
+};
+//=
+struct A {};
+struct B {};
+struct C : A, B {
+	C() : A {}, B {}, i { 20 }, j { 10 } {}
+
+private:
+	int i;
+	int j;
+};
+
+//!Wrong class initialization order (QF)
+//@.config
+markerLines=4
+//@A.h
+struct A {};
+struct B {};
+struct C : A, B {
+	C() : B {}, A {} {}
+};
+//=
+struct A {};
+struct B {};
+struct C : A, B {
+	C() : A {}, B {} {}
+};

@@ -1,0 +1,816 @@
+//!Simple Int
+//@.config
+markerLines=5
+//@A.cpp
+struct A {
+};
+
+void test() {
+	A a(1);
+}
+//=
+struct A {
+	A(const int& i) {
+	}
+};
+
+void test() {
+	A a(1);
+}
+//!Simple Double
+//@.config
+markerLines=5
+//@A.cpp
+struct A {
+};
+
+void test() {
+	A a(1.0);
+}
+//=
+struct A {
+	A(const double& d) {
+	}
+};
+
+void test() {
+	A a(1.0);
+}
+//!Multiple Arguments Just One Param
+//@.config
+markerLines=8
+//@A.cpp
+struct A {
+	A(const int& i) {
+	}
+};
+
+void test()
+{
+	A a(2, 2);
+}
+//=
+struct A {
+	A(const int& i, const int& j) {
+	}
+
+	A(const int& i) {
+	}
+};
+
+void test()
+{
+	A a(2, 2);
+}
+//!One Arg Multiple Param
+//@.config
+markerLines=8
+//@A.cpp
+struct A {
+	A(const int& i, const int& j) {
+	}
+};
+
+void test()
+{
+	A a(2);
+}
+//=
+struct A {
+	A(const int& i) {
+	}
+
+	A(const int& i, const int& j) {
+	}
+};
+
+void test()
+{
+	A a(2);
+}
+//!Type Argument
+//@.config
+markerLines=9
+//@A.cpp
+struct Type {
+};
+
+struct A {
+};
+
+void test() {
+	Type t;
+	A a(t);
+}
+//=
+struct Type {
+};
+
+struct A {
+	A(Type& t) {
+	}
+};
+
+void test() {
+	Type t;
+	A a(t);
+}
+//!Same Parameter Length
+//@.config
+markerLines=8
+//@A.cpp
+struct A {
+	A(const std::string& s, const int& i) {
+	}
+};
+
+void test()
+{
+	A a(1, 1);
+}
+//=
+struct A {
+	A(const int& i, const int& j) {
+	}
+
+	A(const std::string& s, const int& i) {
+	}
+};
+
+void test()
+{
+	A a(1, 1);
+}
+//!Create Constructor from Function Call Expression
+//@.config
+markerLines=13
+//@A.cpp
+struct Rnd {
+	int getInt(){
+		return 4; //Random number determined by rolling a die
+	}
+};
+
+struct A {
+};
+
+void test()
+{
+	Rnd r;
+	A a(r.getInt());
+}
+//=
+struct Rnd {
+	int getInt(){
+		return 4; //Random number determined by rolling a die
+	}
+};
+
+struct A {
+	A(const int& rgetInt) {
+	}
+};
+
+void test()
+{
+	Rnd r;
+	A a(r.getInt());
+}
+//!Create Constructor from Chained Function Call Expression
+//@.config
+markerLines=17
+//@A.cpp
+struct Rnd {
+	int getInt(){
+		return 4; //Random number determined by rolling a die
+	}
+};
+
+struct A {
+};
+
+Rnd getRnd(){
+  return Rnd();
+}
+
+void test()
+{
+	Rnd r;
+	A a(getRnd().getInt());
+}
+//=
+struct Rnd {
+	int getInt(){
+		return 4; //Random number determined by rolling a die
+	}
+};
+
+struct A {
+	A(const int& getRndgetInt) {
+	}
+};
+
+Rnd getRnd(){
+  return Rnd();
+}
+
+void test()
+{
+	Rnd r;
+	A a(getRnd().getInt());
+}
+//!Find Matching Constructor
+//@.config
+markerCount=0
+//@A.cpp
+struct A {
+	A(const int & i, const int & j)
+	{
+	}
+};
+
+void test()
+{
+	A a(1, 1);
+}
+//=
+struct A {
+	A(const int & i, const int & j)
+	{
+	}
+};
+
+void test()
+{
+	A a(1, 1);
+}
+//!Find Constructor from Function Call Expression
+//@.config
+markerCount=0
+//@A.cpp
+struct Rnd {
+	int getInt(){
+		return 4; //Random number determined by rolling a die
+	}
+};
+
+struct A {
+	A(const int& rgetInt) {
+	}
+};
+
+void test()
+{
+	Rnd r;
+	A a(r.getInt());
+}
+//=
+struct Rnd {
+	int getInt(){
+		return 4; //Random number determined by rolling a die
+	}
+};
+
+struct A {
+	A(const int& rgetInt) {
+	}
+};
+
+void test()
+{
+	Rnd r;
+	A a(r.getInt());
+}
+//!No Constructor for Typedef Enum
+//@.config
+markerCount=0
+//@A.cpp
+typedef enum {RED, GREEN, BLUE} Color;
+
+void test() {
+	Color c;
+}
+//=
+typedef enum {RED, GREEN, BLUE} Color;
+
+void test() {
+	Color c;
+}
+//!No Constructor for Composite Type Member
+//@.config
+markerCount=0
+//@A.cpp
+struct A{
+};
+struct S{
+	A memberA;
+};
+//=
+struct A{
+};
+struct S{
+	A memberA;
+};
+//!No Constructor for Reference Initialization
+//@.config
+markerCount=0
+//@A.cpp
+struct A {
+};
+
+void test()
+{
+	A a1;
+	A & a2(a1);
+}
+//=
+struct A {
+};
+
+void test()
+{
+	A a1;
+	A & a2(a1);
+}
+//!No Constructor for Pointer Initialization
+//@.config
+markerCount=0
+//@A.cpp
+struct A {
+};
+
+void test()
+{
+	A a1;
+	A * a2(&a1);
+}
+//=
+struct A {
+};
+
+void test()
+{
+	A a1;
+	A * a2(&a1);
+}
+//!No Constructor for Typedef Reference Initialization
+//@.config
+markerCount=0
+//@A.cpp
+struct A {
+};
+
+typedef A & AToo;
+
+void test()
+{
+	A a1;
+	AToo a2(a1);
+}
+//=
+struct A {
+};
+
+typedef A & AToo;
+
+void test()
+{
+	A a1;
+	AToo a2(a1);
+}
+//!No Constructor for Typdef Pointer Initialization
+//@.config
+markerCount=0
+//@A.cpp
+struct A {
+};
+
+typedef A * AToo;
+
+void test()
+{
+	A a1;
+	AToo a2(&a1);
+}
+//=
+struct A {
+};
+
+typedef A * AToo;
+
+void test()
+{
+	A a1;
+	AToo a2(&a1);
+}
+//!Default Ctor Needed
+//@.config
+markerLines=9
+//@A.cpp
+struct A {
+	A(const int& i) {
+	}
+};
+
+void test()
+{
+	A a(1);
+	A b;
+}
+//=
+struct A {
+	A() {
+	}
+
+	A(const int& i) {
+	}
+};
+
+void test()
+{
+	A a(1);
+	A b;
+}
+//!Typedef Ctor Required
+//@.config
+markerLines=7
+//@A.cpp
+struct A {
+};
+
+typedef A AToo;
+
+void test() {
+	AToo a(1);
+}
+//=
+struct A {
+	A(const int& i) {
+	}
+};
+
+typedef A AToo;
+
+void test() {
+	AToo a(1);
+}
+//!Composite Type Specifier Declaration
+//@.config
+markerLines=2
+//@A.cpp
+struct S {
+} s(1);
+//=
+struct S {
+	S(const int& i) {
+	}
+} s(1);
+//!Local Composite Type Specifier Declaration
+//@.config
+markerLines=4
+//@A.cpp
+void test()
+{
+	struct S {
+	} s(1);
+}
+//=
+void test()
+{
+	struct S {
+		S(const int& i) {
+		}
+	} s(1);
+}
+//!Constructor for Multiple Declarators
+//@.config
+markerLines=6,6
+markerCount=2
+//@A.cpp
+struct S {
+};
+
+void test()
+{
+	S s1(1), s2(5);
+}
+//=	
+struct S {
+	S(const int& i) {
+	}
+};
+
+void test()
+{
+	S s1(1), s2(5);
+}
+//!No Constructor for Array
+//@.config
+markerCount=0
+//@A.cpp
+struct A {
+};
+
+void test()
+{
+	A a[2];
+}
+//=
+struct A {
+};
+
+void test()
+{
+	A a[2];
+}
+//!No Constructor for Defaulted Init-List - C++11
+//@.config
+markerCount=0
+//@A.cpp
+struct A {
+};
+
+void test()
+{
+	A a{};
+}
+//=
+struct A {
+};
+
+void test()
+{
+	A a{};
+}
+//!Constructor With Template
+//@.config
+markerLines=6
+//@A.cpp
+template <typename T>
+struct A {
+};
+
+void test() {
+	A<double> a(3);
+}
+//=
+template <typename T>
+struct A {
+	A(const int& i) {
+	}
+};
+
+void test() {
+	A<double> a(3);
+}
+//!No Constructor for Function Declaration
+//@.config
+markerCount=0
+//@A.cpp
+struct A {
+};
+
+A createA();
+//=
+struct A {
+};
+
+A createA();
+//!No Constructor for Function Declaration with Parameter
+//@.config
+markerCount=0
+//@A.cpp
+struct A {
+};
+
+A createA(int);
+//=
+struct A {
+};
+
+A createA(int);
+//!No Constructor for Typedef of Fundamental Type
+//@.config
+markerCount=0
+//@A.cpp
+typedef unsigned int uint32_t;
+
+uint32_t id;
+//=
+typedef unsigned int uint32_t;
+
+uint32_t id;
+//!Constructor for Qualified Name
+//@.config
+markerLines=8
+markerCount=1
+//@A.cpp
+struct A {
+};
+
+struct B {
+  static A a;
+};
+
+A B::a(1);
+//=
+struct A {
+	A(const int& i) {
+	}
+};
+
+struct B {
+  static A a;
+};
+
+A B::a(1);
+//!Simple int Parameter in Header File
+//@.config
+markerLines=4
+//@A.cpp
+#include "A.h"
+
+void test() {
+	A a(1);
+}
+//=
+#include "A.h"
+
+void test() {
+	A a(1);
+}
+//@A.h
+struct A {
+};
+//=
+struct A {
+	A(const int& i) {
+	}
+};
+//!No Constructor Suggestion for Unknown Type
+//@.config
+markerCount=0
+//@A.cpp
+void testInitialValue() {
+	Calculator calc;
+	ASSERT_EQUAL(0, calc.value());
+}
+//=
+void testInitialValue() {
+	Calculator calc;
+	ASSERT_EQUAL(0, calc.value());
+}
+//!No Constructor Suggestion for Template Parameter Type
+//@.config
+markerCount=0
+//@A.cpp
+template<typename T>
+struct Templ{
+
+	void doSomething(){
+		T t;
+		t.foo();
+	}
+};
+//=
+template<typename T>
+struct Templ{
+
+	void doSomething(){
+		T t;
+		t.foo();
+	}
+};
+//!Find Implicit Constructor for Typedef Template
+//@.config
+markerCount=0
+//@A.cpp
+template<typename T1 = int> struct ST {
+	T1 i;
+};
+
+typedef ST<> S;
+
+int main(int argc, char **argv) {
+	S s;
+}
+//=
+template<typename T1 = int> struct ST {
+	T1 i;
+};
+
+typedef ST<> S;
+
+int main(int argc, char **argv) {
+	S s;
+}
+//!No Constructor for Typedef Type Specifier in Variable Declaration
+//@.config
+markerCount=0
+//@A.cpp
+typedef struct S {
+} myS;
+//=
+typedef struct S {
+} myS;
+//!No Constructor for Typedef Anonymous Type Specifier in Variable Declaration
+//@.config
+markerCount=0
+//@A.cpp
+typedef struct {
+} myVar;
+//=
+typedef struct {
+} myVar;
+//!No Constructor for Extern Declaration
+//@.config
+markerCount=0
+//@A.cpp
+struct S;
+extern S s;
+//=
+struct S;
+extern S s;
+//!No Marker for Existing but by CDT Undiscoverable Template Constructor
+//@.config
+markerCount=0
+//@A.cpp
+template<typename T>
+struct First {
+	First(int i) {}
+};
+
+template<typename F>
+struct Second{
+	void member() {
+		First<typename F::value_type> f(1);
+	}
+};
+//=
+template<typename T>
+struct First {
+	First(int i) {}
+};
+
+template<typename F>
+struct Second{
+	void member() {
+		First<typename F::value_type> f(1);
+	}
+};
+//!No Marker for Equal Initializer
+//@.config
+markerCount=0
+//@A.cpp
+struct Type {
+	 Type getMe() const
+	{
+		return *this;
+	}
+
+	Type(const int & i)
+	{
+	}
+
+};
+
+void newTestFunction(){
+	Type t(3);
+	Type u = t.getMe();
+}
+//=
+struct Type {
+	 Type getMe() const
+	{
+		return *this;
+	}
+
+	Type(const int & i)
+	{
+	}
+
+};
+
+void newTestFunction(){
+	Type t(3);
+	Type u = t.getMe();
+}
+//!No Marker for templateArgumentClassMember variable
+//@.config
+markerCount=0
+//@A.cpp
+template<typename _Handler_>
+struct TestWrapper: public _Handler_ {
+	static void testHandler() {
+		typename _Handler_ _buf2;
+		typename _Handler_::Buffer _buf1;
+	}
+};
+//=
+template<typename _Handler_>
+struct TestWrapper: public _Handler_ {
+	static void testHandler() {
+		typename _Handler_ _buf2;
+		typename _Handler_::Buffer _buf1;
+	}
+};

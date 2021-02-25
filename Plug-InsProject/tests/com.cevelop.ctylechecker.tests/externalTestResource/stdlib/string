@@ -1,7 +1,0 @@
-#ifndef _STRING
-#define _STRING
-
-#include <stringfwd.h>
-#include <basic_string.h>
-
-#endif

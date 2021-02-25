@@ -1,0 +1,5 @@
+//!HelperTest14IncludePathSubDirProperty2
+//@A.cpp
+int main() {
+	return 0;
+}

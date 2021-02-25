@@ -1,0 +1,114 @@
+//! No special functions defined
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+struct Named_map {
+public:
+	// No special functions
+
+private:
+	std::string name;
+	std::map<int, int> rep;
+	gsl::owner<int *> owy;
+};
+
+//! Only constructor defined
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+struct Named_map {
+public:
+	Named_map();
+
+private:
+	std::string name;
+	std::map<int, int> rep;
+	gsl::owner<int *> owy;
+};
+
+//! Missing move operations
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=1
+//@main.h
+struct Named_map {
+public:
+	Named_map(const Named_map & rhs) :
+			name { rhs.name }, rep { rhs.rep }, owy { rhs.owy }{
+	}
+	Named_map& operator =(const Named_map & rhs) {
+		name = rhs.name;
+		rep = rhs.rep;
+		owy = rhs.owy;
+		return *this;
+	}
+	~Named_map() {
+		std::cout << "i died";
+	}
+
+private:
+	std::string name;
+	std::map<int, int> rep;
+	gsl::owner<int *> owy;
+};
+
+//! Missing everything because delete
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=1
+//@main.h
+struct Named_map {
+public:
+	~Named_map() = delete;
+
+private:
+	std::string name;
+	std::map<int, int> rep;
+	gsl::owner<int *> owy;
+};
+
+//! No missing special functions because everything defined or deleted
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+struct Named_map {
+public:
+	Named_map(Named_map &&) = default;
+	Named_map& operator=(Named_map &&) = default;
+	Named_map(const Named_map & rhs) = default;
+	Named_map& operator =(const Named_map & rhs) = default;
+	~Named_map() = delete;
+
+private:
+	std::string name;
+	std::map<int, int> rep;
+};
+
+//! Ignore checker because of attribute
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@B.h
+struct [[autosar::suppress("A12-0-1")]] B {
+	~B() = default;
+};
+
+//! Ignore checker because of attribute CPP
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@B.h
+struct [[autosar::suppress("A12-0-1")]] B {
+	~B();
+};
+//@B.cpp
+#include "B.h"
+B::~B() = default;
+
+//! Ignore checker because of attribute inline
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@B.h
+struct [[autosar::suppress("A12-0-1")]] B {
+	inline ~B();
+};
+
+inline B::~B() = default;

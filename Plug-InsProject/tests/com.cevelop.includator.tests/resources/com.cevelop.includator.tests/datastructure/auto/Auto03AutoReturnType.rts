@@ -1,9 +1,0 @@
-//!Auto 02 Auto for External Expression
-//@main.cpp
-#include "S.hpp"
-auto foo() {
-	return s;
-}
-//@S.hpp
-struct S{};
-S s{};

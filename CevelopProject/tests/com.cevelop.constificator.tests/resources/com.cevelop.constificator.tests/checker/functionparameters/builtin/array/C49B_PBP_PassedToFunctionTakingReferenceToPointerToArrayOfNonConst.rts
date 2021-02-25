@@ -1,0 +1,23 @@
+//!PointerToMultiDimensionalArrayOfNonConstTypePassedToFunctionTakingReferenceToPointerToArrayOfConstType
+//@.config
+markerLines=5
+//@main.cpp
+void take_arr(int const (* const & arr)[1][2][3]) {
+
+}
+
+void func(int (*arr)[1][2][3]) {
+	take_arr(arr);
+}
+
+//!PointerToMultiDimensionalArrayOfNonConstTypePassedToFunctionTakingReferenceToPointerToArrayOfNonConstType
+//@.config
+markerLines=1
+//@main.cpp
+void take_arr(int (* const & arr)[1][2][3]) {
+
+}
+
+void func(int (*arr)[1][2][3]) {
+	take_arr(arr);
+}

@@ -1,6 +1,0 @@
-//!SuppressSuggestionTest11ExternalIncludePathSuppression
-//@main.cpp
-int main()
-  vector v;
-  return 0;
-}

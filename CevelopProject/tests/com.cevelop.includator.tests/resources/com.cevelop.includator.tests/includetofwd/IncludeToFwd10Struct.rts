@@ -1,0 +1,6 @@
+//!IncludeToFwd10Struct
+//@main.cpp
+#include "A.h"
+A *a;
+//@A.h
+struct A { };

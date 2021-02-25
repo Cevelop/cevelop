@@ -1,0 +1,10 @@
+instructions.configure=\
+addRepository(type:0,location:https${#58}//www.cevelop.com/update/latest,enabled:true,name:Cevelop Updates);\
+addRepository(type:0,location:https${#58}//www.cute-test.com/updatesite/2019-06,enabled:true,name:CUTE Updates);\
+addRepository(type:0,location:https${#58}//www.cevelop.com/iltis,enabled:true,name:ILTIS Updates);\
+addRepository(type:0,location:http${#58}//sconsolidator.com/update,enabled:true,name:SConsolidator Updates);\
+addRepository(type:0,location:http${#58}//download.eclipse.org/tools/cdt/releases/9.8,enabled:true,name:CDT 9.8 Updates);\
+addRepository(type:0,location:http${#58}//download.eclipse.org/releases/2019-06,enabled:true,name:Eclipse 2019-06 Packages);\
+addRepository(type:0,location:http${#58}//download.eclipse.org/eclipse/updates/4.12,enabled:true,name:Eclipse 2019-06 Updates);\
+addRepository(type:0,location:http${#58}//download.eclipse.org/egit/updates,enabled:true,name:EGit Updates);
+

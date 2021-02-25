@@ -1,0 +1,13 @@
+.DS_STORE
+.DS_Store
+.api_description
+.bundledata*
+.contributions*
+.contributors*
+*.class
+*.jar
+/bin
+
+# Allow lib chars
+!lib/annotations.jar
+!lib/jsr305.jar

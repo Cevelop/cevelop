@@ -1,0 +1,89 @@
+//!AtofStd
+//@main.cpp
+#include <cstdlib>
+
+int main(){
+	char s[] = "0.01";
+	double n = std::atof(s);
+}
+//=
+#include <cstdlib>
+#include <string>
+
+int main(){
+	std::string s = "0.01";
+	double n = stod(s);
+}
+
+
+//!Atofusing
+//@main.cpp
+#include <cstdlib>
+using std;
+int main(){
+	char s[] = "0.01";
+	double n = atof(s);
+}
+//=
+#include <cstdlib>
+#include <string>
+using std;
+int main(){
+	std::string s = "0.01";
+	double n = stod(s);
+}
+
+
+//!Atoi
+//@main.cpp
+#include <cstdlib>
+
+int main(){
+	char s[] = "0.01";
+	int n = std::atoi(s);
+}
+//=
+#include <cstdlib>
+#include <string>
+
+int main(){
+	std::string s = "0.01";
+	int n = stoi(s);
+}
+
+
+//!Atol
+//@main.cpp
+#include <cstdlib>
+
+int main(){
+	char s[] = "0.01";
+	long n = std::atol(s);
+}
+//=
+#include <cstdlib>
+#include <string>
+
+int main(){
+	std::string s = "0.01";
+	long n = stol(s);
+}
+
+
+//!Atoll
+//@main.cpp
+#include <cstdlib>
+
+int main(){
+	char s[] = "0.01";
+	int n = std::atoll(s);
+}
+//=
+#include <cstdlib>
+#include <string>
+
+int main(){
+	std::string s = "0.01";
+	int n = stoll(s);
+}
+

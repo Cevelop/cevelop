@@ -1,0 +1,85 @@
+//!StrcpyFirstArg
+//@main.cpp
+#include <cstring>
+int main() {
+	char a[4] = "";
+	const char *b = "HSR";
+	strcpy(a, b);
+}
+//=
+#include <cstring>
+#include <string>
+
+int main() {
+	std::string a = "";
+	a.reserve(4);
+	const char *b = "HSR";
+	a = b;
+}
+
+
+//!StrcpyFirstArgWithString
+//@main.cpp
+#include <cstring>
+int main() {
+	char a[4] = "";
+	std::string b = "HSR";
+	strcpy(a, b.c_str());
+}
+//=
+#include <cstring>
+#include <string>
+
+int main() {
+	std::string a = "";
+	a.reserve(4);
+	std::string b = "HSR";
+	a = b;
+}
+
+
+//!StrcpySecondArg
+//@main.cpp
+#include <cstring>
+int main() {
+	const char *b = "HSR";
+	char a[4] = "";
+	strcpy(a, b);
+}
+//=
+#include <cstring>
+#include <string>
+
+int main() {
+	std::string b = "HSR";
+	char a[4] = "";
+	strcpy(a, b.c_str());
+}
+
+
+//!StrcpyFirstArgWithOffset
+//@main.cpp
+#include <cstring>
+int main() {
+	char filename[] = "myfile.txt";
+	strcpy(filename + strlen(filename) - 3, "doc");
+	strcpy(filename - 3 + strlen(filename), "doc");
+	strcpy(strlen(filename) - 3 + filename, "doc");
+	strcpy(strlen(filename) + filename - 3, "doc");
+	strcpy(-3 + strlen(filename) + filename, "doc");
+	strcpy(-3 + filename + strlen(filename), "doc");
+}
+//=
+#include <cstring>
+#include <string>
+
+int main() {
+	std::string filename = "myfile.txt";
+	filename.replace(filename.size() - 3, std::string::npos, "doc");
+	filename.replace(-3 + filename.size(), std::string::npos, "doc");
+	filename.replace(filename.size() - 3, std::string::npos, "doc");
+	filename.replace(filename.size() - 3, std::string::npos, "doc");
+	filename.replace(-3 + filename.size(), std::string::npos, "doc");
+	filename.replace(-3 + filename.size(), std::string::npos, "doc");
+}
+

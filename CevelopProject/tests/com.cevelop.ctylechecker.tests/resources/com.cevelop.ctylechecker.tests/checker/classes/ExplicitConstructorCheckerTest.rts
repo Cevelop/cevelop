@@ -1,0 +1,120 @@
+//!No Marker for Copy Constructor
+//@main.cpp
+struct S {
+  S(S const & s) 
+    : value{s.value} {
+  }
+  int value;
+};
+
+//!No Marker for Move Constructor
+//@main.cpp
+struct S {
+  S(S && s) 
+    : value{s.value} {
+  }
+  int value;
+};
+
+//!Marker for Single Parameter Constructor
+//@.config
+markerLines=2
+//@main.cpp
+struct S {
+  S(int value) 
+    : value{value} {
+  }
+  int value;
+};
+
+//!No Marker for explicit Single Parameter Constructor
+//@.config
+//@main.cpp
+struct S {
+  explicit S(int value) 
+    : value{value} {
+  }
+  int value;
+};
+
+//!Marker for Constructor with Defaulted Parameters
+//@.config
+markerLines=2
+//@main.cpp
+struct S {
+  S(int value, int ignored = 1) 
+    : value{value} {
+  }
+  int value;
+};
+
+//!Marker for Constructor with Only Defaulted Parameters
+//@.config
+markerLines=2
+//@main.cpp
+struct S {
+  S(int value = 42, int ignored = 1) 
+    : value{value} {
+  }
+  int value;
+};
+
+//!No Marker for explicit Constructor with Only Defaulted Parameters
+//@.config
+//@main.cpp
+struct S {
+  explicit S(int value = 42, int ignored = 1) 
+    : value{value} {
+  }
+  int value;
+};
+
+//!Marker for Constructor with Variadic Parameters
+//@.config
+markerLines=3
+//@main.cpp
+struct S {
+  template<typename...T>
+  S(int value = 42, T...args) 
+    : value{value} {
+  }
+  int value;
+};
+
+//!Marker for Constructor with just Variadic Parameter
+//@.config
+markerLines=3
+//@main.cpp
+struct S {
+  template<typename...T>
+  S(T...args) 
+    : value{42} {
+  }
+  int value;
+};
+
+//!Marker for Constructor Declaration
+//@.config
+markerLines=2
+//@main.cpp
+struct S {
+  S(int);
+};
+
+//!No Marker for initializer_list Constructor
+//@main.cpp
+#include <initializer_list>
+
+struct S {
+  S(std::initializer_list<int>) {
+  }
+};
+
+//!No Marker for Constructor Definition Outside of Class
+//@main.cpp
+struct S {
+  explicit S(int i); {
+  }
+};
+S::S(int i) {
+}

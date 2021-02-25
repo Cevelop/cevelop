@@ -1,0 +1,65 @@
+//!ShouldApplyRefactoringToDeclarations
+//@main.cpp
+int main(int argc, const char* argv[] ) {
+	int x, y, z;
+}
+
+//=
+int main(int argc, const char* argv[] ) {
+	int x { }, y { }, z { };
+}
+
+//!ShouldApplyRefactoringToConstructorChainInitializers
+//@main.cpp
+class MyClass{MyClass(int x,int y,int z){}};
+MyClass x(1,2,3);
+
+//=
+class MyClass{MyClass(int x,int y,int z){}};
+MyClass x { 1, 2, 3 };
+
+//!ShouldApplyRefactoringToAllElevationCandidatesInTheProject
+//@main.cpp
+
+int main(int argc, const char* argv[] ) {
+	int x, y, z;
+}
+
+//=
+
+int main(int argc, const char* argv[] ) {
+	int x { }, y { }, z { };
+}
+
+//@program.cpp
+class MyClass{MyClass(int x,int y,int z){}};
+MyClass x(1,2,3);
+
+int a,b,c;
+
+//=
+class MyClass{MyClass(int x,int y,int z){}};
+MyClass x { 1, 2, 3 };
+
+int a { }, b { }, c { };
+
+//! Should asf
+//@main.cpp
+struct null_listener {};
+
+template<typename Listener = null_listener>
+struct counting_listener: Listener {
+	counting_listener() : Listener(), numberOfTests(0) {
+	}
+	int numberOfTests;
+};
+//=
+struct null_listener {};
+
+template<typename Listener = null_listener>
+struct counting_listener: Listener {
+	counting_listener() :
+			Listener(), numberOfTests { 0 } {
+	}
+	int numberOfTests;
+};

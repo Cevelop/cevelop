@@ -1,0 +1,18 @@
+//!Refernce to Overloaded Operator
+//@src/main.cpp
+#include "rational.h"
+int main (){
+	Rational r1(7, 3);
+	Rational r2(75, 3);
+	Rational r7 = r1 + r2;
+	return 0;
+}
+//@src/rational.h
+class Rational {
+public:
+	Rational(int, int){}
+	Rational operator+(Rational const & rhs){
+		Rational r(0,0);
+		return r;
+	}
+};

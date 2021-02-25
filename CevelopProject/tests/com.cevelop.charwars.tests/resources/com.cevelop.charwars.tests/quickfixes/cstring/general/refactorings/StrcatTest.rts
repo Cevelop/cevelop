@@ -1,0 +1,79 @@
+//!StrcatSecondArg
+//@main.cpp
+#include <cstring>
+int main() {
+	char first_name[] = "John";
+	char last_name[8] = "Doe";
+	strcat(last_name, first_name);
+}
+//=
+#include <cstring>
+#include <string>
+
+int main() {
+	std::string first_name = "John";
+	char last_name[8] = "Doe";
+	strcat(last_name, first_name.c_str());
+}
+
+
+//!StrcatSecondArg2
+//@main.cpp
+#include <cstring>
+#include <string>
+
+int main() {
+	char first_name[] = "John";
+	std::string last_name = "Doe";
+	last_name += first_name;
+}
+//=
+#include <cstring>
+#include <string>
+
+int main() {
+	std::string first_name = "John";
+	std::string last_name = "Doe";
+	last_name += first_name;
+}
+
+
+//!StrcatFirstArgument
+//@main.cpp
+#include <cstring>
+int main() {
+	char last_name[8] = "Doe";
+	char first_name[] = "John";
+	strcat(last_name, first_name);
+}
+//=
+#include <cstring>
+#include <string>
+
+int main() {
+	std::string last_name = "Doe";
+	last_name.reserve(8);
+	char first_name[] = "John";
+	last_name += first_name;
+}
+
+
+//!StrcatFirstArgument2
+//@main.cpp
+#include <cstring>
+int main() {
+	char last_name[8] = "Doe";
+	std::string first_name = "John";
+	strcat(last_name, first_name.c_str());
+}
+//=
+#include <cstring>
+#include <string>
+
+int main() {
+	std::string last_name = "Doe";
+	last_name.reserve(8);
+	std::string first_name = "John";
+	last_name += first_name;
+}
+

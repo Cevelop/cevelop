@@ -1,0 +1,71 @@
+//!No Marker for Flawless Class
+//@Type.h
+class Type {
+};
+
+//!Marker for Redundant public
+//@.config
+markerLines=5
+//@Type.h
+class Type {
+  int member;
+public:
+  void foo();
+public:
+  void bar();
+};
+
+//!Marker for Immediate Accessibility Switch
+//@.config
+markerLines=2
+//@Type.h
+class Type {
+public:
+  int i;
+};
+
+//!No Marker for Inheritance with Different Accessibility
+//@Type.h
+class Base {};
+class Sub : public Base {
+};
+
+//!Marker for Class Inheritance with Same Accessibility
+//@.config
+markerLines=2
+//@Type.h
+class Base {};
+class Sub : private Base {
+};
+
+//!Marker for Struct Inheritance with Same Accessibility
+//@.config
+markerLines=2
+//@Type.h
+class Base {};
+struct Sub : public Base {
+};
+
+//!Marker in Nested Class
+//@.config
+markerLines=4
+//@Type.h
+class Outer {
+  class Inner {
+    int hidden;
+  private:
+    int visible;
+  };
+};
+
+//!No Unneccessary Marker for Nested Class
+//@Type.h
+class Outer {
+  class Inner {
+    int hidden;
+  public:
+    int visible;
+  };
+public:
+  int visibleToo;
+};

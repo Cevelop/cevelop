@@ -1,0 +1,327 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.cevelop</groupId>
+	<artifactId>com.cevelop.configuration</artifactId>
+	<version>1.11.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<properties>
+		<codehaus.build-helper.version>1.8</codehaus.build-helper.version>
+
+		<eclipse.tycho.version>2.2.0</eclipse.tycho.version>
+		<eclipse.tycho-extras.version>2.2.0</eclipse.tycho-extras.version>
+
+		<jetbrains.kotlin.version>1.4.21</jetbrains.kotlin.version>
+
+		<maven.antrun.version>1.7</maven.antrun.version>
+		<maven.enforcer.version>1.4.1</maven.enforcer.version>
+		<maven.jarsigner.version>1.4</maven.jarsigner.version>
+		<maven.javadoc.version>3.0.1</maven.javadoc.version>
+		<maven.resources.version>2.6</maven.resources.version>
+		<maven.surefire.version>2.22.2</maven.surefire.version>
+
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<profiles>
+		<profile>
+			<id>master</id>
+			<activation>
+				<property>
+					<name>gitflow.branch</name>
+					<value>master</value>
+				</property>
+			</activation>
+			<properties>
+				<target-platform-artifact>${project.groupId}.target.master</target-platform-artifact>
+				<package-version-suffix>${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}-${buildQualifier}</package-version-suffix>
+				<product-id>com.cevelop.master</product-id>
+			</properties>
+		</profile>
+
+		<profile>
+			<id>develop</id>
+			<activation>
+				<property>
+					<name>gitflow.branch</name>
+					<value>develop</value>
+				</property>
+			</activation>
+			<properties>
+				<target-platform-artifact>${project.groupId}.target.develop</target-platform-artifact>
+				<package-version-suffix>dev</package-version-suffix>
+				<product-id>com.cevelop.develop</product-id>
+			</properties>
+		</profile>
+
+		<profile>
+			<id>illegal</id>
+			<activation>
+				<property>
+					<name>!gitflow.branch</name>
+				</property>
+			</activation>
+			<properties>
+				<target-platform-artifact>${project.groupId}.target.develop</target-platform-artifact>
+			</properties>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-enforcer-plugin</artifactId>
+						<version>${maven.enforcer.version}</version>
+						<executions>
+							<execution>
+								<id>gitflow.branch not set</id>
+								<phase>validate</phase>
+								<goals>
+									<goal>enforce</goal>
+								</goals>
+								<configuration>
+									<rules>
+										<requireProperty>
+											<property>gitflow.branch</property>
+											<message>The gitflow.branch property must be set to either master or develop! Either pass -Dgitflow.branch=[master|develop] or use the build-script!</message>
+										</requireProperty>
+									</rules>
+									<fail>true</fail>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+		<profile>
+			<id>ci-build</id>
+			<activation>
+				<property>
+					<name>env.CI</name>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.eclipse.tycho</groupId>
+						<artifactId>target-platform-configuration</artifactId>
+						<version>${eclipse.tycho.version}</version>
+						<configuration>
+							<target>
+								<artifact>
+									<groupId>com.cevelop</groupId>
+									<artifactId>${target-platform-artifact}</artifactId>
+									<version>${project.version}</version>
+								</artifact>
+							</target>
+							<environments>
+								<environment>
+									<os>${env.IDE_OS}</os>
+									<ws>${env.IDE_WS}</ws>
+									<arch>${env.IDE_ARCH}</arch>
+								</environment>
+							</environments>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+		<profile>
+			<id>non-ci-build</id>
+			<activation>
+				<property>
+					<name>!env.CI</name>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.eclipse.tycho</groupId>
+						<artifactId>target-platform-configuration</artifactId>
+						<version>${eclipse.tycho.version}</version>
+						<configuration>
+							<target>
+								<artifact>
+									<groupId>com.cevelop</groupId>
+									<artifactId>${target-platform-artifact}</artifactId>
+									<version>${project.version}</version>
+								</artifact>
+							</target>
+							<environments>
+								<environment>
+									<os>win32</os>
+									<ws>win32</ws>
+									<arch>x86_64</arch>
+								</environment>
+								<environment>
+									<os>linux</os>
+									<ws>gtk</ws>
+									<arch>x86_64</arch>
+								</environment>
+								<environment>
+									<os>macosx</os>
+									<ws>cocoa</ws>
+									<arch>x86_64</arch>
+								</environment>
+							</environments>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+
+				<plugin>
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>eclipse.tycho.versions-plugin</artifactId>
+					<version>${eclipse.tycho.version}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>tycho-packaging-plugin</artifactId>
+					<version>${eclipse.tycho.version}</version>
+					<dependencies>
+						<dependency>
+							<groupId>org.eclipse.tycho.extras</groupId>
+							<artifactId>tycho-buildtimestamp-jgit</artifactId>
+							<version>${eclipse.tycho-extras.version}</version>
+						</dependency>
+					</dependencies>
+					<configuration>
+						<timestampProvider>jgit</timestampProvider>
+						<jgit.ignore>
+							pom.xml
+							.polyglot.build.properties
+							.gitlab-ci.yml
+						</jgit.ignore>
+					</configuration>
+				</plugin>
+
+			</plugins>
+		</pluginManagement>
+
+		<plugins>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-maven-plugin</artifactId>
+				<version>${eclipse.tycho.version}</version>
+				<extensions>true</extensions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-packaging-plugin</artifactId>
+				<version>${eclipse.tycho.version}</version>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jarsigner-plugin</artifactId>
+				<version>${maven.jarsigner.version}</version>
+				<executions>
+					<execution>
+						<id>sign</id>
+						<goals>
+							<goal>sign</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<keystore>${keystore}</keystore>
+					<alias>${keyalias}</alias>
+					<storepass>${certpass}</storepass>
+					<storetype>pkcs12</storetype>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.jetbrains.kotlin</groupId>
+				<artifactId>kotlin-maven-plugin</artifactId>
+				<version>${jetbrains.kotlin.version}</version>
+				<executions>
+					<execution>
+						<id>compile</id>
+						<phase>process-sources</phase>
+						<goals>
+							<goal>compile</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<version>${codehaus.build-helper.version}</version>
+				<executions>
+					<execution>
+						<id>parse-version</id>
+						<goals>
+							<goal>parse-version</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>${maven.resources.version}</version>
+			</plugin>
+
+			<!--  Javadoc with extra tags -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>${maven.javadoc.version}</version>
+				<configuration>
+					<tags>
+						<tag>
+							<name>noimplement</name>
+							<placement>a</placement>
+							<head>No Implement:</head>
+						</tag>
+						<tag>
+							<name>noextend</name>
+							<placement>a</placement>
+							<head>No Extend:</head>
+						</tag>
+						<tag>
+							<name>noreference</name>
+							<placement>a</placement>
+							<head>No Reference:</head>
+						</tag>
+						<tag>
+							<name>noinstantiate</name>
+							<placement>a</placement>
+							<head>No Instantiate:</head>
+						</tag>
+						<tag>
+							<name>nooverride</name>
+							<placement>a</placement>
+							<head>No Override:</head>
+						</tag>
+						<tag>
+							<name>category</name>
+							<placement>a</placement>
+							<head>Category:</head>
+						</tag>
+						<tag>
+							<name>wbp.parser.constructor</name>
+							<placement>a</placement>
+							<head>Eclipse WindowBuilder Constructor</head>
+						</tag>
+					</tags>
+				</configuration>
+			</plugin>
+
+		</plugins>
+	</build>
+</project>

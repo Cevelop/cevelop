@@ -1,3 +1,0 @@
-//!CheckNoUnresolvedInclusionsTest
-//@main.cpp
-int i = 0;

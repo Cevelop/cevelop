@@ -1,0 +1,15 @@
+//!IncludeToFwd23SeveralQuickFixesAndUndos
+//@main.cpp
+#include "A.h"
+#include "B.h"
+A *a;
+B *b;
+//=
+class A;
+class B;
+A *a;
+B *b;
+//@A.h
+class A { };
+//@B.h
+class B { };

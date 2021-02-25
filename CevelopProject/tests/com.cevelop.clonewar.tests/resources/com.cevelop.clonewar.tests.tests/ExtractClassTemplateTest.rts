@@ -1,0 +1,347 @@
+//!ETTPT: Struct, existing template, existing typedef, replace field, default off.
+//#com.cevelop.clonewar.test.AbstractRefactoringTest
+//@.config
+primaryFile=ETTPT_Struct_ExistingTemplate_ExistingTypedef_ReplaceField_DefaultOff.h
+//@ETTPT_Struct_ExistingTemplate_ExistingTypedef_ReplaceField_DefaultOff.h
+#include <vector>
+template<typename T = foo>
+struct /*$*/fooT/*$*/ {
+	T i;
+	int j;
+};
+
+typedef fooT<> foo;
+
+//=
+#include <vector>
+template<typename T, typename T1> struct fooT {
+	T i;
+	T1 j;
+};
+
+typedef fooT<> foo;
+
+//!ETTPT: Struct, existing template, existing typedef, replace field, default on.
+//#com.cevelop.clonewar.test.AbstractRefactoringTest
+//@.config
+defaultArguments=true
+primaryFile=ETTPT_Struct_ExistingTemplate_ExistingTypedef_ReplaceField_DefaultOn.h
+//@ETTPT_Struct_ExistingTemplate_ExistingTypedef_ReplaceField_DefaultOn.h
+#include <vector>
+template<typename T = int>
+struct /*$*/fooT/*$*/ {
+	T i;
+	int j;
+};
+
+typedef fooT<> foo;
+
+//=
+#include <vector>
+template<typename T = int, typename T1 = int> struct fooT {
+	T i;
+	T1 j;
+};
+
+typedef fooT<> foo;
+
+//!ETTPT: Struct, existing template, existing typedef, unresolvable.
+//#com.cevelop.clonewar.test.AbstractRefactoringTest
+//@.config
+defaultArguments=true
+expectedFinalErrors=1
+primaryFile=ETTPT_Struct_ExistingTemplate_ExistingTypedef_Unresolvable.h
+//@ETTPT_Struct_ExistingTemplate_ExistingTypedef_Unresolvable.h
+#include <vector>
+template<typename T> struct /*$*/fooT/*$*/
+{
+    T i;
+    int j;
+};
+
+typedef fooT<fooT> foo;
+
+//=
+#include <vector>
+template<typename T, typename T1 = int> struct fooT {
+	T i;
+	T1 j;
+};
+
+typedef fooT<fooT> foo;
+
+//!ETTPT: Struct, existing template, replace field, default off.
+//#com.cevelop.clonewar.test.AbstractRefactoringTest
+//@.config
+defaultArguments=false
+primaryFile=ETTPT_Struct_ExistingTemplate_ReplaceField_DefaultOff.h
+//@ETTPT_Struct_ExistingTemplate_ReplaceField_DefaultOff.h
+#include <vector>
+template<typename T> struct /*$*/foo/*$*/
+{
+    T i;
+    int j;
+};
+//=
+#include <vector>
+template<typename T, typename T1> struct foo {
+	T i;
+	T1 j;
+};
+
+//!ETTPT: Struct, existing typedef, replace field, default on.
+//#com.cevelop.clonewar.test.AbstractRefactoringTest
+//@.config
+defaultArguments=true
+primaryFile=ETTPT_Struct_ExistingTemplate_ExistingTypedef_ReplaceField_DefaultOn.h
+//@ETTPT_Struct_ExistingTemplate_ExistingTypedef_ReplaceField_DefaultOn.h
+#include <vector>
+template<typename T = int>
+struct /*$*/fooT/*$*/ {
+	T i;
+	int j;
+};
+//=
+#include <vector>
+template<typename T = int, typename T1 = int> struct fooT {
+	T i;
+	T1 j;
+};
+
+//!ETTPT: Struct, named type field, replace all, default off.
+//#com.cevelop.clonewar.test.AbstractRefactoringTest
+//@.config
+primaryFile=ETTPT_Struct_NamedTypeField_ReplaceAll_DefaultOff.h
+//@ETTPT_Struct_NamedTypeField_ReplaceAll_DefaultOff.h
+struct /*$*/foo/*$*/ {
+	foo i;
+};
+
+//=
+template<typename T1> struct fooT {
+	T1 i;
+};
+typedef fooT<foo> foo;
+
+//!ETTPT: Struct, named type field, replace all, default on.
+//#com.cevelop.clonewar.test.AbstractRefactoringTest
+//@.config
+defaultArguments=true
+primaryFile=ETTPT_Struct_NamedTypeField_ReplaceAll_DefaultOn.h
+//@ETTPT_Struct_NamedTypeField_ReplaceAll_DefaultOn.h
+struct /*$*/foo/*$*/ {
+	foo i;
+};
+//=
+template<typename T1 = foo> struct fooT {
+	T1 i;
+};
+typedef fooT<> foo;
+
+//!ETTPT: Struct, named type field, single selection, replace all, default on.
+//#com.cevelop.clonewar.test.AbstractRefactoringTest
+//@.config
+defaultArguments=true
+primaryFile=ETTPT_Struct_NamedTypeField_SingleSelection_ReplaceAll_DefaultOn.h
+//@ETTPT_Struct_NamedTypeField_SingleSelection_ReplaceAll_DefaultOn.h
+struct foo {
+	/*$*/foo/*$*/ i;
+};
+//=
+template<typename T1 = foo> struct fooT {
+	T1 i;
+};
+typedef fooT<> foo;
+
+//!ETTPT: Struct, int type field, single selection, replace all, default on, position of typedef.
+//#com.cevelop.clonewar.test.AbstractRefactoringTest
+//@.config
+defaultArguments=true
+primaryFile=ETTPT_Struct_NamedTypeField_SingleSelection_ReplaceAll_DefaultOn.cpp
+//@ETTPT_Struct_NamedTypeField_SingleSelection_ReplaceAll_DefaultOn.cpp
+struct Foo {
+	/*$*/int/*$*/ i;
+};
+
+int main(int argc, char **argv) {
+	Foo foo;
+}
+//=
+template<typename T1 = int> struct FooT {
+	T1 i;
+};
+typedef FooT<> Foo;
+
+int main(int argc, char **argv) {
+	Foo foo;
+}
+//!ETTPT: Struct with Constructor, int type field, single selection, replace all, default on.
+//#com.cevelop.clonewar.test.AbstractRefactoringTest
+//@.config
+defaultArguments=true
+primaryFile=ETTPT_Struct_with_Constructor_NamedTypeField_SingleSelection_ReplaceAll_DefaultOn.cpp
+//@ETTPT_Struct_with_Constructor_NamedTypeField_SingleSelection_ReplaceAll_DefaultOn.cpp
+struct /*$*/S/*$*/ {
+	S() {
+	}
+
+	int i;
+};
+
+int main(int argc, char **argv) {
+	S s;
+}
+//=
+template<typename T1 = int> struct ST {
+	ST() {
+	}
+
+	T1 i;
+};
+typedef ST<> S;
+
+int main(int argc, char **argv) {
+	S s;
+}
+//!ETTPT: Struct with Destructor, int type field, single selection, replace all, default on.
+//#com.cevelop.clonewar.test.AbstractRefactoringTest
+//@.config
+defaultArguments=true
+primaryFile=ETTPT_Struct_with_Destructor_NamedTypeField_SingleSelection_ReplaceAll_DefaultOn.cpp
+//@ETTPT_Struct_with_Destructor_NamedTypeField_SingleSelection_ReplaceAll_DefaultOn.cpp
+struct /*$*/S/*$*/ {
+	~S() {
+	}
+
+	int i;
+};
+
+int main(int argc, char **argv) {
+	S s;
+}
+
+//=
+template<typename T1 = int> struct ST {
+	~ST() {
+	}
+
+	T1 i;
+};
+typedef ST<> S;
+
+int main(int argc, char **argv) {
+	S s;
+}
+
+//!Struct, simple type field, replace all, default on.
+//#com.cevelop.clonewar.test.AbstractRefactoringTest
+//@.config
+defaultArguments=true
+primaryFile=ETTPT_Struct_SimpleTypeField_ReplaceAll_DefaultOn.h
+//@ETTPT_Struct_SimpleTypeField_ReplaceAll_DefaultOn.h
+struct /*$*/foo/*$*/ {
+	int i;
+};
+//=
+template<typename T1 = int> struct fooT {
+	T1 i;
+};
+typedef fooT<> foo;
+
+//!ETTPT: Struct, template type field, replace nested, default on.
+//#com.cevelop.clonewar.test.AbstractRefactoringTest
+//@.config
+defaultArguments=true
+nestedOnly=true
+primaryFile=ETTPT_Struct_TemplateTypeField_ReplaceNested_DefaultOn.h
+//@ETTPT_Struct_TemplateTypeField_ReplaceNested_DefaultOn.h
+#include <vector>
+struct /*$*/foo/*$*/ {
+	std::vector<int> i;
+};
+
+int i;
+
+//=
+#include <vector>
+template<typename T1 = int> struct fooT {
+	std::vector<T1> i;
+};
+typedef fooT<> foo;
+int i;
+
+//!ETTPT: Struct, template type field, replace template, default on.
+//#com.cevelop.clonewar.test.AbstractRefactoringTest
+//@.config
+defaultArguments=true
+nonNestedOnly=true
+primaryFile=ETTPT_Struct_TemplateTypeField_ReplaceTemplate_DefaultOn.h
+//@ETTPT_Struct_TemplateTypeField_ReplaceTemplate_DefaultOn.h
+#include <vector>
+struct /*$*/foo/*$*/ {
+	std::vector<int> i;
+};
+//=
+#include <vector>
+template<typename T2 = std::vector<int>> struct fooT {
+	T2 i;
+};
+typedef fooT<> foo;
+
+//!ETTPT: Struct without Inline Member Function.
+//#com.cevelop.clonewar.test.AbstractRefactoringTest
+//@.config
+expectProblem=true
+primaryFile=ETTPT_Struct_without_Inline_Member_Function.h
+//@ETTPT_Struct_without_Inline_Member_Function.h
+struct /*$*/S/*$*/
+{
+    S(){}
+    void foo();
+};
+
+void S::foo()
+{
+}
+
+int main(int argc, char **argv) {
+	S s;
+}
+//=
+struct S
+{
+    S(){}
+    void foo();
+};
+
+void S::foo()
+{
+}
+
+int main(int argc, char **argv) {
+	S s;
+}
+//!ETTPT: Struct without Templatable Content.
+//#com.cevelop.clonewar.test.AbstractRefactoringTest
+//@.config
+expectProblem=true
+primaryFile=ETTPT_Struct_without_Templatable_Content.h
+//@ETTPT_Struct_without_Templatable_Content.h
+struct /*$*/S/*$*/
+{
+    S(){}
+};
+
+int main(int argc, char **argv) {
+	S s;
+}
+//=
+struct S
+{
+    S(){}
+};
+
+int main(int argc, char **argv) {
+	S s;
+}
+

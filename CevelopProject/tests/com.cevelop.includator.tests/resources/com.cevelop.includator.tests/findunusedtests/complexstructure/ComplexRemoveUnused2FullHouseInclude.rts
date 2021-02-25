@@ -1,0 +1,24 @@
+//!Three Includes to One File and Two Includes to Another
+//@main.cpp
+#include "IA1.h"
+#include "IA2.h"
+#include "IA3.h"
+#include "IB1.h"
+#include "IB2.h"
+
+A a;
+B b;
+//@IA1.h
+#include "A.h
+//@IA2.h
+#include "A.h
+//@IA3.h
+#include "A.h
+//@IB1.h
+#include "B.h
+//@IB2.h
+#include "B.h
+//@A.h
+class A{};
+//@B.h
+class B{};

@@ -1,6 +1,0 @@
-//!OrganizeIncludes16IncludeSubstitution2
-//@main.cpp
-int main() {
-	sqrt(1.1);
-	vector v;
-}

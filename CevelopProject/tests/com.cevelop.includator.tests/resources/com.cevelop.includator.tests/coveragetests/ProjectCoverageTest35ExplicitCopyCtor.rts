@@ -1,0 +1,34 @@
+//!ProjectCoverageTest35ExplicitCopyCtor
+//@A.cpp
+class Y {
+public:
+  Y();
+  ~Y();
+  Y(const Y &y);
+};
+
+Y::Y() { }
+
+Y::~Y() { }
+
+Y::Y(const Y &y) { }
+
+class X {
+public :
+  X();
+  ~X();
+  X(const X &x);
+  Y y;
+};
+
+X::X() { }
+
+X::~X() { }
+
+X::X(const X &x) { }
+
+int main() {
+  X *x;
+  X x2 = *x;
+  return 0;
+}

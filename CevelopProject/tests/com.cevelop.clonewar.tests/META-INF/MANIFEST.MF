@@ -1,0 +1,18 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Clone War Test Plug-in
+Bundle-SymbolicName: com.cevelop.clonewar.tests;singleton:=true
+Bundle-Version: 1.14.2.qualifier
+Fragment-Host: com.cevelop.clonewar
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.ltk.core.refactoring,
+ org.eclipse.cdt.core,
+ org.eclipse.cdt.ui,
+ org.eclipse.jface.text,
+ org.junit,
+ ch.hsr.ifs.iltis.testing.highlevel.testingplugin
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: IFS Institute for Software
+Automatic-Module-Name: com.cevelop.clonewar.tests

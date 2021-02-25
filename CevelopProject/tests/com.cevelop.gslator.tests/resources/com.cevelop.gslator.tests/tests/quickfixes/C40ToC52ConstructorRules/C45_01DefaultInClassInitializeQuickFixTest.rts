@@ -1,0 +1,256 @@
+//!NotAllMemVarsInited
+//@.config
+isApplicable=true
+//@main.h
+class X {
+	int x;
+	double y { 42.0 };
+	std::string s { "42" };
+public:
+	X() noexcept = default;
+	~X();
+};
+//=
+class X {
+	int x { };
+	double y { 42.0 };
+	std::string s { "42" };
+public:
+	X() noexcept = default;
+	~X();
+};
+//!StructNoMemVarInited
+//@.config
+isApplicable=true
+//@main.h
+struct X {
+	int x;
+	double y;
+	std::string s;
+public:
+	X() {  }
+	~X();
+};
+//=
+struct X {
+	int x { };
+	double y { };
+	std::string s { };
+public:
+	X() {  }
+	~X();
+};
+//!NotAllInitedMultipleDeclarations
+//@.config
+isApplicable=true
+//@X.h
+struct X {
+	int x { 42 }, z;
+	double y { 42.0 };
+	std::string s = "hello";
+public:
+	X() = default;
+	~X();
+};
+//=
+struct X {
+	int x { 42 }, z { };
+	double y { 42.0 };
+	std::string s = "hello";
+public:
+	X() = default;
+	~X();
+};
+//!TemplateClassNotAllMemVarsInited
+//@.config
+isApplicable=true
+//@C.h
+template<typename T>
+class C {
+	std::vector<T> v;
+public:
+	C() = default;
+};
+//=
+template<typename T>
+class C {
+	std::vector<T> v { };
+public:
+	C() = default;
+};
+//!NotApplicableReplaceDefCtorInitWithInClassInit
+//@.config
+isApplicable=false
+//@main.h
+struct X {
+	X() noexcept : x {42}, y {}, s {"hello"} {}
+
+	~X();
+private:
+	int x;
+	double y {42.0};
+	std::string s {"test"};
+};
+//!NotApplicableReplaceDefCtorInitWithInClassInitWhenNotAllVariablesAreCtorInited
+//@.config
+isApplicable=false
+//@main.h
+struct X {
+	X() noexcept : s {"hello"} {}
+
+	~X();
+private:
+	int x { 42 };
+	double y {42.0};
+	std::string s {"test"};
+};
+//!NotApplicableReplaceDefCtorInitWithInClassInitWhenNotVariableIsNotDefInited
+//@.config
+isApplicable=false
+//@main.h
+struct X {
+	X() noexcept : y {}, s {"hello"} {}
+
+	~X();
+private:
+	int x;
+	double y {42.0};
+	std::string s {"test"};
+};
+//!NotApplicableReplaceDefCtorInitWithInClassInitWhenNotVariableIsNotDefInitedAndPrvtFuncs
+//@.config
+isApplicable=false
+//@main.h
+struct X {
+	X() noexcept : y {}, s {"hello"} {}
+
+	~X();
+private:
+	int x;
+	double y {42.0};
+	void doStuff();
+	std::string s {"test"};
+};
+//!NotApplicableReplaceDefCtorInitWithInClassInitWhenNotVariableIsNotDefInitedAndPrvtFuncsWithParams
+//@.config
+isApplicable=false
+//@main.h
+struct X {
+	X() noexcept : y {}, s {"hello"} {}
+
+	~X();
+private:
+	int x;
+	double y {42.0};
+	void doStuff(int z);
+	std::string s {"test"};
+};
+//!NotApplicableInlineCtorInitWithNormalBrackets
+//@.config
+isApplicable=false
+//@A.h
+struct A {
+	inline A() noexcept;
+
+private:
+	int a;
+	std::string s { "test" };
+};
+
+inline A::A() noexcept : a { 42 }, s { "42" } { }
+//!NotApplicableCtorInitInCpp
+//@.config
+isApplicable=false
+//@A.h
+struct A {
+	A() noexcept;
+
+private:
+	int a;
+	std::string s { "test" };
+};
+//@A.cpp
+#include "A.h"
+A::A() noexcept : a { 42 }, s { "42" } { }
+//!NotApplicableCtorInitWithNormalBracktesInCpp
+//@.config
+isApplicable=false
+//@A.h
+struct A {
+	A() noexcept;
+
+private:
+	int a;
+	std::string s { "test" };
+};
+//@A.cpp
+#include "A.h"
+A::A() noexcept : a ( 42 ), s ( "42" ) { }
+//!NotApplicableClassWithDifferentInitializerListsMultipleDeclarations
+//@.config
+isApplicable=false
+//@X.h
+class X {
+	int x { 42 }, z;
+	double y { 42.0 };
+	std::string s { "42" };
+public:
+	X() noexcept : x { 42 }, z { }, y { }, s {"hello"} {
+	}
+	~X();
+};
+//!NotApplicableTemplateClassNotAllMemVarsInited
+//@.config
+isApplicable=false
+//@C.h
+template<typename T>
+class C {
+	std::vector<T> v;
+public:
+	C() : v { } { }
+};
+//!NotApplicableInitalizedWithoutLiteralExpression
+//@.config
+isApplicable=false
+//@FileContainer.h
+#include "gsl.h"
+
+struct FileContainer {
+	FileContainer() noexcept : file {new int} {}
+
+private:
+	gsl::owner<int *> file;
+};
+//!NotApplicableInitalizedWithoutLiteralExpressionAsArray
+//@.config
+isApplicable=false
+//@FileContainer.h
+#include "gsl.h"
+
+struct FileContainer {
+	FileContainer() noexcept : files {new int[100]} {}
+
+private:
+	gsl::owner<int *> files;
+};
+//!SetAttributeNotAllMemVarsInited
+//@.config
+setIgnoreAttribute=true
+//@X.h
+class X {
+	int x;
+	double y { 42.0 };
+	std::string s { "42" };
+public:
+	X() noexcept = default;
+	~X();
+};
+//=
+class [[gsl::suppress("Rc-default")]] X {
+	int x;
+	double y { 42.0 };
+	std::string s { "42" };
+public:
+	X() noexcept =default;
+	~X();
+};

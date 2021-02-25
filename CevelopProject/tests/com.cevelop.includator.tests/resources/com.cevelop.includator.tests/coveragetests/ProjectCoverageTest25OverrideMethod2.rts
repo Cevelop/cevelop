@@ -1,0 +1,39 @@
+//!ProjectCoverageTest25OverrideMethod2
+//@main.cpp
+#include "SubChild.h"
+
+int main() {
+  Child *child = new SubChild();
+  child->foo();
+  return 0;
+}
+
+//@Base.h
+void fooBase() {
+}
+
+class Base {
+public:
+  virtual void foo() { fooBase(); }
+};
+
+//@Child.h
+#include "Base.h"
+
+void fooChild() {
+}
+
+class Child : public Base {
+public:
+  virtual void foo() { fooChild(); }
+};
+//@SubChild.h
+#include "Child.h"
+
+void fooSubChild() {
+}
+
+class SubChild : public Child {
+public:
+  virtual void foo() { fooSubChild();  }
+};

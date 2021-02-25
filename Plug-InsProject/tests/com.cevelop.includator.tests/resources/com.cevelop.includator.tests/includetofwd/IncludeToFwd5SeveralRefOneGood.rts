@@ -1,9 +1,0 @@
-//!IncludeToFwd5SeveralRefOneGood
-//@main.cpp
-#include "A.h"
-int main() {
-	A *a = new A();
-	return 0;
-}
-//@A.h
-class A { };

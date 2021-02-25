@@ -1,0 +1,62 @@
+//!ConstructorRefTest13ExplConstrImplicitSubConstr1
+//@.config
+isCopyConstr=false
+expectedRefTargetOffset=20
+//@A.cpp
+#include "Y.h"
+
+Y::Y() { }
+//@Z.h
+class Z {
+public:
+  Z() { }
+  Z(const Z &z) { }
+};
+//@Y.h
+#include "Z.h"
+class Y {
+public:
+  Y();
+  Y(const Y &y);
+  Z z;
+};
+//!ConstructorRefTest13ExplConstrImplicitSubConstr2
+//@.config
+isCopyConstr=true
+expectedRefTargetOffset=20
+//@A.cpp
+#include "Y.h"
+
+Y::Y(const Y &y) { }
+//@Z.h
+class Z {
+public:
+  Z() { }
+  Z(const Z &z) { }
+};
+//@Y.h
+#include "Z.h"
+class Y {
+public:
+  Y();
+  Y(const Y &y);
+  Z z;
+};
+//!ConstructorRefTest13ExplConstrImplicitSubConstr3
+//@.config
+isCopyConstr=true
+expectedRefTargetOffset=6
+//@A.cpp
+#include "Y.h"
+
+Y::Y(const Y &y) { }
+//@Z.h
+class Z { };
+//@Y.h
+#include "Z.h"
+class Y {
+public:
+  Y();
+  Y(const Y &y);
+  Z z;
+};

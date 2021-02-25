@@ -1,0 +1,110 @@
+//!Reference to local variable passed to constructor via non-const reference (initializer-list)
+//@test.cpp
+struct S {
+    S(int& x) { x += 1; }
+};
+void f() {
+	int y = 0;
+	int& x = y;
+    const S s{x};
+}
+//!Reference to local variable passed to constructor via const reference (initializer-list)
+//@.config
+markerLines=6
+//@test.cpp
+struct S {
+    S(int const& x) { }
+};
+void f() {
+	int y = 0;
+	int& x = y;
+    const S s{x};
+}
+//!Reference to local variable passed to constructor via non-const reference (simple type constructor expression)
+//@test.cpp
+struct S {
+    S(int& x) { x += 1; }
+};
+void f() {
+	int y = 0;
+	int& x = y;
+	S{x};
+}
+//!Reference to local variable passed to constructor via const reference (simple type constructor expression)
+//@.config
+markerLines=6
+//@test.cpp
+struct S {
+    S(int const& x) { }
+};
+void f() {
+	int y = 0;
+	int& x = y;
+	S{x};
+}
+//!Reference to local variable passed to constructor via non-const reference (constructor initializer)
+//@test.cpp
+struct S {
+    S(int& x) { x += 1; }
+};
+void f() {
+	int y = 0;
+	int& x = y;
+    const S s(x);
+}
+//!Reference to local variable passed to constructor via const reference (constructor initializer)
+//@.config
+markerLines=6
+//@test.cpp
+struct S {
+    S(int const& x) { }
+};
+void f() {
+	int y = 0;
+	int& x = y;
+    const S s(x);
+}
+//!Reference to local variable passed to constructor via non-const reference (function call expression)
+//@test.cpp
+struct S {
+    S(int& x) { x += 1; }
+};
+void f() {
+	int y = 0;
+	int& x = y;
+    (void)S(x);
+}
+//!Reference to local variable passed to constructor via const reference (function call expression)
+//@.config
+markerLines=6
+//@test.cpp
+struct S {
+    S(int const& x) { }
+};
+void f() {
+	int y = 0;
+	int& x = y;
+    (void)S(x);
+}
+//!Pointee of pointer to local variable passed to constructor via non-const reference (initializer-list)
+//@test.cpp
+struct S {
+    S(int& x) { x += 1; }
+};
+void f() {
+	int y = 0;
+	int * const x = &y;
+    const S s{*x};
+}
+//!Pointee of pointer to local variable passed to constructor via const reference (initializer-list)
+//@.config
+markerLines=6
+//@test.cpp
+struct S {
+    S(int const& x) { }
+};
+void f() {
+	int y = 0;
+	int * const x = &y;
+    const S s{*x};
+}

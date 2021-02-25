@@ -1,0 +1,384 @@
+//!AliExtorAliasTemplateSimple
+//@.config
+newName=vector
+userWantsTemplateAlias=true
+userSelected0=int
+//@A1.cpp
+#include <vector>
+int main() {
+	/*$*/std::vector<int>/*$*/ vector { };
+}
+//=
+#include <vector>
+
+template<typename T> using vector = std::vector<T>;
+
+int main() {
+	vector<int> vector { };
+}
+//!AliExtorAliasTemplateSimpleSeveralOccurrences
+//@.config
+newName=vector
+userWantsTemplateAlias=true
+userSelected0=int
+//@A1.cpp
+#include "test_definitions.h"
+int main() {
+	std::vector<int> vector0 { };
+	std::vector<int> vector1 { };
+	std::vector<int> vector2 { };
+	/*$*/std::vector<int>/*$*/ vector3 { };
+}
+//=
+#include "test_definitions.h"
+
+template<typename T> using vector = std::vector<T>;
+
+int main() {
+	vector<int> vector0 { };
+	vector<int> vector1 { };
+	vector<int> vector2 { };
+	vector<int> vector3 { };
+}
+//!AliExtorAliasTemplateSimpleSeveralOccurrencesOtherSelection
+//@.config
+newName=vector
+userWantsTemplateAlias=true
+userSelected0=int
+//@A1.cpp
+#include "test_definitions.h"
+int main() {
+	std::vector<int> vector { };
+	/*$*/std::vector<int>/*$*/ vector1 { };
+	std::vector<int> vector2 { };
+	std::vector<int> vector3 { };
+}
+//=
+#include "test_definitions.h"
+
+template<typename T> using vector = std::vector<T>;
+
+int main() {
+	vector<int> vector { };
+	vector<int> vector1 { };
+	vector<int> vector2 { };
+	vector<int> vector3 { };
+}
+//!AliExtorAliasTemplateSimpleSeveralOccurrencesOtherSelectionJustRefactorSelected
+//@.config
+newName=vector
+justRefactorSelected=true
+userWantsTemplateAlias=true
+userSelected0=int
+//@A1.cpp
+#include <vector>
+int main() {
+	std::vector<int> vector { };
+	/*$*/std::vector<int>/*$*/ vector1 { };
+	std::vector<int> vector2 { };
+	std::vector<int> vector3 { };
+}
+//=
+#include <vector>
+
+template<typename T> using vector = std::vector<T>;
+
+int main() {
+	std::vector<int> vector { };
+	vector<int> vector1 { };
+	std::vector<int> vector2 { };
+	std::vector<int> vector3 { };
+}
+//!AliExtorAliasTemplateABitComplexer
+//@.config
+newName=map
+userWantsTemplateAlias=true
+userSelected0=int
+userSelected1=std::string
+//@A1.cpp
+#include <vector>
+int main() {
+	/*$*/std::vector<std::pair<int, std::string>>/*$*/ vectorAsMap { };
+}
+//=
+#include <vector>
+
+template<typename T1, typename T2> using map = std::vector<std::pair<T1,T2> >;
+
+int main() {
+	map<int, std::string> vectorAsMap { };
+}
+//!AliExtorAliasTemplateABitComplexerOtherSelection
+//@.config
+newName=map
+userWantsTemplateAlias=true
+userSelected0=std::string
+//@A1.cpp
+#include <vector>
+int main() {
+	/*$*/std::vector<std::pair<int, std::string>>/*$*/ vectorAsMap { };
+}
+//=
+#include <vector>
+
+template<typename T> using map = std::vector<std::pair<int,T> >;
+
+int main() {
+	map<std::string> vectorAsMap { };
+}
+//!AliExtorAliasTemplateABitComplexerOtherSelectionSwaped
+//@.config
+newName=map
+userWantsTemplateAlias=true
+userSelected0=int
+//@A1.cpp
+#include "test_definitions.h"
+int main() {
+	/*$*/std::vector<std::pair<int, std::string>>/*$*/ vectorAsMap { };
+}
+//=
+#include "test_definitions.h"
+
+template<typename T> using map = std::vector<std::pair<T,std::string> >;
+
+int main() {
+	map<int> vectorAsMap { };
+}
+//!AliExtorAliasTemplateABitComplexerSeveralOccurrences
+//@.config
+newName=map
+userWantsTemplateAlias=true
+userSelected0=int
+//@A1.cpp
+#include "test_definitions.h"
+int main() {
+	/*$*/std::vector<std::pair<int, std::string>>/*$*/ vectorAsMap1 { };
+	std::vector<std::pair<int, std::string>> vectorAsMap2 { };
+	std::vector<std::pair<int, std::string>> vectorAsMap3 { };
+	std::vector<std::pair<int, std::string>> vectorAsMap4 { };
+}
+//=
+#include "test_definitions.h"
+
+template<typename T> using map = std::vector<std::pair<T,std::string> >;
+
+int main() {
+	map<int> vectorAsMap1 { };
+	map<int> vectorAsMap2 { };
+	map<int> vectorAsMap3 { };
+	map<int> vectorAsMap4 { };
+}
+//!AliExtorAliasTemplateABitComplexerSeveralOccurrencesOtherSelection
+//@.config
+newName=map
+
+userWantsTemplateAlias=true
+userSelected0=int
+//@A1.cpp
+#include "test_definitions.h"
+int main() {
+	std::vector<std::pair<int, std::string>> vectorAsMap1 { };
+	/*$*/std::vector<std::pair<int, std::string>>/*$*/ vectorAsMap2 { };
+	std::vector<std::pair<int, std::string>> vectorAsMap3 { };
+	std::vector<std::pair<int, std::string>> vectorAsMap4 { };
+}
+//=
+#include "test_definitions.h"
+
+template<typename T> using map = std::vector<std::pair<T,std::string> >;
+
+int main() {
+	map<int> vectorAsMap1 { };
+	map<int> vectorAsMap2 { };
+	map<int> vectorAsMap3 { };
+	map<int> vectorAsMap4 { };
+}
+//!AliExtorAliasTemplateABitComplexerSeveralOccurrencesJustRefactorSelected
+//@.config
+newName=map
+justRefactorSelected=true
+userWantsTemplateAlias=true
+userSelected0=int
+//@A1.cpp
+#include <vector>
+int main() {
+	std::vector<std::pair<int, std::string>> vectorAsMap1 { };
+	/*$*/std::vector<std::pair<int, std::string>>/*$*/ vectorAsMap2 { };
+	std::vector<std::pair<int, std::string>> vectorAsMap3 { };
+	std::vector<std::pair<int, std::string>> vectorAsMap4 { };
+}
+//=
+#include <vector>
+
+template<typename T> using map = std::vector<std::pair<T,std::string> >;
+
+int main() {
+	std::vector<std::pair<int, std::string>> vectorAsMap1 { };
+	map<int> vectorAsMap2 { };
+	std::vector<std::pair<int, std::string>> vectorAsMap3 { };
+	std::vector<std::pair<int, std::string>> vectorAsMap4 { };
+}
+//!AliExtorAliasTemplateABitComplexerOtherSelectionSwaped2
+//@.config
+newName=map
+userWantsTemplateAlias=true
+userSelected0=std::string
+//@A1.cpp
+#include "test_definitions.h"
+int main() {
+	std::vector<std::pair<int, std::string>> vectorAsMap1 { };
+	/*$*/std::vector<std::pair<int, std::string>>/*$*/ vectorAsMap2 { };
+	std::vector<std::pair<int, std::string>> vectorAsMap3 { };
+}
+//=
+#include "test_definitions.h"
+
+template<typename T> using map = std::vector<std::pair<int,T> >;
+
+int main() {
+	map<std::string> vectorAsMap1 { };
+	map<std::string> vectorAsMap2 { };
+	map<std::string> vectorAsMap3 { };
+}
+//!AliExtorAliasTemplateABitComplexerBothSelectedSeveralOccurrences
+//@.config
+newName=map
+userWantsTemplateAlias=true
+userSelected0=int
+userSelected1=std::string
+//@A1.cpp
+#include "test_definitions.h"
+
+int main() {
+	std::vector<std::pair<int, std::string>> vectorAsMap1 { };
+	/*$*/std::vector<std::pair<int, std::string>>/*$*/ vectorAsMap2 { };
+	std::vector<std::pair<int, std::string>> vectorAsMap3 { };
+}
+//=
+#include "test_definitions.h"
+
+template<typename T1, typename T2> using map = std::vector<std::pair<T1,T2> >;
+
+int main() {
+	map<int, std::string> vectorAsMap1 { };
+	map<int, std::string> vectorAsMap2 { };
+	map<int, std::string> vectorAsMap3 { };
+}
+//!AliExtorAliasTemplateABitComplexerBothSelectedSeveralOccurrencesJustSelected
+//@.config
+newName=map
+justRefactorSelected=true
+userWantsTemplateAlias=true
+userSelected0=int
+userSelected1=std::string
+//@A1.cpp
+#include <vector>
+int main() {
+	std::vector<std::pair<int, std::string>> vectorAsMap1 { };
+	/*$*/std::vector<std::pair<int, std::string>>/*$*/ vectorAsMap2 { };
+	std::vector<std::pair<int, std::string>> vectorAsMap3 { };
+}
+//=
+#include <vector>
+
+template<typename T1, typename T2> using map = std::vector<std::pair<T1,T2> >;
+
+int main() {
+	std::vector<std::pair<int, std::string>> vectorAsMap1 { };
+	map<int, std::string> vectorAsMap2 { };
+	std::vector<std::pair<int, std::string>> vectorAsMap3 { };
+}
+//!AliExtorAliasTemplateABitComplexerSelectTypeWithParameters
+//@.config
+newName=map
+justRefactorSelected=true
+userWantsTemplateAlias=true
+userSelected0=std::pair
+//@A1.cpp
+#include <vector>
+int main() {
+	/*$*/std::vector<std::pair<int, std::string>>/*$*/ vectorAsMap { };
+}
+//=
+#include <vector>
+
+template<typename T> using map = std::vector<T>;
+
+int main() {
+	map<std::pair<int, std::string> > vectorAsMap { };
+}
+//!AliExtorAliasTemplateABitComplexerSelectTypeWithParametersSeveralOccurences
+//@.config
+newName=map
+userWantsTemplateAlias=true
+userSelected0=std::pair
+//@A1.cpp
+#include "test_definitions.h"
+int main() {
+	std::vector<std::pair<int, std::string>> vectorAsMap { };
+	std::vector<std::pair<int, std::string>> vectorAsMap1 { };
+	std::vector<std::pair<int, std::string>> vectorAsMap2 { };
+	/*$*/std::vector<std::pair<int, std::string>>/*$*/ vectorAsMap3 { };
+}
+//=
+#include "test_definitions.h"
+
+template<typename T> using map = std::vector<T>;
+
+int main() {
+	map<std::pair<int, std::string> > vectorAsMap { };
+	map<std::pair<int, std::string> > vectorAsMap1 { };
+	map<std::pair<int, std::string> > vectorAsMap2 { };
+	map<std::pair<int, std::string> > vectorAsMap3 { };
+}
+//!AliExtorAliasTemplateABitComplexerSelectTypeWithParametersSeveralOccurencesJustSelected
+//@.config
+newName=map
+justRefactorSelected=true
+userWantsTemplateAlias=true
+userSelected0=std::pair
+//@A1.cpp
+#include <vector>
+int main() {
+	std::vector<std::pair<int, std::string>> vectorAsMap { };
+	std::vector<std::pair<int, std::string>> vectorAsMap1 { };
+	/*$*/std::vector<std::pair<int, std::string>>/*$*/ vectorAsMap2 { };
+	std::vector<std::pair<int, std::string>> vectorAsMap3 { };
+}
+//=
+#include <vector>
+
+template<typename T> using map = std::vector<T>;
+
+int main() {
+	std::vector<std::pair<int, std::string>> vectorAsMap { };
+	std::vector<std::pair<int, std::string>> vectorAsMap1 { };
+	map<std::pair<int, std::string> > vectorAsMap2 { };
+	std::vector<std::pair<int, std::string>> vectorAsMap3 { };
+}
+//!AliExtorAliasTemplateWithMultipleNamespaces
+//@.config
+newName=map
+justRefactorSelected=true
+userWantsTemplateAlias=true
+//@A1.cpp
+namespace foo {
+namespace bar {
+template<typename T>
+using map = std::vector<std::pair<int, T>>;
+}
+}
+void func() {
+	/*$*/foo::bar::map<std::string>/*$*/ myMap { };
+}
+//=
+namespace foo {
+namespace bar {
+template<typename T>
+using map = std::vector<std::pair<int, T>>;
+}
+}
+void func() {
+	using map = foo::bar::map<std::string>;
+	map myMap { };
+}

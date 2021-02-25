@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: GSLAtor Unit Tests
+Bundle-SymbolicName: com.cevelop.gslator.tests;singleton:=true
+Bundle-Version: 1.14.2.qualifier
+Fragment-Host: com.cevelop.gslator
+Require-Bundle: org.junit,
+ ch.hsr.ifs.iltis.testing.highlevel.testingplugin
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: IFS Institute for Software
+Automatic-Module-Name: com.cevelop.gslator.tests

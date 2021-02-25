@@ -1,0 +1,177 @@
+//!Test Simple Struct Extraction
+//@A.h
+struct /*$*/B/*$*/ {
+	void foo()
+	{
+	}
+};
+
+void test()
+{
+}
+//=
+#include "B.h"
+void test()
+{
+}
+//@B.h
+
+//=
+#ifndef B_H_
+#define B_H_
+
+
+
+struct B {
+	void foo()
+	{
+	}
+};
+
+
+#endif /* B_H_ */
+//!Test Nested Struct Extraction
+//@A.h
+struct B {
+	struct /*$*/C/*$*/ {
+	};
+};
+
+void test()
+{
+}
+//=
+#include "B.h"
+void test()
+{
+}
+//@B.h
+
+//=
+#ifndef B_H_
+#define B_H_
+
+
+
+struct B {
+	struct C {
+	};
+};
+
+
+#endif /* B_H_ */
+//!Test Templated Struct Extraction
+//@A.h
+template <typename T>
+struct /*$*/B/*$*/ {
+};
+
+void test()
+{
+}
+//=
+#include "B.h"
+void test()
+{
+}
+//@B.h
+
+//=
+#ifndef B_H_
+#define B_H_
+
+
+
+template <typename T>
+struct B {
+};
+
+
+#endif /* B_H_ */
+//!Test Nested Templated Struct Extraction
+//@A.h
+template <typename T, typename U>
+struct /*$*/B/*$*/ {
+	T t;
+	U u;
+};
+//=
+#include "B.h"
+
+//@B.h
+//=
+#ifndef B_H_
+#define B_H_
+
+
+
+template <typename T, typename U>
+struct B {
+	T t;
+	U u;
+};
+
+
+#endif /* B_H_ */
+//!Test Nested Templated Struct Extraction Selection In Templated Member
+//@A.h
+template<typename T, typename U>
+struct B {
+	T t;
+	U u;
+	template <typename W>
+	W me/*$*//*$*/mber() {
+		return W();
+	}
+};
+//=
+#include "B.h"
+
+//@B.h
+//=
+#ifndef B_H_
+#define B_H_
+
+
+
+template<typename T, typename U>
+struct B {
+	T t;
+	U u;
+	template <typename W>
+	W member() {
+		return W();
+	}
+};
+
+
+#endif /* B_H_ */
+//!Test Simple Function Extraction
+//@A.h
+void /*$*/foo/*$*/()
+{
+}
+
+void test()
+{
+}
+//=
+#include "foo.h"
+
+void test()
+{
+}
+//@foo.h
+
+//=
+#ifndef FOO_H_
+#define FOO_H_
+
+
+
+void foo()
+{
+}
+
+
+#endif /* FOO_H_ */

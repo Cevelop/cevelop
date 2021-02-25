@@ -1,0 +1,7 @@
+//!Excluded Folder
+//@main.cpp
+int main() { return 0; }
+//@lib/A.cpp
+class A {};
+//@lib/B.cpp
+class B {};

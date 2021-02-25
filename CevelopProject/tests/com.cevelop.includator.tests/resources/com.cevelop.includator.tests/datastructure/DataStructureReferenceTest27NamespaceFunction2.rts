@@ -1,0 +1,16 @@
+//!DataStructureReferenceTest27NamespaceFunction2
+//@A.cpp
+void F::foo2() {
+}
+//@F1.h
+namespace F {
+	void foo1();
+}
+//@F2.h
+namespace F {
+	void foo2();
+}
+//@F3.h
+namespace F {
+	void foo3();
+}

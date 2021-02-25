@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.cevelop.branding.feature"
+      label="Branding"
+      version="1.14.2.qualifier"
+      provider-name="IFS Institute for Software"
+      plugin="com.cevelop.branding">
+
+   <description url="http://www.example.com/description">
+      [Enter Feature Description here.]
+   </description>
+
+   <copyright url="http://www.example.com/copyright">
+      [Enter Copyright Description here.]
+   </copyright>
+
+   <license url="http://www.example.com/license">
+      [Enter License Description here.]
+   </license>
+
+   <url>
+      <update label="Cevelop Plug-Ins" url="https://www.cevelop.com/update/latest"/>
+   </url>
+
+   <plugin
+         id="com.cevelop.branding"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>

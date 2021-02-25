@@ -1,8 +1,0 @@
-//!IndexAdaptionTest1UnincludedHeader
-//@A.cpp
-int main() {
-  B b;
-  return 0;
-}
-//@B.h
-class B { };

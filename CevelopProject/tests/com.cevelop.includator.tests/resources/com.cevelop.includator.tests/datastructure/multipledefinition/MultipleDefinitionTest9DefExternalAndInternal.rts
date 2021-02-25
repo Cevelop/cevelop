@@ -1,0 +1,7 @@
+//!MultipleDefinitionTest9DefExternalAndInternal
+//@main.cpp
+int main() {
+  I i;
+}
+//@i1.h
+typedef int I;

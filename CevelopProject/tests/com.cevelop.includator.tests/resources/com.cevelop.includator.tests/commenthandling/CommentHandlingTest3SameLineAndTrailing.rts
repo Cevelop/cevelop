@@ -1,0 +1,6 @@
+//!CommentHandlingTest3SameLineAndTrailing
+//@main.cpp
+#include "foo.h" //a
+//b
+//@foo.h
+void foo();

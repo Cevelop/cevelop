@@ -1,4 +1,0 @@
-//!StartingPointTest4ExternalFile
-//@main.cpp
-#include <active.h>
-//no content since starting point will be on external file.

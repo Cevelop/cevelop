@@ -1,0 +1,128 @@
+//! Initialize in for loop fix
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|MISRA_GUIDELINE_ID)
+//@main.h
+void function()  {
+	int j;
+	for(j= 0; j<0; j++) {
+	}
+}
+//=
+void function()  {
+	for (int j = 0; j < 0; j++) {
+	}
+}
+
+//! Initialize in for loop fix with reference
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|MISRA_GUIDELINE_ID)
+//@main.h
+void function()  {
+	int j;
+	j = 5;
+	for(j= 0; j<0; j++) {
+	}
+}
+//=
+void function()  {
+	for (int j = 0; j < 0; j++) {
+	}
+}
+
+//! Null statement added initializer fix
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|MISRA_GUIDELINE_ID)
+//@main.h
+void function()  {
+	int j = 3;
+	for(; j<0; j++) {
+	}
+}
+//=
+void function()  {
+	for (int j = 3; j < 0; j++) {
+	}
+}
+
+//! Null statement added initializer fix with reference
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|MISRA_GUIDELINE_ID)
+//@main.h
+void function()  {
+	int j;
+	j = 3;
+	for(; j<0; j++) {
+	}
+}
+//=
+void function()  {
+	for (int j = 3; j < 0; j++) {
+	}
+}
+
+//! Null statement added initializer fix after for loop
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|MISRA_GUIDELINE_ID)
+//@main.h
+void function()  {
+	int j = 0;
+	for(; j<0; j++) {
+	}
+	j = 3;
+}
+//=
+void function()  {
+	for (int j = 0; j < 0; j++) {
+	}
+}
+
+//! Null statement added initializer list
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|MISRA_GUIDELINE_ID)
+//@main.h
+void function()  {
+	int j {1};
+	for(; j<0; j++) {
+	}
+}
+//=
+void function()  {
+	for (int j { 1 }; j < 0; j++) {
+	}
+}
+
+//! Initializer before for loop fix not possible
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|MISRA_GUIDELINE_ID)
+//@main.h
+void function()  {
+	int j;
+	j++;
+	for(j= 0; j<0; j++) {
+	}
+}
+//=
+void function()  {
+	int j;
+	j++;
+	for(j= 0; j<0; j++) {
+	}
+}
+
+//! Set attribute loop variable
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|MISRA_GUIDELINE_ID)
+setIgnoreAttribute=true
+//@main.h
+void function()  {
+	int j = 1;
+	for (; j < 0; j++) {
+	}
+}
+//=
+void function()  {
+	int j = 1;
+	[[misra::suppress("M3-4-1")]] 
+	for (; j < 0; j++) {
+	}
+}

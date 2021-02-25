@@ -1,6 +1,0 @@
-//!Decltype 01 Local Decltype
-//@main.cpp
-int main() {
-	int i{};
-	decltype(i) j{};
-}

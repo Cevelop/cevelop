@@ -1,6 +1,0 @@
-//!IgnoredIncludes10BoostFunctionHpp
-//@main.cpp
-int main() {
-  boost::function<void()> theTest;
-  return 0;
-}

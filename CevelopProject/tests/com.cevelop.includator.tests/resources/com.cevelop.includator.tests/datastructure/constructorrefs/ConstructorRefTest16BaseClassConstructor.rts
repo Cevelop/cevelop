@@ -1,0 +1,10 @@
+//!ConstructorRefTest16BaseClassConstructor
+//@main.cpp
+#include "A.h"
+class B : public A {
+};
+//@A.h
+class A {
+public:
+  A() { }
+};

@@ -1,0 +1,17 @@
+//!SuggestionStoreTest6QuickFixPositionsManyElements
+//@A.cpp
+#include "B.h"
+#include "C.h"
+
+int main() {
+	return 0;
+}
+//=
+
+int main() {
+	return 0;
+}
+//@B.h
+class B { };
+//@C.h
+class C { };

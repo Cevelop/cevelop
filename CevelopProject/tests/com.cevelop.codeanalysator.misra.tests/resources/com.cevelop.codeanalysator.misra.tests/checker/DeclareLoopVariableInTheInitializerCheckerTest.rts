@@ -1,0 +1,39 @@
+//!InitializerBeforeForLoopFixPossible
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|MISRA_GUIDELINE_ID)
+markerLines=3
+//@main.h
+void function()  {
+	int j;
+	for(j= 0; j<0; j++) {
+	}
+}
+//!InitializerBeforeForLoopFixNotPossible
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|MISRA_GUIDELINE_ID)
+markerLines=4
+//@main.h
+void function()  {
+	int j;
+	j++;
+	for(j= 0; j<0; j++) {
+	}
+}
+//!InitializerAtForLoop
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|MISRA_GUIDELINE_ID)
+//@main.h
+void function()  {
+	for(int j= 0; j<0; j++) {
+	}
+}
+//!CheckIgnoreAttribute
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|MISRA_GUIDELINE_ID)
+//@main.h
+void function()  {
+	int j;
+	[[misra::suppress("M3-4-1")]]
+	for(j = 0; j<0; j++) {
+	}
+}

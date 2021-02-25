@@ -1,0 +1,73 @@
+//!AssignmentQuickFix
+//@main.h
+int main() {
+	long long l = 239804;
+	char c = 'c';
+	c = l;
+}
+//=
+#include "gsl.h"
+int main() {
+	long long l = 239804;
+	char c = 'c';
+	c = gsl::narrow<char>(l);
+}
+//!AssignmentCastQuickFix
+//@main.h
+int main() {
+	long long l = 239804;
+	char c = 'c';
+	c = (char) l;
+}
+//=
+#include "gsl.h"
+int main() {
+	long long l = 239804;
+	char c = 'c';
+	c = gsl::narrow<char>(l);
+}
+//!AssignmentCastWithMultipleUnaryExpressionsQuickFix
+//@main.h
+int main() {
+	long long l = 239804;
+	char c = 'c';
+	c = (char) (((l)));
+}
+//=
+#include "gsl.h"
+int main() {
+	long long l = 239804;
+	char c = 'c';
+	c = gsl::narrow<char>(l);
+}
+//!DeclarationQuickFix
+//@main.h
+int main() {
+	long long l = 239804;
+	char c = l;
+}
+//=
+#include "gsl.h"
+int main() {
+	long long l = 239804;
+	char c = gsl::narrow<char>(l);
+}
+//!AssignmentCastQuickFixWithExistingGSL
+//@main.h
+#include "gsl.h"
+int main() {
+	long long l = 239804;
+	char c1 = 'c';
+	char c2 = 'C';
+	c1 = (char) l;
+	c2 = gsl::narrow<char>(l);
+}
+//=
+#include "gsl.h"
+int main() {
+	long long l = 239804;
+	char c1 = 'c';
+	char c2 = 'C';
+	c1 = gsl::narrow<char>(l);
+	c2 = gsl::narrow<char>(l);
+}

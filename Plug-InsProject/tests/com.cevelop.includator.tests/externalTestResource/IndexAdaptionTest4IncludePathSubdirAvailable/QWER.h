@@ -1,4 +1,0 @@
-class QWER {
-public:
-	QWER();
- };

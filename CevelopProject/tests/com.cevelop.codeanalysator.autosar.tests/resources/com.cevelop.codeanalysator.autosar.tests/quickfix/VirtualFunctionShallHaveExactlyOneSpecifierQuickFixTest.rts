@@ -1,0 +1,327 @@
+//! Final pure virtual is unusable, quickfix not appliccable
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=3
+//@main.h
+class A {
+	public:
+		virtual void F() noexcept final = 0;
+};
+//=
+class A {
+	public:
+		virtual void F() noexcept final = 0;
+};
+
+//! Declaration: Final and virtual, not applicable
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=3
+//@main.h
+class A {
+	public:
+		virtual void F() noexcept final;
+};
+//=
+class A {
+	public:
+		virtual void F() noexcept final;
+};
+
+//! Definition: Final and virtual, not applicable
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=3
+//@main.h
+class A {
+	public:
+		virtual void F() noexcept final {}
+};
+//=
+class A {
+	public:
+		virtual void F() noexcept final {}
+};
+
+//! Definition: Derived final and virtual, remove virtual
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+marlerLines=8
+//@main.h
+class A {
+	public:
+		virtual void F() noexcept = 0;
+};
+class B : A
+{
+	public:
+		virtual void F() noexcept final {}
+};
+//=
+class A {
+	public:
+		virtual void F() noexcept = 0;
+};
+class B : A
+{
+	public:
+		void F() noexcept final {}
+};
+
+//! Declaration: Derived final and virtual, remove virtual
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=8
+//@main.h
+class A {
+	public:
+		virtual void F() noexcept;
+};
+class B : A
+{
+	public:
+		virtual void F() noexcept final;
+};
+//=
+class A {
+	public:
+		virtual void F() noexcept;
+};
+class B : A
+{
+	public:
+		void F() noexcept final;
+};
+
+//! Definition: Derived virtual and override, remove virtual
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=7
+//@main.h
+class A {
+	public:
+		virtual void F() noexcept = 0;
+};
+class B: public A {
+	public:
+		virtual void F() noexcept override {}
+};
+//=
+class A {
+	public:
+		virtual void F() noexcept = 0;
+};
+class B: public A {
+	public:
+		void F() noexcept override {}
+};
+
+//! Declaration: Derived virtual and override, remove virtual
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=7
+//@main.h
+class A {
+	public:
+		virtual void F() noexcept = 0;
+};
+class B: public A {
+	public:
+		virtual void F() noexcept override;
+};
+//=
+class A {
+	public:
+		virtual void F() noexcept = 0;
+};
+class B: public A {
+	public:
+		void F() noexcept override;
+};
+
+//! Definition: Derived override and final, remove override
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=7
+//@main.h
+class A {
+	public:
+		virtual void F() noexcept {}
+};
+class B: public A {
+	public:
+		void F() noexcept override final {}
+};
+//=
+class A {
+	public:
+		virtual void F() noexcept {}
+};
+class B: public A {
+	public:
+		void F() noexcept final {}
+};
+
+//! Declaration: Derived override and final, remove override
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=7
+//@main.h
+class A {
+	public:
+		virtual void F() noexcept = 0;
+};
+class B: public A {
+	public:
+		void F() noexcept override final;
+};
+//=
+class A {
+	public:
+		virtual void F() noexcept = 0;
+};
+class B: public A {
+	public:
+		void F() noexcept final;
+};
+
+//! Definition: Override, final and virtual, remove override and virtual
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=7
+//@main.h
+class A {
+	public:
+		virtual void F() noexcept {}
+};
+class B: public A {
+	public:
+		virtual void F() noexcept override final {}
+};
+//=copy
+class A {
+	public:
+		virtual void F() noexcept {}
+};
+class B: public A {
+	public:
+		void F() noexcept final {}
+};
+
+//! Declaration: Override, final and virtual, remove override and virtual
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=7
+//@main.h
+class A {
+	public:
+		virtual void F() noexcept = 0;
+};
+class B: public A {
+	public:
+		virtual void F() noexcept override final;
+};
+//=
+class A {
+	public:
+		virtual void F() noexcept = 0;
+};
+class B: public A {
+	public:
+		void F() noexcept final;
+};
+
+//! Definition: Missing override, add override
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=7
+//@main.h
+class A {
+	public:
+		virtual void F() noexcept {}
+};
+class B: public A {
+	public:
+		void F() noexcept {}
+};
+//=
+class A {
+	public:
+		virtual void F() noexcept {}
+};
+class B: public A {
+	public:
+		void F() noexcept override {}
+};
+
+//! Declaration: Missing override, add override
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=7
+//@main.h
+class A {
+	public:
+		virtual void F() noexcept = 0;
+};
+class B: public A {
+	public:
+		void F() noexcept;
+};
+//=
+class A {
+	public:
+		virtual void F() noexcept = 0;
+};
+class B: public A {
+	public:
+		void F() noexcept override;
+};
+
+
+//! Comments are not removed
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=7
+//@main.h
+class A {
+	public:
+		virtual void F() noexcept {}
+};
+class B: public A {
+	public:
+		virtual void F() noexcept final // some comment
+		{}
+};
+//=
+class A {
+	public:
+		virtual void F() noexcept {}
+};
+class B: public A {
+	public:
+		void F() noexcept final // some comment
+		{}
+};
+
+//! Params are not removed
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=7
+//@main.h
+class A {
+	public:
+		virtual void F() noexcept {}
+};
+class B: public A {
+	public:
+		virtual void F(int f) noexcept final	{}
+};
+//=
+class A {
+	public:
+		virtual void F() noexcept {}
+};
+class B: public A {
+	public:
+		void F(int f) noexcept final {}
+};

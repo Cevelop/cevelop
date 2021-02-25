@@ -1,0 +1,6 @@
+//!Auto 01 Local Auto
+//@main.cpp
+int main() {
+	int i{};
+	auto j = i;
+}

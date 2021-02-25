@@ -1,5 +1,0 @@
-//!DataStructureFileTest3AsmFile
-//@XY.asm
-;some stuff comment
-//@unused.h
-int i = 0;

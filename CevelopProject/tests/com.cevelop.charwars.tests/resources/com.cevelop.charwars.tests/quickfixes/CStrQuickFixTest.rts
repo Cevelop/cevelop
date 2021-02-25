@@ -1,0 +1,26 @@
+//!CStrQuickFixMultipleParameters
+//@main.cpp
+#include "string.h"
+void func(int i, const char *str, double f);
+void func(int i, const std::string &str, double f);
+
+int main() {
+	std::string str = "Hello";
+	func(5, str.c_str(), 5.0);
+}
+
+void func(int i, const char *str, double f) {}
+void func(int i, const std::string &str, double f) {}
+//=
+#include "string.h"
+void func(int i, const char *str, double f);
+void func(int i, const std::string &str, double f);
+
+int main() {
+	std::string str = "Hello";
+	func(5, str, 5.0);
+}
+
+void func(int i, const char *str, double f) {}
+void func(int i, const std::string &str, double f) {}
+

@@ -1,0 +1,22 @@
+//!System incudes first
+//@.config
+markerLines=3
+//@main.cpp
+#include <iostream>
+
+#include "Foo.hpp"
+
+void foo() {
+	std::cout << "blubber";
+}
+
+//!System incudes correct
+//@.config
+//@main.cpp
+#include "Foo.hpp"
+
+#include <iostream>
+
+void foo() {
+	std::cout << "blubber";
+}

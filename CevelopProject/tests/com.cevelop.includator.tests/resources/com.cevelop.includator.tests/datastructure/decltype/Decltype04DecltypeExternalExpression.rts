@@ -1,0 +1,12 @@
+//!Decltype 04 Decltype External Expression
+//@main.cpp
+#include "Inner.hpp"
+
+int main() {
+	decltype(i)::Outer o{};
+}
+//@Inner.hpp
+struct Inner {
+	struct Outer {};
+};
+Inner i{};

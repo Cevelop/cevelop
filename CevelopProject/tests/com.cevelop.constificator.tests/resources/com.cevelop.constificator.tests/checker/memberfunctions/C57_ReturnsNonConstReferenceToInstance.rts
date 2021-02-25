@@ -1,0 +1,17 @@
+//!ReturnNonConstReferenceToInstance
+//@struct.h
+struct thing {
+	thing & operator+=(thing const & other) {
+		return *this;
+	}
+};
+
+//!ReturnConstReferenceToInstance
+//@.config
+markerLines=2
+//@struct.h
+struct thing {
+	thing const & operator+=(thing const & other) {
+		return *this;
+	}
+};

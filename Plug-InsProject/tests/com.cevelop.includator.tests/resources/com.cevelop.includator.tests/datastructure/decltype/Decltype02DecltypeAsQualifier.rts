@@ -1,9 +1,0 @@
-//!Decltype 02 Decltype as Qualifier
-//@main.cpp
-struct Inner {
-	struct Outer {};
-};
-int main() {
-	Inner i{};
-	decltype(i)::Outer o{};
-}

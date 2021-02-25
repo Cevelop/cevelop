@@ -1,0 +1,15 @@
+//!IndexIncludeStore3InactiveIncludeTest
+//@main.cpp
+#include "A.h"
+#ifdef SOMETHING_UNDEFINDED
+#include "B.h"
+#endif
+int main() { 
+  return 0;
+}
+//@A.h
+class A { };
+//@B.h
+class B { };
+
+ 

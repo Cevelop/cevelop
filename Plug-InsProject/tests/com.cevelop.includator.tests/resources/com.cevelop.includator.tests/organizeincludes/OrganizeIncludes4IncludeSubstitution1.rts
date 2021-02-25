@@ -1,8 +1,0 @@
-//!OrganizeIncludes4IncludeSubstitution1
-//@main.cpp
-
-int main() {
-  vector vec;
-  return 0;
-}
-

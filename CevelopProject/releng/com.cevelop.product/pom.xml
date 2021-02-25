@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<version>1.14.2-SNAPSHOT</version>
+
+    <parent>
+        <groupId>com.cevelop</groupId>
+        <artifactId>com.cevelop.releng</artifactId>
+        <version>1.14.2-SNAPSHOT</version>
+    </parent>
+
+	<artifactId>com.cevelop.product</artifactId>
+	<packaging>eclipse-repository</packaging>
+	<properties>
+		<rootFolder>cevelop</rootFolder>
+		<package-linux-phase>none</package-linux-phase>
+		<package-windows-phase>none</package-windows-phase>
+		<package-all-phase>none</package-all-phase>
+	</properties>
+
+	<profiles>
+
+		<profile>
+			<id>package-linux</id>
+			<activation>
+				<property>
+					<name>env.IDE_OS</name>
+					<value>linux</value>
+				</property>
+			</activation>
+			<properties>
+				<package-linux-phase>package</package-linux-phase>
+			</properties>
+		</profile>
+
+		<profile>
+			<id>package-windows</id>
+			<activation>
+				<property>
+					<name>env.IDE_OS</name>
+					<value>win32</value>
+				</property>
+			</activation>
+			<properties>
+				<package-windows-phase>package</package-windows-phase>
+			</properties>
+		</profile>
+
+		<profile>
+			<id>package-all</id>
+			<activation>
+				<property>
+					<name>!env.IDE_OS</name>
+				</property>
+			</activation>
+			<properties>
+				<package-all-phase>package</package-all-phase>
+			</properties>
+		</profile>
+
+	</profiles>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-p2-repository-plugin</artifactId>
+				<version>${eclipse.tycho.version}</version>
+				<configuration>
+					<includeAllDependencies>true</includeAllDependencies>
+					<profileProperties>
+						<macosx-bundled>true</macosx-bundled>
+					</profileProperties>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-p2-director-plugin</artifactId>
+				<version>${eclipse.tycho.version}</version>
+				<executions>
+					<execution>
+						<id>materialize-products</id>
+						<goals>
+							<goal>materialize-products</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>archive-products</id>
+						<phase>pre-integration-test</phase>
+						<goals>
+							<goal>archive-products</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<products>
+						<product>
+							<id>${product-id}</id>
+							<rootFolder>${rootFolder}</rootFolder>
+							<rootFolders>
+								<macosx>Cevelop.app</macosx>
+							</rootFolders>
+							<archiveFileName>${rootFolder}-${package-version-suffix}</archiveFileName>
+						</product>
+					</products>
+					<formats>
+						<macosx>tar.gz</macosx>
+						<linux>tar.gz</linux>
+						<win32>zip</win32>
+					</formats>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>${maven.antrun.version}</version>
+				<executions>
+					<execution>
+						<id>copy-auxiliary-files-linux</id>
+						<phase>${package-linux-phase}</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<target>
+								<copy file="linux-start-wrapper.sh"
+									tofile="${project.build.directory}/products/${product-id}/linux/gtk/${env.IDE_ARCH}/${rootFolder}/cevelop.sh"></copy>
+								<copy file="cevelop.desktop"
+									tofile="${project.build.directory}/products/${product-id}/linux/gtk/${env.IDE_ARCH}/${rootFolder}/cevelop.desktop"></copy>
+								<chmod file="${project.build.directory}/products/${product-id}/linux/gtk/${env.IDE_ARCH}/${rootFolder}/cevelop.sh"
+									perm="+x"></chmod>
+								<chmod
+									file="${project.build.directory}/products/${product-id}/linux/gtk/${env.IDE_ARCH}/${rootFolder}/cevelop.desktop"
+									perm="+x"></chmod>
+							</target>
+						</configuration>
+					</execution>
+					<!--execution>
+						<id>copy-auxiliary-files-windows</id>
+						<phase>${package-windows-phase}</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<target>
+								<exec executable="osslsigncode">
+									<arg value="-pkcs12" />
+									<arg value="${keystore}" />
+									<arg value="-pass" />
+									<arg value="${certpass}" />
+									<arg value="-t" />
+									<arg value="http://timestamp.verisign.com/scripts/timstamp.dll" />
+									<arg value="-in" />
+									<arg value="${project.build.directory}/products/${product-id}/win32/win32/${env.IDE_ARCH}/${rootFolder}/cevelop.exe" />
+									<arg value="-out" />
+									<arg
+										value="${project.build.directory}/products/${product-id}/win32/win32/${env.IDE_ARCH}/${rootFolder}/cevelop-signed.exe" />
+								</exec>
+								<move
+									file="${project.build.directory}/products/${product-id}/win32/win32/${env.IDE_ARCH}/${rootFolder}/cevelop-signed.exe"
+									tofile="${project.build.directory}/products/${product-id}/win32/win32/${env.IDE_ARCH}/${rootFolder}/cevelop.exe"></move>
+							</target>
+						</configuration>
+					</execution-->
+					<execution>
+						<id>copy-auxiliary-files-all</id>
+						<phase>${package-all-phase}</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<target>
+								<copy file="linux-start-wrapper.sh"
+									tofile="${project.build.directory}/products/${product-id}/linux/gtk/x86_64/${rootFolder}/cevelop.sh"></copy>
+								<copy file="cevelop.desktop"
+									tofile="${project.build.directory}/products/${product-id}/linux/gtk/x86_64/${rootFolder}/cevelop.desktop"></copy>
+								<chmod file="${project.build.directory}/products/${product-id}/linux/gtk/x86_64/${rootFolder}/cevelop.sh" perm="+x"></chmod>
+								<chmod file="${project.build.directory}/products/${product-id}/linux/gtk/x86_64/${rootFolder}/cevelop.desktop"
+									perm="+x"></chmod>
+								<!--exec executable="osslsigncode">
+									<arg value="-pkcs12" />
+									<arg value="${keystore}" />
+									<arg value="-pass" />
+									<arg value="${certpass}" />
+									<arg value="-t" />
+									<arg value="http://timestamp.verisign.com/scripts/timstamp.dll" />
+									<arg value="-in" />
+									<arg value="${project.build.directory}/products/${product-id}/win32/win32/x86_64/${rootFolder}/cevelop.exe" />
+									<arg value="-out" />
+									<arg value="${project.build.directory}/products/${product-id}/win32/win32/x86_64/${rootFolder}/cevelop-signed.exe" />
+								</exec>
+								<move file="${project.build.directory}/products/${product-id}/win32/win32/x86_64/${rootFolder}/cevelop-signed.exe"
+									tofile="${project.build.directory}/products/${product-id}/win32/win32/x86_64/${rootFolder}/cevelop.exe"></move-->
+							</target>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>

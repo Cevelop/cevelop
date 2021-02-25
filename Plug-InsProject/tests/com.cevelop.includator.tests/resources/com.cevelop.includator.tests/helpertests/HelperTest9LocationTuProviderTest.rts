@@ -1,8 +1,0 @@
-//!HelperTest9LocationTuProviderTest
-//@A.cpp
-#include "B.h"
-int main() {
-	return 0;
-}
-//@b.h
-class B { };

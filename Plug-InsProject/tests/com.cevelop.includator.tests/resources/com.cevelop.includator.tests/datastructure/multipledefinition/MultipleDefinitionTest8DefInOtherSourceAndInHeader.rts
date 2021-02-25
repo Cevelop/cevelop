@@ -1,9 +1,0 @@
-//!MultipleDefinitionTest8DefInOtherSourceAndInHeader
-//@main.cpp
-int main() {
-  I i;
-}
-//@i.h
-typedef int I;
-//@i.cpp
-typedef int I;

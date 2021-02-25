@@ -1,0 +1,301 @@
+//!RedundantDefaultConstructor
+//@main.h
+struct Named_map {
+public:
+	Named_map() : name { }, rep { }{
+	}
+	Named_map(const Named_map & rhs) :
+			name { rhs.name }, rep { rhs.rep }{
+		std::cout << "I was copied";
+	}
+	Named_map& operator =(const Named_map & rhs) {
+		name = rhs.name;
+		rep = rhs.rep;
+		return *this;
+	}
+	~Named_map() {
+		std::cout << "i died";
+	}
+
+private:
+	std::string name;
+	std::map<int, int> rep;
+};
+//=
+struct Named_map {
+public:
+	Named_map() = default;
+	Named_map(const Named_map & rhs) :
+			name { rhs.name }, rep { rhs.rep }{
+		std::cout << "I was copied";
+	}
+	Named_map& operator =(const Named_map & rhs) {
+		name = rhs.name;
+		rep = rhs.rep;
+		return *this;
+	}
+	~Named_map() {
+		std::cout << "i died";
+	}
+
+private:
+	std::string name;
+	std::map<int, int> rep;
+};
+//!RedundantDefaultDestructor
+//@main.h
+struct Named_map {
+public:
+	Named_map() : name { }, rep { }{
+		std::cout << "I was created";
+	}
+	Named_map(const Named_map & rhs) :
+			name { rhs.name }, rep { rhs.rep }{
+		std::cout << "I was copied";
+	}
+	Named_map& operator =(const Named_map & rhs) {
+		name = rhs.name;
+		rep = rhs.rep;
+		return *this;
+	}
+	~Named_map() {
+	}
+
+private:
+	std::string name;
+	std::map<int, int> rep;
+};
+//=
+struct Named_map {
+public:
+	Named_map() : name { }, rep { }{
+		std::cout << "I was created";
+	}
+	Named_map(const Named_map & rhs) :
+			name { rhs.name }, rep { rhs.rep }{
+		std::cout << "I was copied";
+	}
+	Named_map& operator =(const Named_map & rhs) {
+		name = rhs.name;
+		rep = rhs.rep;
+		return *this;
+	}
+	~Named_map() = default;
+
+private:
+	std::string name;
+	std::map<int, int> rep;
+};
+//!RedundantDefaultCopyAssignment
+//@main.h
+struct Named_map {
+public:
+	Named_map() : name { }, rep { }{
+		std::cout << "I was created";
+	}
+	Named_map(const Named_map & rhs) :
+			name { rhs.name }, rep { rhs.rep }{
+		std::cout << "I was copied";
+	}
+	void operator =(const Named_map& rhs) {
+	}
+	~Named_map() {
+		std::cout << "RIP";
+	}
+
+private:
+	std::string name;
+	std::map<int, int> rep;
+};
+//=
+struct Named_map {
+public:
+	Named_map() : name { }, rep { }{
+		std::cout << "I was created";
+	}
+	Named_map(const Named_map & rhs) :
+			name { rhs.name }, rep { rhs.rep }{
+		std::cout << "I was copied";
+	}
+	void operator =(const Named_map& rhs) = default;
+	~Named_map() {
+		std::cout << "RIP";
+	}
+
+private:
+	std::string name;
+	std::map<int, int> rep;
+};
+//!RedundantDefaultConstructorBecauseOfCPP
+//@main.h
+struct Named_map {
+public:
+	Named_map() noexcept;
+	Named_map(Named_map &&);
+	Named_map& operator=(Named_map &&);
+	Named_map(const Named_map & rhs);
+	Named_map& operator =(const Named_map & rhs);
+	~Named_map() noexcept;
+
+private:
+	
+};
+//@main.cpp
+#include "main.h"
+Named_map::Named_map() noexcept {
+}
+Named_map::Named_map(Named_map &&) = default;
+Named_map& Named_map::operator=(Named_map &&) = default;
+Named_map::Named_map(const Named_map & rhs) = default;
+Named_map& Named_map::operator =(const Named_map & rhs) = default;
+Named_map::~Named_map() noexcept = default;
+//=
+#include "main.h"
+Named_map::Named_map() noexcept =default;
+Named_map::Named_map(Named_map &&) = default;
+Named_map& Named_map::operator=(Named_map &&) = default;
+Named_map::Named_map(const Named_map & rhs) = default;
+Named_map& Named_map::operator =(const Named_map & rhs) = default;
+Named_map::~Named_map() noexcept = default;
+//!RedundantCopyConstructorBecauseOfCPP
+//@main.h
+struct Named_map {
+public:
+	Named_map() noexcept;
+	Named_map(Named_map &&);
+	Named_map& operator=(Named_map &&);
+	Named_map(const Named_map & rhs);
+	Named_map& operator =(const Named_map & rhs);
+	~Named_map() noexcept;
+
+private:
+	
+};
+//@main.cpp
+#include "main.h"
+Named_map::Named_map() noexcept = default;
+Named_map::Named_map(Named_map &&) = default;
+Named_map& Named_map::operator=(Named_map &&) = default;
+Named_map::Named_map(const Named_map& rhs){
+}
+Named_map& Named_map::operator =(const Named_map& rhs) = default;
+Named_map::~Named_map() noexcept = default;
+//=
+#include "main.h"
+Named_map::Named_map() noexcept = default;
+Named_map::Named_map(Named_map &&) = default;
+Named_map& Named_map::operator=(Named_map &&) = default;
+Named_map::Named_map(const Named_map& rhs) = default;
+Named_map& Named_map::operator =(const Named_map& rhs) = default;
+Named_map::~Named_map() noexcept = default;
+//!RedundantCopyAssignmentBecauseOfCPP
+//@main.h
+struct Named_map {
+public:
+	Named_map() noexcept;
+	Named_map(Named_map &&);
+	Named_map& operator=(Named_map &&);
+	Named_map(const Named_map & rhs);
+	Named_map& operator =(const Named_map & rhs);
+	~Named_map() noexcept;
+
+private:
+	
+};
+//@main.cpp
+#include "main.h"
+Named_map::Named_map() noexcept = default;
+Named_map::Named_map(Named_map &&) = default;
+Named_map& Named_map::operator=(Named_map &&) = default;
+Named_map::Named_map(const Named_map& rhs) = default;
+Named_map& Named_map::operator =(const Named_map& rhs){
+}
+Named_map::~Named_map() noexcept = default;
+//=
+#include "main.h"
+Named_map::Named_map() noexcept = default;
+Named_map::Named_map(Named_map &&) = default;
+Named_map& Named_map::operator=(Named_map &&) = default;
+Named_map::Named_map(const Named_map& rhs) = default;
+Named_map& Named_map::operator =(const Named_map& rhs) = default;
+Named_map::~Named_map() noexcept = default;
+//!RedundantDestructorBecauseOfCPP
+//@main.h
+struct Named_map {
+public:
+	Named_map() noexcept;
+	Named_map(Named_map &&);
+	Named_map& operator=(Named_map &&);
+	Named_map(const Named_map & rhs);
+	Named_map& operator =(const Named_map & rhs);
+	~Named_map() noexcept;
+
+private:
+	
+};
+//@main.cpp
+#include "main.h"
+Named_map::Named_map() noexcept = default;
+Named_map::Named_map(Named_map &&) = default;
+Named_map& Named_map::operator=(Named_map &&) = default;
+Named_map::Named_map(const Named_map& rhs) = default;
+Named_map& Named_map::operator =(const Named_map& rhs) = default;
+Named_map::~Named_map() noexcept{
+}
+//=
+#include "main.h"
+Named_map::Named_map() noexcept = default;
+Named_map::Named_map(Named_map &&) = default;
+Named_map& Named_map::operator=(Named_map &&) = default;
+Named_map::Named_map(const Named_map& rhs) = default;
+Named_map& Named_map::operator =(const Named_map& rhs) = default;
+Named_map::~Named_map() noexcept =default;
+//!SetAttributeRedundantDefaultConstructor
+//@.config
+setIgnoreAttribute=true
+//@Named_map.h
+struct Named_map {
+public:
+	Named_map() : name { }, rep { }{
+	}
+	Named_map(const Named_map & rhs) :
+			name { rhs.name }, rep { rhs.rep }{
+		std::cout << "I was copied";
+	}
+	Named_map& operator =(const Named_map & rhs) {
+		name = rhs.name;
+		rep = rhs.rep;
+		return *this;
+	}
+	~Named_map() {
+		std::cout << "i died";
+	}
+
+private:
+	std::string name;
+	std::map<int, int> rep;
+};
+//=
+struct Named_map {
+public:
+	[[gsl::suppress("Rc-zero")]]
+	Named_map() :
+			name { }, rep { } {
+	}
+	Named_map(const Named_map & rhs) :
+			name { rhs.name }, rep { rhs.rep }{
+		std::cout << "I was copied";
+	}
+	Named_map& operator =(const Named_map & rhs) {
+		name = rhs.name;
+		rep = rhs.rep;
+		return *this;
+	}
+	~Named_map() {
+		std::cout << "i died";
+	}
+
+private:
+	std::string name;
+	std::map<int, int> rep;
+};

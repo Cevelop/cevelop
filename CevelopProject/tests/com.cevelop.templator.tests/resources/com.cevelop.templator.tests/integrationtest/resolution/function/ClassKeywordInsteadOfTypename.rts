@@ -1,0 +1,15 @@
+//!ClassKeywordInsteadOfTypename
+//@MyFileName.cpp
+template<class T>
+void inner(T first) {}
+
+void inner(double first) {}
+
+template<typename T>
+void outer(T first) {
+    inner(first); // <int>    
+}
+
+int main() {
+    outer(1); //<int>
+}

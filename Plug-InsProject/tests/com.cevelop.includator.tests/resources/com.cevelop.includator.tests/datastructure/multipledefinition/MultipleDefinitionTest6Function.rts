@@ -1,9 +1,0 @@
-//!MultipleDefinitionTest6Function
-//@main.cpp
-int main() {
-  foo();
-}
-//@a.h
-void foo() { }
-//@b.h
-void foo() { }

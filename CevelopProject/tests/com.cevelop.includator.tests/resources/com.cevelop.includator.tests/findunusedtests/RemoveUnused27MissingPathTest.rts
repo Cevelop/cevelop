@@ -1,0 +1,15 @@
+//!RemoveUnused27MissingPathTest
+//@foo.h
+void foo() {
+	A a;
+}
+//@main.cpp
+#include "A.h"
+#include "foo.h"
+
+int main() {
+	foo();
+	return 0;
+}
+//@A.h
+struct A { };

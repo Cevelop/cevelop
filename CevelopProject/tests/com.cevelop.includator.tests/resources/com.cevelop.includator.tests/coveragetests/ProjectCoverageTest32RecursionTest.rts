@@ -1,0 +1,24 @@
+//!ProjectCoverageTest32RecursionTest
+//@main.cpp
+#include "X.h"
+
+int main() {
+	X x;
+	delete x;
+}
+//@X.h
+class X {
+public:
+	X();
+	virtual ~X();
+	X *x;
+};
+//@X.cpp
+#include "X.h"
+
+X::X() {
+	x = new X();
+}
+
+X::~X() {
+}

@@ -1,0 +1,313 @@
+//!AliExtorExtractInt
+//@.config
+newName=INT
+//@A1.cpp
+int main(){
+	/*$*/int/*$*/ foo { 42 };
+}
+//=
+int main(){
+	using INT = int;
+	INT foo { 42 };
+}
+//!AliExtorExtractConstInt
+//@.config
+newName=CINT
+//@A1.cpp
+int main(){
+	/*$*/const int/*$*/ foo { 42 };
+}
+//=
+int main(){
+	using CINT = const int;
+	CINT foo { 42 };
+}
+//!AliExtorExtractTemplateParam
+//@.config
+newName=CINT
+//@A1.cpp
+#include <vector>
+int main(){
+	std::vector</*$*/const int/*$*/> foo { 42 };
+}
+//=
+#include <vector>
+int main(){
+	using CINT = const int;
+	std::vector<CINT> foo { 42 };
+}
+//!AliExtorExtractFromAlias
+//@.config
+newName=CSTR
+//@A1.cpp
+#include <string>
+#include <vector>
+int main(){
+	using CVECCSTR = const std::vector</*$*/const std::string/*$*/>;
+	const std::vector<CVECCSTR> foo { };
+}
+//=
+#include <string>
+#include <vector>
+int main(){
+	using CSTR = const std::string;
+	using CVECCSTR = const std::vector<CSTR>;
+	const std::vector<CVECCSTR> foo { };
+}
+//!AliExtorExtractSelectionFault1
+//@.config
+shouldSucceed=false
+//@A1.cpp
+#include <string>
+#include <vector>
+int main(){
+	using CSTR = const std::string;
+	using CVECCSTR = const std::vector<CSTR>;
+	const std::vector/*$*/<CVECCSTR>/*$*/ foo { };
+}
+//!AliExtorExtractSelectionFault2
+//@.config
+shouldSucceed=false
+//@A1.cpp
+int main() {
+	const std::vector</*$*/const int>/*$*/ foo { 42 };
+}
+//!AliExtorExtractConstIntPointerWithStatementSelection
+//@.config
+newName=CIPTR
+//@A1.cpp
+int main(){
+	/*$*/int const * const foo { };/*$*/
+}
+//=
+int main(){
+	using CIPTR = const int*const;
+	CIPTR foo { };
+}
+//!AliExtorExtractConstIntPointersWithStatementSelection
+//@.config
+newName=CIPTR
+//@A1.cpp
+int main(){
+	/*$*/int const *** const foo { };/*$*/
+}
+//=
+int main(){
+	using CIPTR = const int***const;
+	CIPTR foo { };
+}
+//!AliExtorExtractIntReferenceWithStatementSelectionAndInitializer
+//@.config
+newName=CIREF
+//@A1.cpp
+int main(){
+	int magicNumber { 42 };
+	/*$*/int & foo { magicNumber };/*$*/
+}
+//=
+int main(){
+	using CIREF = int&;
+	int magicNumber { 42 };
+	CIREF foo { magicNumber };
+}
+//!AliExtorExtractTypeAliasAsFirstDeclStatement
+//@.config
+newName=CIREF
+//@A1.cpp
+int main(){
+	int magicNumber { 42 };
+	int bla { 43 };
+	const int stay { 44 };
+	/*$*/int & foo { magicNumber };/*$*/
+}
+//=
+int main(){
+	using CIREF = int&;
+	int magicNumber { 42 };
+	int bla { 43 };
+	const int stay { 44 };
+	CIREF foo { magicNumber };
+}
+//!AliExtorExtractTypeAliasWithSelectionOfQualifiedName
+//@.config
+newName=VPSI
+//@A1.cpp
+#include <vector>
+#include <string>
+int main(){
+	/*$*/std::vector<std::pair<std::string, int>>/*$*/ bar { };
+}
+//=
+#include <vector>
+#include <string>
+int main(){
+	using VPSI = std::vector<std::pair<std::string,int> >;
+	VPSI bar { };
+}
+//!AliExtorExtractTypeAliasWithSelectionOfQualifiedNameOnInnerNode
+//@.config
+newName=PSI
+//@A1.cpp
+#include <vector>
+#include <string>
+int main(){
+	std::vector</*$*/std::pair<std::string, int>/*$*/> bar { };
+}
+//=
+#include <vector>
+#include <string>
+int main(){
+	using PSI = std::pair<std::string,int>;
+	std::vector<PSI> bar { };
+}
+//!AliExtorReplaceOtherOccurrences
+//@.config
+newName=CINT
+//@A1.cpp
+int main(){
+	/*$*/int const/*$*/ foo { 42 };
+	int x = foo + 5;
+	int const bar { 123 };
+}
+//=
+int main(){
+	using CINT = const int;
+	CINT foo { 42 };
+	int x = foo + 5;
+	CINT bar { 123 };
+}
+//!AliExtorReplaceOtherOccurrencesWithSwappedConstInt
+//@.config
+newName=CINT
+//@A1.cpp
+int main(){
+	/*$*/int const/*$*/ foo { 42 };
+	int x = foo + 5;
+	const int bar { 123 };
+}
+//=
+int main(){
+	using CINT = const int;
+	CINT foo { 42 };
+	int x = foo + 5;
+	CINT bar { 123 };
+}
+//!AliExtorExtractOtherOccurencesInTemplateID
+//@.config
+newName=CINT
+//@A1.cpp
+#include <vector>
+int main(){
+	/*$*/int const/*$*/ foo { 42 };
+	int x { foo + 5 };
+	const int bar { 123 };
+	int y { foo + bar };
+	std::vector<const int> vec { foo, bar };
+}
+//=
+#include <vector>
+int main(){
+	using CINT = const int;
+	CINT foo { 42 };
+	int x { foo + 5 };
+	CINT bar { 123 };
+	int y { foo + bar };
+	std::vector<CINT> vec { foo, bar };
+}
+//!AliExtorExtractConstIntWithoutCompoundStatement
+//@.config
+newName=INT
+//@A1.cpp
+/*$*/int/*$*/ beschte { 54 };
+//=
+using INT = int;
+INT beschte { 54 };
+
+//!AliExtorExtractConstIntWithoutCompoundStatementAndTypeAliasOnTop
+//@.config
+newName=INT
+//@A1.cpp
+double placeholer { };
+/*$*/int/*$*/ beschte { 54 };
+//=
+using INT = int;
+double placeholer { };
+INT beschte { 54 };
+
+//!AliExtorExtractOnlySelectedNode
+//@.config
+newName=CINT
+justRefactorSelected=true
+//@A1.cpp
+int main() {
+	const int x { 42 };
+	/*$*/const int/*$*/ y { 42 };
+	const int z { 42 };
+}
+//=
+int main() {
+	using CINT = const int;
+	const int x { 42 };
+	CINT y { 42 };
+	const int z { 42 };
+}
+//!AliExtorExtractOnlySelectedNodeInTranslationUnit
+//@.config
+newName=CINT
+justRefactorSelected=true
+//@A1.cpp
+int main(){
+	const int x { func(42) };
+}
+const int func(const int x) {
+	/*$*/const int/*$*/ y { x };
+	return y;
+}
+//=
+int main(){
+	const int x { func(42) };
+}
+const int func(const int x) {
+	using CINT = const int;
+	CINT y { x };
+	return y;
+}
+//!AliExtorExtractWithoutStorageClass
+//@.config
+newName=CINT
+justRefactorSelected=true
+//@A1.cpp
+int main() {
+	/*$*/extern const int/*$*/ foo { };
+}
+//=
+int main() {
+	using CINT = const int;
+	extern CINT foo { };
+}
+//!AliExtorExtractArray
+//@.config
+newName=results
+justRefactorSelected=true
+//@A1.cpp
+int main(){
+	/*$*/int/*$*/ arr[10] { };
+}
+//=
+int main(){
+	using results = int;
+	results arr[10] { };
+}
+//!AliExtorExtractArrayWithBiggerSelection
+//@.config
+newName=results
+justRefactorSelected=true
+//@A1.cpp
+int main(){
+	/*$*/int arr[10] { };/*$*/
+}
+//=
+int main(){
+	using results = int;
+	results arr[10] { };
+}

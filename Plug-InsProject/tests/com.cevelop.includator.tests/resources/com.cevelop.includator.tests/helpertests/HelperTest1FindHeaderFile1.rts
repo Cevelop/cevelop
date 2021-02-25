@@ -1,8 +1,0 @@
-//!HelperTest1FindHeaderFile1
-//@A.cpp
-#include "A.h"
-int main() {
-	return 0;
-}
-//@A.h
-class A { };

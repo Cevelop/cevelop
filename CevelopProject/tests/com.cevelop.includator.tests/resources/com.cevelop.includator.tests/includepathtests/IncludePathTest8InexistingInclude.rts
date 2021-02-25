@@ -1,0 +1,16 @@
+//!IncludePathTest8InexistingInclude
+//@A.cpp
+#include "B.h"
+#include "D.h"
+
+int main(int argc, char** argv) {
+	D d;
+}
+//@B.h
+#include "C.h"
+//@C.h
+#include "A.h"
+//@D.h
+class D { };
+
+

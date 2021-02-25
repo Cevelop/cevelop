@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+    <extension name="Elevator Commands" point="org.eclipse.ui.commands">
+        <command
+                categoryId="org.eclipse.cdt.ui.category.refactoring"
+                id="com.cevelop.elevator.ui.commands.ElevateProject"
+                name="Elevate Project ...">
+        </command>
+    </extension>
+
+    <extension name="Elevator Command Handlers"
+                  point="org.eclipse.ui.handlers">
+        <handler
+                class="com.cevelop.elevator.ui.handlers.ElevateProjectHandler"
+                commandId="com.cevelop.elevator.ui.commands.ElevateProject">
+        </handler>
+    </extension>
+
+    <extension
+            name="Elevator Menu Contributions"
+            point="org.eclipse.ui.menus">
+        <menuContribution locationURI="menu:org.eclipse.jdt.ui.refactoring.menu?before=historyGroup">
+            <separator name="elevator" visible="true"/>
+            <command commandId="com.cevelop.elevator.ui.commands.ElevateProject"/>
+            <separator name="elevator2" visible="true"/>
+        </menuContribution>
+        <menuContribution locationURI="popup:org.eclipse.cdt.ui.refactoring.menu?after=typeGroup3"> <!-- YES, the refactoring popup does not have a history group... -->
+            <separator name="elevator" visible="true"/>
+            <command commandId="com.cevelop.elevator.ui.commands.ElevateProject"/>
+            <separator name="elevator2" visible="true"/>
+         </menuContribution>
+    </extension>
+
+    <extension
+       name="Elevator Checkers"
+       point="org.eclipse.cdt.codan.core.checkers">
+        <checker id="com.cevelop.elevator.uniformInitialization"
+            class="com.cevelop.elevator.checker.InitializationChecker"
+            name="C++ Enhancements Checker">
+                <problem id="com.cevelop.elevator.problems.uninitialized"
+                    defaultEnabled="false"
+                    defaultSeverity="Warning"
+                    description="Elevator Initialization Warning"
+                    name="Un- or ill-initialized variables"
+                    markerType="com.cevelop.elevator.elevationProblemMarker"
+                    category="com.cevelop.elevator.enhancements"
+                    messagePattern="Un- or ill-initialized variable found"></problem>
+                <problem id="com.cevelop.elevator.problems.defaultctor"          
+                defaultEnabled="false"
+                    defaultSeverity="Warning"
+                    description="Elevator Initialization Warning"
+                    name="Replaceable default constructor calls"
+                    markerType="com.cevelop.elevator.elevationProblemMarker"
+                    category="com.cevelop.elevator.enhancements"
+                    messagePattern="Replaceable default constructor call"></problem>
+                <problem id="com.cevelop.elevator.problems.nullMacro"
+                    defaultEnabled="false"
+                    defaultSeverity="Warning"
+                    description="Elevator Initialization Warning"
+                    name="NULL macro for nullptr replacement"
+                    markerType="com.cevelop.elevator.elevationProblemMarker"
+                    category="com.cevelop.elevator.enhancements"
+                    messagePattern="Replaceable NULL macro reference"></problem>
+        </checker>
+        <category id="com.cevelop.elevator.enhancements" 
+                name="C++11 code enhancements" />
+    </extension>
+    
+    <extension point="org.eclipse.cdt.codan.ui.codanMarkerResolution">
+        <resolution problemId="com.cevelop.elevator.problems.uninitialized"
+                class="com.cevelop.elevator.quickfix.InitializationQuickFix"/>
+        <resolution problemId="com.cevelop.elevator.problems.defaultctor"
+                class="com.cevelop.elevator.quickfix.InitializationQuickFix"/>
+        <resolution problemId="com.cevelop.elevator.problems.nullMacro"
+                class="com.cevelop.elevator.quickfix.NullMacroQuickFix"/>
+     </extension>
+
+    <extension point="org.eclipse.ui.editors.markerAnnotationSpecification">
+        <specification
+                annotationType="com.cevelop.elevator.elevateAnnotation"
+                colorPreferenceKey="com.cevelop.elevator.keys.elevationSuggestion.colorPreference"
+                colorPreferenceValue="255,255,0"
+                contributesToHeader="true"
+                highlightPreferenceKey="com.cevelop.elevator.keys.elevationSuggestion.highlightPreference"
+                highlightPreferenceValue="false"
+                icon="icons/icon-green-star.png"
+                includeOnPreferencePage="true"
+                isGoToNextNavigationTarget="true"
+                isGoToNextNavigationTargetKey="com.cevelop.elevator.keys.elevationSuggestion.isGotoNextNavigationTarget"
+                isGoToPreviousNavigationTarget="true"
+                isGoToPreviousNavigationTargetKey="com.cevelop.elevator.keys.elevationSuggestion.isGotoPreviousNavigationTarget"
+                label="Elevation Suggestion"
+                overviewRulerPreferenceKey="com.cevelop.elevator.keys.elevationSuggestion.overviewRulerPreference"
+                overviewRulerPreferenceValue="true"
+                presentationLayer="0"
+                quickFixIcon="icons/icon-green-star.png"
+                showInNextPrevDropdownToolbarAction="true"
+                showInNextPrevDropdownToolbarActionKey="com.cevelop.elevator.keys.elevationSuggestion.showInNextPrevDropdownToolbarAction"
+                symbolicIcon="info"
+                textPreferenceKey="com.cevelop.elevator.keys.elevationSuggestion.textPreference"
+                textPreferenceValue="false"
+                textStylePreferenceKey="com.cevelop.elevator.keys.elevationSuggestion.textStylePreference"
+                textStylePreferenceValue="SQUIGGLES"
+                verticalRulerPreferenceKey="com.cevelop.elevator.keys.elevationSuggestion.verticalRulerPreference"
+                verticalRulerPreferenceValue="true"></specification>
+    </extension>
+
+    <extension point="org.eclipse.ui.editors.annotationTypes">
+        <type markerType="com.cevelop.elevator.elevationProblemMarker"
+                markerSeverity="1"
+                name="com.cevelop.elevator.elevateAnnotation"
+                super="org.eclipse.ui.workbench.texteditor.info"/>
+    </extension>
+    
+    <extension point="org.eclipse.ui.ide.markerResolution">
+        <markerResolutionGenerator markerType="com.cevelop.elevator.elevationProblemMarker"
+                class="org.eclipse.cdt.codan.internal.ui.CodanProblemMarkerResolutionGenerator"/>
+    </extension>
+    
+    <extension point="org.eclipse.core.resources.markers"
+             id="com.cevelop.elevator.elevationProblemMarker"
+             name="Elevation Suggestion">
+        <super type="org.eclipse.core.resources.problemmarker"/>
+        <super type="org.eclipse.core.resources.textmarker"/>
+        <super type="org.eclipse.cdt.codan.core.codanProblem"/>
+        <persistent value="false"/>
+    </extension>
+    
+    <extension point="ch.hsr.ifs.iltis.cpp.versionator.versionmodification">
+        <CPP_14>
+                <versionModification name="Enable Elevator"
+                    checkedByDefault="true"
+                    operationClass="com.cevelop.elevator.operation.EnableElevatorOperation"/>
+        </CPP_14>
+        <CPP_17>
+                <versionModification name="Enable Elevator"
+                    checkedByDefault="true"
+                    operationClass="com.cevelop.elevator.operation.EnableElevatorOperation"/>
+        </CPP_17>
+        <CPP_11>
+                <versionModification name="Enable Elevator"
+                    checkedByDefault="true"
+                    operationClass="com.cevelop.elevator.operation.EnableElevatorOperation"/>
+        </CPP_11>
+    </extension>
+</plugin>

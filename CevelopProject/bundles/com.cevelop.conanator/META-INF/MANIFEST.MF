@@ -1,0 +1,22 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Conanator
+Bundle-SymbolicName: com.cevelop.conanator;singleton:=true
+Bundle-Version: 1.14.2.qualifier
+Bundle-Activator: com.cevelop.conanator.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.ui.console,
+ org.eclipse.core.resources,
+ org.eclipse.core.runtime,
+ org.eclipse.cdt.core,
+ org.eclipse.cdt.managedbuilder.core,
+ org.eclipse.core.databinding,
+ org.eclipse.core.databinding.beans,
+ org.eclipse.core.databinding.property;bundle-version="1.6.200",
+ org.eclipse.jface.databinding
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: com.cevelop.conanator;x-friends:="com.cevelop.conanator.tests",
+ com.cevelop.conanator.utility;x-friends:="com.cevelop.conanator.tests"
+Bundle-Vendor: IFS Institute for Software
+Automatic-Module-Name: com.cevelop.conanator

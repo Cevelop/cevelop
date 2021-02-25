@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <description name="Cevelop Plug-ins" url="https://www.cevelop.com/update/latest">
+      Cevelop Plug-ins. This update site contains the core and beta plug-ins of Cevelop.
+   </description>
+   <feature url="features/com.cevelop.charwars.feature_1.14.2.qualifier.jar" id="com.cevelop.charwars.feature" version="1.14.2.qualifier">
+      <category name="com.cevelop.plugins.core"/>
+   </feature>
+   <feature url="features/com.cevelop.clonewar.feature_1.14.2.qualifier.jar" id="com.cevelop.clonewar.feature" version="1.14.2.qualifier">
+      <category name="com.cevelop.plugins.core"/>
+   </feature>
+   <feature url="features/com.cevelop.constificator.feature_1.14.2.qualifier.jar" id="com.cevelop.constificator.feature" version="1.14.2.qualifier">
+      <category name="com.cevelop.plugins.core"/>
+   </feature>
+   <feature url="features/com.cevelop.elevator.feature_1.14.2.qualifier.jar" id="com.cevelop.elevator.feature" version="1.14.2.qualifier">
+      <category name="com.cevelop.plugins.core"/>
+   </feature>
+   <feature url="features/com.cevelop.macronator.feature_1.14.2.qualifier.jar" id="com.cevelop.macronator.feature" version="1.14.2.qualifier">
+      <category name="com.cevelop.plugins.core"/>
+   </feature>
+   <feature url="features/com.cevelop.namespactor.feature_1.14.2.qualifier.jar" id="com.cevelop.namespactor.feature" version="1.14.2.qualifier">
+      <category name="com.cevelop.plugins.core"/>
+   </feature>
+   <feature url="features/com.cevelop.tdd.feature_1.14.2.qualifier.jar" id="com.cevelop.tdd.feature" version="1.14.2.qualifier">
+      <category name="com.cevelop.plugins.core"/>
+   </feature>
+   <feature url="features/com.cevelop.intwidthfixator.feature_1.14.2.qualifier.jar" id="com.cevelop.intwidthfixator.feature" version="1.14.2.qualifier">
+      <category name="com.cevelop.plugins.beta"/>
+   </feature>
+   <feature url="features/com.cevelop.gslator.feature_1.14.2.qualifier.jar" id="com.cevelop.gslator.feature" version="1.14.2.qualifier">
+      <category name="com.cevelop.plugins.beta"/>
+   </feature>
+   <feature url="features/com.cevelop.ctylechecker.feature_1.14.2.qualifier.jar" id="com.cevelop.ctylechecker.feature" version="1.14.2.qualifier">
+      <category name="com.cevelop.plugins.core"/>
+   </feature>
+   <feature url="features/com.cevelop.includator.feature_1.14.2.qualifier.jar" id="com.cevelop.includator.feature" version="1.14.2.qualifier">
+      <category name="com.cevelop.plugins.beta"/>
+   </feature>
+   <feature url="features/com.cevelop.templator.feature_1.14.2.qualifier.jar" id="com.cevelop.templator.feature" version="1.14.2.qualifier">
+      <category name="com.cevelop.plugins.beta"/>
+   </feature>
+   <feature url="features/com.cevelop.codeanalysator.feature_1.14.2.qualifier.jar" id="com.cevelop.codeanalysator.feature" version="1.14.2.qualifier">
+      <category name="com.cevelop.plugins.beta"/>
+   </feature>
+   <feature url="features/com.cevelop.license.feature_1.14.2.qualifier.jar" id="com.cevelop.license.feature" version="1.14.2.qualifier">
+      <category name="com.cevelop.plugins.core"/>
+   </feature>
+   <feature url="features/com.cevelop.aliextor.feature_1.14.2.qualifier.jar" id="com.cevelop.aliextor.feature" version="1.14.2.qualifier">
+      <category name="com.cevelop.plugins.beta"/>
+   </feature>
+   <feature url="features/com.cevelop.conanator.feature_1.14.2.qualifier.jar" id="com.cevelop.conanator.feature" version="1.14.2.qualifier">
+      <category name="com.cevelop.plugins.beta"/>
+   </feature>
+   <category-def name="com.cevelop.plugins.core" label="Core Plug-Ins"/>
+   <category-def name="com.cevelop.plugins.beta" label="Beta Plug-Ins"/>
+</site>

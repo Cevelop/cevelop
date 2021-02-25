@@ -1,0 +1,17 @@
+//!NonConstParameterBindRefToConstPtrToNonConst
+//@.config
+//@main.cpp
+void f(int n)
+  {
+  int * const & ref{&n};
+  }
+
+//!NonConstParameterBindRefToConstPtrToConst
+//@.config
+markerLines=1
+//@main.cpp
+void f(int n)
+  {
+  int const * const & ref{&n};
+  }
+  

@@ -1,7 +1,0 @@
-//!DefinitionsOutsideOfWorkspaceTest
-//@MyFileName.cpp
-#include "OutsideWorkspaceHeader.h"
-
-int main() {
-    extern_outer(9000.1, 1); //<double>
-}

@@ -1,0 +1,26 @@
+
+//!Testtest
+//@main.cpp
+#include <cstdint>
+
+char baz {42};
+short foo {42};
+int bar = (int) foo;
+long biz {42};
+long long int blaz {42};
+
+char doFoo(char arg) {
+    return arg*3;
+}
+//=
+#include <cstdint>
+
+std::int8_t baz {42};
+short foo {42};
+int bar = (int) foo;
+long biz {42};
+long long int blaz {42};
+
+std::int8_t doFoo(std::int8_t arg) {
+    return arg*3;
+}

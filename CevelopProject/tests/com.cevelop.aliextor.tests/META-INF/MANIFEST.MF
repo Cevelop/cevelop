@@ -1,0 +1,22 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: AliExtor Test
+Bundle-SymbolicName: com.cevelop.aliextor.tests;singleton:=true
+Bundle-Version: 1.14.2.qualifier
+Fragment-Host: com.cevelop.aliextor
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.junit,
+ org.eclipse.ltk.core.refactoring,
+ org.eclipse.cdt.core,
+ org.eclipse.jface.text,
+ org.eclipse.core.resources,
+ ch.hsr.ifs.iltis.testing.highlevel.testingplugin
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
+Import-Package: org.eclipse.cdt.internal.ui.refactoring,
+ org.eclipse.cdt.core.model,
+ org.eclipse.cdt.internal.ui.refactoring.utils,
+ org.eclipse.ltk.core.refactoring
+Bundle-Vendor: IFS Institute for Software
+Automatic-Module-Name: com.cevelop.aliextor.tests

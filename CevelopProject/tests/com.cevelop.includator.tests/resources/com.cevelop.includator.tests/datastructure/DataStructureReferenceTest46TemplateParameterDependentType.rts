@@ -1,0 +1,16 @@
+//!Reference to template parameter dependent type
+//@main.cpp
+template<typename T>
+struct type_provider{
+	typedef T type;
+};
+
+template<typename T>
+struct type_user{
+	typedef typename type_provider<T>::type my_type;
+};
+
+int main() {
+	type_user<int> tu_int;
+	return 0;
+}

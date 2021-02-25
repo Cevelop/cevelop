@@ -1,9 +1,0 @@
-//!IncludePathTest1SimpleTest
-//@A.cpp
-#include "B.h"
-
-int main(int argc, char** argv) {
-	B b;
-}
-//@B.h
-class B { };

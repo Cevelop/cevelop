@@ -1,0 +1,269 @@
+//!ConstOneDimensionalArrayOfNonClassType
+//@main.cpp
+void func(int const arr[1]) {
+}
+
+//!NonConstOneDimensionalArrayOfNonClassTypeElementsNotModified
+//@.config
+markerLines=1
+//@main.cpp
+void func(int arr[1]) {
+}
+
+//!NonConstOneDimensionalArrayOfNonClassTypeElementsModifiedInUnaryExpressionAccessBySubscript
+//@main.cpp
+void func(int (&arr)[1]) {
+	arr[0]++;
+}
+
+//!NonConstOneDimensionalArrayOfNonClassTypeElementsModifiedInUnaryExpressionAccessByDereference
+//@main.cpp
+void func(int arr[1]) {
+	(*arr)++;
+}
+
+//!ConstOneDimensionalArrayOfTypedefedNonClassType
+//@main.cpp
+using arr_t = const int[1];
+void func(arr_t arr) {
+}
+
+//!NonConstOneDimensionalArrayOfTypedefedNonClassTypeElementsNotModified
+//@.config
+markerLines=2
+//@main.cpp
+using arr_t = int[1];
+void func(arr_t arr) {
+}
+
+//!NonConstOneDimensionalArrayOfTypedefedNonClassTypeElementsModifiedInUnaryExpressionAccessBySubscript
+//@main.cpp
+using arr_t = int[1];
+void func(arr_t arr) {
+	arr[0]++;
+}
+
+//!NonConstOneDimensionalArrayOfTypedefedNonClassTypeElementsModifiedInUnaryExpressionAccessByDereference
+//@main.cpp
+using arr_t = int[1];
+void func(arr_t arr) {
+	(*arr)++;
+}
+
+//!ConstMultiDimensionalArrayOfNonClassType
+//@main.cpp
+void func(int const arr[1][2][3]) {
+}
+
+//!NonConstMultiDimensionalArrayOfNonClassTypeElementsNotModified
+//@.config
+markerLines=1
+//@main.cpp
+void func(int arr[1][2][3]) {
+}
+
+//!NonConstMultiDimensionalArrayOfNonClassTypeElementsModifiedInUnaryExpressionAccessBySubscript
+//@main.cpp
+void func(int arr[1][2][3]) {
+	arr[0][1][2]++;
+}
+
+//!NonConstMultiDimensionalArrayOfNonClassTypeElementsModifiedInUnaryExpressionAccessByDereference
+//@main.cpp
+void func(int arr[1][2][3]) {
+	(***arr)++;
+}
+
+//!NonConstMultiDimensionalArrayOfNonClassTypeElementsModifiedInUnaryExpressionAccessConvolutedExpression
+//@main.cpp
+void func(int arr[1][2][3]) {
+	(*&((&(*(*((arr)[0]))))[0]))++;
+}
+
+//!ConstMultiDimensionalArrayOfTypedefedNonClassType
+//@main.cpp
+using arr_t = const int[1][2][3];
+void func(arr_t arr) {
+}
+
+//!NonConstMultiDimensionalArrayOfTypedefedNonClassTypeElementsNotModified
+//@.config
+markerLines=2
+//@main.cpp
+using arr_t = int[1][2][3];
+void func(arr_t arr) {
+}
+
+//!NonConstMultiDimensionalArrayOfTypedefedNonClassTypeElementsModifiedInUnaryExpressionAccessBySubscript
+//@main.cpp
+using arr_t = int[1][2][3];
+void func(arr_t arr) {
+	arr[0][1][2]++;
+}
+
+//!NonConstMultiDimensionalArrayTypedefedOfNonClassTypeElementsModifiedInUnaryExpressionAccessByDereference
+//@main.cpp
+using arr_t = int[1][2][3];
+void func(arr_t arr) {
+	(***arr)++;
+}
+
+//!NonConstMultiDimensionalArrayOfTypedefedNonClassTypeElementsModifiedInUnaryExpressionAccessConvolutedExpression
+//@main.cpp
+using arr_t = int[1][2][3];
+void func(arr_t arr) {
+	(*&((&(*(*((arr)[0]))))[0]))++;
+}
+
+//!ConstOneDimensionalArrayOfClassType
+//@main.cpp
+#include "array_cls.h"
+
+void func(cls const arr[1]) {
+}
+
+//!NonConstOneDimensionalArrayOfClassTypeElementsNotModified
+//@.config
+markerLines=3
+//@main.cpp
+#include "array_cls.h"
+
+void func(cls arr[1]) {
+}
+
+//!NonConstOneDimensionalArrayOfClassTypeElementsModifiedInUnaryExpressionAccessBySubscript
+//@main.cpp
+#include "array_cls.h"
+
+void func(cls arr[1]) {
+	arr[0]--;
+}
+
+//!NonConstOneDimensionalArrayOfClassTypeElementsModifiedInUnaryExpressionAccessByDereference
+//@main.cpp
+#include "array_cls.h"
+
+void func(cls arr[1]) {
+	(*arr)--;
+}
+
+//!ConstOneDimensionalArrayOfTypedefedClassType
+//@main.cpp
+#include "array_cls.h"
+
+using arr_t = const cls[1];
+void func(arr_t arr) {
+}
+
+//!NonConstOneDimensionalArrayOfTypedefedClassTypeElementsNotModified
+//@.config
+markerLines=4
+//@main.cpp
+#include "array_cls.h"
+
+using arr_t = cls[1];
+void func(arr_t arr) {
+}
+
+//!NonConstOneDimensionalArrayOfTypedefedClassTypeElementsModifiedInUnaryExpressionAccessBySubscript
+//@main.cpp
+#include "array_cls.h"
+
+using arr_t = cls[1];
+void func(arr_t arr) {
+	arr[0]--;
+}
+
+//!NonConstOneDimensionalArrayOfTypedefedClassTypeElementsModifiedInUnaryExpressionAccessByDereference
+//@main.cpp
+#include "array_cls.h"
+
+using arr_t = cls[1];
+void func(arr_t arr) {
+	(*arr)--;
+}
+
+//!ConstMultiDimensionalArrayOfClassType
+//@main.cpp
+#include "array_cls.h"
+
+void func(cls const arr[1][2][3]) {
+}
+
+//!NonConstMultiDimensionalArrayOfClassTypeElementsNotModified
+//@.config
+markerLines=3
+//@main.cpp
+#include "array_cls.h"
+
+void func(cls arr[1][2][3]) {
+}
+
+//!NonConstMultiDimensionalArrayOfClassTypeElementsModifiedInUnaryExpressionAccessBySubscript
+//@main.cpp
+#include "array_cls.h"
+
+void func(cls arr[1][2][3]) {
+	arr[0][1][2]--;
+}
+
+//!NonConstMultiDimensionalArrayOfClassTypeElementsModifiedInUnaryExpressionAccessByDereference
+//@main.cpp
+#include "array_cls.h"
+
+void func(cls arr[1][2][3]) {
+	(***arr)--;
+}
+
+//!NonConstMultiDimensionalArrayOfClassTypeElementsModifiedInUnaryExpressionAccessConvolutedExpression
+//@main.cpp
+#include "array_cls.h"
+
+void func(cls arr[1][2][3]) {
+	(*&((&(*(*((arr)[0]))))[0]))--;
+}
+
+//!ConstMultiDimensionalArrayOfTypedefedClassType
+//@main.cpp
+#include "array_cls.h"
+
+using arr_t = const cls[1][2][3];
+void func(arr_t arr) {
+}
+
+//!NonConstMultiDimensionalArrayOfTypedefedClassTypeElementsNotModified
+//@.config
+markerLines=4
+//@main.cpp
+#include "array_cls.h"
+
+using arr_t = cls[1][2][3];
+void func(arr_t arr) {
+}
+
+//!NonConstMultiDimensionalArrayOfTypedefedClassTypeElementsModifiedInUnaryExpressionAccessBySubscript
+//@main.cpp
+#include "array_cls.h"
+
+using arr_t = cls[1][2][3];
+void func(arr_t arr) {
+	arr[0][1][2]--;
+}
+
+//!NonConstMultiDimensionalArrayOfTypedefedClassTypeElementsModifiedInUnaryExpressionAccessByDereference
+//@main.cpp
+#include "array_cls.h"
+
+using arr_t = cls[1][2][3];
+void func(arr_t arr) {
+	(***arr)--;
+}
+
+//!NonConstMultiDimensionalArrayOfTypedefedClassTypeElementsModifiedInUnaryExpressionAccessConvolutedExpression
+//@main.cpp
+#include "array_cls.h"
+
+using arr_t = cls[1][2][3];
+void func(arr_t arr) {
+	(*&((&(*(*((arr)[0]))))[0]))--;
+}

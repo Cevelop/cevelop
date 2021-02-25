@@ -1,6 +1,0 @@
-namespace std {
-
-  struct string {
-      
-  };
-}

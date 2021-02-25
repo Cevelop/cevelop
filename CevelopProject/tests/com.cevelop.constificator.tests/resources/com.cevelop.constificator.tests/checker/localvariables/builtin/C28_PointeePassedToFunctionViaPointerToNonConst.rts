@@ -1,0 +1,48 @@
+//!ConstPtrToNonConstPassedToFunctionTakingConstPtrToNonConst
+//@.config
+//@main.cpp
+#include "pod_funcs.h"
+
+int main()
+  {
+  int * const ptr{};
+  func_const_ptr_nonconst(ptr);
+  }
+
+//!ConstPtrToNonConstPassedToFunctionTakingConstPtrToConst
+//@.config
+markerLines=5
+//@main.cpp
+#include "pod_funcs.h"
+
+int main()
+  {
+  int * const ptr{};
+  func_const_ptr_const(ptr);
+  }
+
+//!ConstPtrToConstPassedToFunctionTakingConstPtrToConst
+//@.config
+//@main.cpp
+#include "pod_funcs.h"
+
+int main()
+  {
+  int const * const ptr{};
+  func_const_ptr_const(ptr);
+  }
+
+//!No Marker for Pointer to Const as Argument of Placement New
+//@main.cpp
+int main() {
+  int * const p = new int{42};
+  new (p) int{1};
+}
+//!Marker for Pointer to Const as Initializer Argument of New Expression
+//@.config
+markerLines=2
+//@main.cpp
+int main() {
+  int * const p = new int{42};
+  new int const *{p};
+}

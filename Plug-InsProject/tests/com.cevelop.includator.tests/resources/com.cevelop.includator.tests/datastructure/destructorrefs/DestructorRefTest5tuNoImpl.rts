@@ -1,9 +1,0 @@
-//!DestructorRefTest5tuNoImpl
-//@A.cpp
-#include "X.h"
-X x;
-//@X.h
-class X {
-};
-//@X.cpp
-#include "X.h"

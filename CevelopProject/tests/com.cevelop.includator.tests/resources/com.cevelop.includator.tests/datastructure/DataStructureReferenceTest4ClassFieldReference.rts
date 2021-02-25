@@ -1,0 +1,16 @@
+//!DataStructureReferenceTest4ClassFieldReference
+//@A.cpp
+#include "B.h"
+
+int main() {
+  C c;
+  c.count = 5;
+  return 0;
+}
+//@B.h
+#include "C.h"
+//@C.h
+class C {
+public:
+  int count;
+};

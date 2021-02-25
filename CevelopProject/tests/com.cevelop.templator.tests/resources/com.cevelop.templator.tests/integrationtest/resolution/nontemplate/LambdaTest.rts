@@ -1,0 +1,7 @@
+//!Lambda
+//@MyFileName.cpp
+auto lambda = [](int n) { return n; };
+
+int main() {
+	lambda(5);
+}

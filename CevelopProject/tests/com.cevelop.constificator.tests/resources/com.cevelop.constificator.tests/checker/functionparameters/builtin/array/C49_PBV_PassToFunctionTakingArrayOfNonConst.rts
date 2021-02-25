@@ -1,0 +1,47 @@
+//!OneDimensionalArrayOfNonConstTypePassedToFunctionTakingOneDimensionalArrayOfConstType
+//@.config
+markerLines=5
+//@main.cpp
+void take_arr(int const arr[1]) {
+
+}
+
+void func(int arr[1]) {
+	take_arr(arr);
+}
+
+//!OneDimensionalArrayOfNonConstTypePassedToFunctionTakingOneDimensionalArrayOfNonConstType
+//@.config
+markerLines=1
+//@main.cpp
+void take_arr(int arr[1]) {
+
+}
+
+void func(int arr[1]) {
+	take_arr(arr);
+}
+
+//!MultiDimensionalArrayOfNonConstTypePassedToFunctionTakingMultiDimensionalArrayOfConstType
+//@.config
+markerLines=5
+//@main.cpp
+void take_arr(int const arr[1][2][3]) {
+
+}
+
+void func(int arr[1][2][3]) {
+	take_arr(arr);
+}
+
+//!MultiDimensionalArrayOfNonConstTypePassedToFunctionTakingMultiDimensionalArrayOfNonConstType
+//@.config
+markerLines=1
+//@main.cpp
+void take_arr(int arr[1][2][3]) {
+
+}
+
+void func(int arr[1][2][3]) {
+	take_arr(arr);
+}

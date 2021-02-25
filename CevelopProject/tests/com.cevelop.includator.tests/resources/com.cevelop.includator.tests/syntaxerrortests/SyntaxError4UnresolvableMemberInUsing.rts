@@ -1,0 +1,11 @@
+//!Syntax Error: Unresolvable Member in Using
+//@main.cpp
+
+namespace NS {
+}
+
+using NS::foo; 
+
+int main() {
+	return 0;
+}

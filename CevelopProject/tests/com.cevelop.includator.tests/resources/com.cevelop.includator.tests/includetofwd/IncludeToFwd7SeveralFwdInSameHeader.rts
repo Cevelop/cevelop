@@ -1,0 +1,8 @@
+//!IncludeToFwd7SeveralFwdInSameHeader
+//@main.cpp
+#include "A.h"
+A1 *a1;
+A2 *a2;
+//@A.h
+class A1 { };
+class A2 { };

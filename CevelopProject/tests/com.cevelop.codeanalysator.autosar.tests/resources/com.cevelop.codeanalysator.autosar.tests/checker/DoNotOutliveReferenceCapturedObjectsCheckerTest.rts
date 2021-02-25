@@ -1,0 +1,701 @@
+//! Returns lambda capturing variable by reference
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=6
+//@main.h
+#include <cstdint>
+#include <functional>
+std::function<std::int32_t()> F()
+{
+	std::int32_t i = 12;
+	return [&i]() -> std::int32_t {
+		i = 100;
+		return i;
+	};
+}
+
+//! Returns lambda capturing variable by copy
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+#include <cstdint>
+#include <functional>
+std::function<std::int32_t()> F()
+{
+	std::int32_t i = 12;
+	return [i]() mutable -> std::int32_t {
+		i = 100;
+		return i;
+	};
+}
+
+//! Returns lambda capturing this by reference
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+#include <cstdint>
+#include <functional>
+struct S
+{
+	std::int32_t i = 12;
+	std::function<std::int32_t()> F()
+	{
+		return [this]() -> std::int32_t {
+			i = 100;
+			return i;
+		};
+	}
+};
+
+//! Returns lambda without captures
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+#include <cstdint>
+#include <functional>
+std::function<std::int32_t()> F()
+{
+	return []() -> std::int32_t {
+		std::int32_t i = 100;
+		return i;
+	};
+}
+
+//! Returns lambda explicitly capturing variable by-copy with by-reference capture default
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+#include <cstdint>
+#include <functional>
+std::function<std::int32_t()> F()
+{
+	std::int32_t i = 12;
+	return [&, i]() -> std::int32_t {
+		i = 100;
+		return i;
+	};
+}
+
+//! Returns lambda without captures and with by-reference capture default
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+#include <cstdint>
+#include <functional>
+std::function<std::int32_t()> F()
+{
+	return [&]() -> std::int32_t {
+		std::int32_t i = 100;
+		return i;
+	};
+}
+
+//! Returns lambda explicitly capturing variable by-reference with by-copy capture default
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=6
+//@main.h
+#include <cstdint>
+#include <functional>
+std::function<std::int32_t()> F()
+{
+	std::int32_t i = 12;
+	return [=, &i]() mutable -> std::int32_t {
+		i = 100;
+		return i;
+	};
+}
+
+//! Discards lambda capturing variable by reference
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+#include <cstdint>
+void F()
+{
+	std::int32_t i = 12;
+	[&i]() -> std::int32_t {
+		i = 100;
+		return i;
+	};
+}
+
+//! Returns result of lambda capturing variable by reference
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+#include <cstdint>
+std::int32_t F()
+{
+	std::int32_t i = 12;
+	return [&i]() -> std::int32_t {
+		i = 100;
+		return i;
+	}();
+}
+
+//! Assigns lambda capturing variable by reference to global variable
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=7
+//@main.h
+#include <cstdint>
+#include <functional>
+std::function<std::int32_t()> out;
+void F()
+{
+	std::int32_t i = 12;
+	out = [&i]() -> std::int32_t {
+		i = 100;
+		return i;
+	};
+}
+
+//! Assigns lambda capturing variable by reference to namespaced global variable
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=9
+//@main.h
+#include <cstdint>
+#include <functional>
+namespace {
+	std::function<std::int32_t()> out;
+}
+void F()
+{
+	std::int32_t i = 12;
+	out = [&i]() -> std::int32_t {
+		i = 100;
+		return i;
+	};
+}
+
+//! Assigns lambda capturing variable by reference to local variable
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+#include <cstdint>
+#include <functional>
+void F()
+{
+	std::int32_t i = 12;
+	std::function<std::int32_t()> out;
+	out = [&i]() -> std::int32_t {
+		i = 100;
+		return i;
+	};
+}
+
+//! Assigns lambda capturing variable by reference to static local variable
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=7
+//@main.h
+#include <cstdint>
+#include <functional>
+void F()
+{
+	std::int32_t i = 12;
+	static std::function<std::int32_t()> out;
+	out = [&i]() -> std::int32_t {
+		i = 100;
+		return i;
+	};
+}
+
+//! Assigns lambda capturing variable by reference to field
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=9
+//@main.h
+#include <cstdint>
+#include <functional>
+struct S
+{
+	std::function<std::int32_t()> out;
+	void F()
+	{
+		std::int32_t i = 12;
+		out = [&i]() -> std::int32_t {
+			i = 100;
+			return i;
+		};
+	}
+};
+
+//! Assigns lambda capturing variable by reference to reference parameter
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=6
+//@main.h
+#include <cstdint>
+#include <functional>
+void F(std::function<std::int32_t()> &out)
+{
+	std::int32_t i = 12;
+	out = [&i]() -> std::int32_t {
+		i = 100;
+		return i;
+	};
+}
+
+//! Assigns lambda capturing variable by reference to value parameter
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+#include <cstdint>
+#include <functional>
+void F(std::function<std::int32_t()> out)
+{
+	std::int32_t i = 12;
+	out = [&i]() -> std::int32_t {
+		i = 100;
+		return i;
+	};
+}
+
+//! Constructor initializes static local variable with lambda capturing variable by reference
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=6
+//@main.h
+#include <cstdint>
+#include <functional>
+void F()
+{
+	std::int32_t i = 12;
+	static std::function<std::int32_t()> out([&i]() -> std::int32_t {
+		i = 100;
+		return i;
+	});
+}
+
+//! Constructor initializes local variable with lambda capturing variable by reference
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+#include <cstdint>
+#include <functional>
+void F()
+{
+	std::int32_t i = 12;
+	std::function<std::int32_t()> out([&i]() -> std::int32_t {
+		i = 100;
+		return i;
+	});
+}
+
+//! Equals initializes static local variable with lambda capturing variable by reference
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=6
+//@main.h
+#include <cstdint>
+#include <functional>
+void F()
+{
+	std::int32_t i = 12;
+	static std::function<std::int32_t()> out = [&i]() -> std::int32_t {
+		i = 100;
+		return i;
+	};
+}
+
+//! Initializer list initializes static local variable with lambda capturing variable by reference
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=6
+//@main.h
+#include <cstdint>
+#include <functional>
+void F()
+{
+	std::int32_t i = 12;
+	static std::function<std::int32_t()> out{[&i]() -> std::int32_t {
+		i = 100;
+		return i;
+	}};
+}
+
+//! Equals initializer list initializes static local variable with lambda capturing variable by reference
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=6
+//@main.h
+#include <cstdint>
+#include <functional>
+void F()
+{
+	std::int32_t i = 12;
+	static std::function<std::int32_t()> out = {[&i]() -> std::int32_t {
+		i = 100;
+		return i;
+	}};
+}
+
+//! Assigns lambda capturing variable by reference to outer variable
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=8
+//@main.h
+#include <cstdint>
+#include <functional>
+void F()
+{
+	std::function<std::int32_t()> out;
+	{
+		std::int32_t i = 12;
+		out = [&i]() -> std::int32_t {
+			i = 100;
+			return i;
+		};
+	}
+}
+
+//! Assigns lambda capturing variable by reference to inner variable
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+#include <cstdint>
+#include <functional>
+void F()
+{
+	std::int32_t i = 12;
+	{
+		std::function<std::int32_t()> out;
+		{
+			out = [&i]() -> std::int32_t {
+				i = 100;
+				return i;
+			};
+		}
+	}
+}
+
+//! Assigns lambda capturing outermost and inner variable by reference to outer variable with outer capture first
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=10
+//@main.h
+#include <cstdint>
+#include <functional>
+void F()
+{
+	std::int32_t i = 12;
+	{
+		std::function<std::int32_t()> out;
+		{
+			std::int32_t k = 12;
+			out = [&i, &k]() -> std::int32_t {
+				i = 100;
+				return i;
+			};
+		}
+	}
+}
+
+//! Assigns lambda capturing outermost and inner variable by reference to outer variable with inner capture first
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=10
+//@main.h
+#include <cstdint>
+#include <functional>
+void F()
+{
+	std::int32_t i = 12;
+	{
+		std::function<std::int32_t()> out;
+		{
+			std::int32_t k = 12;
+			out = [&k, &i]() -> std::int32_t {
+				i = 100;
+				return i;
+			};
+		}
+	}
+}
+
+//! Assigns lambda capturing variable by reference to outer parameter
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=7
+//@main.h
+#include <cstdint>
+#include <functional>
+void F(std::function<std::int32_t()> out)
+{
+	{
+		std::int32_t i = 12;
+		out = [&i]() -> std::int32_t {
+			i = 100;
+			return i;
+		};
+	}
+}
+
+//! Returns lambda capturing by-reference captured lambda variable by reference
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+#include <cstdint>
+#include <functional>
+std::function<std::int32_t()> F()
+{
+	std::int32_t i = 12;
+	return [&i]() -> std::function<std::int32_t()> {
+		return [&i]() -> std::int32_t {
+			i = 100;
+			return i;
+		};
+	}();
+}
+
+//! Returns lambda capturing by-copy captured lambda variable by reference
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=7
+//@main.h
+#include <cstdint>
+#include <functional>
+std::function<std::int32_t()> F()
+{
+	std::int32_t i = 12;
+	return [i]() -> std::function<std::int32_t()> {
+		return [&i]() -> std::int32_t {
+			i = 100;
+			return i;
+		};
+	}();
+}
+
+//! Assigns lambda capturing inner lambda variable by reference to outer lambda variable
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=9
+//@main.h
+#include <cstdint>
+#include <functional>
+void F()
+{
+	[]() {
+		std::function<std::int32_t()> out;
+		{
+			std::int32_t i = 12;
+			out = [&i]() -> std::int32_t {
+				i = 100;
+				return i;
+			};
+		}
+	}();
+}
+
+//! Indirectly returns lambda capturing variable by reference through assigned variable
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=11
+//@main.h
+#include <cstdint>
+#include <functional>
+std::function<std::int32_t()> F()
+{
+	std::int32_t i = 12;
+	std::function<std::int32_t()> ret;
+	ret = [&i]() -> std::int32_t {
+		i = 100;
+		return i;
+	};
+	return ret;
+}
+
+//! Discards lambda capturing variable by reference through assigned variable
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+#include <cstdint>
+#include <functional>
+void F()
+{
+	std::int32_t i = 12;
+	std::function<std::int32_t()> ret = [&i]() -> std::int32_t {
+		i = 100;
+		return i;
+	};
+}
+
+//! Indirectly returns other variable
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+#include <cstdint>
+#include <functional>
+std::function<std::int32_t()> F()
+{
+	std::int32_t i = 12;
+	std::function<std::int32_t()> ret;
+	std::function<std::int32_t()> other_ret;
+	ret = [&i]() -> std::int32_t {
+		i = 100;
+		return i;
+	};
+	other_ret = []() -> std::int32_t { return 100; };
+	return other_ret;
+}
+
+//! Double indirectly returns lambda capturing variable by reference through assigned variable
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=13
+//@main.h
+#include <cstdint>
+#include <functional>
+std::function<std::int32_t()> F()
+{
+	std::int32_t i = 12;
+	std::function<std::int32_t()> ret;
+	std::function<std::int32_t()> other_ret;
+	ret = [&i]() -> std::int32_t {
+		i = 100;
+		return i;
+	};
+	other_ret = ret;
+	return other_ret;
+}
+
+//! Indirectly returns variable assigned to lambda capturing variable by reference assigned variable
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+#include <cstdint>
+#include <functional>
+std::function<std::int32_t()> F()
+{
+	std::int32_t i = 12;
+	std::function<std::int32_t()> ret;
+	std::function<std::int32_t()> other_ret;
+	ret = [&i]() -> std::int32_t {
+		i = 100;
+		return i;
+	};
+	other_ret = []() -> std::int32_t { return 100; };
+	ret = other_ret;
+	return other_ret;
+}
+
+//! Double indirectly returns lambda capturing variable by reference through assigned variable with loop
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=14
+//@main.h
+#include <cstdint>
+#include <functional>
+std::function<std::int32_t()> F()
+{
+	std::int32_t i = 12;
+	std::function<std::int32_t()> ret;
+	std::function<std::int32_t()> other_ret;
+	ret = [&i]() -> std::int32_t {
+		i = 100;
+		return i;
+	};
+	other_ret = ret;
+	ret = other_ret;
+	return other_ret;
+}
+
+//! Indirectly returns lambda capturing variable by reference through initialized variable
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=10
+//@main.h
+#include <cstdint>
+#include <functional>
+std::function<std::int32_t()> F()
+{
+	std::int32_t i = 12;
+	std::function<std::int32_t()> ret = [&i]() -> std::int32_t {
+		i = 100;
+		return i;
+	};
+	return ret;
+}
+
+//! Indirectly returns lambda capturing variable by reference through initialized variable in if-init-statement
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=12
+//@main.h
+#include <cstdint>
+#include <functional>
+std::function<std::int32_t()> F()
+{
+	std::int32_t i = 12;
+	std::function<std::int32_t()> indirection;
+	indirection = [&i]() -> std::int32_t {
+		i = 100;
+		return i;
+	};
+	if (std::function<std::int32_t()> out{indirection}; true) {
+		return out;
+	}
+	return []() -> std::int32_t { return 100; };
+}
+
+//! Indirectly returns lambda capturing variable by reference through initialized variable in switch-init-statement
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=13
+//@main.h
+#include <cstdint>
+#include <functional>
+std::function<std::int32_t()> F()
+{
+	std::int32_t i = 12;
+	std::function<std::int32_t()> indirection;
+	indirection = [&i]() -> std::int32_t {
+		i = 100;
+		return i;
+	};
+	switch (std::function<std::int32_t()> out{indirection}; 0) {
+	default:
+		return out;
+	}
+	return []() -> std::int32_t { return 100; };
+}
+
+//! Indirectly returns lambda capturing variable by reference through initialized variable in for-init-statement
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=12
+//@main.h
+#include <cstdint>
+#include <functional>
+std::function<std::int32_t()> F()
+{
+	std::int32_t i = 12;
+	std::function<std::int32_t()> indirection;
+	indirection = [&i]() -> std::int32_t {
+		i = 100;
+		return i;
+	};
+	for (std::function<std::int32_t()> out{indirection}; true;) {
+		return out;
+	}
+	return []() -> std::int32_t { return 100; };
+}
+
+//! Suppressed returns lambda capturing variable by reference
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+#include <cstdint>
+#include <functional>
+std::function<std::int32_t()> F()
+{
+	std::int32_t i = 12;
+	[[autosar::suppress("A5-1-4")]]
+	return [&i]() -> std::int32_t {
+		i = 100;
+		return i;
+	};
+}

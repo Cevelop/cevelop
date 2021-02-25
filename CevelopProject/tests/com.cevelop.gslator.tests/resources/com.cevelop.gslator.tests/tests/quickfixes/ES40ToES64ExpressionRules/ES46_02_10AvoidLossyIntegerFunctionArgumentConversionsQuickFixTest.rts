@@ -1,0 +1,73 @@
+//!FunctionQuickFix
+//@main.h
+void func(short s) {	}
+int main() {
+	long l = 1234576;
+	func(l);
+}
+//=
+#include "gsl.h"
+void func(short s) {	}
+int main() {
+	long l = 1234576;
+	func(gsl::narrow_cast<short>(l));
+}
+//!FunctionWithMultipleParamsQuickFix
+//@main.h
+void func(short s, int i) {	}
+int main() {
+	long l = 1234576;
+	func(l, 5);
+}
+//=
+#include "gsl.h"
+void func(short s, int i) {	}
+int main() {
+	long l = 1234576;
+	func(gsl::narrow_cast<short>(l), 5);
+}
+//!FunctionCastQuickFix
+//@main.h
+void func(short s) {	}
+int main() {
+	long l = 1234576;
+	func((short) l);
+}
+//=
+#include "gsl.h"
+void func(short s) {	}
+int main() {
+	long l = 1234576;
+	func(gsl::narrow_cast<short>(l));
+}
+//!FunctionCastWithMultipleUnaryExpressionsQuickFix
+//@main.h
+void func(short s) {	}
+int main() {
+	long l = 1234576;
+	func((short) (((l))));
+}
+//=
+#include "gsl.h"
+void func(short s) {	}
+int main() {
+	long l = 1234576;
+	func(gsl::narrow_cast<short>(l));
+}
+//!FunctionQuickFixWithExistingGSL
+//@main.h
+#include "gsl.h"
+void func(short s) {	}
+int main() {
+	long l = 1234576;
+	int i = gsl::narrow_cast<int>(l); 
+	func(l);
+}
+//=
+#include "gsl.h"
+void func(short s) {	}
+int main() {
+	long l = 1234576;
+	int i = gsl::narrow_cast<int>(l); 
+	func(gsl::narrow_cast<short>(l));
+}

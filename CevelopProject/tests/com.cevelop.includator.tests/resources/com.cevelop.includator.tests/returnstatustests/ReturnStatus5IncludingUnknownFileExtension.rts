@@ -1,0 +1,9 @@
+//!ReturnStatus3ProblemBinding
+//@main.cpp
+#include "stupidExtension.crap"
+void foo() {
+	otherFunc();
+}
+//@stupidExtension.crap
+void otherFunc() {
+}

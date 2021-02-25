@@ -1,0 +1,63 @@
+//!ShouldNotSuggestRefactoringIfMacroIsUsedInIfDefDirective
+//@main.cpp
+#define CONFIG 1
+#ifdef CONFIG
+#endif
+
+//!ShouldNotSuggestRefactoringIfMacroIsFunctionLike
+//@main.cpp
+#define MIN(A, B) ((A) < (B) ? (A) : (B))
+	
+//!ShouldNotSuggestRefactoringIfMacroIsUsedInIfnDefDirective
+//@main.cpp
+#define CONFIG2 1
+#ifndef CONFIG2
+#endif
+
+//!ShouldNotSuggestRefactoringIfMacroIsUsedInIfDirective
+//@main.cpp
+#define CONFIG 1
+#if CONFIG > 10
+#endif
+
+//!ShouldNotSuggestRefactoringIfMacroIsUsedInIncludeDirective
+//@main.cpp
+#define HEADER_FILE "file.h"
+#include HEADER_FILE
+
+//!ShouldNotSuggestRefactoringIfMacrosReplacementTextIsNotValidCppExpression1
+//@main.cpp
+#define CONFIG = 2.3
+	
+//!ShouldNotSuggestRefactoringIfMacrosReplacementTextIsNotValidCppExpression2
+//@main.cpp
+#define PLUS +
+
+//!ShouldNotSuggestRefactoringIfMacrosReplacementTextIsNotValidCppExpression3
+//@main.cpp
+#define COMMA ,
+
+//!ShouldNotSuggestRefactoringIfNotAllFreeVarsAreVisible
+//@main.cpp
+#define SUM a + 5
+
+//!ShouldNotSuggestRefactoringIfFunctionIsNotDefined
+//@main.cpp
+#define CONVEX_DISTANCE_MARGIN btScalar(0.04)
+
+//!testShouldNotSuggestRefactoringForCppCodeShortHandMacros
+//@main.cpp
+#define MINLINE static inline	
+
+//!ShouldNotSuggestRefactoringIf__LINE__isUsed
+//@main.cpp
+#define MACRO __LINE__
+
+//!ShouldNotSuggestRefactoringIf__FILE__isUsed
+//@main.cpp
+#define MACRO __FILE__
+
+//!ShouldNotSuggestTransformationForMacrosWithNonConstexprExpansion
+//@main.cpp
+extern const char *xdg_mime_type_unknown;
+#define XDG_MIME_TYPE_UNKNOWN xdg_mime_type_unknown

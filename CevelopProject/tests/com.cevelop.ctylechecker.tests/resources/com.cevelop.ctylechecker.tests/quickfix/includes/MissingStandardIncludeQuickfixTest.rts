@@ -1,0 +1,58 @@
+//!Missing string include
+//@.config
+markerLines=2
+//@main.cpp
+void foo() {
+	std::string s {};
+}
+//=main.cpp
+#include <string>
+
+void foo() {
+	std::string s {};
+}
+
+//!Missing vector include
+//@.config
+markerLines=2
+//@main.cpp
+void foo() {
+	std::vector<int> vec {};
+}
+//=main.cpp
+#include <vector>
+
+void foo() {
+	std::vector<int> vec {};
+}
+
+//!Multiple includes missing
+//@.config
+markerLines=2,3,3
+//@main.cpp
+void foo() {
+	std::string s {};
+	std::vector<std::string> vec {};
+}
+//=
+#include <string>
+#include <vector>
+
+void foo() {
+	std::string s {};
+	std::vector<std::string> vec {};
+}
+
+//!Missing initializer_list include
+//@.config
+markerLines=2
+//@recipe.cpp
+struct Recipe {
+  Recipe(std::initializer_list<int> steps);
+};
+//=
+#include <initializer_list>
+
+struct Recipe {
+  Recipe(std::initializer_list<int> steps);
+};

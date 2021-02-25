@@ -1,0 +1,49 @@
+//!ProjectCoverageTest22FieldConstrDestr6
+//@A.cpp
+class Z {
+public :
+  Z();
+  ~Z();
+};
+
+Z::Z() { }
+
+Z::~Z() { }
+
+class Y1 {
+public:
+  Y1();
+  ~Y1();
+  Z z;
+};
+
+Y1::Y1() { }
+
+Y1::~Y1() { }
+
+class Y2 {
+public:
+  Y2();
+  ~Y2();
+};
+
+Y2::Y2() { }
+
+Y2::~Y2() { }
+
+class X {
+public :
+  X();
+  ~X();
+  Y1 y1;
+  Y2 y2;
+};
+
+X::X() { }
+
+X::~X() { }
+
+int main() {
+  X *x = new X();
+  return 0;
+}

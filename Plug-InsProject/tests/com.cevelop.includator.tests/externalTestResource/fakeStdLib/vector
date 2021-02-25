@@ -1,4 +1,0 @@
-#include "bits/fakeVector.h"
-
-class SomeThing { };
-

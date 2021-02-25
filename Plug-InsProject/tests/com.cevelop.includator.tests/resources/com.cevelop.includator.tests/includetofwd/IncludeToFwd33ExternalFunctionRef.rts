@@ -1,6 +1,0 @@
-//!IncludeToFwd33ExternalFunctionRef
-//@main.cpp
-#include <stdio.h>
-void foo() {
-	printf("%f", 1.5f);
-}

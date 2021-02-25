@@ -1,4 +1,0 @@
-//!DataStructureReferenceTest15UndefinedMacroSymbol
-//@A.cpp
-#ifdef BBB
-#endif

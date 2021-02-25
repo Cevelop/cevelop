@@ -1,0 +1,28 @@
+//!ConstPtrToNonConstBindRefToConstPtrToNonConst
+//@.config
+markerLines=4
+//@main.cpp
+int main()
+  {
+  int * const ptr{};
+  int * const & ref{ptr};
+  }
+
+//!ConstPtrToNonConstBindRefToConstPtrToConst
+//@.config
+markerLines=3
+//@main.cpp
+int main()
+  {
+  int * const ptr{};
+  int const * const & ref{ptr};
+  }
+
+//!ConstPtrToConstBindRefToConstPtrToConst
+//@.config
+//@main.cpp
+int main()
+  {
+  int const * const ptr{};
+  int const * const & ref{ptr};
+  }

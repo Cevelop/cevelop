@@ -1,8 +1,0 @@
-//!DeclRefTest20ForwardDeclEnough9FunctionDefReturnType
-//@main.cpp
-A* get_foo() {
-}
-//@Afwd.h
-class A;
-//@A.h
-class A { };

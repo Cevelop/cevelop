@@ -1,0 +1,5 @@
+//!OrganizeIncludes21ReferencedProjectDoubleQuoteInclude_p2
+//@lib.h
+void libFoo() {
+
+}

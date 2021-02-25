@@ -1,6 +1,0 @@
-//!SuppressSuggestionTest12ReferencedProjectSuppression
-//@main.cpp
-int main()
-  A a;
-  return 0;
-}

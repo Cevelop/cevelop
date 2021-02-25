@@ -1,6 +1,0 @@
-//!IncludeToFwd1Replacable
-//@main.cpp
-#include "A.h"
-A *a;
-//@A.h
-class A { };

@@ -1,0 +1,19 @@
+//!NonConstDeclBindNonConstRef
+//@.config
+//@main.cpp
+int main()
+  {
+  int n{42};
+  int & ref{n};
+  ref++;
+  }
+
+//!NonConstDeclBindConstRef
+//@.config
+markerLines=3
+//@main.cpp
+int main()
+  {
+  int n{42};
+  int const & ref{n};
+  }

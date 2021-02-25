@@ -1,0 +1,22 @@
+//!FindUnusedFile3SeveralMatches
+//@A.cpp
+#include "C.h"
+
+int main() {
+  B b;
+  return 0;
+}
+//@D.h
+class D { };
+//@C.h
+class C { };
+//@B.cpp
+#include "D.h"
+#include "C.h"
+int foo() {
+	return 42;
+}
+//@F.h
+class F { };
+//@E.h
+class E { };

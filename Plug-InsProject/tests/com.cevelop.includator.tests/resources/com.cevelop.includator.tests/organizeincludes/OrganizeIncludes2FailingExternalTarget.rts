@@ -1,7 +1,0 @@
-//!OrganizeIncludes2FailingExternalTarget
-//@main.cpp
-
-int main() {
-  QWER qwer;
-  return 0;
-}

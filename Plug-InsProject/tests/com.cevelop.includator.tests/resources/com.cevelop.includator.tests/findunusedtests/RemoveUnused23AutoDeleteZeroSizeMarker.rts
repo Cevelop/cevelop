@@ -1,7 +1,0 @@
-//!RemoveUnused23AutoDeleteZeroSizeMarker
-//@main.cpp
-#include "A.h"
-int main() {
-}
-//@A.h
-struct A { };

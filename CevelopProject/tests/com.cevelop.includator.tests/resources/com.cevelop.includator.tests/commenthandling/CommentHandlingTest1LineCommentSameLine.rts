@@ -1,0 +1,5 @@
+//!CommentHandlingTest1
+//@main.cpp
+#include "foo.h" //c
+//@foo.h
+void foo();

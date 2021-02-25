@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.cevelop.clonewar.feature"
+      label="Clonewar"
+      version="1.14.2.qualifier"
+      provider-name="IFS Institute for Software"
+      plugin="com.cevelop.branding"
+      license-feature="com.cevelop.license.feature"
+      license-feature-version="1.14.2.qualifier">
+
+   <description url="https://www.cevelop.com/features">
+      This plug-in provides the different extract template refactorings.
+   </description>
+
+   <copyright>
+      Copyright (c) 2017 IFS Institute for Software
+Copyright (c) 2021 The Authors of Cevelop
+This program and the accompanying materials are made available
+under the terms of the Eclipse Public License 2.0 which accompanies
+this distribution, and is available at https://www.eclipse.org/legal/epl-2.0/
+SPDX-License-Identifier: EPL-2.0
+   </copyright>
+
+   <license>
+      %license%
+   </license>
+
+   <url>
+      <update label="Cevelop Plug-Ins" url="https://www.cevelop.com/update/latest"/>
+   </url>
+
+   <requires>
+      <import plugin="org.eclipse.core.runtime" version="3.6.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.cdt.ui" version="5.2.1" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.core.resources" version="3.6.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.cdt.core" version="5.2.1" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.jface.text" version="3.6.1" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ltk.ui.refactoring" version="3.5.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ltk.core.refactoring"/>
+      <import plugin="org.eclipse.ui.workbench"/>
+      <import plugin="org.eclipse.ui.editors" version="3.6.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui" version="3.6.0" match="greaterOrEqual"/>
+   </requires>
+
+   <plugin
+         id="com.cevelop.clonewar"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>

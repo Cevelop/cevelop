@@ -1,0 +1,16 @@
+//!Syntax Error: Unresolvable Base Class
+//@main.cpp
+#include "B.h"
+
+int main(int argc, char **argv) {
+	B b;
+	return 0;
+}
+//@A.h
+namespace NS{
+	class A{};
+}
+//@B.h
+#include "A.h"
+class B : public A {
+};

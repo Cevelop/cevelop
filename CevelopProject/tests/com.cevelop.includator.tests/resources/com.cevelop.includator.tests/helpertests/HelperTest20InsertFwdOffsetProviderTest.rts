@@ -1,0 +1,184 @@
+//!HelperTest20InsertFwdOffsetProviderTest3OffsetCheck1
+//@.config
+offset=14
+//@A.cpp
+#include "B.h"
+int main() {
+}
+//@B.h
+class B {};
+//!HelperTest20InsertFwdOffsetProviderTest4OffsetCheck2
+//@.config
+offset=42
+//@A.cpp
+#ifndef A_CPP
+#define A_CPP
+#include "B.h"
+int main() {
+	return 0;
+}
+#endif
+//@B.h
+class B {};
+//!HelperTest20InsertFwdOffsetProviderTest5OffsetCheck3
+//@.config
+offset=27
+//@A.cpp
+#ifndef A_CPP
+#define A_CPP
+int main() {
+	return 0;
+}
+#endif
+
+//!HelperTest20InsertFwdOffsetProviderTest5OffsetCheck4
+//@.config
+offset=83
+//@A.cpp
+#ifndef A_CPP
+#define A_CPP
+#ifdef WIN32
+#include "B.h"
+#else
+#include "B.h"
+#endif
+int main() {
+	return 0;
+}
+#endif
+//@B.h
+class B {};
+
+//!HelperTest20InsertFwdOffsetProviderTest5OffsetCheck5
+//@.config
+offset=90
+//@A.cpp
+#ifndef A_CPP
+#define A_CXX
+#ifdef WIN32
+#include "B.h"
+#else
+#include "B.h"
+#endif
+#endif
+int main() {
+	return 0;
+}
+//@B.h
+class B {};
+
+//!HelperTest20InsertFwdOffsetProviderTest5OffsetCheck6
+//@.config
+offset=76
+fallbackIncludeStartOffset=62
+//@A.cpp
+#ifndef A_CPP
+#define A_CXX
+#ifdef WIN32
+#include "B.h"
+#else
+#include "B.h"
+#endif
+int main() {
+	return 0;
+}
+#endif
+//@B.h
+class B {};
+
+//!HelperTest20InsertFwdOffsetProviderTest5OffsetCheck7
+//@.config
+offset=14
+//@A.cpp
+#include "B.h"
+void foo() { }
+#include "B.h"
+int main() {
+	return 0;
+}
+//@B.h
+class B {};
+
+//!HelperTest20InsertFwdOffsetProviderTest5OffsetCheck8
+//@.config
+offset=58
+fallbackIncludeStartOffset=44
+//@A.cpp
+#ifndef A_FILE_H
+#define SOME_OTHER THING
+  #include "B.h"
+  class AClass { };
+#endif
+//@B.h
+class B {};
+
+//!HelperTest20InsertFwdOffsetProviderTest5OffsetCheck9
+//@.config
+offset=14
+//@A.cpp
+#include "B.h"
+#ifndef A_FILE_H
+#define SOME_OTHER THING
+  #include "B.h"
+  class AClass { };
+#endif
+//@B.h
+class B {};
+
+//!HelperTest20InsertFwdOffsetProviderTest5OffsetCheck10
+//@.config
+offset=55
+//@A.cpp
+#include "B.h"
+#ifndef A_H
+#define A_H
+  #include "B.h"
+  class AClass { };
+#endif
+//@B.h
+class B {};
+//!HelperTest20InsertFwdOffsetProviderTest5OffsetCheck11
+//@.config
+offset=51
+//@A.cpp
+#ifndef A_CPP
+#define A_CPP
+#include "B.h"
+class A;
+int main() {
+	return 0;
+}
+#endif
+//@B.h
+class B {};
+
+//!HelperTest20InsertFwdOffsetProviderTest5OffsetCheck12
+//@.config
+offset=51
+//@A.cpp
+#ifndef A_CPP
+#define A_CPP
+#include "B.h"
+class A;
+#include "B.h"
+int main() {
+	return 0;
+}
+#endif
+//@B.h
+class B {};
+//!HelperTest20InsertFwdOffsetProviderTest5OffsetCheck13
+//@.config
+offset=51
+//@A.cpp
+#ifndef A_CPP
+#define A_CPP
+#include "B.h"
+class A;
+int main() {
+	return 0;
+}
+class A2;
+#endif
+//@B.h
+class B {};

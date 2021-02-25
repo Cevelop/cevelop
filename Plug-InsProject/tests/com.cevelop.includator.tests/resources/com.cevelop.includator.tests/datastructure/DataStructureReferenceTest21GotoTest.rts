@@ -1,7 +1,0 @@
-//!DataStructureReferenceTest21GotoTest
-//@A.cpp
-int main () {
-	goto loop;
-	loop:
-	return 0;
-}

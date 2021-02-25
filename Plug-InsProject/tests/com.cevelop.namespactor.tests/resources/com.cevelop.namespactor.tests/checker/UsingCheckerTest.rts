@@ -1,8 +1,0 @@
-//!No marker is placed when inheriting the base constructors
-//@derived.h
-struct Base {
-  Base(int){}
-};
-struct Derived : Base {
-  using Base::Base;
-};

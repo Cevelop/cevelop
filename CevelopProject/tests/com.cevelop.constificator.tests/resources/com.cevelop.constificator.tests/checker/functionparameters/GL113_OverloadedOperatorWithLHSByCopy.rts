@@ -1,0 +1,11 @@
+//!Function parameter passed to operator taking LHS by copy
+//@.config
+markerLines=5
+//@test.cpp
+struct S{};
+
+char operator+(S, char);
+
+void test(char c) {
+    S{} + c;
+}

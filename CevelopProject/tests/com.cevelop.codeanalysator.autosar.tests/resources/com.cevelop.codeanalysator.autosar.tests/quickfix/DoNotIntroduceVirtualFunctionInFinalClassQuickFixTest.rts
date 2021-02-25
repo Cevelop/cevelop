@@ -1,0 +1,258 @@
+//! Pure virtual function in final class, no fix because pure virtual
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+class A {
+	public:
+		virtual void F() noexcept = 0;
+};
+class B final : public A {
+	public:
+		virtual void F() noexcept = 0;
+};
+//=
+class A {
+	public:
+		virtual void F() noexcept = 0;
+};
+class B final : public A {
+	public:
+		virtual void F() noexcept = 0;
+};
+
+//! Definition: Replace override with final
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+class A
+{
+	public:
+		virtual void G() noexcept {}
+};
+class B final : public A
+{
+	public:
+		void G() noexcept override {}
+};
+//=
+class A
+{
+	public:
+		virtual void G() noexcept {}
+};
+class B final : public A
+{
+	public:
+		void G() noexcept final {}
+};
+
+
+//! Declaration: Replace override with final
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+class A
+{
+	public:
+		virtual void G() noexcept {}
+};
+class B final : public A
+{
+	public:
+		void G() noexcept override;
+};
+//=
+class A
+{
+	public:
+		virtual void G() noexcept {}
+};
+class B final : public A
+{
+	public:
+		void G() noexcept final;
+};
+
+//! Definition: Overriding virtual function, add final keyword
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+class A
+{
+	public:
+		virtual void G() noexcept {}
+};
+
+class B final : public A
+{
+	public:
+		void G() noexcept {}
+};
+//=
+class A
+{
+	public:
+		virtual void G() noexcept {}
+};
+
+class B final : public A
+{
+	public:
+		void G() noexcept final {}
+};
+
+//! Declaration: Overriding virtual function, add final keyword
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+class A
+{
+	public:
+		virtual void G() noexcept {}
+};
+class B final : public A
+{
+	public:
+		void G() noexcept;
+};
+//=
+class A
+{
+	public:
+		virtual void G() noexcept {}
+};
+
+class B final : public A
+{
+	public:
+		void G() noexcept final;
+};
+
+//! Definition: Virtual function in final class, no fix possible
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+class A final
+{
+	public:
+		virtual void F() noexcept {}
+};
+//=
+class A final
+{
+	public:
+		virtual void F() noexcept {}
+};
+
+//! Declaration: Virtual function in final class, no fix possible
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+class A final
+{
+	public:
+		virtual void F() noexcept;
+};
+//=
+class A final
+{
+	public:
+		virtual void F() noexcept;
+};
+
+//! Definition: Override virtual function in final class, remove virtual and replace override with final
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+class A {
+	public:
+		virtual void F() noexcept = 0;
+	}
+};
+class B final : public A {
+	public:
+		virtual void F() noexcept override{}
+};
+//=
+class A {
+	public:
+		virtual void F() noexcept = 0;
+	}
+};
+class B final : public A {
+	public:
+		void F() noexcept final{}
+};
+
+//! Declaration: Override virtual function in final class, remove virtual and replace override with final
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+class A {
+	public:
+		virtual void F() noexcept = 0;
+};
+class B final : public A {
+	public:
+		virtual void F() noexcept override;
+};
+//=
+class A {
+	public:
+		virtual void F() noexcept = 0;
+};
+class B final : public A {
+	public:
+		void F() noexcept final;
+};
+
+//! Declaration: Override virtual named function in final class, remove virtual and replace override with final
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+struct Test {};
+class A {
+	public:
+		virtual Test F() noexcept = 0;
+};
+class B final : public A {
+	public:
+		virtual Test F() noexcept override;
+};
+//=
+struct Test {};
+class A {
+	public:
+		virtual Test F() noexcept = 0;
+};
+class B final : public A {
+	public:
+		Test F() noexcept final;
+};
+
+
+//! Comments are not removed
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+class A
+{
+	public:
+		virtual void G() noexcept {}
+};
+class B final : public A
+{
+	public:
+		void G() noexcept override /*comment*/ {}
+};
+//=
+class A
+{
+	public:
+		virtual void G() noexcept {}
+};
+class B final : public A
+{
+	public:
+		void G() noexcept final  /*comment*/  {}
+};

@@ -1,9 +1,0 @@
-//!MultipleDefinitionTest5Type
-//@main.cpp
-int main() {
-	X x;
-}
-//@a.h
-class X { };
-//@b.h
-class X { };

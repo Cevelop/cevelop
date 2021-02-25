@@ -1,5 +1,0 @@
-//!ReferencedProject1TwoProjectsSuggestionTest
-//@main.cpp
-int main() {
-  A a;
-}

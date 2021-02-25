@@ -1,0 +1,22 @@
+//!NonConstParameterClassTypePassToFunctionTakingNonConstRef
+//@.config
+//@main.cpp
+#include "cls.h"
+
+void foo(cls o)
+  {
+  func_ref_nonconst(o);
+  }
+
+//!NonConstParameterClassTypePassToFunctionTakingConstRef
+//@.config
+markerLines=3
+//@main.cpp
+#include "cls.h"
+
+void foo(cls o)
+  {
+  func_ref_const(o);
+  }
+
+  

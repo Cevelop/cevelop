@@ -1,0 +1,976 @@
+//!CharPointerString1
+//@main.cpp
+int main() {
+	char *str = "Hello, World";
+}
+//=
+#include <string>
+int main() {
+	std::string str = "Hello, World";
+}
+
+//!CharPointerString2
+//@main.cpp
+int main() {
+	char *str{"Hello, World"};
+}
+//=
+#include <string>
+int main() {
+	std::string str { "Hello, World" };
+}
+
+//!CharPointerString3
+//@main.cpp
+int main() {
+	char *str("Hello, World");
+}
+//=
+#include <string>
+int main() {
+	std::string str("Hello, World");
+}
+
+//!CharPointerString4
+//@main.cpp
+int main() {
+	char *str = {"Hello, World"};
+}
+//=
+#include <string>
+int main() {
+	std::string str = { "Hello, World" };
+}
+
+//!CharArrayString1
+//@main.cpp
+int main() {
+	char str[] = "Hello, World";
+}
+//=
+#include <string>
+int main() {
+	std::string str = "Hello, World";
+}
+
+//!CharArrayString2
+//@main.cpp
+int main() {
+	char str[]{"Hello, World"};
+}
+//=
+#include <string>
+int main() {
+	std::string str { "Hello, World" };
+}
+
+//!CharArrayString3
+//@main.cpp
+int main() {
+	char str[]("Hello, World");
+}
+//=
+#include <string>
+int main() {
+	std::string str("Hello, World");
+}
+
+//!CharArrayString4
+//@main.cpp
+int main() {
+	char str[] = {"Hello, World"};
+}
+//=
+#include <string>
+int main() {
+	std::string str = { "Hello, World" };
+}
+
+//!WcharString
+//@main.cpp
+int main() {
+	wchar_t w_str[] = L"Hello";
+	std::wcout << w_str << std::endl;
+	std::wcout << w_str[0] << std::endl;
+}
+//=
+#include <string>
+int main() {
+	std::wstring w_str = L"Hello";
+	std::wcout << w_str.c_str() << std::endl;
+	std::wcout << w_str[0] << std::endl;
+}
+
+
+//!StaticCharPointerString
+//@main.cpp
+int main() {
+	static char *str = "Hello, World";
+}
+//=
+#include <string>
+int main() {
+	static std::string str = "Hello, World";
+}
+
+
+//!VolatileCharPointerString
+//@main.cpp
+int main() {
+	volatile char *str = "Hello, World";
+}
+//=
+#include <string>
+int main() {
+	volatile std::string str = "Hello, World";
+}
+
+
+//!CharPointerStringInitializedWithStrdup1
+//@main.cpp
+int main() {
+	char *str = strdup("Hello, World");
+}
+//=
+#include <string>
+int main() {
+	std::string str = "Hello, World";
+}
+
+//!CharPointerStringInitializedWithStrdup2
+//@main.cpp
+int main() {
+	char *str{strdup("Hello, World")};
+}
+//=
+#include <string>
+int main() {
+	std::string str { "Hello, World" };
+}
+
+//!CharPointerStringInitializedWithStrdup3
+//@main.cpp
+int main() {
+	char *str(strdup("Hello, World"));
+}
+//=
+#include <string>
+int main() {
+	std::string str("Hello, World");
+}
+
+//!CharPointerStringInitializedWithStrdup4
+//@main.cpp
+int main() {
+	char *str = {strdup("Hello, World")};
+}
+//=
+#include <string>
+int main() {
+	std::string str = { "Hello, World" };
+}
+
+//!MultipleDeclarators1
+//@main.cpp
+int main() {
+	char *str1 = "Hello", a = 2;
+}
+//=
+#include <string>
+int main() {
+	std::string str1 = "Hello";
+	char a = 2;
+}
+
+//!MultipleDeclarators2
+//@main.cpp
+int main() {
+	char *str1{"Hello"}, a = 2;
+}
+//=
+#include <string>
+int main() {
+	std::string str1 { "Hello" };
+	char a = 2;
+}
+
+//!MultipleDeclarators3
+//@main.cpp
+int main() {
+	char *str1("Hello"), a = 2;
+}
+//=
+#include <string>
+int main() {
+	std::string str1("Hello");
+	char a = 2;
+}
+
+//!MultipleDeclarators4
+//@main.cpp
+int main() {
+	char *str1 = {"Hello"}, a = 2;
+}
+//=
+#include <string>
+int main() {
+	std::string str1 = { "Hello" };
+	char a = 2;
+}
+
+//!IgnoresShadowingVariable
+//@main.cpp
+void f1(const char *s) {}
+void f2(int i) {}
+int main() {
+	const char *str = "Hello World";
+	f1(str);
+	
+	for(int i = 0; i < 2; ++i) {
+		f1(str);
+		int str = 1;
+		f2(str);
+	}
+	f1(str);
+}
+//=
+#include <string>
+void f1(const char *s) {}
+void f2(int i) {}
+int main() {
+	std::string str = "Hello World";
+	f1(str.c_str());
+	
+	for(int i = 0; i < 2; ++i) {
+		f1(str.c_str());
+		int str = 1;
+		f2(str);
+	}
+	f1(str.c_str());
+}
+
+
+//!ExistingIncludeStatement
+//@main.cpp
+#include <string>
+
+int main() {
+	char str[] = "Hello, World";
+}
+//=
+#include <string>
+
+int main() {
+	std::string str = "Hello, World";
+}
+
+
+//!MacroDefinition
+//@main.cpp
+#ifndef PRINTCHAR_H
+#define PRINTCHAR_H
+void add() {
+	char *b = "hello World";
+}
+#endif
+//=
+#ifndef PRINTCHAR_H
+#define PRINTCHAR_H
+#include <string>
+
+void add() {
+	std::string b = "hello World";
+}
+#endif
+
+
+//!ReserveSpace
+//@main.cpp
+int main() {
+	char s[42] = "Hello long world";
+}
+//=
+#include <string>
+int main() {
+	std::string s = "Hello long world";
+	s.reserve(42);
+}
+
+
+//!ReserveSpaceWithMultipleDeclarators
+//@main.cpp
+int main() {
+	char str1[50] = "string1", str2[100] = "string2";
+}
+//=
+#include <string>
+int main() {
+	std::string str1 = "string1";
+	str1.reserve(50);
+	char str2[100] = "string2";
+}
+
+
+//!MultilineInitialization
+//@main.cpp
+int main() {
+	char *hi = "Hello "
+	"World!";
+}
+//=
+#include <string>
+int main() {
+	std::string hi = "Hello World!";
+}
+
+
+//!GlobalCharArrayString
+//@main.cpp
+char hi[] = "Hello World!";
+//=
+#include <string>
+std::string hi = "Hello World!";
+
+
+//!MultipleGlobalDefinitions
+//@main.cpp
+char firstChar = 'a', *hi = "Hello World!";
+//=
+#include <string>
+char firstChar = 'a';
+std::string hi = "Hello World!";
+
+
+//!MacroContentDefinition
+//@main.cpp
+#define HELLO_WORLD "Hello World"
+#include <iostream>
+
+int main() {
+	char output[] = HELLO_WORLD "!";
+	std::cout << output;
+}
+//=
+#define HELLO_WORLD "Hello World"
+#include <iostream>
+#include <string>
+
+int main() {
+	std::string output = "Hello World!";
+	std::cout << output;
+}
+
+
+//!Assignment
+//@main.cpp
+int main() {
+	char *str = "string 1";
+	str = "string 2";
+}
+//=
+#include <string>
+int main() {
+	std::string str = "string 1";
+	str = "string 2";
+}
+
+
+//!IgnoresSubscriptOperations
+//@main.cpp
+int main() {
+	char str[] = "Hello, World";
+	std::cout << str[1] << std::endl;
+	str[1] = 'a';
+}
+//=
+#include <string>
+int main() {
+	std::string str = "Hello, World";
+	std::cout << str[1] << std::endl;
+	str[1] = 'a';
+}
+
+
+//!NestedCStringFunctions1
+//@main.cpp
+#include <cstring>
+int main() {
+	char url[100] = "www.google.ch/index";
+	strcat(url, strcmp(url + strlen(url) - 4, "html") == 0 ? "" : ".html");
+}
+//=
+#include <cstring>
+#include <string>
+
+int main() {
+	std::string url = "www.google.ch/index";
+	url.reserve(100);
+	url += url.compare(url.size() - 4, std::string::npos, "html") == 0 ?
+			"" : ".html";
+}
+
+
+//!NestedCStringFunctions2
+//@main.cpp
+#include <cstring>
+int main() {
+	char filename[] = "myfile.doc";
+	if (strncmp(filename + strlen(filename) - 3, "doc", 3) == 0) {
+		std::cout << "this is a word document" << std::endl;
+	}
+}
+//=
+#include <cstring>
+#include <string>
+
+int main() {
+	std::string filename = "myfile.doc";
+	if (filename.compare(filename.size() - 3, 3, "doc", 0, 3) == 0) {
+		std::cout << "this is a word document" << std::endl;
+	}
+}
+
+
+//!NestedCStringFunctions3
+//@main.cpp
+#include <cstring>
+int main() {
+	char filename[] = "myfile.txt";
+	strncpy(filename + strlen(filename) - 3, "doc", 3);
+	strncpy(filename - 3 + strlen(filename), "doc", 3);
+	strncpy(strlen(filename) - 3 + filename, "doc", 3);
+	strncpy(strlen(filename) + filename - 3, "doc", 3);
+	strncpy(-3 + strlen(filename) + filename, "doc", 3);
+	strncpy(-3 + filename + strlen(filename), "doc", 3);
+}
+//=
+#include <cstring>
+#include <string>
+
+int main() {
+	std::string filename = "myfile.txt";
+	filename.replace(filename.size() - 3, 3, "doc", 0, 3);
+	filename.replace(-3 + filename.size(), 3, "doc", 0, 3);
+	filename.replace(filename.size() - 3, 3, "doc", 0, 3);
+	filename.replace(filename.size() - 3, 3, "doc", 0, 3);
+	filename.replace(-3 + filename.size(), 3, "doc", 0, 3);
+	filename.replace(-3 + filename.size(), 3, "doc", 0, 3);
+}
+
+
+//!ConstCStringFunctionArgument
+//@main.cpp
+void f(int a, const char * const b, double c) {
+	//do something
+}
+
+int main() {
+	const char * const str = "a string";
+	f(1, str, 3.0);
+}
+//=
+#include <string>
+
+void f(int a, const char * const b, double c) {
+	//do something
+}
+
+int main() {
+	const std::string str = "a string";
+	f(1, str.c_str(), 3.0);
+}
+
+
+//!CStringFunctionArgument
+//@main.cpp
+void f(int a, char *b, double c) {
+	//do something
+}
+
+int main() {
+	char str[] = "a string";
+	f(1, str, 3.0);
+}
+//=
+#include <string>
+
+void f(int a, char *b, double c) {
+	//do something
+}
+
+int main() {
+	std::string str = "a string";
+	f(1, &*str.begin(), 3.0);
+}
+
+
+//!StdStringFunctionArgument
+//@main.cpp
+#include "string.h"
+
+void f(int a, std::string b, double c) {
+	//do something
+}
+
+int main() {
+	const char *str = "a string";
+	f(1, str, 3.0);
+}
+//=
+#include <string>
+#include "string.h"
+
+void f(int a, std::string b, double c) {
+	//do something
+}
+
+int main() {
+	std::string str = "a string";
+	f(1, str, 3.0);
+}
+
+
+//!ConstStdStringReferenceFunctionArgument
+//@main.cpp
+#include "string.h"
+
+void f(int a, const std::string &b, double c) {
+	//do something
+}
+
+int main() {
+	const char *str = "a string";
+	f(1, str, 3.0);
+}
+//=
+#include <string>
+#include "string.h"
+
+void f(int a, const std::string &b, double c) {
+	//do something
+}
+
+int main() {
+	std::string str = "a string";
+	f(1, str, 3.0);
+}
+
+
+//!StdStringConstructorArgument
+//@main.cpp
+#include "string.h"
+
+class User {
+public:
+	User(const std::string& name) {}
+}
+
+int main() {
+	const char *str = "John";
+	User a = User(str);
+	User b{str};
+	User c = {str};
+	User d(str);
+	User *e = new User(str);
+	delete e;
+	User *f = new User{str};
+	delete f;
+}
+//=
+#include <string>
+#include "string.h"
+
+class User {
+public:
+	User(const std::string& name) {}
+}
+
+int main() {
+	std::string str = "John";
+	User a = User(str);
+	User b{str};
+	User c = {str};
+	User d(str);
+	User *e = new User(str);
+	delete e;
+	User *f = new User{str};
+	delete f;
+}
+
+
+//!CStringConstructorArgument
+//@main.cpp
+#include "string.h"
+
+class User {
+public:
+	User(const char *name) {}
+}
+
+int main() {
+	const char *str = "John";
+	User a = User(str);
+	User b { str };
+	User c = { str };
+	User d(str);
+	User* e = new User(str);
+	delete e;
+	User* f = new User { str };
+	delete f;
+}
+//=
+#include <string>
+#include "string.h"
+
+class User {
+public:
+	User(const char *name) {}
+}
+
+int main() {
+	std::string str = "John";
+	User a = User(str.c_str());
+	User b { str.c_str() };
+	User c = { str.c_str() };
+	User d(str.c_str());
+	User* e = new User(str.c_str());
+	delete e;
+	User* f = new User { str.c_str() };
+	delete f;
+}
+
+
+//!ConstPointer1
+//@main.cpp
+int main(){
+	char * name = "John";
+}
+//=
+#include <string>
+
+int main(){
+	std::string name = "John";
+}
+
+
+//!ConstPointer2
+//@main.cpp
+int main(){
+	const char * name = "John";
+}
+//=
+#include <string>
+
+int main(){
+	std::string name = "John";
+}
+
+
+//!ConstPointer3
+//@main.cpp
+int main(){
+	char * const name = "John";
+}
+//=
+#include <string>
+
+int main(){
+	std::string name = "John";
+}
+
+
+//!ConstPointer4
+//@main.cpp
+int main(){
+	const char * const name = "John";
+}
+//=
+#include <string>
+
+int main(){
+	const std::string name = "John";
+}
+
+
+//!NamespaceDefinition
+//@main.cpp
+#include <cstring>
+#include <iostream>
+namespace color{
+char k[] = "color";
+	
+void plural(){
+	strcat(k, "s");
+	std::cout << k;
+}
+}
+
+int main(){
+	color::plural();
+}
+//=
+#include <cstring>
+#include <iostream>
+#include <string>
+namespace color{
+std::string k = "color";
+
+void plural(){
+	k += "s";
+	std::cout << k;
+}
+}
+
+int main(){
+	color::plural();
+}
+
+
+//!ClassWithGlobals
+//@main.cpp
+#include <cstring>
+#include <iostream>
+#include <string>
+class Color{
+	const char *c = "color";
+
+public:
+	bool isAmerican(){
+		strcmp(c, "color");
+	}
+};
+int main(){
+	Color c = Color();
+	if (c.isAmerican()){
+		std::cout << "American";
+	} else {
+	std::cout << "British";
+	}
+}
+//=
+#include <cstring>
+#include <iostream>
+#include <string>
+class Color{
+	std::string c = "color";
+
+public:
+	bool isAmerican(){
+		c.compare("color");
+	}
+};
+int main(){
+	Color c = Color();
+	if (c.isAmerican()){
+		std::cout << "American";
+	} else {
+	std::cout << "British";
+	}
+}
+
+
+//!StdStringEmptyCheck1
+//@main.cpp
+#include "string.h"
+
+int main() {
+	const char *str = "hello";
+	bool empty1 = 0 == *str;
+	bool empty2 = *str == 0;
+	bool not_empty1 = 0 != *str;
+	bool not_empty2 = *str != 0;
+	
+	while (*str) {
+		std::cout << *str << std::endl;
+		str++;
+	}
+	
+	for(int i = 0; i < 10; ++i) {
+		if (!*str) {
+			std::cout << "no more characters" << std::endl;
+		}
+		else {
+			std::cout << "character " << i << std::endl;
+			str++;
+		}
+	}
+}
+//=
+#include <string>
+#include "string.h"
+
+int main() {
+	std::string str = "hello";
+	bool empty1 = str.empty();
+	bool empty2 = str.empty();
+	bool not_empty1 = !str.empty();
+	bool not_empty2 = !str.empty();
+	std::string::size_type str_pos = 0;
+	while (str[str_pos]) {
+		std::cout << str[str_pos] << std::endl;
+		str_pos++;
+	}
+	
+	for(int i = 0; i < 10; ++i) {
+		if (!str[str_pos]) {
+			std::cout << "no more characters" << std::endl;
+		}
+		else {
+			std::cout << "character " << i << std::endl;
+			str_pos++;
+		}
+	}
+}
+
+
+//!StdStringEmptyCheck2
+//@main.cpp
+#include "string.h"
+
+int main() {
+	const char *str = "not empty";
+	if (*str) {
+		std::cout << "str is not empty" << std::endl;
+	}
+	
+	if (!*str) {
+		std::cout << "str is empty" << std::endl;
+	}
+	
+	bool empty1 = !*str;
+	bool not_empty1 = *str;
+}
+//=
+#include <string>
+#include "string.h"
+
+int main() {
+	std::string str = "not empty";
+	if (!str.empty()) {
+		std::cout << "str is not empty" << std::endl;
+	}
+	
+	if (str.empty()) {
+		std::cout << "str is empty" << std::endl;
+	}
+	
+	bool empty1 = str.empty();
+	bool not_empty1 = !str.empty();
+}
+
+
+//!DereferencedToChar1
+//@main.cpp
+#include "iostream.h"
+
+int main() {
+	const char *str = "Hello";
+	std::cout << *str << std::endl;
+	std::cout << *(str) << std::endl;
+	std::cout << *(str + 2) << std::endl;
+}
+//=
+#include <string>
+#include "iostream.h"
+
+int main() {
+	std::string str = "Hello";
+	std::cout << str[0] << std::endl;
+	std::cout << str[0] << std::endl;
+	std::cout << str[2] << std::endl;
+}
+
+
+//!CharPointerModification1
+//@main.cpp
+#include "string.h"
+#include "iostream.h"
+#include "cstring.h"
+
+int main() {
+	const char *serverObject = "/account?details=true";
+	if (!*serverObject) {
+		std::cout << "is empty" << std::endl;
+		return 1;
+	}
+	while (*serverObject == '/') {
+		++serverObject;
+	}
+	
+	const char* v = strchr(serverObject, '?');
+	if (v) {
+		std::cout << (v - serverObject) << std::endl;
+	}
+	else {
+		std::cout << serverObject << std::endl;
+	}
+}
+//=
+#include <string>
+#include "string.h"
+#include "iostream.h"
+#include "cstring.h"
+
+int main() {
+	std::string serverObject = "/account?details=true";
+	if (serverObject.empty()) {
+		std::cout << "is empty" << std::endl;
+		return 1;
+	}
+	std::string::size_type serverObject_pos = 0;
+	while (serverObject[serverObject_pos] == '/') {
+		++serverObject_pos;
+	}
+	
+	const char* v = strchr((serverObject.c_str() + serverObject_pos), '?');
+	if (v) {
+		std::cout << (v - (serverObject.c_str() + serverObject_pos))
+				<< std::endl;
+	}
+	else {
+		std::cout << (serverObject.c_str() + serverObject_pos) << std::endl;
+	}
+}
+
+
+//!CharPointerModification2
+//@main.cpp
+#include "iostream.h"
+
+int main() {
+	const char *str = "Hello";
+	str++;
+	std::cout << str[0] << std::endl;
+	std::cout << str[1] << std::endl;
+}
+//=
+#include <string>
+#include "iostream.h"
+
+int main() {
+	std::string str = "Hello";
+	std::string::size_type str_pos = 0;
+	str_pos++;
+	std::cout << str[str_pos] << std::endl;
+	std::cout << str[str_pos + 1] << std::endl;
+}
+
+
+//!CharPointerVarArgParameter
+//@main.cpp
+void myprintf(const char *ptr, ...) {
+}
+
+int main() {
+	const char *str = "world";
+	myprintf("Hello, %s!", str);
+}
+//=
+#include <string>
+void myprintf(const char *ptr, ...) {
+}
+
+int main() {
+	std::string str = "world";
+	myprintf("Hello, %s!", str.c_str());
+}

@@ -15,3 +15,4 @@ junit-workspace/
 .polyglot.build.properties
 **/com.cevelop.charwars/lib/
 .recommenders
+/workspace

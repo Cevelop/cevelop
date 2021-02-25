@@ -1,0 +1,120 @@
+//!multibreak1
+//@.config
+markerLines=9
+//@main.h
+void doSomething() {}
+bool someCondition = false;
+
+void case7() {
+	doSomething();
+	while(someCondition) {
+		while(someCondition) {
+			doSomething();
+			if(someCondition) goto exit3;
+			doSomething();
+		}
+	}
+	// doSomething(69); <- with this the quickfix would not be valid
+	exit3:
+	doSomething();
+}
+//!multibreak2
+//@.config
+markerLines=10
+//@main.h
+void doSomething() {}
+bool someCondition = false;
+
+void case8() {
+	doSomething();
+	while(someCondition) {
+		while(someCondition) {
+			while(someCondition) {
+				doSomething();
+				if(someCondition) goto exit3;
+				doSomething();
+			}
+		}
+	}
+	// doSomething(69); <- with this the quickfix would not be valid
+	exit3:
+	doSomething();
+}
+//!multibreak3
+//@.config
+markerLines=9,10
+//@main.h
+void doSomething() {}
+bool someCondition = false;
+
+void case7() {
+	doSomething();
+	while(someCondition) {
+		while(someCondition) {
+			doSomething();
+			if(someCondition) goto exit3;
+			if(someCondition) goto exit3;
+			doSomething();
+		}
+	}
+	// doSomething(69); <- with this the quickfix would not be valid
+	exit3:
+	doSomething();
+}
+//!multibreak1Ignore
+//@main.h
+void doSomething() {}
+bool someCondition = false;
+
+void case7() {
+	doSomething();
+	while(someCondition) {
+		while(someCondition) {
+			doSomething();
+			if(someCondition) [[gsl::suppress("Res-goto")]] goto exit3;
+			doSomething();
+		}
+	}
+	// doSomething(69); <- with this the quickfix would not be valid
+	exit3:
+	doSomething();
+}
+//!multibreak2Ignore
+//@main.h
+void doSomething() {}
+bool someCondition = false;
+
+void case8() {
+	doSomething();
+	while(someCondition) {
+		while(someCondition) {
+			while(someCondition) {
+				doSomething();
+				if(someCondition) [[gsl::suppress("Res-goto")]] goto exit3;
+				doSomething();
+			}
+		}
+	}
+	// doSomething(69); <- with this the quickfix would not be valid
+	exit3:
+	doSomething();
+}
+//!multibreak3Ignore
+//@main.h
+void doSomething() {}
+bool someCondition = false;
+
+void case7() {
+	doSomething();
+	while(someCondition) {
+		while(someCondition) {
+			doSomething();
+			if(someCondition) [[gsl::suppress("Res-goto")]] goto exit3;
+			if(someCondition) [[gsl::suppress("Res-goto")]] goto exit3;
+			doSomething();
+		}
+	}
+	// doSomething(69); <- with this the quickfix would not be valid
+	exit3:
+	doSomething();
+}

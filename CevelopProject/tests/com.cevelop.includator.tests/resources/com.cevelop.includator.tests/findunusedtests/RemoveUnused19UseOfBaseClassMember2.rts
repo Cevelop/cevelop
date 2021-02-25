@@ -1,0 +1,31 @@
+//!RemoveUnused19UseOfBaseClassMember2
+//@main.cpp
+#include "A.h"
+#include "B.h"
+
+class B;
+B* getB();
+
+int main() {
+	A a = *getB();
+	return 0;
+}
+//@A.h
+#ifndef A_H_
+#define A_H_
+
+class A {
+public:
+	void foo() { }
+};
+
+#endif /* A_H_ */
+//@B.h
+#ifndef B_H_
+#define B_H_
+#include "A.h"
+
+class B : public A {
+};
+
+#endif /* B_H_ */

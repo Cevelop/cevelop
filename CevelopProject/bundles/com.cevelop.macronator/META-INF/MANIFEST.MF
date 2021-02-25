@@ -1,0 +1,28 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Macronator Plug-in
+Bundle-SymbolicName: com.cevelop.macronator;singleton:=true
+Bundle-Version: 1.14.2.qualifier
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.cdt.codan.core,
+ org.eclipse.cdt.codan.core.cxx,
+ org.eclipse.cdt.codan.ui,
+ org.eclipse.cdt.codan.ui.cxx,
+ org.eclipse.cdt.core,
+ org.eclipse.core.runtime,
+ org.eclipse.core.resources,
+ org.eclipse.cdt.ui,
+ org.eclipse.ltk.ui.refactoring,
+ org.eclipse.jface.text,
+ org.eclipse.ui.ide,
+ org.eclipse.ui.workbench.texteditor,
+ org.eclipse.ui.editors,
+ org.eclipse.ltk.core.refactoring,
+ ch.hsr.ifs.iltis.cpp.core,
+ ch.hsr.ifs.iltis.core,
+ ch.hsr.ifs.iltis.cpp.versionator
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
+Bundle-Activator: com.cevelop.macronator.MacronatorPlugin
+Bundle-Vendor: IFS Institute for Software
+Automatic-Module-Name: com.cevelop.macronator

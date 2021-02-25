@@ -1,0 +1,74 @@
+/*
+ * @file   <allocator>
+ * @brief  Dummy implementation of std::allocator
+ * @author Felix Morgner
+ */
+
+#ifndef ILTIS_ALLOCATOR
+#define ILTIS_ALLOCATOR
+
+namespace std {
+
+template<typename ValueType>
+struct allocator {
+
+	/**
+	 * Member types as defined in ISO14882:2017
+	 */
+	using value_type = ValueType;
+	using pointer [[deprecated("Deprecated in ISO14882:2017")]] = ValueType *;
+	using const_pointer [[deprecated("Deprecated in ISO14882:2017")]] = ValueType const *;
+	using reference [[deprecated("Deprecated in ISO14882:2017")]] = ValueType &;
+	using const_reference [[deprecated("Deprecated in ISO14882:2017")]] = ValueType const &;
+	using size_type = unsigned long long; // TODO (fmorgner): replace with std::size_t
+	using difference_type = long long; // TODO (fmorgner): replace with std::ptrdiff_t
+	// TODO (fmorgner): implement 'propagate_on_container_move_assignment'
+	// TODO (fmorgner): implement 'rebind'
+	// TODO (fmorgner): implement 'is_always_equal'
+
+	allocator() noexcept;
+	allocator(allocator const &) noexcept;
+	template<typename U> allocator(allocator<U> const &) noexcept;
+	
+	~allocator();
+	
+	[[deprecated("Deprecated in ISO14882:2017")]]
+	pointer address(reference obj) const;
+
+	[[deprecated("Deprecated in ISO14882:2017")]]
+	const_pointer address(const_reference obj) const;
+
+	[[deprecated("Deprecated in ISO14882:2017")]]
+	ValueType * allocate(size_type size, void const * hint);
+
+	ValueType * allocate(size_type size);
+
+	void deallocate(ValueType * address, size_type size);
+
+	[[deprecated("Deprecated in ISO14882:2017")]]
+	size_type max_size() const noexcept;
+
+	template<typename U, class ... Args>
+	[[deprecated("Deprecated in ISO14882:2017")]]
+	void construct(U * ptr, Args && ... args);
+
+	template<typename U>
+	[[deprecated("Deprecated in ISO14882:2017")]]
+	void destroy(U * ptr);
+
+};
+
+template<>
+struct allocator<void> {
+	using value_type = void;
+	using pointer [[deprecated("Deprecated in ISO14882:2017")]] = void *;
+	using const_pointer [[deprecated("Deprecated in ISO14882:2017")]] = void const *;
+	// TODO (fmorgner): implement 'propagate_on_container_move_assignment'
+	// TODO (fmorgner): implement 'rebind'
+	// TODO (fmorgner): implement 'is_always_equal'
+	
+};
+
+}
+
+#endif

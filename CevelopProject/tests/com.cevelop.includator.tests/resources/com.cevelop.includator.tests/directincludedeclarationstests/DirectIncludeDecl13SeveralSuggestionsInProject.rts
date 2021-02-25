@@ -1,0 +1,15 @@
+//!DirectIncludeDecl11SourceInSubDir
+//@main.cpp
+#include "A.h"
+int main() {
+	B b;
+}
+//@X.cpp
+#include "A.h"
+void foo() {
+	B b;
+}
+//@A.h
+#include "B.h"
+//@B.h
+class B{ };

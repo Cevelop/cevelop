@@ -1,0 +1,23 @@
+//!alias template 1
+//@MyFileName.cpp
+template<class T>
+using pointer = T*; 
+
+int main() {
+	pointer<int> x;
+}
+
+//!alias template 2
+//@.config
+definition=1
+//@MyFileName.cpp
+template<typename T1, typename T2, typename T3, typename T4>
+struct Quadruple {
+};
+
+template <typename T1>
+using sameTypeQuad = Quadruple<T1, T1, T1, T1>;
+
+int main() {
+	sameTypeQuad<int> x { };
+}

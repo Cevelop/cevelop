@@ -1,7 +1,0 @@
-//!Excluded Reference Test
-//@main.cpp
-int main(){
-  return 0;
-}
-
-#undef EXCLUDED_SYMBOL

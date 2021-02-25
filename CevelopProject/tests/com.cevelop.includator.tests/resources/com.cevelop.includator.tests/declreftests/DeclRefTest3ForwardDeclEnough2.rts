@@ -1,0 +1,34 @@
+//!DeclRefTest3ForwardDeclEnough2 pointer
+//@.config
+expected=true
+//@main.cpp
+#include "B.h"
+
+int main() {
+	B* b1;
+}
+//@B.h
+class B { };
+
+//!DeclRefTest3ForwardDeclEnough2 ref
+//@.config
+expected=true
+//@main.cpp
+#include "B.h"
+
+int main() {
+	B& b1;//illegal
+}
+//@B.h
+class B { };
+//!DeclRefTest3ForwardDeclEnough2 value
+//@.config
+expected=false
+//@main.cpp
+#include "B.h"
+
+int main() {
+	B b1;
+}
+//@B.h
+class B { };

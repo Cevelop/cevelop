@@ -1,0 +1,168 @@
+//!MoveOperationsWithNoExcept
+//@main.h
+class Named_map {
+public:
+	Named_map& operator=(Named_map&& rhs) noexcept{}
+
+	Named_map(Named_map&& rhs) noexcept{}
+
+private:
+	std::string name;
+
+};
+//!MoveAssignmentWithoutNoExcept
+//@.config
+markerLines=3
+//@main.h
+class Named_map {
+public:
+	Named_map& operator=(Named_map&& rhs){}
+
+private:
+	std::string name;
+
+};
+//!MoveConstructorWithoutNoExcept
+//@.config
+markerLines=3
+//@main.h
+class Named_map {
+public:
+	Named_map(Named_map&& rhs){}
+
+private:
+	std::string name;
+
+};
+//!DefaultedMoveAssignmentWithoutNoexceptButHasCppFile
+//@.config
+markerLines=2
+//@A.h
+struct A {
+	A& operator=(A&& rhs);
+};
+//@A.cpp
+#include "A.h"
+A& A::operator=(A&& rhs){}
+//!DefaultedMoveConstructorWithoutNoexceptButHasCppFile
+//@.config
+markerLines=2
+//@A.h
+struct A {
+	A(A&& rhs);
+};
+//@A.cpp
+#include "A.h"
+A::A(A&& rhs){}
+//!InlineInHeaderMoveAssignment
+//@.config
+markerLines=2
+//@A.h
+struct A {
+	inline A& operator=(A&& rhs);
+
+private:
+	int a;
+	std::string s;
+};
+
+inline A& A::operator=(A&& rhs){ }
+//!InlineInHeaderMoveConstructor
+//@.config
+markerLines=2
+//@A.h
+struct A {
+	inline A(A&& rhs);
+
+private:
+	int a;
+	std::string s;
+};
+
+inline A::A(A&& rhs)
+	: a { 42 }, s{ "42" } { }
+//!InlineInHeaderMoveConstructorInitWithNormalBrackets
+//@.config
+markerLines=2
+//@A.h
+struct A {
+	inline A(A&& rhs);
+
+private:
+	int a;
+	std::string s;
+};
+
+inline A::A(A&& rhs)
+	: a(42), s ("42") {
+}
+//!IgnoreBecAttrInlineInHeaderMoveConstructor
+//@A.h
+struct A {
+	[[gsl::suppress("Rc-move-noexcept")]]
+	inline A(A&& rhs)
+	: a { 42 }, s{ "42" } { }
+
+private:
+	int a;
+	std::string s;
+};
+//!IgnoreBecAttrInlineInHeaderMoveConstructorInline
+//@A.h
+struct A {
+	[[gsl::suppress("Rc-move-noexcept")]]
+	inline A(A&& rhs);
+
+private:
+	int a;
+	std::string s;
+};
+
+inline A::A(A&& rhs)
+	: a{42}, s {"42"} {
+}
+//!IgnoreBecAttrInlineInHeaderMoveConstructorCPP
+//@A.h
+struct A {
+	[[gsl::suppress("Rc-move-noexcept")]]
+	A(A&& rhs);
+
+private:
+	int a;
+	std::string s;
+};
+//@A.cpp
+#include "A.h"
+A::A(A&& rhs)
+	: a{42}, s {"42"} {
+}
+//!Move with noexcept false expression
+//@.config
+markerLines=3
+//@main.h
+class Named_map {
+public:
+	Named_map& operator=(Named_map&& rhs) noexcept(false) {}
+
+	Named_map(Named_map&& rhs) noexcept{}
+
+private:
+	std::string name;
+
+};
+//!Move with complex noexcept expression
+//@main.h
+class Named_map {
+public:
+	Named_map& operator=(Named_map&& rhs) noexcept(
+		std::is_nothrow_move_assignable<std::string>::value
+		&& std::is_trivially_move_assignable<std::string>::value
+		&& std::is_move_assignable<std::string>::value
+		) {}
+
+	Named_map(Named_map&& rhs) noexcept{}
+
+private:
+	std::string name;
+
+};

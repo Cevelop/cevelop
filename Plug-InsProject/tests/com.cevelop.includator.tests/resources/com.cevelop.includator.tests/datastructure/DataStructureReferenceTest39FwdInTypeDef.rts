@@ -1,4 +1,0 @@
-//!DataStructureReferenceTest34FwdInTypeDef
-//@main.cpp
-typedef class A MyA;
-MyA *myAInstance;

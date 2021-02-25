@@ -1,0 +1,16 @@
+//!ProjectCoverageTest7MethodParamNameBugFix
+//@A.cpp
+
+class X {
+public:
+  void f();
+};
+
+void X::f(){
+}
+
+
+int main() {
+  X x;
+  return 0;
+}

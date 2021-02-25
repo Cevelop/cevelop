@@ -1,0 +1,33 @@
+//!MarkerTest15DirectApplySeveralInDifferentFile
+//@main.cpp
+#include "A.h"
+#include "B.h"
+
+int main(int argc, char **argv) {
+	A *a;
+	B *b;
+}
+//=
+class A;
+class B;
+
+int main(int argc, char **argv) {
+	A *a;
+	B *b;
+}
+//@xy.cpp
+#include "B.h"
+
+void foo() {
+	B *b;
+}
+//=
+class B;
+
+void foo() {
+	B *b;
+}
+//@A.h
+class A { };
+//@B.h
+class B { };

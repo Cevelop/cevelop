@@ -1,0 +1,6 @@
+//!DataStructureReferenceTest24IfDefWithoutName
+//@A.cpp
+#if defined(XY)
+	#ifdef _DLL
+	#endif
+#endif

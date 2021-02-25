@@ -1,0 +1,64 @@
+//!No Marker for Correct Use of Initializer
+//@.config
+//@main.cpp
+struct S {
+  S(int i) 
+    : value{i} {
+  }
+  int value;
+};
+//!Marker for Initialization in Body
+//@.config
+markerLines=3
+//@main.cpp
+struct S {
+  S(int i) {
+    value = i;
+  }
+  int value;
+};
+//!No Marker for Field Initialized in Initializer and Body
+//@main.cpp
+struct S {
+  S(int i) 
+    : value{i} {
+    value = i;
+  }
+  int value;
+};
+//!No Marker for Assigned Local Variable
+//@main.cpp
+struct S {
+  S(int i) 
+    : value{i} {
+    int value;
+    value = i;
+  }
+  int value;
+};
+//!No Marker for Delegating Constructor 
+//@S.cpp 
+struct S { 
+  S() : S{1}{ 
+    i = 1; 
+  } 
+  S(int i) : i{i}{} 
+private: 
+  int i; 
+};
+
+//!No Marker for Declaration Only
+//@S.cpp
+struct S {
+  S(int i);
+private:
+  int i;
+};
+
+//!No Marker for Defaulted Constructor
+//@S.cpp
+struct S {
+  S() = default;
+private:
+  int i;
+};

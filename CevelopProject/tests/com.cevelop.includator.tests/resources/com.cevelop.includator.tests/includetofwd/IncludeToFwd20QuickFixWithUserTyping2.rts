@@ -1,0 +1,22 @@
+//!IncludeToFwd20QuickFixWithUserTyping2
+//@main.cpp
+#include "B.h"
+#include "A.h"
+class C;
+B b;
+C c;
+A *a;
+//=
+//blub
+#include "B.h"
+//blub
+class C;
+class A;
+B b;
+//blub
+C c;
+A *a;
+//@A.h
+class A { };
+//@B.h
+class B { };

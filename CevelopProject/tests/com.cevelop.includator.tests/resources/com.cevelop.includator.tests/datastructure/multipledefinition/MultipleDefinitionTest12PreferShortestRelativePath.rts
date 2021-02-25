@@ -1,0 +1,12 @@
+//!MultipleDefinitionTest12PreferShortestRelativePath
+//@a/a1/a2/main.cpp
+int main() {
+	foo();
+}
+//@a/a1/a2/Foo.h
+#include "Bar.h"
+void foo();
+//@a/a1/a2/Bar.h
+void bar(); //unused, but needet to make Foo.h "heavy"
+//@Foo.h
+void foo();

@@ -1,5 +1,0 @@
-//!DataStructureReferenceTest20ASTBuiltinName
-//@A.cpp
-
-#ifdef __FILE__
-#endif

@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?pde version="3.5"?>
+
+<product name="Cevelop C++ IDE" uid="com.cevelop.develop" id="com.cevelop.branding.product" application="org.eclipse.ui.ide.workbench" version="1.14.2.qualifier" useFeatures="true" includeLaunchers="true">
+
+   <aboutInfo>
+      <image path="/com.cevelop.branding/about.png"/>
+      <text>
+         %productBlurb
+      </text>
+   </aboutInfo>
+
+   <configIni use="default">
+   </configIni>
+
+   <launcherArgs>
+      <vmArgsLin>
+         <argsX86>-XX:MaxPermSize=256m
+            -Xms128m
+            -Xmx1024m
+            -Dorg.eclipse.swt.browser.DefaultType=webkit
+            -Dorg.eclipse.swt.browser.UseWebKitGTK=true
+            --add-modules=ALL-SYSTEM</argsX86>
+         <argsX86_64>-XX:MaxPermSize=512m
+            -Xms128m
+            -Xmx2048m
+            -Dorg.eclipse.swt.browser.DefaultType=webkit
+            -Dorg.eclipse.swt.browser.UseWebKitGTK=true
+            --add-modules=ALL-SYSTEM</argsX86_64>
+      </vmArgsLin>
+      <vmArgsMac>-XX:MaxPermSize=512m
+            -Xms128m
+            -Xmx2048m
+            -XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts
+            --add-modules=ALL-SYSTEM
+         <argsX86>-XX:MaxPermSize=256m
+            -Xms128m
+            -Xmx1024m
+            --add-modules=ALL-SYSTEM</argsX86>
+      </vmArgsMac>
+      <vmArgsWin>
+         <argsX86>-XX:MaxPermSize=256m
+            -Xms128m
+            -Xmx1024m
+            --add-modules=ALL-SYSTEM</argsX86>
+         <argsX86_64>-XX:MaxPermSize=512m
+            -Xms128m
+            -Xmx2048m
+            --add-modules=ALL-SYSTEM</argsX86_64>
+      </vmArgsWin>
+   </launcherArgs>
+
+   <windowImages i16="/com.cevelop.branding/eclipse16.png" i32="/com.cevelop.branding/eclipse32.png" i48="/com.cevelop.branding/eclipse48.png" i256="/com.cevelop.branding/eclipse256.png"/>
+
+   <splash
+      location="com.cevelop.branding"
+      startupProgressRect="7,270,438,15"
+      startupMessageRect="7,252,438,20"
+      startupForegroundColor="000000" />
+   <launcher name="cevelop">
+      <linux icon="logo.xpm"/>
+      <macosx icon="logo.icns"/>
+      <win useIco="true">
+         <ico path="logo.ico"/>
+         <bmp/>
+      </win>
+   </launcher>
+
+   <intro introId="com.cevelop.branding.intro"/>
+
+   <vm>
+      <linux include="false">org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8</linux>
+      <macos include="false">org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8</macos>
+      <windows include="false">org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8</windows>
+   </vm>
+
+   <license>
+        <url>http://cevelop.com/license</url>
+        <text>
+   Cevelop License Agreement
+
+This is a legal agreement between you, the end user, and Hochschule für Technik
+Rapperswil HSR, hereinafter referred to as &quot;HSR&quot;. Cevelop (the &quot;Software&quot;) is
+owned by HSR and is protected by copyright law. Upon acceptance of the terms of
+this License Agreement, your rights and obligations with respect to use of the
+Software are as follows.
+
+COPYRIGHT.
+
+The Software and Documentation are copyrighted by HSR and are protected by
+international copyright laws. The product contains copyrighted software of HSR.
+All rights reserved. You agree not to remove any trademarks or copyright notices
+from the Software or Documentation.
+
+OTHER RESTRICTIONS.
+
+You may not disclose, publish, translate, rent, lease, transfer, export or
+otherwise make the Software available in any form, to any person or entity,
+except as expressly licensed herein. You may not reverse engineer, decompile
+or disassemble the Software.
+
+You cannot use HSR or related names, logos or trademarks to market your
+software without express written permission.
+
+IN NO EVENT SHALL HSR BE LIABLE FOR ANY LOSS OF PROFIT OR ANY OTHER
+DAMAGE, INCLUDING BUT NOT LIMITED TO SPECIAL, INCIDENTAL, CONSEQUENTIAL OR
+OTHER DAMAGES. THE SOFTWARE IS PROVIDED &quot;AS IS&quot; WITHOUT WARRANTY OF ANY KIND.
+HSR SPECIFICALLY DISCLAIMS ALL OTHER WARRANTIES, EXPRESS OR IMPLIED,
+INCLUDING WITHOUT LIMITATION THE IMPLIED WARRANTIES OF MERCHANTABILITY OR
+FITNESS FOR A PARTICULAR USE.
+
+HSR DOES NOT WARRANT THAT THE SOFTWARE WILL MEET YOUR REQUIREMENTS
+OR THAT THE OPERATION OF THE SOFTWARE WILL BE UNINTERRUPTED OR ERROR-FREE.
+
+GOVERNING LAW.
+
+This Agreement shall be governed by Swiss law, without regard to conflict of
+laws principles. This Agreement may only be modified by a written document
+signed by the party or parties to be bound. Except as may be specified in such a
+written agreement, this is the entire agreement between you and HSR and all
+other terms are rejected. You agree not to use, ship, or export the Software in
+violation of any applicable law.
+
+In the event of any legal disputes in conjunction with this license and
+contracts based on it, the courts of Rapperswil/SG shall be the sole competent
+courts.
+
+ENTIRE AGREEMENT.
+
+You agree that this Agreement expresses the entire understanding between you and
+HSR, and supersedes all other communications, oral or written, relating to the
+Software.
+
+COPYRIGHT 2017 Hochschule für Technik Rapperswil
+
+MANUFACTURER:
+HSR Hochschule für Technik Rapperswil
+Oberseestrasse 10
+Postfach 1475
+8640 Rapperswil
+Switzerland
+         </text>
+   </license>
+
+   <plugins>
+   </plugins>
+
+   <features>
+      <feature id="com.cevelop.aliextor.feature" installMode="root"/>
+      <feature id="com.cevelop.branding.feature" installMode="root"/>
+      <feature id="com.cevelop.charwars.feature" installMode="root"/>
+      <feature id="com.cevelop.clonewar.feature" installMode="root"/>
+      <feature id="com.cevelop.codeanalysator.feature" installMode="root"/>
+      <feature id="com.cevelop.conanator.feature" installMode="root"/>
+      <feature id="com.cevelop.constificator.feature" installMode="root"/>
+      <feature id="com.cevelop.ctylechecker.feature" installMode="root"/>
+      <feature id="com.cevelop.elevator.feature" installMode="root"/>
+      <feature id="com.cevelop.gslator.feature" installMode="root"/>
+      <feature id="com.cevelop.includator.feature" installMode="root"/>
+      <feature id="com.cevelop.intwidthfixator.feature" installMode="root"/>
+      <feature id="com.cevelop.license.feature" installMode="root"/>
+      <feature id="com.cevelop.macronator.feature" installMode="root"/>
+      <feature id="com.cevelop.namespactor.feature" installMode="root"/>
+      <feature id="com.cevelop.product.feature"/>
+      <feature id="com.cevelop.tdd.feature" installMode="root"/>
+      <feature id="com.cevelop.templator.feature" installMode="root"/>
+      <feature id="org.eclipse.cdt" installMode="root"/>
+      <feature id="org.eclipse.cdt.cmake" installMode="root"/>
+      <feature id="org.eclipse.cdt.gdb" installMode="root"/>
+      <feature id="org.eclipse.cdt.gnu.build" installMode="root"/>
+      <feature id="org.eclipse.cdt.gnu.debug" installMode="root"/>
+      <feature id="org.eclipse.cdt.gnu.dsf" installMode="root"/>
+      <feature id="org.eclipse.cdt.native" installMode="root"/>
+      <feature id="org.eclipse.cdt.platform" installMode="root"/>
+      <feature id="org.eclipse.e4.rcp" installMode="root"/>
+      <feature id="org.eclipse.ecf.core.feature" installMode="root"/>
+      <feature id="org.eclipse.ecf.core.ssl.feature" installMode="root"/>
+      <feature id="org.eclipse.ecf.filetransfer.feature" installMode="root"/>
+      <feature id="org.eclipse.ecf.filetransfer.ssl.feature" installMode="root"/>
+      <feature id="org.eclipse.egit" installMode="root"/>
+      <feature id="org.eclipse.emf.common" installMode="root"/>
+      <feature id="org.eclipse.emf.ecore" installMode="root"/>
+      <feature id="org.eclipse.epp.mpc" installMode="root"/>
+      <feature id="org.eclipse.equinox.core.feature" installMode="root"/>
+      <feature id="org.eclipse.equinox.p2.core.feature" installMode="root"/>
+      <feature id="org.eclipse.equinox.p2.discovery.feature"/>
+      <feature id="org.eclipse.equinox.p2.extras.feature" installMode="root"/>
+      <feature id="org.eclipse.equinox.p2.rcp.feature" installMode="root"/>
+      <feature id="org.eclipse.equinox.p2.user.ui" installMode="root"/>
+      <feature id="org.eclipse.help" installMode="root"/>
+      <feature id="org.eclipse.jgit" installMode="root"/>
+      <feature id="org.eclipse.jgit.http.apache" installMode="root"/>
+      <feature id="org.eclipse.jgit.lfs" installMode="root"/>
+      <feature id="org.eclipse.jgit.ssh.apache"/>
+      <feature id="org.eclipse.launchbar" installMode="root"/>
+      <feature id="org.eclipse.platform" installMode="root"/>
+      <feature id="org.eclipse.rcp" installMode="root"/>
+      <feature id="org.eclipse.tm.terminal.connector.local.feature" installMode="root"/>
+      <feature id="org.eclipse.tm.terminal.connector.ssh.feature" installMode="root"/>
+      <feature id="org.eclipse.tm.terminal.connector.telnet.feature" installMode="root"/>
+      <feature id="org.eclipse.tm.terminal.control.feature" installMode="root"/>
+      <feature id="org.eclipse.tm.terminal.feature" installMode="root"/>
+      <feature id="org.eclipse.tm.terminal.view.feature" installMode="root"/>
+      <feature id="org.eclipse.userstorage" installMode="root"/>
+      <feature id="org.eclipse.jgit.gpg.bc" installMode="root"/>
+      <feature id="org.eclipse.jgit.ssh.jsch" installMode="root"/>
+      <feature id="org.eclipse.ecf.filetransfer.httpclient45.feature" installMode="root"/>
+   </features>
+
+   <configurations>
+      <plugin id="org.eclipse.core.runtime" autoStart="true" startLevel="4" />
+      <plugin id="org.eclipse.equinox.common" autoStart="true" startLevel="2" />
+      <plugin id="org.eclipse.equinox.ds" autoStart="true" startLevel="2" />
+      <plugin id="org.eclipse.equinox.event" autoStart="true" startLevel="2" />
+      <plugin id="org.eclipse.equinox.simpleconfigurator" autoStart="true" startLevel="1" />
+      <plugin id="org.eclipse.ui.workbench" autoStart="true" startLevel="4" />
+      <plugin id="org.eclipse.update.configurator" autoStart="true" startLevel="3" />
+      <property name="osgi.instance.area.default" value="@user.home/workspace" />
+      <property name="perspective" value="org.eclipse.cdt.ui.CPerspective" />
+      <property name="cssTheme" value="org.eclipse.e4.ui.css.theme.e4_classic" />
+      <property name="applicationCSSResources" value="platform:/plugin/org.eclipse.platform/images/" />
+   </configurations>
+
+   <repositories>
+      <repository location="https://www.cevelop.com/update-unstable/latest" enabled="true" />
+      <repository location="https://www.cevelop.com/iltis-unstable" enabled="true" />
+      <repository location="http://sconsolidator.com/update" enabled="true" />
+      <repository location="http://download.eclipse.org/egit/updates" enabled="true" />
+      <repository location="http://download.eclipse.org/eclipse/updates/4.14" enabled="true" />
+      <repository location="http://download.eclipse.org/releases/2019-12" enabled="true" />
+      <repository location="http://download.eclipse.org/tools/cdt/releases/9.10" enabled="true" />
+      <repository location="http://https://www.cute-test.com/updatesite/2019-12" enabled="true" />
+   </repositories>
+
+   <preferencesInfo>
+      <targetfile overwrite="false"/>
+   </preferencesInfo>
+
+   <cssInfo>
+   </cssInfo>
+
+</product>

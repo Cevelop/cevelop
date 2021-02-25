@@ -1,0 +1,9 @@
+//!Excluded Symbol (Class Reference)
+//@main.cpp
+#include "A.h"
+
+int main(int argc, char** argv) {
+	A a;
+}
+//@A.h
+struct A { };

@@ -1,0 +1,24 @@
+//!MultipleDefinitionTest10MultipleDeclWeightTest
+//@main.cpp
+int main() {
+	foo(1,1);
+}
+//@foo.h
+#ifndef FOO_H
+#define FOO_H
+
+template<typename T, typename T2>
+T foo(T t, T2 t2) {
+	return t;
+}
+#endif
+//@foo_int.h
+template<typename T2>
+int foo(int t, T2 t2) {
+	return t;
+}
+//@foo_double.h
+template<typename T2>
+double foo(double t, T2 t2) {
+	return t;
+}

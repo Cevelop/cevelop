@@ -1,0 +1,13 @@
+//!ConstructorRefTest19TemplateInstanceField
+//@B.cpp
+#include "A.h"
+
+class B {
+  A<int> aInt;
+};
+//@A.h
+template<typename T>
+class A {
+public:
+  A() { }
+};

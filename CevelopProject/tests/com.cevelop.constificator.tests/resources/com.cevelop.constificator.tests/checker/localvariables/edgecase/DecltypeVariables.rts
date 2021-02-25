@@ -1,0 +1,28 @@
+//!Decltype auto
+//@main.cpp
+int main() {
+    decltype(auto) k = 10;
+}
+
+//!Decltype auto brace init
+//@main.cpp
+int main() {
+    decltype(auto) k { 10 };
+}
+
+//!Decltype type
+//@.config
+markerLines=3
+//@main.cpp
+int main() {
+    int k { 10 };
+    decltype(k) m = k;
+    k++;
+}
+
+//!Decltype const type
+//@main.cpp
+int main() {
+    int const k { 10 };
+    decltype(k) m = k;
+}

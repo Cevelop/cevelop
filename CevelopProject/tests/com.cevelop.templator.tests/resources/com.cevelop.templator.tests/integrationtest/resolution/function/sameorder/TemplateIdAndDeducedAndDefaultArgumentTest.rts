@@ -1,0 +1,16 @@
+//!TemplateIdAndDeducedAndDefaultArgumentTest
+//@MyFileName.cpp
+template<typename T, typename F, typename G=int>
+void inner(F first) {
+}
+
+void inner(bool b) {}
+
+template<typename T, typename F>
+void outer(T first, F second) {
+    inner<double>(first); //<double,bool,int>    
+}
+
+int main() {
+    outer(true, 108ull); //<bool, unsigned long long>
+}

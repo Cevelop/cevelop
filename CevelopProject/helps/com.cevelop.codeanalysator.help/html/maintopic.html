@@ -1,0 +1,31 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
+	<title>User Manual</title>
+</head>
+
+<body>
+<h1>User Manual</h1>
+In this section you will find a quick overview how to enable/disable, configure and use the code analysator plug-in. Note that the plug-in by default will be preinstalled but disabled.
+<h2>Enable/Disable Plug-In</h2>
+In order to enable/disable the plug-in you will have to open the preference page of the code analysator. To find this page differs depending on Operating System. For Windows/Linux use "Window &rarr; Preferences &rarr; C/C++ &rarr; Code Analysis &rarr; Guidelines". Than click on "Add" and choose the guidelines you want activated. Safe the changes by clicking on "Apply changes"
+<img src="../pictures/um_windows_access_controll_01.PNG" alt="Windows/Linux: access control - preferences" class="image" /></a>
+At Mac OS only the first tab changes, instead "Window" use "Eclipse". Here the full path "Eclipse &rarr; Preferences &rarr; C/C++ &rarr; Code Analysis &rarr; Guidelines". Also continue with "Add" and activate the guidelines you need.
+<img src="../pictures/um_mac_access_controll_01.PNG" alt="Mac: access control - preferences" class="image" /></a>
+<img src="../pictures/um_mac_access_controll_02.jpg" alt="access control - targeting guideline preference page" class="image" /></a>
+<img src="../pictures/um_mac_access_controll_03.jpg" alt="access control - choosing guidelines" class="image" /></a>
+<img src="../pictures/um_mac_access_controll_04.jpg" alt="access control - applying changes" class="image" /></a>
+<h2>Configure Priorization of Guidelines</h2>
+The priorization of the guidelines depend on their order in the preference page. The top one will be the highest priorized. This means when a problem shows up, which is recognized by more than one guideline, the most highest priorized guideline will be displayed in your local file. The other guidelines will be suppressed. This also applies to quick fixes. You can change the priorization through the preference page of codeanalysator. To do so open the preference page as explained in the chapter above. Click on the activated guideline and navigate the order through the button "Up"  or "Down"
+<h2><a id="usage"></a>Usage</h2>
+Any found issue of the enabled guidelines will be underlined yellow in the code if it is a warning. For infos the color will apply green. Errors or Problems are red underlined. To apply the quickfix you can open the quickfix list with either the guideline icon on the left 
+<img src="../pictures/um_quickfix_list_01.PNG" alt="open quickfix list over guideline logo" class="image" /></a>
+or with a right click on the underlined code.
+<img src="../pictures/um_quickfix_list_02.PNG" alt="open quickfix list over right click on cod" class="image" /></a>
+<h2>Suppression</h2>
+You might want to suppress the warnings. You can do so through the quick fix list (see chapter <a href="#usage">Usage<a/>). In some cases you will get two suppress quickfixes. This happens when a warning is recognized by two or more activated guidelines. In this case you can either suppress the warning for all guidelines or suppress it only for the actual most priorized guideline. If you choose the latter the warning won't disappear but the next highest priorized guideline activates.
+</body>
+</html>

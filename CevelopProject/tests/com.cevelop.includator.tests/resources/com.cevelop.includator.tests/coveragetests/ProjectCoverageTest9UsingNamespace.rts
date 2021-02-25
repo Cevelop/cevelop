@@ -1,0 +1,3 @@
+//!ProjectCoverageTest9UsingNamespace
+//@A.cpp
+using namespace std;

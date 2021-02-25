@@ -1,0 +1,153 @@
+//!AssignmentQuickFix
+//@main.h
+int main() {
+	float f = 7.9;
+	char c = 'c';
+	c = f;
+}
+//=
+#include "gsl.h"
+int main() {
+	float f = 7.9;
+	char c = 'c';
+	c = gsl::narrow<char>(f);
+}
+//!AssignmentCastQuickFix
+//@main.h
+int main() {
+	float f = 7.9;
+	char c = 'c';
+	c = (char) f;
+}
+//=
+#include "gsl.h"
+int main() {
+	float f = 7.9;
+	char c = 'c';
+	c = gsl::narrow<char>(f);
+}
+//!AssignmentCastWithMultipleUnaryExpressionsQuickFix
+//@main.h
+int main() {
+	float f = 7.9;
+	char c = 'c';
+	c = (char) (((f)));
+}
+//=
+#include "gsl.h"
+int main() {
+	float f = 7.9;
+	char c = 'c';
+	c = gsl::narrow<char>(f);
+}
+//!DeclarationQuickFix
+//@main.h
+int main() {
+	float f = 7.9;
+	char c = f;
+}
+//=
+#include "gsl.h"
+int main() {
+	float f = 7.9;
+	char c = gsl::narrow<char>(f);
+}
+//!AssignmentCastQuickFixWithExistingGSL
+//@main.h
+#include "gsl.h"
+int main() {
+	float f = 7.9;
+	char c1 = 'c';
+	char c2 = 'C';
+	c1 = (char) f;
+	c2 = gsl::narrow<char>(f);
+}
+//=
+#include "gsl.h"
+int main() {
+	float f = 7.9;
+	char c1 = 'c';
+	char c2 = 'C';
+	c1 = gsl::narrow<char>(f);
+	c2 = gsl::narrow<char>(f);
+}
+//!AssignmentCastQuickFixWithTypeDef
+//@main.h
+int main() {
+	typedef int myint;
+	double d = 7.9;
+	myint mi = 6;
+	mi = d;
+}
+//=
+#include "gsl.h"
+int main() {
+	typedef int myint;
+	double d = 7.9;
+	myint mi = 6;
+	mi = gsl::narrow<myint>(d);
+}
+//!AddIgnoreAttributeAssignment
+//@.config
+setIgnoreAttribute=true
+//@main.h
+int main() {
+	float f = 7.9;
+	char c = 'c';
+	c = f;
+}
+//=
+int main() {
+	float f = 7.9;
+	char c = 'c';
+	[[gsl::suppress("Res-narrowing")]] {
+		c = f;
+	}
+}
+//!AddIgnoreAssignmentCast
+//@.config
+setIgnoreAttribute=true
+//@main.h
+int main() {
+	float f = 7.9;
+	char c = 'c';
+	c = (char) f;
+}
+//=
+int main() {
+	float f = 7.9;
+	char c = 'c';
+	[[gsl::suppress("Res-narrowing")]] {
+		c = (char) (f);
+	}
+}
+//!AddIgnoreAssignmentCastWithMultipleUnaryExpressions
+//@.config
+setIgnoreAttribute=true
+//@main.h
+int main() {
+	float f = 7.9;
+	char c = 'c';
+	c = (char) (((f)));
+}
+//=
+int main() {
+	float f = 7.9;
+	char c = 'c';
+	[[gsl::suppress("Res-narrowing")]] {
+		c = (char) ((((f))));
+	}
+}
+//!AddIgnoreDeclaration
+//@.config
+setIgnoreAttribute=true
+//@main.h
+int main() {
+	float f = 7.9;
+	char c = f;
+}
+//=
+int main() {
+	float f = 7.9;
+	[[gsl::suppress("Res-narrowing")]] char c = f;
+}

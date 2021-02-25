@@ -1,0 +1,11 @@
+//!DirectIncludeDecl11SourceInSubDir
+//@a/A.cpp
+#include "../b/B.h"
+
+int main() {
+	A a;
+}
+//@a/A.h
+class A{ };
+//@b/B.h
+#include "../a/A.h"

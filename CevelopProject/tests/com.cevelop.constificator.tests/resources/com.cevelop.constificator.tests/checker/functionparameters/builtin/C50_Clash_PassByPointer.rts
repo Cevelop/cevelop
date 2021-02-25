@@ -1,0 +1,49 @@
+//!ClashingFunctionOverloadExistsAsDeclaration
+//@main.cpp
+void f(char const * const p);
+void f(char * const p) {}
+
+//!ClashingFunctionOverloadExistsAsDefinition
+//@main.cpp
+void f(char const * const p) {}
+void f(char * const p) {}
+
+//!ClashingFunctionOverloadExistsAsDeclarationInDifferentFile
+//@decl.h
+void f(char const * const p);
+//@main.cpp
+#include "decl.h"
+void f(char * const p) {}
+
+//!ClashingFunctionOverloadExistsAsDefinitionInDifferentFile
+//@other.h
+void f(char const * const p) {};
+//@def.h
+#include "other.h"
+void f(char const * const p) {};
+//@main.cpp
+#include "def.h"
+void f(char * const p) {}
+
+//!NoClashingFunctionOverloadExists
+//@.config
+markerLines=2
+//@main.cpp
+void f(char * const p);
+void f(char * const p) {}
+
+//!NonClashingFunctionExistsAsDeclarationInDifferentTranslationUnit
+//@.config
+markerLines=1
+//@main.cpp
+void f(char * const p) {}
+//@other.cpp
+void f(char const * const);
+
+//!NonClashingFunctionExistsAsDefinitionInDifferentTranslationUnit
+//@.config
+markerLines=1
+//@main.cpp
+void f(char * const p) {}
+//@other.cpp
+void f(char const * const p) {}

@@ -1,9 +1,0 @@
-//!RegressionSimpleMemberFunctionParameter
-//@main.cpp
-struct s {
-	void memfun(int n) {}
-};
-//=
-struct s {
-	void memfun(const int n) {	}
-};

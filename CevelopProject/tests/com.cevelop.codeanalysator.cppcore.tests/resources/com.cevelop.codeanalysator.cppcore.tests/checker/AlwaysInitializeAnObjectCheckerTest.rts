@@ -1,0 +1,108 @@
+//!Mark single uninitialized variable
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|CPPCORE_GUIDELINE_ID)
+markerLines=2
+//@main.cpp
+void foo() {
+	int i;
+	i = 10;
+}
+
+//!Mark multiple uninitialized variable
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|CPPCORE_GUIDELINE_ID)
+markerLines=2,2
+//@main.cpp
+void foo() {
+	int i, k;
+	i = 10;
+	k = 20;
+}
+
+//!Mark uninitialized array variable
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|CPPCORE_GUIDELINE_ID)
+markerLines=2,2,2
+//@main.cpp
+void foo() {
+	int i, k[20], j;
+	i = 10;
+	j = 20;
+}
+
+//!Don't mark if variables are initialized
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|CPPCORE_GUIDELINE_ID)
+//@main.cpp
+void foo() {
+	int i { }, k { };
+	i = 10;
+	k = 20;
+}
+
+//!Don't mark member variables
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|CPPCORE_GUIDELINE_ID)
+//@main.cpp
+struct Foo {
+	Foo() : k { 10 } {}
+	int k;
+};
+
+void foo() {
+	Foo f {};
+}
+
+//!Don't mark range-declaration
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.cpp
+#include <initializer_list>
+
+int main() {
+	for (int i : { 0 });
+}
+
+//!Don't mark catch params
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|CPPCORE_GUIDELINE_ID)
+//@main.cpp
+#include <exception>
+
+int main() {
+	try {
+	} catch (std::exception const & e) {
+	}
+}
+
+//!Don't mark function declartions
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|CPPCORE_GUIDELINE_ID)
+//@main.h
+#ifndef MAIN_H_
+#define MAIN_H_
+
+int foo();
+
+#endif /*MAIN_H_*/
+
+//!Don't mark function declartions params
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|CPPCORE_GUIDELINE_ID)
+//@main.h
+#ifndef MAIN_H_
+#define MAIN_H_
+
+int foo(int i);
+
+#endif /*MAIN_H_*/
+
+//!Don't mark if ignore rule is set
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|CPPCORE_GUIDELINE_ID)
+//@main.cpp
+void foo() {
+	[[gsl::suppress("ES.20")]] int i, k { };
+	i = 10;
+	k = 20;
+}

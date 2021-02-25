@@ -1,0 +1,3 @@
+//!HelperTest23InsertFwdOffsetProviderTestNextNodeTest
+//@main.cpp
+void sum(std::istream& in);

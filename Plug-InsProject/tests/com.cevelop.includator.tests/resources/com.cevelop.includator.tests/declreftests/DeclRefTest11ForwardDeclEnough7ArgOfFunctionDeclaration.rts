@@ -1,9 +1,0 @@
-//!DeclRefTest11ForwardDeclEnough7ArgOfFunctionDeclaration
-//@main.cpp
-#include "B.h"
-
-int foo(B* b1);
-//@B.h
-class B { };
-//@foo.cpp
-int foo(B* b1) { }

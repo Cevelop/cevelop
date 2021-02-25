@@ -1,0 +1,30 @@
+//!ProjectCoverageTest28Typedef
+//@main.cpp
+#include "X1.h"
+
+int main() {
+	X1 x1;
+	x1.foo();
+}
+//@X1.h
+#include "X2.h"
+
+typedef X2 X1;
+//@X2.h
+class X2 {
+public:
+	X2();
+	virtual ~X2();
+	void foo();
+	void bar();
+};
+//@X2.cpp
+#include "X2.h"
+
+X2::X2() { }
+
+X2::~X2() { }
+
+void X2::bar() { }
+
+void X2::foo() { }

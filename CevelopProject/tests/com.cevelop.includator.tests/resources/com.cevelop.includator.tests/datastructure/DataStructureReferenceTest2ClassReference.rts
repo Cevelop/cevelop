@@ -1,0 +1,12 @@
+//!DataStructureReferenceTest2ClassReference
+//@A.cpp
+#include "B.h"
+
+int main() {
+  C c;
+  return 0;
+}
+//@B.h
+#include "C.h"
+//@C.h
+class C { };

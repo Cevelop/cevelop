@@ -1,0 +1,12 @@
+//!Local variable passed to operator taking LHS by copy
+//@.config
+markerLines=6
+//@test.cpp
+struct S{};
+
+char operator+(S, char);
+
+void test() {
+    char c;
+    S{} + c;
+}

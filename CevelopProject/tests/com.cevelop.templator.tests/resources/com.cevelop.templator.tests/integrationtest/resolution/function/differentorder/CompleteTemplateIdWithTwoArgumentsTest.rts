@@ -1,0 +1,16 @@
+//!TwoLevelWithCompleteTemplateIdWithTwoArgumentsTest
+//@MyFileName.cpp
+template<typename T, typename F>
+void inner(F first, T second) {
+}
+
+void inner(char first, char second) {}
+
+template<typename T, typename F>
+void outer(T first, F second) {
+    inner<double, int>('c', 'h'); //<double,int>    
+}
+
+int main() {
+    outer(8,15); //<int,int>
+}

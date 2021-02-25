@@ -1,0 +1,74 @@
+//! One enumerator initialized
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=2
+//@main.h
+#include <cstdint>
+enum class Enum : std::uint32_t
+{
+	One,
+	Two = 2632,
+	Three
+};
+
+//! None enumerators initialized
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+#include <cstdint>
+enum class Enum : std::uint32_t
+{
+	One,
+	Two,
+	Three
+};
+
+//! First enumerator initialized
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+#include <cstdint>
+enum class Enum : std::uint32_t
+{
+	One = 8941,
+	Two,
+	Three
+};
+
+//! All enumerators initialized
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+#include <cstdint>
+enum class Enum : std::uint32_t
+{
+	One = 125,
+	Two = 6548,
+	Three = 33558
+};
+
+//! Some enumerators initialized
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=2
+//@main.h
+#include <cstdint>
+enum class Enum : std::uint32_t
+{
+	One = 125,
+	Two,
+	Three = 33558
+};
+
+//! Suppressed one enumerator initialized
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+#include <cstdint>
+[[autosar::suppress("A7-2-4")]]
+enum class Enum : std::uint32_t
+{
+	One,
+	Two = 2632,
+	Three
+};

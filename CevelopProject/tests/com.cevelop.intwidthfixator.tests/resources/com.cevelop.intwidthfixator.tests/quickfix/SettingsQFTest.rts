@@ -1,0 +1,241 @@
+//!ConstSignedElided
+//@.config
+setPreferencesEval=(P_CHAR_PLATFORM_SIGNED_UNSIGNED|V_CHAR_PLATFORM_SIGNED)
+//@main.cpp
+#include <cstdint>
+char foo { 42 };
+//=
+#include <cstdint>
+std::int8_t foo { 42 };
+
+//!ConstUnsignedElided
+//@.config
+setPreferencesEval=(P_CHAR_PLATFORM_SIGNED_UNSIGNED|V_CHAR_PLATFORM_UNSIGNED)
+//@main.cpp
+#include <cstdint>
+char foo { 42 };
+//=
+#include <cstdint>
+std::uint8_t foo { 42 };
+
+
+
+
+
+//!Char8_t
+//@.config
+setPreferencesEval=(P_CHAR_MAPPING|Intern_V_WIDTH_8)
+//@main.cpp
+#include <cstdint>
+unsigned char foo { 42 };
+//=
+#include <cstdint>
+std::uint8_t foo { 42 };
+
+//!Char16_t
+//@.config
+setPreferencesEval=(P_CHAR_MAPPING|Intern_V_WIDTH_16)
+//@main.cpp
+#include <cstdint>
+unsigned char foo { 42 };
+//=
+#include <cstdint>
+std::uint16_t foo { 42 };
+
+//!Char32_t
+//@.config
+setPreferencesEval=(P_CHAR_MAPPING|Intern_V_WIDTH_32)
+//@main.cpp
+#include <cstdint>
+unsigned char foo { 42 };
+//=
+#include <cstdint>
+std::uint32_t foo { 42 };
+
+//!Char64_t
+//@.config
+setPreferencesEval=(P_CHAR_MAPPING|Intern_V_WIDTH_64)
+//@main.cpp
+#include <cstdint>
+unsigned char foo { 42 };
+//=
+#include <cstdint>
+std::uint64_t foo { 42 };
+
+
+
+
+
+//!Short8_t
+//@.config
+setPreferencesEval=(P_SHORT_MAPPING|Intern_V_WIDTH_8)
+//@main.cpp
+#include <cstdint>
+unsigned short foo { 42 };
+//=
+#include <cstdint>
+std::uint8_t foo { 42 };
+
+//!Short16_t
+//@.config
+setPreferencesEval=(P_SHORT_MAPPING|Intern_V_WIDTH_16)
+//@main.cpp
+#include <cstdint>
+unsigned short foo { 42 };
+//=
+#include <cstdint>
+std::uint16_t foo { 42 };
+
+//!Short32_t
+//@.config
+setPreferencesEval=(P_SHORT_MAPPING|Intern_V_WIDTH_32)
+//@main.cpp
+#include <cstdint>
+unsigned short foo { 42 };
+//=
+#include <cstdint>
+std::uint32_t foo { 42 };
+
+//!Short64_t
+//@.config
+setPreferencesEval=(P_SHORT_MAPPING|Intern_V_WIDTH_64)
+//@main.cpp
+#include <cstdint>
+unsigned short foo { 42 };
+//=
+#include <cstdint>
+std::uint64_t foo { 42 };
+
+
+
+
+
+//!Int8_t
+//@.config
+setPreferencesEval=(P_INT_MAPPING|Intern_V_WIDTH_8)
+//@main.cpp
+#include <cstdint>
+unsigned int foo { 42 };
+//=
+#include <cstdint>
+std::uint8_t foo { 42 };
+
+//!Int16_t
+//@.config
+setPreferencesEval=(P_INT_MAPPING|Intern_V_WIDTH_16)
+//@main.cpp
+#include <cstdint>
+unsigned int foo { 42 };
+//=
+#include <cstdint>
+std::uint16_t foo { 42 };
+
+//!Int32_t
+//@.config
+setPreferencesEval=(P_INT_MAPPING|Intern_V_WIDTH_32)
+//@main.cpp
+#include <cstdint>
+unsigned int foo { 42 };
+//=
+#include <cstdint>
+std::uint32_t foo { 42 };
+
+//!Int64_t
+//@.config
+setPreferencesEval=(P_INT_MAPPING|Intern_V_WIDTH_64)
+//@main.cpp
+#include <cstdint>
+unsigned int foo { 42 };
+//=
+#include <cstdint>
+std::uint64_t foo { 42 };
+
+
+
+
+
+//!Long8_t
+//@.config
+setPreferencesEval=(P_LONG_MAPPING|Intern_V_WIDTH_8)
+//@main.cpp
+#include <cstdint>
+unsigned long foo { 42 };
+//=
+#include <cstdint>
+std::uint8_t foo { 42 };
+
+//!Long16_t
+//@.config
+setPreferencesEval=(P_LONG_MAPPING|Intern_V_WIDTH_16)
+//@main.cpp
+#include <cstdint>
+unsigned long foo { 42 };
+//=
+#include <cstdint>
+std::uint16_t foo { 42 };
+
+//!Long32_t
+//@.config
+setPreferencesEval=(P_LONG_MAPPING|Intern_V_WIDTH_32)
+//@main.cpp
+#include <cstdint>
+unsigned long foo { 42 };
+//=
+#include <cstdint>
+std::uint32_t foo { 42 };
+
+//!Long64_t
+//@.config
+setPreferencesEval=(P_LONG_MAPPING|Intern_V_WIDTH_64)
+//@main.cpp
+#include <cstdint>
+unsigned long foo { 42 };
+//=
+#include <cstdint>
+std::uint64_t foo { 42 };
+
+
+
+
+
+//!LongLong8_t
+//@.config
+setPreferencesEval=(P_LONGLONG_MAPPING|Intern_V_WIDTH_8)
+//@main.cpp
+#include <cstdint>
+unsigned long long foo { 42 };
+//=
+#include <cstdint>
+std::uint8_t foo { 42 };
+
+//!LongLong16_t
+//@.config
+setPreferencesEval=(P_LONGLONG_MAPPING|Intern_V_WIDTH_16)
+//@main.cpp
+#include <cstdint>
+unsigned long long foo { 42 };
+//=
+#include <cstdint>
+std::uint16_t foo { 42 };
+
+//!LongLong32_t
+//@.config
+setPreferencesEval=(P_LONGLONG_MAPPING|Intern_V_WIDTH_32)
+//@main.cpp
+#include <cstdint>
+unsigned long long foo { 42 };
+//=
+#include <cstdint>
+std::uint32_t foo { 42 };
+
+//!LongLong64_t
+//@.config
+setPreferencesEval=(P_LONGLONG_MAPPING|Intern_V_WIDTH_64)
+//@main.cpp
+#include <cstdint>
+unsigned long long foo { 42 };
+//=
+#include <cstdint>
+std::uint64_t foo { 42 };
+
+

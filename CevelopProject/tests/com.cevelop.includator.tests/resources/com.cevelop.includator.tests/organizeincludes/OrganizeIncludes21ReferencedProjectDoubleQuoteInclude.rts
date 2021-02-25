@@ -1,0 +1,6 @@
+//!OrganizeIncludes21ReferencedProjectDoubleQuoteInclude
+//@main.cpp
+int main() {
+  libFoo();
+  vector v;
+}

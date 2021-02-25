@@ -1,0 +1,32 @@
+//!NonConstValueParameterChangedIncrementPrefix
+//@.config
+//@main.cpp
+void f(int n)
+  {
+  ++n;
+  }
+
+//!NonConstValueParameterChangedIncrementPostfix
+//@.config
+//@main.cpp
+void f(int n)
+  {
+  n++;
+  }
+  
+//!NonConstValueParameterChangedDecrementPrefix
+//@.config
+//@main.cpp
+void f(int n)
+  {
+  --n;
+  }
+  
+//!NonConstValueParameterChangedDecrementPostfix
+//@.config
+//@main.cpp
+void f(int n)
+  {
+  n--;
+  }
+  

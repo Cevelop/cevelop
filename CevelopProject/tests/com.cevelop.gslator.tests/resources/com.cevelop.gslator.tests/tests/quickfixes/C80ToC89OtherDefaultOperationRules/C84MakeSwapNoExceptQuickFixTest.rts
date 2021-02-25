@@ -1,0 +1,34 @@
+//!SwapFunctionWithoutNoexcept
+//@subject.cpp
+struct Subject {
+	void swap(Subject& a) {
+	}
+};
+//=
+struct Subject {
+	void swap(Subject& a) noexcept {
+	}
+};
+//!SwapFunctionDefinitionWithoutNoexcept
+//@subject.h
+struct Subject {
+	void swap(Subject& a);
+};
+//=
+struct Subject {
+	void swap(Subject& a) noexcept;
+};
+//!SetAttributeMakeSwapNoExcept
+//@.config
+setIgnoreAttribute=true
+//@main.h
+struct Subject {
+	void swap(Subject& a) {
+	}
+};
+//=
+struct Subject {
+	[[gsl::suppress("Rc-swap-fail")]]
+	void swap(Subject& a) {
+	}
+};

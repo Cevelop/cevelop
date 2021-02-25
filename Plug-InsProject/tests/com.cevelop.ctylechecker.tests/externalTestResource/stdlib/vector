@@ -1,6 +1,0 @@
-#ifndef _STL_VECTOR
-#define _STL_VECTOR
-
-#include <stl_vector.h>
-
-#endif

@@ -1,0 +1,71 @@
+//!ClassWithNonReferenceParamInSwap
+//@.config
+markerNr=2
+isApplicable=true
+//@main.h
+struct Subject {
+	int a = 0;
+	void swap(Subject a) {
+	}
+};
+//=
+struct Subject {
+	int a = 0;
+	void swap(Subject &a) {
+	}
+};
+//!NotApplicableClassWithNonReferenceParamInSwap
+//@.config
+markerNr=1
+isApplicable=false
+//@main.h
+struct Subject {
+	int a = 0;
+	void swap(Subject a) {	}
+};
+//!ClassWithNoSwapAndNoVirtualFunctions
+//@.config
+isApplicable=false
+//@main.h
+struct A {
+	void swap(A &a);
+};
+struct B { };
+struct Subject {
+	A a;
+	B b;
+};
+//!ClassWithWrongParamInSwap
+//@.config
+isApplicable=false
+//@main.h
+struct A { };
+struct Subject {
+	int a = 0;
+	void swap(A &a) { }
+};
+//!ClassWithWrongSwapName
+//@.config
+isApplicable=false
+//@main.h
+#include <utility>
+struct Subject {
+	int a = 0;
+	void swapme(Subject &a) { }
+};
+//!AddIgnoreAttributeClassWithNonReferenceParamInSwap
+//@.config
+markerNr=2
+setIgnoreAttribute=true
+//@main.h
+struct Subject {
+	int a = 0;
+	void swap(Subject a) {	}
+};
+//=
+struct Subject {
+	int a = 0;
+	[[gsl::suppress("Rc-swap")]]
+	void swap(Subject a) {
+	}
+};

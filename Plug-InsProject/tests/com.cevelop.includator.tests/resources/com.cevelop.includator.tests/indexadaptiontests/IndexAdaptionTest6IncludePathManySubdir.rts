@@ -1,8 +1,0 @@
-//!IndexAdaptionTest6IncludePathManySubdir
-//@A.cpp
-int main() {
-  QWER qwer;
-  Sub sub;
-  Sub2 sub2;
-  return 0;
-}

@@ -1,7 +1,0 @@
-//!DirectIncludeDecl11SourceInSubDir
-//@a/A.cpp
-int main() {
-	A a;
-}
-//@a/A.h
-class A{ };

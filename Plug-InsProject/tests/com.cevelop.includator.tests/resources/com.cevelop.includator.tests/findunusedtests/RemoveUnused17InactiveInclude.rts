@@ -1,7 +1,0 @@
-//!RemoveUnused17InactiveInclude
-//@header.h
-#ifdef AAAAA
-#include "inactive_header.h"
-#endif
-//@inactive_header.h
-int i = 1;

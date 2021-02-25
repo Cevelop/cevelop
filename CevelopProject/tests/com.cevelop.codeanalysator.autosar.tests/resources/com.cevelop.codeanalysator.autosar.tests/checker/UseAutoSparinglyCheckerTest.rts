@@ -1,0 +1,173 @@
+//! Auto declaring variable
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=3
+//@main.h
+void F()
+{
+	auto x = 12;
+}
+
+//! Auto declaring variable equals initialized with function call
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+#include <cstdint>
+std::int32_t i()
+{
+	return 12;
+}
+void F()
+{
+	auto x = i();
+}
+
+//! Auto declaring variable equals initialized with initializer of non-fundamental type
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+class A
+{
+};
+void F()
+{
+	auto x = A{};
+}
+
+//! Auto declaring variable equals initialized with initializer of fundamental type
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=3
+//@main.h
+void F()
+{
+	auto x = int{};
+}
+
+//! Auto declaring variable equals initialized with lambda expression
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+void F()
+{
+	auto x = [] {};
+}
+
+//! Auto declaring variable constructor initialized with function call
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+#include <cstdint>
+std::int32_t i()
+{
+	return 12;
+}
+void F()
+{
+	auto x(i());
+}
+
+//! Auto declaring variable initializer list initialized with function call
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+#include <cstdint>
+std::int32_t i()
+{
+	return 12;
+}
+void F()
+{
+	auto x{i()};
+}
+
+//! Auto declaring multiple variables initialized with initializers of non-fundamental and fundamental types
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=4
+//@main.h
+#include <cstdint>
+void F()
+{
+	auto x = std::int32_t{}, y = int{};
+}
+
+//! Auto declaring multiple variables initialized with initializers of non-fundamental types
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+void F()
+{
+	auto x = std::int32_t{}, y = std::int32_t{};
+}
+
+//! Auto declaring function
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=1
+//@main.h
+auto F() {
+	return 12;
+}
+
+//! Decltype auto declaring variable
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=3
+//@main.h
+void F()
+{
+	decltype(auto) x = 12;
+}
+
+//! Decltype auto declaring function
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=1
+//@main.h
+decltype(auto) F()
+{
+	return 12;
+}
+
+//! Auto declaring parameter of generic lambda expression
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+void F()
+{
+	[](auto x) {
+		return x;
+	}
+}
+
+//! Auto declaring function template using trailing return type syntax
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+template <typename T>
+auto F(T t) -> T
+{
+	return t;
+}
+
+//! Auto declaring function template not using trailing return type syntax
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=2
+//@main.h
+template <typename T>
+auto F(T t)
+{
+	return t;
+}
+
+//! Suppressed auto declaring variable
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+void F()
+{
+	[[autosar::suppress("A7-1-5")]]
+	auto x = 12;
+}

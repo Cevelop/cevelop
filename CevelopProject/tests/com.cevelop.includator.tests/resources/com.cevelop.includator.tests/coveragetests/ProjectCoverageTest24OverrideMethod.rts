@@ -1,0 +1,20 @@
+//!ProjectCoverageTest24OverrideMethod
+//@A.cpp
+#include "B.h"
+
+int main() {
+  B b;
+  b.foo();
+  return 0;
+}
+//@A.h
+class A {
+public:
+  virtual void foo() { }
+};
+//@B.h
+#include "A.h"
+class B : public A {
+public:
+  virtual void foo() { }
+};

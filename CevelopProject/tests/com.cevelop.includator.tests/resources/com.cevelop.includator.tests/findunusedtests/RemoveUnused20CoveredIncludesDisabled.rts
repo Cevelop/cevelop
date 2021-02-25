@@ -1,0 +1,42 @@
+//!Covered Includes Disabled
+//@A.cpp
+#include "B.h"
+#include "D.h"
+#include "E.h"
+#include "F.h"
+#include "G.h"
+#include "H.h"
+
+int main(int argc, char** argv) {
+	E e;
+}
+//@B.h
+#include "C.h"
+class B { };
+//@C.h
+#include "D.h"
+class C { };
+//@D.h
+class D { };
+//@E.h
+class E { };
+//@F.h
+#include "E.h"
+class F { };
+//@G.h
+#include "F.h"
+#include "I.h"
+class G { };
+//@H.h
+#include "I.h"
+class H { };
+//@I.h
+#include "K.h"
+class I { };
+//@J.h
+class J { };
+//@K.h
+#include "E.h"
+class K { };
+//@XX.h
+

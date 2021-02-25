@@ -1,0 +1,10 @@
+//!DestructorRefTest8ParameterDeclNoImpl
+//@A.cpp
+#include "X.h"
+void foo(X x) {
+}
+//@X.h
+class X {
+};
+//@X.cpp
+#include "X.h"

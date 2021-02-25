@@ -1,0 +1,57 @@
+//!Global non const non static integer
+//@.config
+markerLines=4
+//@foo.hpp
+#ifndef FOO_HPP_
+#define FOO_HPP_
+
+int i { };
+
+struct Foo {
+
+};
+
+#endif /* FOO_HPP_ */
+
+//!Global non const integer
+//@.config
+markerLines=4
+//@foo.hpp
+#ifndef FOO_HPP_
+#define FOO_HPP_
+
+static int i { };
+
+struct Foo {
+
+};
+
+#endif /* FOO_HPP_ */
+
+//!Global static const integer
+//@.config
+//@foo.hpp
+#ifndef FOO_HPP_
+#define FOO_HPP_
+
+static int const i { };
+
+struct Foo {
+
+};
+
+#endif /* FOO_HPP_ */
+
+//!Global const integer
+//@.config
+//@foo.hpp
+#ifndef FOO_HPP_
+#define FOO_HPP_
+
+int const i { };
+
+struct Foo {
+
+};
+
+#endif /* FOO_HPP_ */

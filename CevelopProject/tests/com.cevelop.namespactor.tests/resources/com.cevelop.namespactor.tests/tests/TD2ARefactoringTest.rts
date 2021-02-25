@@ -1,0 +1,57 @@
+//!TD2A_SimpleInt
+//@A1.cpp
+int main(){
+	typedef int /*$*/a/*$*/;
+}
+//=
+int main(){
+	using a = int;
+}
+//!TD2A_SimpleFunction
+//@A1.cpp
+int main(){
+	typedef /*$*/void fun()/*$*/;
+}
+//=
+int main(){
+	using fun = void();
+}
+//!TD2A_SimpleFunctionPtr
+//@A1.cpp
+typedef /*$*/void/*$*/ (*fun)();
+//=
+using fun = void(*)();
+
+//!TD2A_SimpleFunctionPtrWithArgs
+//@A1.cpp
+typedef /*$*/void/*$*/ (*fun)(int a[]);
+//=
+using fun = void(*)(int a[]);
+
+//!TD2A_ArrayOfFunctionPointers
+//@A1.cpp
+typedef /*$*/void/*$*/ (*fun[10])(int a[]);
+//=
+using fun = void(*[10])(int a[]);
+
+//!TD2A_MultipleDeclarators
+//@A1.cpp
+typedef int INT, NUM, *PINT, * const CPINT;
+//=
+using INT = int;
+using NUM = int;
+using PINT = int*;
+using CPINT = int*const;
+
+//!TD2A_SuperflousParentheses
+//@A1.cpp
+typedef int (*((PINT)));
+//=
+using PINT = int*;
+
+//!TD2A_SuperflousParenthesesInFunctionPointer
+//@A1.cpp
+typedef int (*((FPINT)))(void);
+//=
+using FPINT = int(*)(void);
+

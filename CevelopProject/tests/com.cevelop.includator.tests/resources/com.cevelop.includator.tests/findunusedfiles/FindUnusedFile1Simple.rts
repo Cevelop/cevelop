@@ -1,0 +1,12 @@
+//!FindUnusedFile1Simple
+//@A.cpp
+#include "B.h"
+
+int main() {
+  B b;
+  return 0;
+}
+//@B.h
+class B { };
+//@C.h
+class C { };

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.cevelop.ctylechecker.feature"
+      label="Ctylechecker"
+      version="1.14.2.qualifier"
+      provider-name="IFS Institute for Software"
+      plugin="com.cevelop.branding"
+      license-feature="com.cevelop.license.feature"
+      license-feature-version="1.14.2.qualifier">
+
+   <description url="https://www.cevelop.com/features">
+      Ctylechecker performs a lightweight check of simple style mistakes
+when programming C++. The problems reported usually would not
+render the uncompilable but might imply subtle impediments for
+the resulting program.
+   </description>
+
+   <copyright>
+      Copyright (c) 2018 IFS Institute for Software
+Copyright (c) 2021 The Authors of Cevelop
+This program and the accompanying materials are made available
+under the terms of the Eclipse Public License 2.0 which accompanies
+this distribution, and is available at https://www.eclipse.org/legal/epl-2.0/
+SPDX-License-Identifier: EPL-2.0
+   </copyright>
+
+   <license url="">
+      %license%
+   </license>
+
+   <url>
+      <update label="Cevelop Plug-Ins" url="https://www.cevelop.com/update/latest"/>
+      <discovery label="Eclipse Orbit" url="http://download.eclipse.org/tools/orbit/downloads/drops/R20190726180751/repository/"/>
+   </url>
+
+   <requires>
+      <import plugin="org.eclipse.ui.workbench"/>
+      <import plugin="org.eclipse.osgi"/>
+      <import plugin="org.eclipse.jface"/>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="org.eclipse.cdt.codan.core.cxx"/>
+      <import plugin="org.eclipse.cdt.codan.core"/>
+      <import plugin="org.eclipse.cdt.core"/>
+      <import plugin="org.eclipse.core.resources"/>
+      <import plugin="org.eclipse.ui.editors"/>
+      <import plugin="org.eclipse.equinox.common"/>
+      <import plugin="org.eclipse.ui"/>
+      <import plugin="org.eclipse.core.commands"/>
+      <import plugin="com.cevelop.ctylechecker"/>
+      <import plugin="org.eclipse.core.expressions"/>
+      <import plugin="org.eclipse.ui.workbench.texteditor"/>
+      <import plugin="org.eclipse.core.filesystem"/>
+      <import plugin="org.eclipse.jface.text"/>
+      <import plugin="org.eclipse.ui.ide"/>
+   </requires>
+
+   <plugin
+         id="com.cevelop.ctylechecker"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.cevelop.ctylechecker.reporting"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"
+         unpack="false"/>
+
+</feature>

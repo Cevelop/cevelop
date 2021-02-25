@@ -1,0 +1,47 @@
+//!DontPessimizeMoveForTemplateClassTypes
+//@.config
+//@main.cpp
+#include <vector>
+
+std::vector<int> create()
+  {
+  std::vector<int> vector{42};
+  return vector;
+  }
+
+//!DontPessimizeMoveForSimpleClassTypes
+//@.config
+//@main.cpp
+struct simple
+  {
+  unsigned long long veryLong{};
+  double espresso{};
+  };
+
+simple create()
+  {
+  simple instance{42, 14.0};
+  return instance;
+  }
+
+//!DoConstifyBuiltinTypes
+//@.config
+markerLines=3
+//@main.cpp
+int create()
+  {
+  int value{42};
+  return value;
+  }
+
+//!DontPessimizeMoveInTemplateFunctions
+//@.config
+//@main.cpp
+#include <vector>
+
+template<typename T>
+std::vector<T> create()
+  {
+  std::vector<T> vector{};
+  return vector;
+  }

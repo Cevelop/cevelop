@@ -1,4 +1,0 @@
-# std::cin/std::cout sollten nicht ausserhalb der main funktion verwendet werden
-
-Globale objekte wie std::cin/std::cout sind nicht testbar, da sie in unit tests nicht gemockt werden können.
-Daher sollten solche objekte in production code nie ausserhalb von main() verwendet werden.

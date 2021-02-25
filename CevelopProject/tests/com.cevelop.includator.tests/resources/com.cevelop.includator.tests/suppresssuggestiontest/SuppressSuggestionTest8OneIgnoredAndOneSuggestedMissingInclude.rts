@@ -1,0 +1,12 @@
+//!Two Missing Includes, 1 Ignored, 1 Suggested
+//@main.cpp
+
+int main() {
+  A a;
+  B b;
+  return 0;
+}
+//@A.h
+class A { };
+//@B.h
+class B { };

@@ -1,0 +1,59 @@
+//!MemberIsModified
+//@.config
+//@struct.h
+struct s {
+
+s & operator=(s const &) = delete;
+
+void memfun() {
+	data++;
+}
+
+int data{};
+};
+
+//!MemberIsModifiedGH47
+//@main.cpp
+struct container {
+	container & operator=(container const &) = delete;
+
+	container & operator[](int) { return *this;	}
+};
+
+struct thing {
+	void add() {
+		m_c[1];
+	}
+
+	container m_c { };
+};
+
+//!MemberIsNeverModified
+//@.config
+markerLines=7
+//@struct.h
+struct s {
+
+s & operator=(s const &) = delete;
+
+void memfun() {}
+
+int data{};
+};
+
+//!MemberIsModifiedExternally
+//@.config
+//@main.cpp
+struct s {
+
+s & operator=(s const &) = delete;
+
+s() : data{} {}
+
+int data;
+};
+
+int main() {
+	s o{};
+	o.data++;
+}

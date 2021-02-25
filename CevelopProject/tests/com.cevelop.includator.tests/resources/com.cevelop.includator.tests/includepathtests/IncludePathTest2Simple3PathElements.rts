@@ -1,0 +1,14 @@
+//!IncludePathTest2Simple3PathElements
+//@A.cpp
+#include "B.h"
+
+int main(int argc, char** argv) {
+	D d;
+}
+//@B.h
+#include "C.h"
+//@C.h
+#include "D.h"
+//@D.h
+class D { };
+

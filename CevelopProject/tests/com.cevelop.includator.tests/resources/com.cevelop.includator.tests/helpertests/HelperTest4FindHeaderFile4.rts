@@ -1,0 +1,8 @@
+//!HelperTest4FindHeaderFile4
+//@A.cpp
+#include <A>
+int main() {
+	return 0;
+}
+//@A.h
+class A { };

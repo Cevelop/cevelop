@@ -1,6 +1,0 @@
-//!DataStructureReferenceTest55FwdInFunctionParameter
-//@main.cpp
-#include "S.h"
-void foo(struct S s);
-//@S.h
-struct S { }

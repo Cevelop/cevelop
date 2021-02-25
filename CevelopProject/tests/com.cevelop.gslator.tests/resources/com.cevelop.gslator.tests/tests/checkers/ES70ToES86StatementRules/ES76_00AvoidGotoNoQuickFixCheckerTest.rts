@@ -1,0 +1,161 @@
+//!GotoInIfThenClauseNotLast
+//@.config
+markerLines=7
+//@main.h
+void doSomething() {}
+bool someCondition = false;
+
+void case1() {
+	doSomething();
+	if (someCondition) {
+		goto end1;
+		doSomething();
+	}
+	doSomething();
+	end1:
+	doSomething();
+}
+//!GotoInElseClauseNotLast
+//@.config
+markerLines=9
+//@main.h
+void doSomething() {}
+bool someCondition = false;
+
+void case1() {
+	doSomething();
+	if (someCondition) {
+		doSomething();
+	} else {
+		goto end1;
+		doSomething();
+	}
+	doSomething();
+	end1:
+	doSomething();
+}
+//!GotoInLoopIfInThenClauseNotAlone
+//@.config
+markerLines=10
+//@main.h
+void doSomething() {}
+bool someCondition = false;
+
+void case1() {
+	doSomething();
+	loop:
+	doSomething();
+	if (someCondition) {
+		doSomething();
+		goto loop;
+	}
+}
+//!GotoInLoopIfInElseClause
+//@.config
+markerLines=9
+//@main.h
+void doSomething() {}
+bool someCondition = false;
+
+void case1() {
+	doSomething();
+	loop:
+	doSomething();
+	if (someCondition) doSomething();
+	else goto loop;
+}
+//!GotoInLoopIfInElseClause2
+//@.config
+markerLines=11
+//@main.h
+void doSomething() {}
+bool someCondition = false;
+
+void case1() {
+	doSomething();
+	loop:
+	doSomething();
+	if (someCondition) {
+		doSomething();
+	} else {
+		goto loop;
+	}
+}
+//!unknownGotoOnce
+//@.config
+markerLines=9
+//@main.h
+void doSomething() {}
+bool someCondition = false;
+
+void unknown1() {
+	doSomething();
+	while(someCondition) {
+		while(someCondition) {
+			doSomething();
+			if(someCondition) goto exit3;
+			doSomething();
+		}
+	}
+	doSomething();
+	exit3:
+	doSomething();
+}
+//!unknownGotoMultipleTimes
+//@.config
+markerLines=9,10
+//@main.h
+void doSomething() {}
+bool someCondition = false;
+
+void unknown2() {
+	doSomething();
+	while(someCondition) {
+		while(someCondition) {
+			doSomething();
+			if(someCondition) goto exit3;
+			if(someCondition) goto exit3;
+		}
+	}
+	doSomething();
+	exit3:
+	doSomething();
+}
+//!unknownGotoOnceIgnored
+//@.config
+//@main.h
+void doSomething() {}
+bool someCondition = false;
+
+void unknown1() {
+	doSomething();
+	while(someCondition) {
+		while(someCondition) {
+			doSomething();
+			if(someCondition) [[gsl::suppress("Res-goto")]] goto exit3;
+			doSomething();
+		}
+	}
+	doSomething();
+	exit3:
+	doSomething();
+}
+//!unknownGotoMultipleTimesIgnored
+//@.config
+//@main.h
+void doSomething() {}
+bool someCondition = false;
+
+void unknown2() {
+	doSomething();
+	while(someCondition) {
+		while(someCondition) {
+			doSomething();
+			if(someCondition) [[gsl::suppress("Res-goto")]] goto exit3;
+			if(someCondition) [[gsl::suppress("Res-goto")]] goto exit3;
+		}
+	}
+	doSomething();
+	exit3:
+	doSomething();
+}

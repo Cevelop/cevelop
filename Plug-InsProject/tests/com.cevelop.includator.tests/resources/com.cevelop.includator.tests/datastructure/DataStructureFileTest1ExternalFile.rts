@@ -1,4 +1,0 @@
-//!DataStructureFileTest1ExternalFile
-//@A.cpp
-int main() { return 0; }
- 

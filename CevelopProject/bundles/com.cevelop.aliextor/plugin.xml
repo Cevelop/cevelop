@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+
+<plugin>
+
+	<!-- Shortcut for Menu tab & Refactoring Entry -->
+ 
+     <extension
+          point="org.eclipse.ui.bindings">
+        <key commandId="com.cevelop.aliextor.shortcut"
+			sequence="Alt+Shift+A"
+			contextId="org.eclipse.cdt.ui.cEditorScope" 
+			schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"/>
+    </extension>
+    
+	<extension
+		point="org.eclipse.ui.commands">
+		<category id="com.cevelop.aliextor.shortcutCategory"
+			name="Refactor - C++"/>
+		<command id="com.cevelop.aliextor.shortcut"
+			categoryId="com.cevelop.aliextor.shortcutCategory"
+			name="Extract Alias..."/>
+	</extension> 
+ 
+    <extension
+          name="Handlers"
+          point="org.eclipse.ui.handlers">
+      	<handler commandId="com.cevelop.aliextor.shortcut"
+        	class="com.cevelop.aliextor.ui.RefactoringMenuHandler"/>
+    </extension>
+
+<!-- Menu entry defintion -->
+
+    <extension point="org.eclipse.ui.menus">
+      	<menuContribution
+        	allPopups="false"
+        	locationURI="popup:org.eclipse.cdt.ui.refactoring.menu?after=additions">
+          	<command id="com.cevelop.aliextor.menu.refactoring.extract"
+                  commandId="com.cevelop.aliextor.shortcut"
+                  icon="resources/icons/logo.png"
+                  label="Extract Alias..."
+                  mnemonic="A"
+                  style="push"
+                  tooltip="Extract to an alias"/>
+      	</menuContribution>
+    </extension>
+	
+</plugin>

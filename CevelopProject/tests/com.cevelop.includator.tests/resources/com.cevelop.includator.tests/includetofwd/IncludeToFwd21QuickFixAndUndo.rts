@@ -1,0 +1,9 @@
+//!IncludeToFwd21QuickFixAndUndo
+//@main.cpp
+#include "A.h"
+A *a;
+//=
+class A;
+A *a;
+//@A.h
+class A { };

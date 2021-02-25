@@ -1,0 +1,18 @@
+//!ProjectCoverageTest6PointerToMember
+//@A.cpp
+
+class X {
+public:
+  void f();
+};
+
+void X::f(){
+}
+
+
+int main() {
+  void (X::* ptfptr) () = &X::f;
+  X xobject;
+  (xobject.*ptfptr) ();
+  return 0;
+}

@@ -1,0 +1,6 @@
+//!ProjectCoverageTest10UsingNamespace2
+//@A.cpp
+using namespace std;
+int main() {
+  return 0;
+}

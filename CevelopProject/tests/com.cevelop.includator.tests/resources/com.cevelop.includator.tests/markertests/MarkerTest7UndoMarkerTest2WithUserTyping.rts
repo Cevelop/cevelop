@@ -1,0 +1,21 @@
+//!MarkerTest7UndoMarkerTest2WithUserTyping
+//@A.cpp
+#include "C.h"
+int main() {
+	B b;
+	C c;
+	return 0;
+}
+//=
+//hello
+#include "C.h"
+#include "B.h"
+int main() {
+	B b;
+	C c;
+	return 0;
+}
+//@B.h
+class B { };
+//@C.h
+class C { };

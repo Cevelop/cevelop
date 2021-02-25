@@ -1,0 +1,9 @@
+//!MultipleDeclTest1OneDeclOneDef
+//@A.cpp
+class B { };
+
+class B;
+
+int main() {
+	B b;
+}

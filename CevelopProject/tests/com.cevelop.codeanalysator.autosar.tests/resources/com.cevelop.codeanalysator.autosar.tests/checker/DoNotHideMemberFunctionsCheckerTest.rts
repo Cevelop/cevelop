@@ -1,0 +1,250 @@
+//! Virtual member function definition is redefined by definition
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+class A
+{
+	public:
+		virtual void G() noexcept {}
+};
+class B : public A
+{
+	public:
+		void G() noexcept override {}
+};
+
+//! Virtual member function definition is redefined by declaration
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+class A
+{
+	public:
+		virtual void G() noexcept {}
+};
+class B : public A
+{
+	public:
+		void G() noexcept override;
+};
+
+//! Virtual member function declaration redefined by definition
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+class A
+{
+	public:
+		virtual void G() noexcept;
+};
+class B : public A
+{
+	public:
+		void G() noexcept override {}
+};
+
+//! Virtual member function declaration redefined by declaration
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+class A
+{
+	public:
+		virtual void G() noexcept;
+};
+class B : public A
+{
+	public:
+		void G() noexcept override;
+};
+
+//! Non-virtual member function definition is redefined by definition
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=9
+//@main.h
+class A
+{
+	public:
+		void F() noexcept {}
+};
+class B : public A
+{
+	public:
+		void F() noexcept {}
+};
+
+//! Non-virtual member function definition is redefined by declaration
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=9
+//@main.h
+class A
+{
+	public:
+		void F() noexcept {}
+};
+class B : public A
+{
+	public:
+		void F() noexcept;
+};
+
+//! Non-virtual member function declaration is redefined by definition
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=9
+//@main.h
+class A
+{
+	public:
+		void F() noexcept;
+};
+class B : public A
+{
+	public:
+		void F() noexcept {}
+};
+
+//! Non-virtual member function declaration is redefined by declaration
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=9
+//@main.h
+class A
+{
+	public:
+		void F() noexcept;
+};
+class B : public A
+{
+	public:
+		void F() noexcept;
+};
+
+//! Non-virtual member function is redefined by virtual function
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=9
+//@main.h
+class A
+{
+	public:
+		void F() noexcept {}
+};
+class B : public A
+{
+	public:
+		virtual void F() noexcept {}
+};
+
+//! Non-virtual member function is redefined by final function
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=9
+//@main.h
+class A
+{
+	public:
+		void F() noexcept {}
+};
+class B : public A
+{
+	public:
+		void F() final noexcept {}
+};
+
+//! Non-virtual member function is redefined in base class of base class
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=13
+//@main.h
+class A
+{
+	public:
+		void F() noexcept {}
+};
+class B : public A
+{
+
+};
+class C: public B
+{
+	public:
+		void F() noexcept {}
+}
+
+//! Non-virtual member function is redefined in base class declared in another file
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=5
+//@a.cpp
+class A
+{
+	public:
+		void F() noexcept {}
+};
+//@main.h
+#include <a.cpp>
+class B : public A
+{
+	public:
+		void F() noexcept {}
+};
+
+//! Non-virtual member function definition is redefined by definition but suppressed
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+class A
+{
+	public:
+		void F() noexcept {}
+};
+class B : public A
+{
+	public:
+		[[autosar::suppress("A10-2-1")]]
+		void F() noexcept {}
+};
+
+//! Overriding virtual member functions
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+struct S{};
+struct A{
+	virtual S bla() = 0;
+};
+class B : public A{
+	S bla() override{}
+};
+class C : public B {
+	virtual S bla();
+};
+
+//! Constructor of class with equal name as base class does not hide
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+namespace abc {
+struct A {
+	A();
+};
+}
+struct A : abc::A {
+	A();
+};
+
+//! Destructor of class with equal name as base class does not hide
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+namespace abc {
+struct A {
+	~A();
+};
+}
+struct A : abc::A {
+	~A();
+};

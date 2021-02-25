@@ -1,9 +1,0 @@
-//!MultipleDefinitionTest4MacroDef
-//@main.cpp
-int main() {
-  XY i;
-}
-//@a.h
-#define XY int;
-//@b.h
-#define XY int;

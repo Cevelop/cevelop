@@ -1,0 +1,184 @@
+//!Should Mark Uninitialized Int
+//@.config
+markerLines=1
+//@main.cpp
+int x;
+
+//!Should MarkUninitializedDouble
+//@.config
+markerLines=1
+//@main.cpp
+double x;
+
+//!Should MarkUninitializedType
+//@.config
+markerLines=2
+//@main.cpp
+class T;
+T x;
+
+//!Should Mark Uninitialized Pointer
+//@.config
+markerLines=1
+//@main.cpp
+int *x;
+
+//!Should Mark Uninitialized Var In Function Body
+//@.config
+markerLines=2
+//@main.cpp
+void foo() {
+   int x;
+}
+
+//!Should MarkEqualsInitializedVar
+//@.config
+markerLines=1
+preferences.markEqualsInitializers=true
+//@main.cpp
+int i = 1;
+
+//!Should MarkEqualsInitializedWithTypeConversionInConstructor
+//@.config
+markerLines=2
+preferences.markEqualsInitializers=true
+//@main.cpp
+struct T{ T(double x){}};
+T x = 1.1;
+
+//!Should MarkInitializedWithImplicitCopyConstructor
+//@.config
+markerLines=2
+preferences.markEqualsInitializers=true
+//@main.cpp
+struct T{ T(int x){}};
+T x = T(1);
+
+//!Should MarkDirectInitializedWithConversionInConstructor
+//@.config
+markerLines=2
+//@main.cpp
+struct T{ T(double x){}};
+T x(1.1);
+
+//!Should MarkMultipleUninitialized
+//@.config
+markerLines=2,3
+//@main.cpp
+int 
+x, 
+y;
+
+//!Should MarkConstructorInitializedPOD
+//@.config
+markerLines=1
+//@main.cpp
+int x(1);
+
+//!Should MarkConstructorInitializedClass
+//@.config
+markerLines=8
+//@main.cpp
+class C {
+	int a;
+	int b;
+public:
+	C(const int i, const int j) : a { i }, b { j } {}
+};
+
+C c(1, 1);
+//!Should MarkReferenceInitialization
+//@.config
+markerLines=2
+preferences.markEqualsInitializers=true
+//@main.cpp
+int z {1};
+int &x = z;
+ 
+//!Should MarkUninitializedInMultipleDeclarationList
+//@.config
+markerLines=3
+//@main.cpp
+int 
+x{1},
+y;
+ 
+//!Should MarkTemplateClassConstructorForElevation
+//@.config
+markerLines=2
+//@main.cpp
+namespace std { template<class T1, class T2> class pair {}; }
+std::pair<int,int> p1(3,4);
+
+//!Should MarkConstructorInitializerListForElevation
+//@.config
+markerLines=3,4
+//@main.cpp
+class C { int a; int b; };
+C::C() :
+a(1), 
+b(2) {}
+
+//!Should MarkNewOperatorInstantiations
+//@.config
+markerLines=4
+//@main.cpp
+class Worker {};
+
+int main() {
+	new Worker;
+}
+
+//!Should MarkNewOperatorInstantiationsWithCopyConstructor
+//@.config
+markerLines=7
+//@main.cpp
+struct C {
+	C(int a) : a { a } {}
+	int a;
+};
+
+int main(int argc, char const *argv[]) {
+	new C(5);
+}
+
+//!Should markUninitializedRunVariableInForLoops
+//@.config
+markerLines=2
+//@main.cpp
+int main(int argc, char **argv) {
+	for (int i; i < 10; ++i) { }
+}
+
+//!Should Mark Template Instantiation
+//@.config
+markerLines=5
+//@main.cpp
+template<typename T>
+struct T {};
+
+int main(int argc, char **argv) {
+    T<int> t;
+}
+//!Mark Ctor Call of Base Class
+//@.config
+markerLines=6
+//@main.cpp
+struct Base {
+	Base(int){}
+};
+
+struct Sub : Base {
+	Sub(int i) : Base(i){}
+};
+//!Mark Ctor Call of Base Class with Multiple Arguments
+//@.config
+markerLines=6
+//@main.cpp
+struct Base {
+	Base(int, int){}
+};
+
+struct Sub : Base {
+	Sub(int i) : Base(i, i){}
+};

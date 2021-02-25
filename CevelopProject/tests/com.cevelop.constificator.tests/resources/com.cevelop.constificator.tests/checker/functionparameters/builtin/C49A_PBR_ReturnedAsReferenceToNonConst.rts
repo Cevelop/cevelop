@@ -1,0 +1,15 @@
+//!ReferenceParameterIsReturnedAsLValueReferenceToNonConstQualifiedType
+//@main.cpp
+int & function(int & parameter)
+  {
+  return parameter;
+  }
+
+//!ReferenceParameterIsReturnedAsLValueReferenceToConstQualifiedType
+//@.config
+markerLines=1
+//@main.cpp
+int const & function(int & parameter)
+  {
+  return parameter;
+  }

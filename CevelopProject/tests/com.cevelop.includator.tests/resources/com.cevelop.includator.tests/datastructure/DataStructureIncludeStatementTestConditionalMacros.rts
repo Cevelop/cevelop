@@ -1,0 +1,77 @@
+//!DataStructureIncludeStatementTest #ifdef #endif
+//@A.cpp
+#ifdef XY
+#include <iostream>
+#endif
+#include "B.h"
+
+int main() { return 0; }
+//@B.h
+#include "C.h"
+//@C.h
+//!DataStructureIncludeStatementTest #ifndef #endif
+//@A.cpp
+#ifndef XY
+#include "B.h"
+#else
+#include <iostream>
+#endif
+
+int main() { return 0; }
+//@B.h
+#include "C.h"
+//@C.h
+//!DataStructureIncludeStatementTest #ifdef #else #endif
+//@A.cpp
+#ifdef XY
+#include <iostream>
+#else
+#include "B.h" 
+#endif
+
+int main() { return 0; }
+//@B.h
+//!DataStructureIncludeStatementTest #if 0 #endif
+//@A.cpp
+#if 0
+#include <iostream>
+#endif
+#include "B.h" 
+int main() { return 0; }
+//@B.h
+//!DataStructureIncludeStatementTest #if 1 #endif
+//@A.cpp
+#if 1
+#include "B.h" 
+#endif
+int main() { return 0; }
+//@B.h
+//!DataStructureIncludeStatementTest #if X < 1 #endif
+//@A.cpp
+#define X -1
+#if X < 0
+#include "B.h" 
+#endif
+int main() { return 0; }
+//@B.h
+//!DataStructureIncludeStatementTest #if X > 5 #endif
+//@A.cpp
+#define X -1
+#if X > 5
+#include <iostream>
+#endif
+#include "B.h" 
+int main() { return 0; }
+//@B.h
+//!DataStructureIncludeStatementTest complex
+//@A.cpp
+#define X -1
+#define Y
+#if !defined(Y) && X > -2 || 1
+#include "B.h" 
+#else
+#include <iostream>
+#endif
+int main() { return 0; }
+//@B.h
+

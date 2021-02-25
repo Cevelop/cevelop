@@ -1,0 +1,437 @@
+//!Call Private In Struct From Outside
+//@.config
+markerLines=12
+//@A.cpp
+struct B {
+private:
+	int foo()
+	{
+		return int();
+	}
+};
+
+void test()
+{
+	B b;
+	int x = b.foo();
+}
+//=
+struct B {
+	int foo() {
+		return int();
+	}
+
+private:
+};
+
+void test()
+{
+	B b;
+	int x = b.foo();
+}
+//!Call Private In Struct From Inside
+//@.config
+markerCount=0
+//@A.cpp
+struct B
+{
+	void foo()
+	{
+		bar();
+	}
+private:
+	void bar()
+	{
+	}
+};
+//=
+struct B
+{
+	void foo()
+	{
+		bar();
+	}
+private:
+	void bar()
+	{
+	}
+};
+//!Call Default In Class From Outside
+//@.config
+markerLines=9
+//@A.cpp
+class B {
+	void foo() {
+	}
+};
+
+void test()
+{
+	B b;
+	b.foo();
+}
+//=
+class B {
+public:
+	void foo() {
+	}
+};
+
+void test()
+{
+	B b;
+	b.foo();
+}
+//!Call Default In Class From Inside
+//@.config
+markerCount=0
+//@A.cpp
+class B 
+{
+	void foo()
+	{
+		bar();
+	}
+	void bar()
+	{
+	}
+};
+//=
+class B 
+{
+	void foo()
+	{
+		bar();
+	}
+	void bar()
+	{
+	}
+};
+//!Insert At Right Position Struct
+//@.config
+markerLines=13
+//@A.cpp
+struct B
+{
+public:
+private:
+	void foo()
+	{
+	}
+};
+
+void test()
+{
+	B b;
+	b.foo();
+}
+//=
+struct B
+{
+public:
+	void foo() {
+	}
+
+private:
+};
+
+void test()
+{
+	B b;
+	b.foo();
+}
+//!Preserve Comments When Hiding
+//@.config
+markerLines=10
+//@A.cpp
+struct B {
+private:
+	// comment above function
+	int foo() {
+		// comment inside function
+	}
+};
+void test() {
+	B b;
+	int x = b.foo();
+}
+//=
+struct B {
+	// comment above function
+	int foo() {
+		// comment inside function
+	}
+
+private:
+};
+void test() {
+	B b;
+	int x = b.foo();
+}
+//!Preserve Macros When Hiding
+//@.config
+markerLines=8
+//@A.cpp
+class Klasse {
+	int foo(int i = __LINE__) {
+		return __LINE__;
+	}
+};
+int main() {
+	Klasse k;
+	int x = k.foo(42);
+	return 0;
+}
+//=
+class Klasse {
+public:
+	int foo(int i = __LINE__) {
+		return __LINE__;
+	}
+};
+int main() {
+	Klasse k;
+	int x = k.foo(42);
+	return 0;
+}
+//!Test Change In Other Files
+//@.config
+markerLines=5
+//@A.cpp
+#include "B.h"
+
+void test() {
+	B b;
+	b.member();
+}
+//=
+#include "B.h"
+
+void test() {
+	B b;
+	b.member();
+}
+//@B.h
+#ifndef B_H_
+#define B_H_
+
+class B {
+	void member() {
+	}
+};
+#endif /* B_H_ */
+//=
+#ifndef B_H_
+#define B_H_
+
+class B {
+public:
+	void member() {
+	}
+};
+#endif /* B_H_ */
+//!Private Function Declaration
+//@.config
+markerLines=7
+//@A.cpp
+class B {
+	int foo();
+};
+
+void test() {
+	B b;
+	int x = b.foo();
+}
+//=
+class B {
+public:
+	int foo();
+};
+
+void test() {
+	B b;
+	int x = b.foo();
+}
+//!Private Member Variable
+//@.config
+markerLines=7
+//@A.cpp
+class B {
+	int foo;
+};
+
+void test() {
+	B b;
+	int x = b.foo;
+}
+//=
+class B {
+public:
+	int foo;
+};
+
+void test() {
+	B b;
+	int x = b.foo;
+}
+//!No Marker For Internal Calls
+//@.config
+markerCount=0
+//@A.cpp
+class A {
+	int blah;
+public:
+	void member() {
+		this->blah++;
+	}
+};
+//=
+class A {
+	int blah;
+public:
+	void member() {
+		this->blah++;
+	}
+};
+//!Change Visibility in External Header File
+//@.config
+markerLines=5
+//@A.cpp
+#include "A.h"
+
+void func() {
+	A a;
+	a.foo();
+}
+//=
+#include "A.h"
+
+void func() {
+	A a;
+	a.foo();
+}
+//@A.h
+class A {
+	void foo(){}
+public:
+
+	A() {
+	}
+};
+//=
+class A {
+public:
+	void foo() {
+	}
+
+	A() {
+	}
+};
+//!No Marker for Access in Non-inline Member
+//@.config
+markerCount=0
+//@A.cpp
+class A {
+	int blah;
+public:
+	void member();
+};
+void A::member() {
+	A a;
+	a.blah = 0;
+}
+//=
+class A {
+	int blah;
+public:
+	void member();
+};
+void A::member() {
+	A a;
+	a.blah = 0;
+}
+//!No Marker for Member Visible due to Friend Function Declaration
+//@.config
+markerCount=0
+//@A.cpp
+class Fortress {
+private:
+	friend void steal(int);
+	int treasure;
+};
+
+void steal(int amount) {
+	Fortress fort;
+	fort.treasure -= amount;
+}
+//=
+class Fortress {
+private:
+	friend void steal(int);
+	int treasure;
+};
+
+void steal(int amount) {
+	Fortress fort;
+	fort.treasure -= amount;
+}
+//!No Marker for Member Visible due to Friend Class Declaration
+//@.config
+markerCount=0
+//@A.cpp
+class S {
+private:
+	friend class T;
+	int thing;
+};
+
+class T {
+private:
+	void foo();
+};
+
+void T::foo(){
+	S s;
+	s.thing++;
+}
+//=
+class S {
+private:
+	friend class T;
+	int thing;
+};
+
+class T {
+private:
+	void foo();
+};
+
+void T::foo(){
+	S s;
+	s.thing++;
+}
+//!No Marker for Member Visible due to Friend Function Declaration in Separate Files
+//@.config
+markerCount=0
+//@A.cpp
+#include "A.h"
+void modify(S & s) {
+  s.v = 1;
+}
+//=
+#include "A.h"
+void modify(S & s) {
+  s.v = 1;
+}
+//@A.h
+struct S {
+  friend void modify(S & s);
+private:
+  int v;
+};
+//=
+struct S {
+  friend void modify(S & s);
+private:
+  int v;
+};

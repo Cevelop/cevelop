@@ -1,7 +1,0 @@
-//!DataStructureFileTest7CCProjectIndexFileTest
-//@A.h
-class A { };
-//@cpp.cpp
-#include "A.h"
-//@c.c
-#include "A.h"

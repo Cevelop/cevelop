@@ -1,0 +1,9 @@
+//!No Suggestion due to Symbol Exclusion
+//@main.cpp
+int main() {
+	A a;
+	return 0;
+}
+//@A.h
+struct A {
+};

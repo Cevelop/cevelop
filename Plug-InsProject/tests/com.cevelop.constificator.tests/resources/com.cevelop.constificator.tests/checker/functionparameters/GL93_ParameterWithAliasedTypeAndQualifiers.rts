@@ -1,5 +1,0 @@
-//!Ignore const alias
-//@main.cpp
-using alias = int;
-void foo(const alias& k) {
-}

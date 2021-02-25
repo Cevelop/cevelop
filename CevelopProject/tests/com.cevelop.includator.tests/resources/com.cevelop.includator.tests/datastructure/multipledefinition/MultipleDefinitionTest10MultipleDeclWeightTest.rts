@@ -1,0 +1,16 @@
+//!MultipleDefinitionTest10MultipleDeclWeightTest
+//@main.cpp
+int main() {
+  foo();
+}
+//@foo.h
+//foo here must have a bigger offset than the one in 'another_foo.h' which is caused by this comment ;-)
+void foo();
+//@foo2.h
+void foo2();
+//@another_foo.h
+#include "foo2.h"
+void foo();
+//@foo.cpp
+void foo() { }
+void foo2() { }

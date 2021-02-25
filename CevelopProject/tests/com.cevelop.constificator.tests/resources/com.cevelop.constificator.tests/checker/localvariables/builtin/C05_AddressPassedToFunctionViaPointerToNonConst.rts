@@ -1,0 +1,45 @@
+//!NonConstDeclAddressPassedToFunctionTakingNonConstPtrToNonConst
+//@.config
+//@main.cpp
+#include "pod_funcs.h"
+
+int main()
+  {
+  int n{42};
+  func_nonconst_ptr_nonconst(&n);
+  }
+
+//!NonConstDeclAddressPassedToFunctionTakingConstPtrToNonConst
+//@.config
+//@main.cpp
+#include "pod_funcs.h"
+
+int main()
+  {
+  int n{42};
+  func_const_ptr_nonconst(&n);
+  }
+  
+//!NonConstDeclAddressPassedToFunctionTakingNonConstPtrToConst
+//@.config
+markerLines=5
+//@main.cpp
+#include "pod_funcs.h"
+
+int main()
+  {
+  int n{42};
+  func_nonconst_ptr_const(&n);
+  }
+
+//!NonConstDeclAddressPassedToFunctionTakingConstPtrToConst
+//@.config
+markerLines=5
+//@main.cpp
+#include "pod_funcs.h"
+
+int main()
+  {
+  int n{42};
+  func_const_ptr_const(&n);
+  }

@@ -1,0 +1,57 @@
+//!multibreak1
+//@main.h
+void doSomething() {}
+bool someCondition = false;
+
+void case7() {
+	doSomething();
+	while(someCondition) {
+		while(someCondition) {
+			doSomething();
+			if(someCondition) goto exit3;
+			doSomething();
+		}
+	}
+	// doSomething(69); <- with this the quickfix would not be valid
+	exit3:
+	doSomething();
+}
+//!multibreak2
+//@main.h
+void doSomething() {}
+bool someCondition = false;
+
+void case8() {
+	doSomething();
+	while(someCondition) {
+		while(someCondition) {
+			while(someCondition) {
+				doSomething();
+				if(someCondition) goto exit3;
+				doSomething();
+			}
+		}
+	}
+	// doSomething(69); <- with this the quickfix would not be valid
+	exit3:
+	doSomething();
+}
+//!multibreak3
+//@main.h
+void doSomething() {}
+bool someCondition = false;
+
+void case7() {
+	doSomething();
+	while(someCondition) {
+		while(someCondition) {
+			doSomething();
+			if(someCondition) goto exit3;
+			if(someCondition) goto exit3;
+			doSomething();
+		}
+	}
+	// doSomething(69); <- with this the quickfix would not be valid
+	exit3:
+	doSomething();
+}

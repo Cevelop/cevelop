@@ -1,0 +1,14 @@
+//!Template Constructor
+//@main.cpp
+template<typename T>
+class V{
+public:
+	template<typename Iter>
+	V(Iter first, Iter last){
+	}
+};
+
+int main() {
+	int arr[5];
+	V<int> v(arr, arr + 4);
+}

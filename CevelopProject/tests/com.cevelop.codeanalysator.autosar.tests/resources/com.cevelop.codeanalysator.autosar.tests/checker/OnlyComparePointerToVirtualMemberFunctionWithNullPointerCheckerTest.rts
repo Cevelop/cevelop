@@ -1,0 +1,242 @@
+//! Less than comparison of int to int
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+bool Fn() noexcept
+{
+	return 0 < 1;
+}
+
+//! Equals to comparison of pointer with pointer
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+bool Fn() noexcept
+{
+	int a;
+	int b;
+	return &a == &b;
+}
+
+//! Equals to comparison of pointer to member variable with pointer to member variable
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+struct A {
+	int field;
+	int other_field;
+};
+bool Fn() noexcept
+{
+	return &A::field == &A::other_field;
+}
+
+//! Equals to comparison of pointer to member function variable with pointer to member function variable
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+struct A {
+	void non_virtual_func() { }
+	void other_non_virtual_func() { }
+};
+bool Fn() noexcept
+{
+	void (A::* member_pointer)() { &A::non_virtual_func };
+	void (A::* other_member_pointer)() { &A::other_non_virtual_func };
+	return member_pointer == other_member_pointer;
+}
+
+//! Equals to comparison of parenthesised pointer to member function variable with parenthesised pointer to member function variable
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+struct A {
+	void non_virtual_func() { }
+	void other_non_virtual_func() { }
+};
+bool Fn() noexcept
+{
+	void (A::* member_pointer)() { &A::non_virtual_func };
+	void (A::* other_member_pointer)() { &A::other_non_virtual_func };
+	return (member_pointer) == (other_member_pointer);
+}
+
+//! Equals to comparison of pointer to member function with pointer to member function
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+struct A {
+	void non_virtual_func() { }
+	void other_non_virtual_func() { }
+};
+bool Fn() noexcept
+{
+	return &A::non_virtual_func == &A::other_non_virtual_func;
+}
+
+//! Equals to comparison of pointer to virtual member function with pointer to member function
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=7
+//@main.h
+struct A {
+	void non_virtual_func() { }
+	virtual void virtual_func() { }
+};
+bool Fn() noexcept
+{
+	return &A::virtual_func == &A::non_virtual_func;
+}
+
+//! Not equals to comparison of pointer to virtual member function with pointer to member function
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=7
+//@main.h
+struct A {
+	void non_virtual_func() { }
+	virtual void virtual_func() { }
+};
+bool Fn() noexcept
+{
+	return &A::virtual_func != &A::non_virtual_func;
+}
+
+//! Equals to comparison of pointer to overriding member function with pointer to member function
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=10
+//@main.h
+struct A {
+	virtual void virtual_func() { }
+};
+struct B : A {
+	void non_virtual_func() { }
+	void virtual_func() { }
+};
+bool Fn() noexcept
+{
+	return &B::virtual_func == &B::non_virtual_func;
+}
+
+//! Equals to comparison of pointer to virtual member function with null-pointer constant
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+struct A {
+	virtual void virtual_func() { }
+};
+bool Fn() noexcept
+{
+	return &A::virtual_func == nullptr;
+}
+
+//! Equals to comparison of pointer to member function with pointer to virtual member function
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=7
+//@main.h
+struct A {
+	void non_virtual_func() { }
+	virtual void virtual_func() { }
+};
+bool Fn() noexcept
+{
+	return &A::non_virtual_func == &A::virtual_func;
+}
+
+//! Equals to comparison of virtual pointer to member function with pointer to virtual member function
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=7,7
+//@main.h
+struct A {
+	virtual void virtual_func() { }
+	virtual void other_virtual_func() { }
+};
+bool Fn() noexcept
+{
+	return &A::virtual_func == &A::other_virtual_func;
+}
+
+//! Equals to comparison of pointer to virtual member function variable with pointer to member function
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=8
+//@main.h
+struct A {
+	void non_virtual_func() { }
+	virtual void virtual_func() { }
+};
+bool Fn() noexcept
+{
+	void (A::* virtual_func_pointer)() { &A::virtual_func };
+	return virtual_func_pointer == &A::non_virtual_func;
+}
+
+//! Equals to comparison of pointer to virtual member function type alias variable with pointer to member function
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=9
+//@main.h
+struct A {
+	void non_virtual_func() { }
+	virtual void virtual_func() { }
+};
+using virtual_func_pointer_type = void (A::*)();
+bool Fn() noexcept
+{
+	virtual_func_pointer_type virtual_func_pointer { &A::virtual_func };
+	return virtual_func_pointer == &A::non_virtual_func;
+}
+
+//! Equals to comparison of objects initialized with pointer to virtual member function and pointer to member function
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+struct A {
+	void non_virtual_func() { }
+	virtual void virtual_func() { }
+};
+struct B {
+	explicit B(void (A::* func_pointer)()) { }
+	bool operator==(B const &other) { return true; }
+};
+bool Fn() noexcept
+{
+	B virtual_b { &A::virtual_func };
+	B non_virtual_b { &A::non_virtual_func };
+	return virtual_b == non_virtual_b;
+}
+
+
+//! Equals to comparison of pointer to virtual member function variable with pointer to member function through circular variable pointers
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=10
+//@main.h
+struct A {
+	void non_virtual_func() { }
+	virtual void virtual_func() { }
+};
+bool Fn() noexcept
+{
+	void (A::* first_virtual_func_pointer)() { &A::virtual_func };
+	void (A::* second_virtual_func_pointer)() { first_virtual_func_pointer };
+	first_virtual_func_pointer = second_virtual_func_pointer;
+	return first_virtual_func_pointer == &A::non_virtual_func;
+}
+
+//! Suppressed equals to comparison of pointer to virtual member function with pointer to member function
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+struct A {
+	void non_virtual_func() { }
+	virtual void virtual_func() { }
+};
+bool Fn() noexcept
+{
+	[[autosar::suppress("A5-10-1")]]
+	return &A::virtual_func == &A::non_virtual_func;
+}

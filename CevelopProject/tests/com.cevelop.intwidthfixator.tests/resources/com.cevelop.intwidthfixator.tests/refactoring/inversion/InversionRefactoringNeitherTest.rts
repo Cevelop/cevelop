@@ -1,0 +1,703 @@
+
+//!Testtest
+//@main.cpp
+#include <cstdint>
+#include <vector>
+#include <iostream>
+#include <functional>
+
+// Typedefs
+
+using Uuchar = unsigned char;
+using Uushort = unsigned short;
+using Uushortint = unsigned short;
+using Uuint = unsigned int;
+using Uulong = unsigned long;
+using Uulongint = unsigned long;
+using Uulonglong = unsigned long long;
+using Uulonglongint = unsigned long long;
+
+using Uschar = signed char;
+using Usshort = signed short;
+using Usshortint = signed short;
+using Usint = signed int;
+using Uslong = signed long;
+using Uslongint = signed long;
+using Uslonglong = signed long long;
+using Uslonglongint = signed long long;
+
+using Unchar = char;
+using Unshort = short;
+using Unshortint = short;
+using Unint = int;
+using Unlong = long;
+using Unlongint = long;
+using Unlonglong = long long;
+using Unlonglongint = long long;
+
+nchar definedint { 42 };
+
+typedef unsigned char uchar;
+typedef unsigned short ushort;
+typedef unsigned short ushortint;
+typedef unsigned int uint;
+typedef unsigned long ulong;
+typedef unsigned long ulongint;
+typedef unsigned long long ulonglong;
+typedef unsigned long long ulonglongint;
+
+typedef signed char schar;
+typedef signed short sshort;
+typedef signed short sshortint;
+typedef signed int sint;
+typedef signed long slong;
+typedef signed long slongint;
+typedef signed long long slonglong;
+typedef signed long long slonglongint;
+
+typedef char nchar;
+typedef short nshort;
+typedef short nshortint;
+typedef int nint;
+typedef long nlong;
+typedef long nlongint;
+typedef long long nlonglong;
+typedef long long nlonglongint;
+
+uchar newuchar = 42;
+
+// Variables
+
+int castee { 42 };
+
+const int ccastee { 42 };
+
+char casted = (char) castee;
+
+char casted1 = std::int8_t(castee);
+
+char casted2 = static_cast<char>(castee);
+
+char *casted3 = reinterpret_cast<char*>(&castee);
+
+int *casted4 = const_cast<int*>(&ccastee);
+
+unsigned long long strangee { 42 };
+
+char int8t { 12 };
+char sint8t { 12 };
+unsigned char uint8t { 12 };
+const char cint8t { 12 };
+const char cuint8t { 12 };
+constexpr unsigned char ceint8t { 12 };
+constexpr unsigned char ceuint8t { 12 };
+
+short s16t { 12 };
+short int16t { 12 };
+unsigned short uint16t { 12 };
+const short cint16t { 12 };
+const unsigned short cuint16t { 12 };
+constexpr short ceint16t { 12 };
+constexpr unsigned short ceuint16t { 12 };
+
+int int32t { 12 };
+unsigned int uint32t { 12 };
+const int cint32t { 12 };
+const int cuint32t { 12 };
+constexpr int ceint32t { 12 };
+constexpr unsigned int ceuint32t { 12 };
+
+long l64t { 12 };
+long intl64t { 12 };
+unsigned long uintl64t { 12 };
+const long cintl64t { 12 };
+const unsigned long cuintl64t { 12 };
+constexpr long ceintl64t { 12 };
+constexpr unsigned long ceuintl64t { 12 };
+
+long long ll64t { 12 };
+long long int64t { 12 };
+unsigned long long uint64t { 12 };
+const long long cint64t { 12 };
+const long long cuint64t { 12 };
+constexpr long long ceint64t { 12 };
+constexpr unsigned long long ceuint64t { 12 };
+
+// Special cases
+
+int test111 = std::int32_t(42);
+
+auto foo1 = int { 42 }, foo2 = int { 43 }, foo3 = int { 44 };
+int bar1, bar2, bar3;
+int baz1 = 42, baz2 = 43, baz3 = 43;
+int* blaz1 = new int { 42 }, *blaz2 = new int { 43 };
+int* bloz1 = new int { 42 };
+
+// Templates
+
+std::vector<char> v_char { };
+std::vector<unsigned char> v_uchar { };
+std::vector<char> c_schar { };
+
+std::vector<short> v_short { };
+std::vector<unsigned short> v_ushort { };
+std::vector<signed short> v_sshort { };
+std::vector<short> v_sint { };
+std::vector<unsigned short> v_usint { };
+std::vector<signed short> v_ssint { };
+
+std::vector<int> v_int32t { };
+std::vector<unsigned int> v_uint32t { };
+std::vector<int> v_sint32t { };
+
+std::vector<long> v_long { };
+std::vector<unsigned long> v_ulong { };
+std::vector<signed long> v_slong { };
+std::vector<long> v_lint { };
+std::vector<unsigned long> v_ulint { };
+std::vector<signed long> v_slint { };
+
+std::vector<long long> v_longlong { };
+std::vector<unsigned long long> v_ulonglong { };
+std::vector<long long> v_slonglong { };
+std::vector<long long> v_llint { };
+std::vector<unsigned long long> v_ullint { };
+std::vector<long long> v_sllint { };
+
+std::vector<std::vector<std::vector<int> > > v_vvint { };
+
+template<std::int32_t I>
+void foo(short s) {
+    std::cout << s*I << '\n';
+}
+
+std::function<int(int, int)> func =
+        [](int a, int b) {
+    return a+b;
+};
+
+std::function<int()> func2 = [] () -> int {
+    return 42;
+};
+
+std::function<int()> foo8 = [] {
+    return 42;
+};
+
+std::function<void(int, int)> func3 =
+        [] (int a, int b) {
+};
+
+template<typename T>
+void bar(T t){
+    std::cout << t << "\n";
+}
+
+std::function<int(int, int)>* fooPointer =
+    new std::function<
+        
+        int(int, int)>(
+                                        [=](int a, int b) -> int {
+            return a + b;
+        }
+    );
+
+
+// Classes
+
+template<std::int32_t I>
+class testClass {
+    int bar;
+
+
+    friend int foo(char in) {
+        return in * 42;
+    }
+    friend char bar(int in) {
+        return in * in / (in + in);
+    }
+    int strangename = 42;
+
+public:
+    testClass(int i) {
+        bar = i*I;
+    }
+
+};
+
+// Functions
+
+char f_char_char(char) {
+    auto retval = char { 42 };
+    return retval;
+}
+unsigned char f_uchar_uchar(unsigned char) {
+    unsigned char retval { 42 };
+    return retval;
+}
+char f_schar_schar(char) {
+    char retval { 42 };
+    return retval;
+}
+
+short f_s_s(short) {
+    auto retval = short { 42 };
+    return retval;
+}
+unsigned short f_us_us(unsigned short) {
+    unsigned short retval { 42 };
+    return retval;
+}
+short f_sint_sint(short) {
+    short retval { 42 };
+    return retval;
+}
+unsigned short f_usint_usint(unsigned short) {
+    unsigned short retval { 42 };
+    return retval;
+}
+
+int f_int_int(int) {
+    auto retval = int { 42 };
+    return retval;
+}
+unsigned int f_uint_uint(unsigned int) {
+    auto retval = int { 42 };
+    return retval;
+}
+
+long f_l_l(long) {
+    long retval { 42 };
+    return retval;
+}
+unsigned long f_ul_ul(unsigned long) {
+    long retval { 42 };
+    return retval;
+}
+long f_lint_lint(long) {
+    long retval { 42 };
+    return retval;
+}
+unsigned long f_ulint_ulint(unsigned long) {
+    long retval { 42 };
+    return retval;
+}
+
+long long f_ll_ll(long long) {
+    long long retval { 42 };
+    return retval;
+}
+unsigned long long f_ull_ull(unsigned long long) {
+    long long retval { 42 };
+    return retval;
+}
+long long f_llint_llint(long long) {
+    long long retval { 42 };
+    return retval;
+}
+unsigned long long f_ullint_ullint(unsigned long long) {
+    long long retval { 42 };
+    return retval;
+}
+
+void foovararg(int...) {
+}
+
+
+// Special case trailing return type
+
+auto f_auto_uchar(char) -> unsigned char {
+    unsigned char retval { 42 };
+    return retval;
+}
+
+auto f_auto_noTrailing(char c) {
+    return c * c;
+}
+
+// Changes on function definitions changes declarations of said function and vice versa
+
+int rudolf { 42 };
+
+int f_declaration_definition(char arg);
+
+int f_declaration_definition(char arg) {
+    return arg * arg;
+}
+
+auto f_declaration_definition_trailing(int arg, char arg2) -> long;
+
+auto f_declaration_definition_trailing(int arg, char arg2) -> long {
+    int res = arg + arg2;
+    return arg * arg2 / res;
+}
+
+// Special case lambda
+
+auto lambda = [](int a, long&& b) -> short {
+    short retval = a + b;
+    return retval;
+};
+
+// Special case main function
+
+int main(int argc, char** argv) {
+
+    foo<12>(43);
+    
+    int foo2 {42};
+
+    bar<int>(43);
+
+}
+
+//=
+#include <cstdint>
+#include <vector>
+#include <iostream>
+#include <functional>
+
+// Typedefs
+
+using Uuchar = unsigned char;
+using Uushort = unsigned short;
+using Uushortint = unsigned short;
+using Uuint = unsigned int;
+using Uulong = unsigned long;
+using Uulongint = unsigned long;
+using Uulonglong = unsigned long long;
+using Uulonglongint = unsigned long long;
+      
+using Uschar = signed char;
+using Usshort = signed short;
+using Usshortint = signed short;
+using Usint = signed int;
+using Uslong = signed long;
+using Uslongint = signed long;
+using Uslonglong = signed long long;
+using Uslonglongint = signed long long;
+      
+using Unchar = char;
+using Unshort = short;
+using Unshortint = short;
+using Unint = int;
+using Unlong = long;
+using Unlongint = long;
+using Unlonglong = long long;
+using Unlonglongint = long long;
+
+nchar definedint { 42 };
+
+typedef unsigned char uchar;
+typedef unsigned short ushort;
+typedef unsigned short ushortint;
+typedef unsigned int uint;
+typedef unsigned long ulong;
+typedef unsigned long ulongint;
+typedef unsigned long long ulonglong;
+typedef unsigned long long ulonglongint;
+
+typedef signed char schar;
+typedef signed short sshort;
+typedef signed short sshortint;
+typedef signed int sint;
+typedef signed long slong;
+typedef signed long slongint;
+typedef signed long long slonglong;
+typedef signed long long slonglongint;
+
+typedef char nchar;
+typedef short nshort;
+typedef short nshortint;
+typedef int nint;
+typedef long nlong;
+typedef long nlongint;
+typedef long long nlonglong;
+typedef long long nlonglongint;
+
+uchar newuchar = 42;
+
+// Variables
+
+int castee { 42 };
+
+const int ccastee { 42 };
+
+char casted = (char) castee;
+
+char casted1 = std::int8_t(castee);
+
+char casted2 = static_cast<char>(castee);
+
+char *casted3 = reinterpret_cast<char*>(&castee);
+
+int *casted4 = const_cast<int*>(&ccastee);
+
+unsigned long long strangee { 42 };
+
+char int8t { 12 };
+char sint8t { 12 };
+unsigned char uint8t { 12 };
+const char cint8t { 12 };
+const char cuint8t { 12 };
+constexpr unsigned char ceint8t { 12 };
+constexpr unsigned char ceuint8t { 12 };
+
+short s16t { 12 };
+short int16t { 12 };
+unsigned short uint16t { 12 };
+const short cint16t { 12 };
+const unsigned short cuint16t { 12 };
+constexpr short ceint16t { 12 };
+constexpr unsigned short ceuint16t { 12 };
+
+int int32t { 12 };
+unsigned int uint32t { 12 };
+const int cint32t { 12 };
+const int cuint32t { 12 };
+constexpr int ceint32t { 12 };
+constexpr unsigned int ceuint32t { 12 };
+
+long l64t { 12 };
+long intl64t { 12 };
+unsigned long uintl64t { 12 };
+const long cintl64t { 12 };
+const unsigned long cuintl64t { 12 };
+constexpr long ceintl64t { 12 };
+constexpr unsigned long ceuintl64t { 12 };
+
+long long ll64t { 12 };
+long long int64t { 12 };
+unsigned long long uint64t { 12 };
+const long long cint64t { 12 };
+const long long cuint64t { 12 };
+constexpr long long ceint64t { 12 };
+constexpr unsigned long long ceuint64t { 12 };
+
+// Special cases
+
+int test111 = std::int32_t(42);
+
+auto foo1 = int { 42 }, foo2 = int { 43 }, foo3 = int { 44 };
+int bar1, bar2, bar3;
+int baz1 = 42, baz2 = 43, baz3 = 43;
+int* blaz1 = new int { 42 }, *blaz2 = new int { 43 };
+int* bloz1 = new int { 42 };
+
+// Templates
+
+std::vector<char> v_char { };
+std::vector<unsigned char> v_uchar { };
+std::vector<char> c_schar { };
+
+std::vector<short> v_short { };
+std::vector<unsigned short> v_ushort { };
+std::vector<signed short> v_sshort { };
+std::vector<short> v_sint { };
+std::vector<unsigned short> v_usint { };
+std::vector<signed short> v_ssint { };
+
+std::vector<int> v_int32t { };
+std::vector<unsigned int> v_uint32t { };
+std::vector<int> v_sint32t { };
+
+std::vector<long> v_long { };
+std::vector<unsigned long> v_ulong { };
+std::vector<signed long> v_slong { };
+std::vector<long> v_lint { };
+std::vector<unsigned long> v_ulint { };
+std::vector<signed long> v_slint { };
+
+std::vector<long long> v_longlong { };
+std::vector<unsigned long long> v_ulonglong { };
+std::vector<long long> v_slonglong { };
+std::vector<long long> v_llint { };
+std::vector<unsigned long long> v_ullint { };
+std::vector<long long> v_sllint { };
+
+std::vector<std::vector<std::vector<int> > > v_vvint { };
+
+template<std::int32_t I>
+void foo(short s) {
+    std::cout << s*I << '\n';
+}
+
+std::function<int(int, int)> func =
+        [](int a, int b) {
+    return a+b;
+};
+
+std::function<int()> func2 = [] () -> int {
+    return 42;
+};
+
+std::function<int()> foo8 = [] {
+    return 42;
+};
+
+std::function<void(int, int)> func3 =
+        [] (int a, int b) {
+};
+
+template<typename T>
+void bar(T t){
+    std::cout << t << "\n";
+}
+
+std::function<int(int, int)>* fooPointer =
+    new std::function<
+        
+        int(int, int)>(
+                                        [=](int a, int b) -> int {
+            return a + b;
+        }
+    );
+
+
+// Classes
+
+template<std::int32_t I>
+class testClass {
+    int bar;
+
+
+    friend int foo(char in) {
+        return in * 42;
+    }
+    friend char bar(int in) {
+        return in * in / (in + in);
+    }
+    int strangename = 42;
+
+public:
+    testClass(int i) {
+        bar = i*I;
+    }
+
+};
+
+// Functions
+
+char f_char_char(char) {
+    auto retval = char { 42 };
+    return retval;
+}
+unsigned char f_uchar_uchar(unsigned char) {
+    unsigned char retval { 42 };
+    return retval;
+}
+char f_schar_schar(char) {
+    char retval { 42 };
+    return retval;
+}
+
+short f_s_s(short) {
+    auto retval = short { 42 };
+    return retval;
+}
+unsigned short f_us_us(unsigned short) {
+    unsigned short retval { 42 };
+    return retval;
+}
+short f_sint_sint(short) {
+    short retval { 42 };
+    return retval;
+}
+unsigned short f_usint_usint(unsigned short) {
+    unsigned short retval { 42 };
+    return retval;
+}
+
+int f_int_int(int) {
+    auto retval = int { 42 };
+    return retval;
+}
+unsigned int f_uint_uint(unsigned int) {
+    auto retval = int { 42 };
+    return retval;
+}
+
+long f_l_l(long) {
+    long retval { 42 };
+    return retval;
+}
+unsigned long f_ul_ul(unsigned long) {
+    long retval { 42 };
+    return retval;
+}
+long f_lint_lint(long) {
+    long retval { 42 };
+    return retval;
+}
+unsigned long f_ulint_ulint(unsigned long) {
+    long retval { 42 };
+    return retval;
+}
+
+long long f_ll_ll(long long) {
+    long long retval { 42 };
+    return retval;
+}
+unsigned long long f_ull_ull(unsigned long long) {
+    long long retval { 42 };
+    return retval;
+}
+long long f_llint_llint(long long) {
+    long long retval { 42 };
+    return retval;
+}
+unsigned long long f_ullint_ullint(unsigned long long) {
+    long long retval { 42 };
+    return retval;
+}
+
+void foovararg(int...) {
+}
+
+
+// Special case trailing return type
+
+auto f_auto_uchar(char) -> unsigned char {
+    unsigned char retval { 42 };
+    return retval;
+}
+
+auto f_auto_noTrailing(char c) {
+    return c * c;
+}
+
+// Changes on function definitions changes declarations of said function and vice versa
+
+int rudolf { 42 };
+
+int f_declaration_definition(char arg);
+
+int f_declaration_definition(char arg) {
+    return arg * arg;
+}
+
+auto f_declaration_definition_trailing(int arg, char arg2) -> long;
+
+auto f_declaration_definition_trailing(int arg, char arg2) -> long {
+    int res = arg + arg2;
+    return arg * arg2 / res;
+}
+
+// Special case lambda
+
+auto lambda = [](int a, long&& b) -> short {
+    short retval = a + b;
+    return retval;
+};
+
+// Special case main function
+
+int main(int argc, char** argv) {
+
+    foo<12>(43);
+    
+    int foo2 {42};
+
+    bar<int>(43);
+
+}

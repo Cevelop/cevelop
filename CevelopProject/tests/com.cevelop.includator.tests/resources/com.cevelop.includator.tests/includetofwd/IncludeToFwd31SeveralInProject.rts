@@ -1,0 +1,14 @@
+//!IncludeToFwd24SeveralQuickFixesAndUndosWithUserTyping
+//@main.cpp
+#include "A.h"
+int main() {
+	A *a;
+	return 0;
+}
+//@X.cpp
+#include "A.h"
+void foo() {
+	A *a;
+}
+//@A.h
+class A { };

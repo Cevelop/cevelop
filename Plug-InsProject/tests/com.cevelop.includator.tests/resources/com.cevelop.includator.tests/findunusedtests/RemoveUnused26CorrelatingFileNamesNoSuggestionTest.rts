@@ -1,5 +1,0 @@
-//!RemoveUnused26CorrelatingFileNamesNoSuggestionTest
-//@foo.cpp
-#include "foo.h"
-//@foo.h
-void foo();

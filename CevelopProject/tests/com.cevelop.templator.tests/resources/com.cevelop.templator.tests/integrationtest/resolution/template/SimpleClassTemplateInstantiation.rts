@@ -1,0 +1,23 @@
+//!SimpleInstantiation
+//@MyFileName.cpp
+template <typename T>
+struct Stack {
+};
+
+int main() {
+	Stack<int> stack{};
+}
+
+//!Simple Instantiation with Typedef
+//@MyFileName.cpp
+template <typename T>
+struct Stack {
+  void push(T) {} 
+};
+
+typedef Stack<int> IntStack;
+
+int main() {
+	IntStack stack{};
+	stack.push(5);
+}

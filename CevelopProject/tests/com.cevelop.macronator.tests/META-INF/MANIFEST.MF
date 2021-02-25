@@ -1,0 +1,12 @@
+Bundle-ActivationPolicy: lazy
+Bundle-Name: Macronator Test Plug-in
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Require-Bundle: org.junit,
+ ch.hsr.ifs.iltis.testing.highlevel.testingplugin
+Bundle-Version: 1.14.2.qualifier
+Bundle-ManifestVersion: 2
+Fragment-Host: com.cevelop.macronator
+Bundle-SymbolicName: com.cevelop.macronator.tests;singleton:=true
+Bundle-Vendor: IFS Institute for Software
+Automatic-Module-Name: com.cevelop.macronator.tests
+

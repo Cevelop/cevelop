@@ -1,0 +1,107 @@
+//!ClassWithNoSwapFunction
+//@main.h
+struct A {
+	void f() { }
+};
+//!ClassWithSwapFunctionWithFalseReturnType
+//@main.h
+struct A {
+	int swap(A &a) {
+		return 1;
+	}
+};
+//!ClassWithSwapAndFalseParameters
+//@main.h
+struct A {};
+struct Subject {
+	void swap(A &a) { }
+};
+//!ConstSwapFunction
+//@main.h
+struct A {
+	void swap(A &a) const {}
+};
+//!SwapFunctionWithConstParam
+//@main.h
+struct A {
+	void swap(A const &a) {}
+};
+//!ClassWithSwapperFunction
+//@main.h
+struct A {
+	void swapper(A &a) {}
+};
+//!ClassWithCorrectSwapFunction
+//@.config
+markerLines=2
+//@main.h
+struct A {
+	void swap(A &a) {}
+};
+//!ClassWithCorrectSwapFunctionDeclaration
+//@.config
+markerLines=2
+//@main.h
+struct A {
+	void swap(A &a);
+};
+//!ClassWithSwapFunctionNoexcept
+//@main.h
+struct A {
+	void swap(A &a) noexcept {}
+};
+//!ClassWithSwapFunctionWithRValueReference
+//@main.h
+struct A {
+	void swap(A &&a) noexcept {}
+};
+//!MultipleClassesWithSwap
+//@.config
+markerLines=2,5
+//@main.h
+struct A {
+	void swap(A &a) {}
+}
+struct B {
+	void swap(B &b) {}
+}
+//!FriendSwapFunction
+//@.config
+markerLines=2
+//@main.h
+struct A {
+	friend void swap(A &a, A &b) {}
+};
+//!FriendSwapFunctionDeclaration
+//@.config
+markerLines=2
+//@main.h
+struct A {
+	friend void swap(A &a, A &b);
+};
+//!GlobalSwapFunction
+//@.config
+markerLines=2
+//@main.h
+struct A {
+	friend void swap(A &a, A &b) {}
+};
+//!GlobalSwapFunctionDeclaration
+//@.config
+markerLines=3
+//@main.h
+struct A {
+};
+void swap(A &a, A &b);
+//!IngoreRuleSwapFunction
+//@main.h
+struct A {
+	[[gsl::suppress("Rc-swap-fail")]]
+	void swap(A &a) {}
+};
+//!IngoreRuleSwapFunctionDeclaration
+//@main.h
+struct A {
+	[[gsl::suppress("Rc-swap-fail")]]
+	void swap(A &a);
+};

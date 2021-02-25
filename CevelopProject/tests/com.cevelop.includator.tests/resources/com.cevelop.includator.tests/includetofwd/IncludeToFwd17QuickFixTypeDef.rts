@@ -1,0 +1,17 @@
+//!IncludeToFwd17QuickFixTypeDef
+//@main.cpp
+#include "A.h"
+#include "A2.h"
+A *a;
+//=
+#include "A2.h"
+typedef A2 A;
+A *a;
+//@A.h
+#include "A2.h"
+typedef A2 A;
+//@A2.h
+#ifndef A2_H
+#define A2_H
+class A2 { };
+#endif //A2_H

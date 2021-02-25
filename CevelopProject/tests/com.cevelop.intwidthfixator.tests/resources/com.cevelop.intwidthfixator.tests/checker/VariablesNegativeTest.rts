@@ -1,0 +1,299 @@
+
+
+//!CStyleCast
+//@.config
+markerLines=2,3
+//@main.cpp
+int main(){
+    char castee { 42 };
+    char casted1 = (char) scastee;
+}
+
+//!StaticCast
+//@.config
+markerLines=2,3
+//@main.cpp
+int main(){
+    char castee { 42 };
+    char casted = static_cast<char>(castee);
+}
+
+//!ReinterpretCast
+//@.config
+markerLines=2,3
+//@main.cpp
+int main(){
+    char castee { 42 };
+    char *casted = reinterpret_cast<char*>(&castee);
+}
+
+//!ConstCast
+//@.config
+markerLines=2,3
+//@main.cpp
+int main(){
+    const char castee { 42 };
+    int *casted = const_cast<int*>(&castee);
+}
+
+
+
+
+
+//!ReturnType
+//@main.cpp
+char foo(){
+}
+
+//!ParameterTypes
+//@main.cpp
+void foo(char, char){
+}
+
+//!VarArgParameterType
+//@main.cpp
+void foo(int...){
+}
+
+//!TrailingReturnType
+//@main.cpp
+auto foo() -> char {
+}
+
+//!DeclarationDefinition
+//@main.cpp
+int foo();
+
+int foo() {
+    return 42;
+}
+
+//!LambdaReturnValue
+//@main.cpp
+auto lambda = []() -> short {
+    return 42;
+};
+
+//!LambdaParameterTypes
+//@main.cpp
+auto lambda = [](int a, long b) {
+    return a + b;
+};
+
+//!FunctionArgumentTypes_std::function
+//@main.cpp
+std::function<void(int,int)> foo = [] (int a, int b) {
+};
+
+//!FunctionReturnType_std::function
+//@main.cpp
+std::function<int()> foo = [] () -> int {
+    return 42;
+};
+
+//!FunctionPointer
+//@main.cpp
+std::function<int(int, int)>* fooPointer = 
+    new std::function<int(int, int)>(
+        [=](int a, int b) -> int {
+            return a + b;
+        }
+    );
+
+//!MemberFunctionsReturnTypes
+//@class.h
+class Foo {
+    int foo();
+};
+//@class.cpp
+class Foo {
+    int foo() {
+        return 42;
+    }
+};
+
+//!MemberFunctionsParameterTypes
+//@class.h
+class Foo {
+    void foo(char, char);
+};
+//@class.cpp
+class Foo {
+    void foo(char, char) {
+    }
+};
+
+//!ClassOperatorInt
+//@.config
+markerLines=2
+//@main.cpp
+class Foo {
+    int foo = 42;
+    operator int()
+    {
+        return foo;
+    }
+}; 
+
+//!MemberFunctionsVarArgParameterTypes
+//@class.h
+class Foo {
+    void foo(char...);
+};
+//@class.cpp
+class Foo {
+    void foo(char...) {
+    }
+};
+
+//!MemberFunctionsFriendHandling
+//@class.h
+class Foo {
+    friend int foo(char in);
+};
+//@class.cpp
+class Foo {
+    friend int foo(char in) {
+        return in * 42;
+    }
+};
+
+//!AllTypesReturnValues
+//@main.cpp
+char cfoo () {
+    return 42;
+}
+short sfoo () {
+    return 42;
+}
+int ifoo () {
+    return 42;
+}
+long lfoo() {
+    return 42;
+}
+long long llfoo() {
+    reutnr 42;
+}
+
+//!AllParameterTypes
+//@main.cpp
+void cfoo(char) {
+}
+void sfoo(short) {
+}
+void ifoo(int) {
+}
+void lfoo(long) {
+}
+void llfoo(long long) {
+}
+
+
+
+
+
+//!NestedTemplate
+//@main.cpp
+int main(){ 
+    std::vector<std::vector<std::vector<int>>> foo { };
+}
+
+//!ParameterIn_std::function
+//@main.cpp
+std::function<int()> foo = [] {
+    return 42;
+};
+
+//!TemplatedFunction
+//@main.cpp
+template<int I>
+void foo() {
+}
+
+//!VariadicTemplate
+//@.config
+markerLines=11
+//@main.cpp
+template<typename H>
+int adder(H head){
+    return head;
+}
+
+template<typename H, typename ... Tail>
+int adder(H head, Tail... tail) {
+  return head + adder(tail...);
+}
+
+int blaz = adder<char,short,int,long,long long>(42,42,42,42,42);
+
+//!Calling
+//@main.cpp
+template<typename T>
+void foo(T t) {
+}
+
+int main() {
+    foo<int>(42);
+}
+
+//!OnHeap
+//@main.cpp
+std::vector<int>* vectorPointer = new std::vector<int> {42,42,42};
+
+//!ClassTemplate
+//@.config
+markerLines=3
+//@main.cpp
+template<int I>
+class Foo {
+    int bar;
+    
+public:
+
+    Foo(int i){
+        bar = i*I;
+    }
+};
+
+int main(){
+    Foo foo30 = Foo<42>(7);
+}
+
+//!AllTypes
+//@main.cpp
+std::vector<char> v_char { };
+std::vector<short> v_short { };
+std::vector<int> v_int32t { };
+std::vector<long> v_long { };
+std::vector<long long> v_longlong { };
+
+
+
+
+
+//!TypedefAllElidedTypes
+//@main.cpp
+int main(){
+    typedef char nchar;
+    typedef short nshort;
+    typedef short int nshortint;
+    typedef int nint;
+    typedef long nlong;
+    typedef long int nlongint;
+    typedef long long nlonglong;
+    typedef long long int nlonglongint;
+}
+
+//!UsingAllElidedTypes
+//@main.cpp
+int main(){
+    using nchar = char;
+    using nshort = short;
+    using nshortint = short int;
+    using nint = int;
+    using nlong = long;
+    using nlongint = long int;
+    using nlonglong = long long;
+    using nlonglongint = long long int;
+}

@@ -1,0 +1,15 @@
+//!PassNormalParametersAsArgumentsTest
+//@MyFileName.cpp
+template<typename T, typename F, typename G>
+void inner(T first, int second, F third, G fourth) {}
+
+void inner(double first, int second, int third, int fourth) {}
+
+template<typename T>
+void outer(char first, T second, int third) {
+    inner(second, 42, first, third); // <double,char, int>    
+}
+
+int main() {
+    outer('n', 4.8, 15); //<double>
+}

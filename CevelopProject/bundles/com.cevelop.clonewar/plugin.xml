@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+    
+    <extension
+            name="Commands"
+            point="org.eclipse.ui.commands">
+        <command
+                categoryId="org.eclipse.cdt.ui.category.refactoring"
+                id="com.cevelop.clonewar.ui.commands.extractTemplate"
+                name="%command.name">
+        </command>
+    </extension>
+    
+     <extension
+             name="Handlers"
+             point="org.eclipse.ui.handlers">
+            <handler commandId="com.cevelop.clonewar.ui.commands.extractTemplate"
+              class="com.cevelop.clonewar.handlers.RefactoringMenuHandler"/>
+     </extension>
+    
+<!-- Menu entry defintion -->
+
+     <extension
+             name="Menu Contributions"
+             point="org.eclipse.ui.menus">
+
+            <menuContribution
+                  allPopups="false"
+                  locationURI="menu:org.eclipse.jdt.ui.refactoring.menu?endof=codingGroup">
+               <command commandId="com.cevelop.clonewar.ui.commands.extractTemplate" mnemonic="T"/>
+            </menuContribution>
+
+            <menuContribution
+              allPopups="false"
+              locationURI="popup:org.eclipse.cdt.ui.refactoring.menu?endof=codingGroup">
+                 <command commandId="com.cevelop.clonewar.ui.commands.extractTemplate" mnemonic="T"/>
+            </menuContribution>
+
+     </extension>
+    
+</plugin>

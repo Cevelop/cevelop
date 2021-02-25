@@ -1,0 +1,11 @@
+//!OrganizeIncludes14DeclInCppDefInHeader
+//@main.cpp
+int main() {
+  A *a;
+}
+//@foo.cpp
+class A;
+void foo(A *) {
+}
+//@A.h
+class A { };

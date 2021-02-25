@@ -1,0 +1,210 @@
+//!SwappableClassInGlobalNamespace
+//@.config
+markerLines=1
+//@main.h
+struct Swap {
+	void swap(Swap &other) { }
+};
+//!SwappableClassInNamespace
+//@.config
+markerLines=2
+//@main.h
+namespace swap {
+	struct SwappableMember {
+		void swap(SwappableMember &other) { }
+	};
+}
+//!SwappableClassInNamespaceWithSwapFunctionDeclaration
+//@main.h
+namespace swap {
+	struct SwappableMember {
+		void swap(SwappableMember &other) { }
+	};
+	void swap(SwappableMember &a, SwappableMember &b);
+}
+//!SwappableClassInNamespaceWithSwapFunctionDefinition
+//@main.h
+namespace swap {
+	struct SwappableMember {
+		void swap(SwappableMember &other) { }
+	};
+	void swap(SwappableMember &a, SwappableMember &b) {}
+}
+//!SwappableClassInNamespaceWithNonRefSwapFunction1
+//@.config
+markerLines=2
+//@main.h
+namespace swap {
+	struct SwappableMember {
+		void swap(SwappableMember &other) { }
+	};
+	void swap(SwappableMember a, SwappableMember &b) {}
+}
+//!SwappableClassInNamespaceWithNonRefSwapFunction2
+//@.config
+markerLines=2
+//@main.h
+namespace swap {
+	struct SwappableMember {
+		void swap(SwappableMember &other) { }
+	};
+	void swap(SwappableMember &a, SwappableMember b) {}
+}
+//!SwappableClassInNamespaceWithNonRefSwapFunction3
+//@.config
+markerLines=2
+//@main.h
+namespace swap {
+	struct SwappableMember {
+		void swap(SwappableMember &other) { }
+	};
+	void swap(SwappableMember a, SwappableMember b) {}
+}
+//!SwappableClassInNamespaceWithConstParameterSwapFunction1
+//@.config
+markerLines=2
+//@main.h
+namespace swap {
+	struct SwappableMember {
+		void swap(SwappableMember &other) { }
+	};
+	void swap(SwappableMember const &a, SwappableMember &b) {}
+}
+//!SwappableClassInNamespaceWithConstParameterSwapFunction2
+//@.config
+markerLines=2
+//@main.h
+namespace swap {
+	struct SwappableMember {
+		void swap(SwappableMember &other) { }
+	};
+	void swap(SwappableMember &a, SwappableMember const &b) {}
+}
+//!SwappableClassInNamespaceWithConstParameterSwapFunction3
+//@.config
+markerLines=2
+//@main.h
+namespace swap {
+	struct SwappableMember {
+		void swap(SwappableMember &other) { }
+	};
+	void swap(SwappableMember const &a, SwappableMember const &b) {}
+}
+//!SwappableClassInNamespaceWithFalseParameterType1
+//@.config
+markerLines=2
+//@main.h
+namespace swap {
+	struct SwappableMember {
+		void swap(SwappableMember &other) { }
+	};
+	struct Member {};
+	int swap(Member &a, SwappableMember &b) {}
+}
+//!SwappableClassInNamespaceWithFalseParameterType2
+//@.config
+markerLines=2
+//@main.h
+namespace swap {
+	struct SwappableMember {
+		void swap(SwappableMember &other) { }
+	};
+	struct Member {};
+	int swap(SwappableMember &a, Member &b) {}
+}
+//!SwappableClassInNamespaceWithFalseParameterType3
+//@.config
+markerLines=2
+//@main.h
+namespace swap {
+	struct SwappableMember {
+		void swap(SwappableMember &other) { }
+	};
+	struct Member {};
+	int swap(Member &a, Member &b) {}
+}
+//!SwapFunctionInFalseNamespace
+//@.config
+markerLines=2
+//@swap.cpp
+namespace swap {
+	struct SwappableMember {
+		void swap(SwappableMember &other) { }
+	};
+}
+//@swap2.cpp
+#include "swap.cpp"
+namespace swap2 {
+struct SwappableMember {};
+	void swap(SwappableMember &a, SwappableMember &b) {}
+}
+//!FaultySwapInOtherFile
+//@.config
+markerLines=2
+//@swap.cpp
+namespace swap {
+	struct SwappableMember {
+		void swap(SwappableMember &other) { }
+	};
+}
+//@swap2.cpp
+#include "swap.cpp"
+namespace swap {
+	void swappable(SwappableMember &a, SwappableMember &b) {}
+}
+//!FriendSwapFunction
+//@swap.cpp
+namespace swap {
+	struct SwappableMember {
+		void swap(SwappableMember &other) { }
+		friend void swap(SwappableMember &a, SwappableMember &b) {
+		}
+	};
+}
+//!IngoreRuleNamespacelevelSwapDeclaration
+//@main.h
+struct [[gsl::suppress("Rc-swap-noexcept")]] A {
+	
+	void swap(A &a);
+};
+//!IngoreRuleNamespaceLevelSwapDefinition
+//@main.h
+struct [[gsl::suppress("Rc-swap-noexcept")]] A {
+	void swap(A& a) {
+	}
+};
+//!Checker does not fail on external linkage specification
+//@.config
+markerLines=1
+//@main.h
+struct Swap {
+	void swap(Swap &other) { }
+};
+
+extern "C" {}
+
+//!Detect swap when using templates
+//@main.h
+#include <utility>
+template<typename When>
+class case_when_t {
+public:
+	explicit case_when_t(When when) :
+			_when(when) {
+	}
+
+private:
+	When _when;
+
+	void swap(case_when_t& other) noexcept
+	{
+		using std::swap;
+		// TODO Auto-generated method stub
+	}
+};
+
+template<typename When>
+void swap(case_when_t<When>& a, case_when_t<When>& b) noexcept
+{
+	a.swap(b);
+}

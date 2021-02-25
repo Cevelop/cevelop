@@ -1,0 +1,664 @@
+//!StrchrChecksIfNotNull1
+//@main.cpp
+#include "cstring.h"
+#include "iostream.h"
+
+int main(){
+	const char* mail = "admin@web.com";
+	if(strchr(mail+5, '@')) {
+		std::cout << mail;
+	}
+	if(strchr(mail, '@')) {
+		std::cout << mail;
+	}
+	while(strchr(mail, '@')) {
+		std::cout << mail;
+	}
+	for(; strchr(mail, '@');) {
+		std::cout << mail;
+	}
+	const char* ptr = strchr(mail, '@') ? strchr(mail, '@') : mail;
+	const char* x = strchr(mail, '@');
+	x = strchr(mail, '@');
+	bool y = strchr(mail, '@');
+	y = strchr(mail, '@');
+	bool z1 = strchr(mail, '@') || true;
+	bool z2 = strchr(mail, '@') && true;
+	do {
+		std::cout << mail;
+	} while(strchr(mail, '@'));
+	
+	int index = strchr(mail, '@') - mail;
+}
+//=
+#include <string>
+#include "cstring.h"
+#include "iostream.h"
+
+int main(){
+	std::string mail = "admin@web.com";
+	if (mail.find('@', 5) != std::string::npos) {
+		std::cout << mail;
+	}
+	if (mail.find('@') != std::string::npos) {
+		std::cout << mail;
+	}
+	while (mail.find('@') != std::string::npos) {
+		std::cout << mail;
+	}
+	for (; mail.find('@') != std::string::npos;) {
+		std::cout << mail;
+	}
+	const char* ptr =
+			mail.find('@') != std::string::npos ?
+					strchr(mail.c_str(), '@') : mail.c_str();
+	const char* x = strchr(mail.c_str(), '@');
+	x = strchr(mail.c_str(), '@');
+	bool y = mail.find('@') != std::string::npos;
+	y = mail.find('@') != std::string::npos;
+	bool z1 = mail.find('@') != std::string::npos || true;
+	bool z2 = mail.find('@') != std::string::npos && true;
+	do {
+		std::cout << mail;
+	} while (mail.find('@') != std::string::npos);
+	
+	int index = strchr(mail.c_str(), '@') - mail.c_str();
+}
+
+
+//!WcschrChecksIfNotNull1
+//@main.cpp
+#include "cstring.h"
+#include "iostream.h"
+
+int main(){
+	const wchar_t *wstr = L"abcd";
+	if(wcschr(wstr+5, L'c')) {
+		std::cout << "contains";
+	}
+	if(wcschr(wstr, L'c')) {
+		std::cout << "contains";
+	}
+	while(wcschr(wstr, L'c')) {
+		std::cout << "contains";
+	}
+	for(; wcschr(wstr, L'c');) {
+		std::cout << "contains";
+	}
+	const wchar_t* ptr = wcschr(wstr, L'c') ? wcschr(wstr, L'c') : wstr;
+	const wchar_t* x = wcschr(wstr, L'c');
+	x = wcschr(wstr, L'c');
+	bool y = wcschr(wstr, L'c');
+	y = wcschr(wstr, L'c');
+	bool z1 = wcschr(wstr, L'c') || true;
+	bool z2 = wcschr(wstr, L'c') && true;
+	do {
+		std::cout << "contains";
+	} while(wcschr(wstr, L'c'));
+	
+	int index = wcschr(wstr, L'c') - wstr;
+}
+//=
+#include <string>
+#include "cstring.h"
+#include "iostream.h"
+
+int main(){
+	std::wstring wstr = L"abcd";
+	if (wstr.find(L'c', 5) != std::wstring::npos) {
+		std::cout << "contains";
+	}
+	if (wstr.find(L'c') != std::wstring::npos) {
+		std::cout << "contains";
+	}
+	while (wstr.find(L'c') != std::wstring::npos) {
+		std::cout << "contains";
+	}
+	for (; wstr.find(L'c') != std::wstring::npos;) {
+		std::cout << "contains";
+	}
+	const wchar_t* ptr =
+			wstr.find(L'c') != std::wstring::npos ?
+					wcschr(wstr.c_str(), L'c') : wstr.c_str();
+	const wchar_t* x = wcschr(wstr.c_str(), L'c');
+	x = wcschr(wstr.c_str(), L'c');
+	bool y = wstr.find(L'c') != std::wstring::npos;
+	y = wstr.find(L'c') != std::wstring::npos;
+	bool z1 = wstr.find(L'c') != std::wstring::npos || true;
+	bool z2 = wstr.find(L'c') != std::wstring::npos && true;
+	do {
+		std::cout << "contains";
+	} while (wstr.find(L'c') != std::wstring::npos);
+	
+	int index = wcschr(wstr.c_str(), L'c') - wstr.c_str();
+}
+
+
+//!StrchrChecksIfNotNull2
+//@main.cpp
+#include "cstring.h"
+#include "iostream.h"
+
+int main(){
+	const char* mail = "admin@web.com";
+	if(nullptr != strchr(mail, '@')) {
+		std::cout << mail;
+	}
+	if(strchr(mail, '@') != nullptr) {
+		std::cout << mail;
+	}
+	while(strchr(mail, '@') != nullptr) {
+		std::cout << mail;
+	}
+	for(; strchr(mail, '@') != nullptr;) {
+		std::cout << mail;
+	}
+	char* ptr = strchr(mail, '@') != nullptr ? strchr(mail, '@') : mail;
+	bool y = strchr(mail, '@') != nullptr;
+	y = strchr(mail, '@') != nullptr;
+	bool z1 = strchr(mail, '@') != nullptr || true;
+	bool z2 = strchr(mail, '@') != nullptr && true;
+	do {
+		std::cout << mail;
+	} while(strchr(mail, '@') != nullptr);
+}
+//=
+#include <string>
+#include "cstring.h"
+#include "iostream.h"
+
+int main(){
+	std::string mail = "admin@web.com";
+	if (mail.find('@') != std::string::npos) {
+		std::cout << mail;
+	}
+	if (mail.find('@') != std::string::npos) {
+		std::cout << mail;
+	}
+	while (mail.find('@') != std::string::npos) {
+		std::cout << mail;
+	}
+	for (; mail.find('@') != std::string::npos;) {
+		std::cout << mail;
+	}
+	char* ptr =
+			mail.find('@') != std::string::npos ?
+					strchr(mail.c_str(), '@') : mail.c_str();
+	bool y = mail.find('@') != std::string::npos;
+	y = mail.find('@') != std::string::npos;
+	bool z1 = mail.find('@') != std::string::npos || true;
+	bool z2 = mail.find('@') != std::string::npos && true;
+	do {
+		std::cout << mail;
+	} while (mail.find('@') != std::string::npos);
+}
+
+
+//!StrchrChecksIfNotNull3
+//@main.cpp
+#include "cstring.h"
+#include "iostream.h"
+
+int main(){
+	const char* mail = "admin@web.com";
+	if(0 != strchr(mail, '@')) {
+		std::cout << mail;
+	}
+	if(strchr(mail, '@') != 0) {
+		std::cout << mail;
+	}
+	while(strchr(mail, '@') != 0) {
+		std::cout << mail;
+	}
+	for(; strchr(mail, '@') != 0;) {
+		std::cout << mail;
+	}
+	char* ptr = strchr(mail, '@') != 0 ? strchr(mail, '@') : mail;
+	bool y = strchr(mail, '@') != 0;
+	y = strchr(mail, '@') != 0;
+	bool z1 = strchr(mail, '@') != 0 || true;
+	bool z2 = strchr(mail, '@') != 0 && true;
+	do {
+		std::cout << mail;
+	} while(strchr(mail, '@') != 0);
+}
+//=
+#include <string>
+#include "cstring.h"
+#include "iostream.h"
+
+int main(){
+	std::string mail = "admin@web.com";
+	if (mail.find('@') != std::string::npos) {
+		std::cout << mail;
+	}
+	if (mail.find('@') != std::string::npos) {
+		std::cout << mail;
+	}
+	while (mail.find('@') != std::string::npos) {
+		std::cout << mail;
+	}
+	for (; mail.find('@') != std::string::npos;) {
+		std::cout << mail;
+	}
+	char* ptr =
+			mail.find('@') != std::string::npos ?
+					strchr(mail.c_str(), '@') : mail.c_str();
+	bool y = mail.find('@') != std::string::npos;
+	y = mail.find('@') != std::string::npos;
+	bool z1 = mail.find('@') != std::string::npos || true;
+	bool z2 = mail.find('@') != std::string::npos && true;
+	do {
+		std::cout << mail;
+	} while (mail.find('@') != std::string::npos);
+}
+
+
+//!StrchrChecksIfNotNull4
+//@main.cpp
+#include "cstring.h"
+#include "iostream.h"
+
+int main(){
+	const char* mail = "admin@web.com";
+	if(NULL != strchr(mail, '@')) {
+		std::cout << mail;
+	}
+	if(strchr(mail, '@') != NULL) {
+		std::cout << mail;
+	}
+	while(strchr(mail, '@') != NULL) {
+		std::cout << mail;
+	}
+	for(; strchr(mail, '@') != NULL;) {
+		std::cout << mail;
+	}
+	do {
+		std::cout << mail;
+	} while(strchr(mail, '@') != NULL);
+}
+//=
+#include <string>
+#include "cstring.h"
+#include "iostream.h"
+
+int main(){
+	std::string mail = "admin@web.com";
+	if (mail.find('@') != std::string::npos) {
+		std::cout << mail;
+	}
+	if (mail.find('@') != std::string::npos) {
+		std::cout << mail;
+	}
+	while (mail.find('@') != std::string::npos) {
+		std::cout << mail;
+	}
+	for (; mail.find('@') != std::string::npos;) {
+		std::cout << mail;
+	}
+	do {
+		std::cout << mail;
+	} while (mail.find('@') != std::string::npos);
+}
+
+
+//!StrchrChecksIfNull1
+//@main.cpp
+#include "cstring.h"
+#include "iostream.h"
+
+int main(){
+	const char* mail = "admin@web.com";
+	if(!strchr(mail, '@')) {
+		std::cout << mail;
+	}
+	while(!strchr(mail, '@')) {
+		std::cout << mail;
+	}
+	for(; !strchr(mail, '@');) {
+		std::cout << mail;
+	}
+	char* ptr = !strchr(mail, '@') ? strchr(mail, '@') : mail;
+	bool y = !strchr(mail, '@');
+	y = !strchr(mail, '@');
+	bool z1 = !strchr(mail, '@') || true;
+	bool z2 = !strchr(mail, '@') && true;
+	do {
+		std::cout << mail;
+	} while(!strchr(mail, '@'));
+}
+//=
+#include <string>
+#include "cstring.h"
+#include "iostream.h"
+
+int main(){
+	std::string mail = "admin@web.com";
+	if (mail.find('@') == std::string::npos) {
+		std::cout << mail;
+	}
+	while (mail.find('@') == std::string::npos) {
+		std::cout << mail;
+	}
+	for (; mail.find('@') == std::string::npos;) {
+		std::cout << mail;
+	}
+	char* ptr =
+			mail.find('@') == std::string::npos ?
+					strchr(mail.c_str(), '@') : mail.c_str();
+	bool y = mail.find('@') == std::string::npos;
+	y = mail.find('@') == std::string::npos;
+	bool z1 = mail.find('@') == std::string::npos || true;
+	bool z2 = mail.find('@') == std::string::npos && true;
+	do {
+		std::cout << mail;
+	} while (mail.find('@') == std::string::npos);
+}
+
+
+//!WcschrChecksIfNull1
+//@main.cpp
+#include "cstring.h"
+#include "iostream.h"
+
+int main(){
+	const wchar_t* mail = L"admin@web.com";
+	if(!wcschr(mail, L'@')) {
+		std::cout << "not contained";
+	}
+	while(!wcschr(mail, L'@')) {
+		std::cout << "not contained";
+	}
+	for(; !wcschr(mail, L'@');) {
+		std::cout << "not contained";
+	}
+	const wchar_t* ptr = !wcschr(mail, L'@') ? wcschr(mail, L'@') : mail;
+	bool y = !wcschr(mail, L'@');
+	y = !wcschr(mail, L'@');
+	bool z1 = !wcschr(mail, L'@') || true;
+	bool z2 = !wcschr(mail, L'@') && true;
+	do {
+		std::cout << "not contained";
+	} while(!wcschr(mail, L'@'));
+}
+//=
+#include <string>
+#include "cstring.h"
+#include "iostream.h"
+
+int main(){
+	std::wstring mail = L"admin@web.com";
+	if (mail.find(L'@') == std::wstring::npos) {
+		std::cout << "not contained";
+	}
+	while (mail.find(L'@') == std::wstring::npos) {
+		std::cout << "not contained";
+	}
+	for (; mail.find(L'@') == std::wstring::npos;) {
+		std::cout << "not contained";
+	}
+	const wchar_t* ptr =
+			mail.find(L'@') == std::wstring::npos ?
+					wcschr(mail.c_str(), L'@') : mail.c_str();
+	bool y = mail.find(L'@') == std::wstring::npos;
+	y = mail.find(L'@') == std::wstring::npos;
+	bool z1 = mail.find(L'@') == std::wstring::npos || true;
+	bool z2 = mail.find(L'@') == std::wstring::npos && true;
+	do {
+		std::cout << "not contained";
+	} while (mail.find(L'@') == std::wstring::npos);
+}
+
+
+//!StrchrChecksIfNull2
+//@main.cpp
+#include "cstring.h"
+#include "iostream.h"
+
+int main(){
+	const char* mail = "admin@web.com";
+	if(nullptr == strchr(mail, '@')) {
+		std::cout << mail;
+	}
+	if(strchr(mail, '@') == nullptr) {
+		std::cout << mail;
+	}
+	while(strchr(mail, '@') == nullptr) {
+		std::cout << mail;
+	}
+	for(; strchr(mail, '@') == nullptr;) {
+		std::cout << mail;
+	}
+	char* ptr = strchr(mail, '@') == nullptr ? strchr(mail, '@') : mail;
+	bool y = strchr(mail, '@') == nullptr;
+	y = strchr(mail, '@') == nullptr;
+	bool z1 = strchr(mail, '@') == nullptr || true;
+	bool z2 = strchr(mail, '@') == nullptr && true;
+	do {
+		std::cout << mail;
+	} while(strchr(mail, '@') == nullptr);
+}
+//=
+#include <string>
+#include "cstring.h"
+#include "iostream.h"
+
+int main(){
+	std::string mail = "admin@web.com";
+	if (mail.find('@') == std::string::npos) {
+		std::cout << mail;
+	}
+	if (mail.find('@') == std::string::npos) {
+		std::cout << mail;
+	}
+	while (mail.find('@') == std::string::npos) {
+		std::cout << mail;
+	}
+	for (; mail.find('@') == std::string::npos;) {
+		std::cout << mail;
+	}
+	char* ptr =
+			mail.find('@') == std::string::npos ?
+					strchr(mail.c_str(), '@') : mail.c_str();
+	bool y = mail.find('@') == std::string::npos;
+	y = mail.find('@') == std::string::npos;
+	bool z1 = mail.find('@') == std::string::npos || true;
+	bool z2 = mail.find('@') == std::string::npos && true;
+	do {
+		std::cout << mail;
+	} while (mail.find('@') == std::string::npos);
+}
+
+
+//!StrchrChecksIfNull3
+//@main.cpp
+#include "cstring.h"
+#include "iostream.h"
+
+int main(){
+	const char* mail = "admin@web.com";
+	if(0 == strchr(mail, '@')) {
+		std::cout << mail;
+	}
+	if(strchr(mail, '@') == 0) {
+		std::cout << mail;
+	}
+	while(strchr(mail, '@') == 0) {
+		std::cout << mail;
+	}
+	for(; strchr(mail, '@') == 0;) {
+		std::cout << mail;
+	}
+	char* ptr = strchr(mail, '@') == 0 ? strchr(mail, '@') : mail;
+	bool y = strchr(mail, '@') == 0;
+	y = strchr(mail, '@') == 0;
+	bool z1 = strchr(mail, '@') == 0 || true;
+	bool z2 = strchr(mail, '@') == 0 && true;
+	do {
+		std::cout << mail;
+	} while(strchr(mail, '@') == 0);
+}
+//=
+#include <string>
+#include "cstring.h"
+#include "iostream.h"
+
+int main(){
+	std::string mail = "admin@web.com";
+	if (mail.find('@') == std::string::npos) {
+		std::cout << mail;
+	}
+	if (mail.find('@') == std::string::npos) {
+		std::cout << mail;
+	}
+	while (mail.find('@') == std::string::npos) {
+		std::cout << mail;
+	}
+	for (; mail.find('@') == std::string::npos;) {
+		std::cout << mail;
+	}
+	char* ptr =
+			mail.find('@') == std::string::npos ?
+					strchr(mail.c_str(), '@') : mail.c_str();
+	bool y = mail.find('@') == std::string::npos;
+	y = mail.find('@') == std::string::npos;
+	bool z1 = mail.find('@') == std::string::npos || true;
+	bool z2 = mail.find('@') == std::string::npos && true;
+	do {
+		std::cout << mail;
+	} while (mail.find('@') == std::string::npos);
+}
+
+
+//!StrchrChecksIfNull4
+//@main.cpp
+#include "cstring.h"
+#include "iostream.h"
+
+int main(){
+	const char* mail = "admin@web.com";
+	if(NULL == strchr(mail, '@')) {
+		std::cout << mail;
+	}
+	if(strchr(mail, '@') == NULL) {
+		std::cout << mail;
+	}
+	while(strchr(mail, '@') == NULL) {
+		std::cout << mail;
+	}
+	for(; strchr(mail, '@') == NULL;) {
+		std::cout << mail;
+	}
+	do {
+		std::cout << mail;
+	} while(strchr(mail, '@') == NULL);
+}
+//=
+#include <string>
+#include "cstring.h"
+#include "iostream.h"
+
+int main(){
+	std::string mail = "admin@web.com";
+	if (mail.find('@') == std::string::npos) {
+		std::cout << mail;
+	}
+	if (mail.find('@') == std::string::npos) {
+		std::cout << mail;
+	}
+	while (mail.find('@') == std::string::npos) {
+		std::cout << mail;
+	}
+	for (; mail.find('@') == std::string::npos;) {
+		std::cout << mail;
+	}
+	do {
+		std::cout << mail;
+	} while (mail.find('@') == std::string::npos);
+}
+
+
+//!StrchrChecksWithOffset
+//@main.cpp
+#include "cstring.h"
+#include "iostream.h"
+
+int main(){
+	const char *mail = "admin@web.com";
+	if(strchr(mail+5, '@') == NULL) {
+		std::cout << mail;
+	}
+	if(strchr(mail+5, '@') != NULL) {
+		std::cout << mail;
+	}
+}
+//=
+#include <string>
+#include "cstring.h"
+#include "iostream.h"
+
+int main(){
+	std::string mail = "admin@web.com";
+	if (mail.find('@', 5) == std::string::npos) {
+		std::cout << mail;
+	}
+	if (mail.find('@', 5) != std::string::npos) {
+		std::cout << mail;
+	}
+}
+
+
+//!StrchrChecksWithModifiedPointer
+//@main.cpp
+#include "cstring.h"
+#include "iostream.h"
+
+int main(){
+	const char *mail = "admin@web.com";
+	while(strchr(mail, '@') != NULL) {
+		mail++;
+	}
+	std::cout << mail << std::endl;
+}
+//=
+#include <string>
+#include "cstring.h"
+#include "iostream.h"
+
+int main(){
+	std::string mail = "admin@web.com";
+	std::string::size_type mail_pos = 0;
+	while (mail.find('@', mail_pos) != std::string::npos) {
+		mail_pos++;
+	}
+	std::cout << (mail.c_str() + mail_pos) << std::endl;
+}
+
+
+//!WschrChecksWithModifiedPointer
+//@main.cpp
+#include "cstring.h"
+#include "iostream.h"
+
+int main(){
+	const wchar_t *mail = L"admin@web.com";
+	while(wcschr(mail, L'@') != NULL) {
+		mail++;
+	}
+	std::cout << mail << std::endl;
+}
+//=
+#include <string>
+#include "cstring.h"
+#include "iostream.h"
+
+int main(){
+	std::wstring mail = L"admin@web.com";
+	std::wstring::size_type mail_pos = 0;
+	while (mail.find(L'@', mail_pos) != std::wstring::npos) {
+		mail_pos++;
+	}
+	std::cout << (mail.c_str() + mail_pos) << std::endl;
+}
+
+

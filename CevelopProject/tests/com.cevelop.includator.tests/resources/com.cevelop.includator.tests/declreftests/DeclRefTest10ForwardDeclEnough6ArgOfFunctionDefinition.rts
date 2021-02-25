@@ -1,0 +1,7 @@
+//!DeclRefTest10ForwardDeclEnough6ArgOfFunctionDefinition
+//@main.cpp
+#include "B.h"
+
+int foo(B* b1) { }
+//@B.h
+class B { };

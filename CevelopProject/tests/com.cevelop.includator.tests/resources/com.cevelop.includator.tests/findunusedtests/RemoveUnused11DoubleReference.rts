@@ -1,0 +1,10 @@
+//!RemoveUnused11DoubleReference
+//@A.cpp
+#include "B.h"
+
+int main() {
+	B b;
+	B b2;
+}
+//@B.h
+class B {};

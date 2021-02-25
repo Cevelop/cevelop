@@ -1,8 +1,0 @@
-//!OrganizeIncludes8DependencyToSourceFile
-//@main.cpp
-int main() {
-  foo();
-  return 0;
-}
-//@foo.cpp
-void foo() { };

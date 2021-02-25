@@ -1,6 +1,0 @@
-//!Require String
-//@main.cpp
-int main() {
-	std::string s;
-	return 0;
-}

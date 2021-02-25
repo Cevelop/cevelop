@@ -1,9 +1,0 @@
-//!SuggestionStoreTest5QuickFixPositions
-//@A.cpp
-#include "B.h"
-
-int main() {
-	return 0;
-}
-//@B.h
-class B { };

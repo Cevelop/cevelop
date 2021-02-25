@@ -1,0 +1,3 @@
+//!SuppressSuggestionTest12ReferencedProjectSuppression_p2
+//@A.h
+class A { };

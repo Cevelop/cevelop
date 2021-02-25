@@ -1,6 +1,0 @@
-//!IncludeToFwd6FunctionRefParam
-//@main.cpp
-#include "A.h"
-void foo(A &a);
-//@A.h
-class A { };

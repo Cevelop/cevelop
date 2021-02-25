@@ -1,0 +1,207 @@
+//! Overriding function misses keyword, overriding pure virtual, add final keyword
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+class A
+{
+	public:
+		virtual void F() noexcept = 0;
+};
+class B : public A
+{
+	public:
+		void F() noexcept {}
+};
+//=
+class A
+{
+	public:
+		virtual void F() noexcept = 0;
+};
+class B : public A
+{
+	public:
+		void F() noexcept final {}
+};
+
+//! Overriding function has only virtual keyword, overriding pure virtual, add final keyword
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+class A
+{
+	public:
+		virtual void F() noexcept = 0;
+};
+class B : public A
+{
+	public:
+		virtual void F() noexcept {}
+};
+//=
+class A
+{
+	public:
+		virtual void F() noexcept = 0;
+};
+class B : public A
+{
+	public:
+		void F() noexcept final {}
+};
+
+//! Overriding function misses keyword, overriding virtual, add final keyword
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+class A
+{
+	public:
+		virtual void F() noexcept {}
+};
+class B : public A
+{
+	public:
+		void F() noexcept {}
+};
+//=
+class A
+{
+	public:
+		virtual void F() noexcept {}
+};
+class B : public A
+{
+	public:
+		void F() noexcept final {}
+};
+
+//! Overriding function has only virtual keyword, overriding virtual, add final keyword
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+class A
+{
+	public:
+		virtual void F() noexcept {}
+};
+class B : public A
+{
+	public:
+		virtual void F() noexcept {}
+};
+//=
+class A
+{
+	public:
+		virtual void F() noexcept {}
+};
+class B : public A
+{
+	public:
+		void F() noexcept final {}
+};
+
+//! Overriding pure virtual function with pure virtual function no keyword, add final keyword
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+class A
+{
+	public:
+		virtual ~A() = 0;
+};
+class B : public A
+{
+	public:
+		~B() = 0;
+};
+//=
+class A
+{
+	public:
+		virtual ~A() = 0;
+};
+class B : public A
+{
+	public:
+		~B() final = 0;
+};
+
+//! Overriding pure virtual function with pure virtual function,only virtual, add final keyword
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+class A
+{
+	public:
+		virtual ~A() = 0;
+};
+class B : public A
+{
+	public:
+		virtual ~B() = 0;
+};
+//=
+class A
+{
+	public:
+		virtual ~A() = 0;
+};
+class B : public A
+{
+	public:
+		~B() final = 0;
+};
+
+//! Overriding virtual destructor misses keyword, add final keyword
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+class A
+{
+	public:
+		virtual ~A() {}
+};
+class B : public A
+{
+	public:
+		~B() {}
+};
+//=
+class A
+{
+	public:
+		virtual ~A() {}
+};
+class B : public A
+{
+	public:
+		~B() final {}
+};
+
+//! Overriding virtual destructor has only virtual keyword, add final keyword
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+class A
+{
+	public:
+		virtual ~A() {}
+};
+class B : public A
+{
+	public:
+		virtual ~B() {}
+};
+//=
+class A
+{
+	public:
+		virtual ~A() {}
+};
+class B : public A
+{
+	public:
+		~B() final {}
+};

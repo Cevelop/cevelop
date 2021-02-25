@@ -1,0 +1,130 @@
+//! Virtual user defined * operator
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+class A
+{
+	public:
+		virtual A& operator*(A const& oth) = 0;
+};
+
+//! Virtual user defined = operator
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=4
+//@main.h
+class A
+{
+	public:
+		virtual A& operator=(A const& oth) = 0;
+};
+
+//! Virtual user defined += operator
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=4
+//@main.h
+class A
+{
+	public:
+		virtual A& operator+=(A const& oth) = 0;
+};
+
+//! Virtual user defined -= operator
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=4
+//@main.h
+class A
+{
+	public:
+		virtual A& operator-=(A const& oth) = 0;
+};
+
+//! Virtual user defined *= operator
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=4
+//@main.h
+class A
+{
+	public:
+		virtual A& operator*=(A const& oth) = 0;
+};
+
+//! Virtual user defined /= operator
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=4
+//@main.h
+class A
+{
+	public:
+		virtual A& operator/=(A const& oth) = 0;
+};
+
+//! Virtual user defined %= operator
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=4
+//@main.h
+class A
+{
+	public:
+		virtual A& operator%=(A const& oth) = 0;
+};
+
+//! Virtual user defined &= operator
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=4
+//@main.h
+class A
+{
+	public:
+		virtual A& operator&=(A const& oth) = 0;
+};
+
+//! Virtual user defined |= operator
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=4
+//@main.h
+class A
+{
+	public:
+		virtual A& operator|=(A const& oth) = 0;
+};
+
+//! Virtual user defined ^= operator
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=4
+//@main.h
+class A
+{
+	public:
+		virtual A& operator^=(A const& oth) = 0;
+};
+
+//! Virtual user defined <<= operator
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=4
+//@main.h
+class A
+{
+	public:
+		virtual A& operator<<=(A const& oth) = 0;
+};
+
+//! Virtual user defined >>= operator
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=4
+//@main.h
+class A
+{
+	public:
+		virtual A& operator>>=(A const& oth) = 0;
+};

@@ -1,0 +1,6 @@
+typedef long unsigned int size_t;
+
+class bad_alloc { };
+
+void* operator new(size_t) throw (bad_alloc);
+void operator delete(void*) throw();

@@ -1,9 +1,0 @@
-//!Test 1 Maker
-//@A.cpp
-#include "B.h"
-
-int main() { return 0; }
-//@B.h
-#include "C.h"
-//@C.h
-class C { };

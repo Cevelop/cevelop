@@ -1,0 +1,10 @@
+//!Template Class
+//@main.cpp
+template<class T>
+class Templ {
+};
+
+int main(int argc, char **argv) {
+	Templ<int> t;
+	return 0;
+}

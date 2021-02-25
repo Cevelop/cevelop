@@ -1,0 +1,8 @@
+//!DeclRefTest9NamespaceAroundMethodDef
+//@A.cpp
+void A::bar() {
+}
+//@A.h
+namespace A {
+	void bar();
+}

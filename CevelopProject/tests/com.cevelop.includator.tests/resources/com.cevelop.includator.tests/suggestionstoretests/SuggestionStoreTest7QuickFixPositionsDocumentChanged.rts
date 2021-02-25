@@ -1,0 +1,13 @@
+//!SuggestionStoreTest7QuickFixPositionsDocumentChanged
+//@A.cpp
+#define DOENER_MACHT_SCHOENER
+
+#include "C.h"
+
+int main() {
+	return 0;
+}
+//@B.h
+class B { };
+//@C.h
+class C { };

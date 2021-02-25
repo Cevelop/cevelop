@@ -1,0 +1,73 @@
+//!AssignmentQuickFix
+//@main.h
+int main() {
+	int i = 123;
+	char c = 'c';
+	c = i;
+}
+//=
+#include "gsl.h"
+int main() {
+	int i = 123;
+	char c = 'c';
+	c = gsl::narrow_cast<char>(i);
+}
+//!AssignmentCastQuickFix
+//@main.h
+int main() {
+	int i = 123;
+	char c = 'c';
+	c = (char) i;
+}
+//=
+#include "gsl.h"
+int main() {
+	int i = 123;
+	char c = 'c';
+	c = gsl::narrow_cast<char>(i);
+}
+//!AssignmentCastWithMultipleUnaryExpressionsQuickFix
+//@main.h
+int main() {
+	int i = 123;
+	char c = 'c';
+	c = (char) (((i)));
+}
+//=
+#include "gsl.h"
+int main() {
+	int i = 123;
+	char c = 'c';
+	c = gsl::narrow_cast<char>(i);
+}
+//!DeclarationQuickFix
+//@main.h
+int main() {
+	int i = 123;
+	char c = i;
+}
+//=
+#include "gsl.h"
+int main() {
+	int i = 123;
+	char c = gsl::narrow_cast<char>(i);
+}
+//!AssignmentCastQuickFixWithExistingGSL
+//@main.h
+#include "gsl.h"
+int main() {
+	int i = 123;
+	char c1 = 'c';
+	char c2 = 'C';
+	c1 = (char) i;
+	c2 = gsl::narrow_cast<char>(i);
+}
+//=
+#include "gsl.h"
+int main() {
+	int i = 123;
+	char c1 = 'c';
+	char c2 = 'C';
+	c1 = gsl::narrow_cast<char>(i);
+	c2 = gsl::narrow_cast<char>(i);
+}

@@ -1,0 +1,119 @@
+//! Only virtual
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+class A {
+	public:
+		virtual ~A() {}
+};
+
+//! Only override
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+class A {
+	public:
+		virtual void F() noexcept {}
+};
+class B: public A {
+	public:
+		void F() noexcept override{}
+};
+
+//! Only final
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+class A {
+	public:
+		virtual void F() noexcept {}
+};
+class B: public A {
+	public:
+		void F() noexcept final{}
+};
+
+//! Virtual, pure-virtual
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+class A {
+	public:
+		virtual void F() noexcept = 0;
+};
+
+//! Final pure virtual is unusable
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=3
+//@main.h
+class A {
+	public:
+		virtual void F() noexcept final = 0;
+};
+
+//! Final and virtual
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=3
+//@main.h
+class A {
+	public:
+		virtual void F() noexcept final {}
+};
+
+//! Virtual and override
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=7
+//@main.h
+class A {
+	public:
+		virtual void F() noexcept = 0;
+};
+class B: public A {
+	public:
+		virtual void F() noexcept override;
+};
+
+//! Override and final
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=7
+//@main.h
+class A {
+	public:
+		virtual void F() noexcept {}
+};
+class B: public A {
+	public:
+		void F() noexcept override final {}
+};
+
+//! Override, final and virtual
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=7
+//@main.h
+class A {
+	public:
+		virtual void F() noexcept {}
+};
+class B: public A {
+	public:
+		virtual void F() noexcept override final {}
+};
+
+//! Missing override
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=7
+//@main.h
+class A {
+	public:
+		virtual void F() noexcept {}
+};
+class B: public A {
+	public:
+		void F() noexcept {}
+};

@@ -1,0 +1,10 @@
+//!DataStructureFileTest4AsmFileStartingPointFileAlg
+//@XY.asm
+;some stuff comment
+//@main.cpp
+#include "A.h"
+int main() {
+  return 0;
+}
+//@A.h
+class A { };

@@ -1,0 +1,7 @@
+//!ShouldNotMarkAsDefaultConstructorCall
+//@main.cpp
+struct Class {
+};
+int main(int argc, char **argv) {
+	Class c;
+}

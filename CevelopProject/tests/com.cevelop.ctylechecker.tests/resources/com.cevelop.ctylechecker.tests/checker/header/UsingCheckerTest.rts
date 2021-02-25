@@ -1,0 +1,42 @@
+//!Using namespace std in header
+//@.config
+markerLines=4
+//@foo.hpp
+#ifndef FOO_HPP_
+#define FOO_HPP_
+
+using namespace std;
+
+struct Foo {
+
+};
+
+#endif /* FOO_HPP_ */
+
+//!Using aliasing in header is ok
+//@.config
+//@foo.hpp
+#ifndef FOO_HPP_
+#define FOO_HPP_
+
+#include <string>
+
+using const_string = std::string const;
+
+struct Foo {
+
+};
+
+#endif /* FOO_HPP_ */
+
+//!No usings no warning
+//@.config
+//@foo.hpp
+#ifndef FOO_HPP_
+#define FOO_HPP_
+
+struct Foo {
+
+};
+
+#endif /* FOO_HPP_ */

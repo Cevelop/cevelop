@@ -1,0 +1,48 @@
+//!ProjectCoverageTest30ImplicitlyUsed2
+//@main.cpp
+#include "X.h"
+
+int main() {
+	X *x = new X();
+	delete x;
+}
+//@X.h
+#include "Y.h"
+#include "Z.h"
+class X : public Y {
+public:
+  X() : Y() { }
+  ~X() { }
+  Z z;
+};
+//@Y.h
+void foo();
+
+class Y {
+public:
+  Y();
+  ~Y();
+};
+
+//@Y.cpp
+#include "Y.h"
+
+void foo() { }
+
+Y::Y() { foo(); }
+Y::~Y() { }
+//@Z.h
+void bar();
+
+class Z {
+public:
+  Z();
+  ~Z();
+};
+//@Z.cpp
+#include "Z.h"
+
+void bar() { }
+
+Z::Z() { bar(); }
+Z::~Z() { }

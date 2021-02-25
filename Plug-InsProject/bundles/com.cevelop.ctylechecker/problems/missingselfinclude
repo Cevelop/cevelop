@@ -1,5 +1,0 @@
-# Include auf den eigenen Header fehlt.
-
-Implementationen (.cpp) sollten immer einen Include auf ihren eigenen Header enthalten.
-So wird geprüft, ob der Header self-contained ist, also ob er unabhängig von anderen includes kompiliert werden kann.
-Ausserdem können so Deklarationen in beliebiger Reihenfolge definiert und benutzt werden.

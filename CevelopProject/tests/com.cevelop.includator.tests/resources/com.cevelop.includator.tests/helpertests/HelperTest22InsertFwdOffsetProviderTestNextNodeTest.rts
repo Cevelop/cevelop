@@ -1,0 +1,10 @@
+//!HelperTest22InsertFwdOffsetProviderTestNextNodeTest
+//@A.cpp
+#include "B.h"
+#ifdef ASDF
+#include "B.h"
+#endif
+int main() {
+}
+//@B.h
+class B {};

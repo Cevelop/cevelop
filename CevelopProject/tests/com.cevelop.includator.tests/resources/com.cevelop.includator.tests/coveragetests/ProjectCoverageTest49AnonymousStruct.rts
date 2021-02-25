@@ -1,0 +1,10 @@
+//!Test for Marking of Anonymous Struct
+//@main.cpp
+struct {
+  static const int value = 42;
+} answer;
+
+
+int main() {
+	return answer.value;
+}

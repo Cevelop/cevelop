@@ -1,0 +1,14 @@
+//!RecursiveIndexIncludeStore2InactiveIncludeTest
+//@main.cpp
+#include "A.h"
+int main() { 
+  return 0;
+}
+//@A.h
+#ifdef SOMETHING_UNDEFINDED
+#include "B.h"
+#endif
+//@B.h
+class A { };
+
+ 

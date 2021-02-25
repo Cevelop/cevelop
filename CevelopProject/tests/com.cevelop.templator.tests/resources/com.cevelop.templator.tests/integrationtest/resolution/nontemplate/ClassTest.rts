@@ -1,0 +1,8 @@
+//!Class
+//@MyFileName.cpp
+struct A {
+};
+
+int main() {
+	A a { };
+}

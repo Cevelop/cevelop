@@ -1,0 +1,301 @@
+//!ShouldElevateUninitializedDouble
+//@main.cpp
+double x;
+
+//=
+double x { };
+
+//!ShouldElevateUnitializedInt
+//@main.cpp
+int x;
+
+//=
+int x { };
+
+//!ShouldElevateUnitializedPointer
+//@main.cpp
+int *x;
+
+//=
+int *x { };
+
+//!ShouldElevateUnitializedIntInFunction
+//@main.cpp
+void foo() {
+	int x;
+}
+
+//=
+void foo() {
+	int x { };
+}
+
+//!ShouldElevateUninitializedClass
+//@main.cpp
+class T{};
+T x;
+
+//=
+class T{};
+T x { };
+
+//!ShouldElevateUninitializedIntList
+//@main.cpp
+int x,y,z;
+
+//=
+int x { }, y { }, z { };
+
+//!ShouldElevateReferenceInitialization
+//@.config
+preferences.markEqualsInitializers=true
+//@main.cpp
+int z {1}; 
+int &x = z;
+
+//=
+int z {1}; 
+
+int &x { z };
+
+//!ShouldElevateCopyInitializedInt
+//@.config
+preferences.markEqualsInitializers=true
+//@main.cpp
+int x = 1;
+
+//=
+int x { 1 };
+
+//!ShouldElevateConstructorInitializedInt
+//@main.cpp
+int x(1);
+
+//=
+int x { 1 };
+
+//!ShouldElevateConstructorWithMultipleArguments
+//@main.cpp
+class MyClass{MyClass(int x,int y,int z){}};
+MyClass x(1,2,3);
+
+//=
+class MyClass{MyClass(int x,int y,int z){}};
+MyClass x { 1, 2, 3 };
+
+//!ShouldElevateMixedInitialisationList
+//@.config
+preferences.markEqualsInitializers=true
+//@main.cpp
+int x{1},y(2),z = 3;
+
+//=
+int x { 1 }, y { 2 }, z { 3 };
+
+//!ShouldElevateMixedListContainingFunctions
+//@main.cpp
+int x(),y;
+
+//=
+int x(), y { };
+
+//!ShouldElevateTemplateClasses
+//@main.cpp
+namespace std {
+template<class T1, class T2> class pair {
+	pair(int a, int b) {}
+};
+}
+std::pair<int,int> p1(3,4);
+
+//=
+namespace std {
+template<class T1, class T2> class pair {
+	pair(int a, int b) {}
+};
+}
+std::pair<int, int> p1 { 3, 4 };
+
+//!ShouldElevateConstructorInitList
+//@main.cpp
+class C {
+private:
+	int a;
+	int b;
+	
+public:
+	C::C(): a(1), b(2){}
+};
+//=
+class C {
+private:
+	int a;
+	int b;
+	
+public:
+	C::C() :
+			a { 1 }, b { 2 } {
+	}
+};
+
+//!ShouldElevateInitializationWithNewOperatorAndCopyConstructor
+//@main.cpp
+struct C {
+	C(int a) : a { a } {}
+	int a;
+};
+
+int main(int argc, char const *argv[]) {
+    new C(5);
+}
+
+//=
+struct C {
+	C(int a) : a { a } {}
+	int a;
+};
+
+int main(int argc, char const *argv[]) {
+	new C { 5 };
+}
+
+//!ShouldElevateInitializationWithNewOperatorAndDefaultConstructor
+//@main.cpp
+struct C {};
+
+int main(int argc, char const *argv[]) {
+	new C;
+}
+
+//=
+struct C {};
+
+int main(int argc, char const *argv[]) {
+	new C { };
+}
+
+//!ShouldElevateInitializationWithNewOperatorAndAssignment
+//@main.cpp
+struct C {
+	C(int a) : a { a } {}
+	int a;
+};
+
+int main(int argc, char const *argv[]) {
+	C * c = new C(5);
+}
+//=
+struct C {
+	C(int a) : a { a } {}
+	int a;
+};
+
+int main(int argc, char const *argv[]) {
+	C * c = new C { 5 };
+}
+
+//!ShouldElevateInitializationWithNewOperatorAndConstructor
+//@main.cpp
+struct C {
+	C(int a) : a { a } {}
+	int a;
+};
+
+int main(int argc, char const *argv[]) {
+	new C(5);
+}
+
+//=
+struct C {
+	C(int a) : a { a } {}
+	int a;
+};
+
+int main(int argc, char const *argv[]) {
+	new C { 5 };
+}
+
+//!ShouldTransformCopyInitializationUsingDefaultConstructor
+//@.config
+preferences.markEqualsInitializers=true
+//@main.cpp
+struct C {
+	C(int a) : a { a } {}
+	int a;
+};
+
+int main(int argc, char const *argv[]) {
+	C c = C(1);
+}
+//=
+struct C {
+	C(int a) : a { a } {}
+	int a;
+};
+
+int main(int argc, char const *argv[]) {
+	C c { 1 };
+}
+
+//!ShouldTransformCopyInitializationUsingUniformInitialization
+//@.config
+preferences.markEqualsInitializers=true
+//@main.cpp
+struct C {
+	C(int a) : a { a } {}
+	int a;
+};
+
+int main(int argc, char const *argv[]) {
+	C c = C { 5 };
+}
+//=
+struct C {
+	C(int a) : a { a } {}
+	int a;
+};
+
+int main(int argc, char const *argv[]) {
+	C c { 5 };
+}
+
+//!Transform Ctor Call of Base Class
+//@main.cpp
+struct Base {
+	Base(int){}
+};
+
+struct Sub : Base {
+	Sub(int i) : Base(i){}
+};
+//=
+struct Base {
+	Base(int){}
+};
+
+struct Sub : Base {
+	Sub(int i) :
+			Base { i } {
+	}
+};
+
+//!Transform Ctor Call of Base Class with Multiple Arguments
+//@main.cpp
+struct Base {
+	Base(int, int){}
+};
+
+struct Sub : Base {
+	Sub(int i) : Base(i, i){}
+};
+//=
+struct Base {
+	Base(int, int){}
+};
+
+struct Sub : Base {
+	Sub(int i) :
+			Base { i, i } {
+	}
+};
+

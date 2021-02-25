@@ -1,0 +1,1819 @@
+//!EUDIR_NoSelection
+//@.config
+expectedNrOfFatalErrors=1
+//@A1.cpp
+int main() {}
+//!EUDIR_WrongSelection
+//@.config
+expectedNrOfFatalErrors=1
+//@A1.cpp
+using namespace /*$*/A/*$*/;
+//!EUDIR_namespace_in_macro_expansion
+//@A1.cpp
+#define macro(X) A::a(X)
+namespace A {
+	void a(int x){}
+}
+int main() {
+	A::/*$*/a/*$*/(0);
+	macro(42);
+}
+//=
+#define macro(X) A::a(X)
+namespace A {
+	void a(int x){}
+}
+int main() {
+	using namespace A;
+	a(0);
+	macro(42);
+}
+//!EUDIR_namespace_in_macro_expansion_type
+//@A1.cpp
+#define macro(X) A::a(X)
+namespace A {
+	struct a{ a(int){}};
+}
+int main() {
+	A::/*$*/a/*$*/(0);
+	macro(42);
+}
+//=
+#define macro(X) A::a(X)
+namespace A {
+	struct a{ a(int){}};
+}
+int main() {
+	using namespace A;
+	a(0);
+	macro(42);
+}
+//!EUDIR_SingleNamespace_SelectionCall
+//@A1.cpp
+namespace A {
+	void a(){}
+}
+int main() {
+	A::/*$*/a/*$*/();
+	return 0;
+}
+//=
+namespace A {
+	void a(){}
+}
+int main() {
+	using namespace A;
+	a();
+	return 0;
+}
+//!EUDIR_SingleNamespace_SelectionNamespace
+//@A1.cpp
+namespace A {
+	void a(){}
+}
+int main() {
+	/*$*/A/*$*/::a();
+	return 0;
+}
+//=
+namespace A {
+	void a(){}
+}
+int main() {
+	using namespace A;
+	a();
+	return 0;
+}
+//!EUDIR_NestedNamespace
+//@A1.cpp
+namespace A {
+	namespace B{
+		void f(){}
+	}
+}
+int main() {
+	A::B::/*$*/f/*$*/();
+	return 0;
+}
+//=
+namespace A {
+	namespace B{
+		void f(){}
+	}
+}
+int main() {
+	using namespace A::B;
+	f();
+	return 0;
+}
+//!EUDIR_TwoNamesOneNameSpecifier
+//@A1.cpp
+namespace A {
+	void f1(){}
+	void f2(){}
+}
+
+int main() {
+	A::/*$*/f1/*$*/();
+	A::f2();
+}
+//=
+namespace A {
+	void f1(){}
+	void f2(){}
+}
+
+int main() {
+	using namespace A;
+	f1();
+	f2();
+}
+//!EUDIR_TwoNamesTwoNameSpecifier
+//@A1.cpp
+namespace A {
+	namespace B{
+		void f1(){}
+		void f2(){}
+	}
+}
+int main() {
+	A::B::/*$*/f1/*$*/();
+	A::B::f2();
+}
+//=
+namespace A {
+	namespace B{
+		void f1(){}
+		void f2(){}
+	}
+}
+int main() {
+	using namespace A::B;
+	f1();
+	f2();
+}
+//!EUDIR_NamesInDifferentScopes
+//@A1.cpp
+namespace A {
+	void f1(){}
+	void f2(){}
+	void f3(){}
+}
+int main(){
+	A::/*$*/f1/*$*/();
+	if (true) {
+		A::f2();
+		A::f3();
+	}
+}
+//=
+namespace A {
+	void f1(){}
+	void f2(){}
+	void f3(){}
+}
+int main(){
+	using namespace A;
+	f1();
+	if (true) {
+		f2();
+		f3();
+	}
+}
+//!EUDIR_NamesInInnerScope
+//@A1.cpp
+namespace A {
+	void f1(){}
+	void f2(){}
+	void f3(){}
+}
+int main() {
+	A::f1();
+	if (true) {
+		A::/*$*/f2/*$*/();
+		A::f3();
+		A::f3();
+	}
+}
+//=
+namespace A {
+	void f1(){}
+	void f2(){}
+	void f3(){}
+}
+int main() {
+	A::f1();
+	if (true) {
+		using namespace A;
+		f2();
+		f3();
+		f3();
+	}
+}
+//!EUDIR_LongNamespaceNames
+//@A1.cpp
+namespace Aahhh {
+	void a(){}
+}
+int main() {
+	Aahhh::/*$*/a/*$*/();
+	return 0;
+}
+//=
+namespace Aahhh {
+	void a(){}
+}
+int main() {
+	using namespace Aahhh;
+	a();
+	return 0;
+}
+//!EUDIR_ReopenMultipleNamespacesWithNestedUsingDirective
+//@A1.cpp
+namespace A {
+	void a1(){}
+	namespace B{
+		void b1(){}
+		void b2(){}
+	}
+	namespace B{
+		void b3(){}
+	}
+	void a2(){}
+}
+int main() {
+	A::a1();
+	A::B::/*$*/b1/*$*/();
+	{
+		using namespace A;
+		B::b2();
+	}
+	A::B::b3();
+}
+//=
+namespace A {
+	void a1(){}
+	namespace B{
+		void b1(){}
+		void b2(){}
+	}
+	namespace B{
+		void b3(){}
+	}
+	void a2(){}
+}
+int main() {
+	A::a1();
+	using namespace A::B;
+	b1();
+	{
+		using namespace A;
+		b2();
+	}
+	b3();
+}
+//!EUDIR_ExtremNestedNamespaces
+//@A1.cpp
+namespace A{
+	namespace BB{
+		namespace CC{
+			namespace DD{
+				namespace EE{
+					namespace FF{
+						namespace GG{
+							namespace Innermost{
+								void f(){}
+							}}}}}}}}
+
+int main() {
+	A::BB::CC::DD::EE::FF::GG::Innermost::/*$*/f/*$*/();
+}
+//=
+namespace A{
+	namespace BB{
+		namespace CC{
+			namespace DD{
+				namespace EE{
+					namespace FF{
+						namespace GG{
+							namespace Innermost{
+								void f(){}
+							}}}}}}}}
+
+int main() {
+	using namespace A::BB::CC::DD::EE::FF::GG::Innermost;
+	f();
+}
+//!EUDIR_MultipleNestedUsingDirectives
+//@A1.cpp
+namespace A {
+	void a1(){}
+	namespace B{
+		void b1(){}
+		namespace C{
+			void c1(){}
+		}
+
+	}
+}
+int main() {
+	A::a1();
+	A::B::/*$*/b1/*$*/();
+	{
+		using namespace A::B;
+		C::c1();
+		using namespace A;
+		B::b1();
+	}
+	using namespace A::B::C;
+	c1();
+	using A::a1;
+}
+//=
+namespace A {
+	void a1(){}
+	namespace B{
+		void b1(){}
+		namespace C{
+			void c1(){}
+		}
+
+	}
+}
+int main() {
+	A::a1();
+	using namespace A::B;
+	b1();
+	{
+		C::c1();
+		using namespace A;
+		b1();
+	}
+	using namespace C;
+	c1();
+	using A::a1;
+}
+//!EUDIR_MultipleNestedUsingDirectives2
+//@A1.cpp
+namespace A {
+	void a1(){}
+	namespace B{
+		void b1(){}
+		namespace C{
+			void c1(){}
+		}
+
+	}
+}
+int main() {
+	/*$*/A/*$*/::a1();
+	A::B::b1();
+	{
+		using namespace A::B;
+		C::c1();
+		using namespace A;
+		B::b1();
+	}
+	using namespace A::B::C;
+	c1();
+	using A::a1;
+}
+//=
+namespace A {
+	void a1(){}
+	namespace B{
+		void b1(){}
+		namespace C{
+			void c1(){}
+		}
+
+	}
+}
+int main() {
+	using namespace A;
+	a1();
+	B::b1();
+	{
+		using namespace B;
+		C::c1();
+		B::b1();
+	}
+	using namespace B::C;
+	c1();
+	using A::a1;
+}
+//!EUDIR_Variable
+//@A1.cpp
+namespace A{
+	int i;
+}
+int main() {
+	A::/*$*/i/*$*/ = 0;
+}
+//=
+namespace A{
+	int i;
+}
+int main() {
+	using namespace A;
+	i = 0;
+}
+//!EUDIR_Struct
+//@A1.cpp
+namespace A {
+	struct S1;
+}
+struct A::S1 {
+	int i;
+	void f1(){}
+};
+int main() {
+	A::/*$*/S1/*$*/ s1 = A::S1();
+	s1.i = 0;
+	s1.f1();
+}
+//=
+namespace A {
+	struct S1;
+}
+struct A::S1 {
+	int i;
+	void f1(){}
+};
+int main() {
+	using namespace A;
+	S1 s1 = S1();
+	s1.i = 0;
+	s1.f1();
+}
+//!EUDIR_Struct_DifferentSelection
+//@A1.cpp
+namespace A {
+	struct S1;
+}
+struct A::S1 {
+	int i;
+	void f1(){}
+};
+int main() {
+	A::S1 s1 = A::/*$*/S1/*$*/();
+	s1.i = 0;
+	s1.f1();
+}
+//=
+namespace A {
+	struct S1;
+}
+struct A::S1 {
+	int i;
+	void f1(){}
+};
+int main() {
+	using namespace A;
+	S1 s1 = S1();
+	s1.i = 0;
+	s1.f1();
+}
+//!EUDIR_Struct_WithPointer
+//@A1.cpp
+namespace A{
+	struct S1;
+}
+struct A::S1{
+	int i;
+	void f1(){}
+};
+int main(){
+	A::/*$*/S1/*$*/ * s1;
+	s1->i = 0;
+	s1->f1();
+}
+//=
+namespace A{
+	struct S1;
+}
+struct A::S1{
+	int i;
+	void f1(){}
+};
+int main(){
+	using namespace A;
+	S1 * s1;
+	s1->i = 0;
+	s1->f1();
+}
+//!EUDIR_Struct_CompositeTypeDefinition
+//@A1.cpp
+namespace A {
+	struct S1;
+}
+struct A::/*$*/S1/*$*/ {
+	int i;
+	void f1(){}
+};
+//=
+namespace A {
+	struct S1;
+}
+struct A::S1 {
+	int i;
+	void f1(){}
+};
+//!EUDIR_FunctionDefinitionSelection
+//@A1.cpp
+namespace A{
+	void fwdFunc();
+}
+void A::/*$*/fwdFunc/*$*/(){}
+//!EUDIR_Ignore_UsingNSDecl
+//@A1.cpp
+namespace A {
+	struct S1{};
+}
+int main(){
+	A::/*$*/S1/*$*/ s1;
+	using A::S1;
+	S1 s2;
+}
+//=
+namespace A {
+	struct S1{};
+}
+int main(){
+	using namespace A;
+	S1 s1;
+	using A::S1;
+	S1 s2;
+}
+//!EUDIR_ParameterInGlobalFunctionDeclaration
+//@A1.cpp
+namespace A{
+	int i = 0;
+	struct S1{
+		int s;
+	};
+}
+void doit1(A::S1);
+void doIt2(A::/*$*/S1/*$*/);
+int main(){
+	A::S1 s1;
+}
+//=
+namespace A{
+	int i = 0;
+	struct S1{
+		int s;
+	};
+}
+
+using namespace A;
+
+void doit1(S1);
+void doIt2(S1);
+int main(){
+	S1 s1;
+}
+//!EUDIR_ParameterInGlobalFunctionDefinition
+//@A1.cpp
+namespace A{
+	struct S1{};
+}
+void f(A::/*$*/S1/*$*/ s1){}
+//=
+namespace A{
+	struct S1{};
+}
+
+using namespace A;
+
+void f(S1 s1) {
+}
+
+//!EUDIR_ParameterInGlobalFunctionDefinition_DifferentSelection
+//@A1.cpp
+namespace A{
+	struct S1{};
+}
+void f(/*$*/A::/*$*/S1 s1){}
+//=
+namespace A{
+	struct S1{};
+}
+
+using namespace A;
+
+void f(S1 s1) {
+}
+
+//!EUDIR_CompositeTypeSpecifierClass
+//@A1.cpp
+namespace std{
+	struct string{};
+}
+#include <string>
+class Test {
+public:
+	Test(std::/*$*/string/*$*/ &str) : data(str){}
+private:
+	std::string data;
+};
+//=
+namespace std{
+	struct string{};
+}
+#include <string>
+
+using namespace std;
+class Test {
+public:
+	Test(string &str) :
+			data(str) {
+	}
+private:
+	string data;
+};
+//!EUDIR_CompositeTypeSpecifierStruct
+//@A1.cpp
+namespace std{
+	struct string{};
+}
+#include <string>
+struct Test {
+public:
+	Test(std::/*$*/string/*$*/ &str) : data(str){}
+private:
+	std::string data;
+};
+//=
+namespace std{
+	struct string{};
+}
+#include <string>
+
+using namespace std;
+struct Test {
+public:
+	Test(string &str) :
+			data(str) {
+	}
+private:
+	string data;
+};
+//!EUDIR_NestedTypes
+//@A1.cpp
+namespace A{
+	struct S1{
+		struct S2{};
+	};
+}
+void f(A::S1::/*$*/S2/*$*/ s2){}
+//=
+namespace A{
+	struct S1{
+		struct S2{};
+	};
+}
+
+using namespace A;
+
+void f(S1::S2 s2) {
+}
+
+//!EUDIR_WrongSelectionOfType
+//@.config
+expectedNrOfFatalErrors=1
+//@A1.cpp
+struct S1{
+	struct S2{};
+};
+void f(S1::/*$*/S2/*$*/ s);
+//!EUDIR_StructAsFuncDeclParameter
+//@A1.cpp
+namespace A{
+	struct S1{};
+}
+void f(A::/*$*/S1/*$*/);
+//=
+namespace A{
+	struct S1{};
+}
+
+using namespace A;
+
+void f(S1);
+
+//!EUDIR_NamesMixedQualifiedAndUnQualified
+//@A1.cpp
+namespace A{
+	void f1(){};
+	void f2(){};
+	int i;
+}
+using namespace A;
+int main(){
+	f1();
+	A::f1();
+	A::/*$*/f1/*$*/();
+	f2();
+	A::f2();
+	i = 0;
+	A::i = 0;
+}
+//=
+namespace A{
+	void f1(){};
+	void f2(){};
+	int i;
+}
+using namespace A;
+int main(){
+	f1();
+	using namespace A;
+	f1();
+	f1();
+	f2();
+	f2();
+	i = 0;
+	i = 0;
+}
+//!EUDIR_NamesMixedQualifiedAndUnQualifiedAndNested
+//@A1.cpp
+namespace A{
+	void f1(){};
+	namespace AA{
+		void f2(){};
+	}
+	int i;
+}
+using namespace A;
+int main(){
+	f1();
+	A::f1();
+	AA::/*$*/f2/*$*/();
+	A::AA::f2();
+	i = 0;
+	A::i = 0;
+}
+//=
+namespace A{
+	void f1(){};
+	namespace AA{
+		void f2(){};
+	}
+	int i;
+}
+using namespace A;
+int main(){
+	f1();
+	A::f1();
+	using namespace A::AA;
+	f2();
+	f2();
+	i = 0;
+	A::i = 0;
+}
+//!EUDIR_ClassTwoFilesDefinitionSelection
+//@A1.cpp
+#include "A1.h"
+/*$*/A/*$*/::EUDIRTest::EUDIRTest() {}
+A::EUDIRTest::~EUDIRTest() {}
+void A::EUDIRTest::f(){}
+//=
+#include "A1.h"
+
+using namespace A;
+
+EUDIRTest::EUDIRTest() {
+}
+EUDIRTest::~EUDIRTest() {
+}
+void EUDIRTest::f() {
+}
+
+//@A1.h
+#ifndef EUDIRTEST_H_
+#define EUDIRTEST_H_
+namespace A{
+class EUDIRTest {
+public:
+	EUDIRTest();
+	virtual ~EUDIRTest();
+	void f();
+};
+}
+
+#endif /* EUDIRTEST_H_ */
+//!EUDIR_ClassTwoFilesDefinitionWithStruct
+//@A1.cpp
+#include "A1.h"
+A::EUDIRTest::/*$*/EUDIRTest/*$*/() {}
+A::EUDIRTest::~EUDIRTest() {}
+void A::EUDIRTest::f(){
+	i = 0;
+}
+void B::S1::f(A::EUDIRTest eudir){
+	memberVar = 0;
+	globalVar = 0; //TODO: should this be qualified?
+}
+//=
+#include "A1.h"
+
+using namespace A;
+
+EUDIRTest::EUDIRTest() {
+}
+EUDIRTest::~EUDIRTest() {
+}
+void EUDIRTest::f() {
+	i = 0;
+}
+void B::S1::f(EUDIRTest eudir) {
+	memberVar = 0;
+	globalVar = 0; //TODO: should this be qualified?
+}
+//@A1.h
+#ifndef EUDIRTEST_H_
+#define EUDIRTEST_H_
+namespace A{
+class EUDIRTest {
+public:
+	EUDIRTest();
+	virtual ~EUDIRTest();
+	void f();
+private:
+	int i;
+};
+}
+namespace B{
+	struct S1{
+		void f(A::EUDIRTest);
+	private:
+		int memberVar;
+	};
+	int globalVar;
+}
+#endif /* EUDIRTEST_H_ */
+//!EUDIR_MemberFunctionAndGlobalFunction
+//@A1.cpp
+#include "A1.h"
+/*$*/A/*$*/::EUDIRTest::EUDIRTest() {}
+A::EUDIRTest::~EUDIRTest() {}
+void A::EUDIRTest::f(){}
+void A::fglobal(){}
+//=
+#include "A1.h"
+
+using namespace A;
+
+EUDIRTest::EUDIRTest() {
+}
+EUDIRTest::~EUDIRTest() {
+}
+void EUDIRTest::f() {
+}
+void A::fglobal(){}
+//@A1.h
+#ifndef EUDIRTEST_H_
+#define EUDIRTEST_H_
+namespace A{
+class EUDIRTest {
+public:
+	EUDIRTest();
+	virtual ~EUDIRTest();
+	void f();
+};
+	void fglobal();
+}
+
+#endif /* EUDIRTEST_H_ */
+//!EUDIR_PartiallyQualifying
+//@A1.cpp
+namespace A{
+	void a(){}
+	namespace AA{
+		void aa(){}
+	}
+}
+int main() {
+	/*$*/A/*$*/::a();
+	A::AA::aa();
+}
+//=
+namespace A{
+	void a(){}
+	namespace AA{
+		void aa(){}
+	}
+}
+int main() {
+	using namespace A;
+	a();
+	AA::aa();
+}
+//!EUDIR_QualifiedAndUnqualifiedFunctionDefinitions
+//@A1.cpp
+namespace B{
+	void b();
+	namespace BB{
+		void bb();
+	}
+}
+void B::b(){}
+void /*$*/B/*$*/::BB::bb(){};
+//!EUDIR_TypesMembersFunctionsComplex
+//@A1.cpp
+#include "A1.h"
+A::EUDIRTest::EUDIRTest() {}
+A::EUDIRTest::~EUDIRTest() {}
+void A::EUDIRTest::f(){
+	i = 0;
+}
+void A::fglobal(){}
+int globalVar;
+void /*$*/B/*$*/::S1::f(A::EUDIRTest eudir){
+	memberVar = 0;
+	B::globalVar = 0; //TODO: hier duerfte wahrscheinlich nicht qualifiziert werden
+	globalVar = 0;
+}
+struct B::BB::SBB{
+	void fsbb(){
+		B::globalVar = 0;
+	}
+};
+struct B::S1::S1nested{};
+void B::BB::bb(A::EUDIRTest eudir, SBB sbb, B::S1::S1nested nestedType){
+	bbVar = 0;
+}
+void B::BB::bb2(){}
+void B::b(){}
+
+int main(){
+	B::BB::bb2();
+}
+//=
+#include "A1.h"
+A::EUDIRTest::EUDIRTest() {}
+A::EUDIRTest::~EUDIRTest() {}
+void A::EUDIRTest::f(){
+	i = 0;
+}
+void A::fglobal(){}
+int globalVar;
+using namespace B;
+
+void S1::f(A::EUDIRTest eudir) {
+	memberVar = 0;
+	globalVar = 0; //TODO: hier duerfte wahrscheinlich nicht qualifiziert werden
+	globalVar = 0;
+}
+struct BB::SBB {
+	void fsbb(){
+		globalVar = 0;
+	}
+};
+struct S1::S1nested {
+};
+void BB::bb(A::EUDIRTest eudir, SBB sbb, S1::S1nested nestedType) {
+	bbVar = 0;
+}
+void BB::bb2() {
+}
+void B::b(){}
+
+int main(){
+	BB::bb2();
+}
+//@A1.h
+#ifndef EUDIRTEST_H_
+#define EUDIRTEST_H_
+namespace A{
+	class EUDIRTest {
+	public:
+		EUDIRTest();
+		virtual ~EUDIRTest();
+		void f();
+	private:
+		int i;
+	};
+	void fglobal();
+}
+namespace B{
+	struct S1{
+		void f(A::EUDIRTest);
+		struct S1nested;
+	private:
+		int memberVar;
+		int globalVar;
+	};
+	int globalVar;
+
+	namespace BB{
+		int bbVar;
+		struct SBB;
+		void bb(A::EUDIRTest, SBB, B::S1::S1nested);
+		void bb2();
+	}
+	void b();
+}
+#endif /* EUDIRTEST_H_ */
+//!EUDIR_UsingDirectiveSelection
+//@.config
+expectedNrOfFatalErrors=1
+//@A1.cpp
+namespace A{
+	void f();
+}
+using namespace /*$*/A/*$*/;
+//!EUDIR_UsingDeclarationSelection
+//@.config
+expectedNrOfFatalErrors=1
+//@A1.cpp
+namespace A{
+	void f();
+}
+using /*$*/A/*$*/::f;
+//!EUDIR_UsingDirectivesCorrectInsertionPointWithRemove
+//@A1.cpp
+namespace A {
+	void a1(){}
+	namespace B{
+		void b1(){}
+		namespace C{
+			void c1(){}
+		}
+
+	}
+}
+int main() {
+	A::a1();
+	A::B::b1();
+	{
+		using namespace A::B;
+		C::c1();
+		using namespace A;
+		/*$*/B/*$*/::b1();
+	}
+	using namespace A::B::C;
+	c1();
+	using A::a1;
+}
+//=
+namespace A {
+	void a1(){}
+	namespace B{
+		void b1(){}
+		namespace C{
+			void c1(){}
+		}
+
+	}
+}
+int main() {
+	A::a1();
+	A::B::b1();
+	{
+		using namespace A::B;
+		C::c1();
+		using namespace A;
+		b1();
+	}
+	using namespace A::B::C;
+	c1();
+	using A::a1;
+}
+//!EUDIR_OneLineCommentAtLine
+//@A1.cpp
+namespace A{
+	void f(){}
+}
+int main() {
+	/*$*/A/*$*/::f(); // one line comment
+}
+//=
+namespace A{
+	void f(){}
+}
+int main() {
+	using namespace A;
+	f(); // one line comment
+}
+//!EUDIR_OneLineCommentAfter
+//@A1.cpp
+namespace A{
+	void f(){}
+}
+int main() {
+	/*$*/A/*$*/::f();
+	// one line comment
+}
+//=
+namespace A{
+	void f(){}
+}
+int main() {
+	using namespace A;
+	f();
+	// one line comment
+}
+//!EUDIR_OneLineCommentAtScopeBeginning
+//@A1.cpp
+namespace A{
+	void f(){}
+}
+void fglobal(){}
+int main() {
+	// one line comment
+	fglobal();
+	/*$*/A/*$*/::f();
+}
+//=
+namespace A{
+	void f(){}
+}
+void fglobal(){}
+int main() {
+	// one line comment
+	fglobal();
+	using namespace A;
+	f();
+}
+//!EUDIR_OneLineCommentAboveScope
+//@A1.cpp
+namespace A{
+	void f(){}
+}
+// one line comment
+int main() {
+	/*$*/A/*$*/::f();
+}
+//=
+namespace A{
+	void f(){}
+}
+// one line comment
+int main() {
+	using namespace A;
+	f();
+}
+//!EUDIR_MultiLineCommentAtLine
+//@A1.cpp
+namespace A{
+	void f(){}
+}
+int main() {
+	/*$*/A/*$*/::f(); /* multi line comment */
+}
+//=
+namespace A{
+	void f(){}
+}
+int main() {
+	using namespace A;
+	f(); /* multi line comment */
+}
+//!EUDIR_MultiLineCommentBefore
+//@A1.cpp
+namespace A{
+	void f(){}
+}
+int main() {
+	/* multi line comment */
+	/*$*/A/*$*/::f();
+}
+//=
+namespace A{
+	void f(){}
+}
+int main() {
+	using namespace A;
+	/* multi line comment */
+	f();
+}
+//!EUDIR_MultiLineCommentMultiLineBefore
+//@A1.cpp
+namespace A{
+	void f(){}
+}
+int main() {
+	/* multi 
+	 * line 
+	 * comment */
+	/*$*/A/*$*/::f();
+}
+//=
+namespace A{
+	void f(){}
+}
+int main() {
+	using namespace A;
+	/* multi 
+	 * line 
+	 * comment */
+	f();
+}
+//!EUDIR_MultiLineCommentAfter
+//@A1.cpp
+namespace A{
+	void f(){}
+}
+int main() {
+	/*$*/A/*$*/::f();
+	/* multi line comment */
+}
+//=
+namespace A{
+	void f(){}
+}
+int main() {
+	using namespace A;
+	f();
+	/* multi line comment */
+}
+//!EUDIR_MultiLineCommentAtScopeBeginning
+//@A1.cpp
+namespace A{
+	void f(){}
+}
+void fglobal(){}
+int main() {
+	/* multi line comment */
+	fglobal();
+	/*$*/A/*$*/::f();
+}
+//=
+namespace A{
+	void f(){}
+}
+void fglobal(){}
+int main() {
+	/* multi line comment */
+	fglobal();
+	using namespace A;
+	f();
+}
+//!EUDIR_MultiLineCommentAboveScope
+//@A1.cpp
+namespace A{
+	void f(){}
+}
+/* multi line comment */
+int main() {
+	/*$*/A/*$*/::f();
+}
+//=
+namespace A{
+	void f(){}
+}
+/* multi line comment */
+int main() {
+	using namespace A;
+	f();
+}
+//!EUDIR_AnonymousNamespace1
+//@A1.cpp
+namespace A{
+	void a(){}
+	namespace {
+		void ano(){}
+		namespace C{
+			void c(){}
+		}
+	}
+}
+int main() {
+	/*$*/A/*$*/::a();
+	A::ano();
+	A::C::c();
+}
+//=
+namespace A{
+	void a(){}
+	namespace {
+		void ano(){}
+		namespace C{
+			void c(){}
+		}
+	}
+}
+int main() {
+	using namespace A;
+	a();
+	ano();
+	C::c();
+}
+//!EUDIR_AnonymousNamespace2
+//@A1.cpp
+namespace A{
+	void a(){}
+	namespace {
+		void ano(){}
+		namespace C{
+			void c(){}
+		}
+	}
+}
+int main() {
+	A::a();
+	/*$*/A/*$*/::ano();
+	A::C::c();
+}
+//=
+namespace A{
+	void a(){}
+	namespace {
+		void ano(){}
+		namespace C{
+			void c(){}
+		}
+	}
+}
+int main() {
+	using namespace A;
+	a();
+	ano();
+	C::c();
+}
+//!EUDIR_AnonymousNamespace3
+//@A1.cpp
+namespace A{
+	void a(){}
+	namespace {
+		void ano(){}
+		namespace C{
+			void c(){}
+		}
+	}
+}
+int main() {
+	A::a();
+	A::ano();
+	/*$*/A/*$*/::C::c();
+}
+//=
+namespace A{
+	void a(){}
+	namespace {
+		void ano(){}
+		namespace C{
+			void c(){}
+		}
+	}
+}
+int main() {
+	A::a();
+	A::ano();
+	using namespace A::C;
+	c();
+}
+//!EUDIR_Const_Ref_Pointer
+//@A1.cpp
+namespace A{
+	struct S{
+		int i;
+		void const s(){}
+	};
+}
+void const f(const /*$*/A/*$*/::S s1, const A::S& s2, A::S s3, A::S& s4, A::S *s5, const A::S *s6){}
+int main(){
+	A::S s1;
+	A::S *s2 = new A::S();
+	const A::S &s3 = A::S();
+	s1.i = 0;
+	s2->s();
+	f(s1, s3, s1, *s2, s2, s2);
+}
+//=
+namespace A{
+	struct S{
+		int i;
+		void const s(){}
+	};
+}
+
+using namespace A;
+
+void const f(const S s1, const S& s2, S s3, S& s4, S *s5, const S *s6) {
+}
+int main(){
+	S s1;
+	S *s2 = new S();
+	const S &s3 = S();
+	s1.i = 0;
+	s2->s();
+	f(s1, s3, s1, *s2, s2, s2);
+}
+//!EUDIR_Templates
+//@A1.cpp
+#include "A1.h"
+using namespace A;
+using namespace B;
+
+template<class T> void /*$*/A/*$*/::B::C::CC<T>::set(T o){}
+template<class T> T B::C::CC<T>::get(){}
+template<class T> void C::CC<T>::doit(B::C2::SC2<T> &o){}
+
+int main(){
+	B::C::CC<char> c1;
+	A::B::C::CC<char> c2;
+	B::C::CC < B::C::CC2> t1;
+	A::B::C::CC < B::C::CC2> t2;
+	B::C::CC<A::B::C::CC2> t3;
+	B::C::CC < B::C::CC<char> > tt1;
+	A::B::C::CC < B::C::CC<int> > tt2;
+	B::C::CC<A::B::C::CC<float> > tt3;
+	C2::SC2<char> s;
+	C2::SC2<C2::SC2<char> > s1;
+	return 0;
+}
+//=
+#include "A1.h"
+using namespace A;
+using namespace B;
+using namespace A::B::C;
+
+template<class T> void CC<T>::set(T o) {
+}
+template<class T> T CC<T>::get() {
+}
+template<class T> void CC<T>::doit(B::C2::SC2<T> &o) {
+}
+
+int main(){
+	CC<char> c1;
+	CC<char> c2;
+	CC<CC2> t1;
+	CC<CC2> t2;
+	CC<CC2> t3;
+	CC<CC<char> > tt1;
+	CC<CC<int> > tt2;
+	CC<CC<float> > tt3;
+	C2::SC2<char> s;
+	C2::SC2<C2::SC2<char> > s1;
+	return 0;
+}
+//@A1.h
+#ifndef A1_H_
+#define A1_H_
+
+namespace A{
+	namespace B{
+		namespace C2{
+			template<class X>
+			struct SC2{};
+		}
+		namespace C{
+			template<class T>
+			class CC{
+			public:
+				void set(T);
+				T get();
+				void doit(C2::SC2<T> &);
+			};
+			struct CC2{};
+		}
+	}
+}
+
+#endif /* A1_H_ */
+//!EUDIR_InsideTypeDeclaration
+//@A1.cpp
+namespace A{
+	struct SA1{};
+}
+struct S1 {
+	void f1(/*$*/A/*$*/::SA1);
+};
+//=
+namespace A{
+	struct SA1{};
+}
+
+using namespace A;
+struct S1 {
+	void f1(SA1);
+};
+//!EUDIR_InsideTypeDeclarationInsideFunction
+//@A1.cpp
+namespace A{
+	struct SA1{};
+	void a(){};
+}
+struct S1{
+	void f1(A::SA1);
+	void f2(A::SA1){
+		/*$*/A/*$*/::a();
+	}
+};
+//=
+namespace A{
+	struct SA1{};
+	void a(){};
+}
+struct S1{
+	void f1(A::SA1);
+	void f2(A::SA1){
+		using namespace A;
+		a();
+	}
+};
+//!EUDIR_InsideTypeDeclarationWithFuncDeclAndDefAndCall
+//@A1.cpp
+namespace A{
+	struct SA1{};
+	void a(){};
+}
+struct S1 {
+	void f1(A::SA1);
+	void f2(/*$*/A/*$*/::SA1){
+		A::a();
+	}
+};
+//=
+namespace A{
+	struct SA1{};
+	void a(){};
+}
+
+using namespace A;
+struct S1 {
+	void f1(SA1);
+	void f2(SA1) {
+		a();
+	}
+};
+//!EUDIR_InsideTypeDeclarationNested
+//@A1.cpp
+namespace A{
+	struct SA1{};
+	void a(){};
+}
+struct S {
+	struct S1{
+		void f1(/*$*/A/*$*/::SA1);
+		void f2(A::SA1){
+			A::a();
+		}
+	};
+};
+//=
+namespace A{
+	struct SA1{};
+	void a(){};
+}
+
+using namespace A;
+struct S {
+	struct S1{
+		void f1(SA1);
+		void f2(SA1) {
+			a();
+		}
+	};
+};
+//!EUDIR_TypeDefsSelectionOnTypeDef
+//@A1.cpp
+namespace A{
+	struct StructA1;
+	struct StructA2{
+		void f(){};
+		struct StructA21{
+			void f(){}
+		};
+	};
+}
+typedef struct /*$*/A/*$*/::StructA1 SA1;
+typedef struct A::StructA2 SA2;
+typedef struct A::StructA2::StructA21 SA21;
+
+namespace A{
+	struct StructA1{
+		void f(){};
+	};
+}
+//=
+namespace A{
+	struct StructA1;
+	struct StructA2{
+		void f(){};
+		struct StructA21{
+			void f(){}
+		};
+	};
+}
+
+using namespace A;
+typedef struct StructA1 SA1;
+typedef struct StructA2 SA2;
+typedef struct StructA2::StructA21 SA21;
+
+namespace A{
+	struct StructA1{
+		void f(){};
+	};
+}
+//!EUDIR_ConditionWithoutCompoundStatement1
+//@A1.cpp
+namespace A{
+	int i;
+}
+int main() {
+	A::i = 0;
+	if (true){
+		return A::i;
+	}
+	if (false)
+		/*$*/A/*$*/::i++;
+}
+//=
+namespace A{
+	int i;
+}
+int main() {
+	using namespace A;
+	i = 0;
+	if (true){
+		return i;
+	}
+	if (false)
+		i++;
+}
+//!EUDIR_ConditionWithoutCompoundStatement2
+//@A1.cpp
+namespace A{
+	int i;
+}
+int main() {
+	if (true) {
+		return A::i;
+	}
+	if (false)
+		/*$*/A/*$*/::i++;
+}
+//=
+namespace A{
+	int i;
+}
+int main() {
+	using namespace A;
+	if (true) {
+		return i;
+	}
+	if (false)
+		i++;
+}
+//!EUDIR_SwitchSimple1
+//@A1.cpp
+namespace A{
+	int i;
+	void f1(){};
+}
+void testSimple(){
+	switch(/*$*/A/*$*/::i){
+	case 0:
+		break;
+	default:
+		A::f1();
+		break;
+	}
+}
+//=
+namespace A{
+	int i;
+	void f1(){};
+}
+void testSimple(){
+	using namespace A;
+	switch (i) {
+	case 0:
+		break;
+	default:
+		f1();
+		break;
+	}
+}
+//!EUDIR_SwitchSimple2
+//@A1.cpp
+namespace A{
+	int i;
+	void f1(){};
+}
+void testSimple(){
+	switch(A::i){
+	case 0:
+		A::f1();
+		break;
+	default:
+		/*$*/A/*$*/::f1();
+		A::i = 0;
+		break;
+	}
+}
+//=
+namespace A{
+	int i;
+	void f1(){};
+}
+void testSimple(){
+	switch(A::i){
+	case 0:
+		using namespace A;
+		f1();
+		break;
+	default:
+		f1();
+		i = 0;
+		break;
+	}
+}
+//!EUDIR_SwitchWithEnum1
+//@A1.cpp
+namespace A{
+	enum Values{
+		one=1, two=2
+	};
+	void f2(){}
+}
+void testEnum(){
+	/*$*/A/*$*/::Values currValue = A::one;
+	switch(currValue){
+	case A::one:
+		break;
+	case A::two:
+		break;
+	}
+}
+//=
+namespace A{
+	enum Values{
+		one=1, two=2
+	};
+	void f2(){}
+}
+void testEnum(){
+	using namespace A;
+	Values currValue = one;
+	switch(currValue){
+	case one:
+		break;
+	case two:
+		break;
+	}
+}
+//!EUDIR_SwitchWithEnum2
+//@A1.cpp
+namespace A{
+	enum Values{
+		one=1, two=2
+	};
+	void f2(){}
+}
+void testEnum(){
+	A::Values currValue = A::one;
+	switch(currValue){
+	case /*$*/A/*$*/::one:
+		break;
+	case A::two:
+		break;
+	}
+}
+//=
+namespace A{
+	enum Values{
+		one=1, two=2
+	};
+	void f2(){}
+}
+void testEnum(){
+	A::Values currValue = A::one;
+	switch(currValue){
+	using namespace A;
+case one:
+		break;
+case two:
+		break;
+	}
+}
+//!EUDIR_InsideNamespaceDefinition
+//@A1.cpp
+namespace A{
+	struct SA1{};
+	struct SA2{};
+}
+namespace B{
+	void f1(/*$*/A/*$*/::SA1 sa1);
+	void f2(A::SA2 sa2);
+	void f3(A::SA1 sa1_2);
+}
+//=
+namespace A{
+	struct SA1{};
+	struct SA2{};
+}
+namespace B{
+
+using namespace A;
+
+void f1(SA1 sa1);
+void f2(SA2 sa2);
+void f3(SA1 sa1_2);
+}

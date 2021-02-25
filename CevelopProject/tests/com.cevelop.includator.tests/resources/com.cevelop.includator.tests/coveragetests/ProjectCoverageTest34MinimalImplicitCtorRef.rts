@@ -1,0 +1,22 @@
+//!ProjectCoverageTest34MinimalImplicitCtorRef
+//@A.cpp
+class Y {
+public:
+  Y();
+};
+
+Y::Y() { }
+
+class X {
+public :
+  X();
+  Y y;
+};
+
+X::X() { }
+
+int main() {
+  X *x;
+  X x2 = *x;
+  return 0;
+}

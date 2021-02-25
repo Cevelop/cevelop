@@ -1,0 +1,35 @@
+//! Type with explicit conversion operator is ok
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+struct A{
+    A(double value): a{value}{}
+    explicit operator double() const { return a; }
+    double a;
+};
+
+//! Non conversion operator is ok
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+//@main.h
+struct A{
+	A(double value): a{value}{}
+	explicit operator double() const { return a; }
+	A& operator +=(A& other) {
+        a+=other.a;
+        return *this;
+	}
+	double a;
+};
+
+//! Type with implicit conversion operator
+//@.config
+setPreferencesEval=(GUIDELINE_SETTING_ID|AUTOSAR_GUIDELINE_ID)
+markerLines=3
+//@main.h
+struct A{
+    A(double value): a{value}{}
+    operator double() const { return a; }
+    double a;
+};
+

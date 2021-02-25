@@ -1,0 +1,587 @@
+//!Test Create Member Variable From InitializerList
+//@.config
+markerLines=3
+//@A.cpp
+struct B
+{
+	B(int i) : member(i) {}
+};
+//=
+struct B
+{
+	B(int i) : member(i) {}
+
+private:
+	int member;
+};
+//!Test Create Member VariableFrom InitializerList With Type
+//@.config
+markerLines=3
+//@A.cpp
+struct B
+{
+	B(B i) : member(i) {}
+};
+//=
+struct B
+{
+	B(B i) : member(i) {}
+
+private:
+	B member;
+};
+//!Create Member Variable from InitializerList with Literal
+//@.config
+markerLines=2
+//@A.cpp
+struct S{
+	S() : i(5){
+	}
+};
+//=
+struct S{
+	S() : i(5){
+	}
+
+private:
+	int i;
+};
+//!Test CreateMemberVariableFromCall
+//@.config
+markerLines=5
+//@A.cpp
+struct B {
+};
+void test() {
+	B b;
+	double d = b.member;
+}
+//=
+struct B {
+	double member;
+};
+void test() {
+	B b;
+	double d = b.member;
+}
+//!Create Member Variable from Access in Simple Declaration with Unary Operation
+//@.config
+markerLines=5
+//@A.cpp
+struct B {
+};
+void test() {
+	B b;
+	double d = b.member++;
+}
+//=
+struct B {
+	double member;
+};
+void test() {
+	B b;
+	double d = b.member++;
+}
+//!Create Member Variable from Access in Assignment with Unary Operation
+//@.config
+markerLines=6
+//@A.cpp
+struct B {
+};
+void test() {
+	B b;
+	double d;
+	d = b.member++;
+}
+//=
+struct B {
+	double member;
+};
+void test() {
+	B b;
+	double d;
+	d = b.member++;
+}
+//!Test Create Member Variable From Call With Type
+//@.config
+markerLines=5
+//@A.cpp
+struct B {
+};
+void test() {
+	B b;
+	B b2 = b.member;
+}
+//=
+struct B {
+	B member;
+};
+void test() {
+	B b;
+	B b2 = b.member;
+}
+//!Create Public Member For Class
+//@.config
+markerLines=5
+//@A.cpp
+class B {
+};
+void test() {
+	B b;
+	int i = b.member;
+}
+//=
+class B {
+public:
+	int member;
+};
+void test() {
+	B b;
+	int i = b.member;
+}
+//!Create Member From This
+//@.config
+markerLines=3
+//@A.cpp
+class A {
+	void member() {
+		this->membVar;
+	}
+};
+//=
+class A {
+	int membVar;
+
+	void member() {
+		this->membVar;
+	}
+};
+//!Create Basic Type Member From This
+//@.config
+markerLines=3
+//@A.cpp
+class A {
+	void member() {
+		this->membVar = 42;
+	}
+};
+//=
+class A {
+	int membVar;
+
+	void member() {
+		this->membVar = 42;
+	}
+};
+//!Create Basic Type Member From This Reference
+//@.config
+markerLines=3
+//@A.cpp
+class A {
+	void member() {
+		(*this).membVar = 42;
+	}
+};
+//=
+class A {
+	int membVar;
+
+	void member() {
+		(*this).membVar = 42;
+	}
+};
+//!Create String Member From This Reference
+//@A.cpp
+class A {
+	void member() {
+		(*this).membVar = "ImNoCharArray";
+	}
+};
+//=
+class A {
+	std::string membVar;
+
+	void member() {
+		(*this).membVar = "ImNoCharArray";
+	}
+};
+//!Create String Member From This Pointer Reference
+//@.config
+markerLines=3
+//@A.cpp
+class A {
+	void member() {
+		this->membVar = "ImNoCharArray";
+	}
+};
+//=
+class A {
+	std::string membVar;
+
+	void member() {
+		this->membVar = "ImNoCharArray";
+	}
+};
+//!Create Member Out Of Compound Assignment
+//@.config
+markerLines=4
+//@A.cpp
+class A {
+	void member() {
+		double number;
+		this->membVar = number+1;
+	}
+};
+//=
+class A {
+	double membVar;
+
+	void member() {
+		double number;
+		this->membVar = number+1;
+	}
+};
+//!Create Integer Array
+//@.config
+markerLines=5
+//@A.cpp
+struct B {
+};
+void test() {
+	B b;
+	b.array = {1, 2, 3};
+}
+//=
+struct B {
+	int array[3];
+};
+void test() {
+	B b;
+	b.array = {1, 2, 3};
+}
+//!Create Type Array
+//@.config
+markerLines=5
+//@A.cpp
+class B {
+};
+void test() {
+	B b, b1, b2, b3;
+	b.array = {b1, b2, b3};
+}
+//=
+class B {
+public:
+	B array[3];
+};
+void test() {
+	B b, b1, b2, b3;
+	b.array = {b1, b2, b3};
+}
+//!Create String Array Not Possible Assume Int
+//@.config
+markerLines=5
+//@A.cpp
+class B {
+};
+void test() {
+	B b;
+	b.array = {"string1", "string2", "string3"};
+}
+//=
+class B {
+public:
+	const char* array[3];
+};
+void test() {
+	B b;
+	b.array = {"string1", "string2", "string3"};
+}
+//!Create Pointer Member
+//@.config
+markerLines=6
+//@A.cpp
+class B {
+};
+void test() {
+	B b;
+	int* const * const ** n;
+	b.next = n;
+}
+//=
+class B {
+public:
+	int* const * const ** next;
+};
+void test() {
+	B b;
+	int* const * const ** n;
+	b.next = n;
+}
+//!Template Initializer
+//@.config
+markerLines=4
+//@A.cpp
+template <typename T>
+class A {
+public:
+	A(T & t) : memVar(t)
+	{
+	}
+};
+//=
+template <typename T>
+class A {
+	T memVar;
+
+public:
+	A(T & t) : memVar(t)
+	{
+	}
+};
+//!Initializer List Initializer
+//@.config
+markerLines=3
+//@A.cpp
+class A {
+public:
+	A() : memVar({1,2,3}) {
+	}
+};
+//=
+class A {
+	int memVar[3];
+
+public:
+	A() : memVar({1,2,3}) {
+	}
+};
+//!Constructor Call InInitializer Clause
+//@.config
+markerLines=6
+//@A.cpp
+struct B {
+	B(int, double);
+};
+class A {
+	A() : 
+		membVar(B(0, 0.0))
+	{
+	}
+};
+//=
+struct B {
+	B(int, double);
+};
+class A {
+	B membVar;
+
+	A() : 
+		membVar(B(0, 0.0))
+	{
+	}
+};
+//!Correct Recognition of Static Member Variable
+//@.config
+markerCount=0
+//@A.cpp
+struct A {
+  static int i;
+};
+
+void test() {
+  A::i = 5;
+}
+//=
+struct A {
+  static int i;
+};
+
+void test() {
+  A::i = 5;
+}
+//!Create Static Member Variable for Assignment
+//@.config
+markerLines=5
+//@A.cpp
+struct A {
+};
+
+void test() {
+  A::i = 5;
+}
+//=
+struct A {
+	static int i;
+};
+
+void test() {
+  A::i = 5;
+}
+//!Do not Create Static Member Variable for Call
+//@.config
+markerLines=11
+markerCount=0
+//@A.cpp
+struct A
+{
+	A(int i){}
+};
+
+struct C
+{
+};
+
+void thisIsATest() {
+	C::bar(A(5));
+}
+//=
+struct A
+{
+	A(int i){}
+};
+
+struct C
+{
+};
+
+void thisIsATest() {
+	C::bar(A(5));
+}
+//!Do not Create Member Variable for Namespace
+//@.config
+markerCount=0
+//@A.cpp
+void thisIsATest() {
+	ns::mem = 1;
+}
+//=
+void thisIsATest() {
+	ns::mem = 1;
+}
+//!Create Member Variable in Namespace
+//@.config
+markerLines=6
+//@A.cpp
+namespace ns
+{
+}
+
+void thisIsATest() {
+	ns::mem = 1;
+}
+//=
+namespace ns
+{
+
+static int mem;
+
+}
+
+void thisIsATest() {
+	ns::mem = 1;
+}
+//!Create Member Variable in Type from Header
+//@.config
+markerLines=6
+//@A.cpp
+#include "A.h"
+
+struct T {
+
+	void thisIsATest() {
+		bool b = myB.bar;
+	}
+
+private:
+	B myB;
+};
+//=
+#include "A.h"
+
+struct T {
+
+	void thisIsATest() {
+		bool b = myB.bar;
+	}
+
+private:
+	B myB;
+};
+//@B.h
+struct B
+{
+	void function()
+	{
+	}
+};
+//=
+struct B
+{
+	void function()
+	{
+	}
+};
+//@A.h
+struct B
+{
+};
+//=
+struct B
+{
+	bool bar;
+};
+//@C.h
+struct B
+{
+	void foo()
+	{
+	}
+};
+//=
+struct B
+{
+	void foo()
+	{
+	}
+};
+//!No Marker for Qualified Function Calls
+//@.config
+markerCount=0
+//@A.cpp
+namespace NS{
+	void foo(int i){
+		
+	}
+}
+
+void bar(){
+	NS::foo("test");
+}
+//=
+namespace NS{
+	void foo(int i){
+		
+	}
+}
+
+void bar(){
+	NS::foo("test");
+}
+//!No Marker for TemplateId
+//@.config
+markerCount=0
+//@A.cpp
+struct S {
+};
+
+void foo() {
+	S::templ<int>();
+}
+//=
+struct S {
+};
+
+void foo() {
+	S::templ<int>();
+}

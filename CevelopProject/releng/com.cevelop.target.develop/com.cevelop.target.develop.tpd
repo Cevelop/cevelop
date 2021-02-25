@@ -48,3 +48,10 @@ location "https://www.cevelop.com/iltis-unstable" {
 	/* Add pASTa here, so it will be available in instances started from the plug-in development IDE */
 	ch.hsr.ifs.iltis.testing.tools.pasta.feature.feature.group lazy
 }
+
+location "https://cute-test.com/updatesite" {
+	ch.hsr.ifs.cute.boost.feature.feature.group lazy
+	ch.hsr.ifs.cute.feature.feature.group lazy
+	ch.hsr.ifs.cute.gcov.feature.feature.group lazy
+	ch.hsr.ifs.cute.mockator.feature.feature.group lazy
+}

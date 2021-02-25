@@ -164,6 +164,10 @@ Switzerland
       <feature id="com.cevelop.product.feature"/>
       <feature id="com.cevelop.tdd.feature" installMode="root"/>
       <feature id="com.cevelop.templator.feature" installMode="root"/>
+      <feature id="ch.hsr.ifs.cute.boost.feature" installMode="root"/>
+      <feature id="ch.hsr.ifs.cute.feature" installMode="root"/>
+      <feature id="ch.hsr.ifs.cute.gcov.feature" installMode="root"/>
+      <feature id="ch.hsr.ifs.cute.mockator.feature" installMode="root"/>
       <feature id="org.eclipse.cdt" installMode="root"/>
       <feature id="org.eclipse.cdt.cmake" installMode="root"/>
       <feature id="org.eclipse.cdt.gdb" installMode="root"/>

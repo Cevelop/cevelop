@@ -166,11 +166,34 @@
 	<build>
 		<pluginManagement>
 			<plugins>
+
 				<plugin>
 					<groupId>org.eclipse.tycho</groupId>
 					<artifactId>tycho-versions-plugin</artifactId>
 					<version>${tycho-version}</version>
 				</plugin>
+
+				<plugin>
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>tycho-packaging-plugin</artifactId>
+					<version>${tycho-version}</version>
+					<dependencies>
+						<dependency>
+							<groupId>org.eclipse.tycho.extras</groupId>
+							<artifactId>tycho-buildtimestamp-jgit</artifactId>
+							<version>${tycho-extras-version}</version>
+						</dependency>
+					</dependencies>
+					<configuration>
+						<timestampProvider>jgit</timestampProvider>
+						<jgit.ignore>
+							pom.xml
+							.polyglot.build.properties
+							.gitlab-ci.yml
+						</jgit.ignore>
+					</configuration>
+				</plugin>
+
 			</plugins>
 		</pluginManagement>
 
@@ -181,63 +204,48 @@
 				<version>${tycho-version}</version>
 				<extensions>true</extensions>
 			</plugin>
-			<plugin>
-				<groupId>org.eclipse.tycho</groupId>
-				<artifactId>tycho-versions-plugin</artifactId>
-				<version>${tycho-version}</version>
-			</plugin>
+
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-packaging-plugin</artifactId>
 				<version>${tycho-version}</version>
-				<dependencies>
-					<dependency>
-						<groupId>org.eclipse.tycho.extras</groupId>
-						<artifactId>tycho-buildtimestamp-jgit</artifactId>
-						<version>${tycho-extras-version}</version>
-					</dependency>
-				</dependencies>
-				<configuration>
-					<timestampProvider>jgit</timestampProvider>
-					<jgit.ignore>
-						pom.xml
-						.polyglot.build.properties
-						.gitlab-ci.yml
-					</jgit.ignore>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.eclipse.tycho</groupId>
-				<artifactId>target-platform-configuration</artifactId>
-				<version>${tycho-version}</version>
-				<configuration>
-					<target>
-						<artifact>
-							<groupId>com.cevelop</groupId>
-							<artifactId>${target-platform-artifact}</artifactId>
-							<version>${project.version}</version>
-						</artifact>
-					</target>
-					<environments>
-						<environment>
-							<os>linux</os>
-							<ws>gtk</ws>
-							<arch>x86_64</arch>
-						</environment>
-						<environment>
-							<os>win32</os>
-							<ws>win32</ws>
-							<arch>x86_64</arch>
-						</environment>
-						<environment>
-							<os>macosx</os>
-							<ws>cocoa</ws>
-							<arch>x86_64</arch>
-						</environment>
-					</environments>
-				</configuration>
 			</plugin>
 			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jarsigner-plugin</artifactId>
+				<version>1.4</version>
+				<executions>
+					<execution>
+						<id>sign</id>
+						<goals>
+							<goal>sign</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<keystore>${keystore}</keystore>
+					<alias>${keyalias}</alias>
+					<storepass>${certpass}</storepass>
+					<storetype>pkcs12</storetype>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.jetbrains.kotlin</groupId>
+				<artifactId>kotlin-maven-plugin</artifactId>
+				<version>${kotlin-version}</version>
+				<executions>
+					<execution>
+						<id>compile</id>
+						<phase>process-sources</phase>
+						<goals>
+							<goal>compile</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
 			<!--  Javadoc with extra tags -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -283,40 +291,7 @@
 					</tags>
 				</configuration>
 			</plugin>
-			
-			<plugin>
-				<groupId>org.jetbrains.kotlin</groupId>
-				<artifactId>kotlin-maven-plugin</artifactId>
-				<version>${kotlin-version}</version>
-				<executions>
-					<execution>
-						<id>compile</id>
-						<phase>process-sources</phase>
-						<goals>
-							<goal>compile</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jarsigner-plugin</artifactId>
-				<version>1.4</version>
-				<executions>
-					<execution>
-						<id>sign</id>
-						<goals>
-							<goal>sign</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<keystore>${keystore}</keystore>
-					<alias>${keyalias}</alias>
-					<storepass>${certpass}</storepass>
-					<storetype>pkcs12</storetype>
-				</configuration>
-			</plugin>
+
 		</plugins>
 	</build>
 </project>

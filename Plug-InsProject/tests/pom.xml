@@ -66,7 +66,7 @@
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-surefire-plugin</artifactId>
-				<version>${tycho-version}</version>
+				<version>${eclipse.tycho.version}</version>
 				<configuration>
 					<argLine>${osx-jvm-flags}</argLine>
 					<useUIHarness>true</useUIHarness>

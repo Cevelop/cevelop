@@ -8,11 +8,21 @@
 	<packaging>pom</packaging>
 
 	<properties>
-		<tycho-version>2.2.0</tycho-version>
-		<tycho-extras-version>2.2.0</tycho-extras-version>
-		<kotlin-version>1.4.21</kotlin-version>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<codehaus.build-helper.version>1.8</codehaus.build-helper.version>
+
+		<eclipse.tycho.version>2.2.0</eclipse.tycho.version>
+		<eclipse.tycho-extras.version>2.2.0</eclipse.tycho-extras.version>
+
+		<jetbrains.kotlin.version>1.4.21</jetbrains.kotlin.version>
+
+		<maven.antrun.version>1.7</maven.antrun.version>
+		<maven.enforcer.version>1.4.1</maven.enforcer.version>
+		<maven.jarsigner.version>1.4</maven.jarsigner.version>
+		<maven.javadoc.version>3.0.1</maven.javadoc.version>
+		<maven.resources.version>2.6</maven.resources.version>
 		<maven.surefire.version>2.22.2</maven.surefire.version>
+
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
 	<profiles>
@@ -60,7 +70,7 @@
 				<plugins>
 					<plugin>
 						<artifactId>maven-enforcer-plugin</artifactId>
-						<version>1.4.1</version>
+						<version>${maven.enforcer.version}</version>
 						<executions>
 							<execution>
 								<id>gitflow.branch not set</id>
@@ -96,7 +106,7 @@
 					<plugin>
 						<groupId>org.eclipse.tycho</groupId>
 						<artifactId>target-platform-configuration</artifactId>
-						<version>${tycho-version}</version>
+						<version>${eclipse.tycho.version}</version>
 						<configuration>
 							<target>
 								<artifact>
@@ -130,7 +140,7 @@
 					<plugin>
 						<groupId>org.eclipse.tycho</groupId>
 						<artifactId>target-platform-configuration</artifactId>
-						<version>${tycho-version}</version>
+						<version>${eclipse.tycho.version}</version>
 						<configuration>
 							<target>
 								<artifact>
@@ -169,19 +179,19 @@
 
 				<plugin>
 					<groupId>org.eclipse.tycho</groupId>
-					<artifactId>tycho-versions-plugin</artifactId>
-					<version>${tycho-version}</version>
+					<artifactId>eclipse.tycho.versions-plugin</artifactId>
+					<version>${eclipse.tycho.version}</version>
 				</plugin>
 
 				<plugin>
 					<groupId>org.eclipse.tycho</groupId>
 					<artifactId>tycho-packaging-plugin</artifactId>
-					<version>${tycho-version}</version>
+					<version>${eclipse.tycho.version}</version>
 					<dependencies>
 						<dependency>
 							<groupId>org.eclipse.tycho.extras</groupId>
 							<artifactId>tycho-buildtimestamp-jgit</artifactId>
-							<version>${tycho-extras-version}</version>
+							<version>${eclipse.tycho-extras.version}</version>
 						</dependency>
 					</dependencies>
 					<configuration>
@@ -201,20 +211,20 @@
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-maven-plugin</artifactId>
-				<version>${tycho-version}</version>
+				<version>${eclipse.tycho.version}</version>
 				<extensions>true</extensions>
 			</plugin>
 
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-packaging-plugin</artifactId>
-				<version>${tycho-version}</version>
+				<version>${eclipse.tycho.version}</version>
 			</plugin>
 			
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jarsigner-plugin</artifactId>
-				<version>1.4</version>
+				<version>${maven.jarsigner.version}</version>
 				<executions>
 					<execution>
 						<id>sign</id>
@@ -234,7 +244,7 @@
 			<plugin>
 				<groupId>org.jetbrains.kotlin</groupId>
 				<artifactId>kotlin-maven-plugin</artifactId>
-				<version>${kotlin-version}</version>
+				<version>${jetbrains.kotlin.version}</version>
 				<executions>
 					<execution>
 						<id>compile</id>
@@ -249,7 +259,7 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>build-helper-maven-plugin</artifactId>
-				<version>1.8</version>
+				<version>${codehaus.build-helper.version}</version>
 				<executions>
 					<execution>
 						<id>parse-version</id>
@@ -263,14 +273,14 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-resources-plugin</artifactId>
-				<version>2.6</version>
+				<version>${maven.resources.version}</version>
 			</plugin>
 
 			<!--  Javadoc with extra tags -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>3.0.1</version>
+				<version>${maven.javadoc.version}</version>
 				<configuration>
 					<tags>
 						<tag>

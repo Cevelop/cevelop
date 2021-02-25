@@ -66,7 +66,7 @@
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-p2-repository-plugin</artifactId>
-				<version>${tycho-version}</version>
+				<version>${eclipse.tycho.version}</version>
 				<configuration>
 					<includeAllDependencies>true</includeAllDependencies>
 					<profileProperties>
@@ -78,7 +78,7 @@
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-p2-director-plugin</artifactId>
-				<version>${tycho-version}</version>
+				<version>${eclipse.tycho.version}</version>
 				<executions>
 					<execution>
 						<id>materialize-products</id>
@@ -115,7 +115,7 @@
 
 			<plugin>
 				<artifactId>maven-antrun-plugin</artifactId>
-				<version>1.7</version>
+				<version>${maven.antrun.version}</version>
 				<executions>
 					<execution>
 						<id>copy-auxiliary-files-linux</id>

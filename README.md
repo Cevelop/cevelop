@@ -111,11 +111,11 @@ You will notice that IDE has detected 25'000+ errors.
 This is expected, so DON'T PANIC!
 In the *Project Explorer* navigate the tree structure to either:
 
-* Plug-ins -> Plug-InsProject -> releng -> com.cevelop.target.master
+* Cevelop -> CevelopProject -> releng -> com.cevelop.target.master
 
 or
 
-* Plug-ins -> Plug-InsProject -> releng -> com.cevelop.target.develop
+* Cevelop -> CevelopProject -> releng -> com.cevelop.target.develop
 
 depending on your currently checked-out branch.
 Open the contained `.target` file, and in the newly opened editor click *Set as Active Target Platform*.

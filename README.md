@@ -98,6 +98,9 @@ Finally, make sure that the IDE knows about your JDK 8 installtion:
 1. Select *JavaSE-1.8* from the list an check the JDK 8 box
 
 > changed to JavaSE-11 (Zulu version on M1 Mac)
+> adapted target to use most recent CDT release 10.5 - 202112
+> change replace MANIFEST.MF Execution environment to JavaSE-11 (from JavaSE-1.8)
+> manually click through project MANIFEST.MF and "update classpath" to get JAVASE-11 library in each plugin
 
 You have now successfully prepared your IDE for development on the plug-in code and [ILTIS](https://github.com/Cevelop/iltis).
 

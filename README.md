@@ -68,6 +68,8 @@ Clone it somewhere and then perform the following steps to configure your IDE in
 1. Click *Next* twice
 1. On the *Review Licenses* screen, select *I accept the terms of the license agreements* and click finish
 
+> removed kotlin and installed Kotlin plugin via market place, TPD gave error message about wrong dependency, used XText 2020...
+
 During the installation process, you might be prompted as to if you would like to accept the installation of unsigned content.
 This is expected and you will need to accept it in order for the installation to finish.
 When the installation finishes, you will be prompted to restart the IDE.
@@ -80,6 +82,8 @@ In order to import the code-style/formatting and debugging support configuration
 1. On the *Import Preferences* screen, select the path to the `cevelop-ide-settings.epf` file within your clone of the [development-support](https://github.com/Cevelop/development-support) repository
 1. Make sure the *Import all* box is checked and click *Finish*
 
+> changed references to JDT version to use most recent release 2021-12 versions
+
 When the import finishes, you will be prompted to restart the IDE.
 Do so, in order for the newly imported preferences to be activated.
 
@@ -90,6 +94,8 @@ Finally, make sure that the IDE knows about your JDK 8 installtion:
 1. Use the *Add...* button to add your JDK 8 installation
 1. Navigate to *Java -> Installed JREs -> Execution Environments*
 1. Select *JavaSE-1.8* from the list an check the JDK 8 box
+
+> changed to JavaSE-11 (Zulu version on M1 Mac)
 
 You have now successfully prepared your IDE for development on the plug-in code and [ILTIS](https://github.com/Cevelop/iltis).
 

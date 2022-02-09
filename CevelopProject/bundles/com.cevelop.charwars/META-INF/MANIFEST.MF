@@ -19,6 +19,6 @@ Require-Bundle: org.eclipse.ui,
  ch.hsr.ifs.iltis.cpp.core,
  org.eclipse.ui.ide;bundle-version="3.13.1",
  org.eclipse.ltk.ui.refactoring
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
 Automatic-Module-Name: com.cevelop.charwars

@@ -19,7 +19,7 @@ Require-Bundle: org.eclipse.ui,
  ch.hsr.ifs.iltis.core,
  org.eclipse.collections,
  org.eclipse.ui.ide
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
 Bundle-Vendor: IFS Institute for Software
 Automatic-Module-Name: com.cevelop.gslator

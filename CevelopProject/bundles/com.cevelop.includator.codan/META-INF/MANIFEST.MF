@@ -13,7 +13,7 @@ Require-Bundle: org.eclipse.ui;bundle-version="3.8.0",
  ch.hsr.ifs.iltis.cpp.core,
  org.eclipse.cdt.codan.core,
  org.eclipse.cdt.codan.core.cxx
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
 Export-Package: com.cevelop.includator.checkers;x-friends:="com.cevelop.includator.codan,com.cevelop.includator.tests"
 Automatic-Module-Name: com.cevelop.includator.codan

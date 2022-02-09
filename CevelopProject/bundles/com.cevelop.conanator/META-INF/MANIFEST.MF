@@ -15,7 +15,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.core.databinding.property;bundle-version="1.6.200",
  org.eclipse.jface.databinding
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: com.cevelop.conanator;x-friends:="com.cevelop.conanator.tests",
  com.cevelop.conanator.utility;x-friends:="com.cevelop.conanator.tests"
 Bundle-Vendor: IFS Institute for Software

@@ -15,7 +15,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.cdt.codan.core.cxx;bundle-version="1.1.0",
  ch.hsr.ifs.iltis.cpp.core
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-Vendor: IFS Institute for Software
 Eclipse-ExtensibleAPI: true
 Automatic-Module-Name: com.cevelop.namespactor

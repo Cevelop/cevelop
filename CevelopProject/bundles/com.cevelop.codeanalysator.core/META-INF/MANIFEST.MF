@@ -26,7 +26,7 @@ Require-Bundle:
  ch.hsr.ifs.iltis.core;visibility:=reexport,
  org.eclipse.core.resources,
  org.eclipse.core.commands
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Eclipse-ExtensibleAPI: true
 Bundle-ActivationPolicy: lazy
 Export-Package: com.cevelop.codeanalysator.core,

@@ -4,22 +4,22 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.cevelop</groupId>
 	<artifactId>com.cevelop.configuration</artifactId>
-	<version>1.11.1-SNAPSHOT</version>
+	<version>1.14.2-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<properties>
-		<codehaus.build-helper.version>1.8</codehaus.build-helper.version>
+		<codehaus.build-helper.version>3.3</codehaus.build-helper.version>
 
-		<eclipse.tycho.version>2.2.0</eclipse.tycho.version>
-		<eclipse.tycho-extras.version>2.2.0</eclipse.tycho-extras.version>
+		<eclipse.tycho.version>2.6.0</eclipse.tycho.version>
+		<eclipse.tycho-extras.version>2.6.0</eclipse.tycho-extras.version>
 
-		<jetbrains.kotlin.version>1.4.21</jetbrains.kotlin.version>
+		<jetbrains.kotlin.version>1.6.10</jetbrains.kotlin.version>
 
 		<maven.antrun.version>1.7</maven.antrun.version>
 		<maven.enforcer.version>1.4.1</maven.enforcer.version>
 		<maven.jarsigner.version>1.4</maven.jarsigner.version>
 		<maven.javadoc.version>3.0.1</maven.javadoc.version>
-		<maven.resources.version>2.6</maven.resources.version>
+		<maven.resources.version>3.2</maven.resources.version>
 		<maven.surefire.version>2.22.2</maven.surefire.version>
 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -151,6 +151,11 @@
 							</target>
 							<environments>
 								<environment>
+									<os>macosx</os>
+									<ws>cocoa</ws>
+									<arch>aarch64</arch>
+								</environment>
+								<environment>
 									<os>win32</os>
 									<ws>win32</ws>
 									<arch>x86_64</arch>
@@ -196,12 +201,12 @@
 					</dependencies>
 					<configuration>
 						<timestampProvider>jgit</timestampProvider>
-						<jgit.ignore>
+<!--						<jgit.ignore>
 							pom.xml
 							.polyglot.build.properties
 							.gitlab-ci.yml
-						</jgit.ignore>
-					</configuration>
+						</jit.ignore>
+ -->					</configuration>
 				</plugin>
 
 			</plugins>

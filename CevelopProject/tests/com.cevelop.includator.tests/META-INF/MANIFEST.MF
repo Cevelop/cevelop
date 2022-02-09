@@ -6,7 +6,7 @@ Bundle-SymbolicName: com.cevelop.includator.tests;singleton:=true
 Bundle-Version: 1.14.2.qualifier
 Bundle-Activator: com.cevelop.includator.tests.IncludatorTestsPlugin
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Require-Bundle: org.junit,
  ch.hsr.ifs.iltis.testing.highlevel.testingplugin,
  com.cevelop.includator,

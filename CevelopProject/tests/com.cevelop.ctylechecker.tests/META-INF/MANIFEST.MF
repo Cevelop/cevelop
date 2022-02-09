@@ -14,7 +14,7 @@ Require-Bundle: org.junit,
  org.eclipse.cdt.codan.ui.cxx;bundle-version="3.3.0",
  ch.hsr.ifs.iltis.cpp.core,
  ch.hsr.ifs.iltis.testing.highlevel.testingplugin
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: .
 Automatic-Module-Name: com.cevelop.ctylechecker.tests

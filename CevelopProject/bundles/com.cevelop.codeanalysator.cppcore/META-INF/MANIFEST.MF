@@ -24,7 +24,7 @@ Require-Bundle:
  ch.hsr.ifs.iltis.cpp.core,
  ch.hsr.ifs.iltis.core,
  org.eclipse.core.resources
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
 Export-Package: com.cevelop.codeanalysator.cppcore.guideline,
  com.cevelop.codeanalysator.cppcore.util

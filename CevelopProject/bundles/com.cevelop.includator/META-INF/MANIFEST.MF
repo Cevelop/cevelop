@@ -5,7 +5,7 @@ Bundle-SymbolicName: com.cevelop.includator;singleton:=true
 Bundle-Version: 1.14.2.qualifier
 Bundle-Activator: com.cevelop.includator.IncludatorPlugin
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: com.cevelop.includator;x-friends:="com.cevelop.includator.tests,com.cevelop.includator.codan,com.cevelop.includator.viewer",
  com.cevelop.includator.cxxelement;x-friends:="com.cevelop.includator.tests,com.cevelop.includator.codan,com.cevelop.includator.viewer",
  com.cevelop.includator.dependency;x-friends:="com.cevelop.includator.tests,com.cevelop.includator.codan,com.cevelop.includator.viewer",

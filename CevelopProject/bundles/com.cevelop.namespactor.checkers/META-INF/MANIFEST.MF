@@ -18,7 +18,7 @@ Require-Bundle: ch.hsr.ifs.iltis.cpp.core,
  org.eclipse.ltk.ui.refactoring,
  com.cevelop.namespactor,
  org.eclipse.ui.workbench.texteditor
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-Vendor: IFS Institute for Software
 Eclipse-ExtensibleAPI: true
 Export-Package: com.cevelop.namespactor.checkers;x-friends:="com.cevelop.namespactor.tests,com.cevelop.namespactor",

@@ -12,7 +12,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.jface.text,
  org.eclipse.core.resources,
  ch.hsr.ifs.iltis.testing.highlevel.testingplugin
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
 Import-Package: org.eclipse.cdt.internal.ui.refactoring,
  org.eclipse.cdt.core.model,

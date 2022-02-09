@@ -21,7 +21,7 @@ Require-Bundle: org.eclipse.ui,
  ch.hsr.ifs.iltis.cpp.core,
  ch.hsr.ifs.iltis.core,
  ch.hsr.ifs.iltis.cpp.versionator
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
 Bundle-Activator: com.cevelop.macronator.MacronatorPlugin
 Bundle-Vendor: IFS Institute for Software

@@ -154,3 +154,10 @@ Do do so, follow these steps:
 You may be presented with a dialog warning about a missing constraint of the `org.eclipse.tools.templates.freemarker.java11` package.
 This is expected and can be ignored using the *Continue* button.
 A new Eclipse instance, containing all plug-ins, will be started.
+
+
+## M1 Macos gotchas
+
+* SWTBot requires permissions to access the screen. This can lead to hanging tests :-( iltis versionator test!
+* Kotlin Plugin seems to work now and I have no idea why. May be because I selected the JavaSE-11 runtime? Or Jetbrains silently updated it in the Marketplace.
+* need to make the internal maven available, otherwise some things do not work, tried with the brew installed maven and that was bad

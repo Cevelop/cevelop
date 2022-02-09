@@ -69,6 +69,7 @@ Clone it somewhere and then perform the following steps to configure your IDE in
 1. On the *Review Licenses* screen, select *I accept the terms of the license agreements* and click finish
 
 > removed kotlin and installed Kotlin plugin via market place, TPD gave error message about wrong dependency, used XText 2020...
+> set up Kotlin compiler for JVM Target 11 and Language version 1.5, also JDK Home to the corresponding Zulu-11 JDK
 
 During the installation process, you might be prompted as to if you would like to accept the installation of unsigned content.
 This is expected and you will need to accept it in order for the installation to finish.
@@ -83,6 +84,7 @@ In order to import the code-style/formatting and debugging support configuration
 1. Make sure the *Import all* box is checked and click *Finish*
 
 > changed references to JDT version to use most recent release 2021-12 versions
+> Manually updated Maven to use homebrew mvn 3.8.4 instead of built-in
 
 When the import finishes, you will be prompted to restart the IDE.
 Do so, in order for the newly imported preferences to be activated.

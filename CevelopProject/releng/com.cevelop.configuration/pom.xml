@@ -8,7 +8,7 @@
 	<packaging>pom</packaging>
 
 	<properties>
-		<codehaus.build-helper.version>3.3</codehaus.build-helper.version>
+		<codehaus.build-helper.version>1.8</codehaus.build-helper.version>
 
 		<eclipse.tycho.version>2.6.0</eclipse.tycho.version>
 		<eclipse.tycho-extras.version>2.6.0</eclipse.tycho-extras.version>
@@ -19,7 +19,7 @@
 		<maven.enforcer.version>1.4.1</maven.enforcer.version>
 		<maven.jarsigner.version>1.4</maven.jarsigner.version>
 		<maven.javadoc.version>3.0.1</maven.javadoc.version>
-		<maven.resources.version>3.2</maven.resources.version>
+		<maven.resources.version>2.6</maven.resources.version>
 		<maven.surefire.version>2.22.2</maven.surefire.version>
 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

@@ -6,7 +6,7 @@ location "https://download.eclipse.org/releases/2021-12" {
 	org.eclipse.ui.ide.application lazy
 	org.eclipse.sdk.feature.group lazy
 	org.eclipse.sdk.ide lazy
-	org.eclipse.zest.sdk.feature.group lazy
+	org.eclipse.gef.zest.sdk.feature.group lazy
 	org.eclipse.emf.sdk.feature.group lazy
 	org.eclipse.epp.mpc.feature.group lazy
 	org.eclipse.gef.sdk.feature.group lazy

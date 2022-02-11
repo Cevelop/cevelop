@@ -164,4 +164,6 @@ A new Eclipse instance, containing all plug-ins, will be started.
 
 ## JavaSE11 gotchas
 
-* maven didn't successfully build. tried now: https://stackoverflow.com/a/4759264
+* maven didn't resolve. tried now: https://stackoverflow.com/a/4759264 - no success so far....
+* `requires 'osgi.ee; (&(osgi.ee=JavaSE)(version=11))' but it could not be found` no more ideas
+* need to try info based on example from lars vogel

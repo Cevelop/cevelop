@@ -22,7 +22,7 @@ Require-Bundle: org.eclipse.cdt.codan.checkers.ui,
  ch.hsr.ifs.iltis.testing.highlevel.testingplugin,
  com.cevelop.constificator.core,
  com.cevelop.constificator
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
 Bundle-Name: Constificator Tests
 Bundle-Vendor: IFS Institute for Software

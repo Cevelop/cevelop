@@ -11,6 +11,6 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.ui.ide,
  org.eclipse.cdt.core,
  org.eclipse.cdt.codan.core
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-Vendor: IFS Institute for Software
 Automatic-Module-Name: com.cevelop.ctylechecker.reporting

@@ -4,7 +4,7 @@ Bundle-Name: AliExtor
 Bundle-SymbolicName: com.cevelop.aliextor;singleton:=true
 Bundle-Version: 1.14.2.qualifier
 Bundle-Activator: com.cevelop.aliextor.AliExtorPlugin
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
 Bundle-Vendor: IFS Institute for Software
 Automatic-Module-Name: com.cevelop.aliextor

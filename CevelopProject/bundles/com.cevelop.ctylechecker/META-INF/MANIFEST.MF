@@ -4,7 +4,7 @@ Bundle-Name: Ctylechecker Plug-in
 Bundle-SymbolicName: com.cevelop.ctylechecker;singleton:=true
 Bundle-Version: 1.14.2.qualifier
 Bundle-Activator: com.cevelop.ctylechecker.Activator
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
 Bundle-Vendor: IFS Institute for Software
 Require-Bundle: ch.hsr.ifs.iltis.cpp.core,

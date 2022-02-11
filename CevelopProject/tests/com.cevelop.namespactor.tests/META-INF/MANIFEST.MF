@@ -19,7 +19,7 @@ Require-Bundle: org.junit,
  com.cevelop.namespactor.checkers,
  org.eclipse.ltk.core.refactoring,
  ch.hsr.ifs.iltis.core
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
 Bundle-Vendor: IFS Institute for Software
 Bundle-Activator: com.cevelop.namespactor.tests.Activator

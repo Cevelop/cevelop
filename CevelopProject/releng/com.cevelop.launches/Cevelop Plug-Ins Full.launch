@@ -51,8 +51,6 @@
         <setEntry value="ch.hsr.ifs.iltis.testing.highlevel.feature:default"/>
         <setEntry value="ch.hsr.ifs.iltis.testing.tools.feature:default"/>
         <setEntry value="ch.hsr.ifs.iltis.testing.tools.pasta.feature:default"/>
-        <setEntry value="ch.hsr.ifs.sconsolidator.depviz.feature:default"/>
-        <setEntry value="ch.hsr.ifs.sconsolidator.feature:default"/>
         <setEntry value="com.cevelop.aliextor.feature:default"/>
         <setEntry value="com.cevelop.branding.feature:default"/>
         <setEntry value="com.cevelop.charwars.feature:default"/>

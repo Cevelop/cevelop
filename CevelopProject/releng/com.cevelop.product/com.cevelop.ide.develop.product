@@ -167,8 +167,6 @@ Switzerland
       <feature id="ch.hsr.ifs.cute.feature"/>
       <feature id="ch.hsr.ifs.cute.gcov.feature"/>
       <feature id="ch.hsr.ifs.cute.mockator.feature"/>
-      <feature id="ch.hsr.ifs.sconsolidator.depviz.feature"/>
-      <feature id="ch.hsr.ifs.sconsolidator.feature"/>
       <feature id="org.eclipse.cdt"/>
       <feature id="org.eclipse.cdt.cmake"/>
       <feature id="org.eclipse.cdt.gdb"/>
@@ -226,20 +224,20 @@ Switzerland
       <plugin id="org.eclipse.equinox.simpleconfigurator" autoStart="true" startLevel="1" />
       <plugin id="org.eclipse.ui.workbench" autoStart="true" startLevel="4" />
       <plugin id="org.eclipse.update.configurator" autoStart="true" startLevel="3" />
-      <property name="perspective" value="org.eclipse.cdt.ui.CPerspective" />
+      <property name="osgi.instance.area.default" value="@user.home/workspace" />
       <property name="cssTheme" value="org.eclipse.e4.ui.css.theme.e4_classic" />
       <property name="applicationCSSResources" value="platform:/plugin/org.eclipse.platform/images/" />
-      <property name="osgi.instance.area.default" value="@user.home/workspace" />
+      <property name="perspective" value="org.eclipse.cdt.ui.CPerspective" />
    </configurations>
 
    <repositories>
+      <repository location="http://download.eclipse.org/tools/cdt/releases/10.5" enabled="true" />
       <repository location="https://www.cevelop.com/update-unstable/latest" enabled="false" />
       <repository location="https://www.cevelop.com/iltis-unstable" enabled="false" />
       <repository location="http://sconsolidator.com/update" enabled="false" />
       <repository location="http://download.eclipse.org/egit/updates" enabled="true" />
-      <repository location="http://https://www.cute-test.com/updatesite/2019-12" enabled="false" />
       <repository location="http://download.eclipse.org/releases/2021-12" enabled="true" />
-      <repository location="http://download.eclipse.org/tools/cdt/releases/10.5" enabled="true" />
+      <repository location="http://https://www.cute-test.com/updatesite/2021-12" enabled="true" />
    </repositories>
 
    <preferencesInfo>

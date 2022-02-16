@@ -28,3 +28,4 @@ Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
 Export-Package: com.cevelop.codeanalysator.cppcore.guideline,
  com.cevelop.codeanalysator.cppcore.util
+Automatic-Module-Name: com.cevelop.codeanalysator.cppcore

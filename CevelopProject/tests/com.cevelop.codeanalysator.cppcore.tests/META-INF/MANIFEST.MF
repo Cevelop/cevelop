@@ -32,3 +32,4 @@ Bundle-ActivationPolicy: lazy
 Import-Package: com.cevelop.codeanalysator.core.tests.checker,
  com.cevelop.codeanalysator.core.tests.quickfix,
  com.cevelop.codeanalysator.cppcore.guideline
+Automatic-Module-Name: com.cevelop.codeanalysator.cppcore.tests

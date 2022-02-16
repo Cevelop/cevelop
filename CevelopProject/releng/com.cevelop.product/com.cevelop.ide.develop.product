@@ -69,9 +69,9 @@
    <intro introId="com.cevelop.branding.intro"/>
 
    <vm>
-      <linux include="false">org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8</linux>
-      <macos include="false">org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8</macos>
-      <windows include="false">org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8</windows>
+      <linux include="false">org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-11</linux>
+      <macos include="true">org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-11</macos>
+      <windows include="false">org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-11</windows>
    </vm>
 
    <license>
@@ -146,74 +146,79 @@ Switzerland
    </plugins>
 
    <features>
-      <feature id="com.cevelop.aliextor.feature" installMode="root"/>
-      <feature id="com.cevelop.branding.feature" installMode="root"/>
-      <feature id="com.cevelop.charwars.feature" installMode="root"/>
-      <feature id="com.cevelop.clonewar.feature" installMode="root"/>
-      <feature id="com.cevelop.codeanalysator.feature" installMode="root"/>
-      <feature id="com.cevelop.conanator.feature" installMode="root"/>
-      <feature id="com.cevelop.constificator.feature" installMode="root"/>
-      <feature id="com.cevelop.ctylechecker.feature" installMode="root"/>
-      <feature id="com.cevelop.elevator.feature" installMode="root"/>
-      <feature id="com.cevelop.gslator.feature" installMode="root"/>
-      <feature id="com.cevelop.includator.feature" installMode="root"/>
-      <feature id="com.cevelop.intwidthfixator.feature" installMode="root"/>
-      <feature id="com.cevelop.license.feature" installMode="root"/>
-      <feature id="com.cevelop.macronator.feature" installMode="root"/>
-      <feature id="com.cevelop.namespactor.feature" installMode="root"/>
+      <feature id="com.cevelop.aliextor.feature"/>
+      <feature id="com.cevelop.branding.feature"/>
+      <feature id="com.cevelop.charwars.feature"/>
+      <feature id="com.cevelop.clonewar.feature"/>
+      <feature id="com.cevelop.codeanalysator.feature"/>
+      <feature id="com.cevelop.conanator.feature"/>
+      <feature id="com.cevelop.constificator.feature"/>
+      <feature id="com.cevelop.ctylechecker.feature"/>
+      <feature id="com.cevelop.gslator.feature"/>
+      <feature id="com.cevelop.includator.feature"/>
+      <feature id="com.cevelop.intwidthfixator.feature"/>
+      <feature id="com.cevelop.license.feature"/>
+      <feature id="com.cevelop.macronator.feature"/>
+      <feature id="com.cevelop.namespactor.feature"/>
       <feature id="com.cevelop.product.feature"/>
-      <feature id="com.cevelop.tdd.feature" installMode="root"/>
-      <feature id="com.cevelop.templator.feature" installMode="root"/>
-      <feature id="ch.hsr.ifs.cute.boost.feature" installMode="root"/>
-      <feature id="ch.hsr.ifs.cute.feature" installMode="root"/>
-      <feature id="ch.hsr.ifs.cute.gcov.feature" installMode="root"/>
-      <feature id="ch.hsr.ifs.cute.mockator.feature" installMode="root"/>
-      <feature id="ch.hsr.ifs.sconsolidator.depviz.feature" installMode="root"/>
-      <feature id="ch.hsr.ifs.sconsolidator.feature" installMode="root"/>
-      <feature id="org.eclipse.cdt" installMode="root"/>
-      <feature id="org.eclipse.cdt.cmake" installMode="root"/>
-      <feature id="org.eclipse.cdt.gdb" installMode="root"/>
-      <feature id="org.eclipse.cdt.gnu.build" installMode="root"/>
-      <feature id="org.eclipse.cdt.gnu.debug" installMode="root"/>
-      <feature id="org.eclipse.cdt.gnu.dsf" installMode="root"/>
-      <feature id="org.eclipse.cdt.native" installMode="root"/>
-      <feature id="org.eclipse.cdt.platform" installMode="root"/>
-      <feature id="org.eclipse.e4.rcp" installMode="root"/>
-      <feature id="org.eclipse.ecf.core.feature" installMode="root"/>
-      <feature id="org.eclipse.ecf.core.ssl.feature" installMode="root"/>
-      <feature id="org.eclipse.ecf.filetransfer.feature" installMode="root"/>
-      <feature id="org.eclipse.ecf.filetransfer.ssl.feature" installMode="root"/>
-      <feature id="org.eclipse.egit" installMode="root"/>
-      <feature id="org.eclipse.emf.common" installMode="root"/>
-      <feature id="org.eclipse.emf.ecore" installMode="root"/>
-      <feature id="org.eclipse.epp.mpc" installMode="root"/>
-      <feature id="org.eclipse.equinox.core.feature" installMode="root"/>
-      <feature id="org.eclipse.equinox.p2.core.feature" installMode="root"/>
+      <feature id="com.cevelop.tdd.feature"/>
+      <feature id="com.cevelop.templator.feature"/>
+      <feature id="ch.hsr.ifs.cute.boost.feature"/>
+      <feature id="ch.hsr.ifs.cute.feature"/>
+      <feature id="ch.hsr.ifs.cute.gcov.feature"/>
+      <feature id="ch.hsr.ifs.cute.mockator.feature"/>
+      <feature id="ch.hsr.ifs.sconsolidator.depviz.feature"/>
+      <feature id="ch.hsr.ifs.sconsolidator.feature"/>
+      <feature id="org.eclipse.cdt"/>
+      <feature id="org.eclipse.cdt.cmake"/>
+      <feature id="org.eclipse.cdt.gdb"/>
+      <feature id="org.eclipse.cdt.gnu.build"/>
+      <feature id="org.eclipse.cdt.gnu.debug"/>
+      <feature id="org.eclipse.cdt.gnu.dsf"/>
+      <feature id="org.eclipse.cdt.native"/>
+      <feature id="org.eclipse.cdt.platform"/>
+      <feature id="org.eclipse.e4.rcp"/>
+      <feature id="org.eclipse.ecf.core.feature"/>
+      <feature id="org.eclipse.ecf.core.ssl.feature"/>
+      <feature id="org.eclipse.ecf.filetransfer.feature"/>
+      <feature id="org.eclipse.ecf.filetransfer.ssl.feature"/>
+      <feature id="org.eclipse.egit"/>
+      <feature id="org.eclipse.emf.common"/>
+      <feature id="org.eclipse.emf.ecore"/>
+      <feature id="org.eclipse.epp.mpc"/>
+      <feature id="org.eclipse.equinox.core.feature"/>
+      <feature id="org.eclipse.equinox.p2.core.feature"/>
       <feature id="org.eclipse.equinox.p2.discovery.feature"/>
-      <feature id="org.eclipse.equinox.p2.extras.feature" installMode="root"/>
-      <feature id="org.eclipse.equinox.p2.rcp.feature" installMode="root"/>
-      <feature id="org.eclipse.equinox.p2.user.ui" installMode="root"/>
-      <feature id="org.eclipse.help" installMode="root"/>
-      <feature id="org.eclipse.jgit" installMode="root"/>
-      <feature id="org.eclipse.jgit.http.apache" installMode="root"/>
-      <feature id="org.eclipse.jgit.lfs" installMode="root"/>
+      <feature id="org.eclipse.equinox.p2.extras.feature"/>
+      <feature id="org.eclipse.equinox.p2.rcp.feature"/>
+      <feature id="org.eclipse.equinox.p2.user.ui"/>
+      <feature id="org.eclipse.help"/>
+      <feature id="org.eclipse.jgit"/>
+      <feature id="org.eclipse.jgit.http.apache"/>
+      <feature id="org.eclipse.jgit.lfs"/>
       <feature id="org.eclipse.jgit.ssh.apache"/>
-      <feature id="org.eclipse.launchbar" installMode="root"/>
-      <feature id="org.eclipse.platform" installMode="root"/>
-      <feature id="org.eclipse.rcp" installMode="root"/>
-      <feature id="org.eclipse.tm.terminal.connector.local.feature" installMode="root"/>
-      <feature id="org.eclipse.tm.terminal.connector.ssh.feature" installMode="root"/>
-      <feature id="org.eclipse.tm.terminal.connector.telnet.feature" installMode="root"/>
-      <feature id="org.eclipse.tm.terminal.control.feature" installMode="root"/>
-      <feature id="org.eclipse.tm.terminal.feature" installMode="root"/>
-      <feature id="org.eclipse.tm.terminal.view.feature" installMode="root"/>
-      <feature id="org.eclipse.userstorage" installMode="root"/>
-      <feature id="org.eclipse.jgit.gpg.bc" installMode="root"/>
-      <feature id="org.eclipse.jgit.ssh.jsch" installMode="root"/>
-      <feature id="org.eclipse.ecf.filetransfer.httpclient45.feature" installMode="root"/>
+      <feature id="org.eclipse.launchbar"/>
+      <feature id="org.eclipse.platform"/>
+      <feature id="org.eclipse.rcp"/>
+      <feature id="org.eclipse.tm.terminal.connector.local.feature"/>
+      <feature id="org.eclipse.tm.terminal.connector.ssh.feature"/>
+      <feature id="org.eclipse.tm.terminal.connector.telnet.feature"/>
+      <feature id="org.eclipse.tm.terminal.control.feature"/>
+      <feature id="org.eclipse.tm.terminal.feature"/>
+      <feature id="org.eclipse.tm.terminal.view.feature"/>
+      <feature id="org.eclipse.userstorage"/>
+      <feature id="org.eclipse.jgit.gpg.bc"/>
+      <feature id="org.eclipse.ecf.filetransfer.httpclient45.feature"/>
+      <feature id="ch.hsr.ifs.iltis.core.feature"/>
+      <feature id="ch.hsr.ifs.iltis.cpp.core.feature"/>
+      <feature id="ch.hsr.ifs.iltis.cpp.versionator.feature"/>
+      <feature id="ch.hsr.ifs.iltis.kotlin.feature"/>
+      <feature id="ch.hsr.ifs.iltis.testing.core.feature" installMode="root"/>
+      <feature id="ch.hsr.ifs.iltis.testing.cpp.feature" installMode="root"/>
    </features>
 
    <configurations>
+      <plugin id="org.apache.felix.scr" autoStart="true" startLevel="2" />
       <plugin id="org.eclipse.core.runtime" autoStart="true" startLevel="4" />
       <plugin id="org.eclipse.equinox.common" autoStart="true" startLevel="2" />
       <plugin id="org.eclipse.equinox.ds" autoStart="true" startLevel="2" />
@@ -222,20 +227,19 @@ Switzerland
       <plugin id="org.eclipse.ui.workbench" autoStart="true" startLevel="4" />
       <plugin id="org.eclipse.update.configurator" autoStart="true" startLevel="3" />
       <property name="perspective" value="org.eclipse.cdt.ui.CPerspective" />
-      <property name="applicationCSSResources" value="platform:/plugin/org.eclipse.platform/images/" />
       <property name="cssTheme" value="org.eclipse.e4.ui.css.theme.e4_classic" />
+      <property name="applicationCSSResources" value="platform:/plugin/org.eclipse.platform/images/" />
       <property name="osgi.instance.area.default" value="@user.home/workspace" />
    </configurations>
 
    <repositories>
-      <repository location="https://www.cevelop.com/update-unstable/latest" enabled="true" />
-      <repository location="https://www.cevelop.com/iltis-unstable" enabled="true" />
-      <repository location="http://sconsolidator.com/update" enabled="true" />
+      <repository location="https://www.cevelop.com/update-unstable/latest" enabled="false" />
+      <repository location="https://www.cevelop.com/iltis-unstable" enabled="false" />
+      <repository location="http://sconsolidator.com/update" enabled="false" />
       <repository location="http://download.eclipse.org/egit/updates" enabled="true" />
-      <repository location="http://download.eclipse.org/eclipse/updates/4.14" enabled="true" />
-      <repository location="http://download.eclipse.org/releases/2019-12" enabled="true" />
-      <repository location="http://download.eclipse.org/tools/cdt/releases/9.10" enabled="true" />
-      <repository location="http://https://www.cute-test.com/updatesite/2019-12" enabled="true" />
+      <repository location="http://https://www.cute-test.com/updatesite/2019-12" enabled="false" />
+      <repository location="http://download.eclipse.org/releases/2021-12" enabled="true" />
+      <repository location="http://download.eclipse.org/tools/cdt/releases/10.5" enabled="true" />
    </repositories>
 
    <preferencesInfo>

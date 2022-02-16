@@ -29,3 +29,4 @@ Bundle-ActivationPolicy: lazy
 Import-Package: com.cevelop.codeanalysator.core.visitor
 Export-Package: com.cevelop.codeanalysator.misra.guideline,
  com.cevelop.codeanalysator.misra.util
+Automatic-Module-Name: com.cevelop.codeanalysator.misra

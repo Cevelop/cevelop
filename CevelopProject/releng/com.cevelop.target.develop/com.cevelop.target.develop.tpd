@@ -18,6 +18,7 @@ location "https://download.eclipse.org/egit/updates" {
 	org.eclipse.jgit.feature.group lazy
 	org.eclipse.jgit.http.apache.feature.group lazy
 	org.eclipse.jgit.lfs.feature.group lazy
+	org.eclipse.jgit.ssh.jsch.feature.group lazy
 }
 
 location "https://download.eclipse.org/tools/cdt/releases/10.5" {
@@ -39,13 +40,16 @@ location "https://ci.eclipse.org/cdt/job/cdt-10.5/lastSuccessfulBuild/artifact/r
 	org.eclipse.cdt.testing.feature.group lazy
 }
 
-location "https://www.cevelop.com/iltis-unstable" {
+location "https://download.eclipse.org/collections/11.0.0/repository/" {
+	org.eclipse.collections lazy
+}
+
+/* location "https://www.cevelop.com/iltis-unstable" {
 	ch.hsr.ifs.iltis.kotlin.feature.feature.group lazy
 	ch.hsr.ifs.iltis.cpp.versionator.feature.feature.group lazy
 	ch.hsr.ifs.iltis.cpp.core.feature.feature.group lazy
 	ch.hsr.ifs.iltis.testing.cpp.feature.feature.group lazy
 	ch.hsr.ifs.iltis.testing.highlevel.feature.feature.group lazy
-	/* Add pASTa here, so it will be available in instances started from the plug-in development IDE */
 	ch.hsr.ifs.iltis.testing.tools.pasta.feature.feature.group lazy
 }
 
@@ -55,7 +59,7 @@ location "https://cute-test.com/updatesite-unstable" {
 	ch.hsr.ifs.cute.gcov.feature.feature.group lazy
 	ch.hsr.ifs.cute.mockator.feature.feature.group lazy
 }
-
+*/
 
 location "http://sconsolidator.com/update-unstable" {
 	ch.hsr.ifs.sconsolidator.depviz.feature.feature.group lazy

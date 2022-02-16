@@ -13,7 +13,7 @@
 		<eclipse.tycho.version>2.6.0</eclipse.tycho.version>
 		<eclipse.tycho-extras.version>2.6.0</eclipse.tycho-extras.version>
 
-		<jetbrains.kotlin.version>1.6.10</jetbrains.kotlin.version>
+		<jetbrains.kotlin.version>1.5.31</jetbrains.kotlin.version>
 
 		<maven.antrun.version>1.7</maven.antrun.version>
 		<maven.enforcer.version>1.4.1</maven.enforcer.version>
@@ -201,12 +201,12 @@
 					</dependencies>
 					<configuration>
 						<timestampProvider>jgit</timestampProvider>
-<!--						<jgit.ignore>
+						<jgit.ignore>
 							pom.xml
 							.polyglot.build.properties
 							.gitlab-ci.yml
-						</jit.ignore>
- -->					</configuration>
+						</jgit.ignore>
+					</configuration>
 				</plugin>
 
 			</plugins>

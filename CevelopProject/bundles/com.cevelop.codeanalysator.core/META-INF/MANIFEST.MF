@@ -48,3 +48,4 @@ Export-Package: com.cevelop.codeanalysator.core,
  com.cevelop.codeanalysator.core.util,
  com.cevelop.codeanalysator.core.visitor,
  com.cevelop.codeanalysator.core.visitor.shared
+Automatic-Module-Name: com.cevelop.codeanalysator.core

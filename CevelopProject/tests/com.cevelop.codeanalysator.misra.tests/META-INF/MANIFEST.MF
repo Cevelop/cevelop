@@ -33,3 +33,4 @@ Bundle-ActivationPolicy: lazy
 Import-Package: com.cevelop.codeanalysator.core.tests.checker,
  com.cevelop.codeanalysator.core.tests.quickfix,
  com.cevelop.codeanalysator.misra.guideline
+Automatic-Module-Name: com.cevelop.codeanalysator.misra.tests

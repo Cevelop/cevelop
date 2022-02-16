@@ -30,3 +30,4 @@ Import-Package: com.cevelop.codeanalysator.core.visitor
 Export-Package: com.cevelop.codeanalysator.autosar.guideline,
  com.cevelop.codeanalysator.autosar.quickfix,
  com.cevelop.codeanalysator.autosar.util
+Automatic-Module-Name: com.cevelop.codeanalysator.autosar

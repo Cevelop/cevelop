@@ -31,3 +31,4 @@ Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
 Export-Package: com.cevelop.codeanalysator.core.tests.checker,
  com.cevelop.codeanalysator.core.tests.quickfix
+Automatic-Module-Name: com.cevelop.codeanalysator.core.tests

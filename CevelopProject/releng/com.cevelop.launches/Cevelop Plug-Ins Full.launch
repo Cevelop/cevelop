@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <launchConfiguration type="org.eclipse.pde.ui.RuntimeWorkbench">
+    <setAttribute key="additional_plugins"/>
     <booleanAttribute key="append.args" value="true"/>
     <booleanAttribute key="askclear" value="true"/>
     <booleanAttribute key="automaticAdd" value="true"/>
@@ -12,26 +13,19 @@
     <stringAttribute key="configLocation" value="${workspace_loc}/.metadata/.plugins/org.eclipse.pde.core/Cevelop Plug-Ins Full"/>
     <booleanAttribute key="default" value="false"/>
     <setAttribute key="deselected_workspace_bundles">
-        <setEntry value="com.cevelop.aliextor.tests"/>
-        <setEntry value="com.cevelop.charwars.tests"/>
-        <setEntry value="com.cevelop.clonewar.tests"/>
         <setEntry value="com.cevelop.codeanalysator.autosar.tests"/>
         <setEntry value="com.cevelop.codeanalysator.core.tests"/>
         <setEntry value="com.cevelop.codeanalysator.cppcore.tests"/>
         <setEntry value="com.cevelop.codeanalysator.misra.tests"/>
         <setEntry value="com.cevelop.conanator.tests"/>
         <setEntry value="com.cevelop.constificator.tests"/>
-        <setEntry value="com.cevelop.ctylechecker.tests"/>
-        <setEntry value="com.cevelop.elevator.tests"/>
-        <setEntry value="com.cevelop.gslator.tests"/>
         <setEntry value="com.cevelop.includator.tests"/>
-        <setEntry value="com.cevelop.intwidthfixator.tests"/>
-        <setEntry value="com.cevelop.macronator.tests"/>
         <setEntry value="com.cevelop.namespactor.tests"/>
         <setEntry value="com.cevelop.product"/>
-        <setEntry value="com.cevelop.tdd.tests"/>
         <setEntry value="com.cevelop.templator.tests"/>
     </setAttribute>
+    <stringAttribute key="featureDefaultLocation" value="workspace"/>
+    <stringAttribute key="featurePluginResolution" value="workspace"/>
     <booleanAttribute key="includeOptional" value="true"/>
     <stringAttribute key="location" value="${workspace_loc}/../runtime-CevelopPlug-InsFull"/>
     <booleanAttribute key="org.eclipse.jdt.launching.ATTR_ATTR_USE_ARGFILE" value="false"/>
@@ -40,7 +34,103 @@
     <stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="-os ${target.os} -ws ${target.ws} -arch ${target.arch} -nl ${target.nl} -consoleLog"/>
     <stringAttribute key="org.eclipse.jdt.launching.SOURCE_PATH_PROVIDER" value="org.eclipse.pde.ui.workbenchClasspathProvider"/>
     <stringAttribute key="pde.version" value="3.3"/>
-    <stringAttribute key="product" value="org.eclipse.sdk.ide"/>
+    <stringAttribute key="product" value="org.eclipse.cdt.testing.testingProduct"/>
+    <setAttribute key="selected_features">
+        <setEntry value="ch.hsr.ifs.cute.boost.feature:default"/>
+        <setEntry value="ch.hsr.ifs.cute.feature:default"/>
+        <setEntry value="ch.hsr.ifs.cute.gcov.feature:default"/>
+        <setEntry value="ch.hsr.ifs.cute.mockator.examples.feature:default"/>
+        <setEntry value="ch.hsr.ifs.cute.mockator.feature:default"/>
+        <setEntry value="ch.hsr.ifs.iltis.core.feature:default"/>
+        <setEntry value="ch.hsr.ifs.iltis.cpp.core.feature:default"/>
+        <setEntry value="ch.hsr.ifs.iltis.cpp.versionator.feature:default"/>
+        <setEntry value="ch.hsr.ifs.iltis.kotlin.feature:default"/>
+        <setEntry value="ch.hsr.ifs.iltis.testing.core.feature:default"/>
+        <setEntry value="ch.hsr.ifs.iltis.testing.cpp.feature:default"/>
+        <setEntry value="ch.hsr.ifs.iltis.testing.highlevel.examples.feature:default"/>
+        <setEntry value="ch.hsr.ifs.iltis.testing.highlevel.feature:default"/>
+        <setEntry value="ch.hsr.ifs.iltis.testing.tools.feature:default"/>
+        <setEntry value="ch.hsr.ifs.iltis.testing.tools.pasta.feature:default"/>
+        <setEntry value="ch.hsr.ifs.sconsolidator.depviz.feature:default"/>
+        <setEntry value="ch.hsr.ifs.sconsolidator.feature:default"/>
+        <setEntry value="com.cevelop.aliextor.feature:default"/>
+        <setEntry value="com.cevelop.branding.feature:default"/>
+        <setEntry value="com.cevelop.charwars.feature:default"/>
+        <setEntry value="com.cevelop.clonewar.feature:default"/>
+        <setEntry value="com.cevelop.codeanalysator.feature:default"/>
+        <setEntry value="com.cevelop.conanator.feature:default"/>
+        <setEntry value="com.cevelop.constificator.feature:default"/>
+        <setEntry value="com.cevelop.ctylechecker.feature:default"/>
+        <setEntry value="com.cevelop.elevator.feature:default"/>
+        <setEntry value="com.cevelop.gslator.feature:default"/>
+        <setEntry value="com.cevelop.includator.feature:default"/>
+        <setEntry value="com.cevelop.intwidthfixator.feature:default"/>
+        <setEntry value="com.cevelop.license.feature:default"/>
+        <setEntry value="com.cevelop.macronator.feature:default"/>
+        <setEntry value="com.cevelop.namespactor.feature:default"/>
+        <setEntry value="com.cevelop.product.feature:default"/>
+        <setEntry value="com.cevelop.tdd.feature:default"/>
+        <setEntry value="com.cevelop.templator.feature:default"/>
+        <setEntry value="org.eclipse.cdt.gdb.source:default"/>
+        <setEntry value="org.eclipse.cdt.gdb:default"/>
+        <setEntry value="org.eclipse.cdt.gnu.build.source:default"/>
+        <setEntry value="org.eclipse.cdt.gnu.build:default"/>
+        <setEntry value="org.eclipse.cdt.gnu.debug.source:default"/>
+        <setEntry value="org.eclipse.cdt.gnu.debug:default"/>
+        <setEntry value="org.eclipse.cdt.gnu.dsf.source:default"/>
+        <setEntry value="org.eclipse.cdt.gnu.dsf:default"/>
+        <setEntry value="org.eclipse.cdt.native.source:default"/>
+        <setEntry value="org.eclipse.cdt.native:default"/>
+        <setEntry value="org.eclipse.cdt.platform.source:default"/>
+        <setEntry value="org.eclipse.cdt.platform:default"/>
+        <setEntry value="org.eclipse.cdt.sdk:default"/>
+        <setEntry value="org.eclipse.cdt.source:default"/>
+        <setEntry value="org.eclipse.cdt.testing.source:default"/>
+        <setEntry value="org.eclipse.cdt.testing:default"/>
+        <setEntry value="org.eclipse.cdt:default"/>
+        <setEntry value="org.eclipse.e4.rcp.source:default"/>
+        <setEntry value="org.eclipse.e4.rcp:default"/>
+        <setEntry value="org.eclipse.ecf.core.feature.source:default"/>
+        <setEntry value="org.eclipse.ecf.core.feature:default"/>
+        <setEntry value="org.eclipse.ecf.core.ssl.feature.source:default"/>
+        <setEntry value="org.eclipse.ecf.core.ssl.feature:default"/>
+        <setEntry value="org.eclipse.ecf.filetransfer.feature.source:default"/>
+        <setEntry value="org.eclipse.ecf.filetransfer.feature:default"/>
+        <setEntry value="org.eclipse.ecf.filetransfer.httpclient45.feature.source:default"/>
+        <setEntry value="org.eclipse.ecf.filetransfer.httpclient45.feature:default"/>
+        <setEntry value="org.eclipse.ecf.filetransfer.ssl.feature.source:default"/>
+        <setEntry value="org.eclipse.ecf.filetransfer.ssl.feature:default"/>
+        <setEntry value="org.eclipse.emf.common.source:default"/>
+        <setEntry value="org.eclipse.emf.common.ui:default"/>
+        <setEntry value="org.eclipse.emf.common:default"/>
+        <setEntry value="org.eclipse.emf.databinding.edit.source:default"/>
+        <setEntry value="org.eclipse.emf.databinding.edit:default"/>
+        <setEntry value="org.eclipse.emf.databinding.source:default"/>
+        <setEntry value="org.eclipse.emf.databinding:default"/>
+        <setEntry value="org.eclipse.emf.ecore.source:default"/>
+        <setEntry value="org.eclipse.emf.ecore:default"/>
+        <setEntry value="org.eclipse.emf.edit.source:default"/>
+        <setEntry value="org.eclipse.emf.edit:default"/>
+        <setEntry value="org.eclipse.equinox.p2.core.feature.source:default"/>
+        <setEntry value="org.eclipse.equinox.p2.core.feature:default"/>
+        <setEntry value="org.eclipse.equinox.p2.extras.feature.source:default"/>
+        <setEntry value="org.eclipse.equinox.p2.extras.feature:default"/>
+        <setEntry value="org.eclipse.equinox.p2.rcp.feature.source:default"/>
+        <setEntry value="org.eclipse.equinox.p2.rcp.feature:default"/>
+        <setEntry value="org.eclipse.equinox.p2.user.ui.source:default"/>
+        <setEntry value="org.eclipse.equinox.p2.user.ui:default"/>
+        <setEntry value="org.eclipse.help.source:default"/>
+        <setEntry value="org.eclipse.help:default"/>
+        <setEntry value="org.eclipse.jdt.source:default"/>
+        <setEntry value="org.eclipse.jdt:default"/>
+        <setEntry value="org.eclipse.pde.source:default"/>
+        <setEntry value="org.eclipse.pde:default"/>
+        <setEntry value="org.eclipse.platform.source:default"/>
+        <setEntry value="org.eclipse.platform:default"/>
+        <setEntry value="org.eclipse.rcp.source:default"/>
+        <setEntry value="org.eclipse.rcp:default"/>
+        <setEntry value="org.eclipse.sdk:default"/>
+    </setAttribute>
     <setAttribute key="selected_target_bundles">
         <setEntry value="com.google.gson@default:default"/>
         <setEntry value="com.ibm.icu@default:default"/>
@@ -243,6 +333,7 @@
         <setEntry value="org.eclipse.help.ui@default:default"/>
         <setEntry value="org.eclipse.help.webapp@default:default"/>
         <setEntry value="org.eclipse.help@default:default"/>
+        <setEntry value="org.eclipse.jdt.annotation*2.2.600.v20200408-1511@default:default"/>
         <setEntry value="org.eclipse.jdt.apt.core@default:default"/>
         <setEntry value="org.eclipse.jdt.apt.pluggable.core@default:default"/>
         <setEntry value="org.eclipse.jdt.apt.ui@default:default"/>
@@ -383,6 +474,22 @@
         <setEntry value="org.w3c.dom.svg@default:default"/>
     </setAttribute>
     <setAttribute key="selected_workspace_bundles">
+        <setEntry value="ch.hsr.ifs.cute.boost@default:default"/>
+        <setEntry value="ch.hsr.ifs.cute.core@default:default"/>
+        <setEntry value="ch.hsr.ifs.cute.framework.extension@default:false"/>
+        <setEntry value="ch.hsr.ifs.cute.gcov.tests@default:default"/>
+        <setEntry value="ch.hsr.ifs.cute.gcov@default:default"/>
+        <setEntry value="ch.hsr.ifs.cute.headers.tests@default:default"/>
+        <setEntry value="ch.hsr.ifs.cute.headers@default:default"/>
+        <setEntry value="ch.hsr.ifs.cute.help@default:default"/>
+        <setEntry value="ch.hsr.ifs.cute.mockator.example@default:default"/>
+        <setEntry value="ch.hsr.ifs.cute.mockator.help@default:default"/>
+        <setEntry value="ch.hsr.ifs.cute.mockator.it.tests@default:false"/>
+        <setEntry value="ch.hsr.ifs.cute.mockator.tests@default:false"/>
+        <setEntry value="ch.hsr.ifs.cute.mockator@default:default"/>
+        <setEntry value="ch.hsr.ifs.cute.swtbottest@default:default"/>
+        <setEntry value="ch.hsr.ifs.cute.ui.tests@default:default"/>
+        <setEntry value="ch.hsr.ifs.cute.ui@default:default"/>
         <setEntry value="ch.hsr.ifs.iltis.core.tests@default:false"/>
         <setEntry value="ch.hsr.ifs.iltis.core@default:default"/>
         <setEntry value="ch.hsr.ifs.iltis.cpp.core.tests@default:default"/>
@@ -400,9 +507,14 @@
         <setEntry value="ch.hsr.ifs.iltis.testing.tools.pasta.tree@default:default"/>
         <setEntry value="ch.hsr.ifs.iltis.testing.tools.pasta@default:default"/>
         <setEntry value="ch.hsr.ifs.iltis.testing.tools.showoffset@default:default"/>
+        <setEntry value="ch.hsr.ifs.testframework.tests@default:default"/>
+        <setEntry value="ch.hsr.ifs.testframework@default:default"/>
+        <setEntry value="com.cevelop.aliextor.tests@default:false"/>
         <setEntry value="com.cevelop.aliextor@default:default"/>
         <setEntry value="com.cevelop.branding@default:default"/>
+        <setEntry value="com.cevelop.charwars.tests@default:false"/>
         <setEntry value="com.cevelop.charwars@default:default"/>
+        <setEntry value="com.cevelop.clonewar.tests@default:false"/>
         <setEntry value="com.cevelop.clonewar@default:default"/>
         <setEntry value="com.cevelop.codeanalysator.autosar@default:false"/>
         <setEntry value="com.cevelop.codeanalysator.core@default:default"/>
@@ -413,16 +525,21 @@
         <setEntry value="com.cevelop.constificator.core@default:default"/>
         <setEntry value="com.cevelop.constificator@default:default"/>
         <setEntry value="com.cevelop.ctylechecker.reporting@default:false"/>
+        <setEntry value="com.cevelop.ctylechecker.tests@default:false"/>
         <setEntry value="com.cevelop.ctylechecker@default:default"/>
+        <setEntry value="com.cevelop.elevator.tests@default:false"/>
         <setEntry value="com.cevelop.elevator@default:default"/>
+        <setEntry value="com.cevelop.gslator.tests@default:false"/>
         <setEntry value="com.cevelop.gslator@default:default"/>
         <setEntry value="com.cevelop.includator.codan@default:default"/>
-        <setEntry value="com.cevelop.includator.viewer@default:default"/>
         <setEntry value="com.cevelop.includator@default:default"/>
+        <setEntry value="com.cevelop.intwidthfixator.tests@default:false"/>
         <setEntry value="com.cevelop.intwidthfixator@default:default"/>
+        <setEntry value="com.cevelop.macronator.tests@default:false"/>
         <setEntry value="com.cevelop.macronator@default:default"/>
         <setEntry value="com.cevelop.namespactor.checkers@default:default"/>
         <setEntry value="com.cevelop.namespactor@default:default"/>
+        <setEntry value="com.cevelop.tdd.tests@default:false"/>
         <setEntry value="com.cevelop.tdd@default:default"/>
         <setEntry value="com.cevelop.templator.instances@default:default"/>
         <setEntry value="com.cevelop.templator@default:default"/>
@@ -430,8 +547,9 @@
     </setAttribute>
     <booleanAttribute key="show_selected_only" value="false"/>
     <stringAttribute key="templateConfig" value="${target_home}/configuration/config.ini"/>
+    <stringAttribute key="timestamp" value="1644844625077"/>
     <booleanAttribute key="tracing" value="false"/>
-    <booleanAttribute key="useCustomFeatures" value="false"/>
+    <booleanAttribute key="useCustomFeatures" value="true"/>
     <booleanAttribute key="useDefaultConfig" value="true"/>
     <booleanAttribute key="useDefaultConfigArea" value="true"/>
     <booleanAttribute key="useProduct" value="true"/>

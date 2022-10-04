@@ -1,6 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Cevelop C++ IDE
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-SymbolicName: com.cevelop.product
 Bundle-Version: 1.14.2.qualifier
 Bundle-Vendor: IFS Institute for Software

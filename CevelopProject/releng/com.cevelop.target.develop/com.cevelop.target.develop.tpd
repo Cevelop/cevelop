@@ -1,11 +1,11 @@
 target "Cevelop Development" with source requirements
 
-location "https://download.eclipse.org/releases/2022-06" {
+location "https://download.eclipse.org/releases/2022-09" {
 	org.eclipse.equinox.sdk.feature.group lazy
 	org.eclipse.platform.feature.group lazy
-	org.eclipse.ui.ide.application lazy
+//	org.eclipse.ui.ide.application lazy
 	org.eclipse.sdk.feature.group lazy
-	org.eclipse.sdk.ide lazy
+//	org.eclipse.sdk.ide lazy
 	org.eclipse.gef.zest.sdk.feature.group lazy
 	org.eclipse.emf.sdk.feature.group lazy
 	org.eclipse.epp.mpc.feature.group lazy
@@ -30,7 +30,7 @@ location "https://download.eclipse.org/tools/cdt/releases/10.7" {
 	org.eclipse.launchbar.feature.group lazy
 }
 
-location "https://download.eclipse.org/tools/orbit/downloads/drops/R20220531185310/repository" {
+location "https://download.eclipse.org/tools/orbit/downloads/drops/R20220830213456/repository" {
 	org.apache.commons.codec lazy
 	/*javax.xml.stream lazy*/
 }
@@ -60,8 +60,8 @@ location "https://eclipse-update-sites.s3.eu-central-1.amazonaws.com/cute-plugin
 	ch.hsr.ifs.cute.mockator.feature.feature.group lazy
 }
 
-
-location "http://sconsolidator.com/update-unstable" {
+// temporary home with valid certificate https://sommerlad.ch/downloads/sconsolidator/1.4.0/
+location "https://sommerlad.ch/downloads/sconsolidator/1.4.0/" {
 	ch.hsr.ifs.sconsolidator.depviz.feature.feature.group lazy
 	ch.hsr.ifs.sconsolidator.feature.feature.group lazy
 }

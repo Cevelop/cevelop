@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
-<!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl -->
-<target name="Cevelop for 2019-12" sequenceNumber="1614177304">
+<!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl --><target name="Cevelop for 2021-12" sequenceNumber="1614177304">
   <locations>
-    <location includeMode="planner" includeAllPlatforms="false" includeSource="false" includeConfigurePhase="false" type="InstallableUnit">
+    <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="false" type="InstallableUnit">
       <unit id="org.eclipse.equinox.sdk.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.platform.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.ui.ide.application" version="0.0.0"/>
@@ -15,14 +14,14 @@
       <unit id="org.eclipse.tm.terminal.feature.feature.group" version="0.0.0"/>
       <repository location="http://download.eclipse.org/releases/2019-12"/>
     </location>
-    <location includeMode="planner" includeAllPlatforms="false" includeSource="false" includeConfigurePhase="false" type="InstallableUnit">
+    <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="false" type="InstallableUnit">
       <unit id="org.eclipse.egit.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.jgit.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.jgit.http.apache.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.jgit.lfs.feature.group" version="0.0.0"/>
       <repository location="http://download.eclipse.org/egit/updates"/>
     </location>
-    <location includeMode="planner" includeAllPlatforms="false" includeSource="false" includeConfigurePhase="false" type="InstallableUnit">
+    <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="false" type="InstallableUnit">
       <unit id="org.eclipse.cdt.sdk.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.cdt.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.cdt.autotools.feature.group" version="0.0.0"/>
@@ -31,16 +30,16 @@
       <unit id="org.eclipse.launchbar.feature.group" version="0.0.0"/>
       <repository location="http://download.eclipse.org/tools/cdt/releases/9.10"/>
     </location>
-    <location includeMode="planner" includeAllPlatforms="false" includeSource="false" includeConfigurePhase="false" type="InstallableUnit">
+    <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="false" type="InstallableUnit">
       <unit id="org.apache.commons.codec" version="0.0.0"/>
       <unit id="javax.xml.stream" version="0.0.0"/>
       <repository location="http://download.eclipse.org/tools/orbit/downloads/drops/R20191126223242/repository/"/>
     </location>
-    <location includeMode="planner" includeAllPlatforms="false" includeSource="false" includeConfigurePhase="false" type="InstallableUnit">
+    <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="false" type="InstallableUnit">
       <unit id="org.eclipse.cdt.testing.feature.group" version="0.0.0"/>
       <repository location="https://ci.eclipse.org/cdt/job/cdt-9.10/lastSuccessfulBuild/artifact/releng/org.eclipse.cdt.testing.repo/target/repository/"/>
     </location>
-    <location includeMode="planner" includeAllPlatforms="false" includeSource="false" includeConfigurePhase="false" type="InstallableUnit">
+    <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="false" type="InstallableUnit">
       <unit id="ch.hsr.ifs.iltis.kotlin.feature.feature.group" version="4.0.1.202102221544"/>
       <unit id="ch.hsr.ifs.iltis.cpp.versionator.feature.feature.group" version="4.0.1.202102221544"/>
       <unit id="ch.hsr.ifs.iltis.cpp.core.feature.feature.group" version="4.0.1.202102221544"/>

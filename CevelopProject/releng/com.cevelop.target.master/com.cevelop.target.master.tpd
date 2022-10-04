@@ -1,6 +1,6 @@
 target "Cevelop for 2021-12" with requirements
 
-location "http://download.eclipse.org/releases/2021-12" {
+location "https://download.eclipse.org/releases/2022-09" {
 	org.eclipse.equinox.sdk.feature.group lazy
 	org.eclipse.platform.feature.group lazy
 	org.eclipse.ui.ide.application lazy
@@ -19,7 +19,7 @@ location "http://download.eclipse.org/releases/2021-12" {
 //	javax.xml.stream 1.0.1
 }
 
-location "http://download.eclipse.org/egit/updates" {
+location "https://download.eclipse.org/egit/updates" {
 	org.eclipse.egit.feature.group lazy
 	org.eclipse.jgit.feature.group lazy
 	org.eclipse.jgit.http.apache.feature.group lazy
@@ -27,7 +27,7 @@ location "http://download.eclipse.org/egit/updates" {
 	org.eclipse.jgit.ssh.jsch.feature.group lazy
 }
 
-location "http://download.eclipse.org/tools/cdt/releases/10.5" {
+location "https://download.eclipse.org/tools/cdt/releases/10.7" {
 	org.eclipse.cdt.sdk.feature.group lazy
 	org.eclipse.cdt.feature.group lazy
 	org.eclipse.cdt.autotools.feature.group lazy
@@ -36,19 +36,19 @@ location "http://download.eclipse.org/tools/cdt/releases/10.5" {
 	org.eclipse.launchbar.feature.group lazy
 }
 
-location "http://download.eclipse.org/tools/orbit/downloads/drops/R20211213173813/repository/" {
+location "https://download.eclipse.org/tools/orbit/downloads/drops/R20220830213456/repository" {
 	org.apache.commons.codec lazy
 	javax.xml.stream lazy
 }
 
-location "https://ci.eclipse.org/cdt/job/cdt-10.5/lastSuccessfulBuild/artifact/releng/org.eclipse.cdt.testing.repo/target/repository/" {
+location "https://ci.eclipse.org/cdt/job/cdt-10.7/lastSuccessfulBuild/artifact/releng/org.eclipse.cdt.testing.repo/target/repository/" {
 	org.eclipse.cdt.testing.feature.group lazy
 }
 
-location "https://www.cevelop.com/iltis" {
-	ch.hsr.ifs.iltis.kotlin.feature.feature.group 4.0.2
-	ch.hsr.ifs.iltis.cpp.versionator.feature.feature.group 4.0.2
-	ch.hsr.ifs.iltis.cpp.core.feature.feature.group 4.0.2
-	ch.hsr.ifs.iltis.testing.cpp.feature.feature.group 4.0.2
-	ch.hsr.ifs.iltis.testing.highlevel.feature.feature.group 4.0.2
+location "https://eclipse-update-sites.s3.eu-central-1.amazonaws.com/iltis-update/" {
+	ch.hsr.ifs.iltis.kotlin.feature.feature.group lazy
+	ch.hsr.ifs.iltis.cpp.versionator.feature.feature.group lazy
+	ch.hsr.ifs.iltis.cpp.core.feature.feature.group lazy
+	ch.hsr.ifs.iltis.testing.cpp.feature.feature.group lazy
+	ch.hsr.ifs.iltis.testing.highlevel.feature.feature.group lazy
 }

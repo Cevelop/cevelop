@@ -551,4 +551,10 @@ public class ProjectStub implements IProject {
 
    @Override
    public void build(int kind, IProgressMonitor monitor) throws CoreException {}
+
+@Override
+public String getDefaultLineSeparator() throws CoreException {
+    // TODO(sop) Auto-generated method stub
+    return null;
+}
 }

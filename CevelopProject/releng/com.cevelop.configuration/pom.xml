@@ -8,18 +8,18 @@
 	<packaging>pom</packaging>
 
 	<properties>
-		<codehaus.build-helper.version>1.8</codehaus.build-helper.version>
+		<codehaus.build-helper.version>3.3.0</codehaus.build-helper.version>
 
 		<eclipse.tycho.version>2.7.5</eclipse.tycho.version>
 		<eclipse.tycho-extras.version>2.7.5</eclipse.tycho-extras.version>
 
 		<jetbrains.kotlin.version>1.5.31</jetbrains.kotlin.version>
 
-		<maven.antrun.version>1.7</maven.antrun.version>
-		<maven.enforcer.version>1.4.1</maven.enforcer.version>
-		<maven.jarsigner.version>1.4</maven.jarsigner.version>
+		<maven.antrun.version>3.1.0</maven.antrun.version>
+		<maven.enforcer.version>3.1.0</maven.enforcer.version>
+		<maven.jarsigner.version>3.0.0</maven.jarsigner.version>
 		<maven.javadoc.version>3.0.1</maven.javadoc.version>
-		<maven.resources.version>2.6</maven.resources.version>
+		<maven.resources.version>3.3.0</maven.resources.version>
 		<maven.surefire.version>2.22.2</maven.surefire.version>
 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

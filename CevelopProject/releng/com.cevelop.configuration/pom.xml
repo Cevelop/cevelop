@@ -10,8 +10,8 @@
 	<properties>
 		<codehaus.build-helper.version>1.8</codehaus.build-helper.version>
 
-		<eclipse.tycho.version>2.6.0</eclipse.tycho.version>
-		<eclipse.tycho-extras.version>2.6.0</eclipse.tycho-extras.version>
+		<eclipse.tycho.version>2.7.5</eclipse.tycho.version>
+		<eclipse.tycho-extras.version>2.7.5</eclipse.tycho-extras.version>
 
 		<jetbrains.kotlin.version>1.5.31</jetbrains.kotlin.version>
 

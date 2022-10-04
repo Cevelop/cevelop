@@ -11,7 +11,7 @@
     <modules>
         <module>com.cevelop.aliextor.feature</module>
         <module>com.cevelop.branding.feature</module>
-        <module>com.cevelop.charwars.feature</module>
+        <!-- <module>com.cevelop.charwars.feature</module> -->
         <module>com.cevelop.clonewar.feature</module>
         <module>com.cevelop.codeanalysator.feature</module>
         <module>com.cevelop.conanator.feature</module>

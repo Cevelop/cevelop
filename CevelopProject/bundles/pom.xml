@@ -11,7 +11,7 @@
     <modules>
         <module>com.cevelop.aliextor</module>
         <module>com.cevelop.branding</module>
-        <module>com.cevelop.charwars</module>
+        <!-- <module>com.cevelop.charwars</module> -->
         <module>com.cevelop.clonewar</module>
         <module>com.cevelop.codeanalysator.core</module>
         <module>com.cevelop.codeanalysator.misra</module>
@@ -26,7 +26,7 @@
         <module>com.cevelop.gslator</module>
         <module>com.cevelop.includator</module>
         <module>com.cevelop.includator.codan</module>
-        <module>com.cevelop.includator.viewer</module>
+        <!-- <module>com.cevelop.includator.viewer</module> -->
         <module>com.cevelop.intwidthfixator</module>
         <module>com.cevelop.macronator</module>
         <module>com.cevelop.namespactor</module>

@@ -37,29 +37,24 @@ public abstract class BaseQuickFix extends AbstractAstRewriteQuickFix implements
 
     protected CharwarsInfo info;
 
-    @Override
     public void configure(CharwarsInfo info) {
         this.info = info;
     }
 
-    @Override
     public CharwarsInfo getInfo() {
         return info;
     }
 
-    @Override
     public boolean isApplicable(IMarker marker) {
         currentMarker = marker;
         return super.isApplicable(marker);
     }
 
-    @Override
     protected IIndex getIndexFromMarker(IMarker marker) throws CoreException {
         CCorePlugin.getIndexManager().joinIndexer(1000, new NullProgressMonitor());
         return super.getIndexFromMarker(marker);
     }
 
-    @Override
     public void modifyAST(IIndex index, IMarker marker) {
         try {
             currentMarker = marker;

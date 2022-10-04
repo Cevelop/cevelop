@@ -1,11 +1,11 @@
-target "Cevelop for 2021-12" with requirements
+target "Cevelop for 2022-09" with requirements
 
 location "https://download.eclipse.org/releases/2022-09" {
 	org.eclipse.equinox.sdk.feature.group lazy
 	org.eclipse.platform.feature.group lazy
 	org.eclipse.ui.ide.application lazy
 	org.eclipse.sdk.feature.group lazy
-	org.eclipse.zest.sdk.feature.group lazy
+	org.eclipse.gef.zest.sdk.feature.group lazy
 	org.eclipse.emf.sdk.feature.group lazy
 	org.eclipse.epp.mpc.feature.group lazy
 	org.eclipse.gef.sdk.feature.group lazy
@@ -38,7 +38,7 @@ location "https://download.eclipse.org/tools/cdt/releases/10.7" {
 
 location "https://download.eclipse.org/tools/orbit/downloads/drops/R20220830213456/repository" {
 	org.apache.commons.codec lazy
-	javax.xml.stream lazy
+	/* javax.xml.stream lazy */
 }
 
 location "https://ci.eclipse.org/cdt/job/cdt-10.7/lastSuccessfulBuild/artifact/releng/org.eclipse.cdt.testing.repo/target/repository/" {
@@ -52,3 +52,16 @@ location "https://eclipse-update-sites.s3.eu-central-1.amazonaws.com/iltis-updat
 	ch.hsr.ifs.iltis.testing.cpp.feature.feature.group lazy
 	ch.hsr.ifs.iltis.testing.highlevel.feature.feature.group lazy
 }
+
+location "https://eclipse-update-sites.s3.eu-central-1.amazonaws.com/cute-plugin/" {
+	ch.hsr.ifs.cute.boost.feature.feature.group lazy
+	ch.hsr.ifs.cute.feature.feature.group lazy
+	ch.hsr.ifs.cute.gcov.feature.feature.group lazy
+	ch.hsr.ifs.cute.mockator.feature.feature.group lazy
+}
+
+// temporary home with valid certificate https://sommerlad.ch/downloads/sconsolidator/1.4.0/
+/* location "https://sommerlad.ch/downloads/sconsolidator/1.4.0/" {
+	ch.hsr.ifs.sconsolidator.depviz.feature.feature.group lazy
+	ch.hsr.ifs.sconsolidator.feature.feature.group lazy
+} */

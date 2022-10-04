@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.cevelop</groupId>
 	<artifactId>com.cevelop.configuration</artifactId>
-	<version>1.14.2-SNAPSHOT</version>
+	<version>1.14.3-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<properties>

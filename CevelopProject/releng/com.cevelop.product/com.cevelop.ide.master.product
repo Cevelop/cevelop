@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="Cevelop C++ IDE" uid="com.cevelop.master" id="com.cevelop.branding.product" application="org.eclipse.ui.ide.workbench" version="1.14.2.qualifier" useFeatures="true" includeLaunchers="true">
+<product name="Cevelop C++ IDE" uid="com.cevelop.master" id="com.cevelop.branding.product" application="org.eclipse.ui.ide.workbench" version="1.14.2.qualifier" useFeatures="true" includeLaunchers="true" autoIncludeRequirements="true">
 
    <aboutInfo>
       <image path="/com.cevelop.branding/about.png"/>

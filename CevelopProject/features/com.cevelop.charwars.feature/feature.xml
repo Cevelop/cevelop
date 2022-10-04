@@ -29,6 +29,23 @@ SPDX-License-Identifier: EPL-2.0
       <update label="Cevelop Plug-Ins" url="https://www.cevelop.com/update/latest"/>
    </url>
 
+   <requires>
+      <import plugin="org.eclipse.ui"/>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="org.eclipse.cdt.codan.core" version="2.1.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.cdt.codan.core.cxx" version="1.1.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.cdt.core" version="5.4.1" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.cdt.codan.ui.cxx" version="3.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.core.resources" version="3.8.1" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.jface.text" version="3.8.1" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ltk.core.refactoring" version="3.6.0" match="greaterOrEqual"/>
+      <import plugin="ch.hsr.ifs.iltis.cpp.versionator"/>
+      <import plugin="ch.hsr.ifs.iltis.core"/>
+      <import plugin="ch.hsr.ifs.iltis.cpp.core"/>
+      <import plugin="org.eclipse.ui.ide" version="3.13.1" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ltk.ui.refactoring"/>
+   </requires>
+
    <plugin
          id="com.cevelop.charwars"
          download-size="0"

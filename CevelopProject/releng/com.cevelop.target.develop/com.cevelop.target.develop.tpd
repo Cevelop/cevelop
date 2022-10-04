@@ -3,9 +3,9 @@ target "Cevelop Development" with source requirements
 location "https://download.eclipse.org/releases/2022-09" {
 	org.eclipse.equinox.sdk.feature.group lazy
 	org.eclipse.platform.feature.group lazy
-//	org.eclipse.ui.ide.application lazy
+	org.eclipse.ui.ide.application lazy
 	org.eclipse.sdk.feature.group lazy
-//	org.eclipse.sdk.ide lazy
+	org.eclipse.sdk.ide lazy
 	org.eclipse.gef.zest.sdk.feature.group lazy
 	org.eclipse.emf.sdk.feature.group lazy
 	org.eclipse.epp.mpc.feature.group lazy

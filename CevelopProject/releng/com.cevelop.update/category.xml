@@ -3,9 +3,6 @@
    <description name="Cevelop Plug-ins" url="https://www.cevelop.com/update/latest">
       Cevelop Plug-ins. This update site contains the core and beta plug-ins of Cevelop.
    </description>
-   <feature url="features/com.cevelop.charwars.feature_1.14.2.qualifier.jar" id="com.cevelop.charwars.feature" version="1.14.2.qualifier">
-      <category name="com.cevelop.plugins.core"/>
-   </feature>
    <feature url="features/com.cevelop.clonewar.feature_1.14.2.qualifier.jar" id="com.cevelop.clonewar.feature" version="1.14.2.qualifier">
       <category name="com.cevelop.plugins.core"/>
    </feature>

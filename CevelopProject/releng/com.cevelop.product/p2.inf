@@ -2,8 +2,8 @@ instructions.configure=\
 addRepository(type:0,location:https${#58}//www.cevelop.com/update/latest,enabled:true,name:Cevelop Updates);\
 addRepository(type:0,location:https${#58}//eclipse-update-sites.s3.eu-central-1.amazonaws.com/cute-plugin,enabled:true,name:CUTE Updates);\
 addRepository(type:0,location:https${#58}//eclipse-update-sites.s3.eu-central-1.amazonaws.com/iltis-update,enabled:true,name:ILTIS Updates);\
-addRepository(type:0,location:http${#58}//download.eclipse.org/tools/cdt/releases/10.7,enabled:true,name:CDT 10.7 Updates);\
-addRepository(type:0,location:http${#58}//download.eclipse.org/releases/2022-09,enabled:true,name:Eclipse 2022-09 Packages);\
-addRepository(type:0,location:http${#58}//download.eclipse.org/eclipse/updates/4.25,enabled:true,name:Eclipse 2022-09 Updates);\
-addRepository(type:0,location:http${#58}//download.eclipse.org/egit/updates,enabled:true,name:EGit Updates);
+addRepository(type:0,location:https${#58}//download.eclipse.org/tools/cdt/releases/10.7,enabled:true,name:CDT 10.7 Updates);\
+addRepository(type:0,location:https${#58}//download.eclipse.org/releases/2022-09,enabled:true,name:Eclipse 2022-09 Packages);\
+addRepository(type:0,location:https${#58}//download.eclipse.org/eclipse/updates/4.25,enabled:true,name:Eclipse 2022-09 Updates);\
+addRepository(type:0,location:https${#58}//download.eclipse.org/egit/updates,enabled:true,name:EGit Updates);
 

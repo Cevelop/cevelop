@@ -13,6 +13,10 @@
 			<property name="aboutText" value="%productBlurb"/>
 			<property name="aboutImage" value="about.png"/>
 			<property name="windowImages" value="eclipse16.png,eclipse32.png,eclipse48.png,eclipse256.png"/>
+   <property
+         name="preferenceCustomization"
+         value="plugin_customization.ini">
+   </property>
 		</product>
 	</extension>
 

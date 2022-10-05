@@ -29,6 +29,20 @@ SPDX-License-Identifier: EPL-2.0
       <update label="Cevelop Plug-Ins" url="https://www.cevelop.com/update/latest"/>
    </url>
 
+   <requires>
+      <import plugin="org.eclipse.ui.workbench"/>
+      <import plugin="ch.hsr.ifs.iltis.cpp.core"/>
+      <import plugin="org.eclipse.cdt.core"/>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="org.eclipse.ltk.core.refactoring"/>
+      <import plugin="org.eclipse.jface.text"/>
+      <import plugin="org.eclipse.jface"/>
+      <import plugin="org.eclipse.ltk.ui.refactoring"/>
+      <import plugin="ch.hsr.ifs.iltis.core"/>
+      <import plugin="org.eclipse.core.resources"/>
+      <import plugin="org.eclipse.cdt.ui"/>
+   </requires>
+
    <plugin
          id="com.cevelop.aliextor"
          download-size="0"

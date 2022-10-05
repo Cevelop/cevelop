@@ -146,7 +146,6 @@ Switzerland
    </plugins>
 
    <features>
-      <feature id="com.cevelop.charwars.feature" installMode="root"/>
       <feature id="com.cevelop.clonewar.feature" installMode="root"/>
       <feature id="com.cevelop.elevator.feature" installMode="root"/>
       <feature id="com.cevelop.product.feature" installMode="root"/>
@@ -196,7 +195,7 @@ Switzerland
       <feature id="org.eclipse.userstorage" installMode="root"/>
       <feature id="org.eclipse.jgit.gpg.bc" installMode="root"/>
       <feature id="org.eclipse.jgit.ssh.jsch" installMode="root"/>
-      <feature id="org.eclipse.ecf.filetransfer.httpclient45.feature" installMode="root"/>
+      <feature id="org.eclipse.ecf.filetransfer.httpclient5.feature" installMode="root"/>
    </features>
 
    <configurations>
@@ -221,6 +220,12 @@ Switzerland
       <repository location="http://download.eclipse.org/tools/cdt/releases/10.5" enabled="true" />
       <repository location="https://www.cevelop.com/update/1.14.2" enabled="true" />
       <repository location="https://www.cute-test.com/updatesite/2021-12" enabled="true" />
+      <repository location="https://www.cevelop.com/update-unstable/latest" enabled="false" />
+      <repository location="https://eclipse-update-sites.s3.eu-central-1.amazonaws.com/cute-plugin/" enabled="true" />
+      <repository location="https://eclipse-update-sites.s3.eu-central-1.amazonaws.com/iltis-update/" enabled="true" />
+      <repository location="https://download.eclipse.org/releases/2022-09" enabled="true" />
+      <repository location="https://download.eclipse.org/tools/cdt/releases/10.7" enabled="true" />
+      <repository location="https://download.eclipse.org/egit/updates" enabled="true" />
    </repositories>
 
    <preferencesInfo>

@@ -19,7 +19,7 @@
 
 	<modules>
 		<module>com.cevelop.aliextor.tests</module>
-		<module>com.cevelop.charwars.tests</module>
+		<!-- <module>com.cevelop.charwars.tests</module> -->
 		<module>com.cevelop.clonewar.tests</module>
 		<module>com.cevelop.codeanalysator.core.tests</module>
 		<module>com.cevelop.codeanalysator.autosar.tests</module>

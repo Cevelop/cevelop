@@ -4,14 +4,14 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.cevelop</groupId>
 	<artifactId>com.cevelop.configuration</artifactId>
-	<version>1.14.3-SNAPSHOT</version>
+	<version>1.14.2-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<properties>
 		<codehaus.build-helper.version>3.3.0</codehaus.build-helper.version>
 
-		<eclipse.tycho.version>2.7.5</eclipse.tycho.version>
-		<eclipse.tycho-extras.version>2.7.5</eclipse.tycho-extras.version>
+		<eclipse.tycho.version>2.6.0</eclipse.tycho.version>
+		<eclipse.tycho-extras.version>2.6.0</eclipse.tycho-extras.version>
 
 		<jetbrains.kotlin.version>1.5.31</jetbrains.kotlin.version>
 
@@ -150,17 +150,17 @@
 								</artifact>
 							</target>
 							<environments>
-								<!-- <environment>
+								<environment>
 									<os>macosx</os>
 									<ws>cocoa</ws>
 									<arch>aarch64</arch>
-								</environment> -->
+								</environment>
 								<environment>
 									<os>win32</os>
 									<ws>win32</ws>
 									<arch>x86_64</arch>
 								</environment>
-								<!--<environment>
+								<environment>
 									<os>linux</os>
 									<ws>gtk</ws>
 									<arch>x86_64</arch>
@@ -169,7 +169,7 @@
 									<os>macosx</os>
 									<ws>cocoa</ws>
 									<arch>x86_64</arch>
-								</environment> -->
+								</environment>
 							</environments>
 						</configuration>
 					</plugin>

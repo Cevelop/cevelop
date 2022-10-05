@@ -146,7 +146,6 @@ Switzerland
    </plugins>
 
    <features>
-      <feature id="ch.hsr.ifs.iltis.core.feature" installMode="root"/>
       <feature id="com.cevelop.aliextor.feature" installMode="root"/>
       <feature id="com.cevelop.branding.feature" installMode="root"/>
       <feature id="com.cevelop.clonewar.feature" installMode="root"/>
@@ -167,6 +166,15 @@ Switzerland
       <feature id="ch.hsr.ifs.cute.feature" installMode="root"/>
       <feature id="ch.hsr.ifs.cute.gcov.feature" installMode="root"/>
       <feature id="ch.hsr.ifs.cute.mockator.feature" installMode="root"/>
+      <feature id="ch.hsr.ifs.iltis.core.feature" installMode="root"/>
+      <feature id="ch.hsr.ifs.iltis.cpp.core.feature" installMode="root"/>
+      <feature id="ch.hsr.ifs.iltis.cpp.versionator.feature" installMode="root"/>
+      <feature id="ch.hsr.ifs.iltis.kotlin.feature" installMode="root"/>
+      <feature id="ch.hsr.ifs.iltis.testing.core.feature" installMode="root"/>
+      <feature id="ch.hsr.ifs.iltis.testing.cpp.feature" installMode="root"/>
+      <feature id="ch.hsr.ifs.iltis.testing.highlevel.feature" installMode="root"/>
+      <feature id="ch.hsr.ifs.iltis.testing.tools.feature" installMode="root"/>
+      <feature id="ch.hsr.ifs.iltis.testing.tools.pasta.feature" installMode="root"/>
       <feature id="org.eclipse.cdt" installMode="root"/>
       <feature id="org.eclipse.cdt.cmake" installMode="root"/>
       <feature id="org.eclipse.cdt.gdb" installMode="root"/>
@@ -186,7 +194,7 @@ Switzerland
       <feature id="org.eclipse.epp.mpc" installMode="root"/>
       <feature id="org.eclipse.equinox.core.feature" installMode="root"/>
       <feature id="org.eclipse.equinox.p2.core.feature" installMode="root"/>
-      <feature id="org.eclipse.equinox.p2.discovery.feature" installMode="root"/>
+      <feature id="org.eclipse.equinox.p2.discovery.feature"/>
       <feature id="org.eclipse.equinox.p2.extras.feature" installMode="root"/>
       <feature id="org.eclipse.equinox.p2.rcp.feature" installMode="root"/>
       <feature id="org.eclipse.equinox.p2.user.ui" installMode="root"/>
@@ -194,7 +202,7 @@ Switzerland
       <feature id="org.eclipse.jgit" installMode="root"/>
       <feature id="org.eclipse.jgit.http.apache" installMode="root"/>
       <feature id="org.eclipse.jgit.lfs" installMode="root"/>
-      <feature id="org.eclipse.jgit.ssh.apache" installMode="root"/>
+      <feature id="org.eclipse.jgit.ssh.apache"/>
       <feature id="org.eclipse.launchbar" installMode="root"/>
       <feature id="org.eclipse.platform" installMode="root"/>
       <feature id="org.eclipse.rcp" installMode="root"/>
@@ -206,11 +214,7 @@ Switzerland
       <feature id="org.eclipse.tm.terminal.view.feature" installMode="root"/>
       <feature id="org.eclipse.userstorage" installMode="root"/>
       <feature id="org.eclipse.jgit.gpg.bc" installMode="root"/>
-      <feature id="ch.hsr.ifs.iltis.cpp.core.feature" installMode="root"/>
-      <feature id="ch.hsr.ifs.iltis.cpp.versionator.feature" installMode="root"/>
-      <feature id="ch.hsr.ifs.iltis.kotlin.feature" installMode="root"/>
-      <feature id="ch.hsr.ifs.iltis.testing.core.feature" installMode="root"/>
-      <feature id="ch.hsr.ifs.iltis.testing.cpp.feature" installMode="root"/>
+      <feature id="org.eclipse.jgit.ssh.jsch" installMode="root"/>
       <feature id="org.eclipse.ecf.filetransfer.httpclient5.feature" installMode="root"/>
    </features>
 
@@ -236,6 +240,10 @@ Switzerland
       <repository location="https://download.eclipse.org/releases/2022-09" enabled="true" />
       <repository location="https://download.eclipse.org/tools/cdt/releases/10.7" enabled="true" />
       <repository location="https://download.eclipse.org/egit/updates" enabled="true" />
+      <repository location="https://download.eclipse.org/tools/orbit/downloads/drops/R20220830213456/repository" enabled="true" />
+      <repository location="https://download.eclipse.org/collections/11.1.0/repository/" enabled="true" />
+      <repository location="https://sommerlad.ch/downloads/sconsolidator/1.4.0" enabled="true" />
+      <repository location="https://ci.eclipse.org/cdt/job/cdt-10.7/lastSuccessfulBuild/artifact/releng/org.eclipse.cdt.testing.repo/target/repository" enabled="true" />
    </repositories>
 
    <preferencesInfo>

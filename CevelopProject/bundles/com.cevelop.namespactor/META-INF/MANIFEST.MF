@@ -12,7 +12,8 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.ltk.core.refactoring,
  org.eclipse.jface.text,
  org.eclipse.cdt.codan.core.cxx,
- ch.hsr.ifs.iltis.cpp.core
+ ch.hsr.ifs.iltis.cpp.core,
+ org.eclipse.ltk.ui.refactoring
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-Vendor: IFS Institute for Software

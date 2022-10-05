@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl -->
-<target name="Cevelop for 2022-09" sequenceNumber="1664907360">
+<target name="Cevelop for 2022-09" sequenceNumber="1664983163">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="false" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.equinox.sdk.feature.group" version="0.0.0"/>
@@ -30,7 +30,7 @@
       <unit id="org.eclipse.cdt.build.crossgcc.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.cdt.cmake.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.launchbar.feature.group" version="0.0.0"/>
-      <repository location="https://download.eclipse.org/tools/cdt/releases/10.7"/>
+      <repository location="https://download.eclipse.org/tools/cdt/releases/10.7/cdt-10.7.1/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="false" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.apache.commons.codec" version="0.0.0"/>
@@ -38,7 +38,7 @@
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="false" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.cdt.testing.feature.group" version="0.0.0"/>
-      <repository location="https://ci.eclipse.org/cdt/job/cdt-10.7/lastSuccessfulBuild/artifact/releng/org.eclipse.cdt.testing.repo/target/repository/"/>
+      <repository location="https://ci.eclipse.org/cdt/job/cdt/job/cdt_10_7/lastStableBuild/artifact/releng/org.eclipse.cdt.testing.repo/target/repository"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="false" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="ch.hsr.ifs.iltis.kotlin.feature.feature.group" version="0.0.0"/>
@@ -52,7 +52,6 @@
       <unit id="ch.hsr.ifs.cute.boost.feature.feature.group" version="0.0.0"/>
       <unit id="ch.hsr.ifs.cute.feature.feature.group" version="0.0.0"/>
       <unit id="ch.hsr.ifs.cute.gcov.feature.feature.group" version="0.0.0"/>
-      <unit id="ch.hsr.ifs.cute.mockator.feature.feature.group" version="0.0.0"/>
       <repository location="https://eclipse-update-sites.s3.eu-central-1.amazonaws.com/cute-plugin/"/>
     </location>
   </locations>

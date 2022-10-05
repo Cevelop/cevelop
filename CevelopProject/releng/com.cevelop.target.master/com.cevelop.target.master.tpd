@@ -27,7 +27,7 @@ location "https://download.eclipse.org/egit/updates" {
 	org.eclipse.jgit.ssh.jsch.feature.group lazy
 }
 
-location "https://download.eclipse.org/tools/cdt/releases/10.7" {
+location "https://download.eclipse.org/tools/cdt/releases/10.7/cdt-10.7.1/" {
 	org.eclipse.cdt.sdk.feature.group lazy
 	org.eclipse.cdt.feature.group lazy
 	org.eclipse.cdt.autotools.feature.group lazy
@@ -41,7 +41,7 @@ location "https://download.eclipse.org/tools/orbit/downloads/drops/R202208302134
 	/* javax.xml.stream lazy */
 }
 
-location "https://ci.eclipse.org/cdt/job/cdt-10.7/lastSuccessfulBuild/artifact/releng/org.eclipse.cdt.testing.repo/target/repository/" {
+location "https://ci.eclipse.org/cdt/job/cdt/job/cdt_10_7/lastStableBuild/artifact/releng/org.eclipse.cdt.testing.repo/target/repository" {
 	org.eclipse.cdt.testing.feature.group lazy
 }
 
@@ -57,7 +57,7 @@ location "https://eclipse-update-sites.s3.eu-central-1.amazonaws.com/cute-plugin
 	ch.hsr.ifs.cute.boost.feature.feature.group lazy
 	ch.hsr.ifs.cute.feature.feature.group lazy
 	ch.hsr.ifs.cute.gcov.feature.feature.group lazy
-	ch.hsr.ifs.cute.mockator.feature.feature.group lazy
+	//ch.hsr.ifs.cute.mockator.feature.feature.group lazy
 }
 
 // temporary home with valid certificate https://sommerlad.ch/downloads/sconsolidator/1.4.0/

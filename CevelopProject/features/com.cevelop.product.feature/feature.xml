@@ -89,15 +89,18 @@ Switzerland
    </license>
 
    <requires>
-      <import plugin="org.eclipse.core.runtime" version="3.2.0" match="compatible"/>
       <import plugin="org.eclipse.ui" version="3.3.0" match="compatible"/>
+      <import plugin="org.eclipse.e4.ui.dialogs" version="1.1.600" match="greaterOrEqual"/>
       <import plugin="org.eclipse.core.runtime" version="3.6.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.epp.mpc.core" version="1.10.0" match="compatible"/>
+      <import plugin="org.eclipse.epp.mpc.ui.css" version="1.10.0" match="compatible"/>
       <import plugin="org.eclipse.ui" version="3.6.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.equinox.p2.discovery" version="1.0.0" match="compatible"/>
       <import plugin="org.eclipse.equinox.p2.repository" version="2.0.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.equinox.p2.core" version="1.0.4" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.equinox.p2.ui" version="2.6.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.equinox.p2.metadata" version="1.0.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.equinox.p2.operations" version="2.3.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.equinox.p2.repository" version="1.0.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.equinox.p2.engine" version="2.3.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.equinox.p2.director" version="2.3.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.osgi.services" version="3.3.100" match="greaterOrEqual"/>
@@ -108,13 +111,10 @@ Switzerland
       <import plugin="org.eclipse.core.resources" version="3.12.0" match="compatible"/>
       <import plugin="org.eclipse.e4.ui.css.core" version="0.12.200" match="compatible"/>
       <import plugin="org.eclipse.e4.ui.css.swt" version="0.13.100" match="compatible"/>
-      <import plugin="org.eclipse.e4.ui.dialogs" version="1.1.600" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.epp.mpc.core" version="1.9.2" match="compatible"/>
-      <import plugin="org.eclipse.epp.mpc.ui.css" version="1.9.2" match="compatible"/>
-      <import plugin="org.eclipse.equinox.p2.ui.discovery" version="1.0.0" match="compatible"/>
-      <import plugin="org.eclipse.equinox.p2.discovery" version="1.0.0" match="compatible"/>
-      <import plugin="org.eclipse.equinox.p2.ui" version="2.6.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.urischeme" version="1.0.300" match="compatible"/>
+      <import plugin="org.eclipse.core.runtime" version="3.2.0" match="compatible"/>
+      <import plugin="org.eclipse.equinox.p2.ui.discovery" version="1.0.0" match="compatible"/>
+      <import plugin="org.eclipse.equinox.p2.repository" version="1.0.0" match="greaterOrEqual"/>
    </requires>
 
    <plugin

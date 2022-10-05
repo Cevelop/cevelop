@@ -146,35 +146,28 @@ Switzerland
    </plugins>
 
    <features>
-      <feature id="com.cevelop.aliextor.feature" installMode="root"/>
-      <feature id="com.cevelop.branding.feature" installMode="root"/>
-      <feature id="com.cevelop.clonewar.feature" installMode="root"/>
-      <feature id="com.cevelop.codeanalysator.feature" installMode="root"/>
-      <feature id="com.cevelop.conanator.feature" installMode="root"/>
-      <feature id="com.cevelop.constificator.feature" installMode="root"/>
-      <feature id="com.cevelop.ctylechecker.feature" installMode="root"/>
-      <feature id="com.cevelop.gslator.feature" installMode="root"/>
-      <feature id="com.cevelop.includator.feature" installMode="root"/>
-      <feature id="com.cevelop.intwidthfixator.feature" installMode="root"/>
-      <feature id="com.cevelop.license.feature" installMode="root"/>
-      <feature id="com.cevelop.macronator.feature" installMode="root"/>
-      <feature id="com.cevelop.namespactor.feature" installMode="root"/>
-      <feature id="com.cevelop.product.feature" installMode="root"/>
-      <feature id="com.cevelop.tdd.feature" installMode="root"/>
-      <feature id="com.cevelop.templator.feature" installMode="root"/>
       <feature id="ch.hsr.ifs.cute.boost.feature" installMode="root"/>
       <feature id="ch.hsr.ifs.cute.feature" installMode="root"/>
       <feature id="ch.hsr.ifs.cute.gcov.feature" installMode="root"/>
-      <feature id="ch.hsr.ifs.cute.mockator.feature" installMode="root"/>
-      <feature id="ch.hsr.ifs.iltis.core.feature" installMode="root"/>
       <feature id="ch.hsr.ifs.iltis.cpp.core.feature" installMode="root"/>
       <feature id="ch.hsr.ifs.iltis.cpp.versionator.feature" installMode="root"/>
       <feature id="ch.hsr.ifs.iltis.kotlin.feature" installMode="root"/>
-      <feature id="ch.hsr.ifs.iltis.testing.core.feature" installMode="root"/>
-      <feature id="ch.hsr.ifs.iltis.testing.cpp.feature" installMode="root"/>
-      <feature id="ch.hsr.ifs.iltis.testing.highlevel.feature" installMode="root"/>
-      <feature id="ch.hsr.ifs.iltis.testing.tools.feature" installMode="root"/>
-      <feature id="ch.hsr.ifs.iltis.testing.tools.pasta.feature" installMode="root"/>
+      <feature id="org.eclipse.cdt" installMode="root"/>
+      <feature id="org.eclipse.cdt.gnu.dsf" installMode="root"/>
+      <feature id="org.eclipse.cdt.gnu.build" installMode="root"/>
+      <feature id="org.eclipse.cdt.platform" installMode="root"/>
+      <feature id="org.eclipse.cdt.native" installMode="root"/>
+      <feature id="org.eclipse.cdt.gnu.debug" installMode="root"/>
+      <feature id="org.eclipse.cdt.gdb" installMode="root"/>
+      <feature id="com.cevelop.clonewar.feature" installMode="root"/>
+      <feature id="com.cevelop.elevator.feature" installMode="root"/>
+      <feature id="com.cevelop.product.feature" installMode="root"/>
+      <feature id="com.cevelop.ctylechecker.feature" installMode="root"/>
+      <feature id="com.cevelop.constificator.feature" installMode="root"/>
+      <feature id="com.cevelop.macronator.feature" installMode="root"/>
+      <feature id="com.cevelop.namespactor.feature" installMode="root"/>
+      <feature id="com.cevelop.tdd.feature" installMode="root"/>
+      <feature id="com.cevelop.templator.feature" installMode="root"/>
       <feature id="org.eclipse.cdt" installMode="root"/>
       <feature id="org.eclipse.cdt.cmake" installMode="root"/>
       <feature id="org.eclipse.cdt.gdb" installMode="root"/>
@@ -234,16 +227,14 @@ Switzerland
    </configurations>
 
    <repositories>
-      <repository location="https://www.cevelop.com/update-unstable/latest" enabled="false" />
-      <repository location="https://eclipse-update-sites.s3.eu-central-1.amazonaws.com/cute-plugin/" enabled="true" />
-      <repository location="https://eclipse-update-sites.s3.eu-central-1.amazonaws.com/iltis-update/" enabled="true" />
       <repository location="https://download.eclipse.org/releases/2022-09" enabled="true" />
-      <repository location="https://download.eclipse.org/tools/cdt/releases/10.7" enabled="true" />
       <repository location="https://download.eclipse.org/egit/updates" enabled="true" />
       <repository location="https://download.eclipse.org/tools/orbit/downloads/drops/R20220830213456/repository" enabled="true" />
       <repository location="https://download.eclipse.org/collections/11.1.0/repository/" enabled="true" />
-      <repository location="https://sommerlad.ch/downloads/sconsolidator/1.4.0" enabled="true" />
       <repository location="https://ci.eclipse.org/cdt/job/cdt-10.7/lastSuccessfulBuild/artifact/releng/org.eclipse.cdt.testing.repo/target/repository" enabled="true" />
+      <repository location="https://eclipse-update-sites.s3.eu-central-1.amazonaws.com/cute-plugin" enabled="true" />
+      <repository location="https://download.eclipse.org/tools/cdt/releases/10.7/cdt-10.7.1" enabled="true" />
+      <repository location="https://eclipse-update-sites.s3.eu-central-1.amazonaws.com/iltis-update" enabled="true" />
    </repositories>
 
    <preferencesInfo>

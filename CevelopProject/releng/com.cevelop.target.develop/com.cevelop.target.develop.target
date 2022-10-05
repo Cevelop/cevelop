@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
-<!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl --><target name="Cevelop Development" sequenceNumber="1664926401">
+<!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl -->
+<target name="Cevelop Development" sequenceNumber="1664982987">
   <locations>
-    <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.equinox.sdk.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.platform.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.ui.ide.application" version="0.0.0"/>
@@ -13,9 +14,19 @@
       <unit id="org.eclipse.epp.mpc.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.gef.sdk.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.tm.terminal.feature.feature.group" version="0.0.0"/>
+      <unit id="org.junit" version="0.0.0"/>
+      <unit id="org.eclipse.pde.api.tools.annotations" version="0.0.0"/>
+      <unit id="org.eclipse.swtbot.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.swtbot.eclipse.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.swtbot.generator.feature.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.common.ui.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.equinox.launcher" version="0.0.0"/>
+      <unit id="org.eclipse.core.resources" version="0.0.0"/>
+      <unit id="org.eclipse.core.runtime" version="0.0.0"/>
+      <unit id="org.eclipse.jdt.feature.group" version="0.0.0"/>
       <repository location="https://download.eclipse.org/releases/2022-09"/>
     </location>
-    <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.egit.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.jgit.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.jgit.http.apache.feature.group" version="0.0.0"/>
@@ -23,29 +34,39 @@
       <unit id="org.eclipse.jgit.ssh.jsch.feature.group" version="0.0.0"/>
       <repository location="https://download.eclipse.org/egit/updates"/>
     </location>
-    <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.cdt.sdk.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.cdt.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.cdt.autotools.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.cdt.build.crossgcc.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.cdt.cmake.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.launchbar.feature.group" version="0.0.0"/>
-      <repository location="https://download.eclipse.org/tools/cdt/releases/10.7"/>
+      <repository location="https://download.eclipse.org/tools/cdt/releases/10.7/cdt-10.7.1/"/>
     </location>
-    <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.apache.commons.codec" version="0.0.0"/>
+      <unit id="org.mockito" version="0.0.0"/>
+      <unit id="org.apache.log4j" version="0.0.0"/>
+      <unit id="org.junit.jupiter.api" version="0.0.0"/>
+      <unit id="org.junit.platform.suite.api" version="0.0.0"/>
+      <unit id="org.junit.platform.runner" version="0.0.0"/>
+      <unit id="org.junit.platform.launcher" version="0.0.0"/>
+      <unit id="org.junit.platform.commons" version="0.0.0"/>
+      <unit id="org.junit.jupiter.engine" version="0.0.0"/>
+      <unit id="org.junit.platform.engine" version="0.0.0"/>
+      <unit id="org.junit.vintage.engine" version="0.0.0"/>
       <repository location="https://download.eclipse.org/tools/orbit/downloads/drops/R20220830213456/repository"/>
     </location>
-    <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
-      <unit id="org.eclipse.cdt.testing.source.feature.group" version="0.0.0"/>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.cdt.testing.feature.group" version="0.0.0"/>
-      <repository location="https://ci.eclipse.org/cdt/job/cdt-10.7/lastSuccessfulBuild/artifact/releng/org.eclipse.cdt.testing.repo/target/repository"/>
+      <unit id="org.eclipse.cdt.testing.source.feature.group" version="0.0.0"/>
+      <repository location="https://ci.eclipse.org/cdt/job/cdt/job/cdt_10_7/lastStableBuild/artifact/releng/org.eclipse.cdt.testing.repo/target/repository"/>
     </location>
-    <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
-      <unit id="org.eclipse.collections" version="0.0.0"/>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.collections.feature.feature.group" version="0.0.0"/>
       <repository location="https://download.eclipse.org/collections/11.1.0/repository/"/>
     </location>
-    <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="ch.hsr.ifs.iltis.kotlin.feature.feature.group" version="0.0.0"/>
       <unit id="ch.hsr.ifs.iltis.cpp.versionator.feature.feature.group" version="0.0.0"/>
       <unit id="ch.hsr.ifs.iltis.cpp.core.feature.feature.group" version="0.0.0"/>
@@ -54,14 +75,13 @@
       <unit id="ch.hsr.ifs.iltis.testing.tools.pasta.feature.feature.group" version="0.0.0"/>
       <repository location="https://eclipse-update-sites.s3.eu-central-1.amazonaws.com/iltis-update"/>
     </location>
-    <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="ch.hsr.ifs.cute.boost.feature.feature.group" version="0.0.0"/>
       <unit id="ch.hsr.ifs.cute.feature.feature.group" version="0.0.0"/>
       <unit id="ch.hsr.ifs.cute.gcov.feature.feature.group" version="0.0.0"/>
-      <unit id="ch.hsr.ifs.cute.mockator.feature.feature.group" version="0.0.0"/>
       <repository location="https://eclipse-update-sites.s3.eu-central-1.amazonaws.com/cute-plugin"/>
     </location>
-    <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="ch.hsr.ifs.sconsolidator.depviz.feature.feature.group" version="0.0.0"/>
       <unit id="ch.hsr.ifs.sconsolidator.feature.feature.group" version="0.0.0"/>
       <repository location="https://sommerlad.ch/downloads/sconsolidator/1.4.0"/>

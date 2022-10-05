@@ -199,8 +199,6 @@ Switzerland
       <feature id="ch.hsr.ifs.cute.boost.feature" installMode="root"/>
       <feature id="ch.hsr.ifs.cute.feature" installMode="root"/>
       <feature id="ch.hsr.ifs.cute.gcov.feature" installMode="root"/>
-      <feature id="ch.hsr.ifs.cute.mockator.examples.feature" installMode="root"/>
-      <feature id="ch.hsr.ifs.cute.mockator.feature" installMode="root"/>
    </features>
 
    <configurations>

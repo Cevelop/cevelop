@@ -34,10 +34,10 @@ jobs:
     - name: Build with Maven
       run: |
         # rm -rf /home/runner/.m2 # remove cache when there are strange build problems 
-        cd /home/runner/work/cevelop/CevelopProject/; xvfb-run -a ./releng-tools/build
+        cd /home/runner/work/cevelop/cevelop/CevelopProject; xvfb-run -a ../releng-tools/build
     - name: upload update site and product 
       uses: actions/upload-artifact@v3 # misses product zips/tgzs, those need signing
       with: 
         name: cuteplugin-updatesite
-        path: /home/runner/work/cevelop/CevelopProject/releng/com.cevelop.update/target/com.cevelop.update-*.zip
+        path: /home/runner/work/cevelop/cevelop/CevelopProject/releng/com.cevelop.update/target/com.cevelop.update-*.zip
         if-no-files-found: warn

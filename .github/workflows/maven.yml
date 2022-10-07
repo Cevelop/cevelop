@@ -1,0 +1,43 @@
+# This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
+# For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-maven
+
+name: cevelop build product and update-site
+
+on:
+  push:
+    branches: [ develop-PS ]
+  pull_request:
+    branches: [ develop-PS ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        submodules: recursive
+        lfs: true
+    - name: Set up JDK 11
+      uses: actions/setup-java@v2
+      with:
+        java-version: '11'
+        distribution: 'adopt'
+        cache: maven
+    - name: Cache Maven packages
+      uses: actions/cache@v3
+      with:
+        path: ~/.m2
+        key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+        restore-keys: ${{ runner.os }}-m2
+    - name: Build with Maven
+      run: |
+        # rm -rf /home/runner/.m2 # remove cache when there are strange build problems 
+        cd /home/runner/work/cevelop/CevelopProject/; xvfb-run -a ./releng-tools/build
+    - name: upload update site and product 
+      uses: actions/upload-artifact@v3 # misses product zips/tgzs, those need signing
+      with: 
+        name: cuteplugin-updatesite
+        path: /home/runner/work/cevelop/CevelopProject/releng/com.cevelop.update/target/com.cevelop.update-*.zip
+        if-no-files-found: warn
